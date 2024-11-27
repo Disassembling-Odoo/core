@@ -1,21 +1,13 @@
-this project fork from odoo 18.0 commit
-commit 52acb3c1d4cf8a7e8d1ab68015a4c55b5d5d8555 (HEAD -> 18.0)
-Author: Odoo Translation Bot <c3p@odoo.com>
-Date:   Sun Nov 24 02:58:40 2024 +0100
+Core project fork from odoo 18.0 
 
-    [I18N] Update translation terms from Transifex
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
-[![Build Status](https://runbot.odoo.com/runbot/badge/flat/1/master.svg)](https://runbot.odoo.com/runbot)
-[![Tech Doc](https://img.shields.io/badge/master-docs-875A7B.svg?style=flat&colorA=8F8F8F)](https://www.odoo.com/documentation/master)
-[![Help](https://img.shields.io/badge/master-help-875A7B.svg?style=flat&colorA=8F8F8F)](https://www.odoo.com/forum/help-1)
-[![Nightly Builds](https://img.shields.io/badge/master-nightly-875A7B.svg?style=flat&colorA=8F8F8F)](https://nightly.odoo.com/)
+> commit 52acb3c1d4cf8a7e8d1ab68015a4c55b5d5d8555 (HEAD -> 18.0)
+> Author: Odoo Translation Bot <c3p@odoo.com>
+> Date:   Sun Nov 24 02:58:40 2024 +0100
+>
+>    [I18N] Update translation terms from Transifex
+
+<br>
 
 Odoo
 ----

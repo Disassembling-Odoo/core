@@ -43,7 +43,7 @@ def main():
     # commands from modules
     if len(args) > 1 and args[0].startswith('--addons-path=') and not args[1].startswith("-"):
         # parse only the addons-path, do not setup the logger...
-        odoo.tools.config._parse_config([args[0]])
+        odoo.conf.config._parse_config([args[0]])
         args = args[1:]
 
     # Default legacy command

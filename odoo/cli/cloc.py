@@ -5,7 +5,8 @@ import sys
 import textwrap
 from pathlib import Path
 
-from odoo.tools import cloc, config
+from odoo.conf import config
+from odoo.tools import cloc
 from . import Command
 
 class Cloc(Command):

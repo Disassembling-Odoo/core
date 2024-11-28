@@ -5,11 +5,12 @@ from unittest.mock import patch
 
 from odoo.addons.website.controllers.main import Website
 from odoo.addons.website.tools import MockRequest
+from odoo.conf import config
 from odoo.fields import Command
 from odoo.http import root
 from odoo.tests import common, HttpCase, tagged
 from odoo.tests.common import HOST
-from odoo.tools import config, mute_logger
+from odoo.tools import mute_logger
 
 
 @tagged('-at_install', 'post_install')

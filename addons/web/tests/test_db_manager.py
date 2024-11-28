@@ -13,7 +13,7 @@ import requests
 import odoo
 from odoo.modules.registry import Registry
 from odoo.tests.common import BaseCase, HttpCase, tagged
-from odoo.tools import config
+from odoo.conf import config
 
 
 class TestDatabaseManager(HttpCase):
@@ -40,7 +40,7 @@ class TestDatabaseOperations(BaseCase):
 
         # monkey-patch password verification
         self.verify_admin_password_patcher = patch(
-            'odoo.tools.config.verify_admin_password', self.password.__eq__,
+            'odoo.conf.config.verify_admin_password', self.password.__eq__,
         )
         self.startPatcher(self.verify_admin_password_patcher)
 
@@ -81,7 +81,7 @@ class TestDatabaseOperations(BaseCase):
 
     def test_database_creation(self):
         # check verify_admin_password patch
-        self.assertTrue(odoo.tools.config.verify_admin_password(self.password))
+        self.assertTrue(odoo.conf.config.verify_admin_password(self.password))
 
         # create a database
         test_db_name = self.db_name + '-test-database-creation'

@@ -8,8 +8,9 @@ import uuid
 import logging
 
 from odoo import api, fields, models, _
+from odoo.conf import config
 from odoo.exceptions import ValidationError
-from odoo.tools import config, ormcache, mute_logger
+from odoo.tools import ormcache, mute_logger
 
 _logger = logging.getLogger(__name__)
 

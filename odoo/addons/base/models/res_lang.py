@@ -222,13 +222,13 @@ class Lang(models.Model):
 
         This method is called from odoo/addons/base/data/res_lang_data.xml to load
         some language and set it as the default for every partners. The
-        language is set via tools.config by the '_initialize_db' method on the
+        language is set via conf.config by the '_initialize_db' method on the
         'db' object. This is a fragile solution and something else should be
         found.
 
         """
         # config['load_language'] is a comma-separated list or None
-        lang_code = (tools.config.get('load_language') or 'en_US').split(',')[0]
+        lang_code = (conf.config.get('load_language') or 'en_US').split(',')[0]
         lang = self._activate_lang(lang_code) or self._create_lang(lang_code)
         IrDefault = self.env['ir.default']
         default_value = IrDefault._get('res.partner', 'lang')

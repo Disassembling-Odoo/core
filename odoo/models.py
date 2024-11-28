@@ -55,8 +55,9 @@ from . import api
 from . import tools
 from .api import NewId
 from .exceptions import AccessError, MissingError, ValidationError, UserError
+from .conf import config
 from .tools import (
-    clean_context, config, date_utils, discardattr,
+    clean_context, date_utils, discardattr,
     DEFAULT_SERVER_DATE_FORMAT, DEFAULT_SERVER_DATETIME_FORMAT, format_list,
     frozendict, get_lang, lazy_classproperty, OrderedSet,
     ormcache, partition, Query, split_every, unique,

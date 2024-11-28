@@ -18,7 +18,7 @@ from OpenSSL.crypto import Error as SSLCryptoError, FILETYPE_PEM
 from OpenSSL.SSL import Error as SSLError
 from urllib3.contrib.pyopenssl import PyOpenSSLContext
 
-from odoo import api, fields, models, tools, _, modules
+from odoo import api, fields, models, tools, _, modules, conf
 from odoo.exceptions import UserError
 from odoo.tools import formataddr, email_normalize, encapsulate_email, email_domain_extract, email_domain_normalize, human_size
 
@@ -415,20 +415,20 @@ class IrMailServer(models.Model):
 
         else:
             # we were passed individual smtp parameters or nothing and there is no default server
-            smtp_server = host or tools.config.get('smtp_server')
-            smtp_port = tools.config.get('smtp_port', 25) if port is None else port
-            smtp_user = user or tools.config.get('smtp_user')
-            smtp_password = password or tools.config.get('smtp_password')
+            smtp_server = host or conf.config.get('smtp_server')
+            smtp_port = conf.config.get('smtp_port', 25) if port is None else port
+            smtp_user = user or conf.config.get('smtp_user')
+            smtp_password = password or conf.config.get('smtp_password')
             if mail_server:
                 from_filter = mail_server.from_filter
             else:
                 from_filter = self.env['ir.mail_server']._get_default_from_filter()
 
             smtp_encryption = encryption
-            if smtp_encryption is None and tools.config.get('smtp_ssl'):
+            if smtp_encryption is None and conf.config.get('smtp_ssl'):
                 smtp_encryption = 'starttls' # smtp_ssl => STARTTLS as of v7
-            smtp_ssl_certificate_filename = ssl_certificate or tools.config.get('smtp_ssl_certificate_filename')
-            smtp_ssl_private_key_filename = ssl_private_key or tools.config.get('smtp_ssl_private_key_filename')
+            smtp_ssl_certificate_filename = ssl_certificate or conf.config.get('smtp_ssl_certificate_filename')
+            smtp_ssl_private_key_filename = ssl_private_key or conf.config.get('smtp_ssl_private_key_filename')
 
             if smtp_ssl_certificate_filename and smtp_ssl_private_key_filename:
                 try:
@@ -583,7 +583,7 @@ class IrMailServer(models.Model):
 
         :return str/None: defaults to the ``--email-from`` CLI/config parameter.
         """
-        return tools.config.get("email_from")
+        return conf.config.get("email_from")
 
     @api.model
     def _get_default_from_address(self):
@@ -592,7 +592,7 @@ class IrMailServer(models.Model):
 
         :return str/None: defaults to the ``--email-from`` CLI/config parameter.
         """
-        return tools.config.get("email_from")
+        return conf.config.get("email_from")
 
     @api.model
     def _get_default_from_filter(self):
@@ -604,7 +604,7 @@ class IrMailServer(models.Model):
           ``--from-filter`` CLI/config parameter.
         """
         return self.env['ir.config_parameter'].sudo().get_param(
-            'mail.default.from_filter', tools.config.get('from_filter')
+            'mail.default.from_filter', conf.config.get('from_filter')
         )
 
     def _prepare_email_message(self, message, smtp_session):

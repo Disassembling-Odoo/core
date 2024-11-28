@@ -6,7 +6,7 @@ from werkzeug import urls
 
 import odoo
 import odoo.modules.module  # get_manifest, don't from-import it
-from odoo import api, fields, models, tools
+from odoo import api, fields, models, tools, conf
 from odoo.tools import misc
 from odoo.tools.constants import ASSET_EXTENSIONS, EXTERNAL_ASSET
 
@@ -120,7 +120,7 @@ class IrAsset(models.Model):
         return bundle_name, rtl, asset_type
 
     @tools.conditional(
-        'xml' not in tools.config['dev_mode'],
+        'xml' not in conf.config['dev_mode'],
         tools.ormcache('bundle', 'tuple(sorted(assets_params.items()))', cache='assets'),
     )
     def _get_asset_paths(self, bundle, assets_params):

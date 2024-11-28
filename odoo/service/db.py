@@ -44,7 +44,7 @@ def database_identifier(cr, name: str) -> SQL:
 
 def check_db_management_enabled(method):
     def if_db_mgt_enabled(method, self, *args, **kwargs):
-        if not odoo.tools.config['list_db']:
+        if not odoo.conf.config['list_db']:
             _logger.error('Database management functions blocked, admin disabled database listing')
             raise AccessDenied()
         return method(self, *args, **kwargs)
@@ -55,7 +55,7 @@ def check_db_management_enabled(method):
 #----------------------------------------------------------
 
 def check_super(passwd):
-    if passwd and odoo.tools.config.verify_admin_password(passwd):
+    if passwd and odoo.conf.config.verify_admin_password(passwd):
         return True
     raise odoo.exceptions.AccessDenied()
 
@@ -66,7 +66,7 @@ def _initialize_db(id, db_name, demo, lang, user_password, login='admin', countr
         with closing(db.cursor()) as cr:
             # TODO this should be removed as it is done by Registry.new().
             odoo.modules.db.initialize(cr)
-            odoo.tools.config['load_language'] = lang
+            odoo.conf.config['load_language'] = lang
             cr.commit()
 
         registry = odoo.modules.registry.Registry.new(db_name, demo, None, update_module=True)
@@ -105,7 +105,7 @@ def _initialize_db(id, db_name, demo, lang, user_password, login='admin', countr
 def _create_empty_database(name):
     db = odoo.sql_db.db_connect('postgres')
     with closing(db.cursor()) as cr:
-        chosen_template = odoo.tools.config['db_template']
+        chosen_template = odoo.conf.config['db_template']
         cr.execute("SELECT datname FROM pg_database WHERE datname = %s",
                    (name,), log_exceptions=False)
         if cr.fetchall():
@@ -128,7 +128,7 @@ def _create_empty_database(name):
         db = odoo.sql_db.db_connect(name)
         with db.cursor() as cr:
             cr.execute("CREATE EXTENSION IF NOT EXISTS pg_trgm")
-            if odoo.tools.config['unaccent']:
+            if odoo.conf.config['unaccent']:
                 cr.execute("CREATE EXTENSION IF NOT EXISTS unaccent")
                 # From PostgreSQL's point of view, making 'unaccent' immutable is incorrect
                 # because it depends on external data - see
@@ -179,8 +179,8 @@ def exp_duplicate_database(db_original_name, db_name, neutralize_database=False)
         if neutralize_database:
             odoo.modules.neutralize.neutralize_database(cr)
 
-    from_fs = odoo.tools.config.filestore(db_original_name)
-    to_fs = odoo.tools.config.filestore(db_name)
+    from_fs = odoo.conf.config.filestore(db_original_name)
+    to_fs = odoo.conf.config.filestore(db_name)
     if os.path.exists(from_fs) and not os.path.exists(to_fs):
         shutil.copytree(from_fs, to_fs)
     return True
@@ -222,7 +222,7 @@ def exp_drop(db_name):
         else:
             _logger.info('DROP DB: %s', db_name)
 
-    fs = odoo.tools.config.filestore(db_name)
+    fs = odoo.conf.config.filestore(db_name)
     if os.path.exists(fs):
         shutil.rmtree(fs)
     return True
@@ -262,7 +262,7 @@ def dump_db(db_name, stream, backup_format='zip'):
 
     if backup_format == 'zip':
         with tempfile.TemporaryDirectory() as dump_dir:
-            filestore = odoo.tools.config.filestore(db_name)
+            filestore = odoo.conf.config.filestore(db_name)
             if os.path.exists(filestore):
                 shutil.copytree(filestore, os.path.join(dump_dir, 'filestore'))
             with open(os.path.join(dump_dir, 'manifest.json'), 'w') as fh:
@@ -372,23 +372,23 @@ def exp_rename(old_name, new_name):
             _logger.info('RENAME DB: %s -> %s failed:\n%s', old_name, new_name, e)
             raise Exception("Couldn't rename database %s to %s: %s" % (old_name, new_name, e))
 
-    old_fs = odoo.tools.config.filestore(old_name)
-    new_fs = odoo.tools.config.filestore(new_name)
+    old_fs = odoo.conf.config.filestore(old_name)
+    new_fs = odoo.conf.config.filestore(new_name)
     if os.path.exists(old_fs) and not os.path.exists(new_fs):
         shutil.move(old_fs, new_fs)
     return True
 
 @check_db_management_enabled
 def exp_change_admin_password(new_password):
-    odoo.tools.config.set_admin_password(new_password)
-    odoo.tools.config.save(['admin_passwd'])
+    odoo.conf.config.set_admin_password(new_password)
+    odoo.conf.config.save(['admin_passwd'])
     return True
 
 @check_db_management_enabled
 def exp_migrate_databases(databases):
     for db in databases:
         _logger.info('migrate database %s', db)
-        odoo.tools.config['update']['base'] = True
+        odoo.conf.config['update']['base'] = True
         odoo.modules.registry.Registry.new(db, force_demo=False, update_module=True)
     return True
 
@@ -407,17 +407,17 @@ def exp_db_exist(db_name):
         return False
 
 def list_dbs(force=False):
-    if not odoo.tools.config['list_db'] and not force:
+    if not odoo.conf.config['list_db'] and not force:
         raise odoo.exceptions.AccessDenied()
 
-    if not odoo.tools.config['dbfilter'] and odoo.tools.config['db_name']:
+    if not odoo.conf.config['dbfilter'] and odoo.conf.config['db_name']:
         # In case --db-filter is not provided and --database is passed, Odoo will not
         # fetch the list of databases available on the postgres server and instead will
         # use the value of --database as comma seperated list of exposed databases.
-        res = sorted(db.strip() for db in odoo.tools.config['db_name'].split(','))
+        res = sorted(db.strip() for db in odoo.conf.config['db_name'].split(','))
         return res
 
-    chosen_template = odoo.tools.config['db_template']
+    chosen_template = odoo.conf.config['db_template']
     templates_list = tuple({'postgres', chosen_template})
     db = odoo.sql_db.db_connect('postgres')
     with closing(db.cursor()) as cr:
@@ -457,7 +457,7 @@ def list_db_incompatible(databases):
 
 
 def exp_list(document=False):
-    if not odoo.tools.config['list_db']:
+    if not odoo.conf.config['list_db']:
         raise odoo.exceptions.AccessDenied()
     return list_dbs()
 
@@ -466,7 +466,7 @@ def exp_list_lang():
 
 def exp_list_countries():
     list_countries = []
-    root = ET.parse(os.path.join(odoo.tools.config['root_path'], 'addons/base/data/res_country_data.xml')).getroot()
+    root = ET.parse(os.path.join(odoo.conf.config['root_path'], 'addons/base/data/res_country_data.xml')).getroot()
     for country in root.find('data').findall('record[@model="res.country"]'):
         name = country.find('field[@name="name"]').text
         code = country.find('field[@name="code"]').text

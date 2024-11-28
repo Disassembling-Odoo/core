@@ -20,7 +20,7 @@ import odoo
 
 # Equivalent of --load command-line option
 odoo.conf.server_wide_modules = ['base', 'web']
-conf = odoo.tools.config
+conf = odoo.conf.config
 
 # Path to the OpenERP Addons repository (comma-separated for
 # multiple locations)

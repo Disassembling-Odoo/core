@@ -16,6 +16,7 @@ import warnings
 from os.path import join as opj, normpath
 
 import odoo
+import odoo.conf as conf
 import odoo.tools as tools
 import odoo.release as release
 from odoo.tools.misc import file_path
@@ -124,12 +125,12 @@ def initialize_sys_path():
     and explicit directories.
     """
     # hook odoo.addons on data dir
-    dd = os.path.normcase(tools.config.addons_data_dir)
+    dd = os.path.normcase(conf.config.addons_data_dir)
     if os.access(dd, os.R_OK) and dd not in odoo.addons.__path__:
         odoo.addons.__path__.append(dd)
 
     # hook odoo.addons on addons paths
-    for ad in tools.config['addons_path'].split(','):
+    for ad in conf.config['addons_path'].split(','):
         ad = os.path.normcase(os.path.abspath(ad.strip()))
         if ad not in odoo.addons.__path__:
             odoo.addons.__path__.append(ad)
@@ -142,7 +143,7 @@ def initialize_sys_path():
     # hook odoo.upgrade on upgrade-path
     from odoo import upgrade
     legacy_upgrade_path = os.path.join(base_path, 'base', 'maintenance', 'migrations')
-    for up in (tools.config['upgrade_path'] or legacy_upgrade_path).split(','):
+    for up in (conf.config['upgrade_path'] or legacy_upgrade_path).split(','):
         up = os.path.normcase(os.path.abspath(up.strip()))
         if os.path.isdir(up) and up not in upgrade.__path__:
             upgrade.__path__.append(up)
@@ -177,7 +178,7 @@ def get_module_path(module, downloaded=False, display_warning=True):
             return opj(adp, module)
 
     if downloaded:
-        return opj(tools.config.addons_data_dir, module)
+        return opj(conf.config.addons_data_dir, module)
     if display_warning:
         _logger.warning('module %s: module not found', module)
     return False

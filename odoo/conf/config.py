@@ -9,15 +9,25 @@ import os
 import sys
 import tempfile
 import warnings
-import odoo
 from os.path import expandvars, expanduser, abspath, realpath, normcase
-from .. import release, conf, loglevels
+import odoo
+from .. import release, loglevels
 from . import appdirs
 
 from passlib.context import CryptContext
 crypt_context = CryptContext(schemes=['pbkdf2_sha512', 'plaintext'],
                              deprecated=['plaintext'],
                              pbkdf2_sha512__rounds=600_000)
+
+# Paths to search for OpenERP addons.
+addons_paths = []
+
+# List of server-wide modules to load. Those modules are supposed to provide
+# features not necessarily tied to a particular database. This is in contrast
+# to modules that are always bound to a specific database when they are
+# installed (i.e. the majority of OpenERP addons). This is set with the --load
+# command-line option.
+server_wide_modules = []
 
 class MyOption (optparse.Option, object):
     """ optparse Option with two additional attributes.
@@ -373,7 +383,7 @@ class configmanager(object):
         """ Parse the configuration file (if any) and the command-line
         arguments.
 
-        This method initializes odoo.tools.config and openerp.conf (the
+        This method initializes odoo.conf.config and openerp.conf (the
         former should be removed in the future) with library-wide
         configuration values.
 
@@ -382,7 +392,7 @@ class configmanager(object):
 
         Typical usage of this method:
 
-            odoo.tools.config.parse_config(sys.argv[1:])
+            odoo.conf.config.parse_config(sys.argv[1:])
         """
         opt = self._parse_config(args)
         if setup_logging is not False:
@@ -568,9 +578,9 @@ class configmanager(object):
         for key in ['data_dir', 'logfile', 'pidfile', 'test_file', 'screencasts', 'screenshots', 'pg_path', 'translate_out', 'translate_in', 'geoip_city_db', 'geoip_country_db']:
             self.options[key] = self._normalize(self.options[key])
 
-        conf.addons_paths = self.options['addons_path'].split(',')
+        addons_paths = self.options['addons_path'].split(',')
 
-        conf.server_wide_modules = [
+        server_wide_modules = [
             m.strip() for m in self.options['server_wide_modules'].split(',') if m.strip()
         ]
         return opt

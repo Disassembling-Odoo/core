@@ -5,7 +5,7 @@ import io
 from lxml import etree
 from xml.sax.saxutils import escape, quoteattr
 
-from odoo import _, api, fields, models, tools, SUPERUSER_ID
+from odoo import _, api, conf, fields, models, tools, SUPERUSER_ID
 from odoo.tools import cleanup_xml_node
 from odoo.tools.pdf import OdooPdfFileReader, OdooPdfFileWriter
 
@@ -130,7 +130,7 @@ class AccountMoveSend(models.AbstractModel):
             xml_facturx = self.env['account.edi.xml.cii']._export_invoice(invoice)[0]
 
         # during tests, no wkhtmltopdf, create the attachment for test purposes
-        if tools.config['test_enable']:
+        if conf.config['test_enable']:
             self.env['ir.attachment'].create({
                 'name': 'factur-x.xml',
                 'raw': xml_facturx,

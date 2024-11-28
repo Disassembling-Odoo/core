@@ -6,10 +6,11 @@ from socket import gethostbyname
 from unittest.mock import patch
 
 import odoo
+from odoo.conf import config
 from odoo.http import root, content_disposition
 from odoo.tests import tagged
 from odoo.tests.common import HOST, new_test_user, get_db_name, BaseCase
-from odoo.tools import config, file_path, parse_version
+from odoo.tools import file_path, parse_version
 from odoo.addons.test_http.controllers import CT_JSON
 
 from odoo.addons.test_http.utils import TEST_IP
@@ -126,7 +127,7 @@ class TestHttpMisc(TestHttpBase):
             'X-Forwarded-Host': 'odoo.com',
             'X-Forwarded-Proto': 'https'
         }
-        with patch.dict(odoo.tools.config.options, {'proxy_mode': True}):
+        with patch.dict(odoo.conf.config.options, {'proxy_mode': True}):
             res = self.nodb_url_open('/test_http/geoip', headers=headers)
             res.raise_for_status()
             self.assertEqual(res.json(), {

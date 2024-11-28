@@ -7,8 +7,9 @@ from collections import defaultdict
 from dateutil.relativedelta import relativedelta
 
 from odoo import api, fields, models, _
+from odoo.conf import config
 from odoo.exceptions import UserError
-from odoo.tools import config, split_every
+from odoo.tools import split_every
 from odoo.osv import expression
 
 # When recycle_mode = automatic, _recycle_records calls action_validate.

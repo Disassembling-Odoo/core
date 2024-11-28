@@ -51,10 +51,10 @@ except ImportError:
     setproctitle = lambda x: None
 
 import odoo
+from odoo.conf import config
 from odoo.modules import get_modules
 from odoo.modules.registry import Registry
 from odoo.release import nt_service_name
-from odoo.tools import config
 from odoo.tools.cache import log_ormcache_stats
 from odoo.tools.misc import stripped_sys_argv, dumpstacks
 
@@ -491,7 +491,7 @@ class ThreadedServer(CommonServer):
         # to prevent time.strptime AttributeError within the thread.
         # See: http://bugs.python.org/issue7980
         datetime.datetime.strptime('2012-01-01', '%Y-%m-%d')
-        for i in range(odoo.tools.config['max_cron_threads']):
+        for i in range(odoo.conf.config['max_cron_threads']):
             def target():
                 self.cron_thread(i)
             t = threading.Thread(target=target, name="odoo.service.cron.cron%d" % i)
@@ -1296,7 +1296,7 @@ def load_test_file_py(registry, test_file):
 
 def preload_registries(dbnames):
     """ Preload a registries, possibly run a test file."""
-    # TODO: move all config checks to args dont check tools.config here
+    # TODO: move all config checks to args dont check conf.config here
     dbnames = dbnames or []
     rc = 0
     for dbname in dbnames:

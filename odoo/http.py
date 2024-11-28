@@ -196,7 +196,8 @@ from .exceptions import UserError, AccessError, AccessDenied
 from .modules.module import get_manifest
 from .modules.registry import Registry
 from .service import security, model as service_model
-from .tools import (config, consteq, file_path, get_lang, json_default,
+from .conf import config
+from .tools import (consteq, file_path, get_lang, json_default,
                     parse_version, profiler, unique, exception_to_unicode)
 from .tools.func import filter_kwargs, lazy_property
 from .tools.misc import submap
@@ -2277,7 +2278,7 @@ class Application:
 
     @lazy_property
     def session_store(self):
-        path = odoo.tools.config.session_dir
+        path = odoo.conf.config.session_dir
         _logger.debug('HTTP sessions stored in: %s', path)
         return FilesystemSessionStore(path, session_class=Session, renew_missing=True)
 
@@ -2338,7 +2339,7 @@ class Application:
         if hasattr(current_thread, 'uid'):
             del current_thread.uid
 
-        if odoo.tools.config['proxy_mode'] and environ.get("HTTP_X_FORWARDED_HOST"):
+        if odoo.conf.config['proxy_mode'] and environ.get("HTTP_X_FORWARDED_HOST"):
             # The ProxyFix middleware has a side effect of updating the
             # environ, see https://github.com/pallets/werkzeug/pull/2184
             def fake_app(environ, start_response):

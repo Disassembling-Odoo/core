@@ -12,7 +12,7 @@ import time
 from werkzeug.exceptions import InternalServerError
 from zlib import adler32
 
-from odoo import http, tools
+from odoo import conf, http, tools
 
 from odoo.addons.hw_drivers.event_manager import event_manager
 from odoo.addons.hw_drivers.main import iot_devices, manager
@@ -82,7 +82,7 @@ class DriverController(http.Controller):
         """
         Downloads the log file
         """
-        log_path = tools.config['logfile']
+        log_path = conf.config['logfile']
         if not log_path:
             raise InternalServerError("Log file configuration is not set")
         try:

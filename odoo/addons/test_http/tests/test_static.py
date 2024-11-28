@@ -9,12 +9,12 @@ from freezegun import freeze_time
 from urllib3.util import parse_url
 
 import odoo
+from odoo.conf import config
 from odoo.tests import new_test_user, tagged, RecordCapturer
-from odoo.tools import config, file_open, image_process
+from odoo.tools import file_open, image_process
 from odoo.tools.misc import submap
 
 from .test_common import TestHttpBase, HTTP_DATETIME_FORMAT
-
 
 class TestHttpStaticCommon(TestHttpBase):
     @classmethod

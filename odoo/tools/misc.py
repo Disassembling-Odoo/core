@@ -44,7 +44,7 @@ import odoo.addons
 # There are moved to loglevels until we refactor tools.
 from odoo.loglevels import exception_to_unicode, get_encodings, ustr  # noqa: F401
 
-from .config import config
+from ..conf import config
 from .float_utils import float_round
 from .which import which
 
@@ -167,14 +167,14 @@ def exec_pg_environ():
     See also http://www.postgresql.org/docs/8.4/static/libpq-envars.html
     """
     env = os.environ.copy()
-    if odoo.tools.config['db_host']:
-        env['PGHOST'] = odoo.tools.config['db_host']
-    if odoo.tools.config['db_port']:
-        env['PGPORT'] = str(odoo.tools.config['db_port'])
-    if odoo.tools.config['db_user']:
-        env['PGUSER'] = odoo.tools.config['db_user']
-    if odoo.tools.config['db_password']:
-        env['PGPASSWORD'] = odoo.tools.config['db_password']
+    if odoo.conf.config['db_host']:
+        env['PGHOST'] = odoo.conf.config['db_host']
+    if odoo.conf.config['db_port']:
+        env['PGPORT'] = str(odoo.conf.config['db_port'])
+    if odoo.conf.config['db_user']:
+        env['PGUSER'] = odoo.conf.config['db_user']
+    if odoo.conf.config['db_password']:
+        env['PGPASSWORD'] = odoo.conf.config['db_password']
     return env
 
 

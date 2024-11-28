@@ -16,7 +16,7 @@ import odoo.modules.db
 import odoo.modules.graph
 import odoo.modules.migration
 import odoo.modules.registry
-from .. import SUPERUSER_ID, api, tools
+from .. import SUPERUSER_ID, api, conf, tools
 from .module import adapt_version, initialize_sys_path, load_openerp_module
 
 _logger = logging.getLogger(__name__)
@@ -231,7 +231,7 @@ def load_module_graph(env, graph, status=None, perform_checks=True,
             migrations.migrate_module(package, 'post')
 
             # Update translations for all installed languages
-            overwrite = odoo.tools.config["overwrite_existing_translations"]
+            overwrite = odoo.conf.config["overwrite_existing_translations"]
             module._update_translations(overwrite=overwrite)
 
         if package.name is not None:
@@ -268,10 +268,10 @@ def load_module_graph(env, graph, status=None, perform_checks=True,
                         lines.append(f"{module_name}.access_{xmlid},access_{xmlid},{module_name}.model_{xmlid},base.group_user,1,0,0,0")
                     _logger.warning('\n'.join(lines))
 
-        updating = tools.config.options['init'] or tools.config.options['update']
+        updating = conf.config.options['init'] or conf.config.options['update']
         test_time = test_queries = 0
         test_results = None
-        if tools.config.options['test_enable'] and (needs_update or not updating):
+        if conf.config.options['test_enable'] and (needs_update or not updating):
             from odoo.tests import loader  # noqa: PLC0415
             suite = loader.make_suite([module_name], 'at_install')
             if suite.countTestCases():
@@ -395,11 +395,11 @@ def load_modules(registry, force_demo=False, status=None, update_module=False):
             _logger.info("init db")
             odoo.modules.db.initialize(cr)
             update_module = True # process auto-installed modules
-            tools.config["init"]["all"] = 1
-            if not tools.config['without_demo']:
-                tools.config["demo"]['all'] = 1
+            conf.config["init"]["all"] = 1
+            if not conf.config['without_demo']:
+                conf.config["demo"]['all'] = 1
 
-        if 'base' in tools.config['update'] or 'all' in tools.config['update']:
+        if 'base' in conf.config['update'] or 'all' in conf.config['update']:
             cr.execute("update ir_module_module set state=%s where name=%s and state=%s", ('to upgrade', 'base', 'installed'))
 
         # STEP 1: LOAD BASE (must be done before module dependencies can be computed for later steps)
@@ -422,7 +422,7 @@ def load_modules(registry, force_demo=False, status=None, update_module=False):
             env, graph, status, perform_checks=update_module,
             report=report, models_to_check=models_to_check)
 
-        load_lang = tools.config.pop('load_language')
+        load_lang = conf.config.pop('load_language')
         if load_lang or update_module:
             # some base models are used below, so make sure they are set up
             registry.setup_models(cr)
@@ -437,15 +437,15 @@ def load_modules(registry, force_demo=False, status=None, update_module=False):
             _logger.info('updating modules list')
             Module.update_list()
 
-            _check_module_names(cr, itertools.chain(tools.config['init'], tools.config['update']))
+            _check_module_names(cr, itertools.chain(conf.config['init'], conf.config['update']))
 
-            module_names = [k for k, v in tools.config['init'].items() if v]
+            module_names = [k for k, v in conf.config['init'].items() if v]
             if module_names:
                 modules = Module.search([('state', '=', 'uninstalled'), ('name', 'in', module_names)])
                 if modules:
                     modules.button_install()
 
-            module_names = [k for k, v in tools.config['update'].items() if v]
+            module_names = [k for k, v in conf.config['update'].items() if v]
             if module_names:
                 modules = Module.search([('state', 'in', ('installed', 'to upgrade')), ('name', 'in', module_names)])
                 if modules:
@@ -536,7 +536,7 @@ def load_modules(registry, force_demo=False, status=None, update_module=False):
             env.flush_all()
 
         for kind in ('init', 'demo', 'update'):
-            tools.config[kind] = {}
+            conf.config[kind] = {}
 
         # STEP 5: Uninstall modules to remove
         if update_module:

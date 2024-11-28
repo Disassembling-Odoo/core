@@ -29,7 +29,7 @@ def MockRequest(
     if HttpCase.http_port():
         base_url = HttpCase.base_url()
     else:
-        base_url = f"http://{HOST}:{odoo.tools.config['http_port']}"
+        base_url = f"http://{HOST}:{odoo.conf.config['http_port']}"
     request = Mock(
         # request
         httprequest=Mock(

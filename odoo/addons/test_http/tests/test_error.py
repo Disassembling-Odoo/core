@@ -1,9 +1,9 @@
 import json
 from unittest.mock import patch
-from odoo.tools import config, mute_logger
+from odoo.conf import config
+from odoo.tools import mute_logger
 from odoo.addons.test_http.controllers import CT_JSON
 from .test_common import TestHttpBase
-
 
 class TestHttpErrorHttp(TestHttpBase):
     @mute_logger('odoo.http')  # UserError("Walter is AFK")
@@ -27,7 +27,6 @@ class TestHttpErrorHttp(TestHttpBase):
             res = self.nodb_url_open('/test_http/hide_errors/context-manager?error=UserError')
             self.assertEqual(res.status_code, 400, "UserError are not configured to be hidden, they should be kept as-is.")
             self.assertIn("Walter is AFK", res.text, "The real UserError message should be kept")
-
 
 class TestHttpJsonError(TestHttpBase):
 

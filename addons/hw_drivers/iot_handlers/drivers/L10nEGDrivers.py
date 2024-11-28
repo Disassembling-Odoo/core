@@ -8,7 +8,7 @@ import json
 from passlib.context import CryptContext
 
 from odoo import http
-from odoo.tools.config import config
+from odoo.conf import config
 
 _logger = logging.getLogger(__name__)
 

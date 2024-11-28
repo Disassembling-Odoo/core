@@ -55,12 +55,13 @@ from urllib3.util import Url, parse_url
 
 import odoo
 from odoo import api
+from odoo.conf import config
 from odoo.exceptions import AccessError
 from odoo.fields import Command
 from odoo.modules.registry import Registry
 from odoo.service import security
 from odoo.sql_db import BaseCursor, Cursor
-from odoo.tools import config, float_compare, mute_logger, profiler, SQL, DotDict
+from odoo.tools import float_compare, mute_logger, profiler, SQL, DotDict
 from odoo.tools.mail import single_email_re
 from odoo.tools.misc import find_in_path, lower_logging
 from odoo.tools.xml_utils import _validate_xml
@@ -118,7 +119,7 @@ def __getattr__(name):
 
 
 # The odoo library is supposed already configured.
-ADDONS_PATH = odoo.tools.config['addons_path']
+ADDONS_PATH = odoo.conf.config['addons_path']
 HOST = '127.0.0.1'
 # Useless constant, tests are aware of the content of demo data
 ADMIN_USER_ID = odoo.SUPERUSER_ID
@@ -129,7 +130,7 @@ BROWSER_WAIT = CHECK_BROWSER_SLEEP * CHECK_BROWSER_ITERATIONS # seconds
 DEFAULT_SUCCESS_SIGNAL = 'test successful'
 
 def get_db_name():
-    db = odoo.tools.config['db_name']
+    db = odoo.conf.config['db_name']
     # If the database name is not provided on the command-line,
     # use the one on the thread (which means if it is provided on
     # the command-line, this will break when installing another
@@ -1009,7 +1010,7 @@ def save_test_file(test_name, content, prefix, extension='png', logger=_logger, 
     assert re.fullmatch(r'[a-z]+', extension)
     assert re.fullmatch(r'\w+', test_name)
     now = datetime.now().strftime(date_format)
-    screenshots_dir = pathlib.Path(odoo.tools.config['screenshots']) / get_db_name() / 'screenshots'
+    screenshots_dir = pathlib.Path(odoo.conf.config['screenshots']) / get_db_name() / 'screenshots'
     screenshots_dir.mkdir(parents=True, exist_ok=True)
     fname = f'{prefix}{now}_{test_name}.{extension}'
     full_path = screenshots_dir / fname
@@ -1032,7 +1033,7 @@ class ChromeBrowser:
             raise unittest.SkipTest("websocket-client module is not installed")
         self.user_data_dir = tempfile.mkdtemp(suffix='_chrome_odoo')
 
-        otc = odoo.tools.config
+        otc = odoo.conf.config
         self.screencasts_dir = None
         self.screencast_frames = []
         if otc['screencasts']:

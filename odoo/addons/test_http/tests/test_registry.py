@@ -85,7 +85,7 @@ class TestHttpRegistry(BaseCase):
     def url_open(self, path, *, allow_redirects=False):
         if not path.startswith('/'):
             raise ValueError("can only request a relative url")
-        url = urljoin(f"http://{HOST}:{odoo.tools.config['http_port']}", path)
+        url = urljoin(f"http://{HOST}:{odoo.conf.config['http_port']}", path)
         return self.opener.get(url, allow_redirects=allow_redirects)
 
     def test_signaling(self):

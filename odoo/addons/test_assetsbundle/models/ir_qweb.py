@@ -1,5 +1,5 @@
 from odoo import models
-from odoo.tools import config
+from odoo.conf import config
 init = config['init']
 
 

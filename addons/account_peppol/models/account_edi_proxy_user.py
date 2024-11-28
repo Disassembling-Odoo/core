@@ -2,7 +2,7 @@
 
 import logging
 
-from odoo import _, api, fields, models, modules, tools
+from odoo import _, conf, api, fields, models, modules, tools
 from odoo.addons.account_edi_proxy_client.models.account_edi_proxy_user import AccountEdiProxyError
 from odoo.addons.account_peppol.tools.demo_utils import handle_demo
 from odoo.exceptions import UserError
@@ -214,7 +214,7 @@ class AccountEdiProxyClientUser(models.Model):
                         # Only acknowledge when we saved the document somewhere
                         proxy_acks.append(uuid)
 
-                if not tools.config['test_enable']:
+                if not conf.config['test_enable']:
                     self.env.cr.commit()
                 if proxy_acks:
                     edi_user._make_request(
@@ -316,7 +316,7 @@ class AccountEdiProxyClientUser(models.Model):
             # so that the invoices are acknowledged
             self._cron_peppol_get_message_status()
             self._cron_peppol_get_new_documents()
-            if not tools.config['test_enable'] and not modules.module.current_test:
+            if not conf.config['test_enable'] and not modules.module.current_test:
                 self.env.cr.commit()
 
         if self.company_id.account_peppol_proxy_state != 'not_registered':

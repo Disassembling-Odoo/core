@@ -6,7 +6,7 @@ import logging
 import threading
 import warnings
 
-from odoo import api, fields, models, tools, _, Command, SUPERUSER_ID
+from odoo import api, conf, fields, models, tools, _, Command, SUPERUSER_ID
 from odoo.exceptions import ValidationError, UserError
 from odoo.osv import expression
 from odoo.tools import html2plaintext, file_open, ormcache
@@ -227,7 +227,7 @@ class Company(models.Model):
     def install_l10n_modules(self):
         uninstalled_modules = self.uninstalled_l10n_module_ids
         is_ready_and_not_test = (
-            not tools.config['test_enable']
+            not conf.config['test_enable']
             and (self.env.registry.ready or not self.env.registry._init)
             and not getattr(threading.current_thread(), 'testing', False)
         )

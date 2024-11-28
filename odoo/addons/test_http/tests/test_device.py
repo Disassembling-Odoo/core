@@ -14,7 +14,6 @@ from odoo.addons.test_http.utils import (
 )
 from .test_common import TestHttpBase
 
-
 class TestDevice(TestHttpBase):
 
     def setUp(self):
@@ -44,7 +43,7 @@ class TestDevice(TestHttpBase):
                 'X-Forwarded-Proto': 'https'
             }
         with freeze_time(time), \
-            patch.dict(odoo.tools.config.options, {'proxy_mode': bool(ip)}):
+            patch.dict(odoo.conf.config.options, {'proxy_mode': bool(ip)}):
             res = self.url_open(url=endpoint, headers=headers)
         return res
 

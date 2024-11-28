@@ -133,7 +133,7 @@ class Obfuscate(Command):
         return True
 
     def run(self, cmdargs):
-        parser = odoo.tools.config.parser
+        parser = odoo.conf.config.parser
         group = optparse.OptionGroup(parser, "Populate Configuration")
         group.add_option('--pwd', dest="pwd", default=False, help="Cypher password")
         group.add_option('--fields', dest="fields", default=False, help="List of table.columns to obfuscate/unobfuscate: table1.column1,table2.column1,table2.column2")
@@ -149,14 +149,14 @@ class Obfuscate(Command):
             sys.exit(parser.print_help())
 
         try:
-            opt = odoo.tools.config.parse_config(cmdargs, setup_logging=True)
+            opt = odoo.conf.config.parse_config(cmdargs, setup_logging=True)
             if not opt.pwd:
                 _logger.error("--pwd is required")
                 sys.exit("ERROR: --pwd is required")
             if opt.allfields and not opt.unobfuscate:
                 _logger.error("--allfields can only be used in unobfuscate mode")
                 sys.exit("ERROR: --allfields can only be used in unobfuscate mode")
-            self.dbname = odoo.tools.config['db_name']
+            self.dbname = odoo.conf.config['db_name']
             self.registry = Registry(self.dbname)
             with self.registry.cursor() as cr:
                 self.cr = cr

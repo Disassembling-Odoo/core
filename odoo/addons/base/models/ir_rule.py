@@ -5,7 +5,8 @@ import logging
 from odoo import api, fields, models, tools, _
 from odoo.exceptions import AccessError, ValidationError
 from odoo.osv import expression
-from odoo.tools import config, SQL
+from odoo.conf import config
+from odoo.tools import SQL
 from odoo.tools.safe_eval import safe_eval, time
 
 _logger = logging.getLogger(__name__)

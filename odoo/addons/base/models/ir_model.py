@@ -12,7 +12,7 @@ from operator import itemgetter
 
 from psycopg2.extras import Json
 
-from odoo import api, fields, models, tools, Command
+from odoo import api, fields, models, tools, Command, conf
 from odoo.exceptions import AccessError, UserError, ValidationError
 from odoo.osv import expression
 from odoo.tools import format_list, lazy_property, sql, unique, OrderedSet, SQL
@@ -2578,7 +2578,7 @@ class IrModelData(models.Model):
         and a module in ir_model_data and noupdate set to false, but not
         present in self.pool.loaded_xmlids.
         """
-        if not modules or tools.config.get('import_partial'):
+        if not modules or conf.config.get('import_partial'):
             return True
 
         bad_imd_ids = []

@@ -14,7 +14,7 @@ from odoo.addons.base.tests.common import MockSmtplibCase
 from odoo.tests import tagged, users
 from odoo.tests.common import TransactionCase
 from odoo.tools import mute_logger
-from odoo.tools import config
+from odoo.conf import config
 
 
 class _FakeSMTP:

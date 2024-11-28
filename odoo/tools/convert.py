@@ -23,7 +23,7 @@ except ImportError:
     jingtrang = None
 
 import odoo
-from .config import config
+from ..conf import config
 from .misc import file_open, file_path, SKIPPED_ELEMENT_TYPES
 from odoo.exceptions import ValidationError
 

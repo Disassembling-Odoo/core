@@ -22,11 +22,12 @@ from operator import attrgetter
 import psycopg2
 
 import odoo
+from odoo.conf import config
 from odoo.modules.db import FunctionStatus
 from .. import SUPERUSER_ID
 from odoo.sql_db import TestCursor
 from odoo.tools import (
-    config, lazy_classproperty,
+    lazy_classproperty,
     lazy_property, sql, OrderedSet, SQL,
     remove_accents,
 )

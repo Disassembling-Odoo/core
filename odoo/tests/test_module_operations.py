@@ -8,7 +8,8 @@ import time
 sys.path.append(os.path.abspath(os.path.join(__file__,'../../../')))
 
 import odoo
-from odoo.tools import config, topological_sort, unique
+from odoo.conf import config
+from odoo.tools import topological_sort, unique
 from odoo.modules.registry import Registry
 from odoo.netsvc import init_logger
 from odoo.tests import standalone_tests
@@ -209,9 +210,9 @@ if __name__ == '__main__':
 
     # handle paths option
     if args.addons_path:
-        odoo.tools.config['addons_path'] = ','.join([args.addons_path, odoo.tools.config['addons_path']])
+        odoo.conf.config['addons_path'] = ','.join([args.addons_path, odoo.conf.config['addons_path']])
         if args.data_dir:
-            odoo.tools.config['data_dir'] = args.data_dir
+            odoo.conf.config['data_dir'] = args.data_dir
         odoo.modules.module.initialize_sys_path()
 
     init_logger()

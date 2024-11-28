@@ -43,8 +43,9 @@ try:
     import odoo.addons
     from . import Command
     from odoo import release
+    from odoo.conf import config
     from odoo.modules import initialize_sys_path
-    from odoo.tools import config, parse_version
+    from odoo.tools import parse_version
 except ImportError:
     # Assume the script is directy executed (by opposition to be
     # executed via odoo-bin), happily release/parse_version are

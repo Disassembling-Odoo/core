@@ -52,10 +52,10 @@ class Binary(http.Controller):
 
     @http.route('/web/filestore/<path:_path>', type='http', auth='none')
     def content_filestore(self, _path):
-        if odoo.tools.config['x_sendfile']:
+        if odoo.conf.config['x_sendfile']:
             # pylint: disable=logging-format-interpolation
             _logger.error(BAD_X_SENDFILE_ERROR.format(
-                data_dir=odoo.tools.config['data_dir']
+                data_dir=odoo.conf.config['data_dir']
             ))
         raise http.request.not_found()
 

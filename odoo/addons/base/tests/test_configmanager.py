@@ -1,13 +1,14 @@
 import unittest
 
 import odoo
+from odoo import conf
 from odoo.tests import TransactionCase
 from odoo.tools import file_path, file_open, file_open_temporary_directory
-from odoo.tools.config import conf, configmanager, _get_default_datadir
+from odoo.conf import configmanager, _get_default_datadir
 
 
-IS_POSIX = 'workers' in odoo.tools.config.options
-ROOT_PATH = odoo.tools.config.options['root_path'].removesuffix('/odoo')
+IS_POSIX = 'workers' in odoo.conf.config.options
+ROOT_PATH = odoo.conf.config.options['root_path'].removesuffix('/odoo')
 
 
 class TestConfigManager(TransactionCase):
@@ -451,7 +452,7 @@ class TestConfigManager(TransactionCase):
             'syslog': False,
             'log_handler': [
                 ':INFO',
-                'odoo.tools.config:DEBUG',
+                'odoo.conf.config:DEBUG',
                 ':WARNING',
                 'odoo.http:DEBUG',
                 'odoo.sql_db:DEBUG',

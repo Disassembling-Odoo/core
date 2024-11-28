@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from . import appdirs
 from . import arabic_reshaper
 from . import cloc
 from . import constants
@@ -12,7 +11,6 @@ from . import win32
 from .parse_version import parse_version
 from .barcode import check_barcode_encoding
 from .cache import ormcache, ormcache_context
-from .config import config
 from .date_utils import *
 from .float_utils import *
 from .func import *

@@ -28,6 +28,7 @@ from psycopg2.sql import Composable
 from werkzeug import urls
 
 import odoo
+from . import conf
 from . import tools
 from .tools import SQL
 from .tools.func import frame_codeinfo, locked
@@ -470,7 +471,7 @@ class Cursor(BaseCursor):
         if leak:
             self._cnx.leaked = True
         else:
-            chosen_template = tools.config['db_template']
+            chosen_template = conf.config['db_template']
             keep_in_pool = self.dbname not in ('template0', 'template1', 'postgres', chosen_template)
             self.__pool.give_back(self._cnx, keep_in_pool=keep_in_pool)
 
@@ -817,9 +818,9 @@ def connection_info_for(db_or_uri, readonly=False):
 
     connection_info = {'database': db_or_uri, 'application_name': app_name}
     for p in ('host', 'port', 'user', 'password', 'sslmode'):
-        cfg = tools.config['db_' + p]
+        cfg = conf.config['db_' + p]
         if readonly:
-            cfg = tools.config.get('db_replica_' + p, cfg)
+            cfg = conf.config.get('db_replica_' + p, cfg)
         if cfg:
             connection_info[p] = cfg
 
@@ -831,7 +832,7 @@ _Pool_readonly = None
 def db_connect(to, allow_uri=False, readonly=False):
     global _Pool, _Pool_readonly  # noqa: PLW0603 (global-statement)
 
-    maxconn = odoo.evented and tools.config['db_maxconn_gevent'] or tools.config['db_maxconn']
+    maxconn = odoo.evented and conf.config['db_maxconn_gevent'] or conf.config['db_maxconn']
     if _Pool is None and not readonly:
         _Pool = ConnectionPool(int(maxconn), readonly=False)
     if _Pool_readonly is None and readonly:

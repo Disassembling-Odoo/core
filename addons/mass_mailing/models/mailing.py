@@ -19,7 +19,7 @@ from markupsafe import Markup
 from werkzeug.urls import url_join
 from PIL import Image, UnidentifiedImageError
 
-from odoo import api, fields, models, tools, _
+from odoo import api, conf, fields, models, tools, _
 from odoo.addons.base_import.models.base_import import ImportValidationError
 from odoo.exceptions import UserError, ValidationError
 from odoo.osv import expression
@@ -1462,10 +1462,10 @@ class MassMailing(models.Model):
         return mailing_domain
 
     def _get_image_by_url(self, url, session):
-        maxsize = int(tools.config.get("import_image_maxbytes", DEFAULT_IMAGE_MAXBYTES))
+        maxsize = int(conf.config.get("import_image_maxbytes", DEFAULT_IMAGE_MAXBYTES))
         _logger.debug("Trying to import image from URL: %s", url)
         try:
-            response = session.get(url, timeout=int(tools.config.get("import_image_timeout", DEFAULT_IMAGE_TIMEOUT)))
+            response = session.get(url, timeout=int(conf.config.get("import_image_timeout", DEFAULT_IMAGE_TIMEOUT)))
             response.raise_for_status()
 
             if response.headers.get('Content-Length') and int(response.headers['Content-Length']) > maxsize:

@@ -15,15 +15,15 @@ class Neutralize(Command):
     """Neutralize a production database for testing: no emails sent, etc."""
 
     def run(self, args):
-        parser = odoo.tools.config.parser
+        parser = odoo.conf.config.parser
         parser.prog = f'{Path(sys.argv[0]).name} {self.name}'
         group = optparse.OptionGroup(parser, "Neutralize", "Neutralize the database specified by the `-d` argument.")
         group.add_option("--stdout", action="store_true", dest="to_stdout",
                          help="Output the neutralization SQL instead of applying it")
         parser.add_option_group(group)
-        opt = odoo.tools.config.parse_config(args, setup_logging=True)
+        opt = odoo.conf.config.parse_config(args, setup_logging=True)
 
-        dbname = odoo.tools.config['db_name']
+        dbname = odoo.conf.config['db_name']
         if not dbname:
             _logger.error('Neutralize command needs a database name. Use "-d" argument')
             sys.exit(1)

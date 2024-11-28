@@ -388,9 +388,9 @@ from lxml import etree
 from dateutil.relativedelta import relativedelta
 from psycopg2.extensions import TransactionRollbackError
 
-from odoo import api, models, tools
+from odoo import api, models, tools, conf
 from odoo.modules import registry
-from odoo.tools import config, safe_eval, pycompat
+from odoo.tools import safe_eval, pycompat
 from odoo.tools.constants import SUPPORTED_DEBUGGER, EXTERNAL_ASSET
 from odoo.tools.safe_eval import assert_valid_codeobj, _BUILTINS, to_opcodes, _EXPR_OPCODES, _BLACKLIST
 from odoo.tools.json import scriptsafe
@@ -607,7 +607,7 @@ class IrQWeb(models.AbstractModel):
         return ['lang', 'inherit_branding', 'inherit_branding_auto', 'edit_translations', 'profile']
 
     @tools.conditional(
-        'xml' not in tools.config['dev_mode'],
+        'xml' not in conf.config['dev_mode'],
         tools.ormcache('template', 'tuple(self.env.context.get(k) for k in self._get_template_cache_keys())', cache='templates'),
     )
     def _get_view_id(self, template):
@@ -941,8 +941,8 @@ class IrQWeb(models.AbstractModel):
                 keep_query=keep_query,
             )
 
-        context = {'dev_mode': 'qweb' in tools.config['dev_mode']}
-        if 'xml' in tools.config['dev_mode']:
+        context = {'dev_mode': 'qweb' in conf.config['dev_mode']}
+        if 'xml' in conf.config['dev_mode']:
             context['is_t_cache_disabled'] = True
         elif 'disable-t-cache' in debug:
             context['is_t_cache_disabled'] = True
@@ -2532,7 +2532,7 @@ class IrQWeb(models.AbstractModel):
     # The cache does not need to be invalidated if the 'base_key_cache'
     # in '_compile' method contains the write_date of all inherited views.
     @tools.conditional(
-        'xml' not in tools.config['dev_mode'],
+        'xml' not in conf.config['dev_mode'],
         tools.ormcache('cache_key', cache='templates.cached_values'),
     )
     def _get_cached_values(self, cache_key, get_value):
@@ -2543,7 +2543,7 @@ class IrQWeb(models.AbstractModel):
     @tools.conditional(
         # in non-xml-debug mode we want assets to be cached forever, and the admin can force a cache clear
         # by restarting the server after updating the source code (or using the "Clear server cache" in debug tools)
-        'xml' not in tools.config['dev_mode'],
+        'xml' not in conf.config['dev_mode'],
         tools.ormcache('bundle', 'css', 'js', 'tuple(sorted(assets_params.items()))', 'rtl', cache='assets'),
     )
     def _generate_asset_links_cache(self, bundle, css=True, js=True, assets_params=None, rtl=False):

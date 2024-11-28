@@ -5,12 +5,13 @@ from contextlib import ExitStack
 from markupsafe import Markup
 from urllib.parse import urlparse
 
-from odoo import api, fields, models, tools, SUPERUSER_ID, _
+from odoo import api, conf, fields, models, tools, SUPERUSER_ID, _
 from odoo.exceptions import UserError, AccessError, RedirectWarning
 from odoo.service import security
 from odoo.tools.safe_eval import safe_eval, time
 from odoo.tools.misc import find_in_path
-from odoo.tools import check_barcode_encoding, config, is_html_empty, parse_version, split_every
+from odoo.conf import config
+from odoo.tools import check_barcode_encoding, is_html_empty, parse_version, split_every
 from odoo.http import request, root
 from odoo.tools.pdf import PdfFileWriter, PdfFileReader, PdfReadError
 from odoo.osv.expression import NEGATIVE_TERM_OPERATORS, FALSE_DOMAIN
@@ -458,7 +459,7 @@ class IrActionsReport(models.Model):
         :param image_format union['jpg', 'png']: format of the image
         :return list[bytes|None]:
         """
-        if (tools.config['test_enable'] or tools.config['test_file']) and not self.env.context.get('force_image_rendering'):
+        if (conf.config['test_enable'] or conf.config['test_file']) and not self.env.context.get('force_image_rendering'):
             return [None] * len(bodies)
         if not wkhtmltoimage_version or wkhtmltoimage_version < parse_version('0.12.0'):
             raise UserError(_('wkhtmltoimage 0.12.0^ is required in order to render images from html'))
@@ -991,7 +992,7 @@ class IrActionsReport(models.Model):
         data.setdefault('report_type', 'pdf')
         # In case of test environment without enough workers to perform calls to wkhtmltopdf,
         # fallback to render_html.
-        if (tools.config['test_enable'] or tools.config['test_file']) and not self.env.context.get('force_report_rendering'):
+        if (conf.config['test_enable'] or conf.config['test_file']) and not self.env.context.get('force_report_rendering'):
             return self._render_qweb_html(report_ref, res_ids, data=data)
 
         self = self.with_context(webp_as_jpg=True)

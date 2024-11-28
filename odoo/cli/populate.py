@@ -22,7 +22,7 @@ class Populate(Command):
     """Populate database via duplication of existing data for testing/demo purposes"""
 
     def run(self, cmdargs):
-        parser = odoo.tools.config.parser
+        parser = odoo.conf.config.parser
         parser.prog = f'{Path(sys.argv[0]).name} {self.name}'
         group = optparse.OptionGroup(parser, "Populate Configuration")
         group.add_option("--factors", dest="factors",
@@ -39,7 +39,7 @@ class Populate(Command):
                          help="Single character separator for char/text fields.",
                          default=DEFAULT_SEPARATOR)
         parser.add_option_group(group)
-        opt = odoo.tools.config.parse_config(cmdargs, setup_logging=True)
+        opt = odoo.conf.config.parse_config(cmdargs, setup_logging=True)
 
         # deduplicate models if necessary, and keep the last corresponding
         # factor for each model
@@ -53,7 +53,7 @@ class Populate(Command):
         except TypeError:
             raise ValueError("Separator must be a single Unicode character.")
 
-        dbname = odoo.tools.config['db_name']
+        dbname = odoo.conf.config['db_name']
         registry = Registry(dbname)
         with registry.cursor() as cr:
             env = odoo.api.Environment(cr, odoo.SUPERUSER_ID, {'active_test': False})

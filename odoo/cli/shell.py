@@ -8,7 +8,7 @@ from pathlib import Path
 
 import odoo
 from odoo.modules.registry import Registry
-from odoo.tools import config
+from odoo.conf import config
 from . import Command
 
 _logger = logging.getLogger(__name__)

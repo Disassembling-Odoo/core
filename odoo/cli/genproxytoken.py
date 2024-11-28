@@ -9,7 +9,7 @@ from pathlib import Path
 from passlib.hash import pbkdf2_sha512
 
 from . import Command
-from odoo.tools import config
+from odoo.conf import config
 
 
 class GenProxyToken(Command):

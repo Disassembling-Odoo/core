@@ -7,6 +7,7 @@ import threading
 from pathlib import Path
 from unittest import case
 
+from .. import conf
 from .. import tools
 from .tag_selector import TagsSelector
 from .suite import OdooSuite
@@ -96,7 +97,7 @@ def make_suite(module_names, position='at_install'):
     :param list[str] module_names: modules to load tests from
     :param str position: "at_install" or "post_install"
     """
-    config_tags = TagsSelector(tools.config['test_tags'])
+    config_tags = TagsSelector(conf.config['test_tags'])
     position_tag = TagsSelector(position)
     tests = (
         t

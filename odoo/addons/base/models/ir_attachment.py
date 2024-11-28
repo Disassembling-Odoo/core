@@ -17,7 +17,8 @@ from collections import defaultdict
 from odoo import api, fields, models, SUPERUSER_ID, tools, _
 from odoo.exceptions import AccessError, ValidationError, UserError
 from odoo.http import Stream, root, request
-from odoo.tools import config, human_size, image, str2bool, consteq
+from odoo.conf import config
+from odoo.tools import human_size, image, str2bool, consteq
 from odoo.tools.mimetypes import guess_mimetype, fix_filename_extension
 from odoo.osv import expression
 

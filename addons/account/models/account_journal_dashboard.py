@@ -6,7 +6,7 @@ import base64
 import json
 import random
 
-from odoo import models, api, _, fields, Command, tools
+from odoo import models, api, conf, _, fields, Command, tools
 from odoo.exceptions import UserError
 from odoo.osv import expression
 from odoo.release import version
@@ -933,7 +933,7 @@ class account_journal(models.Model):
             ],
         })
         # In case of test environment, don't create the pdf
-        if tools.config['test_enable'] or tools.config['test_file']:
+        if conf.config['test_enable'] or conf.config['test_file']:
             bill.with_context(no_new_invoice=True).message_post()
         else:
             addr = [x for x in [

@@ -6,7 +6,7 @@ import textwrap
 from pathlib import Path
 
 from odoo.conf import config
-from odoo.tools import cloc
+from odoo.cli.impl import cloc
 from . import Command
 
 class Cloc(Command):

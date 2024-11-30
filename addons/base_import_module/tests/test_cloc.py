@@ -4,8 +4,8 @@ import json
 from io import BytesIO
 from zipfile import ZipFile, ZIP_DEFLATED
 
-from odoo.tools import cloc
-from odoo.addons.base.tests import test_cloc
+from odoo.cli.impl import cloc
+from odoo.cli.test import test_cloc
 
 VALID_XML = """
 <templates id="template" xml:space="preserve">

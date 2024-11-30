@@ -2,7 +2,6 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from . import arabic_reshaper
-from . import cloc
 from . import constants
 from . import pdf
 from . import pycompat

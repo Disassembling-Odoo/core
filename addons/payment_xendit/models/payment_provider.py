@@ -5,7 +5,8 @@ import pprint
 
 import requests
 
-from odoo import _, fields, models
+from odoo import _, models
+from odoo.ormapping import fields
 from odoo.exceptions import ValidationError
 
 from odoo.addons.payment_xendit import const

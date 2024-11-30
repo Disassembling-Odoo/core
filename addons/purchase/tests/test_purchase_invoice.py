@@ -2,10 +2,11 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 from datetime import timedelta
 
+from odoo.ormapping import fields
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon
 from odoo.exceptions import UserError
 from odoo.tests import Form, tagged
-from odoo import Command, fields
+from odoo import Command
 
 
 class TestPurchaseToInvoiceCommon(AccountTestInvoicingCommon):

@@ -2,9 +2,9 @@
 
 import binascii
 
-from odoo import fields, http, _
+from odoo import http, _
+from odoo.ormapping import fields, Command
 from odoo.exceptions import AccessError, MissingError, ValidationError
-from odoo.fields import Command
 from odoo.http import request
 
 from odoo.addons.payment import utils as payment_utils

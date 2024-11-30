@@ -9,7 +9,8 @@ import pytz
 from dateutil.parser import parse
 from markupsafe import Markup
 
-from odoo import api, fields, models, _
+from odoo import api, models, _
+from odoo.ormapping import fields
 from odoo.modules.registry import Registry
 from odoo.tools import ormcache_context, email_normalize
 from odoo.osv import expression

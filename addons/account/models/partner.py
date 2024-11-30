@@ -8,7 +8,8 @@ import logging
 
 from psycopg2 import errors as pgerrors
 
-from odoo import api, fields, models, _
+from odoo import api, models, _
+from odoo.ormapping import fields
 from odoo.osv import expression
 from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT, mute_logger
 from odoo.exceptions import ValidationError, UserError

@@ -3,7 +3,7 @@
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
-from odoo import fields
+from odoo.ormapping import fields
 from odoo.http import request, route, Controller
 
 

@@ -5,7 +5,7 @@ from datetime import timedelta
 
 from odoo import tools
 from odoo.addons.mail.tests.common import mail_new_test_user
-from odoo.fields import Date
+from odoo.ormapping import Date
 from odoo.tests import Form, tagged, users, loaded_demo_data
 from odoo.tests.common import TransactionCase
 

@@ -2,7 +2,8 @@
 
 from ast import literal_eval
 
-from odoo import api, models, fields, _
+from odoo import api, models, _
+from odoo.ormapping import fields
 from odoo.exceptions import UserError
 
 

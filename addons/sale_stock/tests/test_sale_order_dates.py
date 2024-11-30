@@ -3,7 +3,7 @@
 
 from odoo.addons.stock_account.tests.test_anglo_saxon_valuation_reconciliation_common import ValuationReconciliationTestCommon
 from datetime import timedelta
-from odoo import fields
+from odoo.ormapping import fields
 from odoo.tests import common, tagged
 
 

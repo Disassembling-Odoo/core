@@ -1,6 +1,7 @@
 import random
 
-from odoo import fields, models
+from odoo import models
+from odoo.ormapping import fields
 
 
 class CardCampaignTag(models.Model):

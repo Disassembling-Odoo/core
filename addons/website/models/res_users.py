@@ -1,7 +1,8 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 import logging
 
-from odoo import api, fields, models, _, Command
+from odoo import api, models, _, Command
+from odoo.ormapping import fields
 from odoo.exceptions import ValidationError
 from odoo.http import request
 

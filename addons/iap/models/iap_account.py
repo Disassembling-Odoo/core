@@ -6,7 +6,8 @@ import threading
 import uuid
 import werkzeug.urls
 
-from odoo import api, fields, models, _
+from odoo import api, models, _
+from odoo.ormapping import fields
 from odoo.addons.iap.tools import iap_tools
 from odoo.exceptions import AccessError, UserError
 from odoo.tools import get_lang

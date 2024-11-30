@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-from odoo import api, fields, models, _, Command
+from odoo import api, models, _, Command
+from odoo.ormapping import fields
 from odoo.osv import expression
 from odoo.exceptions import UserError, ValidationError
 from odoo.tools import frozendict, groupby, html2plaintext, is_html_empty, split_every

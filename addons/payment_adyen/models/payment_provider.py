@@ -5,7 +5,8 @@ import logging
 import re
 import requests
 
-from odoo import _, api, fields, models
+from odoo import _, api, models
+from odoo.ormapping import fields
 from odoo.exceptions import ValidationError
 
 from odoo.addons.payment import utils as payment_utils

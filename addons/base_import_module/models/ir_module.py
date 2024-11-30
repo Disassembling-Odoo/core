@@ -13,7 +13,8 @@ from collections import defaultdict
 from io import BytesIO
 from os.path import join as opj
 
-from odoo import api, fields, models, _
+from odoo import api, models, _
+from odoo.ormapping import fields
 from odoo.exceptions import AccessDenied, AccessError, UserError
 from odoo.http import request
 from odoo.modules.module import adapt_version, MANIFEST_NAMES

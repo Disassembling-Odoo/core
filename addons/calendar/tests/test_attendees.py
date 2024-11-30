@@ -4,9 +4,10 @@
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
+from odoo.ormapping import fields
 from odoo.tests.common import TransactionCase, new_test_user
 from odoo.tests import Form
-from odoo import fields, Command
+from odoo import Command
 from freezegun import freeze_time
 
 

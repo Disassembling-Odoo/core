@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime, timedelta
-from odoo import api, fields, models
+from odoo import api, models
+from odoo.ormapping import fields
 from odoo.http import request
 
 

@@ -3,7 +3,7 @@
 
 from datetime import timedelta
 
-from odoo.fields import Datetime
+from odoo.ormapping import Datetime
 from odoo.tests.common import TransactionCase
 
 

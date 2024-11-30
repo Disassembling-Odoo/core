@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 from odoo.addons.mass_mailing.tests.common import MassMailCommon
 from odoo.tests import Form, users, tagged
 from odoo.tools import mute_logger
-from odoo import fields
+from odoo.ormapping import fields
 
 
 @tagged('post_install', '-at_install')

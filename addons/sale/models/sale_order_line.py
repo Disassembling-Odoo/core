@@ -5,9 +5,9 @@ from datetime import timedelta
 
 from markupsafe import Markup
 
-from odoo import api, fields, models
+from odoo import api, models
+from odoo.ormapping import fields, Command
 from odoo.exceptions import UserError, ValidationError
-from odoo.fields import Command
 from odoo.osv import expression
 from odoo.tools import float_compare, float_is_zero, format_date, groupby
 from odoo.tools.translate import _

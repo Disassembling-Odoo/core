@@ -2,7 +2,7 @@
 
 from odoo import _
 from odoo.exceptions import AccessError, MissingError, ValidationError
-from odoo.fields import Command
+from odoo.ormapping import Command
 from odoo.http import request, route
 from odoo.tools import float_compare
 

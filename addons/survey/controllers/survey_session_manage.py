@@ -7,7 +7,8 @@ import json
 from dateutil.relativedelta import relativedelta
 from werkzeug.exceptions import NotFound
 
-from odoo import fields, http
+from odoo import http
+from odoo.ormapping import fields
 from odoo.http import request
 from odoo.tools import is_html_empty
 

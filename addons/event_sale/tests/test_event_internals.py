@@ -5,7 +5,7 @@ from datetime import date, datetime, timedelta
 from freezegun import freeze_time
 
 from odoo.addons.event_sale.tests.common import TestEventSaleCommon
-from odoo.fields import Datetime as FieldsDatetime, Date as FieldsDate
+from odoo.ormapping import Datetime as FieldsDatetime, Date as FieldsDate
 from odoo.tests.common import users
 
 

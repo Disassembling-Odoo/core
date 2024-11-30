@@ -1,4 +1,5 @@
-from odoo import models, fields, api
+from odoo import models, api
+from odoo.ormapping import fields
 
 
 class L10nArEarningsScale(models.Model):

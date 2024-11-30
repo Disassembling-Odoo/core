@@ -3,7 +3,8 @@
 
 import base64
 
-from odoo import _, fields, models, api
+from odoo import _, models, api
+from odoo.ormapping import fields
 from odoo.exceptions import UserError
 
 

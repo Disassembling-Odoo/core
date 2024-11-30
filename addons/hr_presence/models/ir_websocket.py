@@ -2,7 +2,7 @@
 
 from odoo import models
 from odoo.api import Environment
-from odoo.fields import Datetime
+from odoo.ormapping import Datetime
 from odoo.http import request
 from odoo.modules.registry import Registry
 from odoo.addons.bus.websocket import wsrequest

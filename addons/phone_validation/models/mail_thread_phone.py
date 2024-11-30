@@ -3,7 +3,8 @@
 
 import re
 
-from odoo import api, fields, models, _
+from odoo import api, models, _
+from odoo.ormapping import fields
 from odoo.exceptions import AccessError, UserError
 from odoo.osv import expression
 from odoo.tools import create_index

@@ -43,8 +43,7 @@ import logging
 
 from odoo.api import Environment
 from odoo.tools.sql import SQL
-from odoo.fields import Field, Many2one
-from odoo.models import Model
+from odoo.ormapping import Model, Field, Many2one
 
 
 _logger = logging.getLogger(__name__)

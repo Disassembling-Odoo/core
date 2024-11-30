@@ -36,7 +36,7 @@ from odoo.tools.lru import LRU
 from odoo.tools.misc import Collector, format_frame
 
 if typing.TYPE_CHECKING:
-    from odoo.models import BaseModel
+    from odoo.ormapping.models import BaseModel
 
 
 _logger = logging.getLogger(__name__)

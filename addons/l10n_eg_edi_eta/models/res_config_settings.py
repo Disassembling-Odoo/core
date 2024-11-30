@@ -1,4 +1,5 @@
-from odoo import models, fields
+from odoo import models
+from odoo.ormapping import fields
 
 class ResConfigSettings(models.TransientModel):
     _inherit = 'res.config.settings'

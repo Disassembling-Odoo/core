@@ -57,7 +57,7 @@ import odoo
 from odoo import api
 from odoo.conf import config
 from odoo.exceptions import AccessError
-from odoo.fields import Command
+from odoo.ormapping import Command
 from odoo.modules.registry import Registry
 from odoo.service import security
 from odoo.sql_db import BaseCursor, Cursor
@@ -392,7 +392,7 @@ class BaseCase(case.TestCase, metaclass=MetaCase):
         :param xid: fully-qualified :term:`external identifier`, in the form
                     :samp:`{module}.{identifier}`
         :raise: ValueError if not found
-        :returns: :class:`~odoo.models.BaseModel`
+        :returns: :class:`~odoo.ormapping.models.BaseModel`
         """
         assert "." in xid, "this method requires a fully qualified parameter, in the following form: 'module.identifier'"
         return self.env.ref(xid)
@@ -615,7 +615,7 @@ class BaseCase(case.TestCase, metaclass=MetaCase):
 
     def assertRecordValues(
             self,
-            records: odoo.models.BaseModel,
+            records: odoo.ormapping.models.BaseModel,
             expected_values: list[dict],
             *,
             field_names: Optional[Iterable[str]] = None,

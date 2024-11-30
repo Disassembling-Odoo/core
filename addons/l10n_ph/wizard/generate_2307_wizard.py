@@ -2,7 +2,8 @@
 
 import base64
 
-from odoo import fields, models
+from odoo import models
+from odoo.ormapping import fields
 from odoo.addons.l10n_ph import utils
 
 

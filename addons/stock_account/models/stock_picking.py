@@ -3,7 +3,8 @@
 
 from ast import literal_eval
 
-from odoo import models, fields
+from odoo import models
+from odoo.ormapping import fields
 
 
 class StockPicking(models.Model):

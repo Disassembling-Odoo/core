@@ -8,7 +8,8 @@ import requests
 from datetime import timedelta
 from werkzeug import urls
 
-from odoo import _, fields, models
+from odoo import _, models
+from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
 
 from odoo.addons.payment_paypal import const

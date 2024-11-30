@@ -2,7 +2,8 @@
 
 import math
 
-from odoo import api, fields, models, _
+from odoo import api, models, _
+from odoo.ormapping import fields
 
 
 class ResourceCalendarAttendance(models.Model):

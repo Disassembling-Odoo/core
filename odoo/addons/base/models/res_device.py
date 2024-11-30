@@ -4,7 +4,8 @@ from contextlib import nullcontext
 from datetime import datetime
 import logging
 
-from odoo import api, fields, models, tools
+from odoo import api, models, tools
+from odoo.ormapping import fields
 from odoo.http import GeoIP, request, root
 from odoo.tools import SQL, OrderedSet, unique
 from odoo.tools.translate import _

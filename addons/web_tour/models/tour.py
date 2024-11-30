@@ -1,6 +1,8 @@
-from odoo import api, fields, models, Command
+from odoo import api, models, Command
 import json
 import base64
+
+from odoo.ormapping import fields
 
 
 class Tour(models.Model):

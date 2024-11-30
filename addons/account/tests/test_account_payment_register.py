@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 from dateutil.relativedelta import relativedelta
 
-from odoo import fields, Command
+from odoo import Command
+from odoo.ormapping import fields
 from odoo.exceptions import UserError
 from odoo.tests import tagged, Form
 from odoo.tests.common import Like

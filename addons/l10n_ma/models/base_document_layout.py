@@ -1,7 +1,8 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 from markupsafe import Markup
 
-from odoo import api, fields, models
+from odoo import api, models
+from odoo.ormapping import fields
 
 
 class BaseDocumentLayout(models.TransientModel):

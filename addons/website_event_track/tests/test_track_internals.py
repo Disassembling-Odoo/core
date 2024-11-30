@@ -4,7 +4,7 @@
 from datetime import datetime, timedelta
 from unittest.mock import patch
 
-from odoo import fields
+from odoo.ormapping import fields
 from odoo.addons.website.models.website_visitor import WebsiteVisitor
 from odoo.addons.website_event.tests.common import TestEventOnlineCommon
 from odoo.tests.common import users

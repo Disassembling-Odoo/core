@@ -3,7 +3,8 @@
 
 from markupsafe import Markup
 
-from odoo import api, fields, models, _
+from odoo import api, models, _
+from odoo.ormapping import fields
 from odoo.exceptions import UserError
 from odoo.osv.expression import AND
 from odoo.tools import float_is_zero, format_list

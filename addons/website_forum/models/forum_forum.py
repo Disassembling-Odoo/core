@@ -7,7 +7,8 @@ from operator import itemgetter
 
 from markupsafe import Markup
 
-from odoo import _, api, fields, models
+from odoo import _, api, models
+from odoo.ormapping import fields
 from odoo.tools.translate import html_translate
 
 MOST_USED_TAGS_COUNT = 5  # Number of tags to track as "most used" to display on frontend

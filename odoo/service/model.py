@@ -11,7 +11,7 @@ from psycopg2 import IntegrityError, OperationalError, errorcodes, errors
 import odoo
 from odoo.exceptions import UserError, ValidationError
 from odoo.http import request
-from odoo.models import check_method_name
+from odoo.ormapping import check_method_name
 from odoo.modules.registry import Registry
 from odoo.tools import DotDict, lazy
 from odoo.tools.translate import translate_sql_constraint
@@ -183,7 +183,7 @@ def _traverse_containers(val, type_):
     through standard containers (non-string mappings or sequences) *unless*
     they're selected by the type filter
     """
-    from odoo.models import BaseModel
+    from odoo.ormapping.models import BaseModel
     if isinstance(val, type_):
         yield val
     elif isinstance(val, (str, bytes, BaseModel)):

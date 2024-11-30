@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from odoo import api, fields, models, _, Command
+from odoo import api, models, _, Command
+from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
 from odoo.tools import format_date, formatLang, frozendict, date_utils
 from odoo.tools.float_utils import float_round

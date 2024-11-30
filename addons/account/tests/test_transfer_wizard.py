@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 from freezegun import freeze_time
 
-from odoo import fields, Command
+from odoo import Command
+from odoo.ormapping import fields
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon
 from odoo.tests import tagged, Form
 import time

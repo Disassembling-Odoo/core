@@ -2,7 +2,8 @@ import itertools
 import pstats
 from cProfile import Profile
 
-from odoo import fields, Command
+from odoo import Command
+from odoo.ormapping import fields
 from odoo.tests import common
 
 

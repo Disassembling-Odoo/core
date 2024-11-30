@@ -279,7 +279,7 @@ class TestHasGroup(TransactionCase):
 
         populate_cache()
         # call_cache_clearing_methods is called in res.groups.write to invalidate
-        # cache before calling its parent class method (`odoo.models.Model.write`)
+        # cache before calling its parent class method (`odoo.ormapping.models.Model.write`)
         # as explain in the `res.group.write` comment.
         # This verifies that calling `call_cache_clearing_methods()` invalidates
         # the ormcache of method `user._has_group()`

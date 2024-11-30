@@ -4,7 +4,8 @@ from datetime import timedelta
 import random
 import re
 
-from odoo import api, Command, fields, models, _
+from odoo import api, Command, models, _
+from odoo.ormapping import fields
 from odoo.addons.mail.tools.discuss import Store
 from odoo.addons.bus.websocket import WebsocketConnectionHandler
 

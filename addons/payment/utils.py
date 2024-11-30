@@ -2,7 +2,7 @@
 
 from hashlib import sha1
 
-from odoo import fields
+from odoo.ormapping import fields
 from odoo.http import request
 from odoo.tools import consteq, float_round, ustr
 from odoo.tools.misc import hmac as hmac_tool

@@ -1,5 +1,6 @@
-from odoo import models, api, fields
+from odoo import models, api
 
+from odoo.ormapping import fields
 from odoo.tools import date_utils
 
 

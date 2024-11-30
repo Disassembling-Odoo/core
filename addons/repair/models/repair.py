@@ -3,7 +3,8 @@
 from collections import defaultdict
 from random import randint
 
-from odoo import api, Command, fields, models, _
+from odoo import api, Command, models, _
+from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
 from odoo.osv import expression
 from odoo.tools import float_compare, float_is_zero, clean_context

@@ -5,7 +5,8 @@ from datetime import datetime
 from dateutil.relativedelta import relativedelta
 from lxml import etree
 
-from odoo import fields, Command
+from odoo import Command
+from odoo.ormapping import fields
 from odoo.addons.survey.tests import common
 from odoo.addons.mail.tests.common import MailCommon
 from odoo.exceptions import UserError

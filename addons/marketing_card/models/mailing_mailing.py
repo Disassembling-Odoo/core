@@ -1,4 +1,5 @@
-from odoo import _, api, exceptions, fields, models, osv
+from odoo import _, api, exceptions, models, osv
+from odoo.ormapping import fields
 
 
 class MassMailing(models.Model):

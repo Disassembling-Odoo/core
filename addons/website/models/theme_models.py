@@ -2,7 +2,8 @@
 
 import logging
 import threading
-from odoo import api, fields, models
+from odoo import api, models
+from odoo.ormapping import fields
 from odoo.tools.translate import xml_translate
 from odoo.modules.module import get_resource_from_path
 

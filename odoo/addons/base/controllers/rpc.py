@@ -9,7 +9,7 @@ from markupsafe import Markup
 
 import odoo
 from odoo.http import Controller, route, dispatch_rpc, request, Response
-from odoo.fields import Date, Datetime, Command
+from odoo.ormapping import Command, Date, Datetime
 from odoo.tools import lazy
 from odoo.tools.misc import frozendict
 

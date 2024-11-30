@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import api, fields, models
+from odoo import api, models
+from odoo.ormapping import fields
 
 class SomeObj(models.Model):
     _name = 'test_access_right.some_obj'

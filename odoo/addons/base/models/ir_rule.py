@@ -2,7 +2,8 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 import logging
 
-from odoo import api, fields, models, tools, _
+from odoo import api, models, tools, _
+from odoo.ormapping import fields
 from odoo.exceptions import AccessError, ValidationError
 from odoo.osv import expression
 from odoo.conf import config

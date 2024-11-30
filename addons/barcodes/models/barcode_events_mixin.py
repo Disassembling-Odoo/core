@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api
+from odoo import models, api
+from odoo.ormapping import fields
 
 class BarcodeEventsMixin(models.AbstractModel):
     """ Mixin class for objects reacting when a barcode is scanned in their form views

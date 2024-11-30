@@ -4,7 +4,8 @@ from datetime import datetime, time
 from dateutil.relativedelta import relativedelta
 from pytz import timezone, utc
 
-from odoo import api, fields, models, _
+from odoo import api, models, _
+from odoo.ormapping import fields
 from odoo.exceptions import ValidationError
 
 

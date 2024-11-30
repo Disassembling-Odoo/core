@@ -114,7 +114,7 @@ class TestForumCommon(common.TransactionCase):
             'name': 'Second Website on same company',
         })
 
-    @mute_logger("odoo.models.unlink")
+    @mute_logger("odoo.ormapping.models.unlink")
     def _activate_tags_for_counts(self):
         self.env['forum.tag'].search([]).unlink()
         self.tags = self.env['forum.tag'].create(

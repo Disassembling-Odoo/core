@@ -9,7 +9,8 @@ from typing import NamedTuple
 import psycopg2
 import pytz
 
-from odoo import api, Command, fields, models
+from odoo import api, Command, models
+from odoo.ormapping import fields
 from odoo.tools import OrderedSet
 from odoo.tools.translate import _, code_translations, LazyTranslate
 
@@ -188,7 +189,7 @@ class IrFieldsConverter(models.AbstractModel):
 
         :param model:
         :param field: field object to generate a value for
-        :type field: :class:`odoo.fields.Field`
+        :type field: :class:`odoo.ormapping.fields.Field`
         :param fromtype: type to convert to something fitting for ``field``
         :type fromtype: type | str
         :return: a function (fromtype -> field.write_type), if a converter is found

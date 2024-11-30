@@ -2,7 +2,8 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 import time
 
-from odoo import api, fields, models
+from odoo import api, models
+from odoo.ormapping import fields
 
 
 class HolidaysSummaryEmployee(models.TransientModel):

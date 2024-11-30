@@ -6,7 +6,8 @@ import calendar
 from collections import defaultdict, OrderedDict
 from datetime import timedelta
 
-from odoo import _, api, fields, models
+from odoo import _, api, models
+from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
 from odoo.osv import expression
 from odoo.tools.float_utils import float_compare

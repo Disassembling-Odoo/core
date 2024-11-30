@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
+from odoo.ormapping import fields
 from odoo.tools.misc import format_duration
-from odoo import _, api, fields, models
+from odoo import _, api, models
 
 
 class HRLeaveType(models.Model):

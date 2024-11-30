@@ -1,4 +1,5 @@
-from odoo import fields, models
+from odoo import models
+from odoo.ormapping import fields
 
 
 class UoM(models.Model):

@@ -3,7 +3,8 @@
 import logging
 from markupsafe import Markup
 
-from odoo import api, fields, models, _
+from odoo import api, models, _
+from odoo.ormapping import fields
 
 _logger = logging.getLogger(__name__)
 

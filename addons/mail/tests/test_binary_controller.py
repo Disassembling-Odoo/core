@@ -38,7 +38,7 @@ class TestBinaryControllerCommon(TestControllerCommon):
                     )
 
     def _get_avatar_url(self, record):
-        url = f"/web/image?field=avatar_128&id={record.id}&model={record._name}&unique={odoo.fields.Datetime.to_string(record.write_date)}"
+        url = f"/web/image?field=avatar_128&id={record.id}&model={record._name}&unique={odoo.ormapping.fields.Datetime.to_string(record.write_date)}"
         return self.url_open(url)
 
     def _send_message(self, author, thread_model, thread_id):

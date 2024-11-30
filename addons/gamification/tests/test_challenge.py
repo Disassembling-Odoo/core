@@ -62,7 +62,7 @@ class test_challenge(TestGamificationCommon):
         badge_ids = self.env['gamification.badge.user'].search([('badge_id', '=', badge_id), ('user_id', '=', demo.id)])
         self.assertEqual(len(badge_ids), 1, "Demo user has not received the badge")
 
-    @mute_logger('odoo.models.unlink', 'odoo.addons.mail', 'odoo.addons.auth_signup')
+    @mute_logger('odoo.ormapping.models.unlink', 'odoo.addons.mail', 'odoo.addons.auth_signup')
     def test_20_update_all_goals_filter(self):
         # Enroll two internal and two portal users in the challenge
         (

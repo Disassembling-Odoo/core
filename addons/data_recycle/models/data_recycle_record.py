@@ -3,7 +3,8 @@
 
 from collections import defaultdict
 
-from odoo import models, api, fields, _
+from odoo import models, api, _
+from odoo.ormapping import fields
 
 
 class DataRecycleRecord(models.Model):

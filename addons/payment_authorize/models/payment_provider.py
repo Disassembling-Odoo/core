@@ -4,9 +4,10 @@ import json
 import logging
 import pprint
 
-from odoo import _, api, fields, models
+from odoo import _, api, models
+from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
-from odoo.fields import Command
+from odoo.ormapping import Command
 
 from odoo.addons.payment_authorize import const
 from odoo.addons.payment_authorize.models.authorize_request import AuthorizeAPI

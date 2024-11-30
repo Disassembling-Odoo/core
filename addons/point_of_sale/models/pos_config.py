@@ -6,7 +6,8 @@ from uuid import uuid4
 import pytz
 import secrets
 
-from odoo import api, conf, fields, models, _, Command, tools, SUPERUSER_ID
+from odoo import api, conf, models, _, Command, tools, SUPERUSER_ID
+from odoo.ormapping import fields
 from odoo.http import request
 from odoo.exceptions import AccessError, ValidationError, UserError
 from odoo.tools import convert, SQL

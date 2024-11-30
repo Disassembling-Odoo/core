@@ -8,7 +8,8 @@ import pprint
 import requests
 from werkzeug.urls import url_join
 
-from odoo import _, fields, models
+from odoo import _, models
+from odoo.ormapping import fields
 from odoo.exceptions import ValidationError
 
 from odoo.addons.payment_razorpay import const

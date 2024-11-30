@@ -2,7 +2,8 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 from collections import defaultdict
 
-from odoo import api, fields, models
+from odoo import api, models
+from odoo.ormapping import fields
 from odoo.exceptions import RedirectWarning, ValidationError
 from odoo.tools import SQL
 from odoo.tools.translate import _

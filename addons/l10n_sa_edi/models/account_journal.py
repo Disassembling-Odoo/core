@@ -8,7 +8,8 @@ from lxml import etree
 from markupsafe import Markup
 from requests.exceptions import HTTPError, RequestException
 
-from odoo import _, fields, models
+from odoo import _, models
+from odoo.ormapping import fields
 from odoo.exceptions import UserError
 from odoo.tools.misc import file_open
 

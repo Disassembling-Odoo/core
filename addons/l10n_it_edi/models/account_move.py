@@ -6,7 +6,8 @@ import logging
 from lxml import etree
 import uuid
 
-from odoo import _, api, Command, fields, models, modules
+from odoo import _, api, Command, models, modules
+from odoo.ormapping import fields
 from odoo.addons.base.models.ir_qweb_fields import Markup, nl2br, nl2br_enclose
 from odoo.addons.account_edi_proxy_client.models.account_edi_proxy_user import AccountEdiProxyError
 from odoo.exceptions import UserError

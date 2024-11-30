@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import api, models, fields
+from odoo import api, models
+from odoo.ormapping import fields
 
 class goal_manual_wizard(models.TransientModel):
     """Wizard to update a manual goal"""

@@ -1,4 +1,5 @@
-from odoo import fields, Command
+from odoo import Command
+from odoo.ormapping import fields
 from odoo.exceptions import AccessError
 from odoo.tests.common import TransactionCase
 

@@ -5,7 +5,8 @@ from markupsafe import Markup
 from dateutil.relativedelta import relativedelta
 from datetime import datetime
 
-from odoo import api, fields, models, tools
+from odoo import api, models, tools
+from odoo.ormapping import fields
 from odoo.exceptions import AccessError, UserError
 from odoo.osv import expression
 from odoo.tools.translate import _

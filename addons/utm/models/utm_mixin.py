@@ -5,7 +5,8 @@ import re
 from collections import defaultdict
 import itertools
 
-from odoo import api, fields, models
+from odoo import api, models
+from odoo.ormapping import fields
 from odoo.http import request
 from odoo.osv import expression
 

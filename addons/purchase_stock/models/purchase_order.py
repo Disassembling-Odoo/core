@@ -2,7 +2,8 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 from markupsafe import Markup
 
-from odoo import api, Command, fields, models, SUPERUSER_ID, _
+from odoo import api, Command, models, SUPERUSER_ID, _
+from odoo.ormapping import fields
 from odoo.tools.float_utils import float_compare
 from odoo.exceptions import UserError
 from odoo.tools import format_list

@@ -5,7 +5,8 @@ import logging
 import re
 import werkzeug
 
-from odoo import api, fields, models, _
+from odoo import api, models, _
+from odoo.ormapping import fields
 from odoo.exceptions import UserError
 from odoo.tools.mail import email_split_and_format, email_normalize
 

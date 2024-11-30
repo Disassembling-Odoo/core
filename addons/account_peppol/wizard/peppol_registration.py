@@ -1,11 +1,13 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 import contextlib
+
+from odoo.ormapping import fields
 try:
     import phonenumbers
 except ImportError:
     phonenumbers = None
 
-from odoo import _, api, fields, models, modules
+from odoo import _, api, models, modules
 from odoo.exceptions import UserError, ValidationError
 
 from odoo.addons.account_edi_proxy_client.models.account_edi_proxy_user import AccountEdiProxyError

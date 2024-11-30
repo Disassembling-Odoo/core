@@ -5,9 +5,8 @@ import base64
 import itertools
 import json
 
-from odoo import api, models
-from odoo.fields import Command
-from odoo.models import BaseModel, NewId
+from odoo import api
+from odoo.ormapping import models, Command, BaseModel, NewId
 from odoo.osv.expression import AND, TRUE_DOMAIN, normalize_domain
 from odoo.tools import unique, OrderedSet
 from odoo.exceptions import AccessError, UserError

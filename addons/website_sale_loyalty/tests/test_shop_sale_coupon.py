@@ -1,9 +1,9 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 from datetime import timedelta
 
-from odoo import fields, http
+from odoo import http
+from odoo.ormapping import fields, Command
 from odoo.exceptions import ValidationError
-from odoo.fields import Command
 from odoo.tests import HttpCase, tagged
 
 from odoo.addons.sale.tests.test_sale_product_attribute_value_config import (

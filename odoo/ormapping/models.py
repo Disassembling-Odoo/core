@@ -49,36 +49,39 @@ import psycopg2
 import psycopg2.extensions
 from psycopg2.extras import Json
 
+from .utils import expand_ids, check_property_field_value_name, is_definition_class, check_method_name, regex_object_name
+from .constant import Command, READ_GROUP_NUMBER_GRANULARITY, PREFETCH_MAX
+from .base import NewId, IdType
+
 import odoo
-from . import SUPERUSER_ID
-from . import api
-from . import tools
-from .api import NewId
-from .exceptions import AccessError, MissingError, ValidationError, UserError
-from .conf import config
-from .tools import (
+from .. import SUPERUSER_ID
+from .. import api
+from ..utils import check_pg_name
+from .. import tools
+from ..exceptions import AccessError, MissingError, ValidationError, UserError
+from ..conf import config
+from ..tools import (
     clean_context, date_utils, discardattr,
     DEFAULT_SERVER_DATE_FORMAT, DEFAULT_SERVER_DATETIME_FORMAT, format_list,
     frozendict, get_lang, lazy_classproperty, OrderedSet,
     ormcache, partition, Query, split_every, unique,
     SQL, sql,
 )
-from .tools.lru import LRU
-from .tools.misc import LastOrderedSet, ReversedIterable, unquote
-from .tools.translate import _, LazyTranslate
+from ..tools.lru import LRU
+from ..tools.misc import LastOrderedSet, ReversedIterable, unquote
+from ..tools.translate import _, LazyTranslate
 
 import typing
 if typing.TYPE_CHECKING:
     from collections.abc import Reversible
-    from .modules.registry import Registry
-    from odoo.api import Self, ValuesType, IdType
+    from ..modules.registry import Registry
+    from odoo.api import Self, ValuesType
 
 
 _lt = LazyTranslate('base')
 _logger = logging.getLogger(__name__)
 _unlink = logging.getLogger(__name__ + '.unlink')
 
-regex_alphanumeric = re.compile(r'^[a-z0-9_]+$')
 regex_order = re.compile(r'''
     ^
     (\s*
@@ -91,8 +94,6 @@ regex_order = re.compile(r'''
     (?<!,)
     $
 ''', re.IGNORECASE | re.VERBOSE)
-regex_object_name = re.compile(r'^[a-z0-9_.]+$')
-regex_pg_name = re.compile(r'^[a-z_][a-z0-9_$]*$', re.I)
 regex_field_agg = re.compile(r'(\w+)(?::(\w+)(?:\((\w+)\))?)?')  # For read_group
 regex_read_group_spec = re.compile(r'(\w+)(\.(\w+))?(?::(\w+))?$')  # For _read_group
 
@@ -142,27 +143,6 @@ def raise_on_invalid_object_name(name):
     if not check_object_name(name):
         msg = "The _name attribute %s is not valid." % name
         raise ValueError(msg)
-
-def check_pg_name(name):
-    """ Check whether the given name is a valid PostgreSQL identifier name. """
-    if not regex_pg_name.match(name):
-        raise ValidationError("Invalid characters in table name %r" % name)
-    if len(name) > 63:
-        raise ValidationError("Table name %r is too long" % name)
-
-# match private methods, to prevent their remote invocation
-regex_private = re.compile(r'^(_.*|init)$')
-
-def check_method_name(name):
-    """ Raise an ``AccessError`` if ``name`` is a private method name. """
-    if regex_private.match(name):
-        raise AccessError(_lt('Private methods (such as %s) cannot be called remotely.', name))
-
-
-def check_property_field_value_name(property_name):
-    if not regex_alphanumeric.match(property_name) or len(property_name) > 512:
-        raise ValueError(f"Wrong property field value name {property_name!r}.")
-
 
 def fix_import_export_id_paths(fieldname):
     """
@@ -315,22 +295,6 @@ class OriginIds:
         return origin_ids(reversed(self.ids))
 
 
-def expand_ids(id0, ids):
-    """ Return an iterator of unique ids from the concatenation of ``[id0]`` and
-        ``ids``, and of the same kind (all real or all new).
-    """
-    yield id0
-    seen = {id0}
-    kind = bool(id0)
-    for id_ in ids:
-        if id_ not in seen and bool(id_) == kind:
-            yield id_
-            seen.add(id_)
-
-
-# maximum number of prefetched records
-PREFETCH_MAX = 1000
-
 # special columns automatically created by the ORM
 LOG_ACCESS_COLUMNS = ['create_uid', 'create_date', 'write_uid', 'write_date']
 MAGIC_COLUMNS = ['id'] + LOG_ACCESS_COLUMNS
@@ -345,21 +309,7 @@ READ_GROUP_TIME_GRANULARITY = {
     'year': dateutil.relativedelta.relativedelta(years=1)
 }
 
-READ_GROUP_NUMBER_GRANULARITY = {
-    'year_number': 'year',
-    'quarter_number': 'quarter',
-    'month_number': 'month',
-    'iso_week_number': 'week',  # ISO week number because anything else than ISO is nonsense
-    'day_of_year': 'doy',
-    'day_of_month': 'day',
-    'day_of_week': 'dow',
-    'hour_number': 'hour',
-    'minute_number': 'minute',
-    'second_number': 'second',
-}
-
 READ_GROUP_ALL_TIME_GRANULARITY = READ_GROUP_TIME_GRANULARITY | READ_GROUP_NUMBER_GRANULARITY
-
 
 
 # valid SQL aggregation functions
@@ -501,16 +451,6 @@ READ_GROUP_DISPLAY_FORMAT = {
 # registry classes.  But doing so prevents them from being shared.  So instead,
 # we add them on definition classes that define a model without extending it.
 # This increases the number of fields that are shared across registries.
-
-def is_definition_class(cls):
-    """ Return whether ``cls`` is a model definition class. """
-    return isinstance(cls, MetaModel) and getattr(cls, 'pool', None) is None
-
-
-def is_registry_class(cls):
-    """ Return whether ``cls`` is a model registry class. """
-    return getattr(cls, 'pool', None) is not None
-
 
 class BaseModel(metaclass=MetaModel):
     """Base class for Odoo models.
@@ -1289,7 +1229,7 @@ class BaseModel(metaclass=MetaModel):
                 if field_name in (None, 'id', '.id'):
                     break
 
-                if isinstance(model_fields.get(field_name), odoo.fields.One2many):
+                if isinstance(model_fields.get(field_name), odoo.ormapping.fields.One2many):
                     comodel = model_fields[field_name].comodel_name
                     creatable_models.add(comodel)
                     model_fields = self.env[comodel]._fields
@@ -2471,14 +2411,14 @@ class BaseModel(metaclass=MetaModel):
         # assumption: existing data is sorted by field 'groupby_name'
         existing_from, existing_to = existing[0], existing[-1]
         if fill_from:
-            fill_from = odoo.fields.Datetime.to_datetime(fill_from) if isinstance(fill_from, datetime.datetime) else odoo.fields.Date.to_date(fill_from)
+            fill_from = odoo.ormapping.fields.Datetime.to_datetime(fill_from) if isinstance(fill_from, datetime.datetime) else odoo.ormapping.fields.Date.to_date(fill_from)
             fill_from = date_utils.start_of(fill_from, granularity) - datetime.timedelta(days=days_offset)
             if tz:
                 fill_from = tz.localize(fill_from)
         elif existing_from:
             fill_from = existing_from
         if fill_to:
-            fill_to = odoo.fields.Datetime.to_datetime(fill_to) if isinstance(fill_to, datetime.datetime) else odoo.fields.Date.to_date(fill_to)
+            fill_to = odoo.ormapping.fields.Datetime.to_datetime(fill_to) if isinstance(fill_to, datetime.datetime) else odoo.ormapping.fields.Date.to_date(fill_to)
             fill_to = date_utils.start_of(fill_to, granularity) - datetime.timedelta(days=days_offset)
             if tz:
                 fill_to = tz.localize(fill_to)
@@ -4603,28 +4543,28 @@ class BaseModel(metaclass=MetaModel):
         :raise ValidationError: if invalid values are specified for selection fields
         :raise UserError: if a loop would be created in a hierarchy of objects a result of the operation (such as setting an object as its own parent)
 
-        * For numeric fields (:class:`~odoo.fields.Integer`,
-          :class:`~odoo.fields.Float`) the value should be of the
+        * For numeric fields (:class:`~odoo.ormapping.fields.Integer`,
+          :class:`~odoo.ormapping.fields.Float`) the value should be of the
           corresponding type
-        * For :class:`~odoo.fields.Boolean`, the value should be a
+        * For :class:`~odoo.ormapping.fields.Boolean`, the value should be a
           :class:`python:bool`
-        * For :class:`~odoo.fields.Selection`, the value should match the
+        * For :class:`~odoo.ormapping.fields.Selection`, the value should match the
           selection values (generally :class:`python:str`, sometimes
           :class:`python:int`)
-        * For :class:`~odoo.fields.Many2one`, the value should be the
+        * For :class:`~odoo.ormapping.fields.Many2one`, the value should be the
           database identifier of the record to set
-        * The expected value of a :class:`~odoo.fields.One2many` or
-          :class:`~odoo.fields.Many2many` relational field is a list of
-          :class:`~odoo.fields.Command` that manipulate the relation the
+        * The expected value of a :class:`~odoo.ormapping.fields.One2many` or
+          :class:`~odoo.ormapping.fields.Many2many` relational field is a list of
+          :class:`~odoo.ormapping.fields.Command` that manipulate the relation the
           implement. There are a total of 7 commands:
-          :meth:`~odoo.fields.Command.create`,
-          :meth:`~odoo.fields.Command.update`,
-          :meth:`~odoo.fields.Command.delete`,
-          :meth:`~odoo.fields.Command.unlink`,
-          :meth:`~odoo.fields.Command.link`,
-          :meth:`~odoo.fields.Command.clear`, and
-          :meth:`~odoo.fields.Command.set`.
-        * For :class:`~odoo.fields.Date` and `~odoo.fields.Datetime`,
+          :meth:`~odoo.ormapping.fields.Command.create`,
+          :meth:`~odoo.ormapping.fields.Command.update`,
+          :meth:`~odoo.ormapping.fields.Command.delete`,
+          :meth:`~odoo.ormapping.fields.Command.unlink`,
+          :meth:`~odoo.ormapping.fields.Command.link`,
+          :meth:`~odoo.ormapping.fields.Command.clear`, and
+          :meth:`~odoo.ormapping.fields.Command.set`.
+        * For :class:`~odoo.ormapping.fields.Date` and `~odoo.ormapping.fields.Datetime`,
           the value should be either a date(time), or a string.
 
           .. warning::
@@ -7530,5 +7470,5 @@ PGERROR_TO_OE = defaultdict(
 # keep those imports here to avoid dependency cycle errors
 # pylint: disable=wrong-import-position
 from . import fields
-from .osv import expression
-from .fields import Field, Datetime, Command
+from ..osv import expression
+from .fields import Field, Datetime

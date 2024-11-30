@@ -5,7 +5,8 @@ import logging
 
 from collections import defaultdict
 
-from odoo import _, api, fields, models, tools
+from odoo import _, api, models, tools
+from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
 from odoo.osv import expression
 from odoo.tools.image import is_image_size_above

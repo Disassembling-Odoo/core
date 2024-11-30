@@ -6,7 +6,8 @@ from dateutil.relativedelta import relativedelta
 from freezegun import freeze_time
 from pytz import timezone
 
-from odoo import fields, Command
+from odoo import Command
+from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
 from odoo.tools import date_utils, mute_logger
 from odoo.tests import Form, tagged
@@ -91,7 +92,7 @@ class TestLeaveRequests(TestHrHolidaysCommon):
                        WHERE id = %s
                        """ % (newdate, _id))
 
-    @mute_logger('odoo.models.unlink', 'odoo.addons.mail.models.mail_mail')
+    @mute_logger('odoo.ormapping.models.unlink', 'odoo.addons.mail.models.mail_mail')
     def test_overlapping_requests(self):
         """  Employee cannot create a new leave request at the same time, avoid interlapping  """
         self.env['hr.leave'].with_user(self.user_employee_id).create({
@@ -149,7 +150,7 @@ class TestLeaveRequests(TestHrHolidaysCommon):
                     'request_date_to': time.strftime('2022-02-05'),
                 })
 
-    @mute_logger('odoo.models.unlink', 'odoo.addons.mail.models.mail_mail')
+    @mute_logger('odoo.ormapping.models.unlink', 'odoo.addons.mail.models.mail_mail')
     def test_limited_type_days_left(self):
         """  Employee creates a leave request in a limited category and has enough days left  """
         with freeze_time('2022-01-05'):
@@ -183,7 +184,7 @@ class TestLeaveRequests(TestHrHolidaysCommon):
             holiday_status.invalidate_model(['max_leaves'])
             self._check_holidays_status(holiday_status, self.employee_emp, 2.0, 2.0, 0.0, 0.0)
 
-    @mute_logger('odoo.models.unlink', 'odoo.addons.mail.models.mail_mail')
+    @mute_logger('odoo.ormapping.models.unlink', 'odoo.addons.mail.models.mail_mail')
     def test_accrual_validity_time_valid(self):
         """  Employee ask leave during a valid validity time """
 
@@ -205,7 +206,7 @@ class TestLeaveRequests(TestHrHolidaysCommon):
             'request_date_to': fields.Date.from_string('2017-03-11'),
         })
 
-    @mute_logger('odoo.models.unlink', 'odoo.addons.mail.models.mail_mail')
+    @mute_logger('odoo.ormapping.models.unlink', 'odoo.addons.mail.models.mail_mail')
     def test_department_leave(self):
         """ Create a department leave """
         self.employee_hrmanager.write({'department_id': self.hr_dept.id})
@@ -221,7 +222,7 @@ class TestLeaveRequests(TestHrHolidaysCommon):
         member_ids = self.hr_dept.member_ids.ids
         self.assertEqual(self.env['hr.leave'].search_count([('employee_id', 'in', member_ids)]), len(member_ids), "Time Off should be created for members of department")
 
-    @mute_logger('odoo.models.unlink', 'odoo.addons.mail.models.mail_mail')
+    @mute_logger('odoo.ormapping.models.unlink', 'odoo.addons.mail.models.mail_mail')
     def test_allocation_request(self):
         """ Create an allocation request """
         # employee should be set to current user
@@ -244,7 +245,7 @@ class TestLeaveRequests(TestHrHolidaysCommon):
                 'date_to': time.strftime('%Y-%m-01'),
             })
 
-    @mute_logger('odoo.models.unlink', 'odoo.addons.mail.models.mail_mail')
+    @mute_logger('odoo.ormapping.models.unlink', 'odoo.addons.mail.models.mail_mail')
     def test_employee_is_absent(self):
         """ Only the concerned employee should be considered absent """
         user_employee_leave = self.env['hr.leave'].with_user(self.user_employee_id).create({
@@ -265,7 +266,7 @@ class TestLeaveRequests(TestHrHolidaysCommon):
         self.assertTrue(self.employee_emp.is_absent, "He should be considered absent")
         self.assertFalse(self.employee_hrmanager.is_absent, "He should not be considered absent")
 
-    @mute_logger('odoo.models.unlink', 'odoo.addons.mail.models.mail_mail')
+    @mute_logger('odoo.ormapping.models.unlink', 'odoo.addons.mail.models.mail_mail')
     def test_timezone_employee_leave_request(self):
         """ Create a leave request for an employee in another timezone """
         self.employee_emp.tz = 'Pacific/Auckland'  # GMT+12
@@ -281,7 +282,7 @@ class TestLeaveRequests(TestHrHolidaysCommon):
         self.assertEqual(leave.date_from, datetime(2019, 5, 5, 20, 0, 0), "It should have been localized before saving in UTC")
         self.assertEqual(leave.date_to, datetime(2019, 5, 6, 5, 0, 0), "It should have been localized before saving in UTC")
 
-    @mute_logger('odoo.models.unlink', 'odoo.addons.mail.models.mail_mail')
+    @mute_logger('odoo.ormapping.models.unlink', 'odoo.addons.mail.models.mail_mail')
     def test_timezone_company_leave_request(self):
         """ Create a leave request for a company in another timezone """
         company = self.env['res.company'].create({'name': "Hergé"})
@@ -299,7 +300,7 @@ class TestLeaveRequests(TestHrHolidaysCommon):
         self.assertEqual(leave.date_from, datetime(2019, 5, 6, 6, 0, 0), "It should have been localized in the Employee timezone")
         self.assertEqual(leave.date_to, datetime(2019, 5, 6, 15, 0, 0), "It should have been localized in the Employee timezone")
 
-    @mute_logger('odoo.models.unlink', 'odoo.addons.mail.models.mail_mail')
+    @mute_logger('odoo.ormapping.models.unlink', 'odoo.addons.mail.models.mail_mail')
     def test_timezone_company_validated(self):
         """ Create a leave request for a company in another timezone and validate it """
         self.env.user.tz = 'Australia/Sydney' # GMT+12
@@ -457,7 +458,7 @@ class TestLeaveRequests(TestHrHolidaysCommon):
         })
         self.assertEqual(leave.number_of_days, number_of_days)
 
-    @mute_logger('odoo.models.unlink', 'odoo.addons.mail.models.mail_mail')
+    @mute_logger('odoo.ormapping.models.unlink', 'odoo.addons.mail.models.mail_mail')
     def test_leave_defaults_with_timezones(self):
         """ Make sure that leaves start with correct defaults for non-UTC timezones """
         timezones_to_test = ('UTC', 'Pacific/Midway', 'America/Los_Angeles', 'Asia/Taipei', 'Pacific/Kiritimati')  # UTC, UTC -11, UTC -8, UTC +8, UTC +14

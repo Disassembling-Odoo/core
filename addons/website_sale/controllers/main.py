@@ -7,9 +7,9 @@ from datetime import datetime
 from werkzeug.exceptions import Forbidden, NotFound
 from werkzeug.urls import url_decode, url_encode, url_parse
 
-from odoo import fields
+from odoo.ormapping import fields
 from odoo.exceptions import ValidationError
-from odoo.fields import Command
+from odoo.ormapping import Command
 from odoo.http import request, route
 from odoo.osv import expression
 from odoo.tools import clean_context, float_round, groupby, lazy, single_email_re, str2bool, SQL

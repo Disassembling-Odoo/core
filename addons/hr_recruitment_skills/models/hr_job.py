@@ -1,7 +1,8 @@
 from markupsafe import Markup
 from ast import literal_eval
 
-from odoo import fields, models, _
+from odoo import models, _
+from odoo.ormapping import fields
 
 
 class HrJob(models.Model):

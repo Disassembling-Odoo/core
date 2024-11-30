@@ -1,5 +1,5 @@
 
-from odoo.fields import Command
+from odoo.ormapping import Command
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon
 from odoo.tests import tagged
 from unittest.mock import patch

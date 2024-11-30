@@ -2,7 +2,8 @@ import base64
 
 from cryptography import x509
 
-from odoo import fields, models
+from odoo import models
+from odoo.ormapping import fields
 
 
 class Certificate(models.Model):

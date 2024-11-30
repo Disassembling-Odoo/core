@@ -3,7 +3,8 @@
 
 from datetime import datetime, timedelta
 
-from odoo import fields, tests
+from odoo import tests
+from odoo.ormapping import fields
 from odoo.tests import Form
 
 

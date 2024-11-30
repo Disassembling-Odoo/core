@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import api, fields, models, _
+from odoo import api, models, _
 
 from collections import defaultdict
+
+from odoo.ormapping import fields
 
 
 class AccountMove(models.Model):

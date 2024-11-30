@@ -5,7 +5,8 @@ import json
 import re
 from datetime import datetime
 
-from odoo import models, fields, _, api
+from odoo import models, _, api
+from odoo.ormapping import fields
 from odoo.exceptions import UserError
 
 _logger = logging.getLogger(__name__)

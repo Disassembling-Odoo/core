@@ -1,4 +1,5 @@
-from odoo import _, api, fields, models, Command
+from odoo import _, api, models, Command
+from odoo.ormapping import fields
 
 
 class AccountMove(models.Model):

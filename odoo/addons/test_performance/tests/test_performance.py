@@ -253,7 +253,7 @@ class TestPerformance(SavepointCaseWithUserDemo):
         with self.assertQueryCount(__system__=1, demo=1):
             records.write({'value': 42})
 
-    @mute_logger('odoo.models.unlink')
+    @mute_logger('odoo.ormapping.models.unlink')
     @users('__system__', 'demo')
     @warmup
     def test_write_base_one2many(self):
@@ -370,7 +370,7 @@ class TestPerformance(SavepointCaseWithUserDemo):
             rec2.write({'line_ids': [Command.set(lines.ids)]})
         self.assertEqual(rec2.line_ids, lines)
 
-    @mute_logger('odoo.models.unlink')
+    @mute_logger('odoo.ormapping.models.unlink')
     def test_write_base_one2many_with_constraint(self):
         """ Write on one2many field with lines being deleted and created. """
         rec = self.env['test_performance.base'].create({'name': 'Y'})
@@ -381,7 +381,7 @@ class TestPerformance(SavepointCaseWithUserDemo):
         rec.write({'line_ids': [Command.clear()] + [Command.create({'value': val}) for val in range(6)]})
         self.assertEqual(len(rec.line_ids), 6)
 
-    @mute_logger('odoo.models.unlink')
+    @mute_logger('odoo.ormapping.models.unlink')
     @users('__system__', 'demo')
     @warmup
     def test_write_base_many2many(self):

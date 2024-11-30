@@ -1,5 +1,6 @@
 from datetime import timedelta
-from odoo import _, api, fields, models
+from odoo import _, api, models
+from odoo.ormapping import fields
 from odoo.exceptions import UserError
 
 

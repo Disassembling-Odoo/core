@@ -5,7 +5,8 @@ from collections import defaultdict
 from dateutil.relativedelta import relativedelta
 import pytz
 
-from odoo import _, api, fields, models
+from odoo import _, api, models
+from odoo.ormapping import fields
 
 
 class HrEmployee(models.Model):

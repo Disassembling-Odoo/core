@@ -1,6 +1,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import api, fields, models, tools, _
+from odoo import api, models, tools, _
+from odoo.ormapping import fields
 from odoo.osv import expression
 
 

@@ -4,7 +4,8 @@
 from collections import defaultdict
 import itertools
 
-from odoo import api, fields, models, Command
+from odoo import api, models, Command
+from odoo.ormapping import fields
 from odoo.addons.mail.tools.discuss import Store
 
 

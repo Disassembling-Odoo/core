@@ -9,7 +9,8 @@ from collections import defaultdict
 from datetime import date, datetime, time
 from dateutil.relativedelta import relativedelta
 
-from odoo import api, fields, models
+from odoo import api, models
+from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
 from odoo.tools import format_date, frozendict
 from odoo.tools.translate import _

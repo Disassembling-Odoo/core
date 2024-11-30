@@ -2,7 +2,8 @@
 
 from datetime import datetime, timedelta
 
-from odoo import api, models, fields
+from odoo import api, models
+from odoo.ormapping import fields
 from odoo.addons.mail.tools.discuss import Store
 
 

@@ -6,7 +6,8 @@ import logging
 
 from datetime import datetime
 
-from odoo import api, fields, models
+from odoo import api, models
+from odoo.ormapping import fields
 
 _logger = logging.getLogger(__name__)
 

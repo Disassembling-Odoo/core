@@ -1,5 +1,6 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-from odoo import api, fields, models, _
+from odoo import api, models, _
+from odoo.ormapping import fields
 
 
 class PurchaseOrder(models.Model):

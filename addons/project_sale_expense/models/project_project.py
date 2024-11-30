@@ -3,8 +3,10 @@
 
 import json
 
-from odoo import models, fields
+from odoo import models
 from collections import defaultdict
+
+from odoo.ormapping import fields
 
 
 class Project(models.Model):

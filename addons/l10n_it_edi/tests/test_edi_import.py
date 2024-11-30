@@ -5,7 +5,8 @@ import uuid
 from freezegun import freeze_time
 from unittest.mock import patch
 
-from odoo import fields, sql_db, tools, Command
+from odoo import sql_db, tools, Command
+from odoo.ormapping import fields
 from odoo.tests import new_test_user, tagged
 from odoo.addons.l10n_it_edi.tests.common import TestItEdi
 

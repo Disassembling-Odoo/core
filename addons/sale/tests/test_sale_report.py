@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import fields
-from odoo.fields import Command
+from odoo.ormapping import fields, Command
 from odoo.tests import tagged
 from odoo.tools.float_utils import float_compare
 

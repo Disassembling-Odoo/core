@@ -3,7 +3,7 @@
 
 from freezegun import freeze_time
 
-from odoo import fields
+from odoo.ormapping import fields
 from odoo.addons.hr.tests.test_mail_activity_plan import ActivityScheduleHRCase
 from odoo.tests import tagged, users
 

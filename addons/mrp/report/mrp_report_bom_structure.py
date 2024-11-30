@@ -4,7 +4,8 @@ from collections import defaultdict, OrderedDict
 from datetime import date, datetime, time, timedelta
 import json
 
-from odoo import api, fields, models, _
+from odoo import api, models, _
+from odoo.ormapping import fields
 from odoo.tools import float_compare, float_round, format_date, float_is_zero
 from odoo.exceptions import UserError
 

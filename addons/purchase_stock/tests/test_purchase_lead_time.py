@@ -4,7 +4,7 @@
 from datetime import datetime, timedelta, time
 from unittest.mock import patch
 
-from odoo import fields
+from odoo.ormapping import fields
 from .common import PurchaseTestCommon
 from odoo.tests import Form
 

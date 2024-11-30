@@ -4,7 +4,8 @@
 from ast import literal_eval
 from collections import defaultdict
 
-from odoo import fields, models, _
+from odoo import models, _
+from odoo.ormapping import fields
 
 
 class EventLeadRule(models.Model):

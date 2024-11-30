@@ -7,7 +7,7 @@ from werkzeug.exceptions import NotFound
 from odoo import http
 from odoo.api import call_kw
 from odoo.http import request
-from odoo.models import check_method_name
+from odoo.ormapping import check_method_name
 from .utils import clean_action
 
 

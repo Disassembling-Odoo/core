@@ -2,7 +2,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo.exceptions import UserError
-from odoo.fields import Command
+from odoo.ormapping import Command
 from .common import PurchaseTestCommon
 
 

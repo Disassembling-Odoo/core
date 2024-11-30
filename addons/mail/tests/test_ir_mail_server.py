@@ -53,7 +53,7 @@ class TestIrMailServer(MailCommon):
                 )
                 self.assertEqual(message["From"], expected_from)
 
-    @mute_logger('odoo.models.unlink')
+    @mute_logger('odoo.ormapping.models.unlink')
     @patch.dict(config.options, {
         "from_filter": "dummy@example.com, test.mycompany.com, dummy2@example.com",
         "smtp_server": "example.com",
@@ -169,7 +169,7 @@ class TestIrMailServer(MailCommon):
                 email_from = test_server._get_test_email_from()
                 self.assertEqual(email_from, expected_test_email)
 
-    @mute_logger('odoo.models.unlink')
+    @mute_logger('odoo.ormapping.models.unlink')
     def test_mail_server_priorities(self):
         """ Test if we choose the right mail server to send an email.
         Priorities are
@@ -229,7 +229,7 @@ class TestIrMailServer(MailCommon):
                 self.assertEqual(mail_server, expected_mail_server)
                 self.assertEqual(mail_from, expected_email_from)
 
-    @mute_logger('odoo.models.unlink', 'odoo.addons.base.models.ir_mail_server')
+    @mute_logger('odoo.ormapping.models.unlink', 'odoo.addons.base.models.ir_mail_server')
     def test_mail_server_send_email(self):
         """ Test main 'send_email' usage: check mail_server choice based on from
         filters, encapsulation, spoofing. """

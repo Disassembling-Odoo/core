@@ -6,7 +6,7 @@ from datetime import timedelta as td
 from json import loads
 
 from odoo import SUPERUSER_ID, Command
-from odoo.fields import Date
+from odoo.ormapping import Date
 from odoo.tests import Form, tagged, freeze_time
 from odoo.tests.common import TransactionCase
 from odoo.tools import format_date

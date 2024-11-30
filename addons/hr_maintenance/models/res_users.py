@@ -1,4 +1,5 @@
-from odoo import api, models, fields
+from odoo import api, models
+from odoo.ormapping import fields
 
 
 class Users(models.Model):

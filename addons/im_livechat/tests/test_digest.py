@@ -10,7 +10,7 @@ from odoo.tests import tagged
 class TestLiveChatDigest(TestDigestCommon):
 
     @classmethod
-    @mute_logger('odoo.models.unlink')
+    @mute_logger('odoo.ormapping.models.unlink')
     def setUpClass(cls):
         super().setUpClass()
 

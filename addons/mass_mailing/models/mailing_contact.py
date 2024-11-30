@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import _, api, fields, models, tools
+from odoo import _, api, models, tools
+from odoo.ormapping import fields
 from odoo.exceptions import UserError
 from odoo.osv import expression
 

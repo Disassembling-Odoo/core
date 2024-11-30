@@ -15,10 +15,10 @@ from lxml.etree import LxmlError
 from lxml.builder import E
 from markupsafe import Markup
 
-from odoo import api, fields, models, tools, _
+from odoo import api, models, tools, _
+from odoo.ormapping import fields, check_method_name
 from odoo.exceptions import ValidationError, AccessError, UserError
 from odoo.http import request
-from odoo.models import check_method_name
 from odoo.modules.module import get_resource_from_path
 from odoo.osv.expression import expression
 from odoo.conf import config

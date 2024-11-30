@@ -4,7 +4,8 @@
 import re
 from operator import itemgetter
 
-from odoo import api, fields, models, tools, _
+from odoo import api, models, tools, _
+from odoo.ormapping import fields
 from odoo.exceptions import ValidationError
 from odoo.osv import expression
 from odoo.tools import float_compare, format_list, groupby

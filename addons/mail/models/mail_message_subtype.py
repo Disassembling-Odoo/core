@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import api, fields, models, tools
+from odoo import api, models, tools
+from odoo.ormapping import fields
 
 
 class MailMessageSubtype(models.Model):

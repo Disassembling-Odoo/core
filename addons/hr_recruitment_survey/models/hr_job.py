@@ -1,6 +1,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import fields, models, _
+from odoo import models, _
+from odoo.ormapping import fields
 
 
 class Job(models.Model):

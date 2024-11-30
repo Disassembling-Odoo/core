@@ -3,7 +3,8 @@
 from collections import defaultdict
 from dateutil.relativedelta import relativedelta
 
-from odoo import api, fields, models
+from odoo import api, models
+from odoo.ormapping import fields
 
 
 class HrWorkEntry(models.Model):

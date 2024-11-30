@@ -3,7 +3,8 @@
 
 from collections import defaultdict
 
-from odoo import api, fields, models
+from odoo import api, models
+from odoo.ormapping import fields
 from odoo.tools import format_date
 
 from .project_task import CLOSED_STATES

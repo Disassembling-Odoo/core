@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 import base64
 from io import BytesIO
-from odoo import api, fields, models
+from odoo import api, models
+from odoo.ormapping import fields
 
 
 class BaseImportModule(models.TransientModel):

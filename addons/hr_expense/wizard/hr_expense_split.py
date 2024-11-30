@@ -1,7 +1,8 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 from copy import deepcopy
 
-from odoo import fields, models, api, Command
+from odoo import models, api, Command
+from odoo.ormapping import fields
 from odoo.tools import float_compare
 
 

@@ -1,6 +1,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import _, fields, http
+from odoo import _, http
+from odoo.ormapping import fields
 from odoo.exceptions import AccessError, MissingError, ValidationError
 from odoo.http import request
 

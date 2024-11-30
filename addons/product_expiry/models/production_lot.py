@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 import datetime
-from odoo import api, fields, models, SUPERUSER_ID, _
+from odoo import api, models, SUPERUSER_ID, _
+from odoo.ormapping import fields
 
 
 class StockLot(models.Model):

@@ -5,7 +5,7 @@ import werkzeug.urls
 
 from werkzeug.exceptions import NotFound
 
-from odoo import fields
+from odoo.ormapping import fields
 from odoo import http
 from odoo.http import request
 from odoo.addons.portal.controllers.portal import CustomerPortal

@@ -1,4 +1,4 @@
-from odoo import fields
+from odoo.ormapping import fields
 from odoo.addons.website_forum.tests.common import TestForumCommon
 
 

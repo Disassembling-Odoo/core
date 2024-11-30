@@ -3,7 +3,8 @@
 from collections import defaultdict
 from datetime import timedelta
 
-from odoo import api, fields, models, _
+from odoo import api, models, _
+from odoo.ormapping import fields
 from odoo.exceptions import UserError
 from odoo.tools.float_utils import float_compare
 from dateutil.relativedelta import relativedelta

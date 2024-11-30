@@ -7,7 +7,7 @@ from freezegun import freeze_time
 from odoo import Command
 from odoo.addons.event.tests.common import EventCase
 from odoo import exceptions
-from odoo.fields import Datetime as FieldsDatetime
+from odoo.ormapping import Datetime as FieldsDatetime
 from odoo.tests import Form, users, tagged
 from odoo.tools import mute_logger
 
@@ -180,7 +180,7 @@ class TestEventData(TestEventInternalsCommon):
         self.assertFalse(event.is_ongoing)
 
     @users('user_eventmanager')
-    @mute_logger('odoo.models.unlink')
+    @mute_logger('odoo.ormapping.models.unlink')
     def test_event_configuration_from_type(self):
         """ Test data computation of event coming from its event.type template. """
         self.assertEqual(self.env.user.tz, 'Europe/Brussels')

@@ -1,4 +1,5 @@
-from odoo import api, fields, _
+from odoo import api, _
+from odoo.ormapping import fields
 from odoo.exceptions import UserError, AccessDenied
 from odoo.addons.base.models.res_users import CheckIdentity
 

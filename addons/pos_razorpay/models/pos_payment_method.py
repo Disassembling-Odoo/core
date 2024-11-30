@@ -1,5 +1,6 @@
+from odoo.ormapping import fields
 from odoo.exceptions import UserError
-from odoo import fields, models, api, _
+from odoo import models, api, _
 
 from .razorpay_pos_request import RazorpayPosRequest
 

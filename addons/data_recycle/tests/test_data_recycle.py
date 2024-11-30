@@ -3,7 +3,7 @@
 
 from dateutil.relativedelta import relativedelta
 
-from odoo.fields import Date
+from odoo.ormapping import Date
 
 from odoo.tests.common import TransactionCase, tagged
 

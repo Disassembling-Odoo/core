@@ -5,7 +5,7 @@ import io
 
 from PIL import Image
 
-from odoo.fields import Command
+from odoo.ormapping import Command
 from odoo.tests import HttpCase, tagged
 
 

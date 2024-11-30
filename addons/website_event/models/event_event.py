@@ -8,7 +8,8 @@ import werkzeug.urls
 
 from pytz import utc, timezone
 
-from odoo import api, fields, models, _
+from odoo import api, models, _
+from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
 from odoo.osv import expression
 from odoo.tools.misc import get_lang, format_date

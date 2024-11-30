@@ -7,7 +7,8 @@ import time
 
 import dateutil
 
-from odoo import _, api, fields, models
+from odoo import _, api, models
+from odoo.ormapping import fields
 from odoo.exceptions import UserError
 from odoo.tools import split_every
 

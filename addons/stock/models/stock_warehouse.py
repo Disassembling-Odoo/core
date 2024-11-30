@@ -3,7 +3,8 @@
 
 from collections import namedtuple
 
-from odoo import api, fields, models
+from odoo import api, models
+from odoo.ormapping import fields
 from odoo.exceptions import UserError, RedirectWarning
 from odoo.tools import format_list
 from odoo.tools.translate import _, LazyTranslate

@@ -3,7 +3,8 @@
 
 from typing import Dict
 
-from odoo import models, fields, api
+from odoo import models, api
+from odoo.ormapping import fields
 
 
 class PosOrderLine(models.Model):

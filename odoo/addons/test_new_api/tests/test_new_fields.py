@@ -14,7 +14,8 @@ from unittest.mock import patch
 import psycopg2
 import threading
 
-from odoo import models, fields, Command
+from odoo import models, Command
+from odoo.ormapping import fields
 from odoo.addons.base.tests.common import TransactionCaseWithUserDemo
 from odoo.addons.base.tests.test_expression import TransactionExpressionCase
 from odoo.exceptions import AccessError, MissingError, UserError, ValidationError
@@ -237,7 +238,7 @@ class TestFields(TransactionCaseWithUserDemo, TransactionExpressionCase):
             sum(invalid_transitive_depends in get_trigger_tree([field]).root for field in fields.values()), 1
         )
 
-    @mute_logger('odoo.fields')
+    @mute_logger('odoo.ormapping.fields')
     def test_10_computed_stored_x_name(self):
         # create a custom model with two fields
         self.env["ir.model"].create({
@@ -3792,7 +3793,7 @@ class TestHtmlField(TransactionCase):
         new_record.invalidate_recordset()
         new_record.with_user(internal_user).comment5
 
-    @patch('odoo.fields.html_sanitize', return_value='<p>comment</p>')
+    @patch('odoo.ormapping.fields.html_sanitize', return_value='<p>comment</p>')
     def test_onchange_sanitize(self, patch):
         self.assertTrue(self.registry['test_new_api.mixed'].comment2.sanitize)
 
@@ -4430,11 +4431,11 @@ class TestFieldParametersValidation(TransactionCase):
         Foo._build_model(self.registry, self.env.cr)
         self.addCleanup(self.registry.__delitem__, Foo._name)
 
-        with self.assertLogs('odoo.fields', level='WARNING') as cm:
+        with self.assertLogs('odoo.ormapping.fields', level='WARNING') as cm:
             self.registry.setup_models(self.env.cr)
 
         self.assertTrue(cm.output[0].startswith(
-            "WARNING:odoo.fields:Field test_new_api.field_parameter_validation.name: "
+            "WARNING:odoo.ormapping.fields:Field test_new_api.field_parameter_validation.name: "
             "unknown parameter 'invalid_parameter'"
         ))
 

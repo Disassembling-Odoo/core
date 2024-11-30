@@ -3,7 +3,8 @@
 
 import re
 import logging
-from odoo import api, fields, models, tools
+from odoo import api, models, tools
+from odoo.ormapping import fields
 from odoo.osv import expression
 from odoo.exceptions import UserError
 from psycopg2 import IntegrityError

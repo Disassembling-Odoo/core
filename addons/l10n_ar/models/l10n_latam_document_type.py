@@ -1,4 +1,5 @@
-from odoo import models, api, fields, _
+from odoo import models, api, _
+from odoo.ormapping import fields
 from odoo.exceptions import UserError
 
 

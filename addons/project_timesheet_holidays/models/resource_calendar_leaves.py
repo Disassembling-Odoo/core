@@ -4,7 +4,8 @@
 from collections import defaultdict
 from pytz import timezone, utc
 
-from odoo import api, fields, models, _
+from odoo import api, models, _
+from odoo.ormapping import fields
 
 
 class ResourceCalendarLeaves(models.Model):

@@ -3,7 +3,8 @@
 
 from collections import defaultdict
 
-from odoo import _, api, fields, models
+from odoo import _, api, models
+from odoo.ormapping import fields
 from odoo.exceptions import UserError
 from odoo.tools import float_compare, float_is_zero, format_list
 

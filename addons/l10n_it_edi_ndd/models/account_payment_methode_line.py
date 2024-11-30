@@ -1,4 +1,5 @@
-from odoo import fields, models
+from odoo import models
+from odoo.ormapping import fields
 
 L10N_IT_PAYMENT_METHOD_SELECTION = [
     ('MP01', "MP01 - Cash"),

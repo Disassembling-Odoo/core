@@ -4,9 +4,10 @@ import itertools
 import random
 from collections import defaultdict
 
-from odoo import _, api, fields, models
+from odoo import _, api, models
+from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
-from odoo.fields import Command
+from odoo.ormapping import Command
 from odoo.osv import expression
 from odoo.tools import float_round, lazy, str2bool
 

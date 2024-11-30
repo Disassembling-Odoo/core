@@ -5,9 +5,8 @@ from unittest.mock import patch
 
 from freezegun import freeze_time
 
-from odoo import fields
+from odoo.ormapping import fields, Command
 from odoo.exceptions import AccessError, UserError, ValidationError
-from odoo.fields import Command
 from odoo.tests import Form, tagged
 
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon

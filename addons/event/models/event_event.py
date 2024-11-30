@@ -8,7 +8,8 @@ import textwrap
 from datetime import timedelta
 from dateutil.relativedelta import relativedelta
 
-from odoo import _, api, Command, fields, models, tools
+from odoo import _, api, Command, models, tools
+from odoo.ormapping import fields
 from odoo.addons.base.models.res_partner import _tz_get
 from odoo.exceptions import UserError, ValidationError
 from odoo.osv import expression

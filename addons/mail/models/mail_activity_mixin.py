@@ -6,7 +6,8 @@ from datetime import datetime
 import logging
 import pytz
 
-from odoo import api, fields, models
+from odoo import api, models
+from odoo.ormapping import fields, first as fieldsFirst
 from odoo.osv import expression
 from odoo.tools import SQL
 
@@ -194,7 +195,7 @@ class MailActivityMixin(models.AbstractModel):
     @api.depends('activity_ids.date_deadline')
     def _compute_activity_date_deadline(self):
         for record in self:
-            record.activity_date_deadline = fields.first(record.activity_ids).date_deadline
+            record.activity_date_deadline = fieldsFirst(record.activity_ids).date_deadline
 
     def _search_activity_date_deadline(self, operator, operand):
         if operator == '=' and not operand:

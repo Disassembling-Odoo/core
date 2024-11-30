@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import api, fields, models
+from odoo import api, models
+from odoo.ormapping import fields, first as fields_first
 
 class MailActivityMixin(models.AbstractModel):
     _inherit = 'mail.activity.mixin'
@@ -15,4 +16,4 @@ class MailActivityMixin(models.AbstractModel):
         """This computes the calendar event of the next activity.
         It evaluates to false if there is no such event."""
         for record in self:
-            record.activity_calendar_event_id = fields.first(record.activity_ids).calendar_event_id
+            record.activity_calendar_event_id = fields_first(record.activity_ids).calendar_event_id

@@ -8,7 +8,8 @@ from collections import OrderedDict, defaultdict
 from datetime import datetime, timedelta
 from markupsafe import Markup
 
-from odoo import api, fields, models, tools
+from odoo import api, tools
+from odoo.ormapping import models, fields, NewId
 from odoo.addons.iap.tools import iap_tools
 from odoo.addons.mail.tools import mail_validation
 from odoo.addons.phone_validation.tools import phone_validation
@@ -81,7 +82,7 @@ PARTNER_ADDRESS_FIELDS_TO_SYNC = [
 
 # Those values have been determined based on benchmark to minimise
 # computation time, number of transaction and transaction time.
-PLS_COMPUTE_BATCH_STEP = 50000  # odoo.models.PREFETCH_MAX = 1000 but larger cluster can speed up global computation
+PLS_COMPUTE_BATCH_STEP = 50000  # odoo.ormapping.models.PREFETCH_MAX = 1000 but larger cluster can speed up global computation
 PLS_UPDATE_BATCH_STEP = 5000
 
 
@@ -572,7 +573,7 @@ class Lead(models.Model):
             return res if len(res) < SEARCH_RESULT_LIMIT else model
 
         for lead in self:
-            lead_id = lead._origin.id if isinstance(lead.id, models.NewId) else lead.id
+            lead_id = lead._origin.id if isinstance(lead.id, NewId) else lead.id
             common_lead_domain = [
                 ('id', '!=', lead_id)
             ]

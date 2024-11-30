@@ -2,7 +2,7 @@
 from datetime import date, timedelta
 
 from odoo import Command
-from odoo.fields import Date
+from odoo.ormapping import Date
 from odoo.tools import float_is_zero
 from odoo.exceptions import UserError, ValidationError
 from odoo.addons.hr_timesheet.tests.test_timesheet import TestCommonTimesheet

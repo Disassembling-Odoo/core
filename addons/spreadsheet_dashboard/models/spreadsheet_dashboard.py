@@ -1,6 +1,7 @@
 import json
 
-from odoo import _, fields, models
+from odoo import _, models
+from odoo.ormapping import fields
 from odoo.tools import file_open
 
 

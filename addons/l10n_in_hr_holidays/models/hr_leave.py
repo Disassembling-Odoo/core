@@ -2,7 +2,8 @@
 
 from datetime import datetime, timedelta
 
-from odoo import models, fields
+from odoo import models
+from odoo.ormapping import fields
 
 
 class HolidaysRequest(models.Model):

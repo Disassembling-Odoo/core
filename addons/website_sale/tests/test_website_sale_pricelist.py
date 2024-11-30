@@ -2,7 +2,7 @@
 
 from unittest.mock import patch
 
-from odoo.fields import Command
+from odoo.ormapping import Command
 from odoo.tests import tagged
 from odoo.tools import SQL
 

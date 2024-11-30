@@ -4,7 +4,7 @@
 from datetime import timedelta
 
 from odoo.exceptions import UserError
-from odoo.fields import Datetime
+from odoo.ormapping import Datetime
 from odoo.tests import Form, TransactionCase
 from odoo import Command
 

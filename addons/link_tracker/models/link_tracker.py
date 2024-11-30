@@ -7,7 +7,8 @@ import string
 
 from werkzeug import urls
 
-from odoo import tools, models, fields, api, _
+from odoo import tools, models, api, _
+from odoo.ormapping import fields
 from odoo.addons.mail.tools import link_preview
 from odoo.exceptions import UserError
 from odoo.osv import expression

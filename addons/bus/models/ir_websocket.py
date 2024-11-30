@@ -83,7 +83,7 @@ class IrWebsocket(models.AbstractModel):
             A dict containing the following keys:
             - channels (set of str): The list of channels to subscribe to.
             - last (int): The last known notification id.
-            - missed_presences (odoo.models.Recordset): The missed presences.
+            - missed_presences (odoo.ormapping.models.Recordset): The missed presences.
 
         :raise ValueError: If the list of channels is not a list of strings.
         """

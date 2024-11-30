@@ -4,7 +4,8 @@ from base64 import b64encode
 from decorator import decorator
 import uuid
 
-from odoo import _, fields, modules
+from odoo import _, modules
+from odoo.ormapping import fields
 from odoo.tools.misc import file_open
 
 DEMO_BILL_PATH = 'account_peppol/tools/demo_bill'

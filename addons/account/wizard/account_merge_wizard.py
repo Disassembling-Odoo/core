@@ -1,6 +1,7 @@
 import json
 
-from odoo import _, api, fields, models, Command
+from odoo import _, api, models, Command
+from odoo.ormapping import fields
 from odoo.exceptions import UserError
 from odoo.tools import SQL
 

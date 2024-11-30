@@ -4,7 +4,8 @@
 from datetime import timedelta, datetime, time
 from collections import defaultdict
 
-from odoo import api, fields, models
+from odoo import api, models
+from odoo.ormapping import fields
 
 
 class ResPartner(models.Model):

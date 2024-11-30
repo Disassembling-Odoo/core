@@ -5,7 +5,8 @@ from datetime import timedelta
 from dateutil.relativedelta import relativedelta
 from werkzeug.urls import url_encode
 
-from odoo import api, fields, models
+from odoo import api, models
+from odoo.ormapping import fields
 from odoo.osv import expression
 from odoo.tools import format_amount, formatLang
 

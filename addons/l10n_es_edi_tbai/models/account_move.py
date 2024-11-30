@@ -6,7 +6,8 @@ from collections import defaultdict
 from markupsafe import Markup
 from psycopg2.errors import LockNotAvailable
 
-from odoo import _, api, fields, models
+from odoo import _, api, models
+from odoo.ormapping import fields
 from odoo.exceptions import UserError
 
 TBAI_REFUND_REASONS = [

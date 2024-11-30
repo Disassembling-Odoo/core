@@ -8,7 +8,8 @@ import json
 import operator
 from textwrap import shorten
 
-from odoo import api, fields, models, tools, _
+from odoo import api, models, tools, _
+from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
 
 

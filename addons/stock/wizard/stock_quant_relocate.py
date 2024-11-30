@@ -3,7 +3,8 @@
 
 from ast import literal_eval
 
-from odoo import fields, models, api
+from odoo import models, api
+from odoo.ormapping import fields
 
 
 class RelocateStockQuant(models.TransientModel):

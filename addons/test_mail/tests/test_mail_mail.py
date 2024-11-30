@@ -14,7 +14,8 @@ from OpenSSL.SSL import Error as SSLError
 from socket import gaierror, timeout
 from unittest.mock import call, patch, PropertyMock
 
-from odoo import api, Command, fields, SUPERUSER_ID
+from odoo import api, Command, SUPERUSER_ID
+from odoo.ormapping import fields
 from odoo.addons.base.models.ir_mail_server import MailDeliveryException
 from odoo.addons.mail.tests.common import MailCommon
 from odoo.exceptions import AccessError

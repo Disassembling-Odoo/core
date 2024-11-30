@@ -1,6 +1,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import fields, models
+from odoo import models
+from odoo.ormapping import fields
 
 
 class ProductTemplate(models.Model):

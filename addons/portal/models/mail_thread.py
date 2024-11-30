@@ -3,7 +3,8 @@
 import hashlib
 import hmac
 
-from odoo import api, fields, models, _
+from odoo import api, models, _
+from odoo.ormapping import fields
 from odoo.addons.portal.utils import validate_thread_with_hash_pid, validate_thread_with_token
 
 

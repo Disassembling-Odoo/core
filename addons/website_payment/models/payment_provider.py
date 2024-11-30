@@ -2,7 +2,8 @@
 
 from werkzeug.urls import iri_to_uri
 
-from odoo import api, fields, models
+from odoo import api, models
+from odoo.ormapping import fields
 from odoo.http import request
 
 from odoo.addons.payment import utils as payment_utils

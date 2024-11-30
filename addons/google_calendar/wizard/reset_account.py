@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import fields, models
+from odoo import models
 
+from odoo.ormapping import fields
 from odoo.addons.google_calendar.models.google_sync import google_calendar_token
 from odoo.addons.google_calendar.utils.google_calendar import GoogleCalendarService
 

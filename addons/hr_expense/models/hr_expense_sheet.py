@@ -1,6 +1,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import api, fields, Command, models, _
+from odoo import api, Command, models, _
+from odoo.ormapping import fields
 from odoo.exceptions import AccessError, UserError, ValidationError, RedirectWarning
 from odoo.tools.misc import clean_context
 from odoo.tools import format_date

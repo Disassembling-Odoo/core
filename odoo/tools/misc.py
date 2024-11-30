@@ -1421,13 +1421,13 @@ def format_date(
             return ''
         if len(value) > DATE_LENGTH:
             # a datetime, convert to correct timezone
-            value = odoo.fields.Datetime.from_string(value)
-            value = odoo.fields.Datetime.context_timestamp(env['res.lang'], value)
+            value = odoo.ormapping.fields.Datetime.from_string(value)
+            value = odoo.ormapping.fields.Datetime.context_timestamp(env['res.lang'], value)
         else:
-            value = odoo.fields.Datetime.from_string(value)
+            value = odoo.ormapping.fields.Datetime.from_string(value)
     elif isinstance(value, datetime.datetime) and not value.tzinfo:
         # a datetime, convert to correct timezone
-        value = odoo.fields.Datetime.context_timestamp(env['res.lang'], value)
+        value = odoo.ormapping.fields.Datetime.context_timestamp(env['res.lang'], value)
 
     lang = get_lang(env, lang_code)
     locale = babel_locale_parse(lang.code)
@@ -1477,7 +1477,7 @@ def format_datetime(
     if not value:
         return ''
     if isinstance(value, str):
-        timestamp = odoo.fields.Datetime.from_string(value)
+        timestamp = odoo.ormapping.fields.Datetime.from_string(value)
     else:
         timestamp = value
 
@@ -1531,7 +1531,7 @@ def format_time(
         localized_time = value
     else:
         if isinstance(value, str):
-            value = odoo.fields.Datetime.from_string(value)
+            value = odoo.ormapping.fields.Datetime.from_string(value)
         assert isinstance(value, datetime.datetime)
         tz_name = tz or env.user.tz or 'UTC'
         utc_datetime = pytz.utc.localize(value, is_dst=False)

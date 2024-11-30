@@ -1,4 +1,5 @@
-from odoo import Command, fields
+from odoo import Command
+from odoo.ormapping import fields
 from odoo.tests import tagged
 from odoo.tools import float_compare
 from .common import PurchaseTestCommon

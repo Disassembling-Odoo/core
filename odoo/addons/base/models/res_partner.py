@@ -14,7 +14,8 @@ from collections import defaultdict
 from random import randint
 from werkzeug import urls
 
-from odoo import api, fields, models, tools, SUPERUSER_ID, _, Command
+from odoo import api, models, tools, SUPERUSER_ID, _, Command
+from odoo.ormapping import fields
 from odoo.exceptions import RedirectWarning, UserError, ValidationError
 
 import typing

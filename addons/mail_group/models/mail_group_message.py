@@ -5,7 +5,8 @@ import logging
 
 from markupsafe import Markup
 
-from odoo import _, api, fields, models
+from odoo import _, api, models
+from odoo.ormapping import fields
 from odoo.exceptions import AccessError, UserError
 from odoo.osv import expression
 from odoo.tools.mail import email_normalize, append_content_to_html

@@ -5,8 +5,8 @@ from datetime import timedelta
 
 from odoo.tests import Form, TransactionCase, tagged
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon
-from odoo import fields
-from odoo.fields import Command
+from odoo.ormapping import fields
+from odoo.ormapping import Command
 
 
 @tagged('post_install', '-at_install')

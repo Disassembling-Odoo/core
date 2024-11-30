@@ -108,7 +108,7 @@ class TestMailSchedule(EventCase, MockEmail, CronMixinCase):
         self.assertEqual(event_next_scheduler.mail_state, 'scheduled')
         self.assertEqual(event_next_scheduler.mail_count_done, 0)
 
-    @mute_logger('odoo.addons.base.models.ir_model', 'odoo.models')
+    @mute_logger('odoo.addons.base.models.ir_model', 'odoo.ormapping.models')
     @users('user_eventmanager')
     def test_event_mail_schedule(self):
         """ Test mail scheduling for events """
@@ -464,7 +464,7 @@ class TestMailSchedule(EventCase, MockEmail, CronMixinCase):
         self.template_subscription.sudo().unlink()
         self.assertFalse(after_sub_scheduler.exists(), "When removing template, scheduler should be removed")
 
-    @mute_logger('odoo.addons.base.models.ir_model', 'odoo.models')
+    @mute_logger('odoo.addons.base.models.ir_model', 'odoo.ormapping.models')
     @users('user_eventmanager')
     @warmup
     def test_event_mail_schedule_on_subscription(self):
@@ -519,7 +519,7 @@ class TestMailSchedule(EventCase, MockEmail, CronMixinCase):
         self.assertEqual(self.mail_mail_create_mocked.call_count, 1,
                          'EventMail: should create mails in batch for new registrations')
 
-    @mute_logger('odoo.addons.base.models.ir_model', 'odoo.models')
+    @mute_logger('odoo.addons.base.models.ir_model', 'odoo.ormapping.models')
     @users('user_eventmanager')
     def test_event_mail_schedule_on_subscription_async(self):
         """ Async mode for schedulers activated, should not send communication
@@ -557,7 +557,7 @@ class TestMailSchedule(EventCase, MockEmail, CronMixinCase):
                 'subject': f'Confirmation for {test_event.name}',
             })
 
-    @mute_logger('odoo.addons.base.models.ir_model', 'odoo.models')
+    @mute_logger('odoo.addons.base.models.ir_model', 'odoo.ormapping.models')
     def test_unique_event_mail_ids(self):
         # create event with default event_mail_ids lines
         test_event = self.env['event.event'].with_user(self.user_eventmanager).create({
@@ -612,7 +612,7 @@ class TestMailSchedule(EventCase, MockEmail, CronMixinCase):
         self.assertEqual(len(duplicate_mails), 0,
             "The duplicate configuration (first one from event_type.event_type_mail_ids which has same configuration as the sent one) should not have been added")
 
-    @mute_logger('odoo.addons.base.models.ir_model', 'odoo.models')
+    @mute_logger('odoo.addons.base.models.ir_model', 'odoo.ormapping.models')
     def test_archived_event_mail_schedule(self):
         """ Test mail scheduling for archived events """
         event_cron_id = self.env.ref('event.event_mail_scheduler')

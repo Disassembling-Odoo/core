@@ -4,7 +4,8 @@ import ast
 import json
 from datetime import timedelta
 
-from odoo import api, Command, fields, models
+from odoo import api, Command, models
+from odoo.ormapping import fields
 from odoo.addons.mail.tools.discuss import Store
 from odoo.addons.rating.models import rating_data
 from odoo.exceptions import UserError

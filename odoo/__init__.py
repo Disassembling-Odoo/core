@@ -67,11 +67,10 @@ from . import tools
 # ----------------------------------------------------------
 # Model classes, fields, api decorators, and translations
 # ----------------------------------------------------------
-from . import models
-from . import fields
+from .ormapping import *
 from . import api
 from odoo.tools.translate import _, _lt
-from odoo.fields import Command
+from odoo.ormapping import Command
 
 # ----------------------------------------------------------
 # Other imports, which may require stuff from above

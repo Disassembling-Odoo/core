@@ -4,7 +4,8 @@ import ast
 import json
 from collections import defaultdict
 
-from odoo import api, fields, models
+from odoo import api, models
+from odoo.ormapping import fields
 from odoo.osv import expression
 from odoo.tools import Query, SQL
 from odoo.tools.misc import unquote

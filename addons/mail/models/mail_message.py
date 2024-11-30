@@ -6,7 +6,8 @@ import textwrap
 from binascii import Error as binascii_error
 from collections import defaultdict
 
-from odoo import _, api, fields, models, modules, tools
+from odoo import _, api, models, modules, tools
+from odoo.ormapping import fields
 from odoo.exceptions import AccessError
 from odoo.osv import expression
 from odoo.tools import clean_context, format_list, groupby, SQL

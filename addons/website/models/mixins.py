@@ -5,7 +5,8 @@ import re
 
 from werkzeug.urls import url_join
 
-from odoo import api, fields, models, _
+from odoo import api, models, _
+from odoo.ormapping import fields
 from odoo.addons.website.tools import text_from_html
 from odoo.http import request
 from odoo.osv import expression

@@ -1,7 +1,8 @@
 from importlib import import_module
 from inspect import getmembers, ismodule, isclass, isfunction
 
-from odoo import api, models, fields
+from odoo import api, models
+from odoo.ormapping import fields
 from odoo.tools.misc import get_flag
 
 

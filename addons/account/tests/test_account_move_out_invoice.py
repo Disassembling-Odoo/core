@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 # pylint: disable=bad-whitespace
+from odoo.ormapping import fields
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon
 from odoo.tests import Form, tagged
-from odoo import fields, Command
+from odoo import Command
 from odoo.exceptions import UserError
 
 from collections import defaultdict

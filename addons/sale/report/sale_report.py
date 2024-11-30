@@ -1,7 +1,8 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import api, fields, models
+from odoo import api, models
 
+from odoo.ormapping import fields
 from odoo.addons.sale.models.sale_order import SALE_ORDER_STATE
 
 

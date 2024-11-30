@@ -14,7 +14,8 @@ import json
 import operator
 import pytz
 
-from odoo import exceptions, http, fields, tools, _
+from odoo import exceptions, http, tools, _
+from odoo.ormapping import fields
 from odoo.http import request
 from odoo.osv import expression
 from odoo.tools import is_html_empty, plaintext2html

@@ -4,7 +4,8 @@ import logging
 
 from dateutil.relativedelta import relativedelta
 from datetime import datetime
-from odoo import models, fields, api
+from odoo import models, api
+from odoo.ormapping import fields
 
 _logger = logging.getLogger(__name__)
 

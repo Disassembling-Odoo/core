@@ -1,6 +1,6 @@
 from datetime import timedelta
 
-from odoo import fields
+from odoo.ormapping import fields
 from odoo.exceptions import UserError
 from odoo.tests import tagged
 from odoo.addons.account.tests.test_account_move_send import TestAccountMoveSendCommon

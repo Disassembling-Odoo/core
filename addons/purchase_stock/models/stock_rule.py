@@ -4,9 +4,10 @@
 from collections import defaultdict
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
+from odoo.ormapping import fields
 from odoo.tools import float_compare
 
-from odoo import api, fields, models, SUPERUSER_ID, _
+from odoo import api, models, SUPERUSER_ID, _
 from odoo.addons.stock.models.stock_rule import ProcurementException
 from odoo.tools import groupby
 

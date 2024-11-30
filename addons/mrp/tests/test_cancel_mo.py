@@ -4,7 +4,7 @@
 from odoo.tests import Form
 from datetime import datetime, timedelta
 
-from odoo.fields import Datetime as Dt
+from odoo.ormapping import Datetime as Dt
 from odoo.exceptions import UserError
 from odoo.addons.mrp.tests.common import TestMrpCommon
 

@@ -7,14 +7,15 @@ from collections import defaultdict
 from datetime import timedelta
 from itertools import groupby
 
-from odoo import SUPERUSER_ID, _, api, fields, models
+from odoo import SUPERUSER_ID, _, api, models
+from odoo.ormapping import fields
 from odoo.exceptions import (
     AccessError,
     RedirectWarning,
     UserError,
     ValidationError,
 )
-from odoo.fields import Command
+from odoo.ormapping import Command
 from odoo.http import request
 from odoo.osv import expression
 from odoo.tools import (

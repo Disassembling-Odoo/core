@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import fields, models
+from odoo import models
+from odoo.ormapping import fields
 from odoo.tools.sql import drop_view_if_exists, SQL
 
 

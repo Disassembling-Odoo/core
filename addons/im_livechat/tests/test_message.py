@@ -3,7 +3,8 @@
 from freezegun import freeze_time
 from markupsafe import Markup
 
-from odoo import Command, fields
+from odoo import Command
+from odoo.ormapping import fields
 from odoo.exceptions import AccessError
 from odoo.tests.common import users, tagged, HttpCase
 from odoo.addons.mail.tests.common import MailCommon

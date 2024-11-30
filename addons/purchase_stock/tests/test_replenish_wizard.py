@@ -4,7 +4,7 @@ from freezegun import freeze_time
 
 from odoo.addons.stock.tests.common import TestStockCommon
 
-from odoo import fields
+from odoo.ormapping import fields
 
 
 class TestReplenishWizard(TestStockCommon):

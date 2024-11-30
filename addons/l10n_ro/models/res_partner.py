@@ -7,7 +7,8 @@
 # Copyright (C) 2011 TOTAL PC SYSTEMS (http://www.erpsystems.ro).
 # Copyright (C) 2009 (<http://www.filsystem.ro>)
 
-from odoo import api, fields, models
+from odoo import api, models
+from odoo.ormapping import fields
 
 
 class ResPartner(models.Model):

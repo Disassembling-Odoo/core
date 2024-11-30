@@ -3,9 +3,10 @@
 import odoo
 from uuid import uuid4
 
+from odoo.ormapping import fields
 from odoo.addons.point_of_sale.tests.test_frontend import TestPointOfSaleHttpCommon
 from odoo.tests import Form
-from odoo import fields, Command
+from odoo import Command
 from odoo.tools import format_date
 
 @odoo.tests.tagged('post_install', '-at_install')

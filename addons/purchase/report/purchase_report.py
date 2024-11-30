@@ -5,7 +5,8 @@
 # Please note that these reports are not multi-currency !!!
 #
 
-from odoo import fields, models, api
+from odoo import models, api
+from odoo.ormapping import fields
 from odoo.tools.query import Query
 from odoo.tools.sql import SQL
 

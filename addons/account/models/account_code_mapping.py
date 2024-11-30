@@ -1,4 +1,5 @@
-from odoo import fields, models, api
+from odoo import models, api
+from odoo.ormapping import fields
 from odoo.tools import Query
 
 COMPANY_OFFSET = 10000

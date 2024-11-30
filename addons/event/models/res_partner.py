@@ -8,7 +8,8 @@ import hmac
 import requests
 import werkzeug.urls
 
-from odoo import api, fields, models
+from odoo import api, models
+from odoo.ormapping import fields
 
 
 class ResPartner(models.Model):

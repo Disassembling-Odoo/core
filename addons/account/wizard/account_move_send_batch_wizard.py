@@ -1,4 +1,5 @@
-from odoo import _, api, Command, fields, models
+from odoo import _, api, Command, models
+from odoo.ormapping import fields
 
 
 class AccountMoveSendBatchWizard(models.TransientModel):

@@ -1,4 +1,5 @@
-from odoo import _, api, fields, models, Command
+from odoo import _, api, models, Command
+from odoo.ormapping import fields
 from odoo.osv import expression
 from odoo.tools import create_index
 from odoo.tools.misc import format_datetime

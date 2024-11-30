@@ -4,7 +4,8 @@
 
 import base64
 
-from odoo import api, fields, models
+from odoo import api, models
+from odoo.ormapping import fields
 from odoo.exceptions import ValidationError
 from odoo.tools.image import ImageProcess
 from odoo.tools.translate import _

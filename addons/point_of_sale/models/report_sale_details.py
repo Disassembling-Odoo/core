@@ -4,7 +4,8 @@ from datetime import timedelta
 
 import pytz
 
-from odoo import api, fields, models, _
+from odoo import api, models, _
+from odoo.ormapping import fields
 from odoo.osv.expression import AND
 from odoo.tools import SQL
 

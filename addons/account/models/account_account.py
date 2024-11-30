@@ -5,7 +5,8 @@ import itertools
 import re
 import json
 
-from odoo import api, fields, models, _, Command
+from odoo import api, models, _, Command
+from odoo.ormapping import fields
 from odoo.osv import expression
 from odoo.exceptions import UserError, ValidationError, RedirectWarning
 from odoo.tools import SQL, Query

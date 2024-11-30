@@ -1,4 +1,4 @@
-from odoo.fields import Command
+from odoo.ormapping import Command
 
 
 def setup_product_combo_items(self):

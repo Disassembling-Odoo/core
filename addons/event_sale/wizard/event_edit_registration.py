@@ -2,7 +2,8 @@
 
 from collections import Counter, defaultdict
 
-from odoo import models, fields, api
+from odoo import models, api
+from odoo.ormapping import fields
 from odoo.exceptions import ValidationError
 
 

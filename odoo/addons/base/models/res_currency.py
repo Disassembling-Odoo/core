@@ -6,7 +6,8 @@ import math
 
 from lxml import etree
 
-from odoo import api, fields, models, tools, _
+from odoo import api, models, tools, _
+from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
 from odoo.tools import parse_date
 

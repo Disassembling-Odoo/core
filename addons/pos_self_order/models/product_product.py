@@ -1,7 +1,8 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 from __future__ import annotations
 from typing import List, Dict
-from odoo import api, models, fields
+from odoo import api, models
+from odoo.ormapping import fields
 
 
 class ProductTemplate(models.Model):

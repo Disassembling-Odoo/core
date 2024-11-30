@@ -5,7 +5,8 @@ import logging
 import time
 from markupsafe import Markup
 
-from odoo import api, fields, models, Command, _
+from odoo import api, models, Command, _
+from odoo.ormapping import fields
 
 _logger = logging.getLogger(__name__)
 

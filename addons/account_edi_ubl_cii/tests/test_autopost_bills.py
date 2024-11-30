@@ -1,7 +1,7 @@
 import base64
 from datetime import datetime
 
-from odoo import fields
+from odoo.ormapping import fields
 from odoo.tests import tagged
 from odoo.tools import file_open
 

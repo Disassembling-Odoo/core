@@ -1,6 +1,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import fields, models, tools
+from odoo import models, tools
+from odoo.ormapping import fields
 
 class HrEmployeeSkillReport(models.BaseModel):
     _auto = False

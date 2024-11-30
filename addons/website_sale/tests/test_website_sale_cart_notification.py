@@ -1,6 +1,6 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo.fields import Command
+from odoo.ormapping import Command
 from odoo.tests import HttpCase, tagged
 
 from odoo.addons.product.tests.common import ProductAttributesCommon

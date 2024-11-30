@@ -1,4 +1,5 @@
-from odoo import Command, models, fields, api, _
+from odoo import Command, models, api, _
+from odoo.ormapping import fields
 from odoo.addons.account.models.exceptions import TaxClosingNonPostedDependingMovesError
 from odoo.exceptions import UserError
 

@@ -4,7 +4,8 @@
 import logging
 import re
 
-from odoo import api, fields, models, _
+from odoo import api, models, _
+from odoo.ormapping import fields
 from odoo.exceptions import UserError
 
 _logger = logging.getLogger(__name__)

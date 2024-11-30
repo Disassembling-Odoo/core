@@ -10,7 +10,8 @@ from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta
 
 import odoo
-from odoo import api, fields, models, _
+from odoo import api, models, _
+from odoo.ormapping import fields
 from odoo.exceptions import UserError
 from odoo.modules.registry import Registry
 from odoo.tools import SQL

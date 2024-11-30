@@ -3,7 +3,8 @@
 
 import logging
 
-from odoo import api, fields, models
+from odoo import api, models
+from odoo.ormapping import fields
 from odoo.tools import email_normalize
 
 _logger = logging.getLogger(__name__)

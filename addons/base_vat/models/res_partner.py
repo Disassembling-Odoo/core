@@ -9,7 +9,8 @@ from stdnum import luhn
 
 import logging
 
-from odoo import api, models, fields
+from odoo import api, models
+from odoo.ormapping import fields
 from odoo.tools import _, zeep, LazyTranslate
 from odoo.exceptions import ValidationError
 

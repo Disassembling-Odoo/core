@@ -1,4 +1,5 @@
-from odoo import tools, fields
+from odoo import tools
+from odoo.ormapping import fields
 from odoo.tests.common import tagged
 from odoo.addons.l10n_hu_edi.tests.common import L10nHuEdiTestCommon
 

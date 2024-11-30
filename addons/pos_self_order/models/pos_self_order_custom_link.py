@@ -2,8 +2,10 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 
-from odoo import fields, models, api
+from odoo import models, api
 from markupsafe import escape
+
+from odoo.ormapping import fields
 
 
 class PosSelfOrderCustomLink(models.Model):

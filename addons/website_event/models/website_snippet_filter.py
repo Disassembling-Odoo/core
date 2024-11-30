@@ -3,7 +3,8 @@
 
 from datetime import timedelta
 
-from odoo import models, fields, _
+from odoo import models, _
+from odoo.ormapping import fields
 
 
 class WebsiteSnippetFilter(models.Model):

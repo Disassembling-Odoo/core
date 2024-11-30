@@ -4,7 +4,8 @@ from collections import defaultdict
 from datetime import timedelta, datetime, date
 import calendar
 
-from odoo import fields, models, api, _, Command
+from odoo import models, api, _, Command
+from odoo.ormapping import fields
 from odoo.exceptions import ValidationError, UserError, RedirectWarning
 from odoo.osv import expression
 from odoo.tools import date_utils, format_list, SQL

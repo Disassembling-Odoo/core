@@ -7,7 +7,8 @@ from ast import literal_eval
 from collections import defaultdict
 from psycopg2 import Error
 
-from odoo import _, api, fields, models, SUPERUSER_ID
+from odoo import _, api, models, SUPERUSER_ID
+from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
 from odoo.osv import expression
 from odoo.tools import SQL, check_barcode_encoding, format_list, groupby

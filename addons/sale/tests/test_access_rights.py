@@ -49,7 +49,7 @@ class TestAccessRights(BaseUsersCommon, SaleCommon):
         # Manager can confirm the SO
         sale_order.action_confirm()
         # Manager can not delete confirmed SO
-        with self.assertRaises(UserError), mute_logger('odoo.models.unlink'):
+        with self.assertRaises(UserError), mute_logger('odoo.ormapping.models.unlink'):
             sale_order.unlink()
 
         # Manager can delete the SO of other salesperson if SO is in 'draft' or 'cancel' state

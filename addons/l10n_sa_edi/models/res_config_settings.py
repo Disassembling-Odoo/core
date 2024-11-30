@@ -1,4 +1,5 @@
-from odoo import models, fields, api, _
+from odoo import models, api, _
+from odoo.ormapping import fields
 
 
 class ResConfigSettings(models.TransientModel):

@@ -22,7 +22,8 @@ import requests
 from PIL import Image
 
 from collections import defaultdict
-from odoo import api, fields, models
+from odoo import api, models
+from odoo.ormapping import fields
 from odoo.conf import config
 from odoo.exceptions import UserError
 from odoo.tools.translate import _

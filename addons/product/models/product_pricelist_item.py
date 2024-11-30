@@ -1,6 +1,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import SUPERUSER_ID, _, api, fields, models, tools
+from odoo import SUPERUSER_ID, _, api, models, tools
+from odoo.ormapping import fields
 from odoo.exceptions import ValidationError
 from odoo.tools import format_amount, format_datetime, formatLang
 

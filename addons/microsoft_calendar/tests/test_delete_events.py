@@ -2,7 +2,7 @@
 from unittest.mock import patch, ANY, call
 from datetime import timedelta
 
-from odoo import fields
+from odoo.ormapping import fields
 
 from odoo.exceptions import UserError
 from odoo.addons.microsoft_calendar.utils.microsoft_calendar import MicrosoftCalendarService

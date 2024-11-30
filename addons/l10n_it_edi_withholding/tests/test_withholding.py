@@ -4,7 +4,7 @@
 import datetime
 from collections import namedtuple
 
-from odoo import fields
+from odoo.ormapping import fields
 from odoo.tests import tagged
 from odoo.exceptions import ValidationError
 from odoo.addons.l10n_it_edi.tests.common import TestItEdi

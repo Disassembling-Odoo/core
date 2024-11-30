@@ -2,8 +2,9 @@
 
 import re
 
+from odoo.ormapping import fields
 from odoo.addons.website.tools import text_from_html
-from odoo import api, fields, models
+from odoo import api, models
 from odoo.osv import expression
 from odoo.tools import escape_psql, SQL
 from odoo.tools.translate import _

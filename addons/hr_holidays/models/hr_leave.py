@@ -8,9 +8,10 @@ from dateutil.relativedelta import relativedelta
 from math import ceil
 from pytz import timezone, UTC
 
+from odoo.ormapping import fields
 from odoo.addons.base.models.ir_model import MODULE_UNINSTALL_FLAG
 
-from odoo import api, Command, fields, models, tools
+from odoo import api, Command, models, tools
 from odoo.addons.base.models.res_partner import _tz_get
 from odoo.addons.resource.models.utils import float_to_time, HOURS_PER_DAY
 from odoo.exceptions import AccessError, UserError, ValidationError

@@ -4,7 +4,7 @@
 from datetime import datetime, timedelta
 
 from odoo.addons.event_booth.tests.common import TestEventBoothCommon
-from odoo.fields import Datetime as FieldsDatetime
+from odoo.ormapping import Datetime as FieldsDatetime
 from odoo.tests.common import users, tagged
 
 

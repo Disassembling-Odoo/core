@@ -1,7 +1,7 @@
 from freezegun import freeze_time
 
 from odoo import _
-from odoo.fields import Command
+from odoo.ormapping import Command
 from odoo.tests import tagged
 
 from odoo.addons.l10n_in.tests.common import L10nInTestInvoicingCommon

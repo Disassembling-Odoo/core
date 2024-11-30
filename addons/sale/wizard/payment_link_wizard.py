@@ -3,7 +3,8 @@
 
 from werkzeug import urls
 
-from odoo import _, api, fields, models
+from odoo import _, api, models
+from odoo.ormapping import fields
 from odoo.tools import format_amount
 
 

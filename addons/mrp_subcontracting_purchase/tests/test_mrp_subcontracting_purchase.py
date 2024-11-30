@@ -7,7 +7,7 @@ from freezegun import freeze_time
 
 from odoo import Command
 from odoo.exceptions import UserError
-from odoo.fields import Date
+from odoo.ormapping import Date
 from odoo.tests import Form, tagged, loaded_demo_data
 
 from odoo.addons.mrp_subcontracting.tests.common import TestMrpSubcontractingCommon

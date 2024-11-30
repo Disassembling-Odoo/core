@@ -1,4 +1,5 @@
-from odoo import _, api, fields, models
+from odoo import _, api, models
+from odoo.ormapping import fields
 
 
 class ProductTemplate(models.Model):

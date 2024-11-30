@@ -8,7 +8,8 @@ import pytz
 from dateutil.parser import parse
 from datetime import timedelta
 
-from odoo import api, fields, models
+from odoo import api, models
+from odoo.ormapping import fields
 from odoo.modules.registry import Registry
 from odoo.osv import expression
 

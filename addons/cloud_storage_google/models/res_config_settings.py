@@ -5,13 +5,15 @@ import json
 import requests
 from datetime import datetime, timezone
 
+from odoo.ormapping import fields
+
 try:
     from google.oauth2 import service_account
     from google.auth.transport.requests import Request
 except ImportError:
     service_account = Request = None
 
-from odoo import models, fields, api, _
+from odoo import models, api, _
 from odoo.exceptions import ValidationError, UserError
 
 from .ir_attachment import get_cloud_storage_google_credential

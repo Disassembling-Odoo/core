@@ -12,7 +12,7 @@ from collections import defaultdict
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from odoo.fields import Field
+    from odoo.ormapping import Field
     from collections.abc import Iterable
 
 import psycopg2

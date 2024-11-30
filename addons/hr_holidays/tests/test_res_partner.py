@@ -6,7 +6,8 @@ from dateutil.relativedelta import relativedelta
 
 from freezegun import freeze_time
 
-from odoo import Command, fields
+from odoo import Command
+from odoo.ormapping import fields
 from odoo.tests.common import tagged, TransactionCase
 from odoo.addons.mail.tools.discuss import Store
 

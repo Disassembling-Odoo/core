@@ -5,7 +5,7 @@ from unittest.mock import patch
 
 from lxml import objectify
 
-from odoo.fields import Command
+from odoo.ormapping import Command
 from odoo.osv.expression import AND
 from odoo.tools.misc import hmac as hmac_tool
 

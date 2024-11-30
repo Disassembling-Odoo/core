@@ -7,7 +7,8 @@ from datetime import datetime, time
 from dateutil.relativedelta import relativedelta
 
 
-from odoo import api, fields, models, SUPERUSER_ID, _
+from odoo import api, models, SUPERUSER_ID, _
+from odoo.ormapping import fields
 from odoo.osv.expression import AND
 from odoo.tools.date_utils import get_month, subtract
 from odoo.tools.float_utils import float_compare

@@ -1,6 +1,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import _, fields
+from odoo import _
+from odoo.ormapping import fields
 from odoo.http import request, route
 
 from odoo.addons.portal.controllers.portal import CustomerPortal

@@ -5,7 +5,8 @@ from collections import defaultdict
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
-from odoo import api, fields, models, SUPERUSER_ID, _
+from odoo import api, models, SUPERUSER_ID, _
+from odoo.ormapping import fields
 from odoo.osv import expression
 from odoo.tools import float_compare, OrderedSet
 

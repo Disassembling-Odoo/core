@@ -14,8 +14,7 @@ from datetime import datetime, date
 from lxml import etree
 
 import odoo
-from odoo.models import BaseModel
-from odoo.fields import Command
+from odoo.ormapping import BaseModel, Command
 from odoo.tools.safe_eval import safe_eval
 
 _logger = logging.getLogger(__name__)
@@ -39,7 +38,7 @@ class Form:
     when the form has no pending changes.
 
     Regular fields can just be assigned directly to the form. In the case
-    of :class:`~odoo.fields.Many2one` fields, one can assign a recordset::
+    of :class:`~odoo.ormapping.fields.Many2one` fields, one can assign a recordset::
 
         # empty recordset => creation mode
         f = Form(self.env['sale.order'])
@@ -61,7 +60,7 @@ class Form:
             f2.payment_term_id = env.ref('account.account_payment_term_15days')
             # f2 is saved here
 
-    For :class:`~odoo.fields.Many2many` fields, the field itself is a
+    For :class:`~odoo.ormapping.fields.Many2many` fields, the field itself is a
     :class:`~odoo.tests.common.M2MProxy` and can be altered by adding or
     removing records::
 
@@ -69,9 +68,9 @@ class Form:
             u.groups_id.add(env.ref('account.group_account_manager'))
             u.groups_id.remove(id=env.ref('base.group_portal').id)
 
-    Finally :class:`~odoo.fields.One2many` are reified as :class:`~O2MProxy`.
+    Finally :class:`~odoo.ormapping.fields.One2many` are reified as :class:`~O2MProxy`.
 
-    Because the :class:`~odoo.fields.One2many` only exists through its parent,
+    Because the :class:`~odoo.ormapping.fields.One2many` only exists through its parent,
     it is manipulated more directly by creating "sub-forms" with
     the :meth:`~O2MProxy.new` and :meth:`~O2MProxy.edit` methods. These would
     normally be used as context managers since they get saved in the parent
@@ -866,7 +865,7 @@ class O2MProxy(X2MProxy):
 
     def new(self):
         """ Returns a :class:`Form` for a new
-        :class:`~odoo.fields.One2many` record, properly initialised.
+        :class:`~odoo.ormapping.fields.One2many` record, properly initialised.
 
         The form is created from the list view if editable, or the field's
         form view otherwise.
@@ -878,7 +877,7 @@ class O2MProxy(X2MProxy):
 
     def edit(self, index):
         """ Returns a :class:`Form` to edit the pre-existing
-        :class:`~odoo.fields.One2many` record.
+        :class:`~odoo.ormapping.fields.One2many` record.
 
         The form is created from the list view if editable, or the field's
         form view otherwise.
@@ -982,9 +981,9 @@ def convert_read_to_form(values, fields):
         elif field_info['type'] == 'many2many':
             value = M2MValue({'id': id_} for id_ in (value or ()))
         elif field_info['type'] == 'datetime' and isinstance(value, datetime):
-            value = odoo.fields.Datetime.to_string(value)
+            value = odoo.ormapping.fields.Datetime.to_string(value)
         elif field_info['type'] == 'date' and isinstance(value, date):
-            value = odoo.fields.Date.to_string(value)
+            value = odoo.ormapping.fields.Date.to_string(value)
         result[fname] = value
     return result
 
@@ -1003,9 +1002,9 @@ def _cleanup_from_default(type_, value):
         assert False, "not implemented yet"
         return [cmd for cmd in value if cmd[0] != Command.SET]
     elif type_ == 'datetime' and isinstance(value, datetime):
-        return odoo.fields.Datetime.to_string(value)
+        return odoo.ormapping.fields.Datetime.to_string(value)
     elif type_ == 'date' and isinstance(value, date):
-        return odoo.fields.Date.to_string(value)
+        return odoo.ormapping.fields.Date.to_string(value)
     return value
 
 

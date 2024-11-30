@@ -4,7 +4,8 @@
 from datetime import timedelta
 
 
-from odoo import api, fields, models, _
+from odoo import api, models, _
+from odoo.ormapping import fields
 
 
 class User(models.Model):

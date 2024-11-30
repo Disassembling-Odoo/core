@@ -4,7 +4,8 @@
 from collections import defaultdict
 from pytz import utc
 
-from odoo import api, fields, models
+from odoo import api, models
+from odoo.ormapping import fields
 from .utils import timezone_datetime
 
 

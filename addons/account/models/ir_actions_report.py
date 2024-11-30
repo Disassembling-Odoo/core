@@ -2,7 +2,8 @@
 from collections import OrderedDict
 from zlib import error as zlib_error
 
-from odoo import api, fields, models, _
+from odoo import api, models, _
+from odoo.ormapping import fields
 from odoo.exceptions import UserError
 from odoo.tools import pdf
 from odoo.tools.pdf import PdfReadError, PdfStreamError

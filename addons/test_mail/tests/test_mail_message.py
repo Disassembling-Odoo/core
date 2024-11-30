@@ -95,7 +95,7 @@ class TestMessageValues(MailCommon):
         with self.assertRaises(UserError, msg='Tracking values prevent from updating content'):
             record._message_update_content(tracking_message, '', [])
 
-    @mute_logger('odoo.models.unlink')
+    @mute_logger('odoo.ormapping.models.unlink')
     def test_mail_message_to_store(self):
         record1 = self.env['mail.test.simple'].create({'name': 'Test1'})
         record2 = self.env['mail.test.nothread'].create({'name': 'Test2'})
@@ -111,7 +111,7 @@ class TestMessageValues(MailCommon):
                 formatted = Store(message, for_current_user=True).get_result()["mail.message"][0]
                 self.assertEqual(formatted['record_name'], 'Just Test')
 
-    @mute_logger('odoo.models.unlink')
+    @mute_logger('odoo.ormapping.models.unlink')
     def test_mail_message_to_store_access(self):
         """
         User that doesn't have access to a record should still be able to fetch
@@ -183,7 +183,7 @@ class TestMessageValues(MailCommon):
             '<img src="/web/image/{attachment.id}?access_token={attachment.access_token}" alt="image0" width="2"></p>'.format(attachment=msg.attachment_ids[0])
         )
 
-    @mute_logger('odoo.models.unlink', 'odoo.addons.mail.models.models')
+    @mute_logger('odoo.ormapping.models.unlink', 'odoo.addons.mail.models.models')
     @users('employee')
     def test_mail_message_values_fromto_long_name(self):
         """ Long headers may break in python if above 68 chars for certain
@@ -245,7 +245,7 @@ class TestMessageValues(MailCommon):
         self.assertEqual(msg.reply_to, f"{sanitized_alias_name}@{self.alias_domain}",
                          'Reply-To: even a long email is ok as only formataddr is problematic')
 
-    @mute_logger('odoo.models.unlink')
+    @mute_logger('odoo.ormapping.models.unlink')
     def test_mail_message_values_fromto_no_document_values(self):
         msg = self.Message.create({
             'reply_to': 'test.reply@example.com',
@@ -255,7 +255,7 @@ class TestMessageValues(MailCommon):
         self.assertEqual(msg.reply_to, 'test.reply@example.com')
         self.assertEqual(msg.email_from, 'test.from@example.com')
 
-    @mute_logger('odoo.models.unlink')
+    @mute_logger('odoo.ormapping.models.unlink')
     def test_mail_message_values_fromto_no_document(self):
         msg = self.Message.create({})
         self.assertIn('-private', msg.message_id.split('@')[0], 'mail_message: message_id for a void message should be a "private" one')
@@ -273,7 +273,7 @@ class TestMessageValues(MailCommon):
         self.assertEqual(msg.reply_to, formataddr((self.user_employee.name, self.user_employee.email)))
         self.assertEqual(msg.email_from, formataddr((self.user_employee.name, self.user_employee.email)))
 
-    @mute_logger('odoo.models.unlink')
+    @mute_logger('odoo.ormapping.models.unlink')
     def test_mail_message_values_fromto_document_alias(self):
         msg = self.Message.create({
             'model': 'mail.test.container',
@@ -311,7 +311,7 @@ class TestMessageValues(MailCommon):
         self.assertEqual(msg.reply_to, formataddr((reply_to_name, reply_to_email)))
         self.assertEqual(msg.email_from, formataddr((self.user_employee.name, self.user_employee.email)))
 
-    @mute_logger('odoo.models.unlink')
+    @mute_logger('odoo.ormapping.models.unlink')
     def test_mail_message_values_fromto_document_no_alias(self):
         test_record = self.env['mail.test.simple'].create({'name': 'Test', 'email_from': 'ignasse@example.com'})
 
@@ -325,7 +325,7 @@ class TestMessageValues(MailCommon):
         self.assertEqual(msg.reply_to, formataddr((reply_to_name, reply_to_email)))
         self.assertEqual(msg.email_from, formataddr((self.user_employee.name, self.user_employee.email)))
 
-    @mute_logger('odoo.models.unlink')
+    @mute_logger('odoo.ormapping.models.unlink')
     def test_mail_message_values_fromto_document_manual_alias(self):
         test_record = self.env['mail.test.simple'].create({'name': 'Test', 'email_from': 'ignasse@example.com'})
         alias = self.env['mail.alias'].create({
@@ -438,12 +438,12 @@ class TestMessageAccess(MailCommon):
     # READ
     # --------------------------------------------------
 
-    @mute_logger('odoo.addons.base.models.ir_model', 'odoo.models')
+    @mute_logger('odoo.addons.base.models.ir_model', 'odoo.ormapping.models')
     def test_mail_message_access_read_crash(self):
         with self.assertRaises(AccessError):
             self.message.with_user(self.user_employee).read()
 
-    @mute_logger('odoo.models')
+    @mute_logger('odoo.ormapping.models')
     def test_mail_message_access_read_crash_portal(self):
         with self.assertRaises(AccessError):
             self.message.with_user(self.user_portal).read(['body', 'message_type', 'subtype_id'])
@@ -488,13 +488,13 @@ class TestMessageAccess(MailCommon):
         with self.assertRaises(AccessError):
             self.env['mail.message'].with_user(self.user_public).create({'model': 'discuss.channel', 'res_id': self.public_channel.id, 'body': 'Test'})
 
-    @mute_logger('odoo.models')
+    @mute_logger('odoo.ormapping.models')
     def test_mail_message_access_create_crash(self):
         # Do: Employee create a private message -> ko, no creation rights
         with self.assertRaises(AccessError):
             self.env['mail.message'].with_user(self.user_employee).create({'model': 'discuss.channel', 'res_id': self.private_group.id, 'body': 'Test'})
 
-    @mute_logger('odoo.models')
+    @mute_logger('odoo.ormapping.models')
     def test_mail_message_access_create_doc(self):
         Message = self.env['mail.message'].with_user(self.user_employee)
         # Do: Employee creates a message on Public Channel -> ok, write access to the related document

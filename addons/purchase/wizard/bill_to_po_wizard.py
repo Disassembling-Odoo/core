@@ -1,5 +1,6 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-from odoo import fields, models, Command, _
+from odoo import models, Command, _
+from odoo.ormapping import fields
 from odoo.exceptions import UserError
 
 

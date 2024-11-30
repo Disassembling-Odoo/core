@@ -4,7 +4,8 @@ from datetime import timedelta, datetime
 from dateutil.relativedelta import relativedelta
 from pytz import UTC
 
-from odoo import api, fields, models
+from odoo import api, models
+from odoo.ormapping import fields
 from odoo.tools import plaintext2html
 
 

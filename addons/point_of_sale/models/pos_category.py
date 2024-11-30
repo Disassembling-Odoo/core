@@ -4,7 +4,8 @@
 from typing import List, Tuple
 import random
 
-from odoo import api, fields, models, _
+from odoo import api, models, _
+from odoo.ormapping import fields
 from odoo.exceptions import ValidationError, UserError
 
 

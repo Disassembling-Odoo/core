@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
 
-from odoo import api, fields, models
+from odoo import api, models
+from odoo.ormapping import fields
 
 
 class MarketingCard(models.Model):

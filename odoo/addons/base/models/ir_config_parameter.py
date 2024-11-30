@@ -7,7 +7,8 @@ Store database-specific configuration parameters
 import uuid
 import logging
 
-from odoo import api, fields, models, _
+from odoo import api, models, _
+from odoo.ormapping import fields
 from odoo.conf import config
 from odoo.exceptions import ValidationError
 from odoo.tools import ormcache, mute_logger

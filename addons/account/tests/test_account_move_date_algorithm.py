@@ -3,7 +3,8 @@ from contextlib import closing
 
 import freezegun
 
-from odoo import fields, Command
+from odoo import Command
+from odoo.ormapping import fields
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon
 from odoo.tests import tagged
 

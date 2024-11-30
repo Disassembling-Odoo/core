@@ -3,7 +3,8 @@
 
 from datetime import datetime, timedelta
 
-from odoo import fields, tools
+from odoo import tools
+from odoo.ormapping import fields
 from odoo.addons.crm.tests.common import TestCrmCommon
 from odoo.addons.event.tests.common import EventCase
 

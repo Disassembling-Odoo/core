@@ -2,7 +2,8 @@
 
 import datetime
 
-from odoo import api, fields, models, modules, _
+from odoo import api, models, modules, _
+from odoo.ormapping import fields
 from odoo.exceptions import AccessError
 
 from pytz import timezone, UTC

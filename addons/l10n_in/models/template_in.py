@@ -1,5 +1,6 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-from odoo import models, fields, _
+from odoo import models, _
+from odoo.ormapping import fields
 from odoo.addons.account.models.chart_template import template
 from odoo import Command
 

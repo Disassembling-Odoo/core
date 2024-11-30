@@ -4,7 +4,7 @@ from datetime import timedelta
 from freezegun import freeze_time
 from unittest.mock import patch, PropertyMock
 
-from odoo import fields
+from odoo.ormapping import fields
 from odoo.addons.im_livechat.tests.common import TestImLivechatCommon
 from odoo.addons.mail.tests.common import MailCommon
 from odoo.tests import new_test_user, tagged

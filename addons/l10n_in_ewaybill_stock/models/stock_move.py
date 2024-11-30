@@ -1,7 +1,9 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import api, fields, models
+from odoo import api, models
 import logging
+
+from odoo.ormapping import fields
 
 _logger = logging.getLogger(__name__)
 

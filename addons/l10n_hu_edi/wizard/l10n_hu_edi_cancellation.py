@@ -2,7 +2,8 @@
 
 import time
 
-from odoo import models, fields
+from odoo import models
+from odoo.ormapping import fields
 from odoo.exceptions import UserError
 from odoo.addons.l10n_hu_edi.models.l10n_hu_edi_connection import L10nHuEdiConnection
 

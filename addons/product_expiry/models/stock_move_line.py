@@ -3,7 +3,8 @@
 
 import datetime
 
-from odoo import api, fields, models
+from odoo import api, models
+from odoo.ormapping import fields
 from odoo.tools.sql import column_exists, create_column
 
 

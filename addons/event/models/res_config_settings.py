@@ -4,7 +4,8 @@
 import base64
 import binascii
 
-from odoo import _, api, exceptions, fields, models
+from odoo import _, api, exceptions, models
+from odoo.ormapping import fields
 
 class ResConfigSettings(models.TransientModel):
     _inherit = 'res.config.settings'

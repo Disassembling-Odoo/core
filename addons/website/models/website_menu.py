@@ -5,9 +5,10 @@ import werkzeug.urls
 
 from werkzeug.urls import url_parse
 
-from odoo import api, fields, models, _
+from odoo import api, models, _
+from odoo.ormapping import fields
 from odoo.exceptions import UserError
-from odoo.fields import Command
+from odoo.ormapping import Command
 from odoo.http import request
 from odoo.tools.translate import html_translate
 

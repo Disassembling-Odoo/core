@@ -4,8 +4,9 @@ import logging
 import uuid
 import werkzeug
 
-from odoo import api, fields, models
+from odoo import api, models
 from odoo import tools
+from odoo.ormapping import fields
 from odoo.addons.website.tools import add_form_signature
 from odoo.exceptions import AccessError
 from odoo.osv import expression

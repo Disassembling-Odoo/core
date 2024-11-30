@@ -3,7 +3,7 @@
 
 import werkzeug.urls
 
-from odoo import fields
+from odoo.ormapping import fields
 
 from odoo import http
 from odoo.http import request

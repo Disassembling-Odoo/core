@@ -1,4 +1,5 @@
-from odoo import models, fields, api, Command
+from odoo import models, api, Command
+from odoo.ormapping import fields
 
 
 class AccountPaymentRegister(models.TransientModel):

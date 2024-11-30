@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 from markupsafe import Markup
 
-from odoo import api, fields, models
+from odoo import api, models
 
+from odoo.ormapping import fields
 from odoo.addons.base.models.ir_qweb_fields import nl2br
 from odoo.tools import html2plaintext, is_html_empty, image as tools
 from odoo.tools.misc import file_path

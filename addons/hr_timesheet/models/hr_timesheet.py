@@ -4,7 +4,8 @@ from collections import defaultdict
 from statistics import mode
 import re
 
-from odoo import api, fields, models
+from odoo import api, models
+from odoo.ormapping import fields
 from odoo.exceptions import UserError, AccessError, ValidationError
 from odoo.osv import expression
 from odoo.tools import format_list

@@ -4,7 +4,8 @@ import os
 from collections import defaultdict
 from datetime import date, datetime
 
-from odoo import fields, models
+from odoo import models
+from odoo.ormapping import fields
 from odoo.tools import groupby
 
 

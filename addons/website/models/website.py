@@ -15,7 +15,8 @@ from lxml import etree, html
 from werkzeug import urls
 from werkzeug.exceptions import NotFound
 
-from odoo import api, fields, models, tools, release
+from odoo import api, models, tools, release
+from odoo.ormapping import fields
 from odoo.addons.website.models.ir_http import sitemap_qs2dom
 from odoo.addons.website.tools import similarity_score, text_from_html, get_base_domain
 from odoo.addons.portal.controllers.portal import pager

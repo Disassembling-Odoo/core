@@ -11,7 +11,7 @@ from odoo.tools import mute_logger
 class TestLeadMerge(TestLeadMergeCommon):
 
     @users('user_sales_manager')
-    @mute_logger('odoo.models.unlink')
+    @mute_logger('odoo.ormapping.models.unlink')
     def test_merge_method_iap_enrich_done(self):
         """Test that the "iap_enrich_done" is set to True if at least one lead have this value True"""
         self.leads.iap_enrich_done = False

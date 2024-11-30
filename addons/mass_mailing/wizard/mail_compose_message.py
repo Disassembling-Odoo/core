@@ -3,7 +3,8 @@
 
 from markupsafe import Markup
 
-from odoo import fields, models
+from odoo import models
+from odoo.ormapping import fields
 from odoo.tools.misc import file_open
 
 

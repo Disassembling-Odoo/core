@@ -9,7 +9,8 @@ from string import digits
 from dateutil.relativedelta import relativedelta
 from markupsafe import Markup
 
-from odoo import api, fields, models, _
+from odoo import api, models, _
+from odoo.ormapping import fields
 from odoo.exceptions import ValidationError, AccessError
 from odoo.osv import expression
 from odoo.tools import convert, format_date

@@ -3,7 +3,7 @@ import timeit
 from typing import Literal
 
 from odoo import Command
-from odoo.models import BaseModel
+from odoo.ormapping import BaseModel
 from odoo.tests.common import TransactionCase
 
 _logger = logging.getLogger(__name__)

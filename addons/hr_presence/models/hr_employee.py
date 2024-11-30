@@ -3,9 +3,10 @@
 import logging
 
 from ast import literal_eval
-from odoo import fields, models, _, api
+from odoo import models, _, api
+from odoo.ormapping import fields
 from odoo.exceptions import UserError
-from odoo.fields import Datetime
+from odoo.ormapping import Datetime
 
 _logger = logging.getLogger(__name__)
 

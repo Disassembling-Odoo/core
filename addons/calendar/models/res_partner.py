@@ -3,7 +3,8 @@
 
 from datetime import datetime
 
-from odoo import api, fields, models
+from odoo import api, models
+from odoo.ormapping import fields
 from odoo.tools import SQL
 
 

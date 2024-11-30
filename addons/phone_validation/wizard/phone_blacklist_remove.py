@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from markupsafe import Markup
-from odoo import fields, models, _
+from odoo import models, _
+from odoo.ormapping import fields
 
 
 class PhoneBlacklistRemove(models.TransientModel):

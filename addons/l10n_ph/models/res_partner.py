@@ -1,6 +1,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import fields, api, models
+from odoo import api, models
+from odoo.ormapping import fields
 
 
 class ResPartner(models.Model):

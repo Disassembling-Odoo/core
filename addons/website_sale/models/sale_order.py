@@ -6,9 +6,10 @@ from datetime import datetime
 
 from dateutil.relativedelta import relativedelta
 
-from odoo import SUPERUSER_ID, _, api, fields, models
+from odoo import SUPERUSER_ID, _, api, models
+from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
-from odoo.fields import Command
+from odoo.ormapping import Command
 from odoo.http import request
 from odoo.osv import expression
 from odoo.tools import float_is_zero

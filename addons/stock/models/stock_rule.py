@@ -5,7 +5,8 @@ import logging
 from collections import defaultdict, namedtuple, OrderedDict
 from dateutil.relativedelta import relativedelta
 
-from odoo import SUPERUSER_ID, _, api, fields, models
+from odoo import SUPERUSER_ID, _, api, models
+from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
 from odoo.modules.registry import Registry
 from odoo.osv import expression

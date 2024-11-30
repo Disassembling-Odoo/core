@@ -2,7 +2,7 @@
 
 import time
 
-from odoo.fields import Command
+from odoo.ormapping import Command
 from odoo.tests import tagged
 
 from odoo.addons.product.tests.common import ProductCommon

@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-from odoo import fields, models
+from odoo import models
+from odoo.ormapping import fields
 
 
 class GroupOnDate(models.Model):

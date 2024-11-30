@@ -2,8 +2,9 @@
 
 import ast
 from dateutil.relativedelta import relativedelta
+from odoo.ormapping import fields
 from odoo.exceptions import ValidationError
-from odoo import api, fields, models, _
+from odoo import api, models, _
 from odoo.exceptions import UserError
 
 

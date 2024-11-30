@@ -8,7 +8,8 @@ import pytz
 
 from asn1crypto import cms, core, x509, algos, tsp
 
-from odoo import models, fields, _
+from odoo import models, _
+from odoo.ormapping import fields
 from odoo.exceptions import ValidationError
 
 

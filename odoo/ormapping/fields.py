@@ -13,7 +13,6 @@ import base64
 import copy
 import contextlib
 import binascii
-import enum
 import itertools
 import json
 import logging
@@ -27,9 +26,13 @@ from psycopg2.extras import Json as PsycopgJson
 from difflib import get_close_matches, unified_diff
 from hashlib import sha256
 
-from .models import check_property_field_value_name
-from .netsvc import ColoredFormatter, GREEN, RED, DEFAULT, COLOR_PATTERN
-from .tools import (
+from .base import IdType, NewId
+from .constant import Command, PREFETCH_MAX
+from .utils import check_property_field_value_name, expand_ids, is_definition_class
+
+from ..utils import check_pg_name
+from ..netsvc import ColoredFormatter, GREEN, RED, DEFAULT, COLOR_PATTERN
+from ..tools import (
     float_repr, float_round, float_compare, float_is_zero, human_size,
     OrderedSet, sql, SQL, date_utils, unique, lazy_property,
     image_process, merge_sequences, is_list_of,
@@ -37,17 +40,17 @@ from .tools import (
     DEFAULT_SERVER_DATE_FORMAT as DATE_FORMAT,
     DEFAULT_SERVER_DATETIME_FORMAT as DATETIME_FORMAT,
 )
-from .tools.sql import pg_varchar
-from .tools.mimetypes import guess_mimetype
-from .tools.misc import unquote, has_list_types, Sentinel, SENTINEL
-from .tools.translate import html_translate
+from ..tools.sql import pg_varchar
+from ..tools.mimetypes import guess_mimetype
+from ..tools.misc import unquote, has_list_types, Sentinel, SENTINEL
+from ..tools.translate import html_translate
 
 from odoo import SUPERUSER_ID
 from odoo.exceptions import CacheMiss
 from odoo.osv import expression
 
 import typing
-from odoo.api import ContextType, DomainType, IdType, NewId, M, T
+from odoo.api import ContextType, DomainType, M, T
 
 
 DATE_LENGTH = len(date.today().strftime(DATE_FORMAT))
@@ -71,11 +74,6 @@ _schema = logging.getLogger(__name__[:-7] + '.schema')
 NoneType = type(None)
 
 
-def first(records):
-    """ Return the first record in ``records``, with the same prefetching. """
-    return next(iter(records)) if len(records) > 1 else records
-
-
 def resolve_mro(model, name, predicate):
     """ Return the list of successively overridden values of attribute ``name``
         in mro order on ``model`` that satisfy ``predicate``.  Model registry
@@ -90,29 +88,6 @@ def resolve_mro(model, name, predicate):
             break
         result.append(value)
     return result
-
-
-def determine(needle, records, *args):
-    """ Simple helper for calling a method given as a string or a function.
-
-    :param needle: callable or name of method to call on ``records``
-    :param BaseModel records: recordset to call ``needle`` on or with
-    :params args: additional arguments to pass to the determinant
-    :returns: the determined value if the determinant is a method name or callable
-    :raise TypeError: if ``records`` is not a recordset, or ``needle`` is not
-                      a callable or valid method name
-    """
-    if not isinstance(records, BaseModel):
-        raise TypeError("Determination requires a subject recordset")
-    if isinstance(needle, str):
-        needle = getattr(records, needle)
-        if needle.__name__.find('__'):
-            return needle(*args)
-    elif callable(needle):
-        if needle.__name__.find('__'):
-            return needle(records, *args)
-
-    raise TypeError("Determination requires a callable or method name")
 
 
 class MetaField(type):
@@ -1569,9 +1544,9 @@ class Float(Field[float]):
 
     The Float class provides some static methods for this purpose:
 
-    :func:`~odoo.fields.Float.round()` to round a float with the given precision.
-    :func:`~odoo.fields.Float.is_zero()` to check if a float equals zero at the given precision.
-    :func:`~odoo.fields.Float.compare()` to compare two floats at the given precision.
+    :func:`~odoo.ormapping.fields.Float.round()` to round a float with the given precision.
+    :func:`~odoo.ormapping.fields.Float.is_zero()` to check if a float equals zero at the given precision.
+    :func:`~odoo.ormapping.fields.Float.compare()` to compare two floats at the given precision.
 
     .. admonition:: Example
 
@@ -3457,7 +3432,7 @@ class Properties(Field):
     database.
 
     The "definition_record" define the field used to find the container of the
-    current record. The container must have a :class:`~odoo.fields.PropertiesDefinition`
+    current record. The container must have a :class:`~odoo.ormapping.fields.PropertiesDefinition`
     field "definition_record_field" that contains the properties definition
     (type of each property, default value)...
 
@@ -4000,7 +3975,7 @@ class Properties(Field):
 
 
 class PropertiesDefinition(Field):
-    """ Field used to define the properties definition (see :class:`~odoo.fields.Properties`
+    """ Field used to define the properties definition (see :class:`~odoo.ormapping.fields.Properties`
     field). This field is used on the container record to define the structure
     of expected properties on subrecords. It is used to check the properties
     definition. """
@@ -4201,123 +4176,6 @@ class PropertiesDefinition(Field):
                 if len(all_tags) != len(set(all_tags)):
                     duplicated = set(filter(lambda x: all_tags.count(x) > 1, all_tags))
                     raise ValueError(f'Some tags are duplicated: {", ".join(duplicated)}.')
-
-
-class Command(enum.IntEnum):
-    """
-    :class:`~odoo.fields.One2many` and :class:`~odoo.fields.Many2many` fields
-    expect a special command to manipulate the relation they implement.
-
-    Internally, each command is a 3-elements tuple where the first element is a
-    mandatory integer that identifies the command, the second element is either
-    the related record id to apply the command on (commands update, delete,
-    unlink and link) either 0 (commands create, clear and set), the third
-    element is either the ``values`` to write on the record (commands create
-    and update) either the new ``ids`` list of related records (command set),
-    either 0 (commands delete, unlink, link, and clear).
-
-    Via Python, we encourage developers craft new commands via the various
-    functions of this namespace. We also encourage developers to use the
-    command identifier constant names when comparing the 1st element of
-    existing commands.
-
-    Via RPC, it is impossible nor to use the functions nor the command constant
-    names. It is required to instead write the literal 3-elements tuple where
-    the first element is the integer identifier of the command.
-    """
-
-    CREATE = 0
-    UPDATE = 1
-    DELETE = 2
-    UNLINK = 3
-    LINK = 4
-    CLEAR = 5
-    SET = 6
-
-    @classmethod
-    def create(cls, values: dict):
-        """
-        Create new records in the comodel using ``values``, link the created
-        records to ``self``.
-
-        In case of a :class:`~odoo.fields.Many2many` relation, one unique
-        new record is created in the comodel such that all records in `self`
-        are linked to the new record.
-
-        In case of a :class:`~odoo.fields.One2many` relation, one new record
-        is created in the comodel for every record in ``self`` such that every
-        record in ``self`` is linked to exactly one of the new records.
-
-        Return the command triple :samp:`(CREATE, 0, {values})`
-        """
-        return (cls.CREATE, 0, values)
-
-    @classmethod
-    def update(cls, id: int, values: dict):
-        """
-        Write ``values`` on the related record.
-
-        Return the command triple :samp:`(UPDATE, {id}, {values})`
-        """
-        return (cls.UPDATE, id, values)
-
-    @classmethod
-    def delete(cls, id: int):
-        """
-        Remove the related record from the database and remove its relation
-        with ``self``.
-
-        In case of a :class:`~odoo.fields.Many2many` relation, removing the
-        record from the database may be prevented if it is still linked to
-        other records.
-
-        Return the command triple :samp:`(DELETE, {id}, 0)`
-        """
-        return (cls.DELETE, id, 0)
-
-    @classmethod
-    def unlink(cls, id: int):
-        """
-        Remove the relation between ``self`` and the related record.
-
-        In case of a :class:`~odoo.fields.One2many` relation, the given record
-        is deleted from the database if the inverse field is set as
-        ``ondelete='cascade'``. Otherwise, the value of the inverse field is
-        set to False and the record is kept.
-
-        Return the command triple :samp:`(UNLINK, {id}, 0)`
-        """
-        return (cls.UNLINK, id, 0)
-
-    @classmethod
-    def link(cls, id: int):
-        """
-        Add a relation between ``self`` and the related record.
-
-        Return the command triple :samp:`(LINK, {id}, 0)`
-        """
-        return (cls.LINK, id, 0)
-
-    @classmethod
-    def clear(cls):
-        """
-        Remove all records from the relation with ``self``. It behaves like
-        executing the `unlink` command on every record.
-
-        Return the command triple :samp:`(CLEAR, 0, 0)`
-        """
-        return (cls.CLEAR, 0, 0)
-
-    @classmethod
-    def set(cls, ids: list):
-        """
-        Replace the current relations of ``self`` by the given ones. It behaves
-        like executing the ``unlink`` command on every removed relation then
-        executing the ``link`` command on every new relation.
-
-        Return the command triple :samp:`(SET, 0, {ids})`
-        """
-        return (cls.SET, 0, ids)
 
 
 class _RelationalMulti(_Relational[M], typing.Generic[M]):
@@ -5359,8 +5217,4 @@ def apply_required(model, field_name):
 
 # imported here to avoid dependency cycle issues
 # pylint: disable=wrong-import-position
-from .exceptions import AccessError, MissingError, UserError
-from .models import (
-    check_pg_name, expand_ids, is_definition_class,
-    BaseModel, PREFETCH_MAX,
-)
+from .models import BaseModel

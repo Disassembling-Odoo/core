@@ -4,7 +4,8 @@
 import re
 
 import odoo
-from odoo import _, api, fields, models, tools
+from odoo import _, api, models, tools
+from odoo.ormapping import fields
 from odoo.osv import expression
 from odoo.addons.mail.tools.discuss import Store
 

@@ -2,7 +2,8 @@
 
 import re
 
-from odoo import api, fields, models, tools, _
+from odoo import api, models, tools, _
+from odoo.ormapping import fields
 from odoo.exceptions import ValidationError
 
 

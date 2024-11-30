@@ -3,7 +3,8 @@
 
 import json
 
-from odoo import api, fields, models, modules, _
+from odoo import api, models, modules, _
+from odoo.ormapping import fields
 
 
 class Users(models.Model):

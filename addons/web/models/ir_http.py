@@ -4,7 +4,8 @@ import hashlib
 import json
 
 import odoo
-from odoo import api, models, fields
+from odoo import api, models
+from odoo.ormapping import fields
 from odoo.conf import config
 from odoo.http import request, DEFAULT_MAX_CONTENT_LENGTH
 from odoo.tools import ormcache

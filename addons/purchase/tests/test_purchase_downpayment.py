@@ -1,5 +1,6 @@
-from odoo import Command, fields
+from odoo import Command
 
+from odoo.ormapping import fields
 from odoo.addons.purchase.tests.test_purchase_invoice import TestPurchaseToInvoiceCommon
 from odoo.tests import tagged
 

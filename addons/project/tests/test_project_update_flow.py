@@ -2,7 +2,7 @@
 
 from dateutil.relativedelta import relativedelta
 
-from odoo import fields
+from odoo.ormapping import fields
 from odoo.tests import Form, tagged
 
 from odoo.addons.project.tests.test_project_base import TestProjectCommon

@@ -7,7 +7,7 @@ from unittest.mock import patch
 import time
 from odoo.addons.membership.tests.common import TestMembershipCommon
 from odoo.tests import tagged
-from odoo import fields
+from odoo.ormapping import fields
 
 
 @tagged('post_install', '-at_install')

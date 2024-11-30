@@ -1,7 +1,7 @@
 """ Test read_group grouping with many2many fields """
 
 
-from odoo.fields import Command
+from odoo.ormapping import Command
 from odoo.tests import common
 from odoo.addons.base.tests.common import TransactionCaseWithUserDemo
 

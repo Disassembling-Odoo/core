@@ -4,7 +4,8 @@ import datetime
 
 from datetime import date, datetime, timedelta
 
-from odoo import fields, Command
+from odoo import Command
+from odoo.ormapping import fields
 from odoo.addons.base.tests.common import HttpCaseWithUserDemo
 from odoo.tests import Form, tagged, new_test_user
 from odoo.addons.base.tests.common import SavepointCaseWithUserDemo

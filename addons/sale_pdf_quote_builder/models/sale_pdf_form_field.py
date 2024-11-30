@@ -2,7 +2,8 @@
 
 import re
 
-from odoo import Command, _, api, fields, models
+from odoo import Command, _, api, models
+from odoo.ormapping import fields
 from odoo.exceptions import ValidationError
 
 from odoo.addons.sale_pdf_quote_builder import utils

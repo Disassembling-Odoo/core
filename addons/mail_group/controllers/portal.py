@@ -4,7 +4,8 @@
 import babel.dates
 import werkzeug
 
-from odoo import http, fields, tools, models
+from odoo import http, tools, models
+from odoo.ormapping import fields
 from odoo.addons.portal.controllers.portal import pager as portal_pager
 from odoo.exceptions import AccessError
 from odoo.http import request, Response

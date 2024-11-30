@@ -2,7 +2,8 @@
 
 import json
 
-from odoo import fields, models, _
+from odoo import models, _
+from odoo.ormapping import fields
 from odoo.osv import expression
 
 

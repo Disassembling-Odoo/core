@@ -2,7 +2,8 @@
 
 from markupsafe import Markup
 
-from odoo import api, models, fields, _
+from odoo import api, models, _
+from odoo.ormapping import fields
 from odoo.addons.mail.tools.discuss import Store
 
 

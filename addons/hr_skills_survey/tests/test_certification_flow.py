@@ -4,7 +4,8 @@ from dateutil.relativedelta import relativedelta
 from freezegun import freeze_time
 from markupsafe import Markup
 
-from odoo import Command, fields
+from odoo import Command
+from odoo.ormapping import fields
 from odoo.addons.survey.tests import common
 from odoo.tests import tagged
 from odoo.tests.common import HttpCase

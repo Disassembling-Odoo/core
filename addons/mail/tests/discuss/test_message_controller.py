@@ -3,10 +3,11 @@
 import json
 
 import odoo
+from odoo.ormapping import fields
 from odoo.tools import mute_logger
 from odoo.addons.base.tests.common import HttpCaseWithUserDemo
 from odoo.http import STATIC_CACHE_LONG
-from odoo import Command, fields, http
+from odoo import Command, http
 
 
 @odoo.tests.tagged("-at_install", "post_install")

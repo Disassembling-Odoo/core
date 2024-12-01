@@ -6,9 +6,10 @@ import time
 from pathlib import Path
 
 from . import Command
+from .impl.populate import populate_models
+
 import odoo
 from odoo.modules.registry import Registry
-from odoo.tools.populate import populate_models
 from odoo.api import Environment
 
 DEFAULT_FACTOR = '10000'

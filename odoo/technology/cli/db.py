@@ -10,9 +10,10 @@ from pathlib import Path
 import requests
 
 from . import Command
+
 from .server import report_configuration
-from ..service.db import dump_db, exp_drop, exp_db_exist, exp_duplicate_database, exp_rename, restore_db
-from ..conf import config
+from odoo.service.db import dump_db, exp_drop, exp_db_exist, exp_duplicate_database, exp_rename, restore_db
+from odoo.conf import config
 
 eprint = partial(print, file=sys.stderr, flush=True)
 

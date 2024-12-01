@@ -5,9 +5,10 @@ import sys
 import textwrap
 from pathlib import Path
 
-from odoo.conf import config
-from odoo.cli.impl import cloc
 from . import Command
+from .impl import cloc
+
+from odoo.conf import config
 
 class Cloc(Command):
     """ Count lines of code per modules """

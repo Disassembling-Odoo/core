@@ -367,7 +367,6 @@ class CommonServer(object):
             except Exception:
                 _logger.warning("Exception in %s", func.__name__, exc_info=True)
 
-
 class ThreadedServer(CommonServer):
     def __init__(self, app):
         super(ThreadedServer, self).__init__(app)

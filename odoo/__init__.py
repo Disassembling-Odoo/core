@@ -75,5 +75,5 @@ from odoo.ormapping import Command
 # ----------------------------------------------------------
 # Other imports, which may require stuff from above
 # ----------------------------------------------------------
-from . import cli
+from .technology import cli
 from . import http

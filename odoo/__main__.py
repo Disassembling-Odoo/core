@@ -1,3 +1,3 @@
-from .cli.command import main
+from .technology.cli.command import main
 
 main()

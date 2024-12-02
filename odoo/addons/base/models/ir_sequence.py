@@ -7,7 +7,7 @@ import pytz
 from odoo import api, models, _
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
-from odoo.tools import SQL
+from odoo.technology.db import SQL
 
 _logger = logging.getLogger(__name__)
 

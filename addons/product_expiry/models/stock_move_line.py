@@ -5,7 +5,7 @@ import datetime
 
 from odoo import api, models
 from odoo.ormapping import fields
-from odoo.tools.sql import column_exists, create_column
+from odoo.technology.db import column_exists, create_column
 
 
 class StockMoveLine(models.Model):

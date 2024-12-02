@@ -12,7 +12,8 @@ from markupsafe import Markup
 from odoo import api, exceptions, models, _
 from odoo.ormapping import fields
 from odoo.osv import expression
-from odoo.tools import float_compare, float_round, SQL
+from odoo.tools import float_compare, float_round
+from odoo.technology.db import SQL
 from odoo.tools.safe_eval import safe_eval
 
 _logger = logging.getLogger(__name__)

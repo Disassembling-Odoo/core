@@ -16,8 +16,9 @@ from odoo.addons.phone_validation.tools import phone_validation
 from odoo.exceptions import UserError, AccessError
 from odoo.osv import expression
 from odoo.tools.translate import _
-from odoo.tools import date_utils, email_split, is_html_empty, groupby, parse_contact_from_email, SQL
+from odoo.tools import date_utils, email_split, is_html_empty, groupby, parse_contact_from_email
 from odoo.tools.misc import get_lang
+from odoo.technology.db import SQL
 
 from . import crm_stage
 

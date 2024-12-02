@@ -4,7 +4,7 @@ from odoo import api, models, _
 from odoo.ormapping import fields
 from odoo.exceptions import ValidationError, AccessError
 from odoo.osv import expression
-from odoo.tools import SQL
+from odoo.technology.db import SQL
 from odoo.tools.misc import unquote
 
 

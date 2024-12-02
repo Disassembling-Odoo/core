@@ -1,6 +1,6 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 from odoo import api, SUPERUSER_ID
-from odoo.tools import SQL
+from odoo.technology.db import SQL
 
 
 def _get_tax_ids_for_xml_id(env, xml_id):

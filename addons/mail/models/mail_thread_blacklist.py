@@ -4,7 +4,7 @@
 from odoo import api, models, tools, _
 from odoo.ormapping import fields
 from odoo.exceptions import AccessError, UserError
-from odoo.tools import SQL
+from odoo.technology.db import SQL
 
 
 class MailBlackListMixin(models.AbstractModel):

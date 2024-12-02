@@ -141,42 +141,6 @@ def find_in_path(name):
         path.append(config['bin_path'])
     return which(name, path=os.pathsep.join(path))
 
-#----------------------------------------------------------
-# Postgres subprocesses
-#----------------------------------------------------------
-
-def find_pg_tool(name):
-    path = None
-    if config['pg_path'] and config['pg_path'] != 'None':
-        path = config['pg_path']
-    try:
-        return which(name, path=path)
-    except IOError:
-        raise Exception('Command `%s` not found.' % name)
-
-def exec_pg_environ():
-    """
-    Force the database PostgreSQL environment variables to the database
-    configuration of Odoo.
-
-    Note: On systems where pg_restore/pg_dump require an explicit password
-    (i.e.  on Windows where TCP sockets are used), it is necessary to pass the
-    postgres user password in the PGPASSWORD environment variable or in a
-    special .pgpass file.
-
-    See also http://www.postgresql.org/docs/8.4/static/libpq-envars.html
-    """
-    env = os.environ.copy()
-    if odoo.conf.config['db_host']:
-        env['PGHOST'] = odoo.conf.config['db_host']
-    if odoo.conf.config['db_port']:
-        env['PGPORT'] = str(odoo.conf.config['db_port'])
-    if odoo.conf.config['db_user']:
-        env['PGUSER'] = odoo.conf.config['db_user']
-    if odoo.conf.config['db_password']:
-        env['PGPASSWORD'] = odoo.conf.config['db_password']
-    return env
-
 
 # ----------------------------------------------------------
 # File paths

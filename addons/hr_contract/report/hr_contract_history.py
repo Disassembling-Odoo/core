@@ -3,7 +3,7 @@
 
 from odoo import api, models, tools, _
 from odoo.ormapping import fields
-from odoo.tools.sql import SQL
+from odoo.technology.db import SQL
 from collections import defaultdict
 
 

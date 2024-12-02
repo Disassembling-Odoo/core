@@ -7,7 +7,7 @@ from odoo import api, models, _
 from odoo.ormapping import fields
 from odoo.exceptions import ValidationError, UserError
 from odoo.tools import float_is_zero
-from odoo.tools.sql import column_exists, create_column
+from odoo.technology.db import column_exists, create_column
 from datetime import datetime
 
 _logger = logging.getLogger(__name__)

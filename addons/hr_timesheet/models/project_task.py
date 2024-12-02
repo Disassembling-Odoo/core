@@ -7,7 +7,7 @@ from collections import defaultdict
 from odoo import models, api, _
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, RedirectWarning
-from odoo.tools import SQL
+from odoo.technology.db import SQL
 from odoo.addons.rating.models.rating_data import OPERATOR_MAPPING
 
 

@@ -6,7 +6,7 @@ from unittest import mock, TestCase
 import psycopg2
 
 from odoo.exceptions import AccessError
-from odoo.sql_db import BaseCursor
+from odoo.technology.db import BaseCursor
 from odoo.tests import common
 from odoo.tools import mute_logger
 

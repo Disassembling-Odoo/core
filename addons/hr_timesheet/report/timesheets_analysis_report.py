@@ -3,7 +3,7 @@
 
 from odoo import api, models
 from odoo.ormapping import fields
-from odoo.tools.sql import drop_view_if_exists, SQL
+from odoo.technology.db import drop_view_if_exists, SQL
 
 
 class TimesheetsAnalysisReport(models.Model):

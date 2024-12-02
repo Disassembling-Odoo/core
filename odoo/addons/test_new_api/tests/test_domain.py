@@ -2,7 +2,7 @@ from itertools import combinations
 
 from odoo import Command
 from odoo.addons.base.tests.test_expression import TransactionExpressionCase
-from odoo.tools import SQL
+from odoo.technology.db import SQL
 
 
 class TestDomain(TransactionExpressionCase):

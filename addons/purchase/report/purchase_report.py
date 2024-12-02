@@ -7,8 +7,7 @@
 
 from odoo import models, api
 from odoo.ormapping import fields
-from odoo.tools.query import Query
-from odoo.tools.sql import SQL
+from odoo.technology.db import Query, SQL
 
 
 class PurchaseReport(models.Model):

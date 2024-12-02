@@ -7,7 +7,7 @@ from odoo import api, models
 from odoo.ormapping import fields
 from odoo.osv import expression
 from odoo.tools import format_amount
-from odoo.tools.sql import column_exists, create_column, create_index
+from odoo.technology.db import column_exists, create_column, create_index
 
 
 class SaleOrderLine(models.Model):

@@ -2,7 +2,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo.tests.common import BaseCase, TransactionCase
-from odoo.tools import Query, SQL
+from odoo.technology.db import Query, SQL
 
 
 class QueryTestCase(BaseCase):

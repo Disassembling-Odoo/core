@@ -5,7 +5,8 @@ from odoo import api, models, _
 from odoo.ormapping import fields
 from odoo.exceptions import ValidationError
 from odoo.tools.misc import format_date
-from odoo.tools import frozendict, mute_logger, date_utils, SQL
+from odoo.tools import frozendict, mute_logger, date_utils, 
+from odoo.technology.db import SQL
 
 import re
 from collections import defaultdict

@@ -10,7 +10,7 @@ from odoo import api, models, tools, _
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError, AccessError
 from odoo.osv import expression
-from odoo.tools import sql, SQL
+from odoo.technology.db import increment_fields_skiplock, SQL
 from odoo.tools.json import scriptsafe as json_safe
 
 _logger = logging.getLogger(__name__)
@@ -719,7 +719,7 @@ class Post(models.Model):
 
     def _set_viewed(self):
         self.ensure_one()
-        return sql.increment_fields_skiplock(self, 'views')
+        return increment_fields_skiplock(self, 'views')
 
     def _update_last_activity(self):
         self.ensure_one()

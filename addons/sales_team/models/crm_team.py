@@ -12,7 +12,7 @@ from odoo import api, models, _
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
 from odoo.release import version
-from odoo.tools import SQL
+from odoo.technology.db import SQL
 
 
 class CrmTeam(models.Model):

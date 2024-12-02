@@ -14,7 +14,7 @@ from unittest.mock import patch
 from odoo.addons.base.tests.test_ir_cron import CronMixinCase
 from odoo.addons.mass_mailing.tests.common import MassMailCommon
 from odoo.exceptions import ValidationError
-from odoo.sql_db import Cursor
+from odoo.technology.db import Cursor
 from odoo.tests import Form, HttpCase, users, tagged
 from odoo.tools import mute_logger
 

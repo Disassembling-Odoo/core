@@ -26,21 +26,23 @@ from psycopg2.extras import Json as PsycopgJson
 from difflib import get_close_matches, unified_diff
 from hashlib import sha256
 
+from ..technology.db import sql
+
 from .base import IdType, NewId
 from .constant import Command, PREFETCH_MAX
 from .utils import check_property_field_value_name, expand_ids, is_definition_class
 
-from ..utils import check_pg_name
+from ..technology.db import SQL, pg_varchar
+from ..technology.utils import check_pg_name
 from ..netsvc import ColoredFormatter, GREEN, RED, DEFAULT, COLOR_PATTERN
 from ..tools import (
     float_repr, float_round, float_compare, float_is_zero, human_size,
-    OrderedSet, sql, SQL, date_utils, unique, lazy_property,
+    OrderedSet, date_utils, unique, lazy_property,
     image_process, merge_sequences, is_list_of,
     html_normalize, html_sanitize,
     DEFAULT_SERVER_DATE_FORMAT as DATE_FORMAT,
     DEFAULT_SERVER_DATETIME_FORMAT as DATETIME_FORMAT,
 )
-from ..tools.sql import pg_varchar
 from ..tools.mimetypes import guess_mimetype
 from ..tools.misc import unquote, has_list_types, Sentinel, SENTINEL
 from ..tools.translate import html_translate

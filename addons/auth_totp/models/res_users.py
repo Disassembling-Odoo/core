@@ -12,7 +12,7 @@ from odoo.ormapping import fields
 from odoo.addons.base.models.res_users import check_identity
 from odoo.exceptions import AccessDenied, UserError
 from odoo.http import request
-from odoo.tools import sql
+from odoo.technology.db import sql
 
 from odoo.addons.auth_totp.models.totp import TOTP, TOTP_SECRET_SIZE
 

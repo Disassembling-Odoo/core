@@ -13,7 +13,7 @@ from odoo.addons.website.controllers.main import QueryURL
 from odoo.http import request
 from odoo.tools import html2plaintext
 from odoo.tools.misc import get_lang
-from odoo.tools import sql
+from odoo.technology.db import sql
 
 
 class WebsiteBlog(http.Controller):

@@ -7,7 +7,7 @@ from odoo.ormapping import fields
 from odoo.exceptions import AccessError, ValidationError
 from odoo.osv import expression
 from odoo.conf import config
-from odoo.tools import SQL
+from odoo.technology.db import SQL
 from odoo.tools.safe_eval import safe_eval, time
 
 _logger = logging.getLogger(__name__)

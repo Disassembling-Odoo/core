@@ -7,7 +7,7 @@ import functools
 import itertools
 import logging
 
-import odoo
+from odoo.technology.db import sql
 import odoo.conf as conf
 import odoo.tools as tools
 
@@ -17,7 +17,7 @@ _logger = logging.getLogger(__name__)
 @functools.lru_cache(maxsize=1)
 def _ignored_modules(cr):
     result = ['studio_customization']
-    if tools.sql.column_exists(cr, 'ir_module_module', 'imported'):
+    if sql.column_exists(cr, 'ir_module_module', 'imported'):
         cr.execute('SELECT name FROM ir_module_module WHERE imported')
         result += [m[0] for m in cr.fetchall()]
     return result

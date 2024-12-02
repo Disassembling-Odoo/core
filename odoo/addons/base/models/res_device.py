@@ -7,8 +7,9 @@ import logging
 from odoo import api, models, tools
 from odoo.ormapping import fields
 from odoo.http import GeoIP, request, root
-from odoo.tools import SQL, OrderedSet, unique
+from odoo.tools import OrderedSet, unique
 from odoo.tools.translate import _
+from odoo.technology.db import SQL
 from .res_users import check_identity
 
 _logger = logging.getLogger(__name__)

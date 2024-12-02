@@ -15,12 +15,11 @@ from textwrap import shorten
 
 from odoo import api, conf, models, _, Command, SUPERUSER_ID, modules, tools
 from odoo.ormapping import fields
-from odoo.tools.sql import column_exists, create_column
+from odoo.technology.db import SQL, column_exists, create_column
 from odoo.addons.account.tools import format_structured_reference_iso
 from odoo.exceptions import UserError, ValidationError, AccessError, RedirectWarning
 from odoo.osv import expression
 from odoo.tools import (
-    create_index,
     date_utils,
     float_compare,
     float_is_zero,
@@ -31,10 +30,9 @@ from odoo.tools import (
     frozendict,
     get_lang,
     groupby,
-    index_exists,
-    OrderedSet,
-    SQL,
+    OrderedSet
 )
+from odoo.technology.db import create_index, index_exists
 from odoo.tools.mail import email_re, email_split, is_html_empty
 
 

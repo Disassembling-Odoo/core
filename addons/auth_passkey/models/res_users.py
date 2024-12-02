@@ -2,7 +2,7 @@ import json
 
 from odoo import models, _
 from odoo.ormapping import fields
-from odoo.tools import SQL
+from odoo.technology.db import SQL
 from odoo.exceptions import AccessDenied
 from odoo.modules.registry import Registry
 

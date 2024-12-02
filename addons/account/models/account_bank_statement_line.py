@@ -4,7 +4,7 @@ from odoo.exceptions import UserError, ValidationError
 
 from xmlrpc.client import MAXINT
 
-from odoo.tools import create_index, SQL
+from odoo.technology.db import create_index, SQL
 
 
 class AccountBankStatementLine(models.Model):

@@ -2,7 +2,7 @@
 
 from odoo import models, api
 from odoo.ormapping import fields
-from odoo.tools import SQL
+from odoo.technology.db import SQL
 from odoo.addons.account.models.account_move import PAYMENT_STATE_SELECTION
 
 from functools import lru_cache

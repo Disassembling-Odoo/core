@@ -5,7 +5,7 @@ from collections import defaultdict
 from odoo import models, api, _
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
-from odoo.tools.sql import column_exists, create_column, drop_index, index_exists
+from odoo.technology.db import column_exists, create_column, drop_index, index_exists
 
 
 class AccountMove(models.Model):

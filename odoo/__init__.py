@@ -52,6 +52,9 @@ _monkeypatches.patch_all()
 # ----------------------------------------------------------
 # Imports
 # ----------------------------------------------------------
+from . import tools
+from .technology import cli
+
 from . import upgrade  # this namespace must be imported first
 from . import addons
 from . import conf
@@ -61,8 +64,6 @@ from . import netsvc
 from . import osv
 from . import release
 from . import service
-from . import sql_db
-from . import tools
 
 # ----------------------------------------------------------
 # Model classes, fields, api decorators, and translations
@@ -75,5 +76,4 @@ from odoo.ormapping import Command
 # ----------------------------------------------------------
 # Other imports, which may require stuff from above
 # ----------------------------------------------------------
-from .technology import cli
 from . import http

@@ -3,7 +3,7 @@ import json
 from odoo import _, api, models, Command
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
-from odoo.tools import SQL
+from odoo.technology.db import SQL
 
 
 class AccountMergeWizard(models.TransientModel):

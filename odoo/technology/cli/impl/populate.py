@@ -42,7 +42,7 @@ from dateutil.relativedelta import relativedelta
 import logging
 
 from odoo.api import Environment
-from odoo.tools.sql import SQL
+from odoo.technology.db import SQL
 from odoo.ormapping import Model, Field, Many2one
 
 

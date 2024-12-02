@@ -2,7 +2,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo.tests.common import BaseCase
-from odoo.tools import SQL
+from odoo.technology.db import SQL
 
 
 class TestSQL(BaseCase):

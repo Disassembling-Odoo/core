@@ -49,6 +49,8 @@ import psycopg2
 import psycopg2.extensions
 from psycopg2.extras import Json
 
+from ..technology.db import sql
+
 from .utils import expand_ids, check_property_field_value_name, is_definition_class, check_method_name, regex_object_name
 from .constant import Command, READ_GROUP_NUMBER_GRANULARITY, PREFETCH_MAX
 from .base import NewId, IdType
@@ -56,16 +58,16 @@ from .base import NewId, IdType
 import odoo
 from .. import SUPERUSER_ID
 from .. import api
-from ..utils import check_pg_name
+from ..technology.utils import check_pg_name
 from .. import tools
 from ..exceptions import AccessError, MissingError, ValidationError, UserError
 from ..conf import config
+from ..technology.db import SQL, Query
 from ..tools import (
     clean_context, date_utils, discardattr,
     DEFAULT_SERVER_DATE_FORMAT, DEFAULT_SERVER_DATETIME_FORMAT, format_list,
     frozendict, get_lang, lazy_classproperty, OrderedSet,
-    ormcache, partition, Query, split_every, unique,
-    SQL, sql,
+    ormcache, partition, split_every, unique,
 )
 from ..tools.lru import LRU
 from ..tools.misc import LastOrderedSet, ReversedIterable, unquote

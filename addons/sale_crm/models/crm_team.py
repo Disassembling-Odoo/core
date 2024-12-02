@@ -3,7 +3,7 @@
 
 from odoo import models,api, _
 from odoo.ormapping import fields
-from odoo.tools import SQL
+from odoo.technology.db import SQL
 
 
 class CrmTeam(models.Model):

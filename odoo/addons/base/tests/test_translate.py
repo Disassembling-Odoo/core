@@ -10,7 +10,7 @@ from psycopg2.extras import Json
 import io
 
 from odoo.exceptions import UserError
-from odoo.tools import sql
+import odoo.technology.db as sql
 from odoo.tools.translate import quote, unquote, xml_translate, html_translate, TranslationImporter, TranslationModuleReader
 from odoo.tests.common import TransactionCase, BaseCase, new_test_user, tagged
 

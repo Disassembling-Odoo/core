@@ -22,7 +22,8 @@ from odoo.http import request
 from odoo.modules.module import get_resource_from_path
 from odoo.osv.expression import expression
 from odoo.conf import config
-from odoo.tools import lazy_property, frozendict, SQL
+from odoo.technology.db import SQL
+from odoo.tools import lazy_property, frozendict
 from odoo.tools.convert import _fix_multiple_roots
 from odoo.tools.misc import file_path, get_diff, ConstantMapping
 from odoo.tools.template_inheritance import apply_inheritance_specs, locate_node

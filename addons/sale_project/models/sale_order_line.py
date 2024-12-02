@@ -6,7 +6,7 @@ from odoo import api, Command, models, _
 from odoo.ormapping import fields
 from odoo.exceptions import AccessError, UserError
 from odoo.tools import format_list
-from odoo.tools.sql import column_exists, create_column
+from odoo.technology.db import column_exists, create_column
 
 
 class SaleOrderLine(models.Model):

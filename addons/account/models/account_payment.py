@@ -3,8 +3,7 @@ from odoo import models, api, _, Command
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
 from odoo.tools.misc import format_date, formatLang
-from odoo.tools import create_index
-from odoo.tools import SQL
+from odoo.technology.db import create_index, SQL
 
 
 class AccountPayment(models.Model):

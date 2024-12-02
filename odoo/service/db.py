@@ -17,14 +17,13 @@ from pytz import country_timezones
 
 import odoo
 import odoo.release
-import odoo.sql_db
+import odoo.technology.db
 import odoo.tools
 from odoo import SUPERUSER_ID
 from odoo.exceptions import AccessDenied
 from odoo.release import version_info
-from odoo.sql_db import db_connect
-from odoo.tools import SQL
-from odoo.tools.misc import exec_pg_environ, find_pg_tool
+from odoo.technology.db import SQL, db_connect
+from odoo.technology.utils import exec_pg_environ, find_pg_tool
 
 _logger = logging.getLogger(__name__)
 
@@ -62,7 +61,7 @@ def check_super(passwd):
 # This should be moved to odoo.modules.db, along side initialize().
 def _initialize_db(id, db_name, demo, lang, user_password, login='admin', country_code=None, phone=None):
     try:
-        db = odoo.sql_db.db_connect(db_name)
+        db = odoo.technology.db.db_connect(db_name)
         with closing(db.cursor()) as cr:
             # TODO this should be removed as it is done by Registry.new().
             odoo.modules.db.initialize(cr)
@@ -103,7 +102,7 @@ def _initialize_db(id, db_name, demo, lang, user_password, login='admin', countr
         _logger.exception('CREATE DATABASE failed:')
 
 def _create_empty_database(name):
-    db = odoo.sql_db.db_connect('postgres')
+    db = odoo.technology.db.db_connect('postgres')
     with closing(db.cursor()) as cr:
         chosen_template = odoo.conf.config['db_template']
         cr.execute("SELECT datname FROM pg_database WHERE datname = %s",
@@ -125,7 +124,7 @@ def _create_empty_database(name):
 
     # TODO: add --extension=trigram,unaccent
     try:
-        db = odoo.sql_db.db_connect(name)
+        db = odoo.technology.db.db_connect(name)
         with db.cursor() as cr:
             cr.execute("CREATE EXTENSION IF NOT EXISTS pg_trgm")
             if odoo.conf.config['unaccent']:
@@ -142,7 +141,7 @@ def _create_empty_database(name):
 
     # restore legacy behaviour on pg15+
     try:
-        db = odoo.sql_db.db_connect(name)
+        db = odoo.technology.db.db_connect(name)
         with db.cursor() as cr:
             cr.execute("GRANT CREATE ON SCHEMA PUBLIC TO PUBLIC")
     except psycopg2.Error as e:
@@ -159,8 +158,8 @@ def exp_create_database(db_name, demo, lang, user_password='admin', login='admin
 @check_db_management_enabled
 def exp_duplicate_database(db_original_name, db_name, neutralize_database=False):
     _logger.info('Duplicate database `%s` to `%s`.', db_original_name, db_name)
-    odoo.sql_db.close_db(db_original_name)
-    db = odoo.sql_db.db_connect('postgres')
+    odoo.technology.db.close_db(db_original_name)
+    db = odoo.technology.db.db_connect('postgres')
     with closing(db.cursor()) as cr:
         # database-altering operations cannot be executed inside a transaction
         cr._cnx.autocommit = True
@@ -206,9 +205,9 @@ def exp_drop(db_name):
     if db_name not in list_dbs(True):
         return False
     odoo.modules.registry.Registry.delete(db_name)
-    odoo.sql_db.close_db(db_name)
+    odoo.technology.db.close_db(db_name)
 
-    db = odoo.sql_db.db_connect('postgres')
+    db = odoo.technology.db.db_connect('postgres')
     with closing(db.cursor()) as cr:
         # database-altering operations cannot be executed inside a transaction
         cr._cnx.autocommit = True
@@ -258,7 +257,7 @@ def dump_db(db_name, stream, backup_format='zip'):
     _logger.info('DUMP DB: %s format %s', db_name, backup_format)
 
     cmd = [find_pg_tool('pg_dump'), '--no-owner', db_name]
-    env = exec_pg_environ()
+    env = exec_pg_environ(odoo.conf.config)
 
     if backup_format == 'zip':
         with tempfile.TemporaryDirectory() as dump_dir:
@@ -266,7 +265,7 @@ def dump_db(db_name, stream, backup_format='zip'):
             if os.path.exists(filestore):
                 shutil.copytree(filestore, os.path.join(dump_dir, 'filestore'))
             with open(os.path.join(dump_dir, 'manifest.json'), 'w') as fh:
-                db = odoo.sql_db.db_connect(db_name)
+                db = odoo.technology.db.db_connect(db_name)
                 with db.cursor() as cr:
                     json.dump(dump_db_manifest(cr), fh, indent=4)
             cmd.insert(-1, '--file=' + os.path.join(dump_dir, 'dump.sql'))
@@ -333,7 +332,7 @@ def restore_db(db, dump_file, copy=False, neutralize_database=False):
 
         r = subprocess.run(
             [find_pg_tool(pg_cmd), '--dbname=' + db, *pg_args],
-            env=exec_pg_environ(),
+            env=exec_pg_environ(odoo.conf.config),
             stdout=subprocess.DEVNULL,
             stderr=subprocess.STDOUT,
         )
@@ -358,9 +357,9 @@ def restore_db(db, dump_file, copy=False, neutralize_database=False):
 @check_db_management_enabled
 def exp_rename(old_name, new_name):
     odoo.modules.registry.Registry.delete(old_name)
-    odoo.sql_db.close_db(old_name)
+    odoo.technology.db.close_db(old_name)
 
-    db = odoo.sql_db.db_connect('postgres')
+    db = odoo.technology.db.db_connect('postgres')
     with closing(db.cursor()) as cr:
         # database-altering operations cannot be executed inside a transaction
         cr._cnx.autocommit = True
@@ -396,11 +395,11 @@ def exp_migrate_databases(databases):
 # No master password required
 #----------------------------------------------------------
 
-@odoo.tools.mute_logger('odoo.sql_db')
+@odoo.tools.mute_logger('odoo.technology.db')
 def exp_db_exist(db_name):
     ## Not True: in fact, check if connection to database is possible. The database may exists
     try:
-        db = odoo.sql_db.db_connect(db_name)
+        db = odoo.technology.db.db_connect(db_name)
         with db.cursor():
             return True
     except Exception:
@@ -419,7 +418,7 @@ def list_dbs(force=False):
 
     chosen_template = odoo.conf.config['db_template']
     templates_list = tuple({'postgres', chosen_template})
-    db = odoo.sql_db.db_connect('postgres')
+    db = odoo.technology.db.db_connect('postgres')
     with closing(db.cursor()) as cr:
         try:
             cr.execute("select datname from pg_database where datdba=(select usesysid from pg_user where usename=current_user) and not datistemplate and datallowconn and datname not in %s order by datname", (templates_list,))
@@ -438,7 +437,7 @@ def list_db_incompatible(databases):
     server_version = '.'.join(str(v) for v in version_info[:2])
     for database_name in databases:
         with closing(db_connect(database_name).cursor()) as cr:
-            if odoo.tools.sql.table_exists(cr, 'ir_module_module'):
+            if odoo.technology.db.sql.table_exists(cr, 'ir_module_module'):
                 cr.execute("SELECT latest_version FROM ir_module_module WHERE name=%s", ('base',))
                 base_version = cr.fetchone()
                 if not base_version or not base_version[0]:
@@ -452,7 +451,7 @@ def list_db_incompatible(databases):
                 incompatible_databases.append(database_name)
     for database_name in incompatible_databases:
         # release connection
-        odoo.sql_db.close_db(database_name)
+        odoo.technology.db.close_db(database_name)
     return incompatible_databases
 
 

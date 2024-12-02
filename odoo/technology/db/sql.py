@@ -17,10 +17,11 @@ if TYPE_CHECKING:
 
 import psycopg2
 
-from .misc import named_to_positional_printf
+from ...tools.misc import named_to_positional_printf
 
 __all__ = [
     "SQL",
+    "create_column",
     "create_index",
     "create_unique_index",
     "drop_view_if_exists",
@@ -29,6 +30,13 @@ __all__ = [
     "make_identifier",
     "make_index_name",
     "reverse_order",
+    "pg_varchar",
+    "increment_fields_skiplock",
+    "column_exists",
+    "pattern_to_translated_trigram_pattern",
+    "value_to_translated_trigram_pattern",
+    "table_exists",
+    "drop_index"
 ]
 
 _schema = logging.getLogger('odoo.schema')

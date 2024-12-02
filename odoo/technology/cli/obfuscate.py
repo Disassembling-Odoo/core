@@ -8,7 +8,7 @@ from collections import defaultdict
 
 from . import Command
 from odoo.modules.registry import Registry
-from odoo.tools import SQL
+from ..db import SQL
 
 _logger = logging.getLogger(__name__)
 

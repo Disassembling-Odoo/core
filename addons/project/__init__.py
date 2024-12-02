@@ -6,7 +6,7 @@ from . import models
 from . import report
 from . import wizard
 
-from odoo.tools.sql import create_index
+from odoo.technology.db import create_index
 
 
 def _check_exists_collaborators_for_project_sharing(env):

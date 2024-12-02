@@ -12,9 +12,10 @@ from odoo.exceptions import ValidationError
 from odoo.ormapping import Command
 from odoo.http import request, route
 from odoo.osv import expression
-from odoo.tools import clean_context, float_round, groupby, lazy, single_email_re, str2bool, SQL
+from odoo.tools import clean_context, float_round, groupby, lazy, single_email_re, str2bool
 from odoo.tools.json import scriptsafe as json_scriptsafe
 from odoo.tools.translate import _
+from odoo.technology.db import SQL
 
 from odoo.addons.payment import utils as payment_utils
 from odoo.addons.payment.controllers import portal as payment_portal

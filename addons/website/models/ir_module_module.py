@@ -9,7 +9,8 @@ from odoo.addons.base.models.ir_model import MODULE_UNINSTALL_FLAG
 from odoo.exceptions import MissingError
 from odoo.http import request
 from odoo.modules.module import get_manifest
-from odoo.tools import escape_psql, split_every, SQL
+from odoo.technology.db import escape_psql, SQL
+from odoo.tools import split_every
 
 _logger = logging.getLogger(__name__)
 

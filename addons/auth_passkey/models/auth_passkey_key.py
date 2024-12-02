@@ -7,7 +7,7 @@ from odoo import api, Command, models, _
 from odoo.ormapping import fields
 from odoo.exceptions import AccessDenied
 from odoo.http import request
-from odoo.tools import sql, SQL
+from odoo.technology.db import column_exists, SQL
 
 from odoo.addons.base.models.res_users import check_identity
 
@@ -34,7 +34,7 @@ class PassKey(models.Model):
 
     def init(self):
         super().init()
-        if not sql.column_exists(self.env.cr, 'auth_passkey_key', 'public_key'):
+        if not column_exists(self.env.cr, 'auth_passkey_key', 'public_key'):
             self.env.cr.execute(SQL('ALTER TABLE auth_passkey_key ADD COLUMN public_key varchar'))
 
     def unlink(self):

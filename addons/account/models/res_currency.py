@@ -4,7 +4,8 @@
 from odoo import api, models, _
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
-from odoo.tools import date_utils, SQL
+from odoo.tools import date_utils
+from odoo.technology.db import SQL
 
 
 class ResCurrency(models.Model):

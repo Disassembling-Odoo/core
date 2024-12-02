@@ -14,8 +14,9 @@ import odoo
 from odoo import api, models
 from odoo.ormapping import fields
 from odoo.service.server import CommonServer
-from odoo.tools import json_default, SQL
+from odoo.tools import json_default
 from odoo.tools.misc import OrderedSet
+from odoo.technology.db import SQL
 
 _logger = logging.getLogger(__name__)
 

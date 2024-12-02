@@ -7,9 +7,9 @@ import requests
 
 import odoo
 from odoo.modules.registry import Registry
-from odoo.sql_db import close_db, db_connect
+from odoo.technology.db import SQL, close_db, db_connect
 from odoo.tests import HOST, BaseCase, Like, get_db_name, tagged
-from odoo.tools import lazy_property, mute_logger, SQL
+from odoo.tools import lazy_property, mute_logger
 
 
 """

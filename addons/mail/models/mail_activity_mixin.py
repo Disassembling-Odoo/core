@@ -9,7 +9,7 @@ import pytz
 from odoo import api, models
 from odoo.ormapping import fields, first as fieldsFirst
 from odoo.osv import expression
-from odoo.tools import SQL
+from odoo.technology.db import SQL
 
 _logger = logging.getLogger(__name__)
 

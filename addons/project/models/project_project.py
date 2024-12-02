@@ -10,9 +10,10 @@ from odoo.addons.mail.tools.discuss import Store
 from odoo.addons.rating.models import rating_data
 from odoo.exceptions import UserError
 from odoo.osv.expression import AND
-from odoo.tools import get_lang, SQL
+from odoo.tools import get_lang
 from odoo.tools.misc import unquote
 from odoo.tools.translate import _
+from odoo.technology.db import SQL
 from .project_update import STATUS_COLOR
 from .project_task import CLOSED_STATES
 

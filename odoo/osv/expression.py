@@ -122,8 +122,9 @@ from datetime import date, datetime, time
 
 import odoo.modules
 from odoo.ormapping import READ_GROUP_NUMBER_GRANULARITY, check_property_field_value_name
-from odoo.tools import Query, SQL, get_lang
-from odoo.tools.sql import pattern_to_translated_trigram_pattern, value_to_translated_trigram_pattern
+from odoo.tools import get_lang
+from odoo.technology.db import Query, SQL
+from odoo.technology.db import pattern_to_translated_trigram_pattern, value_to_translated_trigram_pattern
 
 # Domain operators.
 NOT_OPERATOR = '!'

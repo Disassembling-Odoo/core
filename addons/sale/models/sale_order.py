@@ -16,15 +16,14 @@ from odoo.exceptions import (
     ValidationError,
 )
 from odoo.ormapping import Command
+from odoo.technology.db import create_index, SQL
 from odoo.http import request
 from odoo.osv import expression
 from odoo.tools import (
-    create_index,
     float_is_zero,
     format_amount,
     format_date,
     is_html_empty,
-    SQL,
 )
 from odoo.tools.mail import html_keep_url
 

@@ -1,7 +1,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo import models
-from odoo.tools.sql import create_index
+from odoo.technology.db import create_index
 
 
 class MailMessage(models.Model):

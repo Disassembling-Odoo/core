@@ -7,7 +7,7 @@ from collections import defaultdict
 from odoo import api, models
 from odoo.ormapping import fields
 from odoo.osv import expression
-from odoo.tools import Query, SQL
+from odoo.technology.db import Query, SQL
 from odoo.tools.misc import unquote
 from odoo.tools.translate import _
 

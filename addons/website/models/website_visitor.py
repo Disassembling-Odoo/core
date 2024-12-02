@@ -10,7 +10,8 @@ from odoo import models, api, _
 from odoo.ormapping import fields
 from odoo.addons.base.models.res_partner import _tz_get
 from odoo.exceptions import UserError
-from odoo.tools import split_every, SQL
+from odoo.tools import split_every
+from odoo.technology.db import SQL
 from odoo.tools.misc import _format_time_ago
 from odoo.http import request
 from odoo.osv import expression

@@ -8,8 +8,8 @@ from odoo import api, models, Command, _
 from odoo.ormapping import fields
 from odoo.exceptions import ValidationError, UserError
 from odoo.osv import expression
-from odoo.tools import frozendict, format_date, float_compare, format_list, Query
-from odoo.tools.sql import create_index, SQL
+from odoo.tools import frozendict, format_date, float_compare, format_list
+from odoo.technology.db import create_index, SQL, Query
 from odoo.addons.web.controllers.utils import clean_action
 
 from odoo.addons.account.models.account_move import MAX_HASH_VERSION

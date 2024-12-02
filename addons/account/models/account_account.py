@@ -9,7 +9,7 @@ from odoo import api, models, _, Command
 from odoo.ormapping import fields
 from odoo.osv import expression
 from odoo.exceptions import UserError, ValidationError, RedirectWarning
-from odoo.tools import SQL, Query
+from odoo.technology.db import SQL, Query
 
 
 ACCOUNT_REGEX = re.compile(r'(?:(\S*\d+\S*))?(.*)')

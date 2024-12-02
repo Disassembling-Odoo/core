@@ -6,7 +6,7 @@ from random import randint
 from odoo import api, models
 from odoo.ormapping import fields
 from odoo.osv import expression
-from odoo.tools import SQL
+from odoo.technology.db import SQL
 
 
 class ProjectTags(models.Model):

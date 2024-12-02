@@ -16,7 +16,8 @@ from odoo import api, models, tools, Command, conf
 from odoo.ormapping import fields
 from odoo.exceptions import AccessError, UserError, ValidationError
 from odoo.osv import expression
-from odoo.tools import format_list, lazy_property, sql, unique, OrderedSet, SQL
+from odoo.technology.db import sql, SQL
+from odoo.tools import format_list, lazy_property, unique, OrderedSet
 from odoo.tools.safe_eval import safe_eval, datetime, dateutil, time
 from odoo.tools.translate import _, LazyTranslate
 

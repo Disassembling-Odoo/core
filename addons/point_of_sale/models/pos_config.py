@@ -10,7 +10,8 @@ from odoo import api, conf, models, _, Command, tools, SUPERUSER_ID
 from odoo.ormapping import fields
 from odoo.http import request
 from odoo.exceptions import AccessError, ValidationError, UserError
-from odoo.tools import convert, SQL
+from odoo.tools import convert
+from odoo.technology.db import SQL
 
 
 class PosConfig(models.Model):

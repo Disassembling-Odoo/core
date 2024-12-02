@@ -10,7 +10,8 @@ from odoo import _, api, models, modules, tools
 from odoo.ormapping import fields
 from odoo.exceptions import AccessError
 from odoo.osv import expression
-from odoo.tools import clean_context, format_list, groupby, SQL
+from odoo.technology.db import SQL
+from odoo.tools import clean_context, format_list, groupby
 from odoo.tools.misc import OrderedSet
 from odoo.addons.mail.tools.discuss import Store
 

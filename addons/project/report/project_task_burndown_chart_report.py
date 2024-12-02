@@ -4,7 +4,7 @@
 from odoo import _, api, models
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
-from odoo.tools import SQL
+from odoo.technology.db import SQL
 from odoo.addons.resource.models.utils import filter_domain_leaf
 
 

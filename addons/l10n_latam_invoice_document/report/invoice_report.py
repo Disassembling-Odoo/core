@@ -1,7 +1,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 from odoo import models
 from odoo.ormapping import fields
-from odoo.tools import SQL
+from odoo.technology.db import SQL
 
 
 class AccountInvoiceReport(models.Model):

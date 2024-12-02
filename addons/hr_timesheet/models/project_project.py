@@ -5,7 +5,7 @@ from collections import defaultdict
 from odoo import api, models
 from odoo.ormapping import fields
 from odoo.exceptions import RedirectWarning, ValidationError
-from odoo.tools import SQL
+from odoo.technology.db import SQL
 from odoo.tools.translate import _
 
 

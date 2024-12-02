@@ -11,7 +11,7 @@ from odoo.addons.website.tools import text_from_html
 from odoo.http import request
 from odoo.osv import expression
 from odoo.exceptions import AccessError
-from odoo.tools import escape_psql
+from odoo.technology.db import escape_psql
 from odoo.tools.json import scriptsafe as json_safe
 
 logger = logging.getLogger(__name__)

@@ -4,7 +4,7 @@ from unittest.mock import patch
 
 from odoo.ormapping import Command
 from odoo.tests import tagged
-from odoo.tools import SQL
+from odoo.technology.db import SQL
 
 from odoo.addons.base.tests.common import HttpCaseWithUserPortal, TransactionCaseWithUserDemo
 from odoo.addons.website_sale.tests.common import WebsiteSaleCommon

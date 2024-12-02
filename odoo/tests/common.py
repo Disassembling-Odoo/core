@@ -60,7 +60,7 @@ from odoo.exceptions import AccessError
 from odoo.ormapping import Command
 from odoo.modules.registry import Registry
 from odoo.service import security
-from odoo.sql_db import BaseCursor, Cursor
+from odoo.technology.db import BaseCursor, Cursor
 from odoo.tools import float_compare, mute_logger, profiler, SQL, DotDict
 from odoo.tools.mail import single_email_re
 from odoo.tools.misc import find_in_path, lower_logging

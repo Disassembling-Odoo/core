@@ -3,7 +3,8 @@
 from odoo import api, models
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
-from odoo.tools import _, SQL
+from odoo.tools import _
+from odoo.technology.db import SQL
 
 
 class PhoneBlackList(models.Model):

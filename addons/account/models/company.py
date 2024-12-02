@@ -8,7 +8,8 @@ from odoo import models, api, _, Command
 from odoo.ormapping import fields
 from odoo.exceptions import ValidationError, UserError, RedirectWarning
 from odoo.osv import expression
-from odoo.tools import date_utils, format_list, SQL
+from odoo.tools import date_utils, format_list
+from odoo.technology.db import SQL
 from odoo.tools.mail import is_html_empty
 from odoo.tools.misc import format_date
 from odoo.addons.account.models.account_move import MAX_HASH_VERSION

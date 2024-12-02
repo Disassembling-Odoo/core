@@ -3,7 +3,7 @@
 
 from odoo import api, models, _
 from odoo.ormapping import fields
-from odoo.tools import SQL
+from odoo.technology.db import SQL
 from odoo.exceptions import UserError
 
 

@@ -4,7 +4,7 @@ from contextlib import contextmanager
 from odoo import api, models, _, Command
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
-from odoo.tools import create_index
+from odoo.technology.db import create_index
 from odoo.tools.misc import formatLang
 
 class AccountBankStatement(models.Model):

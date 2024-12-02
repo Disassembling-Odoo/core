@@ -3,7 +3,8 @@
 import csv
 import io
 from odoo.ormapping import fields
-from odoo.tools import float_is_zero, SQL
+from odoo.tools import float_is_zero
+from odoo.technology.db import SQL
 from odoo import models, api
 from odoo.tools.misc import get_lang
 from stdnum.fr import siren

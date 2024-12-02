@@ -3,7 +3,7 @@ from itertools import accumulate
 
 from odoo import api, models
 from odoo.ormapping import fields
-from odoo.tools import Query
+from odoo.technology.db import Query
 
 
 class AccountRoot(models.Model):

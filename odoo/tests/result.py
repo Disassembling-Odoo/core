@@ -11,7 +11,7 @@ import traceback
 from typing import NamedTuple
 
 from . import case
-from .. import sql_db
+import ..technology.db as sql_db
 
 __unittest = True
 

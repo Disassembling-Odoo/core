@@ -4,7 +4,7 @@
 from odoo import models, tools
 from odoo.ormapping import fields
 from odoo.osv import expression
-from odoo.tools import SQL
+from odoo.technology.db import SQL
 
 
 class VendorDelayReport(models.Model):

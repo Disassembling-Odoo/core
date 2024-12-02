@@ -15,7 +15,7 @@ import warnings
 import werkzeug.serving
 
 from . import release
-from . import sql_db
+from .technology.db import sql_db
 from . import tools
 from . import conf
 

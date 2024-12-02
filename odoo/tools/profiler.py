@@ -14,7 +14,7 @@ import functools
 from psycopg2 import OperationalError
 
 from odoo import tools
-from odoo.tools import SQL
+from ..technology.db import SQL
 
 
 _logger = logging.getLogger(__name__)
@@ -606,7 +606,7 @@ class Profiler:
 
             if self.db:
                 # pylint: disable=import-outside-toplevel
-                from odoo.sql_db import db_connect  # only import from odoo if/when needed.
+                from odoo.technology.db import db_connect  # only import from odoo if/when needed.
                 with db_connect(self.db).cursor() as cr:
                     values = {
                         "name": self.description,

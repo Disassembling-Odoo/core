@@ -25,7 +25,8 @@ from odoo.ormapping import fields
 from odoo.exceptions import AccessError, UserError
 from odoo.http import request, SessionExpiredException
 from odoo.osv import expression
-from odoo.tools import OrderedSet, escape_psql, html_escape as escape, py_to_js_locale
+from odoo.tools import OrderedSet, html_escape as escape, py_to_js_locale
+from odoo.technology.db import escape_psql
 from odoo.addons.base.models.ir_http import EXTENSION_TO_WEB_MIMETYPES
 from odoo.addons.base.models.ir_qweb import QWebException
 from odoo.addons.portal.controllers.portal import pager as portal_pager

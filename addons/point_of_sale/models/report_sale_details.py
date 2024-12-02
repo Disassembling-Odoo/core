@@ -7,7 +7,7 @@ import pytz
 from odoo import api, models, _
 from odoo.ormapping import fields
 from odoo.osv.expression import AND
-from odoo.tools import SQL
+from odoo.technology.db import SQL
 
 
 class ReportSaleDetails(models.AbstractModel):

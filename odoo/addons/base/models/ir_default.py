@@ -7,7 +7,7 @@ from datetime import date
 from odoo import api, models, tools, _, SUPERUSER_ID
 from odoo.ormapping import fields
 from odoo.exceptions import ValidationError
-from odoo.tools import SQL
+from odoo.technology.db import SQL
 
 
 class IrDefault(models.Model):

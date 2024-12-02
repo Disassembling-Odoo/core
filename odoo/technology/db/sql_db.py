@@ -28,11 +28,11 @@ from psycopg2.sql import Composable
 from werkzeug import urls
 
 import odoo
-from . import conf
-from . import tools
-from .tools import SQL
-from .tools.func import frame_codeinfo, locked
-from .tools.misc import Callbacks
+from ... import conf
+from ... import tools
+from .sql import SQL
+from ...tools.func import frame_codeinfo, locked
+from ...tools.misc import Callbacks
 
 if typing.TYPE_CHECKING:
     from collections.abc import Iterable, Iterator

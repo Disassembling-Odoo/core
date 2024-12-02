@@ -12,6 +12,7 @@ import werkzeug
 
 from odoo import http, tools, _
 from odoo.ormapping import fields
+from odoo.technology.db import sql
 from odoo.addons.website.controllers.main import QueryURL
 from odoo.addons.website.models.ir_http import sitemap_qs2dom
 from odoo.addons.website_profile.controllers.main import WebsiteProfile
@@ -83,7 +84,7 @@ class WebsiteSlides(WebsiteProfile):
             # Convert `slide.id` to string is necessary because of the JSON format of the session
             slide_id = str(slide.id)
             if slide_id not in viewed_slides:
-                if tools.sql.increment_fields_skiplock(slide, 'public_views', 'total_views'):
+                if sql.increment_fields_skiplock(slide, 'public_views', 'total_views'):
                     viewed_slides[slide_id] = 1
                     request.session.touch()
         else:

@@ -24,11 +24,12 @@ import psycopg2
 import odoo
 from odoo.conf import config
 from odoo.modules.db import FunctionStatus
+from odoo.technology.db import sql
 from .. import SUPERUSER_ID
-from odoo.sql_db import TestCursor
+from odoo.technology.db import TestCursor
 from odoo.tools import (
     lazy_classproperty,
-    lazy_property, sql, OrderedSet, SQL,
+    lazy_property, OrderedSet,
     remove_accents,
 )
 from odoo.tools.func import locked
@@ -36,7 +37,7 @@ from odoo.tools.lru import LRU
 from odoo.tools.misc import Collector, format_frame
 
 if typing.TYPE_CHECKING:
-    from odoo.ormapping.models import BaseModel
+    from odoo.ormapping import BaseModel
 
 
 _logger = logging.getLogger(__name__)

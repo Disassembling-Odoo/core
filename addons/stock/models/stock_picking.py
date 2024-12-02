@@ -9,12 +9,14 @@ from collections import defaultdict
 
 from odoo import SUPERUSER_ID, _, api, models
 from odoo.ormapping import fields
-from odoo.addons.stock.models.stock_move import PROCUREMENT_PRIORITIES
-from odoo.addons.web.controllers.utils import clean_action
 from odoo.exceptions import UserError, ValidationError
 from odoo.osv import expression
-from odoo.tools import format_datetime, format_date, format_list, groupby, SQL
+from odoo.tools import format_datetime, format_date, format_list, groupby
+from odoo.technology.db import SQL
 from odoo.tools.float_utils import float_compare, float_is_zero
+
+from odoo.addons.stock.models.stock_move import PROCUREMENT_PRIORITIES
+from odoo.addons.web.controllers.utils import clean_action
 
 
 class PickingType(models.Model):

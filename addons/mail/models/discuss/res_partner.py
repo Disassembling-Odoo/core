@@ -3,7 +3,7 @@
 from odoo import api, models
 from odoo.ormapping import fields
 from odoo.osv import expression
-from odoo.tools import SQL
+from odoo.technology.db import SQL
 from odoo.addons.mail.tools.discuss import Store
 
 

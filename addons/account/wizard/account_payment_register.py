@@ -5,7 +5,8 @@ import markupsafe
 from odoo import Command, models, api, _
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
-from odoo.tools import frozendict, SQL
+from odoo.tools import frozendict
+from odoo.technology.db import SQL
 
 
 class AccountPaymentRegister(models.TransientModel):

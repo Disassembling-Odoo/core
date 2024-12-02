@@ -1,7 +1,7 @@
 from odoo import api, models, _, Command
 from odoo.ormapping import fields
-from odoo.tools import SQL
 from odoo.tools.date_utils import get_month
+from odoo.technology.db import SQL
 
 
 class AccountMove(models.Model):

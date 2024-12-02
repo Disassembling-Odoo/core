@@ -15,7 +15,7 @@ import warnings
 import werkzeug.serving
 
 from . import release
-from .technology.db import sql_db
+from .technology.db import db_connect
 from . import tools
 from . import conf
 
@@ -54,7 +54,7 @@ class PostgreSQLHandler(logging.Handler):
         dbname = conf.config['log_db'] if conf.config['log_db'] and conf.config['log_db'] != '%d' else ct_db
         if not dbname:
             return
-        with contextlib.suppress(Exception), tools.mute_logger('odoo.sql_db'), sql_db.db_connect(dbname, allow_uri=True).cursor() as cr:
+        with contextlib.suppress(Exception), tools.mute_logger('odoo.sql_db'), db_connect(dbname, allow_uri=True).cursor() as cr:
             # preclude risks of deadlocks
             cr.execute("SET LOCAL statement_timeout = 1000")
             msg = str(record.msg)

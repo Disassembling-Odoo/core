@@ -55,7 +55,7 @@ from odoo.conf import config
 from odoo.modules import get_modules
 from odoo.modules.registry import Registry
 from odoo.release import nt_service_name
-from odoo.tools.cache import log_ormcache_stats
+from odoo.technology.cache import log_ormcache_stats
 from odoo.tools.misc import stripped_sys_argv, dumpstacks
 
 _logger = logging.getLogger(__name__)
@@ -449,7 +449,7 @@ class ThreadedServer(CommonServer):
         # same time. This is known as the thundering herd effect.
 
         from odoo.addons.base.models.ir_cron import ir_cron
-        conn = odoo.sql_db.db_connect('postgres')
+        conn = odoo.technology.db.db_connect('postgres')
         with conn.cursor() as cr:
             pg_conn = cr._cnx
             # LISTEN / NOTIFY doesn't work in recovery mode
@@ -560,7 +560,7 @@ class ThreadedServer(CommonServer):
                     thread.join(0.05)
                     time.sleep(0.05)
 
-        odoo.sql_db.close_all()
+        odoo.technology.db.close_all()
 
         _logger.debug('--')
         logging.shutdown()
@@ -965,7 +965,7 @@ class PreforkServer(CommonServer):
             return rc
 
         # Empty the cursor pool, we dont want them to be shared among forked workers.
-        odoo.sql_db.close_all()
+        odoo.technology.db.close_all()
 
         _logger.debug("Multiprocess starting")
         while 1:
@@ -1206,7 +1206,7 @@ class WorkerCron(Worker):
 
             # dont keep cursors in multi database mode
             if len(db_names) > 1:
-                odoo.sql_db.close_db(db_name)
+                odoo.technology.db.close_db(db_name)
 
             self.request_count += 1
             if self.request_count >= self.request_max and self.request_max < len(db_names):
@@ -1222,7 +1222,7 @@ class WorkerCron(Worker):
         if self.multi.socket:
             self.multi.socket.close()
 
-        dbconn = odoo.sql_db.db_connect('postgres')
+        dbconn = odoo.technology.db.db_connect('postgres')
         self.dbcursor = dbconn.cursor()
         # LISTEN / NOTIFY doesn't work in recovery mode
         self.dbcursor.execute("SELECT pg_is_in_recovery()")
@@ -1318,7 +1318,7 @@ def preload_registries(dbnames):
             if config['test_enable']:
                 from odoo.tests import loader  # noqa: PLC0415
                 t0 = time.time()
-                t0_sql = odoo.sql_db.sql_counter
+                t0_sql = odoo.technology.db.sql_counter
                 module_names = (registry.updated_modules if update_module else
                                 sorted(registry._init_modules))
                 _logger.info("Starting post tests")
@@ -1333,7 +1333,7 @@ def preload_registries(dbnames):
                 _logger.info("%d post-tests in %.2fs, %s queries",
                              registry._assertion_report.testsRun - tests_before,
                              time.time() - t0,
-                             odoo.sql_db.sql_counter - t0_sql)
+                             odoo.technology.db.sql_counter - t0_sql)
 
                 registry._assertion_report.log_stats()
             if registry._assertion_report and not registry._assertion_report.wasSuccessful():

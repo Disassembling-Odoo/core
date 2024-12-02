@@ -67,11 +67,12 @@ from ..tools import (
     clean_context, date_utils, discardattr,
     DEFAULT_SERVER_DATE_FORMAT, DEFAULT_SERVER_DATETIME_FORMAT, format_list,
     frozendict, get_lang, lazy_classproperty, OrderedSet,
-    ormcache, partition, split_every, unique,
+    partition, split_every, unique,
 )
 from ..tools.lru import LRU
 from ..tools.misc import LastOrderedSet, ReversedIterable, unquote
 from ..tools.translate import _, LazyTranslate
+from ..technology.cache import ormcache
 
 import typing
 if typing.TYPE_CHECKING:

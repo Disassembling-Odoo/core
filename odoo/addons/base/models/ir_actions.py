@@ -1,14 +1,6 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-import odoo
-from odoo import api, models, tools, _, Command
-from odoo.ormapping import fields
-from odoo.exceptions import MissingError, ValidationError, AccessError, UserError
-from odoo.tools import frozendict
-from odoo.tools.safe_eval import safe_eval, test_python_expr
-from odoo.tools.float_utils import float_compare
-from odoo.http import request
 import base64
 from collections import defaultdict
 from functools import partial, reduce
@@ -18,6 +10,16 @@ import requests
 import json
 import re
 import contextlib
+import odoo
+from odoo import api, models, tools, _, Command
+from odoo.ormapping import fields
+from odoo.exceptions import MissingError, ValidationError, AccessError, UserError
+from odoo.tools import frozendict
+from odoo.tools.safe_eval import safe_eval, test_python_expr
+from odoo.tools.float_utils import float_compare
+from odoo.http import request
+
+from odoo.technology.cache import ormcache
 
 from pytz import timezone
 
@@ -177,7 +179,7 @@ class IrActions(models.Model):
                 result[action_type] = actions
         return result
 
-    @tools.ormcache('model_name', 'self.env.lang')
+    @ormcache('model_name', 'self.env.lang')
     def _get_bindings(self, model_name):
         cr = self.env.cr
 
@@ -366,7 +368,7 @@ class IrActionsActWindow(models.Model):
         return existing
 
     @api.model
-    @tools.ormcache()
+    @ormcache()
     def _existing(self):
         self._cr.execute("SELECT id FROM %s" % self._table)
         return set(row[0] for row in self._cr.fetchall())

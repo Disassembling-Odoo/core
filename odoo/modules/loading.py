@@ -146,7 +146,7 @@ def load_module_graph(env, graph, status=None, perform_checks=True,
 
     # register, instantiate and initialize models for each modules
     t0 = time.time()
-    loading_extra_query_count = odoo.sql_db.sql_counter
+    loading_extra_query_count = odoo.technology.db.sql_counter
     loading_cursor_query_count = env.cr.sql_log_count
 
     models_updated = set()
@@ -160,7 +160,7 @@ def load_module_graph(env, graph, status=None, perform_checks=True,
 
         module_t0 = time.time()
         module_cursor_query_count = env.cr.sql_log_count
-        module_extra_query_count = odoo.sql_db.sql_counter
+        module_extra_query_count = odoo.technology.db.sql_counter
 
         needs_update = (
             hasattr(package, "init")
@@ -278,11 +278,11 @@ def load_module_graph(env, graph, status=None, perform_checks=True,
                 if not needs_update:
                     registry.setup_models(env.cr)
                 # Python tests
-                tests_t0, tests_q0 = time.time(), odoo.sql_db.sql_counter
+                tests_t0, tests_q0 = time.time(), odoo.technology.db.sql_counter
                 test_results = loader.run_suite(suite)
                 report.update(test_results)
                 test_time = time.time() - tests_t0
-                test_queries = odoo.sql_db.sql_counter - tests_q0
+                test_queries = odoo.technology.db.sql_counter - tests_q0
 
                 # tests may have reset the environment
                 module = env['ir.module.module'].browse(module_id)
@@ -302,7 +302,7 @@ def load_module_graph(env, graph, status=None, perform_checks=True,
                     delattr(package, kind)
             module.env.flush_all()
 
-        extra_queries = odoo.sql_db.sql_counter - module_extra_query_count - test_queries
+        extra_queries = odoo.technology.db.sql_counter - module_extra_query_count - test_queries
         extras = []
         if test_queries:
             extras.append(f'+{test_queries} test')
@@ -326,7 +326,7 @@ def load_module_graph(env, graph, status=None, perform_checks=True,
                    len(graph),
                    time.time() - t0,
                    env.cr.sql_log_count - loading_cursor_query_count,
-                   odoo.sql_db.sql_counter - loading_extra_query_count)  # extra queries: testes, notify, any other closed cursor
+                   odoo.technology.db.sql_counter - loading_extra_query_count)  # extra queries: testes, notify, any other closed cursor
 
     return loaded_modules, processed_modules
 
@@ -616,7 +616,7 @@ def reset_modules_state(db_name):
     # installation/upgrade/uninstallation fails, which is the only known case
     # for which modules can stay marked as 'to %' for an indefinite amount
     # of time
-    db = odoo.sql_db.db_connect(db_name)
+    db = odoo.technology.db.db_connect(db_name)
     with db.cursor() as cr:
         cr.execute("SELECT 1 FROM information_schema.tables WHERE table_name='ir_module_module'")
         if not cr.fetchall():

@@ -5,6 +5,7 @@ from odoo.ormapping import fields
 from odoo.http import request
 from odoo.osv import expression
 from odoo.tools.translate import _, LazyTranslate
+from odoo.technology.cache import ormcache
 
 _lt = LazyTranslate(__name__)
 
@@ -206,7 +207,7 @@ class Website(models.Model):
     #=== BUSINESS METHODS ===#
 
     # This method is cached, must not return records! See also #8795
-    @tools.ormcache(
+    @ormcache(
         'country_code', 'show_visible',
         'current_pl_id', 'website_pricelist_ids',
         'partner_pl_id', 'order_pl_id',

@@ -150,7 +150,7 @@ class ImBus(models.Model):
                         "The imbus notification payload was too large, it's been split into %d payloads.",
                         len(payloads),
                     )
-                with odoo.sql_db.db_connect("postgres").cursor() as cr:
+                with odoo.technology.db.db_connect("postgres").cursor() as cr:
                     for payload in payloads:
                         cr.execute(
                             SQL(
@@ -231,7 +231,7 @@ class ImDispatch(threading.Thread):
     def loop(self):
         """ Dispatch postgres notifications to the relevant websockets """
         _logger.info("Bus.loop listen imbus on db postgres")
-        with odoo.sql_db.db_connect('postgres').cursor() as cr, \
+        with odoo.technology.db.db_connect('postgres').cursor() as cr, \
              selectors.DefaultSelector() as sel:
             cr.execute("listen imbus")
             cr.commit()

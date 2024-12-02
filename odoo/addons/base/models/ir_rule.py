@@ -9,6 +9,8 @@ from odoo.osv import expression
 from odoo.conf import config
 from odoo.technology.db import SQL
 from odoo.tools.safe_eval import safe_eval, time
+from odoo.technology.cache import ormcache
+
 
 _logger = logging.getLogger(__name__)
 class IrRule(models.Model):
@@ -136,7 +138,7 @@ class IrRule(models.Model):
     @api.model
     @tools.conditional(
         'xml' not in config['dev_mode'],
-        tools.ormcache('self.env.uid', 'self.env.su', 'model_name', 'mode',
+        ormcache('self.env.uid', 'self.env.su', 'model_name', 'mode',
                        'tuple(self._compute_domain_context_values())'),
     )
     def _compute_domain(self, model_name, mode="read"):

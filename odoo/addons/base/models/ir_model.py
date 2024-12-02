@@ -20,6 +20,7 @@ from odoo.technology.db import sql, SQL
 from odoo.tools import format_list, lazy_property, unique, OrderedSet
 from odoo.tools.safe_eval import safe_eval, datetime, dateutil, time
 from odoo.tools.translate import _, LazyTranslate
+from odoo.technology.cache import ormcache, ormcache_context
 
 _lt = LazyTranslate(__name__)
 _logger = logging.getLogger(__name__)
@@ -310,7 +311,7 @@ class IrModel(models.Model):
         model_id = self._get_id(name) if name else False
         return self.sudo().browse(model_id)
 
-    @tools.ormcache('name')
+    @ormcache('name')
     def _get_id(self, name):
         self.env.cr.execute("SELECT id FROM ir_model WHERE model=%s", (name,))
         result = self.env.cr.fetchone()
@@ -852,7 +853,7 @@ class IrModelFields(models.Model):
         field_id = model_name and name and self._get_ids(model_name).get(name)
         return self.sudo().browse(field_id)
 
-    @tools.ormcache('model_name')
+    @ormcache('model_name')
     def _get_ids(self, model_name):
         cr = self.env.cr
         cr.execute("SELECT name, id FROM ir_model_fields WHERE model=%s", [model_name])
@@ -1246,7 +1247,7 @@ class IrModelFields(models.Model):
                 data_list.append({'xml_id': xml_id, 'record': record})
         self.env['ir.model.data']._update_xmlids(data_list)
 
-    @tools.ormcache()
+    @ormcache()
     def _all_manual_field_data(self):
         cr = self._cr
         # we cannot use self._fields to determine translated fields, as it has not been set up yet
@@ -1354,7 +1355,7 @@ class IrModelFields(models.Model):
                     _logger.exception("Failed to load field %s.%s: skipped", model._name, field_data['name'])
 
     @api.model
-    @tools.ormcache_context('model_name', keys=('lang',))
+    @ormcache_context('model_name', keys=('lang',))
     def get_field_string(self, model_name):
         """ Return the translation of fields strings in the context's language.
         Note that the result contains the available translations only.
@@ -1366,7 +1367,7 @@ class IrModelFields(models.Model):
         return {field.name: field.field_description for field in fields}
 
     @api.model
-    @tools.ormcache_context('model_name', keys=('lang',))
+    @ormcache_context('model_name', keys=('lang',))
     def get_field_help(self, model_name):
         """ Return the translation of fields help in the context's language.
         Note that the result contains the available translations only.
@@ -1378,7 +1379,7 @@ class IrModelFields(models.Model):
         return {field.name: field.help for field in fields}
 
     @api.model
-    @tools.ormcache_context('model_name', 'field_name', keys=('lang',))
+    @ormcache_context('model_name', 'field_name', keys=('lang',))
     def get_field_selection(self, model_name, field_name):
         """ Return the translation of a field's selection in the context's language.
         Note that the result contains the available translations only.
@@ -2051,7 +2052,7 @@ class IrModelAccess(models.Model):
         return [('%s/%s' % x) if x[0] else x[1] for x in self._cr.fetchall()]
 
     @api.model
-    @tools.ormcache('model_name', 'access_mode')
+    @ormcache('model_name', 'access_mode')
     def _get_access_groups(self, model_name, access_mode='read'):
         """ Return the group expression object that represents the users who
         have ``access_mode`` to the model ``model_name``.
@@ -2074,7 +2075,7 @@ class IrModelAccess(models.Model):
     # not be really necessary as a cache key, unless the `ormcache_context`
     # decorator catches the exception (it does not at the moment.)
 
-    @tools.ormcache('self.env.uid', 'mode')
+    @ormcache('self.env.uid', 'mode')
     def _get_allowed_models(self, mode='read'):
         assert mode in ('read', 'write', 'create', 'unlink'), 'Invalid access mode'
 
@@ -2225,7 +2226,7 @@ class IrModelData(models.Model):
 
     # NEW V8 API
     @api.model
-    @tools.ormcache('xmlid')
+    @ormcache('xmlid')
     def _xmlid_lookup(self, xmlid: str) -> tuple:
         """Low level xmlid lookup
         Return (id, res_model, res_id) or raise ValueError if not found

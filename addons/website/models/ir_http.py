@@ -22,6 +22,7 @@ from odoo.osv.expression import FALSE_DOMAIN
 from odoo.addons.base.models.ir_http import EXTENSION_TO_WEB_MIMETYPES
 from odoo.addons.http_routing.models import ir_http
 from odoo.addons.portal.controllers.portal import _build_url_w_params
+from odoo.technology.cache import ormcache
 
 logger = logging.getLogger(__name__)
 
@@ -109,7 +110,7 @@ class Http(models.AbstractModel):
 
         return super()._url_for(url_from, lang_code)
 
-    @tools.ormcache('website_id', cache='routing')
+    @ormcache('website_id', cache='routing')
     def _rewrite_len(self, website_id: int) -> int:
         rewrites = self._get_rewrites(website_id)
         return len(rewrites)

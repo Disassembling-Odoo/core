@@ -18,6 +18,7 @@ from odoo.addons.base.models.res_lang import LangData
 from odoo.exceptions import AccessError, MissingError
 from odoo.http import request, Response
 from odoo.osv import expression
+from odoo.technology.cache import ormcache
 
 _logger = logging.getLogger(__name__)
 
@@ -618,7 +619,7 @@ class IrHttp(models.AbstractModel):
     # ------------------------------------------------------------
 
     @api.model
-    @tools.ormcache('path', 'query_args', cache='routing.rewrites')
+    @ormcache('path', 'query_args', cache='routing.rewrites')
     def url_rewrite(self, path, query_args=None):
         new_url = False
         router = http.root.get_db_router(request.db).bind('')

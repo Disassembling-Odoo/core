@@ -9,6 +9,8 @@ from odoo.osv import expression
 from odoo.exceptions import UserError
 from psycopg2 import IntegrityError
 from odoo.tools.translate import _
+from odoo.technology.cache import ormcache
+
 _logger = logging.getLogger(__name__)
 
 
@@ -102,7 +104,7 @@ class Country(models.Model):
         return result
 
     @api.model
-    @tools.ormcache('code')
+    @ormcache('code')
     def _phone_code_for(self, code):
         return self.search([('code', '=', code)]).phone_code
 

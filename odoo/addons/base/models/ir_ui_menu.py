@@ -12,6 +12,7 @@ from odoo.ormapping import fields
 from odoo.exceptions import ValidationError
 from odoo.http import request
 from odoo.osv import expression
+from odoo.technology.cache import ormcache, ormcache_context
 
 MENU_ITEM_SEPARATOR = "/"
 NUMBER_PARENS = re.compile(r"\(([0-9]+)\)")
@@ -75,7 +76,7 @@ class IrUiMenu(models.Model):
             raise ValidationError(_('Error! You cannot create recursive menus.'))
 
     @api.model
-    @tools.ormcache('frozenset(self.env.user.groups_id.ids)', 'debug')
+    @ormcache('frozenset(self.env.user.groups_id.ids)', 'debug')
     def _visible_menu_ids(self, debug=False):
         """ Return the ids of the menu items visible to the user. """
         # retrieve all menus, and determine which ones are visible
@@ -224,7 +225,7 @@ class IrUiMenu(models.Model):
         return []
 
     @api.model
-    @tools.ormcache_context('self._uid', keys=('lang',))
+    @ormcache_context('self._uid', keys=('lang',))
     def load_menus_root(self):
         fields = ['name', 'sequence', 'parent_id', 'action', 'web_icon_data']
         menu_roots = self.get_user_roots()
@@ -245,7 +246,7 @@ class IrUiMenu(models.Model):
         return menu_root
 
     @api.model
-    @tools.ormcache_context('self._uid', 'debug', keys=('lang',))
+    @ormcache_context('self._uid', 'debug', keys=('lang',))
     def load_menus(self, debug):
         """ Loads all menu items (all applications and their sub-menus).
 

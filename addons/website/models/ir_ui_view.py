@@ -11,6 +11,7 @@ from odoo.addons.website.tools import add_form_signature
 from odoo.exceptions import AccessError
 from odoo.osv import expression
 from odoo.http import request
+from odoo.technology.cache import ormcache
 
 _logger = logging.getLogger(__name__)
 
@@ -373,7 +374,7 @@ class View(models.Model):
                     """
 
     @api.model
-    @tools.ormcache('self.env.uid', 'self.env.su', 'xml_id', 'self._context.get("website_id")', cache='templates')
+    @ormcache('self.env.uid', 'self.env.su', 'xml_id', 'self._context.get("website_id")', cache='templates')
     def _get_view_id(self, xml_id):
         """If a website_id is in the context and the given xml_id is not an int
         then try to get the id of the specific view for that website, but
@@ -398,7 +399,7 @@ class View(models.Model):
             return view.id
         return super(View, self.sudo())._get_view_id(xml_id)
 
-    @tools.ormcache('self.id', cache='templates')
+    @ormcache('self.id', cache='templates')
     def _get_cached_visibility(self):
         return self.visibility
 

@@ -35,13 +35,14 @@ from odoo.exceptions import MissingError, AccessError
 from odoo.osv import expression
 from odoo.tools import (
     is_html_empty, html_escape, html2plaintext, parse_contact_from_email,
-    clean_context, split_every, email_normalize_all, ormcache, is_list_of,
+    clean_context, split_every, email_normalize_all, is_list_of,
 )
 from odoo.tools.mail import (
     append_content_to_html, decode_message_header, email_normalize, email_split,
     email_split_and_format, formataddr, html_sanitize,
     generate_tracking_message_id, mail_header_msgid_re,
 )
+from odoo.technology.cache import ormcache
 
 MAX_DIRECT_PUSH = 5
 

@@ -35,6 +35,7 @@ from odoo.service import security
 from odoo.tools.json import json_default
 from odoo.tools.misc import get_lang, submap
 from odoo.tools.translate import code_translations
+from odoo.technology.cache import ormcache
 
 _logger = logging.getLogger(__name__)
 
@@ -357,7 +358,7 @@ class IrHttp(models.AbstractModel):
     def _generate_routing_rules(self, modules, converters):
         return http._generate_routing_rules(modules, False, converters)
 
-    @tools.ormcache('key', cache='routing')
+    @ormcache('key', cache='routing')
     def routing_map(self, key=None):
         _logger.info("Generating routing map for key %s", str(key))
         registry = Registry(threading.current_thread().dbname)
@@ -412,7 +413,7 @@ class IrHttp(models.AbstractModel):
         return translations_per_module, lang_params
 
     @api.model
-    @tools.ormcache('frozenset(modules)', 'lang')
+    @ormcache('frozenset(modules)', 'lang')
     def get_web_translations_hash(self, modules, lang):
         translations, lang_params = self.get_translations_for_webclient(modules, lang)
         translation_cache = {

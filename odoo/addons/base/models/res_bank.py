@@ -5,7 +5,7 @@ from collections.abc import Iterable
 from odoo import api, models
 from odoo.ormapping import fields
 from odoo.tools import _
-from odoo.technology import SQL
+from odoo.technology.db import SQL
 
 
 def sanitize_account_number(acc_number):

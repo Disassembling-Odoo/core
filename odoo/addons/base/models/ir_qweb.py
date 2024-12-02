@@ -404,6 +404,7 @@ from odoo.exceptions import UserError, AccessDenied, AccessError, MissingError, 
 
 from odoo.addons.base.models.assetsbundle import AssetsBundle
 from odoo.tools.constants import SCRIPT_EXTENSIONS, STYLE_EXTENSIONS, TEMPLATE_EXTENSIONS
+from odoo.technology.cache import ormcache
 
 _logger = logging.getLogger(__name__)
 
@@ -609,7 +610,7 @@ class IrQWeb(models.AbstractModel):
 
     @tools.conditional(
         'xml' not in conf.config['dev_mode'],
-        tools.ormcache('template', 'tuple(self.env.context.get(k) for k in self._get_template_cache_keys())', cache='templates'),
+        ormcache('template', 'tuple(self.env.context.get(k) for k in self._get_template_cache_keys())', cache='templates'),
     )
     def _get_view_id(self, template):
         try:
@@ -2534,7 +2535,7 @@ class IrQWeb(models.AbstractModel):
     # in '_compile' method contains the write_date of all inherited views.
     @tools.conditional(
         'xml' not in conf.config['dev_mode'],
-        tools.ormcache('cache_key', cache='templates.cached_values'),
+        ormcache('cache_key', cache='templates.cached_values'),
     )
     def _get_cached_values(self, cache_key, get_value):
         """ generate value from the function if the result is not cached. """
@@ -2545,7 +2546,7 @@ class IrQWeb(models.AbstractModel):
         # in non-xml-debug mode we want assets to be cached forever, and the admin can force a cache clear
         # by restarting the server after updating the source code (or using the "Clear server cache" in debug tools)
         'xml' not in conf.config['dev_mode'],
-        tools.ormcache('bundle', 'css', 'js', 'tuple(sorted(assets_params.items()))', 'rtl', cache='assets'),
+        ormcache('bundle', 'css', 'js', 'tuple(sorted(assets_params.items()))', 'rtl', cache='assets'),
     )
     def _generate_asset_links_cache(self, bundle, css=True, js=True, assets_params=None, rtl=False):
         return self._generate_asset_links(bundle, css, js, False, assets_params, rtl)

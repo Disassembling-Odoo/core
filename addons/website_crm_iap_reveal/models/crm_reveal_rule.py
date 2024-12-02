@@ -13,6 +13,7 @@ from odoo.ormapping import fields
 from odoo.addons.iap.tools import iap_tools
 from odoo.addons.crm.models import crm_stage
 from odoo.exceptions import ValidationError
+from odoo.technology.cache import ormcache
 
 _logger = logging.getLogger(__name__)
 
@@ -114,7 +115,7 @@ class CRMRevealRule(models.Model):
         return action
 
     @api.model
-    @tools.ormcache()
+    @ormcache()
     def _get_active_rules(self):
         """
         Returns informations about the all rules.

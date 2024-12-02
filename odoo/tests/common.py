@@ -500,7 +500,7 @@ class BaseCase(case.TestCase, metaclass=MetaCase):
             self.env.cr.flush()
 
         with (
-            patch('odoo.sql_db.Cursor.execute', execute),
+            patch('odoo.technology.db.Cursor.execute', execute),
             patch.object(self.env.registry, 'unaccent', lambda x: x),
         ):
             yield actual_queries

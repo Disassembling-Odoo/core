@@ -10,6 +10,7 @@ from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
 from odoo.osv import expression
 from odoo.tools.image import is_image_size_above
+from odoo.technology.cache import ormcache
 
 _logger = logging.getLogger(__name__)
 PRICE_CONTEXT_KEYS = ['pricelist', 'quantity', 'uom', 'date']
@@ -29,12 +30,12 @@ class ProductTemplate(models.Model):
             res['uom_id'] = self._get_default_uom_id().id
         return res
 
-    @tools.ormcache()
+    @ormcache()
     def _get_default_category_id(self):
         # Deletion forbidden (at least through unlink)
         return self.env.ref('product.product_category_all')
 
-    @tools.ormcache()
+    @ormcache()
     def _get_default_uom_id(self):
         # Deletion forbidden (at least through unlink)
         return self.env.ref('uom.product_uom_unit')
@@ -1173,7 +1174,7 @@ class ProductTemplate(models.Model):
         """
         return self._create_product_variant(self._get_first_possible_combination(), log_warning)
 
-    @tools.ormcache('self.id', 'frozenset(filtered_combination.ids)')
+    @ormcache('self.id', 'frozenset(filtered_combination.ids)')
     def _get_variant_id_for_combination(self, filtered_combination):
         """See `_get_variant_for_combination`. This method returns an ID
         so it can be cached.
@@ -1191,7 +1192,7 @@ class ProductTemplate(models.Model):
 
         return self.env['product.product'].sudo().with_context(active_test=False).search(domain, order='active DESC', limit=1).id
 
-    @tools.ormcache('self.id')
+    @ormcache('self.id')
     def _get_first_possible_variant_id(self):
         """See `_create_first_product_variant`. This method returns an ID
         so it can be cached."""

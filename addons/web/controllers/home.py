@@ -165,7 +165,7 @@ class Home(http.Controller):
         status = 200
         if db_server_status:
             try:
-                odoo.sql_db.db_connect('postgres').cursor().close()
+                odoo.technology.db.db_connect('postgres').cursor().close()
                 health_info['db_server_status'] = True
             except psycopg2.Error:
                 health_info['db_server_status'] = False

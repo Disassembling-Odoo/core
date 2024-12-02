@@ -209,7 +209,7 @@ class TestDatabaseOperations(BaseCase):
         self.assertIn(test_db_name, Registry.registries)
 
         # delete the created database but keep the cursor
-        with patch('odoo.sql_db.close_db') as close_db:
+        with patch('odoo.technology.db.close_db') as close_db:
             res = self.url_open_drop(test_db_name)
         close_db.assert_called_once_with(test_db_name)
 

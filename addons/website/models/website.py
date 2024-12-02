@@ -27,6 +27,7 @@ from odoo.modules.module import get_manifest
 from odoo.osv.expression import AND, OR, FALSE_DOMAIN
 from odoo.technology.db import SQL, Query, sql as sqltools
 from odoo.tools.translate import _, xml_translate
+from odoo.technology.cache import ormcache
 
 logger = logging.getLogger(__name__)
 
@@ -263,11 +264,11 @@ class Website(models.Model):
         }
 
     # self.env.uid for ir.rule groups on menu
-    @tools.ormcache('self.env.uid', 'self.id', cache='templates')
+    @ormcache('self.env.uid', 'self.id', cache='templates')
     def _get_menu_ids(self):
         return self.env['website.menu'].search([('website_id', '=', self.id)]).ids
 
-    @tools.ormcache('self.env.uid', 'self.id', cache='templates')
+    @ormcache('self.env.uid', 'self.id', cache='templates')
     def is_menu_cache_disabled(self):
         """
         Checks if the website menu contains a record like url.
@@ -1334,7 +1335,7 @@ class Website(models.Model):
         website_id = self.sudo()._get_current_website_id(domain_name, fallback=fallback)
         return self.browse(website_id)
 
-    @tools.ormcache('domain_name', 'fallback')
+    @ormcache('domain_name', 'fallback')
     @api.model
     def _get_current_website_id(self, domain_name, fallback=True):
         """Get the current website id.
@@ -1444,7 +1445,7 @@ class Website(models.Model):
         return view
 
     @api.model
-    @tools.ormcache('key', 'self._context.get("website_id")', cache='templates')
+    @ormcache('key', 'self._context.get("website_id")', cache='templates')
     def is_view_active(self, key):
         """
             Return True if active, False if not active, None if not found
@@ -1704,7 +1705,7 @@ class Website(models.Model):
         # if the current URL is indeed canonical or not.
         return current_url == canonical_url
 
-    @tools.ormcache('self.id')
+    @ormcache('self.id')
     def _get_cached_values(self):
         self.ensure_one()
         # ir.http:_match is called by ir.http:_serve_db at a time when the

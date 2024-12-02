@@ -8,13 +8,14 @@ from os.path import isfile, join as opj
 
 import odoo
 from odoo import models, tools
+from odoo.technology.cache import ormcache
 
 
 class TransifexTranslation(models.AbstractModel):
     _name = "transifex.translation"
     _description = "Transifex Translation"
 
-    @tools.ormcache()
+    @ormcache()
     def _get_transifex_projects(self):
         """ get the transifex project name for each module
 

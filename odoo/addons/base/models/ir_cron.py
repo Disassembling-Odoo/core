@@ -128,7 +128,7 @@ class ir_cron(models.Model):
     def _process_jobs(cls, db_name):
         """ Execute every job ready to be run on this database. """
         try:
-            db = odoo.sql_db.db_connect(db_name)
+            db = odoo.technology.db.db_connect(db_name)
             threading.current_thread().dbname = db_name
             with db.cursor() as cron_cr:
                 cls._check_version(cron_cr)
@@ -708,7 +708,7 @@ class ir_cron(models.Model):
         The ODOO_NOTIFY_CRON_CHANGES environment variable allows to force the notifydb on both
         ir_cron modification and on trigger creation (regardless of call_at)
         """
-        with odoo.sql_db.db_connect('postgres').cursor() as cr:
+        with odoo.technology.db.db_connect('postgres').cursor() as cr:
             cr.execute(SQL("SELECT %s('cron_trigger', %s)", SQL.identifier(ODOO_NOTIFY_FUNCTION), self.env.cr.dbname))
         _logger.debug("cron workers notified")
 

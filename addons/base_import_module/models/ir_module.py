@@ -21,7 +21,8 @@ from odoo.modules.module import adapt_version, MANIFEST_NAMES
 from odoo.osv.expression import is_leaf
 from odoo.release import major_version
 from odoo.tools import convert_csv_import, convert_sql_import, convert_xml_import, exception_to_unicode
-from odoo.tools import file_open, file_open_temporary_directory, ormcache
+from odoo.tools import file_open, file_open_temporary_directory
+from odoo.technology.cache import ormcache
 
 _logger = logging.getLogger(__name__)
 

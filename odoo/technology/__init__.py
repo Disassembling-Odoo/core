@@ -16,26 +16,26 @@ import sys
 
 
 # Command line tools
-from .cli import *
+from . import cli
 
 # Configuration management
 '''
 In order to facilitate easy access to configuration at all levels, we consider
 exposing the configuration namespace to the outermost layer.
 '''
-from .conf import *
+from . import conf
 # sys.modules['odoo.conf'] = conf
 
 # Request and response framework
-from .framework import *
+from . import framework
 
 # Database connection
-from .db import *
+from . import db
 
 # Cache
-from .cache import *
+from . import cache
 # sys.modules['odoo.cache'] = cache
 
 # Adjustable capabilities
-from .adjustable import *
+from . import adjustable
 # sys.modules['odoo.adjustable'] = adjustable

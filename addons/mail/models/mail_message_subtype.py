@@ -3,6 +3,7 @@
 
 from odoo import api, models, tools
 from odoo.ormapping import fields
+from odoo.technology.cache import ormcache
 
 
 class MailMessageSubtype(models.Model):
@@ -57,7 +58,7 @@ class MailMessageSubtype(models.Model):
         self.env.registry.clear_cache()  # _get_auto_subscription_subtypes
         return super(MailMessageSubtype, self).unlink()
 
-    @tools.ormcache('model_name')
+    @ormcache('model_name')
     def _get_auto_subscription_subtypes(self, model_name):
         """ Return data related to auto subscription based on subtype matching.
         Here model_name indicates child model (like a task) on which we want to
@@ -104,7 +105,7 @@ class MailMessageSubtype(models.Model):
         subtype_ids, internal_ids, external_ids = self._default_subtypes(model_name)
         return self.browse(subtype_ids), self.browse(internal_ids), self.browse(external_ids)
 
-    @tools.ormcache('self.env.uid', 'self.env.su', 'model_name')
+    @ormcache('self.env.uid', 'self.env.su', 'model_name')
     def _default_subtypes(self, model_name):
         domain = [('default', '=', True),
                   '|', ('res_model', '=', model_name), ('res_model', '=', False)]

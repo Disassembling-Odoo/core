@@ -4,6 +4,7 @@
 from odoo import api, models, tools, _
 from odoo.ormapping import fields
 import odoo.addons
+from odoo.technology.cache import ormcache
 
 import logging
 import sys
@@ -27,7 +28,7 @@ class DecimalPrecision(models.Model):
     ]
 
     @api.model
-    @tools.ormcache('application')
+    @ormcache('application')
     def precision_get(self, application):
         self.flush_model(['name', 'digits'])
         self.env.cr.execute('select digits from decimal_precision where name=%s', (application,))

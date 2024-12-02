@@ -29,7 +29,9 @@ from odoo.addons.base.models.ir_model import MODULE_UNINSTALL_FLAG
 from odoo.exceptions import AccessDenied, AccessError, UserError, ValidationError
 from odoo.http import request, DEFAULT_LANG
 from odoo.osv import expression
-from odoo.tools import is_html_empty, partition, frozendict, lazy_property, SQL, SetDefinitions
+from odoo.tools import is_html_empty, partition, frozendict, lazy_property, SetDefinitions
+from odoo.technology.db import SQL
+from odoo.technology.cache import ormcache
 
 _logger = logging.getLogger(__name__)
 
@@ -842,7 +844,7 @@ class Users(models.Model):
         return vals_list
 
     @api.model
-    @tools.ormcache('self._uid')
+    @ormcache('self._uid')
     def context_get(self):
         user = self.env.user
         # determine field names to read
@@ -883,7 +885,7 @@ class Users(models.Model):
 
         return frozendict(context)
 
-    @tools.ormcache('self.id')
+    @ormcache('self.id')
     def _get_company_ids(self):
         # use search() instead of `self.company_ids` to avoid extra query for `active_test`
         domain = [('active', '=', True), ('user_ids', 'in', self.id)]
@@ -978,7 +980,7 @@ class Users(models.Model):
         return auth_info
 
     @classmethod
-    @tools.ormcache('uid', 'passwd')
+    @ormcache('uid', 'passwd')
     def check(cls, db, uid, passwd):
         """Verifies that the given (uid, password) is authorized for the database ``db`` and
            raise an exception if it is not."""
@@ -1016,7 +1018,7 @@ class Users(models.Model):
             "group_by": SQL("res_users.id"),
         }
 
-    @tools.ormcache('sid')
+    @ormcache('sid')
     def _compute_session_token(self, sid):
         """ Compute a session token given a session id and a user id """
         # retrieve the fields used to generate the session token
@@ -1214,7 +1216,7 @@ class Users(models.Model):
         # for new record don't fill the ormcache
         return group_id in (self._get_group_ids() if self.id else self.groups_id._origin._ids)
 
-    @tools.ormcache('self.id')
+    @ormcache('self.id')
     def _get_group_ids(self):
         """ Return ``self``'s group ids (as a tuple)."""
         self.ensure_one()
@@ -1307,7 +1309,7 @@ class Users(models.Model):
     def get_company_currency_id(self):
         return self.env.company.currency_id.id
 
-    @tools.ormcache()
+    @ormcache()
     def _crypt_context(self):
         """ Passlib CryptContext instance used to encrypt and verify
         passwords. Can be overridden if technical, legal or political matters
@@ -1539,7 +1541,7 @@ class GroupsImplied(models.Model):
                     {'users': [Command.unlink(user.id) for user in users_to_unlink]})
 
     @api.model
-    @tools.ormcache(cache='groups')
+    @ormcache(cache='groups')
     def _get_group_definitions(self):
         """ Return the definition of all the groups as a :class:`~odoo.tools.SetDefinitions`. """
         groups = self.sudo().search([], order='id')

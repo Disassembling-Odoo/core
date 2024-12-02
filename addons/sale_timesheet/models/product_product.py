@@ -4,12 +4,12 @@ import threading
 
 from odoo import api, models, tools, _
 from odoo.exceptions import ValidationError
-
+from odoo.technology.cache import ormcache
 
 class ProductProduct(models.Model):
     _inherit = 'product.product'
 
-    @tools.ormcache()
+    @ormcache()
     def _get_default_uom_id(self):
         # TODO remove me in master
         return self.env.ref('uom.product_uom_unit')

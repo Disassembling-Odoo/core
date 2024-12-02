@@ -5,7 +5,7 @@ from random import randint
 from odoo import api, models, _
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
-from odoo.tools import ormcache
+from odoo.technology.cache import ormcache
 from odoo.technology.db import make_index_name, create_index
 
 

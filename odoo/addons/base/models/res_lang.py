@@ -12,6 +12,7 @@ from odoo import api, models, tools, _
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
 from odoo.tools import OrderedSet, frozendict
+from odoo.technology.cache import ormcache
 
 _logger = logging.getLogger(__name__)
 
@@ -286,7 +287,7 @@ class Lang(models.Model):
         """ Return installed languages' (code, name) pairs sorted by name. """
         return [(code, data.name) for code, data in self._get_active_by('code').items()]
 
-    @tools.ormcache('field')
+    @ormcache('field')
     def _get_active_by(self, field: str) -> LangDataDict:
         """ Return a LangDataDict mapping active languages' **unique**
         **required** ``self.CACHED_FIELDS`` values to their LangData.

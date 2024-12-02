@@ -34,6 +34,8 @@ from odoo.tools.misc import topological_sort, get_flag
 from odoo.tools.translate import TranslationImporter, get_po_paths
 from odoo.http import request
 from odoo.modules import get_module_path
+from odoo.technology.cache import ormcache
+
 
 _logger = logging.getLogger(__name__)
 
@@ -880,14 +882,14 @@ class Module(models.Model):
         model_id = self._get_id(name) if name else False
         return self.browse(model_id).sudo()
 
-    @tools.ormcache('name')
+    @ormcache('name')
     def _get_id(self, name):
         self.flush_model(['name'])
         self.env.cr.execute("SELECT id FROM ir_module_module WHERE name=%s", (name,))
         return self.env.cr.fetchone()
 
     @api.model
-    @tools.ormcache()
+    @ormcache()
     def _installed(self):
         """ Return the set of installed modules as a dictionary {name: id} """
         return {

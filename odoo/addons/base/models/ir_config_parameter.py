@@ -11,7 +11,8 @@ from odoo import api, models, _
 from odoo.ormapping import fields
 from odoo.conf import config
 from odoo.exceptions import ValidationError
-from odoo.tools import ormcache, mute_logger
+from odoo.tools import mute_logger
+from odoo.technology.cache import ormcache
 
 _logger = logging.getLogger(__name__)
 

@@ -485,7 +485,7 @@ class TestSqlLint(TestPylintChecks):
 
         node = _odoo_checker_sql_injection.astroid.extract_node("""
         def wrapper2(var):
-            query = tools.SQL(var) #@
+            query = SQL(var) #@
             return query
         """)
         with self.assertMessages("sql-injection"):

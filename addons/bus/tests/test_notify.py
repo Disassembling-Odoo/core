@@ -62,7 +62,7 @@ class NotifyTests(TransactionCase):
 
         def single_listen():
             nonlocal channels
-            with odoo.sql_db.db_connect(
+            with odoo.technology.db.db_connect(
                 "postgres"
             ).cursor() as cr, selectors.DefaultSelector() as sel:
                 cr.execute("listen imbus")

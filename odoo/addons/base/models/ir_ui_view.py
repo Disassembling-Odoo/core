@@ -29,6 +29,7 @@ from odoo.tools.misc import file_path, get_diff, ConstantMapping
 from odoo.tools.template_inheritance import apply_inheritance_specs, locate_node
 from odoo.tools.translate import xml_translate, TRANSLATED_ATTRS
 from odoo.tools.view_validation import valid_view, get_domain_value_names, get_expression_field_names, get_dict_asts
+from odoo.technology.cache import ormcache
 
 _logger = logging.getLogger(__name__)
 
@@ -2698,7 +2699,7 @@ class Model(models.AbstractModel):
     @api.model
     @tools.conditional(
         'xml' not in config['dev_mode'],
-        tools.ormcache('self._get_view_cache_key(view_id, view_type, **options)', cache='templates'),
+        ormcache('self._get_view_cache_key(view_id, view_type, **options)', cache='templates'),
     )
     def _get_view_cache(self, view_id=None, view_type='form', **options):
         """ Get the view information ready to be cached

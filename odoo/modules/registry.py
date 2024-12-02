@@ -24,9 +24,8 @@ import psycopg2
 import odoo
 from odoo.conf import config
 from odoo.modules.db import FunctionStatus
-from odoo.technology.db import sql
 from .. import SUPERUSER_ID
-from odoo.technology.db import TestCursor
+from odoo.technology.db import sql, TestCursor
 from odoo.tools import (
     lazy_classproperty,
     lazy_property, OrderedSet,
@@ -173,10 +172,10 @@ class Registry(Mapping):
         self.loaded_xmlids = set()
 
         self.db_name = db_name
-        self._db = odoo.sql_db.db_connect(db_name, readonly=False)
+        self._db = odoo.technology.db.db_connect(db_name, readonly=False)
         self._db_readonly = None
         if config['db_replica_host'] is not False or config['test_enable']:  # by default, only use readonly pool if we have a db_replica_host defined. Allows to have an empty replica host for testing
-            self._db_readonly = odoo.sql_db.db_connect(db_name, readonly=True)
+            self._db_readonly = odoo.technology.db.db_connect(db_name, readonly=True)
 
         # cursor for test mode; None means "normal" mode
         self.test_cr = None

@@ -8,7 +8,7 @@ from odoo import api, models
 from odoo.ormapping import fields
 from odoo.conf import config
 from odoo.http import request, DEFAULT_MAX_CONTENT_LENGTH
-from odoo.tools import ormcache
+from odoo.technology.cache import ormcache
 from odoo.tools.misc import str2bool
 
 

@@ -4,13 +4,14 @@ from contextlib import nullcontext
 from datetime import datetime
 import logging
 
-from odoo import api, models, tools
+from odoo import api, models
 from odoo.ormapping import fields
 from odoo.http import GeoIP, request, root
 from odoo.tools import OrderedSet, unique
 from odoo.tools.translate import _
 from odoo.technology.db import SQL
 from .res_users import check_identity
+from odoo.technology import db
 
 _logger = logging.getLogger(__name__)
 
@@ -201,7 +202,7 @@ class ResDevice(models.Model):
         return "%s %s %s %s" % (self._select(), self._from(), self._where(), self._order_by())
 
     def init(self):
-        tools.drop_view_if_exists(self.env.cr, self._table)
+        db.drop_view_if_exists(self.env.cr, self._table)
         self.env.cr.execute(SQL("""
             CREATE or REPLACE VIEW %s as (%s)
         """,

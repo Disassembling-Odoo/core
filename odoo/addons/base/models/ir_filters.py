@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import api, models, tools
+from odoo import api, models
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
 from odoo.tools.safe_eval import safe_eval, datetime
+from odoo.technology import db
 
 
 class IrFilters(models.Model):
@@ -186,7 +187,7 @@ class IrFilters(models.Model):
     def _auto_init(self):
         result = super(IrFilters, self)._auto_init()
         # Use unique index to implement unique constraint on the lowercase name (not possible using a constraint)
-        tools.create_unique_index(self._cr, 'ir_filters_name_model_uid_unique_action_index',
-                                  self._table, ['model_id', 'COALESCE(user_id,-1)', 'COALESCE(action_id,-1)',
-                                                'lower(name)', 'embedded_parent_res_id', 'COALESCE(embedded_action_id,-1)'])
+        db.create_unique_index(self._cr, 'ir_filters_name_model_uid_unique_action_index',
+                               self._table, ['model_id', 'COALESCE(user_id,-1)', 'COALESCE(action_id,-1)',
+                                            'lower(name)', 'embedded_parent_res_id', 'COALESCE(embedded_action_id,-1)'])
         return result

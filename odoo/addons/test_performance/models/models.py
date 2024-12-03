@@ -3,6 +3,7 @@
 
 from odoo import models, api, tools
 from odoo.ormapping import fields
+from odoo.technology import db
 
 
 class BaseModel(models.Model):
@@ -57,7 +58,7 @@ class LineModel(models.Model):
 
     def init(self):
         # line values should be unique per "base" - useful for testing corner cases with unique lines
-        tools.create_unique_index(self._cr, 'test_performance_line_uniq', self._table, ['base_id', 'value'])
+        db.create_unique_index(self._cr, 'test_performance_line_uniq', self._table, ['base_id', 'value'])
 
 
 class TagModel(models.Model):

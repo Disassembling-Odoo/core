@@ -8,7 +8,7 @@ import requests
 from odoo import _, models
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
-from odoo.tools import index_exists
+from odoo.technology.db import index_exists
 from .account_edi_proxy_auth import OdooEdiProxyAuth
 
 _logger = logging.getLogger(__name__)

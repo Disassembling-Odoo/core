@@ -6,7 +6,7 @@ from datetime import date
 
 from odoo import api, models, _, exceptions
 from odoo.ormapping import fields
-from odoo.tools import SQL
+from odoo.technology.db import SQL
 
 
 _logger = logging.getLogger(__name__)

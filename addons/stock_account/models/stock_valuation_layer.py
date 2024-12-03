@@ -9,7 +9,7 @@ from odoo.tools import float_compare, float_is_zero
 from itertools import chain
 from odoo.tools import groupby
 from collections import defaultdict
-
+from odoo.technology import db
 
 class StockValuationLayer(models.Model):
     """Stock Valuation Layer"""
@@ -43,7 +43,7 @@ class StockValuationLayer(models.Model):
     lot_id = fields.Many2one('stock.lot', 'Lot/Serial Number', check_company=True, index=True)
 
     def init(self):
-        tools.create_index(
+        db.create_index(
             self._cr, 'stock_valuation_layer_index',
             self._table, ['product_id', 'remaining_qty', 'stock_move_id', 'company_id', 'create_date']
         )

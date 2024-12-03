@@ -3,6 +3,7 @@
 
 from odoo import models, tools
 from odoo.ormapping import fields
+from odoo.technology import db
 
 
 class MailingTraceReport(models.Model):
@@ -36,7 +37,7 @@ class MailingTraceReport(models.Model):
         """Mass Mail Statistical Report: based on mailing.trace that models the various
         statistics collected for each mailing, and mailing.mailing model that models the
         various mailing performed. """
-        tools.drop_view_if_exists(self.env.cr, 'mailing_trace_report')
+        db.drop_view_if_exists(self.env.cr, 'mailing_trace_report')
         self.env.cr.execute(self._report_get_request())
 
     def _report_get_request(self):

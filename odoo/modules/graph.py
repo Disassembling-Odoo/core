@@ -7,6 +7,7 @@ import functools
 import itertools
 import logging
 
+import odoo
 from odoo.technology.db import sql
 import odoo.conf as conf
 import odoo.tools as tools

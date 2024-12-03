@@ -3,6 +3,7 @@
 
 from odoo import api, models, tools
 from odoo.ormapping import fields
+from odoo.technology import db
 
 STATE = [
     ('none', 'Non Member'),
@@ -40,7 +41,7 @@ class ReportMembership(models.Model):
 
     def init(self):
         '''Create the view'''
-        tools.drop_view_if_exists(self._cr, self._table)
+        db.drop_view_if_exists(self._cr, self._table)
         self._cr.execute("""
         CREATE OR REPLACE VIEW %s AS (
         SELECT

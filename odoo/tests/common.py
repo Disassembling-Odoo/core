@@ -61,10 +61,11 @@ from odoo.ormapping import Command
 from odoo.modules.registry import Registry
 from odoo.service import security
 from odoo.technology.db import BaseCursor, Cursor
-from odoo.tools import float_compare, mute_logger, profiler, SQL, DotDict
+from odoo.tools import float_compare, mute_logger, profiler, DotDict
 from odoo.tools.mail import single_email_re
 from odoo.tools.misc import find_in_path, lower_logging
 from odoo.tools.xml_utils import _validate_xml
+from odoo.technology.db import SQL
 
 from . import case
 

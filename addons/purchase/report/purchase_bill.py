@@ -4,6 +4,7 @@
 from odoo import api, models, tools
 from odoo.ormapping import fields
 from odoo.tools import formatLang
+from odoo.technology import db
 
 class PurchaseBillUnion(models.Model):
     _name = 'purchase.bill.union'
@@ -23,7 +24,7 @@ class PurchaseBillUnion(models.Model):
     purchase_order_id = fields.Many2one('purchase.order', string='Purchase Order', readonly=True)
 
     def init(self):
-        tools.drop_view_if_exists(self.env.cr, 'purchase_bill_union')
+        db.drop_view_if_exists(self.env.cr, 'purchase_bill_union')
         self.env.cr.execute("""
             CREATE OR REPLACE VIEW purchase_bill_union AS (
                 SELECT

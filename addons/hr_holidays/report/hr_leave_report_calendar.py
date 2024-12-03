@@ -4,6 +4,7 @@ from odoo import api, models, tools
 
 from odoo.ormapping import fields
 from odoo.addons.base.models.res_partner import _tz_get
+from odoo.technology import db
 
 
 class LeaveReportCalendar(models.Model):
@@ -40,7 +41,7 @@ class LeaveReportCalendar(models.Model):
     is_manager = fields.Boolean("Manager", compute="_compute_is_manager")
 
     def init(self):
-        tools.drop_view_if_exists(self._cr, 'hr_leave_report_calendar')
+        db.drop_view_if_exists(self._cr, 'hr_leave_report_calendar')
         self._cr.execute("""CREATE OR REPLACE VIEW hr_leave_report_calendar AS
         (SELECT
             hl.id AS id,

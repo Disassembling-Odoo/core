@@ -2,6 +2,7 @@
 
 from odoo import models, tools
 from odoo.ormapping import fields
+from odoo.technology import db
 
 class HrEmployeeSkillReport(models.BaseModel):
     _auto = False
@@ -22,7 +23,7 @@ class HrEmployeeSkillReport(models.BaseModel):
     active = fields.Boolean(related='employee_id.active')
 
     def init(self):
-        tools.drop_view_if_exists(self.env.cr, self._table)
+        db.drop_view_if_exists(self.env.cr, self._table)
 
         self.env.cr.execute("""
         CREATE OR REPLACE VIEW %s AS (

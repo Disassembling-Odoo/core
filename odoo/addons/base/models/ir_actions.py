@@ -19,6 +19,7 @@ from odoo.tools.safe_eval import safe_eval, test_python_expr
 from odoo.tools.float_utils import float_compare
 from odoo.http import request
 
+from odoo.technology import db
 from odoo.technology.cache import ormcache
 
 from pytz import timezone
@@ -424,7 +425,7 @@ class IrActionsActWindowView(models.Model):
 
     def _auto_init(self):
         res = super(IrActionsActWindowView, self)._auto_init()
-        tools.create_unique_index(self._cr, 'act_window_view_unique_mode_per_action',
+        db.create_unique_index(self._cr, 'act_window_view_unique_mode_per_action',
                                   self._table, ['act_window_id', 'view_mode'])
         return res
 

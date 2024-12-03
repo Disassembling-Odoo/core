@@ -6,7 +6,7 @@ import stdnum
 from odoo import models, api, Command, _
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
-from odoo.tools import index_exists
+from odoo.technology.db import index_exists
 
 
 _logger = logging.getLogger(__name__)

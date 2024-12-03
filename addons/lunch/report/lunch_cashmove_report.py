@@ -3,7 +3,7 @@
 
 from odoo import api, models, tools, _
 from odoo.ormapping import fields
-
+from odoo.technology import db
 
 class CashmoveReport(models.Model):
     _name = "lunch.cashmove.report"
@@ -23,7 +23,7 @@ class CashmoveReport(models.Model):
             cashmove.display_name = '{} {}'.format(_('Lunch Cashmove'), '#%d' % cashmove.id)
 
     def init(self):
-        tools.drop_view_if_exists(self._cr, self._table)
+        db.drop_view_if_exists(self._cr, self._table)
 
         self._cr.execute("""
             CREATE or REPLACE view %s as (

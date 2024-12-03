@@ -19,6 +19,7 @@ from odoo.tools.float_utils import float_round, float_compare
 from odoo.tools.misc import format_date
 from odoo.tools.translate import _
 from odoo.osv import expression
+from odoo.technology import db
 
 _logger = logging.getLogger(__name__)
 
@@ -228,7 +229,7 @@ class HolidaysRequest(models.Model):
 
     def _auto_init(self):
         res = super(HolidaysRequest, self)._auto_init()
-        tools.create_index(self._cr, 'hr_leave_date_to_date_from_index',
+        db.create_index(self._cr, 'hr_leave_date_to_date_from_index',
                            self._table, ['date_to', 'date_from'])
         return res
 

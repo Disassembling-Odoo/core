@@ -8,6 +8,7 @@ from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
 from odoo.tools import OrderedSet, format_list, groupby
 from odoo.tools.float_utils import float_compare, float_is_zero, float_round
+from odoo.technology import db
 
 
 class StockMoveLine(models.Model):
@@ -297,7 +298,7 @@ class StockMoveLine(models.Model):
         return addtional_qty
 
     def init(self):
-        if not tools.index_exists(self._cr, 'stock_move_line_free_reservation_index'):
+        if not db.index_exists(self._cr, 'stock_move_line_free_reservation_index'):
             self._cr.execute("""
                 CREATE INDEX stock_move_line_free_reservation_index
                 ON

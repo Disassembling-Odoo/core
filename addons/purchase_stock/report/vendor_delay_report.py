@@ -5,6 +5,7 @@ from odoo import models, tools
 from odoo.ormapping import fields
 from odoo.osv import expression
 from odoo.technology.db import SQL
+from odoo.technology import db
 
 
 class VendorDelayReport(models.Model):
@@ -21,7 +22,7 @@ class VendorDelayReport(models.Model):
     on_time_rate = fields.Float('On-Time Delivery Rate', readonly=True)
 
     def init(self):
-        tools.drop_view_if_exists(self.env.cr, 'vendor_delay_report')
+        db.drop_view_if_exists(self.env.cr, 'vendor_delay_report')
         self.env.cr.execute("""
 CREATE OR replace VIEW vendor_delay_report AS(
 SELECT m.id                     AS id,

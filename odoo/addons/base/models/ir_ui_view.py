@@ -30,6 +30,7 @@ from odoo.tools.template_inheritance import apply_inheritance_specs, locate_node
 from odoo.tools.translate import xml_translate, TRANSLATED_ATTRS
 from odoo.tools.view_validation import valid_view, get_domain_value_names, get_expression_field_names, get_dict_asts
 from odoo.technology.cache import ormcache
+from odoo.technology import db
 
 _logger = logging.getLogger(__name__)
 
@@ -79,8 +80,8 @@ class ViewCustom(models.Model):
 
     def _auto_init(self):
         res = super(ViewCustom, self)._auto_init()
-        tools.create_index(self._cr, 'ir_ui_view_custom_user_id_ref_id',
-                           self._table, ['user_id', 'ref_id'])
+        db.create_index(self._cr, 'ir_ui_view_custom_user_id_ref_id',
+                        self._table, ['user_id', 'ref_id'])
         return res
 
 
@@ -453,8 +454,8 @@ actual arch.
 
     def _auto_init(self):
         res = super(View, self)._auto_init()
-        tools.create_index(self._cr, 'ir_ui_view_model_type_inherit_id',
-                           self._table, ['model', 'inherit_id'])
+        db.create_index(self._cr, 'ir_ui_view_model_type_inherit_id',
+                        self._table, ['model', 'inherit_id'])
         return res
 
     def _compute_defaults(self, values):

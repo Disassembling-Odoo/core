@@ -12,7 +12,7 @@ from odoo.ormapping import fields
 from odoo.addons.base.models.res_users import check_identity
 from odoo.exceptions import AccessDenied, UserError
 from odoo.http import request
-from odoo.technology.db import sql
+from odoo.technology import db
 
 from odoo.addons.auth_totp.models.totp import TOTP, TOTP_SECRET_SIZE
 
@@ -28,7 +28,7 @@ class Users(models.Model):
 
     def init(self):
         super().init()
-        if not sql.column_exists(self.env.cr, self._table, "totp_secret"):
+        if not db.column_exists(self.env.cr, self._table, "totp_secret"):
             self.env.cr.execute("ALTER TABLE res_users ADD COLUMN totp_secret varchar")
 
     @property

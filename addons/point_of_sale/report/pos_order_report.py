@@ -3,6 +3,7 @@
 
 from odoo import models, tools
 from odoo.ormapping import fields
+from odoo.technology import db
 
 
 class PosOrderReport(models.Model):
@@ -106,7 +107,7 @@ class PosOrderReport(models.Model):
         return ""
 
     def init(self):
-        tools.drop_view_if_exists(self._cr, self._table)
+        db.drop_view_if_exists(self._cr, self._table)
         self._cr.execute("""
             CREATE OR REPLACE VIEW %s AS (
                 %s

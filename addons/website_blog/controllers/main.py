@@ -13,7 +13,7 @@ from odoo.addons.website.controllers.main import QueryURL
 from odoo.http import request
 from odoo.tools import html2plaintext
 from odoo.tools.misc import get_lang
-from odoo.technology.db import sql
+from odoo.technology import db
 
 
 class WebsiteBlog(http.Controller):
@@ -292,7 +292,7 @@ class WebsiteBlog(http.Controller):
         response = request.render("website_blog.blog_post_complete", values)
 
         if blog_post.id not in request.session.get('posts_viewed', []):
-            if sql.increment_fields_skiplock(blog_post, 'visits'):
+            if db.increment_fields_skiplock(blog_post, 'visits'):
                 if not request.session.get('posts_viewed'):
                     request.session['posts_viewed'] = []
                 request.session['posts_viewed'].append(blog_post.id)

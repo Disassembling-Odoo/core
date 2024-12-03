@@ -22,6 +22,7 @@ from odoo.conf import config
 from odoo.tools import human_size, image, str2bool, consteq
 from odoo.tools.mimetypes import guess_mimetype, fix_filename_extension
 from odoo.osv import expression
+from odoo.technology import db
 
 _logger = logging.getLogger(__name__)
 
@@ -430,8 +431,8 @@ class IrAttachment(models.Model):
 
     def _auto_init(self):
         res = super(IrAttachment, self)._auto_init()
-        tools.create_index(self._cr, 'ir_attachment_res_idx',
-                           self._table, ['res_model', 'res_id'])
+        db.create_index(self._cr, 'ir_attachment_res_idx',
+                        self._table, ['res_model', 'res_id'])
         return res
 
     @api.constrains('type', 'url')

@@ -11,7 +11,7 @@ from odoo.exceptions import UserError
 
 from odoo import api, models, tools, _
 from odoo.osv import expression
-
+from odoo.technology import db
 
 class HrWorkEntry(models.Model):
     _name = 'hr.work.entry'
@@ -67,7 +67,7 @@ class HrWorkEntry(models.Model):
     ]
 
     def init(self):
-        tools.create_index(self._cr, "hr_work_entry_date_start_date_stop_index", self._table, ["date_start", "date_stop"])
+        db.create_index(self._cr, "hr_work_entry_date_start_date_stop_index", self._table, ["date_start", "date_stop"])
 
     @api.depends('work_entry_type_id', 'employee_id')
     def _compute_name(self):

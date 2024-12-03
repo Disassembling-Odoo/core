@@ -19,6 +19,7 @@ from odoo.tools.translate import _
 from odoo.tools import date_utils, email_split, is_html_empty, groupby, parse_contact_from_email
 from odoo.tools.misc import get_lang
 from odoo.technology.db import SQL
+from odoo.technology import db
 
 from . import crm_stage
 
@@ -725,10 +726,10 @@ class Lead(models.Model):
 
     def _auto_init(self):
         super()._auto_init()
-        tools.create_index(self._cr, 'crm_lead_user_id_team_id_type_index',
-                           self._table, ['user_id', 'team_id', 'type'])
-        tools.create_index(self._cr, 'crm_lead_create_date_team_id_idx',
-                           self._table, ['create_date', 'team_id'])
+        db.create_index(self._cr, 'crm_lead_user_id_team_id_type_index',
+                        self._table, ['user_id', 'team_id', 'type'])
+        db.create_index(self._cr, 'crm_lead_create_date_team_id_idx',
+                        self._table, ['create_date', 'team_id'])
 
     @api.model_create_multi
     def create(self, vals_list):

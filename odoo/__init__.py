@@ -53,6 +53,7 @@ _monkeypatches.patch_all()
 # Imports
 # ----------------------------------------------------------
 from . import tools
+from . import technology
 from .technology import cli
 
 from . import upgrade  # this namespace must be imported first

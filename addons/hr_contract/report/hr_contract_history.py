@@ -3,6 +3,7 @@
 
 from odoo import api, models, tools, _
 from odoo.ormapping import fields
+from odoo.technology import db
 from odoo.technology.db import SQL
 from collections import defaultdict
 
@@ -93,7 +94,7 @@ class ContractHistory(models.Model):
         return activity_state_sql
 
     def init(self):
-        tools.drop_view_if_exists(self.env.cr, self._table)
+        db.drop_view_if_exists(self.env.cr, self._table)
         # Reference contract is the one with the latest start_date.
         self.env.cr.execute("""CREATE or REPLACE VIEW %s AS (
             WITH contract_information AS (

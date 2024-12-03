@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import api, models, tools
+from odoo import api, models
 from odoo.ormapping import fields
-
+from odoo.technology import db
 
 class TimesheetAttendance(models.Model):
     _name = 'hr.timesheet.attendance.report'
@@ -21,7 +21,7 @@ class TimesheetAttendance(models.Model):
     company_id = fields.Many2one('res.company', string='Company', readonly=True)
 
     def init(self):
-        tools.drop_view_if_exists(self.env.cr, self._table)
+        db.drop_view_if_exists(self.env.cr, self._table)
         self._cr.execute("""CREATE OR REPLACE VIEW %s AS (
             SELECT
                 max(id) AS id,

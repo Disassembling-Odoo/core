@@ -4,8 +4,9 @@ from odoo.service.common import exp_version
 from odoo import http, _
 from odoo.http import request
 from odoo.osv import expression
-from odoo.tools import float_round, py_to_js_locale, SQL
+from odoo.tools import float_round, py_to_js_locale
 from odoo.tools.image import image_data_uri
+from odoo.technology.db import SQL
 
 import datetime
 

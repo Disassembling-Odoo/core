@@ -3,6 +3,7 @@
 
 from odoo import api, models, tools
 from odoo.ormapping import fields
+from odoo.technology import db
 
 
 class ImLivechatReportOperator(models.Model):
@@ -24,7 +25,7 @@ class ImLivechatReportOperator(models.Model):
 
     def init(self):
         # Note : start_date_hour must be remove when the read_group will allow grouping on the hour of a datetime. Don't forget to change the view !
-        tools.drop_view_if_exists(self.env.cr, 'im_livechat_report_operator')
+        db.drop_view_if_exists(self.env.cr, 'im_livechat_report_operator')
         self.env.cr.execute("""
             CREATE OR REPLACE VIEW im_livechat_report_operator AS (
                 SELECT

@@ -4,6 +4,7 @@
 from odoo import models, tools
 from odoo.ormapping import fields
 from odoo.addons.sale.models.sale_order import SALE_ORDER_STATE
+from odoo.technology import db
 
 
 class EventSaleReport(models.Model):
@@ -48,7 +49,7 @@ class EventSaleReport(models.Model):
     company_id = fields.Many2one('res.company', string='Company', readonly=True)
 
     def init(self):
-        tools.drop_view_if_exists(self._cr, self._table)
+        db.drop_view_if_exists(self._cr, self._table)
         self._cr.execute('CREATE OR REPLACE VIEW %s AS (%s);' % (self._table, self._query()))
 
     def _query(self, with_=None, select=None, join=None, group_by=None):

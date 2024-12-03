@@ -5,6 +5,8 @@ from odoo import models, tools
 
 from odoo.ormapping import fields
 from odoo.addons.rating.models.rating_data import RATING_LIMIT_MIN, RATING_TEXT
+from odoo.technology import db
+
 
 class ReportProjectTaskUser(models.Model):
     _name = "report.project.task.user"
@@ -143,7 +145,7 @@ class ReportProjectTaskUser(models.Model):
         """
 
     def init(self):
-        tools.drop_view_if_exists(self._cr, self._table)
+        db.drop_view_if_exists(self._cr, self._table)
         self._cr.execute("""
     CREATE view %s as
          SELECT %s

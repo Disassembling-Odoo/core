@@ -3,6 +3,7 @@
 
 from odoo import api, models, tools, _
 from odoo.ormapping import fields
+from odoo.technology import db
 
 
 class LeaveReport(models.Model):
@@ -34,7 +35,7 @@ class LeaveReport(models.Model):
     company_id = fields.Many2one('res.company', string="Company", readonly=True)
 
     def init(self):
-        tools.drop_view_if_exists(self._cr, 'hr_leave_employee_type_report')
+        db.drop_view_if_exists(self._cr, 'hr_leave_employee_type_report')
 
         self._cr.execute("""
             CREATE or REPLACE view hr_leave_employee_type_report as (

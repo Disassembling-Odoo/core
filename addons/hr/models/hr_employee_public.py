@@ -3,6 +3,7 @@
 
 from odoo import api, models, tools
 from odoo.ormapping import fields
+from odoo.technology import db
 
 
 class HrEmployeePublic(models.Model):
@@ -86,7 +87,7 @@ class HrEmployeePublic(models.Model):
         return ','.join('emp.%s' % name for name, field in self._fields.items() if field.store and field.type not in ['many2many', 'one2many'])
 
     def init(self):
-        tools.drop_view_if_exists(self.env.cr, self._table)
+        db.drop_view_if_exists(self.env.cr, self._table)
         self.env.cr.execute("""CREATE or REPLACE VIEW %s as (
             SELECT
                 %s

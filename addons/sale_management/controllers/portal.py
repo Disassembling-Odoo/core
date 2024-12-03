@@ -1,7 +1,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo.exceptions import AccessError, MissingError
-from odoo.http import request, route
+from odoo.technology.framework.http import request, route
 
 from odoo.addons.sale.controllers import portal
 

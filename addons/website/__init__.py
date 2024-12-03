@@ -6,7 +6,7 @@ from . import wizard
 
 import odoo
 from odoo import api, SUPERUSER_ID
-from odoo.http import request
+from odoo.technology.framework.http import request
 from functools import partial
 
 

@@ -3,7 +3,7 @@
 import logging
 from odoo import _
 from odoo.exceptions import UserError, MissingError, AccessError
-from odoo.http import Controller, request, route
+from odoo.technology.framework.http import Controller, request, route
 from .utils import clean_action
 from werkzeug.exceptions import BadRequest
 

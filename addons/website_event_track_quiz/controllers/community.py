@@ -3,9 +3,9 @@
 
 import math
 
-from odoo import http
+from odoo.technology.framework import http
 from odoo.addons.website_event.controllers.community import EventCommunityController
-from odoo.http import request
+from odoo.technology.framework.http import request
 
 
 class WebsiteEventTrackQuizCommunityController(EventCommunityController):

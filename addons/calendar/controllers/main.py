@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-import odoo.http as http
+import odoo.technology.framework.http as http
 
-from odoo.http import request
+from odoo.technology.framework.http import request
 from odoo.tools.misc import get_lang
 
 

@@ -7,7 +7,7 @@ from werkzeug.urls import url_encode
 
 import odoo
 import odoo.tests
-from odoo import http
+from odoo.technology.framework import http
 from odoo.addons.base.tests.common import HttpCaseWithUserDemo
 from odoo.addons.web_editor.controllers.main import Web_Editor
 

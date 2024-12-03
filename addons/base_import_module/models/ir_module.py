@@ -16,7 +16,7 @@ from os.path import join as opj
 from odoo import api, models, _
 from odoo.ormapping import fields
 from odoo.exceptions import AccessDenied, AccessError, UserError
-from odoo.http import request
+from odoo.technology.framework.http import request
 from odoo.modules.module import adapt_version, MANIFEST_NAMES
 from odoo.osv.expression import is_leaf
 from odoo.release import major_version

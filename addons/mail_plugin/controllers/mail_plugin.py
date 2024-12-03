@@ -8,10 +8,11 @@ import requests
 from markupsafe import Markup
 from werkzeug.exceptions import Forbidden
 
-from odoo import http, tools, _
+from odoo import tools, _
 from odoo.addons.iap.tools import iap_tools
 from odoo.exceptions import AccessError
-from odoo.http import request
+from odoo.technology.framework.http import request
+from odoo.technology.framework import http
 
 _logger = logging.getLogger(__name__)
 

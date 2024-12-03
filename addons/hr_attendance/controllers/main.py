@@ -1,9 +1,10 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo.service.common import exp_version
-from odoo import http, _
-from odoo.http import request
+from odoo import _
+from odoo.technology.framework.http import request
 from odoo.osv import expression
+from odoo.technology.framework import http
 from odoo.tools import float_round, py_to_js_locale
 from odoo.tools.image import image_data_uri
 from odoo.technology.db import SQL

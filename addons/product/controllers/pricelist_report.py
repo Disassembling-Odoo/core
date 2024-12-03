@@ -7,7 +7,7 @@ import json
 import xlsxwriter
 
 from odoo import _
-from odoo.http import Controller, request, route, content_disposition
+from odoo.technology.framework.http import Controller, request, route, content_disposition
 
 
 class ProductPricelistExportController(Controller):

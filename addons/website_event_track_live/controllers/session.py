@@ -4,7 +4,7 @@
 import re
 
 from odoo.addons.website_event_track.controllers.event_track import EventTrackController
-from odoo.http import request
+from odoo.technology.framework.http import request
 
 
 class WebsiteEventSessionLiveController(EventTrackController):

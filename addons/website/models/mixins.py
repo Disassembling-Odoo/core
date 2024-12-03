@@ -8,7 +8,7 @@ from werkzeug.urls import url_join
 from odoo import api, models, _
 from odoo.ormapping import fields
 from odoo.addons.website.tools import text_from_html
-from odoo.http import request
+from odoo.technology.framework.http import request
 from odoo.osv import expression
 from odoo.exceptions import AccessError
 from odoo.technology.db import escape_psql

@@ -2,9 +2,10 @@
 import psycopg2.errors
 from werkzeug.exceptions import NotFound
 
-from odoo import _, http
+from odoo import _
 from odoo.exceptions import UserError
-from odoo.http import request
+from odoo.technology.framework.http import request
+from odoo.technology.framework import http
 from odoo.tools import consteq, replace_exceptions
 from odoo.addons.mail.models.discuss.mail_guest import add_guest_to_context
 from odoo.addons.mail.tools.discuss import Store

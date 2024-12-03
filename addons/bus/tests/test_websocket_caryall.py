@@ -10,7 +10,7 @@ from threading import Event
 from unittest.mock import patch
 from weakref import WeakSet
 
-from odoo import http
+from odoo.technology.framework import http
 from odoo.api import Environment
 from odoo.tests import common, new_test_user
 from odoo.tools import mute_logger

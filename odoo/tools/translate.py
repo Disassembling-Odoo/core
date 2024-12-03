@@ -525,7 +525,7 @@ def _get_cr(frame):
         if (cr := getattr(local_self, 'cr', None)) is not None:
             return cr
     try:
-        from odoo.http import request  # noqa: PLC0415
+        from odoo.technology.framework.http import request  # noqa: PLC0415
         request_env = request.env
         if request_env is not None and (cr := request_env.cr) is not None:
             return cr
@@ -565,7 +565,7 @@ def _get_lang(frame, default_lang='') -> str:
         log_level = logging.DEBUG
     # get from request?
     try:
-        from odoo.http import request  # noqa: PLC0415
+        from odoo.technology.framework.http import request  # noqa: PLC0415
         request_env = request.env
         if request_env and (lang := request_env.lang):
             return lang

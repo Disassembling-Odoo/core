@@ -7,7 +7,7 @@ from unittest.mock import patch
 
 import odoo
 from odoo.conf import config
-from odoo.http import root, content_disposition
+from odoo.technology.framework.http import root, content_disposition
 from odoo.tests import tagged
 from odoo.tests.common import HOST, new_test_user, get_db_name, BaseCase
 from odoo.tools import file_path, parse_version

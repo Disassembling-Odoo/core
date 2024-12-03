@@ -6,7 +6,7 @@ from collections import OrderedDict
 from urllib3.util import parse_url
 
 from odoo import models
-from odoo.http import request
+from odoo.technology.framework.http import request
 from odoo.tools import lazy
 from odoo.addons.base.models.assetsbundle import AssetsBundle
 from odoo.osv import expression

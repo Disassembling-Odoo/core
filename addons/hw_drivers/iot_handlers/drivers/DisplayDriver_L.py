@@ -12,7 +12,7 @@ import time
 import werkzeug
 import urllib3
 
-from odoo import http
+from odoo.technology.framework import http
 from odoo.addons.hw_drivers.browser import Browser, BrowserState
 from odoo.addons.hw_drivers.connection_manager import connection_manager
 from odoo.addons.hw_drivers.driver import Driver

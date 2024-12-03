@@ -5,9 +5,10 @@ import re
 
 from werkzeug import urls
 
-from odoo import http, tools, _, SUPERUSER_ID
+from odoo import tools, _, SUPERUSER_ID
 from odoo.exceptions import AccessDenied, AccessError, MissingError, UserError, ValidationError
-from odoo.http import content_disposition, Controller, request, route
+from odoo.technology.framework.http import content_disposition, Controller, request, route
+from odoo.technology.framework import http
 from odoo.tools import consteq
 
 # --------------------------------------------------

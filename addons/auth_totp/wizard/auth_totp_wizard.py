@@ -12,7 +12,7 @@ from odoo import _, api, models
 from odoo.ormapping import fields
 from odoo.addons.base.models.res_users import check_identity
 from odoo.exceptions import UserError
-from odoo.http import request
+from odoo.technology.framework.http import request
 
 from odoo.addons.auth_totp.models.totp import ALGORITHM, DIGITS, TIMESTEP
 

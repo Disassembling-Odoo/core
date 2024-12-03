@@ -4,7 +4,7 @@ import logging
 from odoo import api, models, _, Command
 from odoo.ormapping import fields
 from odoo.exceptions import ValidationError
-from odoo.http import request
+from odoo.technology.framework.http import request
 
 _logger = logging.getLogger(__name__)
 

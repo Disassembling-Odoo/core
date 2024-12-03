@@ -3,8 +3,8 @@
 from werkzeug import urls
 from werkzeug.exceptions import Forbidden, NotFound
 
-from odoo import http
-from odoo.http import request
+from odoo.technology.framework import http
+from odoo.technology.framework.http import request
 from odoo.osv import expression
 from odoo.tools import consteq
 from odoo.addons.mail.controllers import mail

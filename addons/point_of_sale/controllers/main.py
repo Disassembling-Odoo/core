@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 import logging
 
-from odoo import http, _
-from odoo.http import request
+from odoo import _
+from odoo.technology.framework.http import request
 from odoo.osv.expression import AND
+from odoo.technology.framework import http
 from odoo.tools import format_amount
 from odoo.addons.account.controllers.portal import PortalAccount
 from datetime import timedelta, datetime

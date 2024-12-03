@@ -5,8 +5,8 @@ import os
 import subprocess
 import threading
 
-from odoo import http
-from odoo.http import Response
+from odoo.technology.framework import http
+from odoo.technology.framework.http import Response
 from odoo.addons.hw_drivers.tools import helpers
 from odoo.addons.web.controllers.home import Home
 

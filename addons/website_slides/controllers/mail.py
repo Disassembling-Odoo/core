@@ -2,8 +2,8 @@
 
 from werkzeug.exceptions import NotFound, Forbidden
 
-from odoo import http
-from odoo.http import request
+from odoo.technology.framework import http
+from odoo.technology.framework.http import request
 from odoo.addons.portal.controllers.mail import PortalChatter
 from odoo.tools import plaintext2html, html2plaintext
 

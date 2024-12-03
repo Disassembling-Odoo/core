@@ -2,8 +2,8 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 import contextlib
 
-from odoo import http
-from odoo.http import request
+from odoo.technology.framework import http
+from odoo.technology.framework.http import request
 from odoo.tools.json import scriptsafe
 
 

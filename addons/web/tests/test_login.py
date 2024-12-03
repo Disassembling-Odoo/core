@@ -1,6 +1,6 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import http
+from odoo.technology.framework import http
 from odoo.addons.base.tests.common import HttpCaseWithUserDemo
 from odoo.tests.common import get_db_name, HOST, HttpCase, new_test_user, Opener, tagged
 

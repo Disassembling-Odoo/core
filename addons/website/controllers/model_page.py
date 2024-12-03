@@ -2,7 +2,7 @@ import ast
 
 import werkzeug
 
-from odoo.http import Controller, request, route
+from odoo.technology.framework.http import Controller, request, route
 from odoo.osv.expression import AND, OR
 
 

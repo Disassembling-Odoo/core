@@ -6,7 +6,7 @@ from werkzeug.urls import url_parse
 from odoo import api, Command, models, _
 from odoo.ormapping import fields
 from odoo.exceptions import AccessDenied
-from odoo.http import request
+from odoo.technology.framework.http import request
 from odoo.technology.db import column_exists, SQL
 
 from odoo.addons.base.models.res_users import check_identity

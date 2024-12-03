@@ -4,7 +4,7 @@ from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
 from odoo.ormapping import fields
-from odoo.http import request, route, Controller
+from odoo.technology.framework.http import request, route, Controller
 
 
 class DiscussSettingsController(Controller):

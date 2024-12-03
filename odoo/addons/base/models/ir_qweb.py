@@ -398,7 +398,7 @@ from odoo.tools.json import scriptsafe
 from odoo.tools.lru import LRU
 from odoo.tools.misc import str2bool
 from odoo.tools.image import image_data_uri, FILETYPE_BASE64_MAGICWORD
-from odoo.http import request
+from odoo.technology.framework.http import request
 from odoo.tools.profiler import QwebTracker
 from odoo.exceptions import UserError, AccessDenied, AccessError, MissingError, ValidationError
 

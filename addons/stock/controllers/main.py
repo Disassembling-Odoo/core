@@ -2,8 +2,8 @@
 import werkzeug
 from werkzeug.exceptions import InternalServerError
 
-from odoo import http
-from odoo.http import request
+from odoo.technology.framework import http
+from odoo.technology.framework.http import request
 from odoo.tools.misc import html_escape
 
 import json

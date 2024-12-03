@@ -2,7 +2,7 @@
 
 from datetime import datetime
 
-from odoo.http import Controller, request, route
+from odoo.technology.framework.http import Controller, request, route
 from odoo.tools import groupby
 
 

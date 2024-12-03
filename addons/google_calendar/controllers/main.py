@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import http
-from odoo.http import request
+from odoo.technology.framework import http
+from odoo.technology.framework.http import request
 from odoo.addons.google_calendar.utils.google_calendar import GoogleCalendarService
 from odoo.addons.calendar.controllers.main import CalendarController
 from odoo.addons.google_account.models.google_service import _get_client_secret

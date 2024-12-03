@@ -8,9 +8,10 @@ from datetime import timedelta
 from markupsafe import Markup, escape
 from werkzeug.exceptions import BadRequest, NotFound, Unauthorized
 
-from odoo import _, http, tools
+from odoo import _, tools
 from odoo.ormapping import fields
-from odoo.http import request, Response
+from odoo.technology.framework.http import request, Response
+from odoo.technology.framework import http
 from odoo.tools import consteq
 
 

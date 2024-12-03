@@ -11,10 +11,11 @@ import math
 from dateutil.relativedelta import relativedelta
 from operator import itemgetter
 
-from odoo import _, http, tools
+from odoo import _, tools
 from odoo.ormapping import fields
-from odoo.http import request
+from odoo.technology.framework.http import request
 from odoo.osv import expression
+from odoo.technology.framework import http
 
 
 class WebsiteProfile(http.Controller):

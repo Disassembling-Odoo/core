@@ -5,9 +5,10 @@ import logging
 from werkzeug.urls import url_encode
 from werkzeug.exceptions import NotFound, Unauthorized
 
-from odoo import _, http
+from odoo import _
 from odoo.exceptions import AccessError
-from odoo.http import request
+from odoo.technology.framework.http import request
+from odoo.technology.framework import http
 from odoo.tools import consteq
 from odoo.addons.mail.controllers.discuss.public_page import PublicPageController
 from odoo.addons.mail.models.discuss.mail_guest import add_guest_to_context

@@ -11,7 +11,7 @@ from dateutil.relativedelta import relativedelta
 from odoo import models, api, _
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
-from odoo.http import request
+from odoo.technology.framework.http import request
 from odoo.tools.profiler import make_session
 from odoo.tools.speedscope import Speedscope
 

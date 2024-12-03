@@ -10,7 +10,7 @@ from psycopg2.errors import LockNotAvailable
 
 from odoo import models, api, _
 from odoo.ormapping import fields
-from odoo.http import request
+from odoo.technology.framework.http import request
 from odoo.exceptions import UserError, ValidationError
 from odoo.tools import formatLang, float_round, float_repr, cleanup_xml_node, groupby
 from odoo.tools.misc import split_every

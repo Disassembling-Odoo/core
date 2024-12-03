@@ -10,7 +10,7 @@ from dateutil.relativedelta import relativedelta
 from odoo import _, api, exceptions, models
 from odoo.ormapping import fields
 from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT, safe_eval
-from odoo.http import request
+from odoo.technology.framework.http import request
 
 _logger = logging.getLogger(__name__)
 

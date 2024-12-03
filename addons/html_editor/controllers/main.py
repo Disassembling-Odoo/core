@@ -8,10 +8,11 @@ import werkzeug.urls
 import requests
 from os.path import join as opj
 
-from odoo import _, http, tools, SUPERUSER_ID
+from odoo import _, tools, SUPERUSER_ID
 from odoo.addons.html_editor.tools import get_video_url_data
 from odoo.exceptions import UserError, MissingError, AccessError
-from odoo.http import request
+from odoo.technology.framework.http import request
+from odoo.technology.framework import http
 from odoo.tools.mimetypes import guess_mimetype
 from odoo.tools.misc import file_open
 from odoo.addons.iap.tools import iap_tools

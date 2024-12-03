@@ -13,12 +13,13 @@ import lxml
 import base64
 
 import odoo
-from odoo import api, http
+from odoo import api
 from odoo.addons import __path__ as ADDONS_PATH
 from odoo.addons.base.models.assetsbundle import AssetsBundle, XMLAssetError, ANY_UNIQUE
 from odoo.addons.base.models.ir_asset import AssetPaths
 from odoo.addons.base.models.ir_attachment import IrAttachment
 from odoo.modules.module import get_manifest
+from odoo.technology.framework import http
 from odoo.tests import HttpCase, tagged
 from odoo.tests.common import TransactionCase
 from odoo.addons.base.models.ir_qweb import QWebException

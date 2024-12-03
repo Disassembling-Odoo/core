@@ -3,7 +3,7 @@
 
 import json
 
-from odoo.http import request, route
+from odoo.technology.framework.http import request, route
 from odoo.addons.website_event.controllers.main import WebsiteEventController
 
 

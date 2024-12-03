@@ -2,7 +2,7 @@
 
 import logging
 from odoo import models
-from odoo.http import request
+from odoo.technology.framework.http import request
 
 _logger = logging.getLogger(__name__)
 BAD_REQUEST = """Missing request.is_frontend attribute.

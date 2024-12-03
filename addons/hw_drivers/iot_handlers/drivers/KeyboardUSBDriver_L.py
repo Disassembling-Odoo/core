@@ -16,7 +16,7 @@ import time
 import urllib3
 from usb import util
 
-from odoo import http
+from odoo.technology.framework import http
 from odoo.addons.hw_drivers.controllers.proxy import proxy_drivers
 from odoo.addons.hw_drivers.driver import Driver
 from odoo.addons.hw_drivers.event_manager import event_manager

@@ -4,8 +4,8 @@ import mimetypes
 import re
 
 from urllib.parse import unquote
-from odoo import http
-from odoo.http import request
+from odoo.technology.framework import http
+from odoo.technology.framework.http import request
 from odoo.addons.web.controllers import webmanifest
 
 

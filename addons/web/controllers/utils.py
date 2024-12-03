@@ -13,8 +13,8 @@ from werkzeug.urls import iri_to_uri
 
 from odoo.tools.translate import JAVASCRIPT_TRANSLATION_COMMENT
 from odoo.tools.misc import file_open
-from odoo import http
-from odoo.http import request
+from odoo.technology.framework import http
+from odoo.technology.framework.http import request
 
 
 _logger = logging.getLogger(__name__)

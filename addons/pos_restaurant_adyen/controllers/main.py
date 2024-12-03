@@ -3,8 +3,8 @@
 
 import logging
 
-from odoo import http
-from odoo.http import request
+from odoo.technology.framework import http
+from odoo.technology.framework.http import request
 from odoo.addons.payment_adyen.controllers.main import AdyenController
 
 _logger = logging.getLogger(__name__)

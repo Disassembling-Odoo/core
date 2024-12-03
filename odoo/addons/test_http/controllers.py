@@ -6,9 +6,9 @@ import werkzeug
 from psycopg2.errorcodes import SERIALIZATION_FAILURE
 from psycopg2.errors import SerializationFailure
 
-from odoo import http
+from odoo.technology.framework import http
 from odoo.exceptions import AccessError, UserError
-from odoo.http import request
+from odoo.technology.framework.http import request
 from odoo.tools import replace_exceptions, str2bool
 
 from odoo.addons.web.controllers.utils import ensure_db

@@ -4,7 +4,7 @@ import contextlib
 
 from odoo import _, models, SUPERUSER_ID
 from odoo.exceptions import AccessError, MissingError, UserError
-from odoo.http import request
+from odoo.technology.framework.http import request
 from odoo.tools import consteq
 from odoo.addons.mail.tools.discuss import Store
 

@@ -4,13 +4,15 @@ import logging
 import werkzeug
 from werkzeug.urls import url_encode
 
-from odoo import conf, http, tools, _
+from odoo import conf, tools, _
 from odoo.addons.auth_signup.models.res_users import SignupError
 from odoo.addons.web.controllers.home import ensure_db, Home, SIGN_UP_REQUEST_PARAMS, LOGIN_SUCCESSFUL_PARAMS
 from odoo.addons.base_setup.controllers.main import BaseSetup
 from odoo.exceptions import UserError
-from odoo.http import request
+from odoo.technology.framework.http import request
 from markupsafe import Markup
+
+from odoo.technology.framework import http
 
 _logger = logging.getLogger(__name__)
 

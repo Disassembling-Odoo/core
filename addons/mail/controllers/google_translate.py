@@ -3,7 +3,7 @@
 import babel
 import requests
 
-from odoo.http import request, route, Controller
+from odoo.technology.framework.http import request, route, Controller
 
 
 class GoogleTranslateController(Controller):

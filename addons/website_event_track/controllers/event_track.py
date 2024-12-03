@@ -14,10 +14,11 @@ import json
 import operator
 import pytz
 
-from odoo import exceptions, http, tools, _
+from odoo import exceptions, tools, _
 from odoo.ormapping import fields
-from odoo.http import request
+from odoo.technology.framework.http import request
 from odoo.osv import expression
+from odoo.technology.framework import http
 from odoo.tools import is_html_empty, plaintext2html
 from odoo.tools.misc import babel_locale_parse
 

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import http
+from odoo.technology.framework import http
 
 from odoo.addons.website_event_track.controllers.event_track import EventTrackController
 from odoo.osv import expression

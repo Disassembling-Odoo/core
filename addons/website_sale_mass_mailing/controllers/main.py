@@ -1,6 +1,6 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo.http import request
+from odoo.technology.framework.http import request
 
 from odoo.addons.website_mass_mailing.controllers.main import MassMailController
 from odoo.addons.website_sale.controllers.main import WebsiteSale as WebsiteSaleController

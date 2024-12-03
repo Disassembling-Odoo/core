@@ -10,10 +10,11 @@ import werkzeug.urls
 import werkzeug.utils
 from werkzeug.exceptions import BadRequest
 
-from odoo import api, http, SUPERUSER_ID, _
+from odoo import api, SUPERUSER_ID, _
 from odoo.exceptions import AccessDenied
-from odoo.http import request, Response
+from odoo.technology.framework.http import request, Response
 from odoo import registry as registry_get
+from odoo.technology.framework import http
 from odoo.tools.misc import clean_context
 
 from odoo.addons.auth_signup.controllers.main import AuthSignupHome as Home

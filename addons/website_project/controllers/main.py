@@ -1,6 +1,6 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo.http import request
+from odoo.technology.framework.http import request
 
 from odoo.addons.base.models.ir_qweb_fields import nl2br_enclose
 from odoo.addons.website.controllers import form

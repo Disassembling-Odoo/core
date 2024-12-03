@@ -1,4 +1,4 @@
-from odoo.http import route
+from odoo.technology.framework.http import route
 from odoo.addons.mail.controllers.attachment import AttachmentController
 from odoo.addons.im_livechat.tools.misc import force_guest_env
 

@@ -2,7 +2,7 @@
 
 from functools import partial
 
-from odoo.http import request
+from odoo.technology.framework.http import request
 
 from odoo.addons.payment import utils as payment_utils
 from odoo.addons.website_sale.controllers.delivery import Delivery

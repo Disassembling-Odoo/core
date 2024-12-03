@@ -3,11 +3,11 @@
 
 import werkzeug.urls
 
-from odoo import http
+from odoo.technology.framework import http
 from odoo.addons.website.models.ir_http import sitemap_qs2dom
 from odoo.addons.website_google_map.controllers.main import GoogleMap
 from odoo.tools.translate import _
-from odoo.http import request
+from odoo.technology.framework.http import request
 
 
 class WebsiteCustomer(GoogleMap):

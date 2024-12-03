@@ -3,7 +3,7 @@
 from odoo import _, api, models
 from odoo.ormapping import fields
 from odoo.exceptions import ValidationError
-from odoo.http import request
+from odoo.technology.framework.http import request
 from odoo.tools.misc import format_duration
 
 from odoo.addons.website_sale_collect import utils

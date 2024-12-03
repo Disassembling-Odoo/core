@@ -3,8 +3,9 @@
 import io
 import zipfile
 
-from odoo import http, _
-from odoo.http import request, content_disposition
+from odoo import _
+from odoo.technology.framework.http import request, content_disposition
+from odoo.technology.framework import http
 
 
 def _get_headers(filename, filetype, content):

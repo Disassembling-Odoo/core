@@ -2,7 +2,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo.addons.mail.controllers.mail import MailController
-from odoo import http
+from odoo.technology.framework import http
 
 
 class HrHolidaysController(http.Controller):

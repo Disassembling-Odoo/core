@@ -11,7 +11,7 @@ import threading
 import time
 
 from pathlib import Path
-from odoo import http
+from odoo.technology.framework import http
 from odoo.addons.hw_drivers.tools import helpers
 from odoo.addons.hw_drivers.main import iot_devices
 from odoo.addons.web.controllers.home import Home

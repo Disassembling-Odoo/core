@@ -4,8 +4,8 @@
 import logging
 import werkzeug
 
-from odoo import http
-from odoo.http import request
+from odoo.technology.framework import http
+from odoo.technology.framework.http import request
 from odoo.tools.translate import _
 from odoo.tools.misc import get_lang
 

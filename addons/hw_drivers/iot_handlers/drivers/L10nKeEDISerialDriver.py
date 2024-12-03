@@ -8,7 +8,7 @@ import struct
 import json
 from functools import reduce
 
-from odoo import http
+from odoo.technology.framework import http
 from odoo.addons.hw_drivers.iot_handlers.drivers.SerialBaseDriver import SerialDriver, SerialProtocol, serial_connection
 from odoo.addons.hw_drivers.main import iot_devices
 

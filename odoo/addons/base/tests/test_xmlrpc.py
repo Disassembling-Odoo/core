@@ -5,7 +5,7 @@ import datetime
 import time
 
 from odoo.exceptions import AccessDenied, AccessError
-from odoo.http import _request_stack
+from odoo.technology.framework.http import _request_stack
 
 import odoo
 import odoo.tools

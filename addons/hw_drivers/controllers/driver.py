@@ -12,11 +12,12 @@ import time
 from werkzeug.exceptions import InternalServerError
 from zlib import adler32
 
-from odoo import conf, http, tools
+from odoo import conf, tools
 
 from odoo.addons.hw_drivers.event_manager import event_manager
 from odoo.addons.hw_drivers.main import iot_devices, manager
 from odoo.addons.hw_drivers.tools import helpers
+from odoo.technology.framework import http
 
 _logger = logging.getLogger(__name__)
 

@@ -5,10 +5,10 @@ import importlib.util
 import io
 import zipfile
 
-import odoo.http as http
+import odoo.technology.framework.http as http
 
 from odoo.exceptions import UserError
-from odoo.http import request, content_disposition
+from odoo.technology.framework.http import request, content_disposition
 
 
 class Partner(http.Controller):

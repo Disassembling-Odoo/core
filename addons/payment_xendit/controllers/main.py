@@ -5,9 +5,9 @@ import pprint
 
 from werkzeug.exceptions import Forbidden
 
-from odoo import http
+from odoo.technology.framework import http
 from odoo.exceptions import ValidationError
-from odoo.http import request
+from odoo.technology.framework.http import request
 from odoo.tools import consteq
 
 

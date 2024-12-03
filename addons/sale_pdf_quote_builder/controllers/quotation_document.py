@@ -5,7 +5,7 @@ import json
 import logging
 
 from odoo import _
-from odoo.http import Controller, request, route
+from odoo.technology.framework.http import Controller, request, route
 
 from odoo.addons.sale_pdf_quote_builder import utils
 

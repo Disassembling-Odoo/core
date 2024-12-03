@@ -5,7 +5,7 @@ import uuid
 from odoo import models, _
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
-from odoo.http import Stream
+from odoo.technology.framework.http import Stream
 
 
 class CloudStorageAttachment(models.Model):

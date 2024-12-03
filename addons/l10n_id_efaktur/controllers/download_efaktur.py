@@ -1,8 +1,9 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import http, _
-from odoo.http import request
+from odoo import _
+from odoo.technology.framework.http import request
 from odoo.addons.account.controllers.download_docs import _get_headers
+from odoo.technology.framework import http
 
 
 class EfakturDownloadController(http.Controller):

@@ -9,9 +9,11 @@ import logging
 import odoo
 import werkzeug
 
-from odoo import _, http
-from odoo.http import request
+from odoo import _
+from odoo.technology.framework.http import request
 from werkzeug.exceptions import NotFound
+
+from odoo.technology.framework import http
 
 _logger = logging.getLogger(__name__)
 

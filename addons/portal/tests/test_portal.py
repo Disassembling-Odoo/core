@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 
 from odoo import Command
-from odoo.http import Request
+from odoo.technology.framework.http import Request
 from odoo.tests.common import HttpCase, tagged
 
 

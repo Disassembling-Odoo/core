@@ -1,8 +1,9 @@
 import requests
 from werkzeug.urls import url_join
-from odoo import _, http
+from odoo import _
 from odoo.exceptions import UserError
-from odoo.http import request
+from odoo.technology.framework.http import request
+from odoo.technology.framework import http
 
 
 class L10nRoEdiController(http.Controller):

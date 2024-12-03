@@ -3,7 +3,7 @@
 from functools import partial
 from xmlrpc.client import Fault
 
-from odoo import http
+from odoo.technology.framework import http
 from odoo.tests import common, tagged
 from odoo.tools.misc import mute_logger
 

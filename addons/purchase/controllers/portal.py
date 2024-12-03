@@ -5,9 +5,9 @@ import base64
 from collections import OrderedDict
 from datetime import datetime
 
-from odoo import http
+from odoo.technology.framework import http
 from odoo.exceptions import AccessError, MissingError
-from odoo.http import request, Response
+from odoo.technology.framework.http import request, Response
 from odoo.tools import image_process
 from odoo.tools.translate import _
 from odoo.addons.portal.controllers import portal

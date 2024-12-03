@@ -4,10 +4,11 @@
 import logging
 from werkzeug.exceptions import Forbidden, NotFound
 
-from odoo import exceptions, http
-from odoo.http import request
+from odoo import exceptions
+from odoo.technology.framework.http import request
 from odoo.addons.website_event.controllers.community import EventCommunityController
 from odoo.osv import expression
+from odoo.technology.framework import http
 
 _logger = logging.getLogger(__name__)
 

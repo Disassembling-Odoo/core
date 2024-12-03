@@ -1,6 +1,6 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo.http import request
+from odoo.technology.framework.http import request
 from odoo.addons.mail.controllers import thread
 from odoo.addons.portal.utils import get_portal_partner
 

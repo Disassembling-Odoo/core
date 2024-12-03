@@ -3,8 +3,8 @@
 
 from werkzeug.exceptions import NotFound
 
-from odoo import http
-from odoo.http import request
+from odoo.technology.framework import http
+from odoo.technology.framework.http import request
 
 
 class WebsiteJitsiController(http.Controller):

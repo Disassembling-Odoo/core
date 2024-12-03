@@ -2,7 +2,7 @@
 from datetime import datetime, timedelta
 from odoo import api, models
 from odoo.ormapping import fields
-from odoo.http import request
+from odoo.technology.framework.http import request
 
 
 class ProductWishlist(models.Model):

@@ -4,7 +4,7 @@ import logging
 from pprint import pformat
 from unittest.mock import patch
 
-from odoo import http
+from odoo.technology.framework import http
 from odoo.tests import tagged, TransactionCase
 
 _logger = logging.getLogger(__name__)

@@ -3,10 +3,11 @@
 
 from werkzeug.urls import url_encode
 
-from odoo import _, http, tools
-from odoo.http import request
+from odoo import _, tools
+from odoo.technology.framework.http import request
 from odoo.exceptions import AccessError, ValidationError, UserError
 from odoo.addons.payment.controllers import portal as payment_portal
+from odoo.technology.framework import http
 
 
 class PaymentPortal(payment_portal.PaymentPortal):

@@ -13,7 +13,7 @@ from odoo.exceptions import UserError
 from odoo.tools import split_every
 from odoo.technology.db import SQL
 from odoo.tools.misc import _format_time_ago
-from odoo.http import request
+from odoo.technology.framework.http import request
 from odoo.osv import expression
 
 

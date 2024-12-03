@@ -4,7 +4,7 @@
 from werkzeug.exceptions import BadRequest
 
 from odoo import models
-from odoo.http import request
+from odoo.technology.framework.http import request
 
 
 class IrHttp(models.AbstractModel):

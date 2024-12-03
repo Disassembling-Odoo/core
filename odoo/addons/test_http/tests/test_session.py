@@ -12,7 +12,7 @@ from tempfile import TemporaryDirectory
 import odoo
 from odoo.addons.base.tests.common import HttpCaseWithUserDemo
 from odoo.conf import config
-from odoo.http import SESSION_LIFETIME
+from odoo.technology.framework.http import SESSION_LIFETIME
 from odoo.tests.common import get_db_name
 from odoo.tools import lazy_property, mute_logger
 from .test_common import TestHttpBase

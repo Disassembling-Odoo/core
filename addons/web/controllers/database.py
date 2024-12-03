@@ -10,8 +10,8 @@ from lxml import html
 
 import odoo
 import odoo.modules.registry
-from odoo import http
-from odoo.http import content_disposition, dispatch_rpc, request, Response
+from odoo.technology.framework import http
+from odoo.technology.framework.http import content_disposition, dispatch_rpc, request, Response
 from odoo.service import db
 from odoo.tools.misc import file_open, str2bool
 from odoo.tools.translate import _

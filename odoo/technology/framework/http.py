@@ -189,20 +189,20 @@ except ImportError:
 try:
     from werkzeug.utils import send_file as _send_file
 except ImportError:
-    from .tools._vendor.send_file import send_file as _send_file
+    from ...tools._vendor.send_file import send_file as _send_file
 
 import odoo
-from .exceptions import UserError, AccessError, AccessDenied
-from .modules.module import get_manifest
-from .modules.registry import Registry
-from .service import security, model as service_model
-from .conf import config
-from .tools import (consteq, file_path, get_lang, json_default,
+from ...exceptions import UserError, AccessError, AccessDenied
+from ...modules.module import get_manifest
+from ...modules.registry import Registry
+from ...service import security, model as service_model
+from ...conf import config
+from ...tools import (consteq, file_path, get_lang, json_default,
                     parse_version, profiler, unique, exception_to_unicode)
-from .tools.func import filter_kwargs, lazy_property
-from .tools.misc import submap
-from .tools._vendor import sessions
-from .tools._vendor.useragents import UserAgent
+from ...tools.func import filter_kwargs, lazy_property
+from ...tools.misc import submap
+from ...tools._vendor import sessions
+from ...tools._vendor.useragents import UserAgent
 
 
 _logger = logging.getLogger(__name__)

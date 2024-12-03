@@ -5,7 +5,7 @@ from xmlrpc.client import Fault
 
 from passlib.totp import TOTP
 
-from odoo import http
+from odoo.technology.framework import http
 from odoo.tests import tagged, get_db_name, new_test_user, HttpCase
 from odoo.tools import mute_logger
 

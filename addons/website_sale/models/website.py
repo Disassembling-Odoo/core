@@ -2,7 +2,7 @@
 
 from odoo import SUPERUSER_ID, api, models, tools
 from odoo.ormapping import fields
-from odoo.http import request
+from odoo.technology.framework.http import request
 from odoo.osv import expression
 from odoo.tools.translate import _, LazyTranslate
 from odoo.technology.cache import ormcache

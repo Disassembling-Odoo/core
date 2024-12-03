@@ -2,7 +2,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo import tools, _
-from odoo.http import route, request
+from odoo.technology.framework.http import route, request
 from odoo.addons.mass_mailing.controllers import main
 
 

@@ -1,7 +1,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo import api, models, tools
-from odoo.http import request
+from odoo.technology.framework.http import request
 
 
 class IrUiMenu(models.Model):

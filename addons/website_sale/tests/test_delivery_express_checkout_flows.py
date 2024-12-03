@@ -4,7 +4,7 @@ from unittest.mock import Mock, patch
 
 from werkzeug import urls
 
-from odoo.http import root
+from odoo.technology.framework.http import root
 from odoo.tests import HttpCase, tagged
 
 from odoo.addons.base.tests.common import BaseUsersCommon

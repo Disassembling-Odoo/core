@@ -20,11 +20,12 @@ from xml.etree import ElementTree as ET
 
 import odoo
 
-from odoo import http, models, _
+from odoo import models, _
 from odoo.ormapping import fields
 from odoo.exceptions import AccessError, UserError
-from odoo.http import request, SessionExpiredException
+from odoo.technology.framework.http import request, SessionExpiredException
 from odoo.osv import expression
+from odoo.technology.framework import http
 from odoo.tools import OrderedSet, html_escape as escape, py_to_js_locale
 from odoo.technology.db import escape_psql
 from odoo.addons.base.models.ir_http import EXTENSION_TO_WEB_MIMETYPES

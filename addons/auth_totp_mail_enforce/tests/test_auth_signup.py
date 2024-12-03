@@ -2,7 +2,7 @@
 
 from odoo.addons.base.tests.common import HttpCaseWithUserDemo, HttpCaseWithUserPortal
 
-from odoo import http
+from odoo.technology.framework import http
 from odoo.tests.common import tagged
 
 

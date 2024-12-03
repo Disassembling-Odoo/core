@@ -5,7 +5,7 @@ import json
 from threading import Event
 import time
 
-from odoo.http import request
+from odoo.technology.framework.http import request
 
 class EventManager(object):
     def __init__(self):

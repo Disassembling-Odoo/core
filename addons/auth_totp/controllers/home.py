@@ -3,10 +3,11 @@ import re
 
 from datetime import datetime, timedelta
 
-from odoo import http, _
+from odoo import _
 from odoo.exceptions import AccessDenied
-from odoo.http import request
+from odoo.technology.framework.http import request
 from odoo.addons.web.controllers import home as web_home
+from odoo.technology.framework import http
 
 TRUSTED_DEVICE_COOKIE = 'td_id'
 TRUSTED_DEVICE_AGE = 90*86400 # 90 days expiration

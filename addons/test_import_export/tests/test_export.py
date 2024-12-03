@@ -2,7 +2,7 @@ import json
 from datetime import date
 from unittest.mock import patch
 
-from odoo import http
+from odoo.technology.framework import http
 from odoo.tests import common, tagged
 from odoo.tools.misc import get_lang
 from odoo.addons.web.controllers.export import ExportXlsxWriter

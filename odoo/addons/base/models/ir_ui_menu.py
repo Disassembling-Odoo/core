@@ -10,7 +10,7 @@ import re
 from odoo import api, models, tools, _
 from odoo.ormapping import fields
 from odoo.exceptions import ValidationError
-from odoo.http import request
+from odoo.technology.framework.http import request
 from odoo.osv import expression
 from odoo.technology.cache import ormcache, ormcache_context
 

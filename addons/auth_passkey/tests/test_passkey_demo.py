@@ -4,7 +4,7 @@ from contextlib import contextmanager
 from lxml import etree
 from unittest.mock import patch
 
-from odoo.http import request
+from odoo.technology.framework.http import request
 from odoo.tools import mute_logger
 from odoo.technology.db import SQL
 

@@ -12,9 +12,9 @@ from dateutil.relativedelta import relativedelta
 from lxml import etree
 from werkzeug.exceptions import BadRequest, NotFound
 
-from odoo import http
+from odoo.technology.framework import http
 from odoo.exceptions import AccessError
-from odoo.http import request
+from odoo.technology.framework.http import request
 from odoo.ormapping import regex_object_name
 from odoo.osv import expression
 from odoo.tools.safe_eval import safe_eval

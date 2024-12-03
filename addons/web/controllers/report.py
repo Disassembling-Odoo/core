@@ -6,8 +6,8 @@ import logging
 import werkzeug.exceptions
 from werkzeug.urls import url_parse
 
-from odoo import http
-from odoo.http import content_disposition, request
+from odoo.technology.framework import http
+from odoo.technology.framework.http import content_disposition, request
 from odoo.tools.misc import html_escape
 from odoo.tools.safe_eval import safe_eval, time
 

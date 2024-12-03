@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 import json
 
-from odoo import http
+from odoo.technology.framework import http
 from odoo.addons.website.controllers.form import WebsiteForm
-from odoo.http import request
+from odoo.technology.framework.http import request
 
 
 class ContactController(WebsiteForm):

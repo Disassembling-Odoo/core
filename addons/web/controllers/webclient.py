@@ -12,9 +12,9 @@ import werkzeug.wsgi
 
 import odoo
 import odoo.modules.registry
-from odoo import http
+from odoo.technology.framework import http
 from odoo.modules import get_manifest
-from odoo.http import request
+from odoo.technology.framework.http import request
 from odoo.tools.misc import file_path
 from .utils import _local_web_translations
 

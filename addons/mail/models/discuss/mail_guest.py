@@ -8,7 +8,7 @@ from functools import wraps
 from odoo.ormapping import fields
 from odoo.tools import consteq
 from odoo import _, api, models
-from odoo.http import request
+from odoo.technology.framework.http import request
 from odoo.addons.base.models.res_partner import _tz_get
 from odoo.exceptions import UserError
 from odoo.addons.bus.models.bus_presence import AWAY_TIMER, DISCONNECTION_TIMER

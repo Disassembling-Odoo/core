@@ -3,11 +3,12 @@
 import logging
 import pprint
 
-from odoo import _, http
+from odoo import _
 from odoo.exceptions import ValidationError
-from odoo.http import request
+from odoo.technology.framework.http import request
 
 from odoo.addons.payment import utils as payment_utils
+from odoo.technology.framework import http
 
 _logger = logging.getLogger(__name__)
 

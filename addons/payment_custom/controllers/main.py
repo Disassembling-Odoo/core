@@ -3,7 +3,7 @@
 import logging
 import pprint
 
-from odoo.http import Controller, request, route
+from odoo.technology.framework.http import Controller, request, route
 
 _logger = logging.getLogger(__name__)
 

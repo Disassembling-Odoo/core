@@ -4,7 +4,7 @@
 from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta
 
-from odoo import http
+from odoo.technology.framework import http
 from odoo.ormapping import fields
 from odoo.addons.base.tests.common import HttpCaseWithUserDemo, HttpCaseWithUserPortal
 from odoo.addons.mail.tests.common import mail_new_test_user

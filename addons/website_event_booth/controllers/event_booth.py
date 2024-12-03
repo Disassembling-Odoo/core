@@ -5,9 +5,10 @@ import json
 import werkzeug
 from werkzeug.exceptions import Forbidden, NotFound
 
-from odoo import http, tools
-from odoo.http import request
+from odoo import tools
+from odoo.technology.framework.http import request
 from odoo.addons.website_event.controllers.main import WebsiteEventController
+from odoo.technology.framework import http
 
 
 class WebsiteEventBoothController(WebsiteEventController):

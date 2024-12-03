@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 import re
 from datetime import timedelta
-from odoo import http
+from odoo.technology.framework import http
 from odoo.ormapping import fields
-from odoo.http import request
+from odoo.technology.framework.http import request
 from odoo.tools import float_round
 from werkzeug.exceptions import NotFound, BadRequest, Unauthorized
 

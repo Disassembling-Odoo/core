@@ -4,7 +4,7 @@
 from werkzeug.exceptions import Forbidden, NotFound
 
 from odoo import _
-from odoo.http import Controller, request, Response, route
+from odoo.technology.framework.http import Controller, request, Response, route
 from odoo.tools import consteq
 
 

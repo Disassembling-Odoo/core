@@ -1,7 +1,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 from datetime import timedelta
 
-from odoo import http
+from odoo.technology.framework import http
 from odoo.ormapping import fields, Command
 from odoo.exceptions import ValidationError
 from odoo.tests import HttpCase, tagged

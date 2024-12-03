@@ -3,7 +3,7 @@
 from werkzeug import urls
 
 from odoo import Command
-from odoo.http import root
+from odoo.technology.framework.http import root
 from odoo.tests import tagged
 
 from odoo.addons.base.tests.common import HttpCaseWithUserDemo

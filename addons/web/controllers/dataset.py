@@ -4,9 +4,9 @@ import logging
 import warnings
 from werkzeug.exceptions import NotFound
 
-from odoo import http
+from odoo.technology.framework import http
 from odoo.api import call_kw
-from odoo.http import request
+from odoo.technology.framework.http import request
 from odoo.ormapping import check_method_name
 from .utils import clean_action
 

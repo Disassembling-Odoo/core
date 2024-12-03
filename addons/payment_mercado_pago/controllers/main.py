@@ -3,9 +3,9 @@
 import logging
 import pprint
 
-from odoo import http
+from odoo.technology.framework import http
 from odoo.exceptions import ValidationError
-from odoo.http import request
+from odoo.technology.framework.http import request
 
 
 _logger = logging.getLogger(__name__)

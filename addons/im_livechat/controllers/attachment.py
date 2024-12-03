@@ -3,7 +3,7 @@
 from werkzeug.exceptions import NotFound
 
 from odoo import _
-from odoo.http import route, request
+from odoo.technology.framework.http import route, request
 from odoo.addons.mail.controllers.attachment import AttachmentController
 from odoo.exceptions import AccessError
 from odoo.addons.mail.models.discuss.mail_guest import add_guest_to_context

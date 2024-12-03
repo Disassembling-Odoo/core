@@ -9,7 +9,7 @@ from odoo import api, models, _
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
 from odoo.ormapping import Command
-from odoo.http import request
+from odoo.technology.framework.http import request
 from odoo.tools.translate import html_translate
 
 

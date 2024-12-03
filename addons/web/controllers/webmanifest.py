@@ -5,9 +5,10 @@ import mimetypes
 
 from urllib.parse import unquote, urlencode
 
-from odoo import http, modules
+from odoo import modules
 from odoo.exceptions import AccessError
-from odoo.http import request
+from odoo.technology.framework.http import request
+from odoo.technology.framework import http
 from odoo.tools import file_open, file_path, image_process
 
 

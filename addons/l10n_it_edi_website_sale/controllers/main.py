@@ -2,7 +2,7 @@
 
 from odoo import _
 from odoo.exceptions import UserError
-from odoo.http import request
+from odoo.technology.framework.http import request
 
 from odoo.addons.website_sale.controllers.main import WebsiteSale
 

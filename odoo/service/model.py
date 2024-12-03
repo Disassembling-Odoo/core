@@ -10,7 +10,7 @@ from psycopg2 import IntegrityError, OperationalError, errorcodes, errors
 
 import odoo
 from odoo.exceptions import UserError, ValidationError
-from odoo.http import request
+from odoo.technology.framework.http import request
 from odoo.ormapping import check_method_name
 from odoo.modules.registry import Registry
 from odoo.tools import DotDict, lazy

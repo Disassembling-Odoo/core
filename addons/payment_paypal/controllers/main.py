@@ -6,11 +6,12 @@ import pprint
 
 from werkzeug.exceptions import Forbidden
 
-from odoo import _, http
+from odoo import _
 from odoo.exceptions import ValidationError
-from odoo.http import request
+from odoo.technology.framework.http import request
 
 from odoo.addons.payment_paypal import const
+from odoo.technology.framework import http
 
 
 _logger = logging.getLogger(__name__)

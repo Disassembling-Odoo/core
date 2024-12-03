@@ -3,7 +3,7 @@
 import json
 
 from odoo.exceptions import ValidationError
-from odoo.http import request, route
+from odoo.technology.framework.http import request, route
 
 from odoo.addons.base.models.ir_qweb_fields import nl2br_enclose
 from odoo.addons.website.controllers import main

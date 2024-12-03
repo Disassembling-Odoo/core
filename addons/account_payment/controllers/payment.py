@@ -3,7 +3,7 @@
 from odoo import _
 from odoo.exceptions import AccessError, MissingError, ValidationError
 from odoo.ormapping import Command
-from odoo.http import request, route
+from odoo.technology.framework.http import request, route
 
 from odoo.addons.payment import utils as payment_utils
 from odoo.addons.payment.controllers import portal as payment_portal

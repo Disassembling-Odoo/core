@@ -5,7 +5,7 @@ from werkzeug.urls import url_parse, url_decode, url_encode, url_unparse
 
 import json
 
-from odoo import http
+from odoo.technology.framework import http
 from odoo.addons.mail.tests.common import MailCommon
 from odoo.addons.test_mail_full.tests.common import TestMailFullCommon
 from odoo.addons.test_mail_sms.tests.common import TestSMSRecipients

@@ -5,9 +5,10 @@ import re
 from werkzeug.exceptions import NotFound
 from urllib.parse import urlsplit
 
-from odoo import http, tools, _, release
+from odoo import tools, _, release
 from odoo.exceptions import UserError
-from odoo.http import request
+from odoo.technology.framework.http import request
+from odoo.technology.framework import http
 from odoo.tools import replace_exceptions
 from odoo.addons.base.models.assetsbundle import AssetsBundle
 from odoo.addons.mail.models.discuss.mail_guest import add_guest_to_context

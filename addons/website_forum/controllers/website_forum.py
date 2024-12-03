@@ -9,12 +9,13 @@ import werkzeug.exceptions
 import werkzeug.urls
 import werkzeug.wrappers
 
-from odoo import _, http, tools
+from odoo import _, tools
 from odoo.addons.website.models.ir_http import sitemap_qs2dom
 from odoo.addons.website_profile.controllers.main import WebsiteProfile
 from odoo.exceptions import AccessError, UserError
-from odoo.http import request
+from odoo.technology.framework.http import request
 from odoo.osv import expression
+from odoo.technology.framework import http
 
 _logger = logging.getLogger(__name__)
 

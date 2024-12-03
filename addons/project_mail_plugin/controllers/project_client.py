@@ -1,6 +1,7 @@
 
-from odoo import Command, http, _
-from odoo.http import request
+from odoo import Command, _
+from odoo.technology.framework.http import request
+from odoo.technology.framework import http
 
 
 class ProjectClient(http.Controller):

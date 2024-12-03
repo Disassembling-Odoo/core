@@ -15,7 +15,7 @@ from werkzeug import urls
 from odoo import api, models, _
 from odoo.ormapping import fields
 from odoo.exceptions import RedirectWarning, UserError, AccessError
-from odoo.http import request
+from odoo.technology.framework.http import request
 from odoo.technology.db import sql
 from odoo.tools import html2plaintext
 from odoo.tools.pdf import PdfFileReader

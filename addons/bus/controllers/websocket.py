@@ -2,7 +2,7 @@
 
 import json
 
-from odoo.http import Controller, request, route, SessionExpiredException
+from odoo.technology.framework.http import Controller, request, route, SessionExpiredException
 from ..models.bus import channel_with_db
 from ..websocket import WebsocketConnectionHandler
 

@@ -5,8 +5,9 @@ from collections import deque
 import io
 import json
 
-from odoo import http, _
-from odoo.http import content_disposition, request
+from odoo import _
+from odoo.technology.framework.http import content_disposition, request
+from odoo.technology.framework import http
 from odoo.tools import osutil
 from odoo.tools.misc import xlsxwriter
 

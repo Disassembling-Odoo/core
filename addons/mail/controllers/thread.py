@@ -4,8 +4,8 @@ from datetime import datetime
 from markupsafe import Markup
 from werkzeug.exceptions import NotFound
 
-from odoo import http
-from odoo.http import request
+from odoo.technology.framework import http
+from odoo.technology.framework.http import request
 from odoo.tools import frozendict
 from odoo.addons.mail.models.discuss.mail_guest import add_guest_to_context
 from odoo.addons.mail.tools.discuss import Store

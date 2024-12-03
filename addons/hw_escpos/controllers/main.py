@@ -11,6 +11,8 @@ import time
 import netifaces as ni
 import traceback
 
+from odoo.technology.framework import http
+
 
 escpos = printer = None
 try:
@@ -28,7 +30,7 @@ try:
 except ImportError:
     usb = None
 
-from odoo import http, _
+from odoo import _
 from odoo.addons.hw_drivers.controllers import proxy
 
 _logger = logging.getLogger(__name__)

@@ -3,8 +3,8 @@ import logging
 import pprint
 import json
 from urllib.parse import parse_qs
-from odoo import http
-from odoo.http import request
+from odoo.technology.framework import http
+from odoo.technology.framework.http import request
 from odoo.tools import consteq
 
 _logger = logging.getLogger(__name__)

@@ -7,8 +7,9 @@ import requests
 import werkzeug.utils
 from werkzeug.urls import url_encode
 
-from odoo import http, tools, _
-from odoo.http import request
+from odoo import tools, _
+from odoo.technology.framework.http import request
+from odoo.technology.framework import http
 from odoo.tools.mimetypes import guess_mimetype
 
 from odoo.addons.html_editor.controllers.main import HTML_Editor

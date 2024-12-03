@@ -2,7 +2,7 @@
 
 from odoo import _
 from odoo.ormapping import fields
-from odoo.http import request, route
+from odoo.technology.framework.http import request, route
 
 from odoo.addons.portal.controllers.portal import CustomerPortal
 from odoo.addons.portal.controllers.portal import pager as portal_pager

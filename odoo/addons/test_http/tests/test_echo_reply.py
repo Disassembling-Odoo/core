@@ -2,7 +2,7 @@
 
 import json
 
-from odoo.http import Request
+from odoo.technology.framework.http import Request
 from odoo.tests import tagged
 from odoo.tests.common import new_test_user
 from odoo.tools import mute_logger

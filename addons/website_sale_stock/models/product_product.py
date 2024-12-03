@@ -3,7 +3,7 @@
 
 from odoo import models, _
 from odoo.ormapping import fields
-from odoo.http import request
+from odoo.technology.framework.http import request
 
 
 class ProductProduct(models.Model):

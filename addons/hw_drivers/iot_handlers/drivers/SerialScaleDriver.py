@@ -8,7 +8,7 @@ import serial
 import threading
 import time
 
-from odoo import http
+from odoo.technology.framework import http
 from odoo.addons.hw_drivers.controllers.proxy import proxy_drivers
 from odoo.addons.hw_drivers.event_manager import event_manager
 from odoo.addons.hw_drivers.iot_handlers.drivers.SerialBaseDriver import SerialDriver, SerialProtocol, serial_connection

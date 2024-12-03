@@ -2,7 +2,7 @@
 
 from odoo import api, models
 from odoo.ormapping import fields
-from odoo.http import request
+from odoo.technology.framework.http import request
 from odoo.tools.translate import html_translate
 
 from odoo.addons.website.models import ir_http

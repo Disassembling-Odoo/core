@@ -8,10 +8,10 @@ from werkzeug.urls import url_encode
 
 import odoo
 import odoo.modules.registry
-from odoo import http
+from odoo.technology.framework import http
 from odoo.modules import module
 from odoo.exceptions import AccessError, UserError, AccessDenied
-from odoo.http import request
+from odoo.technology.framework.http import request
 from odoo.tools.translate import _
 
 

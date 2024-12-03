@@ -6,7 +6,7 @@ from odoo.addons.web_unsplash.controllers.main import Web_Unsplash
 
 import odoo.tests
 
-from odoo import http
+from odoo.technology.framework import http
 
 
 @odoo.tests.common.tagged('post_install', '-at_install')

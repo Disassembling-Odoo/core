@@ -4,13 +4,14 @@ import urllib.parse
 
 import werkzeug
 
-from odoo import _, http
+from odoo import _
 from odoo.exceptions import AccessError, ValidationError
-from odoo.http import request
+from odoo.technology.framework.http import request
 
 from odoo.addons.payment import utils as payment_utils
 from odoo.addons.payment.controllers.post_processing import PaymentPostProcessing
 from odoo.addons.portal.controllers import portal
+from odoo.technology.framework import http
 
 
 class PaymentPortal(portal.CustomerPortal):

@@ -11,7 +11,7 @@ from odoo import api, models, _
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
 from odoo.osv import expression
-from odoo.http import request
+from odoo.technology.framework.http import request
 
 from odoo.addons.base.models.ir_mail_server import MailDeliveryException
 from odoo.addons.auth_signup.models.res_partner import SignupError

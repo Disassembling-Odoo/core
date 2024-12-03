@@ -4,7 +4,7 @@ import json
 
 from odoo import _, models
 from odoo.exceptions import ValidationError
-from odoo.http import request
+from odoo.technology.framework.http import request
 
 
 class SaleOrder(models.Model):

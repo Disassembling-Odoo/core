@@ -3,7 +3,7 @@
 import json
 
 from odoo.exceptions import UserError
-from odoo.http import Controller, request, Response, route
+from odoo.technology.framework.http import Controller, request, Response, route
 
 class Profiling(Controller):
 

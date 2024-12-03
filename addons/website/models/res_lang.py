@@ -3,7 +3,7 @@
 from odoo import models, tools, _
 from odoo.addons.base.models.res_lang import LangDataDict, LangData
 from odoo.exceptions import UserError
-from odoo.http import request
+from odoo.technology.framework.http import request
 
 
 class Lang(models.Model):

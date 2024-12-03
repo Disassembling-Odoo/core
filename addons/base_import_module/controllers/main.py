@@ -3,7 +3,7 @@ import functools
 
 from odoo import _
 from odoo.exceptions import AccessError
-from odoo.http import Controller, route, request, Response
+from odoo.technology.framework.http import Controller, route, request, Response
 
 
 class ImportModule(Controller):

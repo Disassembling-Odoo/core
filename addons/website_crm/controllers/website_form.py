@@ -4,7 +4,7 @@
 from odoo import tools
 from odoo.addons.phone_validation.tools import phone_validation
 from odoo.addons.website.controllers import form
-from odoo.http import request
+from odoo.technology.framework.http import request
 
 
 class WebsiteForm(form.WebsiteForm):

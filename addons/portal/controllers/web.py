@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import http
+from odoo.technology.framework import http
 from odoo.addons.web.controllers.home import Home as WebHome
 from odoo.addons.web.controllers.utils import is_user_internal
-from odoo.http import request
+from odoo.technology.framework.http import request
 
 
 class Home(WebHome):

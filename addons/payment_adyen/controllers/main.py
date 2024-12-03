@@ -10,9 +10,10 @@ import pprint
 from werkzeug import urls
 from werkzeug.exceptions import Forbidden
 
-from odoo import _, http
+from odoo import _
 from odoo.exceptions import ValidationError
-from odoo.http import request
+from odoo.technology.framework.http import request
+from odoo.technology.framework import http
 from odoo.tools import py_to_js_locale
 
 from odoo.addons.payment import utils as payment_utils

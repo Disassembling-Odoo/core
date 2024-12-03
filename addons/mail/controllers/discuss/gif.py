@@ -3,7 +3,7 @@
 import requests
 import werkzeug.urls
 
-from odoo.http import request, route, Controller
+from odoo.technology.framework.http import request, route, Controller
 
 
 class DiscussGifController(Controller):

@@ -4,7 +4,7 @@
 from unittest.mock import patch
 
 import odoo
-from odoo import http
+from odoo.technology.framework import http
 from odoo.addons.base.tests.common import HttpCaseWithUserPortal, HttpCaseWithUserDemo
 from odoo.exceptions import AccessError
 

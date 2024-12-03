@@ -6,9 +6,9 @@ from collections import OrderedDict
 from random import randint, sample
 from werkzeug.exceptions import Forbidden
 
-from odoo import http
+from odoo.technology.framework import http
 from odoo.addons.website_event.controllers.main import WebsiteEventController
-from odoo.http import request
+from odoo.technology.framework.http import request
 from odoo.osv import expression
 from odoo.tools import format_duration
 

@@ -22,7 +22,7 @@ from odoo.addons.website.tools import similarity_score, text_from_html, get_base
 from odoo.addons.portal.controllers.portal import pager
 from odoo.addons.iap.tools import iap_tools
 from odoo.exceptions import AccessError, UserError, ValidationError
-from odoo.http import request
+from odoo.technology.framework.http import request
 from odoo.modules.module import get_manifest
 from odoo.osv.expression import AND, OR, FALSE_DOMAIN
 from odoo.technology.db import SQL, Query, sql as sqltools

@@ -4,10 +4,11 @@ import base64
 
 from dateutil.relativedelta import relativedelta
 
-from odoo import http, tests
+from odoo import tests
 from odoo.addons.base.tests.common import HttpCaseWithUserPortal
 from odoo.addons.gamification.tests.common import HttpCaseGamification
 from odoo.ormapping import Command, Datetime
+from odoo.technology.framework import http
 from odoo.tools import mute_logger
 from odoo.tools.misc import file_open
 

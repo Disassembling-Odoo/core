@@ -8,7 +8,7 @@ from unittest.mock import Mock, MagicMock, patch
 from werkzeug.exceptions import NotFound
 from werkzeug.test import EnvironBuilder
 
-import odoo.http
+import odoo.technology.framework.http
 from odoo.tools.misc import hmac, DotDict, frozendict
 
 HOST = '127.0.0.1'
@@ -35,7 +35,7 @@ def MockRequest(
         httprequest=Mock(
             host='localhost',
             path=path,
-            app=odoo.http.root,
+            app=odoo.technology.framework.http.root,
             environ=dict(
                 EnvironBuilder(
                     path=path,
@@ -51,16 +51,16 @@ def MockRequest(
             args=[],
         ),
         type='http',
-        future_response=odoo.http.FutureResponse(),
+        future_response=odoo.technology.framework.http.FutureResponse(),
         params={},
         redirect=env['ir.http']._redirect,
         session=DotDict(
-            odoo.http.get_default_session(),
+            odoo.technology.framework.http.get_default_session(),
             sale_order_id=sale_order_id,
             website_sale_current_pl=website_sale_current_pl,
             context={'lang': ''},
         ),
-        geoip=odoo.http.GeoIP('127.0.0.1'),
+        geoip=odoo.technology.framework.http.GeoIP('127.0.0.1'),
         db=env.registry.db_name,
         env=env,
         registry=env.registry,
@@ -77,7 +77,7 @@ def MockRequest(
     if website:
         request.website_routing = website.id
     if country_code:
-        request.geoip._city_record = odoo.http.geoip2.models.City({'country': {'iso_code': country_code}})
+        request.geoip._city_record = odoo.technology.framework.http.geoip2.models.City({'country': {'iso_code': country_code}})
 
     # The following code mocks match() to return a fake rule with a fake
     # 'routing' attribute (routing=True) or to raise a NotFound
@@ -105,8 +105,8 @@ def MockRequest(
     request.update_context = update_context
 
     with contextlib.ExitStack() as s:
-        odoo.http._request_stack.push(request)
-        s.callback(odoo.http._request_stack.pop)
+        odoo.technology.framework.http._request_stack.push(request)
+        s.callback(odoo.technology.framework.http._request_stack.pop)
         s.enter_context(patch('odoo.http.root.get_db_router', router))
 
         yield request

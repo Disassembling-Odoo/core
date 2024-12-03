@@ -7,7 +7,7 @@ from werkzeug.datastructures import ResponseCacheControl
 from werkzeug.http import parse_cache_control_header
 
 import odoo
-from odoo.http import Session
+from odoo.technology.framework.http import Session
 from odoo.addons.base.tests.common import HttpCaseWithUserDemo
 from odoo.tools.func import lazy_property
 from odoo.addons.test_http.utils import MemoryGeoipResolver, MemorySessionStore

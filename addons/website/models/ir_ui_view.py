@@ -10,7 +10,7 @@ from odoo.ormapping import fields
 from odoo.addons.website.tools import add_form_signature
 from odoo.exceptions import AccessError
 from odoo.osv import expression
-from odoo.http import request
+from odoo.technology.framework.http import request
 from odoo.technology.cache import ormcache
 
 _logger = logging.getLogger(__name__)

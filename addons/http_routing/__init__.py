@@ -3,7 +3,7 @@
 from . import controllers
 from . import models
 
-from odoo.http import request
+from odoo.technology.framework.http import request
 
 
 def _post_init_hook(env):

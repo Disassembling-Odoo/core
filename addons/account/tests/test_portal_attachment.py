@@ -5,7 +5,7 @@ from odoo.tests.common import tagged
 
 import json
 
-from odoo import http
+from odoo.technology.framework import http
 from odoo.tools import file_open, mute_logger
 
 

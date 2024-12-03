@@ -6,7 +6,7 @@ from contextlib import contextmanager
 from unittest.mock import patch
 
 from odoo.addons.mail.tests.common import mail_new_test_user
-from odoo.http import request
+from odoo.technology.framework.http import request
 from odoo.tests.common import HttpCase
 from odoo import SUPERUSER_ID
 

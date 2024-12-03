@@ -1,4 +1,4 @@
-from odoo.http import request
+from odoo.technology.framework.http import request
 from odoo.addons.website_sale.controllers.payment import PaymentPortal
 
 

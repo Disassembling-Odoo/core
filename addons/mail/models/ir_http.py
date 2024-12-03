@@ -3,7 +3,7 @@
 import odoo
 from odoo import api, models
 from odoo.ormapping import fields
-from odoo.http import request
+from odoo.technology.framework.http import request
 from odoo.addons.mail.tools.discuss import Store
 
 

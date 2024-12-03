@@ -13,7 +13,7 @@ from werkzeug.urls import url_encode
 
 from odoo import _
 from odoo.exceptions import ValidationError
-from odoo.http import request
+from odoo.technology.framework.http import request
 from odoo.tools import image_process
 
 logger = logging.getLogger(__name__)

@@ -8,7 +8,7 @@ from werkzeug.urls import url_join
 from odoo import models, api, _
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
-from odoo.http import request
+from odoo.technology.framework.http import request
 from odoo.tools import json
 
 

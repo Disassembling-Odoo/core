@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 from collections import defaultdict
-from odoo import http, _
-from odoo.http import request
+from odoo import _
+from odoo.technology.framework.http import request
 from odoo.exceptions import UserError
+from odoo.technology.framework import http
 
 
 class WebsiteMail(http.Controller):

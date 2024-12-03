@@ -1,13 +1,14 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import _, http
+from odoo import _
 from odoo.ormapping import fields
 from odoo.exceptions import AccessError, MissingError, ValidationError
-from odoo.http import request
+from odoo.technology.framework.http import request
 
 from odoo.addons.account.controllers import portal
 from odoo.addons.payment import utils as payment_utils
 from odoo.addons.payment.controllers.portal import PaymentPortal
+from odoo.technology.framework import http
 
 
 class PortalAccount(portal.PortalAccount, PaymentPortal):

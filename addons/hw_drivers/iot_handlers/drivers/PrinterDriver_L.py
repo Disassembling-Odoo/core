@@ -11,7 +11,7 @@ from PIL import Image, ImageOps
 import re
 import subprocess
 
-from odoo import http
+from odoo.technology.framework import http
 from odoo.addons.hw_drivers.connection_manager import connection_manager
 from odoo.addons.hw_drivers.controllers.proxy import proxy_drivers
 from odoo.addons.hw_drivers.driver import Driver

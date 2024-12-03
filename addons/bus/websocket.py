@@ -27,7 +27,7 @@ import odoo
 from odoo import api, modules
 from odoo.conf import config
 from .models.bus import dispatch
-from odoo.http import root, Request, Response, SessionExpiredException, get_default_session
+from odoo.technology.framework.http import root, Request, Response, SessionExpiredException, get_default_session
 from odoo.modules.registry import Registry
 from odoo.service import model as service_model
 from odoo.service.server import CommonServer

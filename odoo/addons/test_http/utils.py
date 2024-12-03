@@ -3,7 +3,7 @@
 import geoip2.errors
 import geoip2.models
 from html.parser import HTMLParser
-from odoo.http import FilesystemSessionStore
+from odoo.technology.framework.http import FilesystemSessionStore
 from odoo.tools._vendor.sessions import SessionStore
 
 

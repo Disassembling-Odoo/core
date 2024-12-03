@@ -13,7 +13,7 @@ from odoo.tools.safe_eval import safe_eval, time
 from odoo.tools.misc import find_in_path
 from odoo.conf import config
 from odoo.tools import check_barcode_encoding, is_html_empty, parse_version, split_every
-from odoo.http import request, root
+from odoo.technology.framework.http import request, root
 from odoo.tools.pdf import PdfFileWriter, PdfFileReader, PdfReadError
 from odoo.osv.expression import NEGATIVE_TERM_OPERATORS, FALSE_DOMAIN
 

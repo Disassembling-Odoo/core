@@ -15,6 +15,8 @@ import werkzeug.exceptions
 import werkzeug.routing
 import werkzeug.utils
 
+from odoo.technology.framework import http
+
 try:
     from werkzeug.routing import NumberConverter
 except ImportError:
@@ -27,9 +29,9 @@ except ImportError:
     slugify_lib = None
 
 import odoo
-from odoo import api, http, models, tools, SUPERUSER_ID
+from odoo import api, models, tools, SUPERUSER_ID
 from odoo.exceptions import AccessDenied
-from odoo.http import request, Response, ROUTING_KEYS
+from odoo.technology.framework.http import request, Response, ROUTING_KEYS
 from odoo.modules.registry import Registry
 from odoo.service import security
 from odoo.tools.json import json_default

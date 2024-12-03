@@ -5,7 +5,7 @@ import re
 
 from odoo import _
 
-from odoo.http import request, route, Controller, content_disposition
+from odoo.technology.framework.http import request, route, Controller, content_disposition
 
 
 class HrEmployeeCV(Controller):

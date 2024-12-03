@@ -4,7 +4,7 @@ from werkzeug.urls import url_encode, url_parse
 
 from odoo import _
 from odoo.exceptions import UserError
-from odoo.http import request, route
+from odoo.technology.framework.http import request, route
 
 from odoo.addons.website_sale.controllers import main
 

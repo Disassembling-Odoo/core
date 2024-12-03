@@ -1,6 +1,6 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import http
+from odoo.technology.framework import http
 from odoo.tests import tagged, HttpCase
 
 from odoo.addons.sale_loyalty.tests.common import TestSaleCouponNumbersCommon

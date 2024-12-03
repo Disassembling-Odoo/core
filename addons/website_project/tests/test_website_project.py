@@ -1,6 +1,6 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import http
+from odoo.technology.framework import http
 from odoo.tests.common import HttpCase, tagged
 from odoo.tools import html2plaintext
 

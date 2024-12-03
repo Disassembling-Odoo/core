@@ -3,7 +3,7 @@ from werkzeug import urls
 
 from odoo import api, models
 from odoo.ormapping import fields
-from odoo.http import request
+from odoo.technology.framework.http import request
 from odoo.tools.json import scriptsafe as json_scriptsafe
 
 

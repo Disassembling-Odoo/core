@@ -9,11 +9,12 @@ from collections import defaultdict
 from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta
 
-from odoo import http, SUPERUSER_ID, _
+from odoo import SUPERUSER_ID, _
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
-from odoo.http import request, content_disposition
+from odoo.technology.framework.http import request, content_disposition
 from odoo.osv import expression
+from odoo.technology.framework import http
 from odoo.tools import format_datetime, format_date, is_html_empty
 from odoo.addons.base.models.ir_qweb import keep_query
 

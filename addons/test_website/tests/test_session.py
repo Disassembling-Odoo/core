@@ -3,7 +3,7 @@
 from lxml import html
 from unittest.mock import patch
 
-from odoo import http
+from odoo.technology.framework import http
 from odoo.addons.website.models.website import Website
 import odoo.tests
 

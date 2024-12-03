@@ -6,10 +6,11 @@ from dateutil.relativedelta import relativedelta
 from operator import itemgetter
 from werkzeug.urls import url_encode
 
-from odoo import http, _
+from odoo import _
 from odoo.addons.website.controllers.form import WebsiteForm
 from odoo.osv.expression import AND
-from odoo.http import request
+from odoo.technology.framework.http import request
+from odoo.technology.framework import http
 from odoo.tools import email_normalize
 from odoo.tools.misc import groupby
 

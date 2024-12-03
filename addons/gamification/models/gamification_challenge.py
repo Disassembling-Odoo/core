@@ -10,7 +10,7 @@ from markupsafe import Markup
 
 from odoo import _, api, exceptions, models
 from odoo.ormapping import fields
-from odoo.http import SESSION_LIFETIME
+from odoo.technology.framework.http import SESSION_LIFETIME
 
 _logger = logging.getLogger(__name__)
 

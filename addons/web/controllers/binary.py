@@ -9,6 +9,8 @@ import os
 import unicodedata
 
 from contextlib import nullcontext
+
+from odoo.technology.framework import http
 try:
     from werkzeug.utils import send_file
 except ImportError:
@@ -16,10 +18,10 @@ except ImportError:
 
 import odoo
 import odoo.modules.registry
-from odoo import SUPERUSER_ID, _, http, api
+from odoo import SUPERUSER_ID, _, api
 from odoo.addons.base.models.assetsbundle import ANY_UNIQUE
 from odoo.exceptions import AccessError, UserError
-from odoo.http import request, Response
+from odoo.technology.framework.http import request, Response
 from odoo.tools import file_open, file_path, replace_exceptions, str2bool
 from odoo.tools.image import image_guess_size_from_field_name
 from odoo.tools.mimetypes import guess_mimetype

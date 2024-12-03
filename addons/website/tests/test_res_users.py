@@ -3,7 +3,7 @@
 from odoo import Command
 from odoo.addons.website.tools import MockRequest
 from odoo.exceptions import ValidationError
-from odoo.service.model import retrying
+from odoo.technology.framework import retrying
 from odoo.tests.common import TransactionCase, new_test_user
 from odoo.tools import mute_logger
 

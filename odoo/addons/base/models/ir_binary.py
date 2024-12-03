@@ -66,7 +66,7 @@ class IrBinary(models.AbstractModel):
         :param record: the record where to load the data from.
         :param str field_name: the binary field where to load the data
             from.
-        :rtype: odoo.http.Stream
+        :rtype: odoo.t.f.Stream
         """
         if record._name == 'ir.attachment' and field_name in ('raw', 'datas', 'db_datas'):
             return record._to_http_stream()
@@ -107,7 +107,7 @@ class IrBinary(models.AbstractModel):
         :param str default_mimetype: the mimetype to use when the
             mimetype couldn't be determined. By default it is
             ``application/octet-stream``.
-        :rtype: odoo.http.Stream
+        :rtype: odoo.t.f.Stream
         """
         with replace_exceptions(ValueError, by=UserError(f'Expected singleton: {record}')):
             record.ensure_one()

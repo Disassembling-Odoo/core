@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 
 from odoo import _
 from odoo.exceptions import AccessDenied
-from odoo.technology.framework.http import request
+from odoo.technology.framework import request
 from odoo.addons.web.controllers import home as web_home
 from odoo.technology.framework import http
 

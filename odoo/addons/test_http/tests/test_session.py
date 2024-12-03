@@ -45,7 +45,7 @@ class TestHttpSession(TestHttpBase):
 
     def test_session1_default_session(self):
         # The default session should not be saved on the filestore.
-        with patch.object(odoo.http.root.session_store, 'save') as mock_save:
+        with patch.object(odoo.technology.framework.root.session_store, 'save') as mock_save:
             res = self.db_url_open('/test_http/geoip')
             res.raise_for_status()
             try:
@@ -58,7 +58,7 @@ class TestHttpSession(TestHttpBase):
         session = self.authenticate(None, None)
         session['db'] = 'idontexist'
         session['geoip'] = {}  # Until saas-15.2 geoip was directly stored in the session
-        odoo.http.root.session_store.save(session)
+        odoo.technology.framework.root.session_store.save(session)
 
         with self.assertLogs('odoo.http', level='WARNING') as (_, warnings):
             res = self.multidb_url_open('/test_http/ensure_db', dblist=['db1', 'db2'])
@@ -128,13 +128,13 @@ class TestHttpSession(TestHttpBase):
 
         with self.subTest(case='fr saved and fr_FR enabled'):
             session.context['lang'] = 'fr_FR'
-            odoo.http.root.session_store.save(session)
+            odoo.technology.framework.root.session_store.save(session)
             res = self.url_open('/test_http/echo-http-context-lang')
             self.assertEqual(res.text, 'fr_FR')
 
         with self.subTest(case='fr saved but fr_FR disabled'):
             session['lang'] = 'fr_FR'
-            odoo.http.root.session_store.save(session)
+            odoo.technology.framework.root.session_store.save(session)
             lang_fr.active = False
             res = self.url_open('/test_http/echo-http-context-lang')
             self.assertEqual(res.text, 'en_US')
@@ -142,7 +142,7 @@ class TestHttpSession(TestHttpBase):
         milky_way = self.env.ref('test_http.milky_way')
         with self.subTest(case='fr record in url but fr_FR disabled'):
             session.context['lang'] = 'fr_FR'
-            odoo.http.root.session_store.save(session)
+            odoo.technology.framework.root.session_store.save(session)
             lang_fr.active = False
             self.url_open(f'/test_http/{milky_way.id}').raise_for_status()
 
@@ -212,7 +212,7 @@ class TestHttpSession(TestHttpBase):
         for value in not_recommended_values:
             self.assertEqual(check_session_attr(value), None)
 
-    @patch("odoo.http.root.session_store.vacuum")
+    @patch("odoo.technology.framework.root.session_store.vacuum")
     def test_session8_gc_ignored_no_db_name(self, mock):
         with patch.dict(os.environ, {'ODOO_SKIP_GC_SESSIONS': ''}):
             self.env['ir.http']._gc_sessions()
@@ -225,9 +225,9 @@ class TestHttpSession(TestHttpBase):
 
     def test_session9_logout(self):
         sid = self.authenticate('admin', 'admin').sid
-        self.assertTrue(odoo.http.root.session_store.get(sid), "session should exist")
+        self.assertTrue(odoo.technology.framework.root.session_store.get(sid), "session should exist")
         self.url_open('/web/session/logout', allow_redirects=False).raise_for_status()
-        self.assertFalse(odoo.http.root.session_store.get(sid), "session should not exist")
+        self.assertFalse(odoo.technology.framework.root.session_store.get(sid), "session should not exist")
 
     def test_session10_explicit_session(self):
         forged_sid = 'da39a3ee5e6b4b0d3255bfef95601890afd80709'
@@ -249,8 +249,8 @@ class TestSessionStore(HttpCaseWithUserDemo):
         self.tmpdir = TemporaryDirectory()
         self.addCleanup(self.tmpdir.cleanup)
 
-        lazy_property.reset_all(odoo.http.root)
-        self.addCleanup(lazy_property.reset_all, odoo.http.root)
+        lazy_property.reset_all(odoo.technology.framework.root)
+        self.addCleanup(lazy_property.reset_all, odoo.technology.framework.root)
         patcher = patch.dict(config.options, {'data_dir': self.tmpdir.name})
         self.startPatcher(patcher)
 
@@ -259,7 +259,7 @@ class TestSessionStore(HttpCaseWithUserDemo):
         self.env['ir.config_parameter'].set_param('sessions.max_inactivity_seconds', 'adminCantSetupThisValueLikeANormalPerson')
 
         with self.assertLogs('odoo.http', level='WARNING') as logs:
-            self.assertEqual(odoo.http.get_session_max_inactivity(self.env), SESSION_LIFETIME)
+            self.assertEqual(odoo.technology.framework.get_session_max_inactivity(self.env), SESSION_LIFETIME)
             self.assertEqual(logs.output[0], "WARNING:odoo.http:Invalid value for 'sessions.max_inactivity_seconds', using default value.")
 
     @mute_logger('odoo.http')
@@ -270,12 +270,12 @@ class TestSessionStore(HttpCaseWithUserDemo):
 
             freeze.tick(delta=datetime.timedelta(seconds=SESSION_LIFETIME - 1))
             self.env['ir.http']._gc_sessions()
-            session_from_store = odoo.http.root.session_store.get(session.sid)
+            session_from_store = odoo.technology.framework.root.session_store.get(session.sid)
             self.assertEqual(session.sid, session_from_store.sid, "the session should still be valid")
 
             freeze.tick(delta=datetime.timedelta(seconds=2))
             self.env['ir.http']._gc_sessions()
-            session_from_store = odoo.http.root.session_store.get(session.sid)
+            session_from_store = odoo.technology.framework.root.session_store.get(session.sid)
             self.assertNotEqual(session.sid, session_from_store.sid, "the old session as been removed")
 
     @mute_logger('odoo.http')
@@ -287,12 +287,12 @@ class TestSessionStore(HttpCaseWithUserDemo):
 
             freeze.tick(delta=datetime.timedelta(seconds=59))
             self.env['ir.http']._gc_sessions()
-            session_from_store = odoo.http.root.session_store.get(session.sid)
+            session_from_store = odoo.technology.framework.root.session_store.get(session.sid)
             self.assertEqual(session.sid, session_from_store.sid, "the session should still be valid")
 
             freeze.tick(delta=datetime.timedelta(seconds=2))
             self.env['ir.http']._gc_sessions()
-            session_from_store = odoo.http.root.session_store.get(session.sid)
+            session_from_store = odoo.technology.framework.root.session_store.get(session.sid)
             self.assertNotEqual(session.sid, session_from_store.sid, "the old session as been removed")
 
     @mute_logger('odoo.http')
@@ -307,10 +307,10 @@ class TestSessionStore(HttpCaseWithUserDemo):
 
             freeze.tick(delta=datetime.timedelta(seconds=(SESSION_LIFETIME // 2) - 1))
             self.env['ir.http']._gc_sessions()
-            session_from_store = odoo.http.root.session_store.get(session)
+            session_from_store = odoo.technology.framework.root.session_store.get(session)
             self.assertEqual(session, session_from_store.sid, "the session should still be valid")
 
             freeze.tick(delta=datetime.timedelta(seconds=2))
             self.env['ir.http']._gc_sessions()
-            session_from_store = odoo.http.root.session_store.get(session)
+            session_from_store = odoo.technology.framework.root.session_store.get(session)
             self.assertNotEqual(session, session_from_store.sid, "the old session as been removed")

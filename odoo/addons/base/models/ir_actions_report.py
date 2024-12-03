@@ -8,7 +8,7 @@ from urllib.parse import urlparse
 from odoo import api, conf, models, tools, SUPERUSER_ID, _
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, AccessError, RedirectWarning
-from odoo.service import security
+from odoo.technology.framework import compute_session_token
 from odoo.tools.safe_eval import safe_eval, time
 from odoo.tools.misc import find_in_path
 from odoo.conf import config
@@ -541,7 +541,7 @@ class IrActionsReport(models.Model):
                 '_trace_disable': True,
             })
             if temp_session.uid:
-                temp_session.session_token = security.compute_session_token(temp_session, self.env)
+                temp_session.session_token = compute_session_token(temp_session, self.env)
             root.session_store.save(temp_session)
 
             base_url = self._get_report_url()

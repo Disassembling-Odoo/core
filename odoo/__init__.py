@@ -64,7 +64,6 @@ from . import modules
 from . import netsvc
 from . import osv
 from . import release
-from . import service
 
 # ----------------------------------------------------------
 # Model classes, fields, api decorators, and translations
@@ -77,4 +76,3 @@ from odoo.ormapping import Command
 # ----------------------------------------------------------
 # Other imports, which may require stuff from above
 # ----------------------------------------------------------
-from .technology.framework import http

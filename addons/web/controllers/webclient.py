@@ -86,7 +86,7 @@ class WebClient(http.Controller):
 
     @http.route('/web/webclient/version_info', type='json', auth="none")
     def version_info(self):
-        return odoo.service.common.exp_version()
+        return odoo.technology.framework.dispatch_rpc("common", "version", [])
 
     @http.route('/web/tests', type='http', auth='user', readonly=True)
     def unit_tests_suite(self, mod=None, **kwargs):

@@ -1,10 +1,10 @@
 from datetime import datetime, timedelta
 
 from odoo import models
-from odoo.technology.framework.http import request, SessionExpiredException
+from odoo.technology.framework import request, SessionExpiredException
 from odoo.tools import OrderedSet
 from odoo.osv import expression
-from odoo.service import security
+from odoo.technology.framework import check_session
 from ..models.bus import dispatch
 from ..websocket import wsrequest
 
@@ -135,7 +135,7 @@ class IrWebsocket(models.AbstractModel):
     @classmethod
     def _authenticate(cls):
         if wsrequest.session.uid is not None:
-            if not security.check_session(wsrequest.session, wsrequest.env, wsrequest):
+            if not check_session(wsrequest.session, wsrequest.env, wsrequest):
                 wsrequest.session.logout(keep_db=True)
                 raise SessionExpiredException()
         else:

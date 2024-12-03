@@ -2,9 +2,12 @@
 import re
 import sys
 
+from odoo.exceptions import AccessError
+from odoo.tools.translate import LazyTranslate
+
+_lt = LazyTranslate(__name__)
+
 regex_object_name = re.compile(r'^[a-z0-9_.]+$')
-
-
 
 regex_alphanumeric = re.compile(r'^[a-z0-9_]+$')
 

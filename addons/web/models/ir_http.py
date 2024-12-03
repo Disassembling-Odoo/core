@@ -77,7 +77,7 @@ class Http(models.AbstractModel):
     def session_info(self):
         user = self.env.user
         session_uid = request.session.uid
-        version_info = odoo.service.common.exp_version()
+        version_info = odoo.technology.framework.dispatch_rpc("common", "version", [])
 
         if session_uid:
             user_context = dict(self.env['res.users'].context_get())
@@ -199,7 +199,7 @@ class Http(models.AbstractModel):
         if request.session.debug:
             session_info['bundle_params']['debug'] = request.session.debug
         if session_uid:
-            version_info = odoo.service.common.exp_version()
+            version_info = odoo.technology.framework.dispatch_rpc("common", "version", [])
             session_info.update({
                 'server_version': version_info.get('server_version'),
                 'server_version_info': version_info.get('server_version_info')

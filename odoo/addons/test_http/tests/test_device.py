@@ -274,7 +274,7 @@ class TestDevice(TestHttpBase):
     def test_detection_no_trace_mechanism(self):
         session = self.authenticate(self.user_admin.login, self.user_admin.login)
         session._trace_disable = True
-        odoo.http.root.session_store.save(session)
+        odoo.technology.framework.root.session_store.save(session)
         self.hit('2024-01-01 08:00:00', '/test_http/greeting-user-rw')
         devices, logs = self.get_devices_logs(self.user_admin)
         self.assertEqual(len(devices), 0)

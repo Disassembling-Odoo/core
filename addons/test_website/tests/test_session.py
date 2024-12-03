@@ -20,7 +20,7 @@ class TestWebsiteSession(HttpCaseWithUserDemo):
         session = self.authenticate(None, None)
         self.env.ref('base.lang_fr').active = False
         session.context['lang'] = 'fr_FR'
-        odoo.http.root.session_store.save(session)
+        odoo.technology.framework.root.session_store.save(session)
 
         # ensure that _get_current_website_id will be able to match a website
         current_website_id = self.env["website"]._get_current_website_id(odoo.tests.HOST)
@@ -33,7 +33,7 @@ class TestWebsiteSession(HttpCaseWithUserDemo):
         session = self.authenticate(None, None)
         self.env.ref('base.lang_fr').active = False
         session.context['lang'] = 'fr_FR'
-        odoo.http.root.session_store.save(session)
+        odoo.technology.framework.root.session_store.save(session)
 
         # ensure that _get_current_website_id will be able to match a website
         current_website_id = self.env["website"]._get_current_website_id(odoo.tests.HOST)

@@ -192,18 +192,17 @@ except ImportError:
     from ...tools._vendor.send_file import send_file as _send_file
 
 import odoo
-from ...exceptions import UserError, AccessError, AccessDenied
-from ...modules.module import get_manifest
-from ...modules.registry import Registry
-from ...service import security, model as service_model
-from ...conf import config
 from ...tools import (consteq, file_path, get_lang, json_default,
                     parse_version, profiler, unique, exception_to_unicode)
 from ...tools.func import filter_kwargs, lazy_property
 from ...tools.misc import submap
 from ...tools._vendor import sessions
 from ...tools._vendor.useragents import UserAgent
-
+from ...conf import config
+from ...exceptions import UserError, AccessError, AccessDenied
+from ...modules.module import get_manifest
+from ...modules.registry import Registry
+from .service import retrying as service_model, security
 
 _logger = logging.getLogger(__name__)
 
@@ -322,14 +321,14 @@ def db_list(force=False, host=None):
     """
     Get the list of available databases.
 
-    :param bool force: See :func:`~odoo.service.db.list_dbs`:
+    :param bool force: See :func:`~odoo.technology.framework.list_dbs`:
     :param host: The Host used to replace %h and %d in the dbfilters
         regexp. Taken from the current request when omitted.
     :returns: the list of available databases
     :rtype: List[str]
     """
     try:
-        dbs = odoo.service.db.list_dbs(force)
+        dbs = odoo.technology.db.list_dbs(force)
     except psycopg2.OperationalError:
         return []
     return db_filter(dbs, host)
@@ -385,10 +384,13 @@ def dispatch_rpc(service_name, method, params):
     :return: the return value of the called method
     :rtype: Any
     """
+    from .rpc.common import dispatch as serviceDispatch
+    from .rpc.db import dispatch as dbDispatch
+    from .service.retrying import dispatch as objectDispatch
     rpc_dispatchers = {
-        'common': odoo.service.common.dispatch,
-        'db': odoo.service.db.dispatch,
-        'object': odoo.service.model.dispatch,
+        'common': serviceDispatch,
+        'db': dbDispatch,
+        'object': objectDispatch,
     }
 
     with borrow_request():

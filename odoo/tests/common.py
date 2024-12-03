@@ -59,7 +59,7 @@ from odoo.conf import config
 from odoo.exceptions import AccessError
 from odoo.ormapping import Command
 from odoo.modules.registry import Registry
-from odoo.service import security
+from odoo.technology.framework import compute_session_token
 from odoo.technology.db import BaseCursor, Cursor
 from odoo.tools import float_compare, mute_logger, profiler, DotDict
 from odoo.tools.mail import single_email_re
@@ -445,17 +445,17 @@ class BaseCase(case.TestCase, metaclass=MetaCase):
             httprequest=Mock(host='localhost'),
             db=self.env.cr.dbname,
             env=self.env,
-            session=DotDict(odoo.http.get_default_session(), debug='1'),
+            session=DotDict(odoo.technology.framework.get_default_session(), debug='1'),
         )
         try:
             self.env.flush_all()
             self.env.invalidate_all()
-            odoo.http._request_stack.push(request)
+            odoo.technology.framework._request_stack.push(request)
             yield
             self.env.flush_all()
             self.env.invalidate_all()
         finally:
-            popped_request = odoo.http._request_stack.pop()
+            popped_request = odoo.technology.framework._request_stack.pop()
             if popped_request is not request:
                 raise Exception('Wrong request stack cleanup.')
 
@@ -1849,9 +1849,9 @@ class HttpCase(TransactionCase):
 
     @classmethod
     def http_port(cls):
-        if odoo.service.server.server is None:
+        if odoo.technology.framework.server.server is None:
             return None
-        return odoo.service.server.server.httpd.server_port
+        return odoo.technology.framework.server.httpd.server_port
 
     def setUp(self):
         super().setUp()
@@ -1908,7 +1908,7 @@ class HttpCase(TransactionCase):
     def _wait_remaining_requests(self, timeout=10):
 
         def get_http_request_threads():
-            return [t for t in threading.enumerate() if t.name.startswith('odoo.service.http.request.')]
+            return [t for t in threading.enumerate() if t.name.startswith('odoo.technology.framework.http.request.')]
 
         start_time = time.time()
         request_threads = get_http_request_threads()
@@ -1928,15 +1928,15 @@ class HttpCase(TransactionCase):
 
     def logout(self, keep_db=True):
         self.session.logout(keep_db=keep_db)
-        odoo.http.root.session_store.save(self.session)
+        odoo.technology.framework.root.session_store.save(self.session)
 
     def authenticate(self, user, password, browser: ChromeBrowser = None):
         if getattr(self, 'session', None):
-            odoo.http.root.session_store.delete(self.session)
+            odoo.technology.framework.root.session_store.delete(self.session)
 
-        self.session = session = odoo.http.root.session_store.new()
-        session.update(odoo.http.get_default_session(), db=get_db_name())
-        session.context['lang'] = odoo.http.DEFAULT_LANG
+        self.session = session = odoo.technology.framework.root.session_store.new()
+        session.update(odoo.technology.framework.get_default_session(), db=get_db_name())
+        session.context['lang'] = odoo.technology.framework.DEFAULT_LANG
 
         if user: # if authenticated
             # Flush and clear the current transaction.  This is useful, because
@@ -1956,10 +1956,10 @@ class HttpCase(TransactionCase):
             env = api.Environment(self.cr, uid, {})
             session.uid = uid
             session.login = user
-            session.session_token = uid and security.compute_session_token(session, env)
+            session.session_token = uid and compute_session_token(session, env)
             session.context = dict(env['res.users'].context_get())
 
-        odoo.http.root.session_store.save(session)
+        odoo.technology.framework.root.session_store.save(session)
         # Reset the opener: turns out when we set cookies['foo'] we're really
         # setting a cookie on domain='' path='/'.
         #
@@ -2077,7 +2077,7 @@ class HttpCase(TransactionCase):
             _route_profiler = sup.profile(description=request.httprequest.full_path, db=_profiler.db)
             _profiler.sub_profilers.append(_route_profiler)
             return _route_profiler
-        return profiler.Nested(_profiler, patch('odoo.http.Request._get_profiler_context_manager', route_profiler))
+        return profiler.Nested(_profiler, patch('odoo.technology.framework.Request._get_profiler_context_manager', route_profiler))
 
     def make_jsonrpc_request(self, route, params=None, headers=None):
         """Make a JSON-RPC request to the server.

@@ -3,7 +3,7 @@ import os
 import re
 
 from odoo.tools.misc import which
-from odoo.exceptions import ValidationError
+from odoo.exceptions import ValidationError, AccessDenied
 
 regex_pg_name = re.compile(r'^[a-z_][a-z0-9_$]*$', re.I)
 
@@ -14,7 +14,12 @@ def check_pg_name(name):
     if len(name) > 63:
         raise ValidationError("Table name %r is too long" % name)
 
-def find_pg_tool(name):
+def check_super(passwd, config):
+    if passwd and config.verify_admin_password(passwd):
+        return True
+    raise AccessDenied()
+
+def find_pg_tool(name, config):
     path = None
     if config['pg_path'] and config['pg_path'] != 'None':
         path = config['pg_path']

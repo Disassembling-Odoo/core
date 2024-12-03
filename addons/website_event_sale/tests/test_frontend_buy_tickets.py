@@ -186,7 +186,7 @@ class TestRoutes(HttpCaseWithUserDemo, TestWebsiteEventSaleCommon, PaymentHttpCo
             'tokenization_requested': False,
             'landing_route': '/shop/payment/validate',
             'is_validation': False,
-            'csrf_token': odoo.http.Request.csrf_token(self),
+            'csrf_token': odoo.technology.framework.Request.csrf_token(self),
             'access_token': self.so._portal_ensure_token(),
         }
         with self.assertRaisesRegex(odoo.tests.JsonRpcException, 'odoo.exceptions.ValidationError'):

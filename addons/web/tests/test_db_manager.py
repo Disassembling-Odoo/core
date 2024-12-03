@@ -63,7 +63,7 @@ class TestDatabaseOperations(BaseCase):
         )
 
     def list_dbs_filtered(self):
-        return set(db for db in odoo.service.db.list_dbs(True) if re.match(config['dbfilter'], db))
+        return set(db for db in odoo.technology.db.list_dbs(True) if re.match(config['dbfilter'], db))
 
     def url(self, path):
         return HttpCase.base_url() + path

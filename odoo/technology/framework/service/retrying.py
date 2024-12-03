@@ -1,75 +1,18 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 import logging
 import random
-import threading
 import time
-from collections.abc import Mapping, Sequence
-from functools import partial
 
 from psycopg2 import IntegrityError, OperationalError, errorcodes, errors
 
-import odoo
-from odoo.exceptions import UserError, ValidationError
-from odoo.technology.framework.http import request
-from odoo.ormapping import check_method_name
-from odoo.modules.registry import Registry
-from odoo.tools import DotDict, lazy
+from odoo.constant import PG_CONCURRENCY_EXCEPTIONS_TO_RETRY, MAX_TRIES_ON_CONCURRENCY_FAILURE
+from odoo.exceptions import ValidationError
+from odoo.tools import DotDict
 from odoo.tools.translate import translate_sql_constraint
 
-from . import security
+from ..http import request
 
 _logger = logging.getLogger(__name__)
-
-PG_CONCURRENCY_ERRORS_TO_RETRY = (errorcodes.LOCK_NOT_AVAILABLE, errorcodes.SERIALIZATION_FAILURE, errorcodes.DEADLOCK_DETECTED)
-PG_CONCURRENCY_EXCEPTIONS_TO_RETRY = (errors.LockNotAvailable, errors.SerializationFailure, errors.DeadlockDetected)
-MAX_TRIES_ON_CONCURRENCY_FAILURE = 5
-
-
-def dispatch(method, params):
-    db, uid, passwd = params[0], int(params[1]), params[2]
-    security.check(db, uid, passwd)
-
-    threading.current_thread().dbname = db
-    threading.current_thread().uid = uid
-    registry = Registry(db).check_signaling()
-    with registry.manage_changes():
-        if method == 'execute':
-            res = execute(db, uid, *params[3:])
-        elif method == 'execute_kw':
-            res = execute_kw(db, uid, *params[3:])
-        else:
-            raise NameError("Method not available %s" % method)
-    return res
-
-
-def execute_cr(cr, uid, obj, method, *args, **kw):
-    # clean cache etc if we retry the same transaction
-    cr.reset()
-    env = odoo.api.Environment(cr, uid, {})
-    recs = env.get(obj)
-    if recs is None:
-        raise UserError(env._("Object %s doesn't exist", obj))
-    result = retrying(partial(odoo.api.call_kw, recs, method, args, kw), env)
-    # force evaluation of lazy values before the cursor is closed, as it would
-    # error afterwards if the lazy isn't already evaluated (and cached)
-    for l in _traverse_containers(result, lazy):
-        _0 = l._value
-    return result
-
-
-def execute_kw(db, uid, obj, method, args, kw=None):
-    return execute(db, uid, obj, method, *args, **kw or {})
-
-
-def execute(db, uid, obj, method, *args, **kw):
-    # TODO could be conditionnaly readonly as in _call_kw_readonly
-    with Registry(db).cursor() as cr:
-        check_method_name(method)
-        res = execute_cr(cr, uid, obj, method, *args, **kw)
-        if res is None:
-            _logger.info('The method %s of the object %s can not return `None`!', method, obj)
-        return res
-
 
 def _as_validation_error(env, exc):
     """ Return the IntegrityError encapsuled in a nice ValidationError """
@@ -176,22 +119,3 @@ def retrying(func, env):
         env.cr.commit()  # effectively commits and execute post-commits
     env.registry.signal_changes()
     return result
-
-
-def _traverse_containers(val, type_):
-    """ Yields atoms filtered by specified ``type_`` (or type tuple), traverses
-    through standard containers (non-string mappings or sequences) *unless*
-    they're selected by the type filter
-    """
-    from odoo.ormapping.models import BaseModel
-    if isinstance(val, type_):
-        yield val
-    elif isinstance(val, (str, bytes, BaseModel)):
-        return
-    elif isinstance(val, Mapping):
-        for k, v in val.items():
-            yield from _traverse_containers(k, type_)
-            yield from _traverse_containers(v, type_)
-    elif isinstance(val, Sequence):
-        for v in val:
-            yield from _traverse_containers(v, type_)

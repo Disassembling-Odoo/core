@@ -10,9 +10,12 @@ from lxml import html
 
 import odoo
 import odoo.modules.registry
-from odoo.technology.framework import http
-from odoo.technology.framework.http import content_disposition, dispatch_rpc, request, Response
-from odoo.service import db
+from odoo.technology.utils import db_utils as DBUtils
+from odoo.technology import db
+from odoo.technology.framework import (
+    http, content_disposition, 
+    dispatch_rpc, request, Response
+)
 from odoo.tools.misc import file_open, str2bool
 from odoo.tools.translate import _
 
@@ -31,13 +34,13 @@ class Database(http.Controller):
         d.setdefault('manage', True)
         d['insecure'] = odoo.conf.config.verify_admin_password('admin')
         d['list_db'] = odoo.conf.config['list_db']
-        d['langs'] = odoo.service.db.exp_list_lang()
-        d['countries'] = odoo.service.db.exp_list_countries()
+        d['langs'] = odoo.technology.framework.exp_list_lang()
+        d['countries'] = odoo.technology.framework.exp_list_countries()
         d['pattern'] = DBNAME_PATTERN
         # databases list
         try:
             d['databases'] = http.db_list()
-            d['incompatible_databases'] = odoo.service.db.list_db_incompatible(d['databases'])
+            d['incompatible_databases'] = odoo.technology.db.list_db_incompatible(d['databases'])
         except odoo.exceptions.AccessDenied:
             d['databases'] = [request.db] if request.db else []
 
@@ -126,7 +129,7 @@ class Database(http.Controller):
         if insecure and master_pwd:
             dispatch_rpc('db', 'change_admin_password', ["admin", master_pwd])
         try:
-            odoo.service.db.check_super(master_pwd)
+            DBUtils.check_super(master_pwd, odoo.conf.config)
             if name not in http.db_list():
                 raise Exception("Database %r is not known" % name)
             ts = datetime.datetime.utcnow().strftime("%Y-%m-%d_%H-%M-%S")
@@ -135,7 +138,7 @@ class Database(http.Controller):
                 ('Content-Type', 'application/octet-stream; charset=binary'),
                 ('Content-Disposition', content_disposition(filename)),
             ]
-            dump_stream = odoo.service.db.dump_db(name, None, backup_format)
+            dump_stream = odoo.technology.db.dump_db(name, None, backup_format)
             response = Response(dump_stream, headers=headers, direct_passthrough=True)
             return response
         except Exception as e:
@@ -150,7 +153,7 @@ class Database(http.Controller):
             dispatch_rpc('db', 'change_admin_password', ["admin", master_pwd])
         try:
             data_file = None
-            db.check_super(master_pwd)
+            DBUtils.check_super(master_pwd)
             with tempfile.NamedTemporaryFile(delete=False) as data_file:
                 backup_file.save(data_file)
             db.restore_db(name, data_file.name, str2bool(copy), neutralize_database)

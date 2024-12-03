@@ -10,7 +10,7 @@ import odoo
 from . import Command
 from .server import main
 from odoo.modules.module import get_module_root, MANIFEST_NAMES
-from odoo.service.db import _create_empty_database, DatabaseExists
+from odoo.technology.db import create_empty_database, DatabaseExists
 
 
 class Start(Command):
@@ -60,7 +60,7 @@ class Start(Command):
 
         # TODO: forbid some database names ? eg template1, ...
         try:
-            _create_empty_database(args.db_name)
+            create_empty_database(args.db_name)
             odoo.conf.config['init']['base'] = True
         except DatabaseExists as e:
             pass

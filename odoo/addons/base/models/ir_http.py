@@ -33,7 +33,7 @@ from odoo import api, models, tools, SUPERUSER_ID
 from odoo.exceptions import AccessDenied
 from odoo.technology.framework.http import request, Response, ROUTING_KEYS
 from odoo.modules.registry import Registry
-from odoo.service import security
+from odoo.technology.framework import check_session
 from odoo.tools.json import json_default
 from odoo.tools.misc import get_lang, submap
 from odoo.tools.translate import code_translations
@@ -265,7 +265,7 @@ class IrHttp(models.AbstractModel):
     def _authenticate_explicit(cls, auth):
         try:
             if request.session.uid is not None:
-                if not security.check_session(request.session, request.env, request):
+                if not check_session(request.session, request.env, request):
                     request.session.logout(keep_db=True)
                     request.env = api.Environment(request.env.cr, None, request.session.context)
             getattr(cls, f'_auth_method_{auth}')()

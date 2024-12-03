@@ -10,7 +10,7 @@ from odoo.technology.framework.http import _request_stack
 import odoo
 import odoo.tools
 from odoo.tests import common
-from odoo.service import common as auth, model
+from odoo.technology.framework import common as auth, retrying
 from odoo.tools import DotDict
 
 
@@ -188,7 +188,7 @@ class TestAPIKeys(common.HttpCase):
         uid = auth.dispatch('authenticate', [self.env.cr.dbname, 'byl', 'ananananan', {}])
         self.assertEqual(uid, self._user.id)
 
-        ctx = model.dispatch('execute_kw', [
+        ctx = retrying.dispatch('execute_kw', [
             self.env.cr.dbname, uid, 'ananananan',
             'res.users', 'context_get', []
         ])
@@ -199,7 +199,7 @@ class TestAPIKeys(common.HttpCase):
         uid = auth.dispatch('authenticate', [self.env.cr.dbname, 'byl', 'aws', {}])
         self.assertFalse(uid)
         with self.assertRaises(AccessDenied):
-            model.dispatch('execute_kw', [
+            retrying.dispatch('execute_kw', [
                 self.env.cr.dbname, self._user.id, 'aws',
                 'res.users', 'context_get', []
             ])
@@ -217,7 +217,7 @@ class TestAPIKeys(common.HttpCase):
         uid = auth.dispatch('authenticate', [self.env.cr.dbname, 'byl', k, {}])
         self.assertEqual(uid, self._user.id)
 
-        ctx = model.dispatch('execute_kw', [
+        ctx = retrying.dispatch('execute_kw', [
             self.env.cr.dbname, uid, k,
             'res.users', 'context_get', []
         ])
@@ -254,13 +254,13 @@ class TestAPIKeys(common.HttpCase):
         self._user.active = False
 
         with self.assertRaises(AccessDenied):
-            model.dispatch('execute_kw', [
+            retrying.dispatch('execute_kw', [
                 self.env.cr.dbname, self._user.id, 'ananananan',
                 'res.users', 'context_get', []
             ])
 
         with self.assertRaises(AccessDenied):
-            model.dispatch('execute_kw', [
+            retrying.dispatch('execute_kw', [
                 self.env.cr.dbname, self._user.id, k,
                 'res.users', 'context_get', []
             ])

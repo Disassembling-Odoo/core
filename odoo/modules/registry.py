@@ -107,7 +107,7 @@ class Registry(Mapping):
                 return cls.new(db_name)
             finally:
                 # set db tracker - cleaned up at the WSGI dispatching phase in
-                # odoo.http.root
+                # odoo.technology.framework.root
                 threading.current_thread().dbname = db_name
 
     @classmethod

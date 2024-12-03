@@ -336,7 +336,7 @@ class Website(Home):
         values = {
             'apps': apps,
             'l10n': l10n,
-            'version': odoo.service.common.exp_version()
+            'version': odoo.technology.framework.dispatch_rpc("common", "version", [])
         }
         return request.render('website.website_info', values)
 

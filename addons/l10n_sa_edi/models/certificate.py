@@ -5,7 +5,8 @@ from cryptography.x509 import ObjectIdentifier
 from cryptography.x509.oid import NameOID
 from cryptography.hazmat.primitives import hashes, serialization
 
-from odoo import api, models, service
+from odoo import api, models
+from odoo.technology.framework import dispatch_rpc
 
 CERT_TEMPLATE_NAME = {
     'prod': b'\x0c\x12ZATCA-Code-Signing',
@@ -32,7 +33,7 @@ class Certificate(models.Model):
             return
 
         company_id = journal.company_id
-        version_info = service.common.exp_version()
+        version_info = dispatch_rpc("common", "version", [])
         builder = x509.CertificateSigningRequestBuilder()
         subject_names = (
             # Country Name

@@ -8,8 +8,7 @@ import odoo.exceptions
 import odoo.modules.registry
 from odoo.technology.framework import http
 from odoo.exceptions import AccessError
-from odoo.technology.framework.http import request
-from odoo.service import security
+from odoo.technology.framework import request, security
 from odoo.tools.translate import _
 from .utils import (
     ensure_db,

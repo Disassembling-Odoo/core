@@ -4,7 +4,7 @@ from datetime import timedelta
 from odoo import api, models
 from odoo import tools
 from odoo.ormapping import fields
-from odoo.service.model import PG_CONCURRENCY_EXCEPTIONS_TO_RETRY
+from odoo.constant import PG_CONCURRENCY_EXCEPTIONS_TO_RETRY
 
 UPDATE_PRESENCE_DELAY = 60
 DISCONNECTION_TIMER = UPDATE_PRESENCE_DELAY + 5

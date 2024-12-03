@@ -1,13 +1,11 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo.service.common import exp_version
 from odoo import _
-from odoo.technology.framework.http import request
 from odoo.osv import expression
-from odoo.technology.framework import http
 from odoo.tools import float_round, py_to_js_locale
 from odoo.tools.image import image_data_uri
 from odoo.technology.db import SQL
+from odoo.technology.framework import http, request, dispatch_rpc
 
 import datetime
 
@@ -101,7 +99,7 @@ class HrAttendance(http.Controller):
                 kiosk_mode = "settings"
             else:
                 kiosk_mode = company.attendance_kiosk_mode
-            version_info = exp_version()
+            version_info = dispatch_rpc('common', 'version', [])
             return request.render(
                 'hr_attendance.public_kiosk_mode',
                 {

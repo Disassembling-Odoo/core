@@ -9,7 +9,7 @@ from odoo import api, models, _, Command
 from odoo.ormapping import fields
 from odoo.exceptions import AccessDenied, AccessError, UserError, ValidationError
 from odoo.tools import float_is_zero, float_compare, convert, plaintext2html
-from odoo.service.common import exp_version
+from odoo.technology.framework import dispatch_rpc
 from odoo.osv.expression import AND
 
 
@@ -152,7 +152,7 @@ class PosSession(models.Model):
         fields = self._load_pos_data_fields(self.config_id.id)
         data = self.search_read(domain, fields, load=False, limit=1)
         data[0]['_partner_commercial_fields'] = self.env['res.partner']._commercial_fields()
-        data[0]['_server_version'] = exp_version()
+        data[0]['_server_version'] = dispatch_rpc("common", "version", [])
         data[0]['_base_url'] = self.get_base_url()
         data[0]['_has_cash_move_perm'] = self.env.user.has_group('account.group_account_invoice')
         data[0]['_has_available_products'] = self._pos_has_valid_product()

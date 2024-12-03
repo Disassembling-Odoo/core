@@ -1,3 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from . import http
+from .service import *
+
+from .http import *

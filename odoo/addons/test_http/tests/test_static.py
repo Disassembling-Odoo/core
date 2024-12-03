@@ -646,7 +646,7 @@ class TestHttpStaticUpload(TestHttpStaticCommon):
                 f'{self.base_url()}/web/binary/upload_attachment',
                 files={'ufile': file},
                 data={
-                    'csrf_token': odoo.http.Request.csrf_token(self),
+                    'csrf_token': odoo.technology.framework.Request.csrf_token(self),
                     'model': 'test_http.stargate',
                     'id': self.env.ref('test_http.earth').id,
                 },
@@ -692,7 +692,7 @@ class TestHttpStaticUpload(TestHttpStaticCommon):
                 f'{self.base_url()}/web/binary/upload_attachment',
                 files={'ufile': file},
                 data={
-                    'csrf_token': odoo.http.Request.csrf_token(self),
+                    'csrf_token': odoo.technology.framework.Request.csrf_token(self),
                     'model': 'test_http.stargate',
                     'id': self.env.ref('test_http.earth').id,
                     'callback': 'callmemaybe',

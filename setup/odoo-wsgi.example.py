@@ -10,7 +10,7 @@
 #
 # For gunicorn additional globals need to be defined in the Gunicorn section.
 # Then the following command should run:
-#   $ gunicorn odoo:service.wsgi_server.application -c openerp-wsgi.py
+#   $ gunicorn odoo:technology.framework.wsgi_server.application -c openerp-wsgi.py
 
 import odoo
 
@@ -36,9 +36,9 @@ conf = odoo.conf.config
 #----------------------------------------------------------
 # Generic WSGI handlers application
 #----------------------------------------------------------
-application = odoo.http.root
+application = odoo.technology.framework.root
 
-odoo.service.server.load_server_wide_modules()
+odoo.technology.framework.load_server_wide_modules()
 
 #----------------------------------------------------------
 # Gunicorn

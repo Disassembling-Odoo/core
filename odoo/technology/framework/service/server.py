@@ -127,7 +127,7 @@ class RequestHandler(werkzeug.serving.WSGIRequestHandler):
         # flag the current thread as handling a http request
         super(RequestHandler, self).setup()
         me = threading.current_thread()
-        me.name = 'odoo.service.http.request.%s' % (me.ident,)
+        me.name = 'odoo.technology.framework.http.request.%s' % (me.ident,)
 
     def make_environ(self):
         environ = super().make_environ()
@@ -308,7 +308,7 @@ class FSWatcherInotify(FSWatcherBase):
 
     def start(self):
         self.started = True
-        self.thread = threading.Thread(target=self.run, name="odoo.service.autoreload.watcher")
+        self.thread = threading.Thread(target=self.run, name="odoo.technology.framework.autoreload.watcher")
         self.thread.daemon = True
         self.thread.start()
 
@@ -493,7 +493,7 @@ class ThreadedServer(CommonServer):
         for i in range(odoo.conf.config['max_cron_threads']):
             def target():
                 self.cron_thread(i)
-            t = threading.Thread(target=target, name="odoo.service.cron.cron%d" % i)
+            t = threading.Thread(target=target, name="odoo.technology.framework.cron.cron%d" % i)
             t.daemon = True
             t.type = 'cron'
             t.start()
@@ -503,7 +503,7 @@ class ThreadedServer(CommonServer):
         self.httpd = ThreadedWSGIServerReloadable(self.interface, self.port, self.app)
         threading.Thread(
             target=self.httpd.serve_forever,
-            name="odoo.service.httpd",
+            name="odoo.technology.framework.httpd",
             daemon=True,
         ).start()
 
@@ -1190,7 +1190,7 @@ class WorkerCron(Worker):
         if config['db_name']:
             db_names = config['db_name'].split(',')
         else:
-            db_names = odoo.service.db.list_dbs(True)
+            db_names = odoo.technology.db.list_dbs(True)
         return db_names
 
     def process_work(self):
@@ -1350,13 +1350,14 @@ def start(preload=None, stop=False):
 
     load_server_wide_modules()
 
+    from ..http import root
     if odoo.evented:
-        server = GeventServer(odoo.http.root)
+        server = GeventServer(root)
     elif config['workers']:
         if config['test_enable'] or config['test_file']:
             _logger.warning("Unit testing in workers mode could fail; use --workers 0.")
 
-        server = PreforkServer(odoo.http.root)
+        server = PreforkServer(root)
     else:
         if platform.system() == "Linux" and sys.maxsize > 2**32 and "MALLOC_ARENA_MAX" not in os.environ:
             # glibc's malloc() uses arenas [1] in order to efficiently handle memory allocation of multi-threaded
@@ -1380,7 +1381,7 @@ def start(preload=None, stop=False):
                 assert libc.mallopt(ctypes.c_int(M_ARENA_MAX), ctypes.c_int(2))
             except Exception:
                 _logger.warning("Could not set ARENA_MAX through mallopt()")
-        server = ThreadedServer(odoo.http.root)
+        server = ThreadedServer(root)
 
     watcher = None
     if 'reload' in config['dev_mode'] and not odoo.evented:

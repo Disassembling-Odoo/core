@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
-import base64
+'''
+Database Operations
+'''
+
 import json
 import logging
 import os
@@ -8,29 +11,25 @@ import subprocess
 import tempfile
 import zipfile
 from contextlib import closing
-from xml.etree import ElementTree as ET
 
 import psycopg2
 from psycopg2.extensions import quote_ident
 from decorator import decorator
 from pytz import country_timezones
 
-import odoo
-import odoo.release
-import odoo.technology.db
-import odoo.tools
 from odoo import SUPERUSER_ID
-from odoo.exceptions import AccessDenied
+import odoo.release
 from odoo.release import version_info
-from odoo.technology.db import SQL, db_connect
-from odoo.technology.utils import exec_pg_environ, find_pg_tool
+import odoo.tools
+from odoo.exceptions import AccessDenied
+from odoo.technology.utils import db_utils as DBUtils
+
+from .sql import SQL
 
 _logger = logging.getLogger(__name__)
 
-
 class DatabaseExists(Warning):
     pass
-
 
 def database_identifier(cr, name: str) -> SQL:
     """Quote a database identifier.
@@ -40,7 +39,6 @@ def database_identifier(cr, name: str) -> SQL:
     name = quote_ident(name, cr._cnx)
     return SQL(name)
 
-
 def check_db_management_enabled(method):
     def if_db_mgt_enabled(method, self, *args, **kwargs):
         if not odoo.conf.config['list_db']:
@@ -49,59 +47,40 @@ def check_db_management_enabled(method):
         return method(self, *args, **kwargs)
     return decorator(if_db_mgt_enabled, method)
 
-#----------------------------------------------------------
-# Master password required
-#----------------------------------------------------------
 
-def check_super(passwd):
-    if passwd and odoo.conf.config.verify_admin_password(passwd):
-        return True
-    raise odoo.exceptions.AccessDenied()
+def list_dbs(force=False):
+    if not odoo.conf.config['list_db'] and not force:
+        raise AccessDenied()
 
-# This should be moved to odoo.modules.db, along side initialize().
-def _initialize_db(id, db_name, demo, lang, user_password, login='admin', country_code=None, phone=None):
+    if not odoo.conf.config['dbfilter'] and odoo.conf.config['db_name']:
+        # In case --db-filter is not provided and --database is passed, Odoo will not
+        # fetch the list of databases available on the postgres server and instead will
+        # use the value of --database as comma seperated list of exposed databases.
+        res = sorted(db.strip() for db in odoo.conf.config['db_name'].split(','))
+        return res
+
+    chosen_template = odoo.conf.config['db_template']
+    templates_list = tuple({'postgres', chosen_template})
+    db = odoo.technology.db.db_connect('postgres')
+    with closing(db.cursor()) as cr:
+        try:
+            cr.execute("select datname from pg_database where datdba=(select usesysid from pg_user where usename=current_user) and not datistemplate and datallowconn and datname not in %s order by datname", (templates_list,))
+            return [name for (name,) in cr.fetchall()]
+        except Exception:
+            _logger.exception('Listing databases failed:')
+            return []
+
+@odoo.tools.mute_logger('odoo.technology.db')
+def check_db_exist(db_name):
+    ## Not True: in fact, check if connection to database is possible. The database may exists
     try:
         db = odoo.technology.db.db_connect(db_name)
-        with closing(db.cursor()) as cr:
-            # TODO this should be removed as it is done by Registry.new().
-            odoo.modules.db.initialize(cr)
-            odoo.conf.config['load_language'] = lang
-            cr.commit()
+        with db.cursor():
+            return True
+    except Exception:
+        return False
 
-        registry = odoo.modules.registry.Registry.new(db_name, demo, None, update_module=True)
-
-        with closing(registry.cursor()) as cr:
-            env = odoo.api.Environment(cr, SUPERUSER_ID, {})
-
-            if lang:
-                modules = env['ir.module.module'].search([('state', '=', 'installed')])
-                modules._update_translations(lang)
-
-            if country_code:
-                country = env['res.country'].search([('code', 'ilike', country_code)])[0]
-                env['res.company'].browse(1).write({'country_id': country_code and country.id, 'currency_id': country_code and country.currency_id.id})
-                if len(country_timezones.get(country_code, [])) == 1:
-                    users = env['res.users'].search([])
-                    users.write({'tz': country_timezones[country_code][0]})
-            if phone:
-                env['res.company'].browse(1).write({'phone': phone})
-            if '@' in login:
-                env['res.company'].browse(1).write({'email': login})
-
-            # update admin's password and lang and login
-            values = {'password': user_password, 'lang': lang}
-            if login:
-                values['login'] = login
-                emails = odoo.tools.email_split(login)
-                if emails:
-                    values['email'] = emails[0]
-            env.ref('base.user_admin').write(values)
-
-            cr.commit()
-    except Exception as e:
-        _logger.exception('CREATE DATABASE failed:')
-
-def _create_empty_database(name):
+def create_empty_database(name):
     db = odoo.technology.db.db_connect('postgres')
     with closing(db.cursor()) as cr:
         chosen_template = odoo.conf.config['db_template']
@@ -148,60 +127,7 @@ def _create_empty_database(name):
         _logger.warning("Unable to make public schema public-accessible: %s", e)
 
 @check_db_management_enabled
-def exp_create_database(db_name, demo, lang, user_password='admin', login='admin', country_code=None, phone=None):
-    """ Similar to exp_create but blocking."""
-    _logger.info('Create database `%s`.', db_name)
-    _create_empty_database(db_name)
-    _initialize_db(id, db_name, demo, lang, user_password, login, country_code, phone)
-    return True
-
-@check_db_management_enabled
-def exp_duplicate_database(db_original_name, db_name, neutralize_database=False):
-    _logger.info('Duplicate database `%s` to `%s`.', db_original_name, db_name)
-    odoo.technology.db.close_db(db_original_name)
-    db = odoo.technology.db.db_connect('postgres')
-    with closing(db.cursor()) as cr:
-        # database-altering operations cannot be executed inside a transaction
-        cr._cnx.autocommit = True
-        _drop_conn(cr, db_original_name)
-        cr.execute(SQL(
-            "CREATE DATABASE %s ENCODING 'unicode' TEMPLATE %s",
-            database_identifier(cr, db_name),
-            database_identifier(cr, db_original_name),
-        ))
-
-    registry = odoo.modules.registry.Registry.new(db_name)
-    with registry.cursor() as cr:
-        # if it's a copy of a database, force generation of a new dbuuid
-        env = odoo.api.Environment(cr, SUPERUSER_ID, {})
-        env['ir.config_parameter'].init(force=True)
-        if neutralize_database:
-            odoo.modules.neutralize.neutralize_database(cr)
-
-    from_fs = odoo.conf.config.filestore(db_original_name)
-    to_fs = odoo.conf.config.filestore(db_name)
-    if os.path.exists(from_fs) and not os.path.exists(to_fs):
-        shutil.copytree(from_fs, to_fs)
-    return True
-
-def _drop_conn(cr, db_name):
-    # Try to terminate all other connections that might prevent
-    # dropping the database
-    try:
-        # PostgreSQL 9.2 renamed pg_stat_activity.procpid to pid:
-        # http://www.postgresql.org/docs/9.2/static/release-9-2.html#AEN110389
-        pid_col = 'pid' if cr._cnx.server_version >= 90200 else 'procpid'
-
-        cr.execute("""SELECT pg_terminate_backend(%(pid_col)s)
-                      FROM pg_stat_activity
-                      WHERE datname = %%s AND
-                            %(pid_col)s != pg_backend_pid()""" % {'pid_col': pid_col},
-                   (db_name,))
-    except Exception:
-        pass
-
-@check_db_management_enabled
-def exp_drop(db_name):
+def drop_db(db_name):
     if db_name not in list_dbs(True):
         return False
     odoo.modules.registry.Registry.delete(db_name)
@@ -227,13 +153,6 @@ def exp_drop(db_name):
     return True
 
 @check_db_management_enabled
-def exp_dump(db_name, format):
-    with tempfile.TemporaryFile(mode='w+b') as t:
-        dump_db(db_name, t, format)
-        t.seek(0)
-        return base64.b64encode(t.read()).decode()
-
-@check_db_management_enabled
 def dump_db_manifest(cr):
     pg_version = "%d.%d" % divmod(cr._obj.connection.server_version / 100, 100)
     cr.execute("SELECT name, latest_version FROM ir_module_module WHERE state = 'installed'")
@@ -256,8 +175,8 @@ def dump_db(db_name, stream, backup_format='zip'):
 
     _logger.info('DUMP DB: %s format %s', db_name, backup_format)
 
-    cmd = [find_pg_tool('pg_dump'), '--no-owner', db_name]
-    env = exec_pg_environ(odoo.conf.config)
+    cmd = [DBUtils.find_pg_tool('pg_dump', odoo.conf.config), '--no-owner', db_name]
+    env = DBUtils.exec_pg_environ(odoo.conf.config)
 
     if backup_format == 'zip':
         with tempfile.TemporaryDirectory() as dump_dir:
@@ -286,29 +205,14 @@ def dump_db(db_name, stream, backup_format='zip'):
             return stdout
 
 @check_db_management_enabled
-def exp_restore(db_name, data, copy=False):
-    def chunks(d, n=8192):
-        for i in range(0, len(d), n):
-            yield d[i:i+n]
-    data_file = tempfile.NamedTemporaryFile(delete=False)
-    try:
-        for chunk in chunks(data):
-            data_file.write(base64.b64decode(chunk))
-        data_file.close()
-        restore_db(db_name, data_file.name, copy=copy)
-    finally:
-        os.unlink(data_file.name)
-    return True
-
-@check_db_management_enabled
 def restore_db(db, dump_file, copy=False, neutralize_database=False):
     assert isinstance(db, str)
-    if exp_db_exist(db):
+    if check_db_exist(db):
         _logger.warning('RESTORE DB: %s already exists', db)
         raise Exception("Database already exists")
 
     _logger.info('RESTORING DB: %s', db)
-    _create_empty_database(db)
+    create_empty_database(db)
 
     filestore_path = None
     with tempfile.TemporaryDirectory() as dump_dir:
@@ -331,8 +235,8 @@ def restore_db(db, dump_file, copy=False, neutralize_database=False):
             pg_args = ['--no-owner', dump_file]
 
         r = subprocess.run(
-            [find_pg_tool(pg_cmd), '--dbname=' + db, *pg_args],
-            env=exec_pg_environ(odoo.conf.config),
+            [DBUtils.find_pg_tool(pg_cmd, odoo.conf.config), '--dbname=' + db, *pg_args],
+            env=DBUtils.exec_pg_environ(odoo.conf.config),
             stdout=subprocess.DEVNULL,
             stderr=subprocess.STDOUT,
         )
@@ -355,7 +259,7 @@ def restore_db(db, dump_file, copy=False, neutralize_database=False):
     _logger.info('RESTORE DB: %s', db)
 
 @check_db_management_enabled
-def exp_rename(old_name, new_name):
+def rename_db(old_name, new_name):
     odoo.modules.registry.Registry.delete(old_name)
     odoo.technology.db.close_db(old_name)
 
@@ -378,54 +282,33 @@ def exp_rename(old_name, new_name):
     return True
 
 @check_db_management_enabled
-def exp_change_admin_password(new_password):
-    odoo.conf.config.set_admin_password(new_password)
-    odoo.conf.config.save(['admin_passwd'])
-    return True
-
-@check_db_management_enabled
-def exp_migrate_databases(databases):
-    for db in databases:
-        _logger.info('migrate database %s', db)
-        odoo.conf.config['update']['base'] = True
-        odoo.modules.registry.Registry.new(db, force_demo=False, update_module=True)
-    return True
-
-#----------------------------------------------------------
-# No master password required
-#----------------------------------------------------------
-
-@odoo.tools.mute_logger('odoo.technology.db')
-def exp_db_exist(db_name):
-    ## Not True: in fact, check if connection to database is possible. The database may exists
-    try:
-        db = odoo.technology.db.db_connect(db_name)
-        with db.cursor():
-            return True
-    except Exception:
-        return False
-
-def list_dbs(force=False):
-    if not odoo.conf.config['list_db'] and not force:
-        raise odoo.exceptions.AccessDenied()
-
-    if not odoo.conf.config['dbfilter'] and odoo.conf.config['db_name']:
-        # In case --db-filter is not provided and --database is passed, Odoo will not
-        # fetch the list of databases available on the postgres server and instead will
-        # use the value of --database as comma seperated list of exposed databases.
-        res = sorted(db.strip() for db in odoo.conf.config['db_name'].split(','))
-        return res
-
-    chosen_template = odoo.conf.config['db_template']
-    templates_list = tuple({'postgres', chosen_template})
+def duplicate_db(db_original_name, db_name, neutralize_database=False):
+    _logger.info('Duplicate database `%s` to `%s`.', db_original_name, db_name)
+    odoo.technology.db.close_db(db_original_name)
     db = odoo.technology.db.db_connect('postgres')
     with closing(db.cursor()) as cr:
-        try:
-            cr.execute("select datname from pg_database where datdba=(select usesysid from pg_user where usename=current_user) and not datistemplate and datallowconn and datname not in %s order by datname", (templates_list,))
-            return [name for (name,) in cr.fetchall()]
-        except Exception:
-            _logger.exception('Listing databases failed:')
-            return []
+        # database-altering operations cannot be executed inside a transaction
+        cr._cnx.autocommit = True
+        _drop_conn(cr, db_original_name)
+        cr.execute(SQL(
+            "CREATE DATABASE %s ENCODING 'unicode' TEMPLATE %s",
+            database_identifier(cr, db_name),
+            database_identifier(cr, db_original_name),
+        ))
+
+    registry = odoo.modules.registry.Registry.new(db_name)
+    with registry.cursor() as cr:
+        # if it's a copy of a database, force generation of a new dbuuid
+        env = odoo.api.Environment(cr, SUPERUSER_ID, {})
+        env['ir.config_parameter'].init(force=True)
+        if neutralize_database:
+            odoo.modules.neutralize.neutralize_database(cr)
+
+    from_fs = odoo.conf.config.filestore(db_original_name)
+    to_fs = odoo.conf.config.filestore(db_name)
+    if os.path.exists(from_fs) and not os.path.exists(to_fs):
+        shutil.copytree(from_fs, to_fs)
+    return True
 
 def list_db_incompatible(databases):
     """"Check a list of databases if they are compatible with this version of Odoo
@@ -455,42 +338,18 @@ def list_db_incompatible(databases):
     return incompatible_databases
 
 
-def exp_list(document=False):
-    if not odoo.conf.config['list_db']:
-        raise odoo.exceptions.AccessDenied()
-    return list_dbs()
+def _drop_conn(cr, db_name):
+    # Try to terminate all other connections that might prevent
+    # dropping the database
+    try:
+        # PostgreSQL 9.2 renamed pg_stat_activity.procpid to pid:
+        # http://www.postgresql.org/docs/9.2/static/release-9-2.html#AEN110389
+        pid_col = 'pid' if cr._cnx.server_version >= 90200 else 'procpid'
 
-def exp_list_lang():
-    return odoo.tools.misc.scan_languages()
-
-def exp_list_countries():
-    list_countries = []
-    root = ET.parse(os.path.join(odoo.conf.config['root_path'], 'addons/base/data/res_country_data.xml')).getroot()
-    for country in root.find('data').findall('record[@model="res.country"]'):
-        name = country.find('field[@name="name"]').text
-        code = country.find('field[@name="code"]').text
-        list_countries.append([code, name])
-    return sorted(list_countries, key=lambda c: c[1])
-
-def exp_server_version():
-    """ Return the version of the server
-        Used by the client to verify the compatibility with its own version
-    """
-    return odoo.release.version
-
-#----------------------------------------------------------
-# db service dispatch
-#----------------------------------------------------------
-
-def dispatch(method, params):
-    g = globals()
-    exp_method_name = 'exp_' + method
-    if method in ['db_exist', 'list', 'list_lang', 'server_version']:
-        return g[exp_method_name](*params)
-    elif exp_method_name in g:
-        passwd = params[0]
-        params = params[1:]
-        check_super(passwd)
-        return g[exp_method_name](*params)
-    else:
-        raise KeyError("Method not found: %s" % method)
+        cr.execute("""SELECT pg_terminate_backend(%(pid_col)s)
+                      FROM pg_stat_activity
+                      WHERE datname = %%s AND
+                            %(pid_col)s != pg_backend_pid()""" % {'pid_col': pid_col},
+                   (db_name,))
+    except Exception:
+        pass

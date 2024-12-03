@@ -43,6 +43,6 @@ class RoutesLinter(TransactionCase):
         installed_modules = set(self.env['ir.module.module'].search([
             ('state', '=', 'installed'),
         ]).mapped('name'))
-        with patch('odoo.http._check_and_complete_route_definition', extended_check):
+        with patch('odoo.technology.framework._check_and_complete_route_definition', extended_check):
             for _ in http._generate_routing_rules(installed_modules, nodb_only=False):
                 pass

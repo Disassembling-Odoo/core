@@ -46,14 +46,14 @@ def drop_db(db):
 class TestHttpRegistry(BaseCase):
     @classmethod
     def setUpClass(cls):
-        lazy_property.reset_all(odoo.http.root)
-        cls.addClassCleanup(lazy_property.reset_all, odoo.http.root)
+        lazy_property.reset_all(odoo.technology.framework.root)
+        cls.addClassCleanup(lazy_property.reset_all, odoo.technology.framework.root)
         cls.classPatch(odoo.conf, 'server_wide_modules', ['base', 'web', 'test_http'])
 
         # make sure there are always many databases, to break monodb
-        cls._db_list = cls.startClassPatcher(patch('odoo.http.db_list'))
+        cls._db_list = cls.startClassPatcher(patch('odoo.technology.framework.db_list'))
         cls._db_list.return_value = ['postgres', get_db_name()]
-        cls.startClassPatcher(patch('odoo.http.db_filter',
+        cls.startClassPatcher(patch('odoo.technology.framework.db_filter',
             side_effect=lambda dbs, host=None: [db for db in dbs if db in cls._db_list()]))
 
     def setUp(self):
@@ -75,10 +75,10 @@ class TestHttpRegistry(BaseCase):
         return db_duplicate
 
     def authenticate(self, *, db=None):
-        session = odoo.http.root.session_store.new()
+        session = odoo.technology.framework.root.session_store.new()
         session.update(odoo.http.get_default_session(), db=db or get_db_name())
-        session.context['lang'] = odoo.http.DEFAULT_LANG
-        odoo.http.root.session_store.save(session)
+        session.context['lang'] = odoo.technology.framework.DEFAULT_LANG
+        odoo.technology.framework.root.session_store.save(session)
         self.opener.cookies['session_id'] = session.sid
         return session
 

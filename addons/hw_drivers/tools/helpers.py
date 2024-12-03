@@ -25,8 +25,8 @@ from threading import Thread, Lock
 import time
 import zipfile
 
-from odoo import release, service
-from odoo.technology.framework import http
+from odoo import release
+from odoo.technology.framework import http, server
 from odoo.tools.func import lazy_property
 from odoo.tools.misc import file_path
 
@@ -63,7 +63,7 @@ class IoTRestart(Thread):
 
     def run(self):
         time.sleep(self.delay)
-        service.server.restart()
+        server.restart()
 
 
 if platform.system() == 'Windows':

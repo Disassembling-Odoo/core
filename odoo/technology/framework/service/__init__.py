@@ -1,9 +1,8 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from . import common
-from . import db
-from . import model
-from . import server
+from .retrying import *
+from .server import *
+from .security import *
 
 #.apidoc title: RPC Services
 

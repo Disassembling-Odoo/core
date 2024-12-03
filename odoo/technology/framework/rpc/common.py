@@ -58,3 +58,5 @@ def dispatch(method, params):
         return g[exp_method_name](*params)
     else:
         raise Exception("Method not found: %s" % method)
+
+dispatch_service_name = 'common'

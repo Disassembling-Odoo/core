@@ -148,7 +148,7 @@ def main(args):
         preload = config['db_name'].split(',')
         for db_name in preload:
             try:
-                odoo.service.db._create_empty_database(db_name)
+                odoo.technology.db.create_empty_database(db_name)
                 config['init']['base'] = True
             except InsufficientPrivilege as err:
                 # We use an INFO loglevel on purpose in order to avoid
@@ -156,7 +156,7 @@ def main(args):
                 # using restricted database access.
                 _logger.info("Could not determine if database %s exists, "
                              "skipping auto-creation: %s", db_name, err)
-            except odoo.service.db.DatabaseExists:
+            except odoo.technology.db.DatabaseExists:
                 pass
 
     if config["translate_out"]:
@@ -170,7 +170,7 @@ def main(args):
     stop = config["stop_after_init"]
 
     setup_pid_file()
-    rc = odoo.service.server.start(preload=preload, stop=stop)
+    rc = odoo.technology.framework.start(preload=preload, stop=stop)
     sys.exit(rc)
 
 class Server(Command):

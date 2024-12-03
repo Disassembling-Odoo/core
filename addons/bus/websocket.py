@@ -29,9 +29,7 @@ from odoo.conf import config
 from .models.bus import dispatch
 from odoo.technology.framework.http import root, Request, Response, SessionExpiredException, get_default_session
 from odoo.modules.registry import Registry
-from odoo.service import model as service_model
-from odoo.service.server import CommonServer
-from odoo.service.security import check_session
+from odoo.technology.framework import retrying, CommonServer, check_session
 from odoo.tools import lazy_property
 
 _logger = logging.getLogger(__name__)
@@ -660,7 +658,7 @@ class Websocket:
             env = api.Environment(cr, self._session.uid, dict(self._session.context, lang=lang))
             for callback in self.__event_callbacks[event_type]:
                 try:
-                    service_model.retrying(functools.partial(callback, env, self), env)
+                    retrying(functools.partial(callback, env, self), env)
                 except Exception:
                     _logger.warning(
                         'Error during Websocket %s callback',
@@ -832,7 +830,7 @@ class WebsocketRequest:
             lang = api.Environment(cr, self.session.uid, {})['res.lang']._get_code(self.session.context.get('lang'))
             self.env = api.Environment(cr, self.session.uid, dict(self.session.context, lang=lang))
             threading.current_thread().uid = self.env.uid
-            service_model.retrying(
+            retrying(
                 functools.partial(self._serve_ir_websocket, event_name, data),
                 self.env,
             )

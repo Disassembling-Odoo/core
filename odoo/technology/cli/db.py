@@ -12,7 +12,7 @@ import requests
 from . import Command
 
 from .server import report_configuration
-from odoo.service.db import dump_db, exp_drop, exp_db_exist, exp_duplicate_database, exp_rename, restore_db
+from odoo.technology.db import dump_db, restore_db, check_db_exist, rename_db, drop_db, duplicate_db
 from odoo.conf import config
 
 eprint = partial(print, file=sys.stderr, flush=True)
@@ -156,20 +156,20 @@ class Db(Command):
 
     def duplicate(self, args):
         self._check_target(args.target, delete_if_exists=args.force)
-        exp_duplicate_database(args.source, args.target, neutralize_database=args.neutralize)
+        duplicate_db(args.source, args.target, neutralize_database=args.neutralize)
 
     def rename(self, args):
         self._check_target(args.target, delete_if_exists=args.force)
-        exp_rename(args.source, args.target)
+        rename_db(args.source, args.target)
 
     def drop(self, args):
-        if not exp_drop(args.database):
+        if not drop_db(args.database):
             exit(f"Database {args.database} does not exist.")
 
     def _check_target(self, target, *, delete_if_exists):
-        if exp_db_exist(target):
+        if check_db_exist(target):
             if delete_if_exists:
-                exp_drop(target)
+                drop_db(target)
             else:
                 exit(f"Target database {target} exists, aborting.\n\n"
                      f"\tuse `--force` to delete the existing database anyway.")

@@ -33,13 +33,14 @@ Key Features:
    ensuring performance and flexibility in handling large datasets.
 """
 
+import logging
+
 from collections import defaultdict
 from contextlib import contextmanager
 from datetime import datetime
 
 from psycopg2.errors import InsufficientPrivilege
 from dateutil.relativedelta import relativedelta
-import logging
 
 from odoo.api import Environment
 from odoo.technology.db import SQL

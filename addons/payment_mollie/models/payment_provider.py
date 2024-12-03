@@ -6,9 +6,10 @@ import pprint
 import requests
 from werkzeug import urls
 
-from odoo import _, models, service
+from odoo import _, models
 from odoo.ormapping import fields
 from odoo.exceptions import ValidationError
+from odoo.technology.framework import dispatch_rpc
 
 from odoo.addons.payment_mollie import const
 
@@ -54,7 +55,7 @@ class PaymentProvider(models.Model):
         endpoint = f'/v2/{endpoint.strip("/")}'
         url = urls.url_join('https://api.mollie.com/', endpoint)
 
-        odoo_version = service.common.exp_version()['server_version']
+        odoo_version = dispatch_rpc("common", "version", [])['server_version']
         module_version = self.env.ref('base.module_payment_mollie').installed_version
         headers = {
             "Accept": "application/json",

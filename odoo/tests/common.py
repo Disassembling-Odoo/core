@@ -1849,7 +1849,7 @@ class HttpCase(TransactionCase):
 
     @classmethod
     def http_port(cls):
-        if odoo.technology.framework.server.server is None:
+        if odoo.technology.framework.server is None:
             return None
         return odoo.technology.framework.server.httpd.server_port
 

@@ -1,11 +1,4 @@
 # -*- coding: utf-8 -*-
-import pkgutil
-import os.path
-__path__ = [
-    os.path.abspath(path)
-    for path in pkgutil.extend_path(__path__, __name__)
-]
-
 import contextlib
 import threading
 
@@ -22,14 +15,7 @@ def borrow_request():
     finally:
         _request_stack.push(req)
 
-
-#dispatch
-#dispatch_service_name
-
 rpc_dispatchers = {
-    'common': '',
-    'db': '',
-    'object': '',
 }
 
 def dispatch_rpc(service_name, method, params):
@@ -42,18 +28,19 @@ def dispatch_rpc(service_name, method, params):
     :return: the return value of the called method
     :rtype: Any
     """
-    from .rpc.common import dispatch as serviceDispatch
-    from .rpc.db import dispatch as dbDispatch
-    from .service.retrying import dispatch as objectDispatch
-    rpc_dispatchers = {
-        'common': serviceDispatch,
-        'db': dbDispatch,
-        'object': objectDispatch,
-    }
-
     with borrow_request():
         threading.current_thread().uid = None
         threading.current_thread().dbname = None
 
         dispatch = rpc_dispatchers[service_name]
         return dispatch(method, params)
+    
+def _load_rpc_server():
+    import inspect
+    from . import rpc_server as RPCService
+    for pInspect in inspect.getmembers(RPCService):
+        p = pInspect[1]
+        if inspect.ismodule(p):
+            rpc_dispatchers[p.dispatch_service_name] = p.dispatch
+
+_load_rpc_server()

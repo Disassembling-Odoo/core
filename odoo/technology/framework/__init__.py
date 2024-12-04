@@ -3,3 +3,4 @@
 from .service import *
 
 from .http import *
+from .rpc import *

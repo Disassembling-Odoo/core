@@ -7,6 +7,7 @@ import json
 import logging
 import os
 import shutil
+import re
 import subprocess
 import tempfile
 import zipfile
@@ -19,12 +20,13 @@ from pytz import country_timezones
 
 from odoo import SUPERUSER_ID
 import odoo.release
-from odoo.release import version_info
 import odoo.tools
+from ..conf import config
 from odoo.exceptions import AccessDenied
-from odoo.technology.utils import db_utils as DBUtils
 
 from .sql import SQL
+from .sql_db import db_connect
+from odoo.technology.utils import db_utils as DBUtils
 
 _logger = logging.getLogger(__name__)
 
@@ -46,6 +48,59 @@ def check_db_management_enabled(method):
             raise AccessDenied()
         return method(self, *args, **kwargs)
     return decorator(if_db_mgt_enabled, method)
+
+def available_db_list(force=False, host=None):
+    """
+    Get the list of available databases.
+
+    :param bool force: See :func:`~odoo.technology.framework.list_dbs`:
+    :param host: The Host used to replace %h and %d in the dbfilters
+        regexp. Taken from the current request when omitted.
+    :returns: the list of available databases
+    :rtype: List[str]
+    """
+    try:
+        dbs = odoo.technology.db.list_dbs(force)
+    except psycopg2.OperationalError:
+        return []
+    return db_filter(dbs, host)
+
+def db_filter(dbs, host=None):
+    """
+    Return the subset of ``dbs`` that match the dbfilter or the dbname
+    server configuration. In case neither are configured, return ``dbs``
+    as-is.
+
+    :param Iterable[str] dbs: The list of database names to filter.
+    :param host: The Host used to replace %h and %d in the dbfilters
+        regexp. Taken from the current request when omitted.
+    :returns: The original list filtered.
+    :rtype: List[str]
+    """
+
+    if config['dbfilter']:
+        #        host
+        #     -----------
+        # www.example.com:80
+        #     -------
+        #     domain
+        host = host.partition(':')[0]
+        if host.startswith('www.'):
+            host = host[4:]
+        domain = host.partition('.')[0]
+
+        dbfilter_re = re.compile(
+            config["dbfilter"].replace("%h", re.escape(host))
+                              .replace("%d", re.escape(domain)))
+        return [db for db in dbs if dbfilter_re.match(db)]
+
+    if config['db_name']:
+        # In case --db-filter is not provided and --database is passed, Odoo will
+        # use the value of --database as a comma separated list of exposed databases.
+        exposed_dbs = {db.strip() for db in config['db_name'].split(',')}
+        return sorted(exposed_dbs.intersection(dbs))
+
+    return list(dbs)
 
 
 def list_dbs(force=False):
@@ -317,7 +372,7 @@ def list_db_incompatible(databases):
         :return: A list of databases that are incompatible
     """
     incompatible_databases = []
-    server_version = '.'.join(str(v) for v in version_info[:2])
+    server_version = '.'.join(str(v) for v in odoo.release.version_info[:2])
     for database_name in databases:
         with closing(db_connect(database_name).cursor()) as cr:
             if odoo.technology.db.table_exists(cr, 'ir_module_module'):

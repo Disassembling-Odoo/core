@@ -5,15 +5,16 @@ import logging
 import psycopg2
 
 import odoo.exceptions
+from odoo.tools.translate import _
 import odoo.modules.registry
 from odoo.technology.framework import http
 from odoo.exceptions import AccessError
 from odoo.technology.framework import request, security
-from odoo.tools.translate import _
+from odoo.technology import db
 from .utils import (
     ensure_db,
     _get_login_redirect_url,
-    is_user_internal,
+    is_user_internal
 )
 
 
@@ -110,7 +111,7 @@ class Home(http.Controller):
 
         values = {k: v for k, v in request.params.items() if k in SIGN_UP_REQUEST_PARAMS}
         try:
-            values['databases'] = http.db_list()
+            values['databases'] = db.available_db_list()
         except odoo.exceptions.AccessDenied:
             values['databases'] = None
 

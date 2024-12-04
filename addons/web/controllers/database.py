@@ -39,7 +39,7 @@ class Database(http.Controller):
         d['pattern'] = DBNAME_PATTERN
         # databases list
         try:
-            d['databases'] = http.db_list()
+            d['databases'] = db.available_db_list()
             d['incompatible_databases'] = odoo.technology.db.list_db_incompatible(d['databases'])
         except odoo.exceptions.AccessDenied:
             d['databases'] = [request.db] if request.db else []
@@ -130,7 +130,7 @@ class Database(http.Controller):
             dispatch_rpc('db', 'change_admin_password', ["admin", master_pwd])
         try:
             DBUtils.check_super(master_pwd, odoo.conf.config)
-            if name not in http.db_list():
+            if name not in db.available_db_list():
                 raise Exception("Database %r is not known" % name)
             ts = datetime.datetime.utcnow().strftime("%Y-%m-%d_%H-%M-%S")
             filename = "%s_%s.%s" % (name, ts, backup_format)
@@ -181,4 +181,4 @@ class Database(http.Controller):
         :return: List of databases
         :rtype: list
         """
-        return http.db_list()
+        return db.available_db_list()

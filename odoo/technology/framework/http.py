@@ -198,10 +198,12 @@ from ...tools.func import filter_kwargs, lazy_property
 from ...tools.misc import submap
 from ...tools._vendor import sessions
 from ...tools._vendor.useragents import UserAgent
-from ..conf import config
 from ...exceptions import UserError, AccessError, AccessDenied
+from ..conf import config
+from ..db import available_db_list, db_filter
 from ...modules.module import get_manifest
 from ...modules.registry import Registry
+from .geoip import GeoIP
 from .service import retrying as service_model, security
 
 _logger = logging.getLogger(__name__)
@@ -315,63 +317,6 @@ def content_disposition(filename):
     return "attachment; filename*=UTF-8''{}".format(
         url_quote(filename, safe='', unsafe='()<>@,;:"/[]?={}\\*\'%') # RFC6266
     )
-
-
-def db_list(force=False, host=None):
-    """
-    Get the list of available databases.
-
-    :param bool force: See :func:`~odoo.technology.framework.list_dbs`:
-    :param host: The Host used to replace %h and %d in the dbfilters
-        regexp. Taken from the current request when omitted.
-    :returns: the list of available databases
-    :rtype: List[str]
-    """
-    try:
-        dbs = odoo.technology.db.list_dbs(force)
-    except psycopg2.OperationalError:
-        return []
-    return db_filter(dbs, host)
-
-
-def db_filter(dbs, host=None):
-    """
-    Return the subset of ``dbs`` that match the dbfilter or the dbname
-    server configuration. In case neither are configured, return ``dbs``
-    as-is.
-
-    :param Iterable[str] dbs: The list of database names to filter.
-    :param host: The Host used to replace %h and %d in the dbfilters
-        regexp. Taken from the current request when omitted.
-    :returns: The original list filtered.
-    :rtype: List[str]
-    """
-
-    if config['dbfilter']:
-        #        host
-        #     -----------
-        # www.example.com:80
-        #     -------
-        #     domain
-        if host is None:
-            host = request.httprequest.environ.get('HTTP_HOST', '')
-        host = host.partition(':')[0]
-        if host.startswith('www.'):
-            host = host[4:]
-        domain = host.partition('.')[0]
-
-        dbfilter_re = re.compile(
-            config["dbfilter"].replace("%h", re.escape(host))
-                              .replace("%d", re.escape(domain)))
-        return [db for db in dbs if dbfilter_re.match(db)]
-
-    if config['db_name']:
-        # In case --db-filter is not provided and --database is passed, Odoo will
-        # use the value of --database as a comma separated list of exposed databases.
-        exposed_dbs = {db.strip() for db in config['db_name'].split(',')}
-        return sorted(exposed_dbs.intersection(dbs))
-
-    return list(dbs)
 
 def get_session_max_inactivity(env):
     if not env or env.cr._closed:
@@ -1110,115 +1055,6 @@ class Session(collections.abc.MutableMapping):
         self.is_dirty = True
         return new_trace
 
-
-# =========================================================
-# GeoIP
-# =========================================================
-
-class GeoIP(collections.abc.Mapping):
-    """
-    Ip Geolocalization utility, determine information such as the
-    country or the timezone of the user based on their IP Address.
-
-    The instances share the same API as `:class:`geoip2.models.City`
-    <https://geoip2.readthedocs.io/en/latest/#geoip2.models.City>`_.
-
-    When the IP couldn't be geolocalized (missing database, bad address)
-    then an empty object is returned. This empty object can be used like
-    a regular one with the exception that all info are set None.
-
-    :param str ip: The IP Address to geo-localize
-
-    .. note:
-
-        The geoip info the the current request are available at
-        :attr:`~odoo.http.request.geoip`.
-
-    .. code-block:
-
-        >>> GeoIP('127.0.0.1').country.iso_code
-        >>> odoo_ip = socket.gethostbyname('odoo.com')
-        >>> GeoIP(odoo_ip).country.iso_code
-        'FR'
-    """
-
-    def __init__(self, ip):
-        self.ip = ip
-
-    @lazy_property
-    def _city_record(self):
-        try:
-            return root.geoip_city_db.city(self.ip)
-        except (OSError, maxminddb.InvalidDatabaseError):
-            return GEOIP_EMPTY_CITY
-        except geoip2.errors.AddressNotFoundError:
-            return GEOIP_EMPTY_CITY
-
-    @lazy_property
-    def _country_record(self):
-        if '_city_record' in vars(self):
-            # the City class inherits from the Country class and the
-            # city record is in cache already, save a geolocalization
-            return self._city_record
-        try:
-            return root.geoip_country_db.country(self.ip)
-        except (OSError, maxminddb.InvalidDatabaseError):
-            return self._city_record
-        except geoip2.errors.AddressNotFoundError:
-            return GEOIP_EMPTY_COUNTRY
-
-    @property
-    def country_name(self):
-        return self.country.name or self.continent.name
-
-    @property
-    def country_code(self):
-        return self.country.iso_code or self.continent.code
-
-    def __getattr__(self, attr):
-        # Be smart and determine whether the attribute exists on the
-        # country object or on the city object.
-        if hasattr(GEOIP_EMPTY_COUNTRY, attr):
-            return getattr(self._country_record, attr)
-        if hasattr(GEOIP_EMPTY_CITY, attr):
-            return getattr(self._city_record, attr)
-        raise AttributeError(f"{self} has no attribute {attr!r}")
-
-    def __bool__(self):
-        return self.country_name is not None
-
-    # Old dict API, undocumented for now, will be deprecated some day
-    def __getitem__(self, item):
-        if item == 'country_name':
-            return self.country_name
-
-        if item == 'country_code':
-            return self.country_code
-
-        if item == 'city':
-            return self.city.name
-
-        if item == 'latitude':
-            return self.location.latitude
-
-        if item == 'longitude':
-            return self.location.longitude
-
-        if item == 'region':
-            return self.subdivisions[0].iso_code if self.subdivisions else None
-
-        if item == 'time_zone':
-            return self.location.time_zone
-
-        raise KeyError(item)
-
-    def __iter__(self):
-        raise NotImplementedError("The dictionnary GeoIP API is deprecated.")
-
-    def __len__(self):
-        raise NotImplementedError("The dictionnary GeoIP API is deprecated.")
-
-
 # =========================================================
 # Request and Response
 # =========================================================
@@ -1442,7 +1278,7 @@ class Request:
         if session.db and db_filter([session.db], host=host):
             dbname = session.db
         else:
-            all_dbs = db_list(force=True, host=host)
+            all_dbs = available_db_list(force=True, host=host)
             if len(all_dbs) == 1:
                 dbname = all_dbs[0]  # monodb
 

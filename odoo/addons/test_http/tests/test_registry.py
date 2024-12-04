@@ -53,7 +53,7 @@ class TestHttpRegistry(BaseCase):
         # make sure there are always many databases, to break monodb
         cls._db_list = cls.startClassPatcher(patch('odoo.technology.framework.db_list'))
         cls._db_list.return_value = ['postgres', get_db_name()]
-        cls.startClassPatcher(patch('odoo.technology.framework.db_filter',
+        cls.startClassPatcher(patch('odoo.technology.db.db_filter',
             side_effect=lambda dbs, host=None: [db for db in dbs if db in cls._db_list()]))
 
     def setUp(self):

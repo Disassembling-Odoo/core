@@ -51,16 +51,16 @@ def MockRequest(
             args=[],
         ),
         type='http',
-        future_response=odoo.technology.framework.http.FutureResponse(),
+        future_response=odoo.technology.framework.FutureResponse(),
         params={},
         redirect=env['ir.http']._redirect,
         session=DotDict(
-            odoo.technology.framework.http.get_default_session(),
+            odoo.technology.framework.get_default_session(),
             sale_order_id=sale_order_id,
             website_sale_current_pl=website_sale_current_pl,
             context={'lang': ''},
         ),
-        geoip=odoo.technology.framework.http.GeoIP('127.0.0.1'),
+        geoip=odoo.technology.framework.GeoIP('127.0.0.1'),
         db=env.registry.db_name,
         env=env,
         registry=env.registry,
@@ -77,7 +77,7 @@ def MockRequest(
     if website:
         request.website_routing = website.id
     if country_code:
-        request.geoip._city_record = odoo.technology.framework.http.geoip2.models.City({'country': {'iso_code': country_code}})
+        request.geoip._city_record = odoo.technology.framework.geoip2.models.City({'country': {'iso_code': country_code}})
 
     # The following code mocks match() to return a fake rule with a fake
     # 'routing' attribute (routing=True) or to raise a NotFound

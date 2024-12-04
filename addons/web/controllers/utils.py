@@ -3,6 +3,8 @@
 import collections
 import logging
 
+import psycopg2
+
 import babel.messages.pofile
 import werkzeug
 import werkzeug.exceptions
@@ -13,9 +15,8 @@ from werkzeug.urls import iri_to_uri
 
 from odoo.tools.translate import JAVASCRIPT_TRANSLATION_COMMENT
 from odoo.tools.misc import file_open
-from odoo.technology.framework import http
-from odoo.technology.framework.http import request
-
+from odoo.technology.framework import http, request
+from odoo.technology import db as DBModule
 
 _logger = logging.getLogger(__name__)
 
@@ -53,13 +54,14 @@ def ensure_db(redirect='/web/database/selector', db=None):
     # If the heuristics does not find any database, then the users will be
     # redirected to db selector or any url specified by `redirect` argument.
     # If the db is taken out of a query parameter, it will be checked against
-    # `http.db_filter()` in order to ensure it's legit and thus avoid db
+    # `db.db_filter()` in order to ensure it's legit and thus avoid db
     # forgering that could lead to xss attacks.
     if db is None:
         db = request.params.get('db') and request.params.get('db').strip()
 
     # Ensure db is legit
-    if db and db not in http.db_filter([db]):
+    host = request.httprequest.environ.get('HTTP_HOST', '')
+    if db and db not in DBModule.db_filter([db], host):
         db = None
 
     if db and not request.session.db:
@@ -79,12 +81,13 @@ def ensure_db(redirect='/web/database/selector', db=None):
         werkzeug.exceptions.abort(request.redirect(url_redirect.to_url(), 302))
 
     # if db not provided, use the session one
-    if not db and request.session.db and http.db_filter([request.session.db]):
+    host = request.httprequest.environ.get('HTTP_HOST', '')
+    if not db and request.session.db and http.db_filter([request.session.db], host):
         db = request.session.db
 
     # if no database provided and no database in session, use monodb
     if not db:
-        all_dbs = http.db_list(force=True)
+        all_dbs = DBModule.available_db_list(force=True)
         if len(all_dbs) == 1:
             db = all_dbs[0]
 

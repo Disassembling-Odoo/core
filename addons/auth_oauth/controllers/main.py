@@ -12,10 +12,13 @@ from werkzeug.exceptions import BadRequest
 
 from odoo import api, SUPERUSER_ID, _
 from odoo.exceptions import AccessDenied
-from odoo.technology.framework.http import request, Response
-from odoo import registry as registry_get
-from odoo.technology.framework import http
 from odoo.tools.misc import clean_context
+from odoo.technology.framework import http, request, Response
+from odoo.technology import db
+from odoo import registry as registry_get
+
+
+
 
 from odoo.addons.auth_signup.controllers.main import AuthSignupHome as Home
 from odoo.addons.web.controllers.utils import ensure_db, _get_login_redirect_url
@@ -128,7 +131,8 @@ class OAuthController(http.Controller):
         # make sure request.session.db and state['d'] are the same,
         # update the session and retry the request otherwise
         dbname = state['d']
-        if not http.db_filter([dbname]):
+        host = request.httprequest.environ.get('HTTP_HOST', '')
+        if not db.db_filter([dbname], host):
             return BadRequest()
         ensure_db(db=dbname)
 
@@ -185,7 +189,8 @@ class OAuthController(http.Controller):
             dbname = request.db
         if not dbname:
             raise BadRequest()
-        if not http.db_filter([dbname]):
+        host = request.httprequest.environ.get('HTTP_HOST', '')
+        if not db.db_filter([dbname], host):
             raise BadRequest()
 
         registry = registry_get(dbname)

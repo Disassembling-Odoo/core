@@ -7,12 +7,12 @@ import operator
 from werkzeug.urls import url_encode
 
 import odoo
+from odoo.tools.translate import _
 import odoo.modules.registry
-from odoo.technology.framework import http
 from odoo.modules import module
 from odoo.exceptions import AccessError, UserError, AccessDenied
-from odoo.technology.framework.http import request
-from odoo.tools.translate import _
+from odoo.technology import db
+from odoo.technology.framework import http, request
 
 
 _logger = logging.getLogger(__name__)
@@ -32,7 +32,8 @@ class Session(http.Controller):
             request.env.cr.close()
         elif request.db:
             request.env.cr.rollback()
-        if not http.db_filter([db]):
+        host = request.httprequest.environ.get('HTTP_HOST', '')
+        if not db.db_filter([db], host):
             raise AccessError("Database not found.")
         credential = {'login': login, 'password': password, 'type': 'password'}
         auth_info = request.session.authenticate(db, credential)

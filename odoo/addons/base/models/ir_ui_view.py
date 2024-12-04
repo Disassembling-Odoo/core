@@ -21,7 +21,7 @@ from odoo.exceptions import ValidationError, AccessError, UserError
 from odoo.technology.framework.http import request
 from odoo.modules.module import get_resource_from_path
 from odoo.osv.expression import expression
-from odoo.conf import config
+from odoo.technology.conf import config
 from odoo.technology.db import SQL
 from odoo.tools import lazy_property, frozendict
 from odoo.tools.convert import _fix_multiple_roots

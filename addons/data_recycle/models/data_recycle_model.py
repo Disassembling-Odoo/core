@@ -8,7 +8,7 @@ from dateutil.relativedelta import relativedelta
 
 from odoo import api, models, _
 from odoo.ormapping import fields
-from odoo.conf import config
+from odoo.technology.conf import config
 from odoo.exceptions import UserError
 from odoo.tools import split_every
 from odoo.osv import expression

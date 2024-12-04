@@ -12,10 +12,11 @@ from operator import itemgetter
 
 from psycopg2.extras import Json
 
-from odoo import api, models, tools, Command, conf
+from odoo import api, models, tools, Command
 from odoo.ormapping import fields
 from odoo.exceptions import AccessError, UserError, ValidationError
 from odoo.osv import expression
+from odoo.technology import conf
 from odoo.technology.db import sql, SQL
 from odoo.tools import format_list, lazy_property, unique, OrderedSet
 from odoo.tools.safe_eval import safe_eval, datetime, dateutil, time

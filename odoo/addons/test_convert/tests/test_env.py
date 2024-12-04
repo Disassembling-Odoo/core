@@ -9,7 +9,7 @@ from lxml import etree
 from lxml.builder import E
 
 from odoo.tests import common
-from odoo.conf import config
+from odoo.technology.conf import config
 from odoo.tools.convert import xml_import
 
 odoo = E.odoo

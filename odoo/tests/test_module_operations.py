@@ -8,7 +8,7 @@ import time
 sys.path.append(os.path.abspath(os.path.join(__file__,'../../../')))
 
 import odoo
-from odoo.conf import config
+from odoo.technology.conf import config
 from odoo.tools import topological_sort, unique
 from odoo.modules.registry import Registry
 from odoo.netsvc import init_logger

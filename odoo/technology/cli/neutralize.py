@@ -5,7 +5,7 @@ import sys
 from pathlib import Path
 
 import odoo
-from odoo.conf import config
+from odoo.technology.conf import config
 
 
 from . import Command

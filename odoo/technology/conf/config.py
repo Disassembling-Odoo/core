@@ -11,8 +11,8 @@ import tempfile
 import warnings
 from os.path import expandvars, expanduser, abspath, realpath, normcase
 import odoo
-from .. import release, loglevels
-from . import appdirs
+from ... import release, loglevels
+from ..technology.conf import appdirs
 
 from passlib.context import CryptContext
 crypt_context = CryptContext(schemes=['pbkdf2_sha512', 'plaintext'],

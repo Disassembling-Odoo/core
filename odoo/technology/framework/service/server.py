@@ -51,7 +51,7 @@ except ImportError:
     setproctitle = lambda x: None
 
 import odoo
-from odoo.conf import config
+from odoo.technology.conf import config
 from odoo.modules import get_modules
 from odoo.modules.registry import Registry
 from odoo.release import nt_service_name

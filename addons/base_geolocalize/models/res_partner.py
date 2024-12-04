@@ -2,7 +2,7 @@
 
 from odoo import api, models, _
 from odoo.ormapping import fields
-from odoo.conf import config
+from odoo.technology.conf import config
 
 
 class ResPartner(models.Model):

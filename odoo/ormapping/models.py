@@ -61,7 +61,7 @@ from .. import api
 from ..technology.utils import check_pg_name
 from .. import tools
 from ..exceptions import AccessError, MissingError, ValidationError, UserError
-from ..conf import config
+from ..technology.conf import config
 from ..technology.db import SQL, Query
 from ..tools import (
     clean_context, date_utils, discardattr,

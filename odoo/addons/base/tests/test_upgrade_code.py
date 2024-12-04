@@ -2,7 +2,7 @@ import subprocess as sp
 import sys
 from os.path import join as opj, realpath
 
-from odoo.conf import config
+from odoo.technology.conf import config
 from odoo.tests import BaseCase
 
 class TestCommand(BaseCase):

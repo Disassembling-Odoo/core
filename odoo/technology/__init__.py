@@ -24,7 +24,7 @@ In order to facilitate easy access to configuration at all levels, we consider
 exposing the configuration namespace to the outermost layer.
 '''
 from . import conf
-# sys.modules['odoo.conf'] = conf
+sys.modules['odoo.conf'] = conf
 
 # Request and response framework
 from . import framework

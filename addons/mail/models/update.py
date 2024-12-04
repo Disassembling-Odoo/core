@@ -10,7 +10,7 @@ from odoo import api, release, SUPERUSER_ID
 from odoo.ormapping import fields, AbstractModel
 from odoo.exceptions import UserError
 from odoo.tools.translate import _
-from odoo.conf import config
+from odoo.technology.conf import config
 
 _logger = logging.getLogger(__name__)
 

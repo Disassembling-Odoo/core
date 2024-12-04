@@ -7,7 +7,7 @@ import re
 import shutil
 
 import odoo
-from odoo.conf import config
+from odoo.technology.conf import config
 
 VERSION = 1
 DEFAULT_EXCLUDE = [

@@ -12,7 +12,7 @@ from unittest.mock import patch
 from socket import getaddrinfo  # keep a reference on the non-patched function
 
 from odoo import modules
-from odoo.conf import config
+from odoo.technology.conf import config
 from odoo.exceptions import UserError
 from odoo.tools import file_path, mute_logger
 from .common import TransactionCaseWithUserDemo

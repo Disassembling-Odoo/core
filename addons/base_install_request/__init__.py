@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
+from odoo.technology import conf
 from . import models
 from . import wizard
 
-from odoo import conf, tools
+from odoo import tools
 
 
 def _auto_install_apps(env):

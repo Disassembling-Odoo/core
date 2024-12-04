@@ -13,7 +13,7 @@ import requests
 import odoo
 from odoo.modules.registry import Registry
 from odoo.tests.common import BaseCase, HttpCase, tagged
-from odoo.conf import config
+from odoo.technology.conf import config
 
 
 class TestDatabaseManager(HttpCase):

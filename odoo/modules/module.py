@@ -16,7 +16,7 @@ import warnings
 from os.path import join as opj, normpath
 
 import odoo
-import odoo.conf as conf
+import odoo.technology.conf as conf
 import odoo.tools as tools
 import odoo.release as release
 from odoo.tools.misc import file_path

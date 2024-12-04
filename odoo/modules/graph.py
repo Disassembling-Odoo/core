@@ -9,7 +9,7 @@ import logging
 
 import odoo
 from odoo.technology.db import sql
-import odoo.conf as conf
+import odoo.technology.conf as conf
 import odoo.tools as tools
 
 _logger = logging.getLogger(__name__)

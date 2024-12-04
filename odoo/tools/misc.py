@@ -44,7 +44,7 @@ import odoo.addons
 # There are moved to loglevels until we refactor tools.
 from odoo.loglevels import exception_to_unicode, get_encodings, ustr  # noqa: F401
 
-from ..conf import config
+from ..technology.conf import config
 from .float_utils import float_round
 from .which import which
 

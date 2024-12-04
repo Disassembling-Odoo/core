@@ -4,6 +4,8 @@
 import logging
 import platform
 
+from odoo.technology import conf
+
 try:
     import pylint
 except ImportError:
@@ -12,7 +14,7 @@ import subprocess
 import os
 from os.path import join
 
-from odoo import tools, conf
+from odoo import tools
 from odoo.modules import get_modules, get_module_path
 from odoo.tests import TransactionCase
 from odoo.tools.which import which

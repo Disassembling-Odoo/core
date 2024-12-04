@@ -19,11 +19,12 @@ from markupsafe import Markup
 from werkzeug.urls import url_join
 from PIL import Image, UnidentifiedImageError
 
-from odoo import api, conf, models, tools, _
+from odoo import api, models, tools, _
 from odoo.ormapping import fields
 from odoo.addons.base_import.models.base_import import ImportValidationError
 from odoo.exceptions import UserError, ValidationError
 from odoo.osv import expression
+from odoo.technology import conf
 from odoo.tools.float_utils import float_round
 from odoo.tools.image import ImageProcess
 

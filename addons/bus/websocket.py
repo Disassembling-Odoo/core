@@ -25,7 +25,7 @@ from werkzeug.exceptions import BadRequest, HTTPException, ServiceUnavailable
 
 import odoo
 from odoo import api, modules
-from odoo.conf import config
+from odoo.technology.conf import config
 from .models.bus import dispatch
 from odoo.technology.framework.http import root, Request, Response, SessionExpiredException, get_default_session
 from odoo.modules.registry import Registry

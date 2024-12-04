@@ -3,9 +3,10 @@
 import logging
 import requests
 
-from odoo import conf, models, api, tools, _
+from odoo import models, api, tools, _
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, AccessError
+from odoo.technology import conf
 
 _logger = logging.getLogger(__name__)
 TIMEOUT = 10

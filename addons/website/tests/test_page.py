@@ -5,7 +5,7 @@ from unittest.mock import patch
 
 from odoo.addons.website.controllers.main import Website
 from odoo.addons.website.tools import MockRequest
-from odoo.conf import config
+from odoo.technology.conf import config
 from odoo.ormapping import Command
 from odoo.technology.framework.http import root
 from odoo.tests import common, HttpCase, tagged

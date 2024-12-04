@@ -13,7 +13,7 @@ from . import Command
 
 from .server import report_configuration
 from odoo.technology.db import dump_db, restore_db, check_db_exist, rename_db, drop_db, duplicate_db
-from odoo.conf import config
+from odoo.technology.conf import config
 
 eprint = partial(print, file=sys.stderr, flush=True)
 

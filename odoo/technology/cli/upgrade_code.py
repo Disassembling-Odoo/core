@@ -43,7 +43,7 @@ try:
     import odoo.addons
     from . import Command
     from odoo import release
-    from odoo.conf import config
+    from odoo.technology.conf import config
     from odoo.modules import initialize_sys_path
     from odoo.tools import parse_version
 except ImportError:

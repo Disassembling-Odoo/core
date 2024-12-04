@@ -7,7 +7,7 @@ from lxml import etree
 from re import search
 
 from odoo import Command
-from odoo.conf import config
+from odoo.technology.conf import config
 from odoo.tools import mute_logger
 from odoo.exceptions import AccessError
 from odoo.tests import HttpCase, tagged

@@ -1,10 +1,10 @@
 import unittest
 
 import odoo
-from odoo import conf
+from odoo.technology import conf
 from odoo.tests import TransactionCase
 from odoo.tools import file_path, file_open, file_open_temporary_directory
-from odoo.conf import configmanager, _get_default_datadir
+from odoo.technology.conf import configmanager, _get_default_datadir
 
 
 IS_POSIX = 'workers' in odoo.conf.config.options

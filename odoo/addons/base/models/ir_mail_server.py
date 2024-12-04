@@ -18,9 +18,10 @@ from OpenSSL.crypto import Error as SSLCryptoError, FILETYPE_PEM
 from OpenSSL.SSL import Error as SSLError
 from urllib3.contrib.pyopenssl import PyOpenSSLContext
 
-from odoo import api, models, tools, _, modules, conf
+from odoo import api, models, tools, _, modules
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
+from odoo.technology import conf
 from odoo.tools import formataddr, email_normalize, encapsulate_email, email_domain_extract, email_domain_normalize, human_size
 
 _logger = logging.getLogger(__name__)

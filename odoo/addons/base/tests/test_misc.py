@@ -7,7 +7,7 @@ from dateutil.relativedelta import relativedelta
 import os.path
 import pytz
 
-from odoo.conf import config
+from odoo.technology.conf import config
 from odoo.tools import (
     date_utils,
     file_open,

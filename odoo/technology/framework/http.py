@@ -198,7 +198,7 @@ from ...tools.func import filter_kwargs, lazy_property
 from ...tools.misc import submap
 from ...tools._vendor import sessions
 from ...tools._vendor.useragents import UserAgent
-from ...conf import config
+from ..conf import config
 from ...exceptions import UserError, AccessError, AccessDenied
 from ...modules.module import get_manifest
 from ...modules.registry import Registry

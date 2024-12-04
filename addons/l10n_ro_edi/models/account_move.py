@@ -1,7 +1,8 @@
 import requests
 
-from odoo import conf, models, _, api, modules, tools
+from odoo import models, _, api, modules, tools
 from odoo.ormapping import fields
+from odoo.technology import conf
 
 
 class AccountMove(models.Model):

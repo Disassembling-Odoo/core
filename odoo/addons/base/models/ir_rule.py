@@ -6,7 +6,7 @@ from odoo import api, models, tools, _
 from odoo.ormapping import fields
 from odoo.exceptions import AccessError, ValidationError
 from odoo.osv import expression
-from odoo.conf import config
+from odoo.technology.conf import config
 from odoo.technology.db import SQL
 from odoo.tools.safe_eval import safe_eval, time
 from odoo.technology.cache import ormcache

@@ -3,7 +3,7 @@
 import logging
 
 from odoo.tests.common import HttpCase, tagged, ChromeBrowser
-from odoo.conf import config
+from odoo.technology.conf import config
 from unittest.mock import patch
 
 @tagged('-at_install', 'post_install')

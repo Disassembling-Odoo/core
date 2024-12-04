@@ -13,8 +13,9 @@ import math
 import re
 from textwrap import shorten
 
-from odoo import api, conf, models, _, Command, SUPERUSER_ID, modules, tools
+from odoo import api, models, _, Command, SUPERUSER_ID, modules, tools
 from odoo.ormapping import fields
+from odoo.technology import conf
 from odoo.technology.db import SQL, column_exists, create_column
 from odoo.addons.account.tools import format_structured_reference_iso
 from odoo.exceptions import UserError, ValidationError, AccessError, RedirectWarning

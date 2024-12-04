@@ -1,6 +1,6 @@
 import json
 from unittest.mock import patch
-from odoo.conf import config
+from odoo.technology.conf import config
 from odoo.tools import mute_logger
 from odoo.addons.test_http.controllers import CT_JSON
 from .test_common import TestHttpBase

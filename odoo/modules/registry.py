@@ -22,7 +22,7 @@ from operator import attrgetter
 import psycopg2
 
 import odoo
-from odoo.conf import config
+from odoo.technology.conf import config
 from odoo.modules.db import FunctionStatus
 from .. import SUPERUSER_ID
 from odoo.technology.db import sql, TestCursor

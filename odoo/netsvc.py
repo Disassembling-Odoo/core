@@ -17,7 +17,7 @@ import werkzeug.serving
 from . import release
 from .technology.db import db_connect
 from . import tools
-from . import conf
+from .technology import conf
 
 _logger = logging.getLogger(__name__)
 

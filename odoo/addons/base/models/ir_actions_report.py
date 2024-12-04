@@ -5,13 +5,14 @@ from contextlib import ExitStack
 from markupsafe import Markup
 from urllib.parse import urlparse
 
-from odoo import api, conf, models, tools, SUPERUSER_ID, _
+from odoo import api, models, tools, SUPERUSER_ID, _
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, AccessError, RedirectWarning
+from odoo.technology import conf
 from odoo.technology.framework import compute_session_token
 from odoo.tools.safe_eval import safe_eval, time
 from odoo.tools.misc import find_in_path
-from odoo.conf import config
+from odoo.technology.conf import config
 from odoo.tools import check_barcode_encoding, is_html_empty, parse_version, split_every
 from odoo.technology.framework.http import request, root
 from odoo.tools.pdf import PdfFileWriter, PdfFileReader, PdfReadError

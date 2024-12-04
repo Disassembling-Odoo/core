@@ -8,7 +8,7 @@ from pathlib import Path
 from . import Command
 from .impl import cloc
 
-from odoo.conf import config
+from odoo.technology.conf import config
 
 class Cloc(Command):
     """ Count lines of code per modules """

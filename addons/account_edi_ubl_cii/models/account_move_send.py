@@ -5,8 +5,9 @@ import io
 from lxml import etree
 from xml.sax.saxutils import escape, quoteattr
 
-from odoo import _, api, conf, models, tools, SUPERUSER_ID
+from odoo import _, api, models, tools, SUPERUSER_ID
 from odoo.ormapping import fields
+from odoo.technology import conf
 from odoo.tools import cleanup_xml_node
 from odoo.tools.pdf import OdooPdfFileReader, OdooPdfFileWriter
 

@@ -6,7 +6,7 @@ from socket import gethostbyname
 from unittest.mock import patch
 
 import odoo
-from odoo.conf import config
+from odoo.technology.conf import config
 from odoo.technology.framework.http import root, content_disposition
 from odoo.tests import tagged
 from odoo.tests.common import HOST, new_test_user, get_db_name, BaseCase

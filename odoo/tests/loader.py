@@ -7,7 +7,7 @@ import threading
 from pathlib import Path
 from unittest import case
 
-from .. import conf
+from ..technology import conf
 from .. import tools
 from .tag_selector import TagsSelector
 from .suite import OdooSuite

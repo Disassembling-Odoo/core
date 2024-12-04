@@ -28,7 +28,7 @@ from psycopg2.sql import Composable
 from werkzeug import urls
 
 import odoo
-from ... import conf
+from .. import conf
 from ... import tools
 from .sql import SQL
 from ...tools.func import frame_codeinfo, locked

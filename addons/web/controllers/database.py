@@ -9,7 +9,7 @@ import tempfile
 from lxml import html
 
 import odoo
-import odoo.modules.registry
+import odoo.microkernel.modules.registry
 from odoo.technology.utils import db_utils as DBUtils
 from odoo.technology import db
 from odoo.technology.framework import (

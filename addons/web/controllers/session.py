@@ -8,8 +8,8 @@ from werkzeug.urls import url_encode
 
 import odoo
 from odoo.tools.translate import _
-import odoo.modules.registry
-from odoo.modules import module
+import odoo.microkernel.modules.registry
+from odoo.microkernel.modules import module
 from odoo.exceptions import AccessError, UserError, AccessDenied
 from odoo.technology import db
 from odoo.technology.framework import http, request
@@ -43,7 +43,7 @@ class Session(http.Controller):
             return {'uid': None}
 
         request.session.db = db
-        registry = odoo.modules.registry.Registry(db)
+        registry = odoo.microkernel.modules.registry.Registry(db)
         with registry.cursor() as cr:
             env = odoo.api.Environment(cr, request.session.uid, request.session.context)
             if not request.db:

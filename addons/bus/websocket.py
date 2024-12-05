@@ -28,7 +28,7 @@ from odoo import api, modules
 from odoo.technology.conf import config
 from .models.bus import dispatch
 from odoo.technology.framework.http import root, Request, Response, SessionExpiredException, get_default_session
-from odoo.modules.registry import Registry
+from odoo.microkernel.modules.registry import Registry
 from odoo.technology.framework import retrying, CommonServer, check_session
 from odoo.tools import lazy_property
 

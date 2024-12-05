@@ -3,7 +3,7 @@ from PIL import Image
 from functools import partial
 
 from odoo.tests import TransactionCase, tagged, Form
-from odoo.tools import frozendict
+from odoo.technology.utils import frozendict
 from odoo.tools.image import image_to_base64, hex_to_rgb
 
 

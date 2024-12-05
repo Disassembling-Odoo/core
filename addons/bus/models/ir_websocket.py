@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 
 from odoo import models
 from odoo.technology.framework import request, SessionExpiredException
-from odoo.tools import OrderedSet
+from odoo.technology.utils import OrderedSet
 from odoo.osv import expression
 from odoo.technology.framework import check_session
 from ..models.bus import dispatch

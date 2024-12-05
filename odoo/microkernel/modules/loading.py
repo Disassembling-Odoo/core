@@ -12,12 +12,12 @@ import threading
 import time
 
 import odoo
-import odoo.modules.db
-import odoo.modules.graph
-import odoo.modules.migration
-import odoo.modules.registry
-from ..technology import conf
-from .. import SUPERUSER_ID, api, tools
+import odoo.microkernel.modules.db
+import odoo.microkernel.modules.graph
+import odoo.microkernel.modules.migration
+import odoo.microkernel.modules.registry
+from ...technology import conf
+from ... import SUPERUSER_ID, api, tools
 from .module import adapt_version, initialize_sys_path, load_openerp_module
 
 _logger = logging.getLogger(__name__)
@@ -106,7 +106,7 @@ def force_demo(env):
     """
     Forces the `demo` flag on all modules, and installs demo data for all installed modules.
     """
-    graph = odoo.modules.graph.Graph()
+    graph = odoo.microkernel.modules.graph.Graph()
     env.cr.execute('UPDATE ir_module_module SET demo=True')
     env.cr.execute(
         "SELECT name FROM ir_module_module WHERE state IN ('installed', 'to upgrade', 'to remove')"
@@ -141,7 +141,7 @@ def load_module_graph(env, graph, status=None, perform_checks=True,
     processed_modules = []
     loaded_modules = []
     registry = env.registry
-    migrations = odoo.modules.migration.MigrationManager(env.cr, graph)
+    migrations = odoo.microkernel.modules.migration.MigrationManager(env.cr, graph)
     module_count = len(graph)
     _logger.info('loading %d modules...', module_count)
 
@@ -389,12 +389,12 @@ def load_modules(registry, force_demo=False, status=None, update_module=False):
         # connection settings are automatically reset when the connection is
         # borrowed from the pool
         cr.execute("SET SESSION lock_timeout = '15s'")
-        if not odoo.modules.db.is_initialized(cr):
+        if not odoo.microkernel.modules.db.is_initialized(cr):
             if not update_module:
                 _logger.error("Database %s not initialized, you can force it with `-i base`", cr.dbname)
                 return
             _logger.info("init db")
-            odoo.modules.db.initialize(cr)
+            odoo.microkernel.modules.db.initialize(cr)
             update_module = True # process auto-installed modules
             conf.config["init"]["all"] = 1
             if not conf.config['without_demo']:
@@ -404,7 +404,7 @@ def load_modules(registry, force_demo=False, status=None, update_module=False):
             cr.execute("update ir_module_module set state=%s where name=%s and state=%s", ('to upgrade', 'base', 'installed'))
 
         # STEP 1: LOAD BASE (must be done before module dependencies can be computed for later steps)
-        graph = odoo.modules.graph.Graph()
+        graph = odoo.microkernel.modules.graph.Graph()
         graph.add_module(cr, 'base', force)
         if not graph:
             _logger.critical('module base cannot be loaded! (hint: verify addons-path)')
@@ -509,7 +509,7 @@ def load_modules(registry, force_demo=False, status=None, update_module=False):
             _logger.error("Some modules are not loaded, some dependencies or manifest may be missing: %s", missing)
 
         # STEP 3.5: execute migration end-scripts
-        migrations = odoo.modules.migration.MigrationManager(cr, graph)
+        migrations = odoo.microkernel.modules.migration.MigrationManager(cr, graph)
         for package in graph:
             migrations.migrate_module(package, 'end')
 
@@ -560,7 +560,7 @@ def load_modules(registry, force_demo=False, status=None, update_module=False):
                 # modules to remove next time
                 cr.commit()
                 _logger.info('Reloading registry once more after uninstalling modules')
-                registry = odoo.modules.registry.Registry.new(
+                registry = odoo.microkernel.modules.registry.Registry.new(
                     cr.dbname, force_demo, status, update_module
                 )
                 cr.reset()

@@ -2,8 +2,8 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo import api, models
-from odoo.tools import float_utils, formatLang
-from odoo.tools.misc import format_duration
+from odoo.tools import float_utils
+from odoo.microkernel.utils import formatLang, format_duration
 
 
 class ProjectUpdate(models.Model):

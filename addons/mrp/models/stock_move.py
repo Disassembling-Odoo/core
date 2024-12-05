@@ -6,7 +6,8 @@ from dateutil.relativedelta import relativedelta
 from odoo import _, api, Command, models
 from odoo.ormapping import fields
 from odoo.osv import expression
-from odoo.tools import float_compare, float_round, float_is_zero, OrderedSet
+from odoo.tools import float_compare, float_round, float_is_zero
+from odoo.technology.utils import OrderedSet
 from odoo.exceptions import ValidationError
 
 

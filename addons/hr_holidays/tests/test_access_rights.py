@@ -9,7 +9,7 @@ from dateutil.relativedelta import relativedelta
 from odoo import tests
 from odoo.addons.hr_holidays.tests.common import TestHrHolidaysCommon
 from odoo.exceptions import AccessError, UserError, ValidationError
-from odoo.tools import date_utils
+from odoo.technology.utils import date_utils
 from odoo.tools import mute_logger
 
 

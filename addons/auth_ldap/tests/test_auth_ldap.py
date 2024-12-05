@@ -3,7 +3,7 @@ import requests
 from unittest.mock import patch
 
 import odoo
-from odoo.modules.registry import Registry, DummyRLock
+from odoo.microkernel.modules.registry import Registry, DummyRLock
 from odoo.tests.common import BaseCase, tagged, get_db_name
 
 

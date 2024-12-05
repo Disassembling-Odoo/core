@@ -11,7 +11,7 @@ from unittest.mock import patch
 import requests
 
 import odoo
-from odoo.modules.registry import Registry
+from odoo.microkernel.modules.registry import Registry
 from odoo.tests.common import BaseCase, HttpCase, tagged
 from odoo.technology.conf import config
 

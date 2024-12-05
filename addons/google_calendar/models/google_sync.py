@@ -11,7 +11,7 @@ from markupsafe import Markup
 
 from odoo import api, models, _
 from odoo.ormapping import fields
-from odoo.modules.registry import Registry
+from odoo.microkernel.modules.registry import Registry
 from odoo.tools import ormcache_context, email_normalize
 from odoo.osv import expression
 

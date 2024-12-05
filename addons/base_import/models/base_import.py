@@ -28,7 +28,8 @@ from odoo.technology.conf import config
 from odoo.exceptions import UserError
 from odoo.tools.translate import _
 from odoo.tools.mimetypes import guess_mimetype
-from odoo.tools import DEFAULT_SERVER_DATE_FORMAT, DEFAULT_SERVER_DATETIME_FORMAT, parse_version
+from odoo.tools import parse_version
+from odoo.microkernel.utils import DEFAULT_SERVER_DATE_FORMAT, DEFAULT_SERVER_DATETIME_FORMAT
 
 FIELDS_RECURSION_LIMIT = 3
 ERROR_PREVIEW_BYTES = 200

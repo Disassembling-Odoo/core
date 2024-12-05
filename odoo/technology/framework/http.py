@@ -192,7 +192,7 @@ except ImportError:
     from ...tools._vendor.send_file import send_file as _send_file
 
 import odoo
-from ...tools import (consteq, file_path, get_lang, json_default,
+from ...tools import (consteq, file_path, json_default,
                     parse_version, profiler, unique, exception_to_unicode)
 from ...tools.func import filter_kwargs, lazy_property
 from ...tools.misc import submap
@@ -204,6 +204,7 @@ from ..db import available_db_list, db_filter
 from ...modules.module import get_manifest
 from ...modules.registry import Registry
 from .geoip import GeoIP
+from odoo.microkernel.utils import get_lang
 from .service import retrying as service_model, security
 
 _logger = logging.getLogger(__name__)
@@ -2076,7 +2077,7 @@ class Application:
     @lazy_property
     def nodb_routing_map(self):
         nodb_routing_map = werkzeug.routing.Map(strict_slashes=False, converters=None)
-        for url, endpoint in _generate_routing_rules([''] + odoo.conf.server_wide_modules, nodb_only=True):
+        for url, endpoint in _generate_routing_rules([''] + odoo.technology.conf.server_wide_modules, nodb_only=True):
             routing = submap(endpoint.routing, ROUTING_KEYS)
             if routing['methods'] is not None and 'OPTIONS' not in routing['methods']:
                 routing['methods'] = routing['methods'] + ['OPTIONS']
@@ -2088,7 +2089,7 @@ class Application:
 
     @lazy_property
     def session_store(self):
-        path = odoo.conf.config.session_dir
+        path = odoo.technology.conf.config.session_dir
         _logger.debug('HTTP sessions stored in: %s', path)
         return FilesystemSessionStore(path, session_class=Session, renew_missing=True)
 
@@ -2149,7 +2150,7 @@ class Application:
         if hasattr(current_thread, 'uid'):
             del current_thread.uid
 
-        if odoo.conf.config['proxy_mode'] and environ.get("HTTP_X_FORWARDED_HOST"):
+        if odoo.technology.conf.config['proxy_mode'] and environ.get("HTTP_X_FORWARDED_HOST"):
             # The ProxyFix middleware has a side effect of updating the
             # environ, see https://github.com/pallets/werkzeug/pull/2184
             def fake_app(environ, start_response):

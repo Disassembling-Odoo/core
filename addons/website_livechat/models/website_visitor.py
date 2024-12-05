@@ -5,7 +5,7 @@ from odoo.ormapping import fields
 from odoo.addons.mail.tools.discuss import Store
 from odoo.exceptions import UserError
 from odoo.technology.framework.http import request
-from odoo.tools import get_lang
+from odoo.microkernel.utils import get_lang
 from odoo.technology.db import column_exists, create_column
 
 

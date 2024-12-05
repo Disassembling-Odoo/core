@@ -8,7 +8,8 @@ from datetime import datetime, timedelta
 from odoo import _, models
 from odoo.exceptions import AccessDenied, UserError
 from odoo.technology.framework.http import request
-from odoo.tools.misc import babel_locale_parse, hmac
+from odoo.tools.misc import hmac
+from odoo.microkernel.utils import babel_locale_parse
 
 from odoo.addons.auth_totp.models.totp import hotp, TOTP
 

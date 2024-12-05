@@ -17,7 +17,7 @@ if TYPE_CHECKING:
 
 import psycopg2
 
-from ...tools.misc import named_to_positional_printf
+from ..utils import named_to_positional_printf
 
 __all__ = [
     "SQL",

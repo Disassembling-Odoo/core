@@ -10,7 +10,7 @@ sys.path.append(os.path.abspath(os.path.join(__file__,'../../../')))
 import odoo
 from odoo.technology.conf import config
 from odoo.tools import topological_sort, unique
-from odoo.modules.registry import Registry
+from odoo.microkernel.modules.registry import Registry
 from odoo.netsvc import init_logger
 from odoo.tests import standalone_tests
 import odoo.tests.loader
@@ -213,7 +213,7 @@ if __name__ == '__main__':
         odoo.conf.config['addons_path'] = ','.join([args.addons_path, odoo.conf.config['addons_path']])
         if args.data_dir:
             odoo.conf.config['data_dir'] = args.data_dir
-        odoo.modules.module.initialize_sys_path()
+        odoo.microkernel.modules.module.initialize_sys_path()
 
     init_logger()
     logging.config.dictConfig({
@@ -221,7 +221,7 @@ if __name__ == '__main__':
         'incremental': True,
         'disable_existing_loggers': False,
         'loggers': {
-            'odoo.modules.loading': {'level': 'CRITICAL'},
+            'odoo.microkernel.modules.loading': {'level': 'CRITICAL'},
             'odoo.sql_db': {'level': 'CRITICAL'},
             'odoo.ormapping.models.unlink': {'level': 'WARNING'},
             'odoo.addons.base.models.ir_model': {'level': "WARNING"},

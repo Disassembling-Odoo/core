@@ -30,9 +30,9 @@ except ImportError:
     from decorator import decorator
 
 from .exceptions import AccessError, UserError, CacheMiss
-from .tools import clean_context, frozendict, lazy_property, OrderedSet
+from .tools import clean_context, lazy_property
 from .tools.translate import get_translation, get_translated_module, LazyGettext
-from .tools.misc import StackMap
+from .technology.utils import StackMap, OrderedSet, frozendict
 from .technology.db import SQL, Query
 
 import typing
@@ -1501,5 +1501,5 @@ class Starred:
 
 # keep those imports here in order to handle cyclic dependencies correctly
 from odoo import SUPERUSER_ID
-from odoo.modules.registry import Registry
+from odoo.microkernel.modules.registry import Registry
 from .technology.db import BaseCursor

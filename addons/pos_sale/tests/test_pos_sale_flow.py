@@ -7,7 +7,7 @@ from odoo.ormapping import fields
 from odoo.addons.point_of_sale.tests.test_frontend import TestPointOfSaleHttpCommon
 from odoo.tests import Form
 from odoo import Command
-from odoo.tools import format_date
+from odoo.microkernel.utils import format_date
 
 @odoo.tests.tagged('post_install', '-at_install')
 class TestPoSSale(TestPointOfSaleHttpCommon):

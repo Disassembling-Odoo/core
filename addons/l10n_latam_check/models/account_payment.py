@@ -1,7 +1,7 @@
 from odoo import models, api, Command, _
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
-from odoo.tools.misc import format_date
+from odoo.microkernel.utils import format_date
 
 
 class AccountPayment(models.Model):

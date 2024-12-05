@@ -3,7 +3,7 @@
 
 from odoo import api, models
 from odoo.ormapping import fields
-from odoo.tools.date_utils import add
+from odoo.technology.utils.date_utils import add
 
 
 class StockOrderpointSnooze(models.TransientModel):

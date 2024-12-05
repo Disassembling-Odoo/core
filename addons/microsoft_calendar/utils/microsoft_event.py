@@ -4,7 +4,7 @@ from collections import abc
 from typing import Iterator, Mapping
 
 from odoo.tools import email_normalize
-from odoo.tools.misc import ReadonlyDict
+from odoo.technology.utils import ReadonlyDict
 
 
 class MicrosoftEvent(abc.Set):

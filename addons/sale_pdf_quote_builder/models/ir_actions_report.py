@@ -5,8 +5,9 @@ import io
 import json
 
 from odoo import _, api, models
-from odoo.tools import format_amount, format_date, format_datetime, pdf
+from odoo.tools import format_amount, pdf
 from odoo.tools.pdf import PdfFileWriter, PdfFileReader, NameObject, NumberObject, createStringObject
+from odoo.microkernel.utils import format_date, format_datetime
 
 
 class IrActionsReport(models.Model):

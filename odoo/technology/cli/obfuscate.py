@@ -7,7 +7,7 @@ import logging
 from collections import defaultdict
 
 from . import Command
-from odoo.modules.registry import Registry
+from odoo.microkernel.modules.registry import Registry
 from ..db import SQL
 
 _logger = logging.getLogger(__name__)

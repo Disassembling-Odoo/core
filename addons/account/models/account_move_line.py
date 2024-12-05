@@ -8,7 +8,9 @@ from odoo import api, models, Command, _
 from odoo.ormapping import fields
 from odoo.exceptions import ValidationError, UserError
 from odoo.osv import expression
-from odoo.tools import frozendict, format_date, float_compare, format_list
+from odoo.tools import float_compare, format_list
+from odoo.technology.utils import frozendict
+from odoo.microkernel.utils import format_date
 from odoo.technology.db import create_index, SQL, Query
 from odoo.addons.web.controllers.utils import clean_action
 

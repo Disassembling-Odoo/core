@@ -11,7 +11,7 @@ import pytz
 
 from odoo import api, Command, models
 from odoo.ormapping import fields
-from odoo.tools import OrderedSet
+from odoo.technology.utils import OrderedSet
 from odoo.tools.translate import _, code_translations, LazyTranslate
 
 _lt = LazyTranslate(__name__)

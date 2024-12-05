@@ -13,12 +13,12 @@ import odoo
 from odoo import api, models, _
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
-from odoo.modules.registry import Registry
+from odoo.microkernel.modules.registry import Registry
 from odoo.technology.db import SQL
 
 _logger = logging.getLogger(__name__)
 
-BASE_VERSION = odoo.modules.get_manifest('base')['version']
+BASE_VERSION = odoo.microkernel.modules.get_manifest('base')['version']
 MAX_FAIL_TIME = timedelta(hours=5)  # chosen with a fair roll of the dice
 MAX_BATCH_PER_CRON_JOB = 10
 CONSECUTIVE_TIMEOUT_FOR_FAILURE = 3
@@ -208,7 +208,7 @@ class ir_cron(models.Model):
         # per minute for 5h) in which case we assume that the crons are stuck
         # because the db has zombie states and we force a call to
         # reset_module_states.
-        odoo.modules.reset_modules_state(cr.dbname)
+        odoo.microkernel.modules.reset_modules_state(cr.dbname)
 
     @classmethod
     def _get_all_ready_jobs(cls, cr):

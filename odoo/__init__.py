@@ -34,7 +34,7 @@ def registry(database_name=None):
     the fly.
     """
     import warnings  # noqa: PLC0415
-    warnings.warn("Use directly odoo.modules.registry.Registry", DeprecationWarning, 2)
+    warnings.warn("Use directly odoo.microkernel.modules.registry.Registry", DeprecationWarning, 2)
     if database_name is None:
         import threading
         database_name = threading.current_thread().dbname
@@ -54,25 +54,26 @@ _monkeypatches.patch_all()
 # ----------------------------------------------------------
 from . import tools
 from . import technology
+from .technology import conf
 from .technology import cli
 
 from . import upgrade  # this namespace must be imported first
-from . import addons
-from .technology import conf
 from . import loglevels
-from . import modules
 from . import netsvc
 from . import osv
 from . import release
+
+from . import addons
+from . import modules
+from . import api
 
 # ----------------------------------------------------------
 # Model classes, fields, api decorators, and translations
 # ----------------------------------------------------------
 from .ormapping import *
-from . import api
 from odoo.tools.translate import _, _lt
-from odoo.ormapping import Command
 
 # ----------------------------------------------------------
 # Other imports, which may require stuff from above
 # ----------------------------------------------------------
+from .microkernel import *

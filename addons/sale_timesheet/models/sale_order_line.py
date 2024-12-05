@@ -3,7 +3,7 @@
 from odoo import api, models, _
 from odoo.ormapping import fields
 from odoo.osv import expression
-from odoo.tools import format_duration
+from odoo.microkernel.utils import format_duration
 
 
 class SaleOrderLine(models.Model):

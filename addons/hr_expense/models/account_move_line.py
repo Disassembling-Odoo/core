@@ -4,7 +4,7 @@
 from odoo import api, models
 from odoo.ormapping import fields
 from odoo.technology.db import SQL
-from odoo.tools.misc import frozendict
+from odoo.technology.utils import frozendict
 
 
 class AccountMoveLine(models.Model):

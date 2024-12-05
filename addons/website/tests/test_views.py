@@ -8,7 +8,7 @@ from itertools import zip_longest
 from lxml import etree as ET, html
 from lxml.html import builder as h
 
-from odoo.modules.module import _DEFAULT_MANIFEST
+from odoo.microkernel.modules.module import _DEFAULT_MANIFEST
 from odoo.tests import common, HttpCase, tagged
 
 
@@ -1510,7 +1510,7 @@ class TestThemeViews(common.TransactionCase):
         main_view.with_context(website_id=website_1.id).arch = '<body>specific</body>'
 
         # 2. Simulate a theme install with a child view of `main_view`
-        patcher = patch('odoo.modules.module._get_manifest_cached', return_value=copy.deepcopy(_DEFAULT_MANIFEST))
+        patcher = patch('odoo.microkernel.modules.module._get_manifest_cached', return_value=copy.deepcopy(_DEFAULT_MANIFEST))
         self.startPatcher(patcher)
         test_theme_module = self.env['ir.module.module'].create({'name': 'test_theme'})
         self.env['ir.model.data'].create({

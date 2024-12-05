@@ -13,9 +13,10 @@ import re
 from odoo import Command, api, models
 from odoo.addons.base.models.ir_model import MODULE_UNINSTALL_FLAG
 from odoo.exceptions import AccessError, UserError
-from odoo.modules import get_resource_from_path
-from odoo.tools import file_open, float_compare, get_lang, groupby
+from odoo.microkernel.modules import get_resource_from_path
+from odoo.tools import file_open, float_compare, groupby
 from odoo.tools.translate import _, code_translations, TranslationImporter
+from odoo.microkernel.utils import get_lang
 from odoo.technology.db import SQL
 
 _logger = logging.getLogger(__name__)

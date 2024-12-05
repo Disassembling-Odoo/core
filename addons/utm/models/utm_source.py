@@ -2,9 +2,9 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 
-from odoo import _, api, models, tools
+from odoo import _, api, models
 from odoo.ormapping import fields
-
+from odoo.microkernel import utils
 
 class UtmSource(models.Model):
     _name = 'utm.source'
@@ -33,7 +33,7 @@ class UtmSource(models.Model):
             content = f'{content[:20]}...'
 
         create_date = record.create_date or fields.date.today()
-        create_date = fields.date.strftime(create_date, tools.DEFAULT_SERVER_DATE_FORMAT)
+        create_date = fields.date.strftime(create_date, utils.DEFAULT_SERVER_DATE_FORMAT)
         model_description = self.env['ir.model']._get(record._name).name
         return _(
             '%(content)s (%(model_description)s created on %(create_date)s)',

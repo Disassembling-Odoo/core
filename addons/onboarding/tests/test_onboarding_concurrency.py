@@ -7,7 +7,7 @@ from concurrent.futures import ThreadPoolExecutor
 import psycopg2.errors
 
 import odoo
-from odoo.modules.registry import Registry
+from odoo.microkernel.modules.registry import Registry
 from odoo.tests.common import get_db_name, tagged, BaseCase
 from odoo.tools import mute_logger
 

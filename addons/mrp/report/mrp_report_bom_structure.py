@@ -6,7 +6,8 @@ import json
 
 from odoo import api, models, _
 from odoo.ormapping import fields
-from odoo.tools import float_compare, float_round, format_date, float_is_zero
+from odoo.tools import float_compare, float_round, float_is_zero
+from odoo.microkernel.utils import format_date
 from odoo.exceptions import UserError
 
 

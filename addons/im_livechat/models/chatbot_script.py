@@ -3,8 +3,9 @@
 
 from odoo import api, models
 from odoo.ormapping import fields
-from odoo.technology.framework.http import request
-from odoo.tools import email_normalize, get_lang, html2plaintext, is_html_empty, plaintext2html
+from odoo.technology.framework import request
+from odoo.tools import email_normalize, html2plaintext, is_html_empty, plaintext2html
+from odoo.microkernel.utils import get_lang
 
 
 class ChatbotScript(models.Model):

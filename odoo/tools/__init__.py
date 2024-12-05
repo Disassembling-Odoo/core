@@ -9,7 +9,6 @@ from . import template_inheritance
 from . import win32
 from .parse_version import parse_version
 from .barcode import check_barcode_encoding
-from .date_utils import *
 from .float_utils import *
 from .func import *
 from .i18n import format_list, py_to_js_locale

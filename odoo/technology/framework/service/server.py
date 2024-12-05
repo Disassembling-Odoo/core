@@ -52,8 +52,9 @@ except ImportError:
 
 import odoo
 from odoo.technology.conf import config
-from odoo.modules import get_modules
-from odoo.modules.registry import Registry
+import odoo.microkernel
+from odoo.microkernel.modules import get_modules
+from odoo.microkernel.modules.registry import Registry
 from odoo.release import nt_service_name
 from odoo.technology.cache import log_ormcache_stats
 from odoo.tools.misc import stripped_sys_argv, dumpstacks
@@ -466,7 +467,7 @@ class ThreadedServer(CommonServer):
                 time.sleep(number / 100)
                 pg_conn.poll()
 
-                registries = odoo.modules.registry.Registry.registries
+                registries = Registry.registries
                 _logger.debug('cron%d polling for jobs', number)
                 for db_name, registry in registries.d.items():
                     if registry.ready:
@@ -1092,7 +1093,7 @@ class Worker(object):
             t.join()
             _logger.info("Worker (%s) exiting. request_count: %s, registry count: %s.",
                          self.pid, self.request_count,
-                         len(odoo.modules.registry.Registry.registries))
+                         len(Registry.registries))
             self.stop()
         except Exception:
             _logger.exception("Worker (%s) Exception occurred, exiting...", self.pid)
@@ -1248,7 +1249,7 @@ def load_server_wide_modules():
     server_wide_modules = {'base', 'web'} | set(odoo.conf.server_wide_modules)
     for m in server_wide_modules:
         try:
-            odoo.modules.module.load_openerp_module(m)
+            odoo.microkernel.modules.module.load_openerp_module(m)
         except Exception:
             msg = ''
             if m == 'web':

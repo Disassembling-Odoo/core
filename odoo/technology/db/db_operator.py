@@ -19,16 +19,17 @@ from decorator import decorator
 from pytz import country_timezones
 
 from odoo import SUPERUSER_ID
+from odoo.exceptions import AccessDenied
 import odoo.release
 import odoo.tools
-from ..conf import config
-from odoo.exceptions import AccessDenied
 
+from ..conf import config
+from ..utils import db_utils as DBUtils
 from .sql import SQL
 from .sql_db import db_connect
-from odoo.technology.utils import db_utils as DBUtils
 
 _logger = logging.getLogger(__name__)
+
 
 class DatabaseExists(Warning):
     pass
@@ -125,7 +126,6 @@ def list_dbs(force=False):
             _logger.exception('Listing databases failed:')
             return []
 
-@odoo.tools.mute_logger('odoo.technology.db')
 def check_db_exist(db_name):
     ## Not True: in fact, check if connection to database is possible. The database may exists
     try:
@@ -185,7 +185,7 @@ def create_empty_database(name):
 def drop_db(db_name):
     if db_name not in list_dbs(True):
         return False
-    odoo.modules.registry.Registry.delete(db_name)
+    odoo.microkernel.modules.registry.Registry.delete(db_name)
     odoo.technology.db.close_db(db_name)
 
     db = odoo.technology.db.db_connect('postgres')
@@ -298,14 +298,14 @@ def restore_db(db, dump_file, copy=False, neutralize_database=False):
         if r.returncode != 0:
             raise Exception("Couldn't restore database")
 
-        registry = odoo.modules.registry.Registry.new(db)
+        registry = odoo.microkernel.modules.registry.Registry.new(db)
         with registry.cursor() as cr:
             env = odoo.api.Environment(cr, SUPERUSER_ID, {})
             if copy:
                 # if it's a copy of a database, force generation of a new dbuuid
                 env['ir.config_parameter'].init(force=True)
             if neutralize_database:
-                odoo.modules.neutralize.neutralize_database(cr)
+                odoo.microkernel.modules.neutralize.neutralize_database(cr)
 
             if filestore_path:
                 filestore_dest = env['ir.attachment']._filestore()
@@ -315,7 +315,7 @@ def restore_db(db, dump_file, copy=False, neutralize_database=False):
 
 @check_db_management_enabled
 def rename_db(old_name, new_name):
-    odoo.modules.registry.Registry.delete(old_name)
+    odoo.microkernel.modules.registry.Registry.delete(old_name)
     odoo.technology.db.close_db(old_name)
 
     db = odoo.technology.db.db_connect('postgres')
@@ -351,13 +351,13 @@ def duplicate_db(db_original_name, db_name, neutralize_database=False):
             database_identifier(cr, db_original_name),
         ))
 
-    registry = odoo.modules.registry.Registry.new(db_name)
+    registry = odoo.microkernel.modules.registry.Registry.new(db_name)
     with registry.cursor() as cr:
         # if it's a copy of a database, force generation of a new dbuuid
         env = odoo.api.Environment(cr, SUPERUSER_ID, {})
         env['ir.config_parameter'].init(force=True)
         if neutralize_database:
-            odoo.modules.neutralize.neutralize_database(cr)
+            odoo.microkernel.modules.neutralize.neutralize_database(cr)
 
     from_fs = odoo.conf.config.filestore(db_original_name)
     to_fs = odoo.conf.config.filestore(db_name)

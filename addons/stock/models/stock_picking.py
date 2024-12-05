@@ -11,7 +11,8 @@ from odoo import SUPERUSER_ID, _, api, models
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
 from odoo.osv import expression
-from odoo.tools import format_datetime, format_date, format_list, groupby
+from odoo.tools import format_list, groupby
+from odoo.microkernel.utils import format_datetime, format_date
 from odoo.technology.db import SQL
 from odoo.tools.float_utils import float_compare, float_is_zero
 

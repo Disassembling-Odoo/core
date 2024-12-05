@@ -8,6 +8,7 @@ from markupsafe import Markup
 
 from odoo import api, exceptions, models, tools, _
 from odoo.addons.mail.tools.alias_error import AliasError
+from odoo.microkernel import utils as microkernel_utils
 
 import logging
 
@@ -467,7 +468,7 @@ class BaseModel(models.AbstractModel):
             return ' '.join((value.display_name or '') for value in field_value)
         if any(isinstance(value, datetime) for value in field_value):
             tz = self._mail_get_timezone()
-            return ' '.join([f"{tools.format_datetime(self.env, value, tz=tz)} {tz}"
+            return ' '.join([f"{microkernel_utils.format_datetime(self.env, value, tz=tz)} {tz}"
                              for value in field_value if value and isinstance(value, datetime)])
         # find last field / last model when having chained fields
         # e.g. 'partner_id.country_id.state' -> ['partner_id.country_id', 'state']

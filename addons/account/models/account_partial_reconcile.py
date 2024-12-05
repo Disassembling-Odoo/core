@@ -2,7 +2,7 @@
 from odoo import api, models, _, Command
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
-from odoo.tools import frozendict
+from odoo.technology.utils import frozendict
 
 from datetime import date
 

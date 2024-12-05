@@ -3,10 +3,9 @@ from dateutil.relativedelta import relativedelta
 import json
 from odoo import models, api, _, Command
 from odoo.ormapping import fields
-from odoo.tools import format_date
 from odoo.exceptions import UserError
-from odoo.tools import date_utils
-from odoo.tools.misc import formatLang
+from odoo.technology.utils import date_utils
+from odoo.microkernel.utils import format_date, formatLang
 
 class AccruedExpenseRevenue(models.TransientModel):
     _name = 'account.accrued.orders.wizard'

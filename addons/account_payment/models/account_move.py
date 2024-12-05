@@ -2,7 +2,8 @@
 
 from odoo import api, models
 from odoo.ormapping import fields
-from odoo.tools import format_date, str2bool
+from odoo.tools import str2bool
+from odoo.microkernel.utils import format_date
 
 from odoo.addons.payment import utils as payment_utils
 

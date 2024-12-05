@@ -9,7 +9,8 @@ from pytz import timezone
 from odoo import Command
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
-from odoo.tools import date_utils, mute_logger
+from odoo.technology.utils import date_utils
+from odoo.tools import mute_logger
 from odoo.tests import Form, tagged
 
 from odoo.addons.hr_holidays.tests.common import TestHrHolidaysCommon

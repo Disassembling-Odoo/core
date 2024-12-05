@@ -6,7 +6,7 @@ from odoo.ormapping import fields
 from odoo.tools import float_is_zero
 from odoo.technology.db import SQL
 from odoo import models, api
-from odoo.tools.misc import get_lang
+from odoo.microkernel.utils import get_lang
 from stdnum.fr import siren
 
 

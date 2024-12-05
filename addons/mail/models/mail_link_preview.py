@@ -8,7 +8,7 @@ from lxml import html
 
 from odoo import api, models, tools
 from odoo.ormapping import fields
-from odoo.tools.misc import OrderedSet
+from odoo.technology.utils import OrderedSet
 from odoo.addons.mail.tools.discuss import Store
 from odoo.addons.mail.tools.link_preview import get_link_preview_from_url
 

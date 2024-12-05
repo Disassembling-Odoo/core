@@ -8,8 +8,6 @@ import babel
 import pytz
 from dateutil.relativedelta import relativedelta, weekdays
 
-from .func import lazy
-
 D = TypeVar('D', date, datetime)
 
 __all__ = [

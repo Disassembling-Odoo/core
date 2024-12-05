@@ -1,6 +1,6 @@
 from odoo import api, models
 from odoo.ormapping import fields
-from odoo.tools import frozendict
+from odoo.technology.utils import frozendict
 
 
 

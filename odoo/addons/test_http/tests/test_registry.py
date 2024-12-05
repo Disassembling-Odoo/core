@@ -6,7 +6,7 @@ from urllib.parse import urljoin, urlsplit
 import requests
 
 import odoo
-from odoo.modules.registry import Registry
+from odoo.microkernel.modules.registry import Registry
 from odoo.technology.db import SQL, close_db, db_connect
 from odoo.tests import HOST, BaseCase, Like, get_db_name, tagged
 from odoo.tools import lazy_property, mute_logger
@@ -99,12 +99,12 @@ class TestHttpRegistry(BaseCase):
             cr.execute("select nextval('base_registry_signaling')")
 
         # the registry should rebuild itself just fine
-        with self.assertLogs('odoo.modules.registry', logging.INFO) as capture:
+        with self.assertLogs('odoo.microkernel.modules.registry', logging.INFO) as capture:
             res = self.url_open('/test_http/ensure_db')
             self.assertEqual(res.status_code, 200)
         self.assertEqual(capture.output, [
-            "INFO:odoo.modules.registry:Reloading the model registry after database signaling.",
-            Like("INFO:odoo.modules.registry:Registry loaded in ...s"),
+            "INFO:odoo.microkernel.modules.registry:Reloading the model registry after database signaling.",
+            Like("INFO:odoo.microkernel.modules.registry:Registry loaded in ...s"),
         ])
 
     def test_missing_db(self):
@@ -153,12 +153,12 @@ class TestHttpRegistry(BaseCase):
         self.authenticate(db=db_duplicate)
 
         # impossible to build a registry, make sure the system recovers
-        with self.assertLogs('odoo.modules.registry', logging.ERROR) as capture1, \
+        with self.assertLogs('odoo.microkernel.modules.registry', logging.ERROR) as capture1, \
              self.assertLogs('odoo.http', logging.WARNING) as capture2:
             res = self.url_open('/test_http/greeting-public')
             self.assertEqual(res.status_code, 404)
         self.assertEqual(capture1.output, [
-            "ERROR:odoo.modules.registry:Failed to load registry",
+            "ERROR:odoo.microkernel.modules.registry:Failed to load registry",
         ])
         self.assertEqual(capture2.output, [
             Like("WARNING:odoo.http:Database or registry unusable, trying without\n"

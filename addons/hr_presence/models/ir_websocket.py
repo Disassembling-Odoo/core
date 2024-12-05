@@ -4,7 +4,7 @@ from odoo import models
 from odoo.api import Environment
 from odoo.ormapping import Datetime
 from odoo.technology.framework.http import request
-from odoo.modules.registry import Registry
+from odoo.microkernel.modules.registry import Registry
 from odoo.addons.bus.websocket import wsrequest
 
 class IrWebsocket(models.AbstractModel):

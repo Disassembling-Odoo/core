@@ -120,9 +120,9 @@ import traceback
 import warnings
 from datetime import date, datetime, time
 
-import odoo.modules
+import odoo.microkernel
 from odoo.ormapping import READ_GROUP_NUMBER_GRANULARITY, check_property_field_value_name
-from odoo.tools import get_lang
+from odoo.microkernel.utils import get_lang
 from odoo.technology.db import Query, SQL
 from odoo.technology.db import pattern_to_translated_trigram_pattern, value_to_translated_trigram_pattern
 
@@ -749,7 +749,7 @@ def get_unaccent_wrapper(cr):
         "Since 18.0, deprecated method, use env.registry.unaccent instead",
         DeprecationWarning, 2,
     )
-    return odoo.modules.registry.Registry(cr.dbname).unaccent
+    return odoo.microkernel.modules.registry.Registry(cr.dbname).unaccent
 
 
 class expression(object):

@@ -7,7 +7,7 @@ from re import findall as re_findall
 
 from odoo import models
 from odoo.ormapping import fields
-from odoo.tools import get_lang
+from odoo.microkernel.utils import get_lang
 
 
 class StockMove(models.Model):

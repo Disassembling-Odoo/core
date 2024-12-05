@@ -4,7 +4,7 @@ import sys
 from pathlib import Path
 
 import odoo
-from odoo.modules import get_modules, get_module_path, initialize_sys_path
+from odoo.microkernel.modules import get_modules, get_module_path, initialize_sys_path
 
 commands = {}
 class Command:

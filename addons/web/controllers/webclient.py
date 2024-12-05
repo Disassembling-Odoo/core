@@ -11,9 +11,9 @@ import werkzeug.wrappers
 import werkzeug.wsgi
 
 import odoo
-import odoo.modules.registry
+import odoo.microkernel.modules.registry
 from odoo.technology.framework import http
-from odoo.modules import get_manifest
+from odoo.microkernel.modules import get_manifest
 from odoo.technology.framework.http import request
 from odoo.tools.misc import file_path
 from .utils import _local_web_translations

@@ -7,7 +7,7 @@ from odoo.ormapping import fields
 from odoo.tools.float_utils import float_compare
 from odoo.exceptions import UserError
 from odoo.tools import format_list
-from odoo.tools.misc import OrderedSet
+from odoo.technology.utils import OrderedSet
 
 
 class PurchaseOrder(models.Model):

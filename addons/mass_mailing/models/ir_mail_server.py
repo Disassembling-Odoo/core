@@ -3,7 +3,7 @@
 
 from odoo import _, models
 from odoo.ormapping import fields
-from odoo.tools.misc import format_date
+from odoo.microkernel.utils import format_date
 
 
 class IrMailServer(models.Model):

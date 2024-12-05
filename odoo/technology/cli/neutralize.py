@@ -36,8 +36,8 @@ class Neutralize(Command):
         try:
             with odoo.technology.db.db_connect(dbname).cursor() as cursor:
                 if opt.to_stdout:
-                    installed_modules = odoo.modules.neutralize.get_installed_modules(cursor)
-                    queries = odoo.modules.neutralize.get_neutralization_queries(installed_modules)
+                    installed_modules = odoo.microkernel.modules.neutralize.get_installed_modules(cursor)
+                    queries = odoo.microkernel.modules.neutralize.get_neutralization_queries(installed_modules)
                     # pylint: disable=bad-builtin
                     print('BEGIN;')
                     for query in queries:
@@ -46,7 +46,7 @@ class Neutralize(Command):
                     # pylint: disable=bad-builtin
                     print("COMMIT;")
                 else:
-                    odoo.modules.neutralize.neutralize_database(cursor)
+                    odoo.microkernel.modules.neutralize.neutralize_database(cursor)
 
         except Exception:
             _logger.critical("An error occurred during the neutralization. THE DATABASE IS NOT NEUTRALIZED!")

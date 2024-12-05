@@ -4,8 +4,10 @@ from datetime import date
 from odoo import api, models, _
 from odoo.ormapping import fields
 from odoo.exceptions import ValidationError
-from odoo.tools.misc import format_date
-from odoo.tools import frozendict, mute_logger, date_utils, 
+from odoo.technology.utils import date_utils
+from odoo.microkernel.utils import format_date
+from odoo.tools import mute_logger
+from odoo.technology.utils import frozendict
 from odoo.technology.db import SQL
 
 import re

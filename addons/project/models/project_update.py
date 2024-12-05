@@ -8,7 +8,8 @@ from werkzeug.urls import url_encode
 from odoo import api, models
 from odoo.ormapping import fields
 from odoo.osv import expression
-from odoo.tools import format_amount, formatLang
+from odoo.tools import format_amount
+from odoo.microkernel.utils import formatLang
 
 STATUS_COLOR = {
     'on_track': 20,  # green / success

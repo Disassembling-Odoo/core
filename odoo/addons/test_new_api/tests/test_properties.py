@@ -13,7 +13,8 @@ from odoo import Command
 from odoo.exceptions import AccessError, UserError
 from odoo.osv import expression
 from odoo.tests import Form, TransactionCase, users
-from odoo.tools import mute_logger, get_lang
+from odoo.tools import mute_logger
+from odoo.microkernel import get_lang
 
 
 class TestPropertiesMixin(TransactionCase):

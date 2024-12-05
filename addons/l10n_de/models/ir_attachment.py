@@ -4,7 +4,7 @@ from odoo import api, models, _
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
 from odoo.tools.mimetypes import guess_mimetype
-from odoo.tools.misc import format_date
+from odoo.microkernel.utils import format_date
 
 
 class IrAttachment(models.Model):

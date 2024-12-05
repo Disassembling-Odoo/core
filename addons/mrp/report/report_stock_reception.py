@@ -2,7 +2,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo import models
-from odoo.tools import format_date
+from odoo.microkernel.utils import format_date
 
 
 class ReceptionReport(models.AbstractModel):

@@ -6,8 +6,7 @@ from os.path import join as opj
 from unittest.mock import patch
 
 import odoo.addons
-from odoo.modules.module import load_manifest
-from odoo.modules.module import get_manifest
+from odoo.microkernel.modules.module import load_manifest, get_manifest
 from odoo.release import major_version
 from odoo.tests.common import BaseCase
 
@@ -30,7 +29,7 @@ class TestModuleManifest(BaseCase):
         with open(opj(self.module_root, '__manifest__.py'), 'w') as file:
             file.write(str({'name': f'Temp {self.module_name}', 'license': 'MIT'}))
 
-        with self.assertNoLogs('odoo.modules.module', 'WARNING'):
+        with self.assertNoLogs('odoo.microkernel.modules.module', 'WARNING'):
             manifest = load_manifest(self.module_name)
 
         self.maxDiff = None
@@ -82,7 +81,7 @@ class TestModuleManifest(BaseCase):
         self.assertEqual(orig_auto_install, get_manifest(module_name)['auto_install'])
 
     def test_missing_manifest(self):
-        with self.assertLogs('odoo.modules.module', 'DEBUG') as capture:
+        with self.assertLogs('odoo.microkernel.modules.module', 'DEBUG') as capture:
             manifest = load_manifest(self.module_name)
         self.assertEqual(manifest, {})
         self.assertIn("no manifest file found", capture.output[0])
@@ -90,7 +89,7 @@ class TestModuleManifest(BaseCase):
     def test_missing_license(self):
         with open(opj(self.module_root, '__manifest__.py'), 'w') as file:
             file.write(str({'name': f'Temp {self.module_name}'}))
-        with self.assertLogs('odoo.modules.module', 'WARNING') as capture:
+        with self.assertLogs('odoo.microkernel.modules.module', 'WARNING') as capture:
             manifest = load_manifest(self.module_name)
         self.assertEqual(manifest['license'], 'LGPL-3')
         self.assertIn("Missing `license` key", capture.output[0])

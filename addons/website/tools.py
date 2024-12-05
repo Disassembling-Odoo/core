@@ -9,7 +9,8 @@ from werkzeug.exceptions import NotFound
 from werkzeug.test import EnvironBuilder
 
 import odoo.technology.framework.http
-from odoo.tools.misc import hmac, DotDict, frozendict
+from odoo.tools.misc import hmac, 
+from odoo.technology.utils import DotDict, frozendict
 
 HOST = '127.0.0.1'
 

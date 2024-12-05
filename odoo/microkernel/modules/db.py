@@ -5,7 +5,7 @@ from psycopg2.extras import Json
 import logging
 from enum import IntEnum
 
-import odoo.modules
+import odoo.microkernel.modules
 
 _logger = logging.getLogger(__name__)
 
@@ -35,13 +35,13 @@ def initialize(cr):
     with odoo.tools.misc.file_open(f) as base_sql_file:
         cr.execute(base_sql_file.read())  # pylint: disable=sql-injection
 
-    for i in odoo.modules.get_modules():
-        mod_path = odoo.modules.get_module_path(i)
+    for i in odoo.microkernel.modules.get_modules():
+        mod_path = odoo.microkernel.modules.get_module_path(i)
         if not mod_path:
             continue
 
         # This will raise an exception if no/unreadable descriptor file.
-        info = odoo.modules.get_manifest(i)
+        info = odoo.microkernel.modules.get_manifest(i)
 
         if not info:
             continue

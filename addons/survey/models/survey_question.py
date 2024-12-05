@@ -11,7 +11,7 @@ from textwrap import shorten
 from odoo import api, models, tools, _
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
-
+from odoo.microkernel import utils
 
 class SurveyQuestion(models.Model):
     """ Questions that will be asked in a survey.
@@ -775,9 +775,9 @@ class SurveyQuestion(models.Model):
                 continue
             answer = question[f'answer_{question.question_type}']
             if question.question_type == 'date':
-                answer = tools.format_date(self.env, answer)
+                answer = utils.format_date(self.env, answer)
             elif question.question_type == 'datetime':
-                answer = tools.format_datetime(self.env, answer, tz='UTC', dt_format=False)
+                answer = utils.format_datetime(self.env, answer, tz='UTC', dt_format=False)
             correct_answers[question.id] = answer
 
         return correct_answers

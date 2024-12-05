@@ -6,7 +6,7 @@ from werkzeug import urls
 
 import odoo
 from odoo.ormapping import fields
-import odoo.modules.module  # get_manifest, don't from-import it
+import odoo.microkernel.modules.module  # get_manifest, don't from-import it
 from odoo import api, models, tools
 from odoo.technology import conf
 from odoo.tools import misc
@@ -186,7 +186,7 @@ class IrAsset(models.Model):
 
         # 2. Process all addons' manifests.
         for addon in addons:
-            for command in odoo.modules.module._get_manifest_cached(addon)['assets'].get(bundle, ()):
+            for command in odoo.microkernel.modules.module._get_manifest_cached(addon)['assets'].get(bundle, ()):
                 directive, target, path_def = self._process_command(command)
                 self._process_path(bundle, directive, target, path_def, asset_paths, seen, addons, installed, bundle_start_index, **assets_params)
 
@@ -288,7 +288,7 @@ class IrAsset(models.Model):
         IrModule = self.env['ir.module.module']
 
         def mapper(addon):
-            manif = odoo.modules.module._get_manifest_cached(addon)
+            manif = odoo.microkernel.modules.module._get_manifest_cached(addon)
             from_terp = IrModule.get_values_from_terp(manif)
             from_terp['name'] = addon
             from_terp['depends'] = manif.get('depends', ['base'])
@@ -340,7 +340,7 @@ class IrAsset(models.Model):
         path_def = fs2web(path_def)  # we expect to have all path definition unix style or url style, this is a safety
         path_parts = [part for part in path_def.split('/') if part]
         addon = path_parts[0]
-        addon_manifest = odoo.modules.module._get_manifest_cached(addon)
+        addon_manifest = odoo.microkernel.modules.module._get_manifest_cached(addon)
 
         safe_path = True
         if addon_manifest:

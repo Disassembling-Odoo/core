@@ -5,7 +5,7 @@ import logging
 import odoo.release
 import odoo.tools
 from odoo.exceptions import AccessDenied
-from odoo.modules.registry import Registry
+from odoo.microkernel.modules.registry import Registry
 from odoo.tools.translate import _
 
 _logger = logging.getLogger(__name__)

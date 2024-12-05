@@ -8,7 +8,7 @@ from odoo import Command
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
 from odoo.tests import Form, users
-from odoo.tools.misc import format_date
+from odoo.microkernel.utils import format_date
 from odoo.tests.common import HttpCase, tagged
 
 from odoo.addons.mrp.tests.common import TestMrpCommon

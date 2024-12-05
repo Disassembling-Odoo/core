@@ -7,9 +7,9 @@
 
 from . import db, graph, loading, migration, module, registry, neutralize
 
-from odoo.modules.loading import load_modules, reset_modules_state
+from .loading import load_modules, reset_modules_state
 
-from odoo.modules.module import (
+from .module import (
     adapt_version,
     check_manifest_dependencies,
     get_module_path,

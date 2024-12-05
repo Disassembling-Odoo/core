@@ -12,7 +12,7 @@ from odoo.technology.framework.http import request, Response
 from odoo.osv import expression
 from odoo.technology.framework import http
 from odoo.tools import consteq
-from odoo.tools.misc import get_lang
+from odoo.microkernel.utils import get_lang
 
 
 class PortalMailGroup(http.Controller):

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo.modules.registry import Registry
+from odoo.microkernel.modules.registry import Registry
 
 def migrate(cr, version):
     registry = Registry(cr.dbname)

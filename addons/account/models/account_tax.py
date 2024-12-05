@@ -3,9 +3,11 @@ from odoo import api, models, _, Command
 from odoo.ormapping import fields
 from odoo.osv import expression
 from odoo.exceptions import UserError, ValidationError
-from odoo.tools import frozendict, groupby, html2plaintext, is_html_empty, split_every
+from odoo.tools import groupby, html2plaintext, is_html_empty, split_every
+from odoo.technology.utils import frozendict
 from odoo.tools.float_utils import float_repr, float_round, float_compare
-from odoo.tools.misc import clean_context, formatLang
+from odoo.tools.misc import clean_context
+from odoo.microkernel.utils import formatLang
 from odoo.tools.translate import html_translate
 
 from collections import defaultdict

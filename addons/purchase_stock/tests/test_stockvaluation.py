@@ -12,7 +12,7 @@ from odoo.ormapping import fields
 from odoo.tests import Form
 from odoo.tests.common import TransactionCase, tagged
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon
-from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
+from odoo.microkernel.utils import DEFAULT_SERVER_DATETIME_FORMAT
 from odoo.addons.stock.tests.common import TestStockCommon
 
 

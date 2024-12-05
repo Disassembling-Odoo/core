@@ -8,7 +8,8 @@ import json
 from odoo import api, models, _
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
-from odoo.tools import float_compare, format_datetime, float_is_zero, float_round
+from odoo.tools import float_compare, float_is_zero, float_round
+from odoo.microkernel.utils import format_datetime
 
 
 class MrpWorkorder(models.Model):

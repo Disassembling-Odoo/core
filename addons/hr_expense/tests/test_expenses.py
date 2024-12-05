@@ -10,7 +10,7 @@ from odoo.ormapping import fields
 from odoo.addons.hr_expense.tests.common import TestExpenseCommon
 from odoo.exceptions import RedirectWarning, UserError, ValidationError
 from odoo.tests import tagged, Form
-from odoo.tools.misc import format_date
+from odoo.microkernel.utils import format_date
 
 
 @tagged('-at_install', 'post_install')

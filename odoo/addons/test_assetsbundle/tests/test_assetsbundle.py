@@ -18,7 +18,7 @@ from odoo.addons import __path__ as ADDONS_PATH
 from odoo.addons.base.models.assetsbundle import AssetsBundle, XMLAssetError, ANY_UNIQUE
 from odoo.addons.base.models.ir_asset import AssetPaths
 from odoo.addons.base.models.ir_attachment import IrAttachment
-from odoo.modules.module import get_manifest
+from odoo.microkernel.modules.module import get_manifest
 from odoo.technology.framework import http
 from odoo.tests import HttpCase, tagged
 from odoo.tests.common import TransactionCase
@@ -112,7 +112,7 @@ class AddonManifestPatched(TransactionCase):
         }
 
         self.patch(self.env.registry, '_init_modules', self.installed_modules)
-        self.patch(odoo.modules.module, '_get_manifest_cached', Mock(side_effect=lambda module: self.manifests.get(module, {})))
+        self.patch(odoo.microkernel.modules.module, '_get_manifest_cached', Mock(side_effect=lambda module: self.manifests.get(module, {})))
 
 
 class FileTouchable(AddonManifestPatched):

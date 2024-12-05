@@ -12,7 +12,8 @@ from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
 from odoo.osv import expression
 from odoo.tools.float_utils import float_compare, float_is_zero, float_round
-from odoo.tools.misc import clean_context, OrderedSet, groupby
+from odoo.tools.misc import clean_context, groupby
+from odoo.technology.utils import OrderedSet
 
 PROCUREMENT_PRIORITIES = [('0', 'Normal'), ('1', 'Urgent')]
 

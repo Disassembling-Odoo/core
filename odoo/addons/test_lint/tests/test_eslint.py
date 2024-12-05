@@ -8,7 +8,7 @@ from unittest import skipIf
 from odoo import tools
 from odoo.tests import tagged
 from odoo.tools.misc import file_path
-from odoo.modules import get_modules
+from odoo.microkernel.modules import get_modules
 
 from . import lint_case
 

@@ -7,7 +7,7 @@ from odoo import _, Command, models
 from odoo.ormapping import fields
 from odoo.osv import expression
 from odoo.tools.float_utils import float_is_zero
-from odoo.tools.misc import OrderedSet
+from odoo.technology.utils import OrderedSet
 
 
 class StockMoveLine(models.Model):

@@ -27,6 +27,7 @@ from odoo.osv import expression
 from odoo.technology import conf
 from odoo.tools.float_utils import float_round
 from odoo.tools.image import ImageProcess
+from odoo.microkernel import utils as microkernel_utils
 
 _logger = logging.getLogger(__name__)
 
@@ -1281,7 +1282,7 @@ class MassMailing(models.Model):
         if random_tip:
             random_tip = random.choice(random_tip).tip_description
 
-        formatted_date = tools.format_datetime(
+        formatted_date = microkernel_utils.format_datetime(
             self.env, self.sent_date, self.user_id.tz, 'MMM dd, YYYY', self.user_id.lang
         ) if self.sent_date else False
 

@@ -1,6 +1,7 @@
 from odoo import api, models, _
 from odoo.ormapping import fields
-from odoo.tools import formatLang, float_is_zero
+from odoo.tools import float_is_zero
+from odoo.microkernel.utils import formatLang
 from odoo.exceptions import ValidationError
 from uuid import uuid4
 

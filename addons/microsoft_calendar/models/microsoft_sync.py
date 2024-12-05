@@ -10,7 +10,7 @@ from datetime import timedelta
 
 from odoo import api, models
 from odoo.ormapping import fields
-from odoo.modules.registry import Registry
+from odoo.microkernel.modules.registry import Registry
 from odoo.osv import expression
 
 from odoo.addons.microsoft_calendar.utils.microsoft_event import MicrosoftEvent

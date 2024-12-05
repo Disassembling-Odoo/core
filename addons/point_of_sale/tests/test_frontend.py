@@ -5,7 +5,7 @@ import logging
 from unittest.mock import patch
 from odoo import Command
 
-from odoo.tools import DEFAULT_SERVER_DATE_FORMAT
+from odoo.microkernel.utils import DEFAULT_SERVER_DATE_FORMAT
 from odoo.tests import tagged
 from odoo.addons.account.tests.common import AccountTestInvoicingHttpCommon
 from odoo.addons.point_of_sale.tests.common_setup_methods import setup_product_combo_items

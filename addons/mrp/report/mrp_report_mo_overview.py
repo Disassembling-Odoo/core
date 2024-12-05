@@ -5,7 +5,8 @@ import json
 from collections import defaultdict
 from odoo import _, api, models
 from odoo.ormapping import fields
-from odoo.tools import float_compare, float_repr, float_round, float_is_zero, format_date, get_lang
+from odoo.tools import float_compare, float_repr, float_round, float_is_zero
+from odoo.microkernel.utils import format_date, get_lang
 from datetime import datetime, timedelta
 from math import log10
 

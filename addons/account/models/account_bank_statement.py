@@ -5,7 +5,7 @@ from odoo import api, models, _, Command
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
 from odoo.technology.db import create_index
-from odoo.tools.misc import formatLang
+from odoo.microkernel.utils import formatLang
 
 class AccountBankStatement(models.Model):
     _name = "account.bank.statement"

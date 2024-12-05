@@ -6,9 +6,10 @@ import logging
 
 from odoo import api, models
 from odoo.ormapping import fields
-from odoo.technology.framework.http import GeoIP, request, root
-from odoo.tools import OrderedSet, unique
+from odoo.technology.framework import GeoIP, request, root
+from odoo.tools import unique
 from odoo.tools.translate import _
+from odoo.technology.utils import OrderedSet
 from odoo.technology.db import SQL
 from .res_users import check_identity
 from odoo.technology import db

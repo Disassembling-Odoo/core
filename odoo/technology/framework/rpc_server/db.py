@@ -13,11 +13,12 @@ from pytz import country_timezones
 
 import odoo
 import odoo.release
+from odoo import SUPERUSER_ID
 import odoo.exceptions
 import odoo.tools
 import odoo.technology.db
 from odoo.technology.db import check_db_management_enabled, create_empty_database
-from odoo import SUPERUSER_ID
+import odoo.microkernel
 from odoo.technology.utils import db_utils as DBUtils
 
 _logger = logging.getLogger(__name__)
@@ -26,17 +27,17 @@ _logger = logging.getLogger(__name__)
 # Master password required
 #----------------------------------------------------------
 
-# This should be moved to odoo.modules.db, along side initialize().
+# This should be moved to odoo.microkernel.modules.db, along side initialize().
 def _initialize_db(id, db_name, demo, lang, user_password, login='admin', country_code=None, phone=None):
     try:
         db = odoo.technology.db.db_connect(db_name)
         with closing(db.cursor()) as cr:
             # TODO this should be removed as it is done by Registry.new().
-            odoo.modules.db.initialize(cr)
-            odoo.conf.config['load_language'] = lang
+            odoo.microkernel.modules.db.initialize(cr)
+            odoo.technology.conf.config['load_language'] = lang
             cr.commit()
 
-        registry = odoo.modules.registry.Registry.new(db_name, demo, None, update_module=True)
+        registry = odoo.microkernel.modules.registry.Registry.new(db_name, demo, None, update_module=True)
 
         with closing(registry.cursor()) as cr:
             env = odoo.api.Environment(cr, SUPERUSER_ID, {})
@@ -117,8 +118,8 @@ def exp_rename(old_name, new_name):
 
 @check_db_management_enabled
 def exp_change_admin_password(new_password):
-    odoo.conf.config.set_admin_password(new_password)
-    odoo.conf.config.save(['admin_passwd'])
+    odoo.technology.conf.config.set_admin_password(new_password)
+    odoo.technology.conf.config.save(['admin_passwd'])
     return True
 
 @check_db_management_enabled
@@ -126,7 +127,7 @@ def exp_migrate_databases(databases):
     for db in databases:
         _logger.info('migrate database %s', db)
         odoo.conf.config['update']['base'] = True
-        odoo.modules.registry.Registry.new(db, force_demo=False, update_module=True)
+        odoo.microkernel.modules.registry.Registry.new(db, force_demo=False, update_module=True)
     return True
 
 #----------------------------------------------------------

@@ -36,8 +36,10 @@ from psycopg2.extras import Json
 
 import odoo
 from odoo.exceptions import UserError
+import odoo.microkernel
 from ..technology.conf import config
-from .misc import file_open, file_path, get_iso_codes, OrderedSet, ReadonlyDict, SKIPPED_ELEMENT_TYPES
+from .misc import file_open, file_path, get_iso_codes, SKIPPED_ELEMENT_TYPES
+from ..technology.utils import ReadonlyDict, OrderedSet
 
 __all__ = [
     "_",
@@ -508,7 +510,7 @@ def get_translated_module(arg: str | int | typing.Any) -> str:  # frame not repr
             # just a quick lookup because `get_resource_from_path is slow compared to this`
             return module_name.split('.')[2]
         path = inspect.getfile(frame)
-        path_info = odoo.modules.get_resource_from_path(path)
+        path_info = odoo.microkernel.modules.get_resource_from_path(path)
         return path_info[0] if path_info else 'base'
 
 
@@ -1793,7 +1795,7 @@ def _get_translation_upgrade_queries(cr, field):
     field's column, while the queries in ``cleanup_queries`` remove the corresponding data from
     table ``_ir_translation``.
     """
-    from odoo.modules.registry import Registry  # noqa: PLC0415
+    from odoo.microkernel.modules.registry import Registry  # noqa: PLC0415
     Model = Registry(cr.dbname)[field.model_name]
     translation_name = f"{field.model_name},{field.name}"
     migrate_queries = []

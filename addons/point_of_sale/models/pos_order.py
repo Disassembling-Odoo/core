@@ -12,7 +12,8 @@ import pytz
 
 from odoo import api, models, tools, _
 from odoo.ormapping import fields
-from odoo.tools import float_is_zero, float_round, float_repr, float_compare, formatLang
+from odoo.tools import float_is_zero, float_round, float_repr, float_compare, 
+from odoo.microkernel.utils import formatLang
 from odoo.exceptions import ValidationError, UserError
 from odoo.osv.expression import AND
 import base64

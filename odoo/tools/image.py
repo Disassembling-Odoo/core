@@ -16,7 +16,7 @@ except ImportError:
 from random import randrange
 
 from odoo.exceptions import UserError
-from odoo.tools.misc import DotDict
+from odoo.technology.utils import DotDict
 from odoo.tools.translate import LazyTranslate
 
 

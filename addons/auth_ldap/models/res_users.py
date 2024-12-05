@@ -4,7 +4,7 @@
 from odoo.exceptions import AccessDenied
 
 from odoo import api, models, SUPERUSER_ID
-from odoo.modules.registry import Registry
+from odoo.microkernel.modules.registry import Registry
 
 
 class Users(models.Model):

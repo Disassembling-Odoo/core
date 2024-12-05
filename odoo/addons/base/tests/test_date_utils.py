@@ -2,7 +2,7 @@
 from datetime import date
 
 from odoo.tests import BaseCase
-from odoo.tools.date_utils import get_fiscal_year
+from odoo.technology.utils.date_utils import get_fiscal_year
 
 
 class TestDateUtils(BaseCase):

@@ -2,8 +2,8 @@
 from odoo import api, models, _
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
-from odoo.tools.date_utils import get_fiscal_year
-from odoo.tools.misc import format_date
+from odoo.technology.utils.date_utils import get_fiscal_year
+from odoo.microkernel.utils import format_date
 
 from collections import defaultdict
 import json

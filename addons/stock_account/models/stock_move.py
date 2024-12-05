@@ -6,7 +6,8 @@ from collections import defaultdict
 from odoo import api, models, _
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
-from odoo.tools import float_is_zero, float_round, float_compare, OrderedSet
+from odoo.tools import float_is_zero, float_round, float_compare
+from odoo.technology.utils import OrderedSet
 
 import logging
 _logger = logging.getLogger(__name__)

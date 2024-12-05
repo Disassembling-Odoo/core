@@ -4,8 +4,8 @@ import logging
 from ast import literal_eval
 from os.path import join as opj
 
-from odoo.modules import get_modules
-from odoo.modules.module import _DEFAULT_MANIFEST, module_manifest, get_module_path
+from odoo.microkernel.modules import get_modules
+from odoo.microkernel.modules.module import _DEFAULT_MANIFEST, module_manifest, get_module_path
 from odoo.tests import BaseCase
 from odoo.tools.misc import file_open, file_path
 
@@ -21,7 +21,7 @@ MANIFEST_KEYS = {
 class ManifestLinter(BaseCase):
 
     def _load_manifest(self, module):
-        """Do not rely on odoo/modules/module -> load_manifest
+        """Do not rely on odoo/microkernel/modules/module -> load_manifest
         as we want to check manifests content, independently of the
         values from _DEFAULT_MANIFEST added automatically by load_manifest
         """

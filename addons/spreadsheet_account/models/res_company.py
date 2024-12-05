@@ -1,7 +1,7 @@
 from odoo import models, api
 
 from odoo.ormapping import fields
-from odoo.tools import date_utils
+from odoo.technology.utils import date_utils
 
 
 class ResCompany(models.Model):

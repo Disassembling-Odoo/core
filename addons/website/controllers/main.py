@@ -26,7 +26,8 @@ from odoo.exceptions import AccessError, UserError
 from odoo.technology.framework.http import request, SessionExpiredException
 from odoo.osv import expression
 from odoo.technology.framework import http
-from odoo.tools import OrderedSet, html_escape as escape, py_to_js_locale
+from odoo.tools import html_escape as escape, py_to_js_locale
+from odoo.technology.utils import OrderedSet
 from odoo.technology.db import escape_psql
 from odoo.addons.base.models.ir_http import EXTENSION_TO_WEB_MIMETYPES
 from odoo.addons.base.models.ir_qweb import QWebException

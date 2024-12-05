@@ -12,7 +12,8 @@ from dateutil.relativedelta import relativedelta
 from odoo import api, models
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
-from odoo.tools import format_date, frozendict
+from odoo.technology.utils import frozendict
+from odoo.microkernel.utils import format_date
 from odoo.tools.translate import _
 from odoo.tools.float_utils import float_round
 

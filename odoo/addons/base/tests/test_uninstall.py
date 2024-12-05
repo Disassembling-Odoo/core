@@ -10,7 +10,7 @@ from odoo import api, SUPERUSER_ID
 from odoo.tests import common
 from odoo.tests.common import BaseCase
 
-from odoo.modules.registry import Registry
+from odoo.microkernel.modules.registry import Registry
 
 
 @contextmanager

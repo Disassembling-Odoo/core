@@ -7,7 +7,7 @@ from dateutil.relativedelta import relativedelta
 
 from odoo import models, api, _
 from odoo.osv import expression
-from odoo.tools import date_utils
+from odoo.technology.utils import date_utils
 
 
 class AccountMove(models.Model):

@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-import odoo.technology.framework.http as http
-
-from odoo.technology.framework.http import request
-from odoo.tools.misc import get_lang
+from odoo.technology.framework import http, request
+from odoo.microkernel.utils import get_lang
 
 
 class CalendarController(http.Controller):

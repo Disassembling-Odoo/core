@@ -2,7 +2,7 @@
 import os
 import re
 
-from odoo.tools.misc import which
+from odoo.tools.which import which
 from odoo.exceptions import ValidationError, AccessDenied
 
 regex_pg_name = re.compile(r'^[a-z_][a-z0-9_$]*$', re.I)

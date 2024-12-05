@@ -13,9 +13,10 @@ from odoo.ormapping import fields
 from odoo.addons.base.models.res_partner import _tz_get
 from odoo.exceptions import UserError, ValidationError
 from odoo.osv import expression
-from odoo.tools import format_date, format_datetime, format_time, frozendict
+from odoo.technology.utils import frozendict
+from odoo.microkernel.utils import format_date, format_datetime, format_time
 from odoo.tools.mail import is_html_empty, html_to_inner_content
-from odoo.tools.misc import formatLang
+from odoo.microkernel.utils import formatLang
 from odoo.tools.translate import html_translate
 
 _logger = logging.getLogger(__name__)

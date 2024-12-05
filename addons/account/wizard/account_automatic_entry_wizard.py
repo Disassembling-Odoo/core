@@ -2,13 +2,13 @@
 from odoo import api, models, _
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
-from odoo.tools.misc import format_date, formatLang
+from odoo.microkernel.utils import format_date, formatLang
 from odoo.tools.float_utils import float_repr
 from odoo.tools import groupby
 
 from collections import defaultdict
 from markupsafe import Markup, escape
-from odoo.tools import frozendict
+from odoo.technology.utils import frozendict
 import json
 
 class AutomaticEntryWizard(models.TransientModel):

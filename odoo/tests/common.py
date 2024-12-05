@@ -58,10 +58,11 @@ from odoo import api
 from odoo.technology.conf import config
 from odoo.exceptions import AccessError
 from odoo.ormapping import Command
-from odoo.modules.registry import Registry
+from odoo.microkernel.modules.registry import Registry
+from odoo.technology.utils import DotDict
 from odoo.technology.framework import compute_session_token
 from odoo.technology.db import BaseCursor, Cursor
-from odoo.tools import float_compare, mute_logger, profiler, DotDict
+from odoo.tools import float_compare, mute_logger, profiler
 from odoo.tools.mail import single_email_re
 from odoo.tools.misc import find_in_path, lower_logging
 from odoo.tools.xml_utils import _validate_xml
@@ -844,7 +845,7 @@ class TransactionCase(BaseCase):
     registry: Registry = None
     env: api.Environment = None
     cr: Cursor = None
-    muted_registry_logger = mute_logger(odoo.modules.registry._logger.name)
+    muted_registry_logger = mute_logger(odoo.microkernel.modules.registry._logger.name)
     freeze_time = None
 
     @classmethod

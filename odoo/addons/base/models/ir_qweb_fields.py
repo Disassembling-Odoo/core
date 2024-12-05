@@ -14,9 +14,9 @@ from lxml import etree, html
 
 from odoo import api, models, tools
 from odoo.ormapping import fields
-from odoo.tools import posix_to_ldml, float_utils, format_date, format_duration
+from odoo.tools import float_utils
+from odoo.microkernel.utils import format_duration, posix_to_ldml, get_lang, babel_locale_parse, format_date
 from odoo.tools.mail import safe_attrs
-from odoo.tools.misc import get_lang, babel_locale_parse
 from odoo.tools.mimetypes import guess_mimetype
 from odoo.tools.translate import _, LazyTranslate
 

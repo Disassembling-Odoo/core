@@ -4,7 +4,7 @@ from odoo import models, _
 from odoo.ormapping import fields
 from odoo.technology.db import SQL
 from odoo.exceptions import AccessDenied
-from odoo.modules.registry import Registry
+from odoo.microkernel.modules.registry import Registry
 
 from odoo.addons.base.models.res_users import check_identity
 from .._vendor.webauthn.helpers.exceptions import InvalidAuthenticationResponse

@@ -2,7 +2,7 @@
 
 from odoo.exceptions import UserError, AccessError
 from odoo.tests import common
-from odoo.tools import frozendict
+from odoo.technology.utils import frozendict
 
 
 class TestCompanyCheck(common.TransactionCase):

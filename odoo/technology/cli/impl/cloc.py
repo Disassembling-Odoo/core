@@ -119,7 +119,7 @@ class Cloc(object):
     def count_path(self, path, exclude=None):
         path = path.rstrip('/')
         exclude_list = []
-        for i in odoo.modules.module.MANIFEST_NAMES:
+        for i in odoo.microkernel.modules.module.MANIFEST_NAMES:
             manifest_path = os.path.join(path, i)
             try:
                 with open(manifest_path, 'rb') as manifest:
@@ -160,7 +160,7 @@ class Cloc(object):
 
     def count_modules(self, env):
         # Exclude standard addons paths
-        exclude_heuristic = [odoo.modules.get_module_path(m, display_warning=False) for m in STANDARD_MODULES]
+        exclude_heuristic = [odoo.microkernel.modules.get_module_path(m, display_warning=False) for m in STANDARD_MODULES]
         exclude_path = set([os.path.dirname(os.path.realpath(m)) for m in exclude_heuristic if m])
 
         domain = [('state', '=', 'installed')]
@@ -170,7 +170,7 @@ class Cloc(object):
         module_list = env['ir.module.module'].search(domain).mapped('name')
 
         for module_name in module_list:
-            module_path = os.path.realpath(odoo.modules.get_module_path(module_name))
+            module_path = os.path.realpath(odoo.microkernel.modules.get_module_path(module_name))
             if module_path:
                 if any(module_path.startswith(i) for i in exclude_path):
                     continue
@@ -287,7 +287,7 @@ class Cloc(object):
         self.count_customization(env)
 
     def count_database(self, database):
-        registry = odoo.modules.registry.Registry(config['db_name'])
+        registry = odoo.microkernel.modules.registry.Registry(config['db_name'])
         with registry.cursor() as cr:
             uid = odoo.SUPERUSER_ID
             env = odoo.api.Environment(cr, uid, {})

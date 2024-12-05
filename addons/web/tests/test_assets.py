@@ -7,7 +7,7 @@ import odoo
 import odoo.tests
 
 from odoo.tests.common import HttpCase
-from odoo.modules.module import get_manifest
+from odoo.microkernel.modules.module import get_manifest
 from odoo.tools import mute_logger
 
 from unittest.mock import patch

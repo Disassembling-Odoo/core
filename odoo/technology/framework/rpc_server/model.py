@@ -6,7 +6,7 @@ from collections.abc import Mapping, Sequence
 
 import odoo
 from odoo.exceptions import UserError
-from odoo.modules.registry import Registry
+from odoo.microkernel.modules.registry import Registry
 from ..service import security
 from ..service import retrying
 from odoo.tools import lazy

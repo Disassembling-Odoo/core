@@ -7,7 +7,7 @@ import sys
 from pathlib import Path
 
 import odoo
-from odoo.modules.registry import Registry
+from odoo.microkernel.modules.registry import Registry
 from odoo.technology.conf import config
 from . import Command
 

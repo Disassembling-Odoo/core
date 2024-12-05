@@ -4,7 +4,7 @@ from odoo import models, api, _
 from odoo.ormapping import fields
 from odoo.api import ondelete
 from odoo.exceptions import UserError
-from odoo.tools.misc import frozendict
+from odoo.technology.utils import frozendict
 
 
 class AccountMove(models.Model):

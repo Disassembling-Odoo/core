@@ -11,7 +11,7 @@ import odoo
 import odoo.tools
 from odoo.tests import common
 from odoo.technology.framework import common as auth, retrying
-from odoo.tools import DotDict
+from odoo.technology.utils import DotDict
 
 
 @common.tagged('post_install', '-at_install')

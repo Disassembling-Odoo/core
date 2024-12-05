@@ -32,7 +32,7 @@ from .. import conf
 from ... import tools
 from .sql import SQL
 from ...tools.func import frame_codeinfo, locked
-from ...tools.misc import Callbacks
+from ..utils import Callbacks
 
 if typing.TYPE_CHECKING:
     from collections.abc import Iterable, Iterator
@@ -844,7 +844,7 @@ def db_connect(to, allow_uri=False, readonly=False):
     return Connection(_Pool_readonly if readonly else _Pool, db, info)
 
 def close_db(db_name):
-    """ You might want to call odoo.modules.registry.Registry.delete(db_name) along this function."""
+    """ You might want to call odoo.microkernel.modules.registry.Registry.delete(db_name) along this function."""
     if _Pool:
         _Pool.close_all(connection_info_for(db_name)[1])
     if _Pool_readonly:

@@ -14,7 +14,7 @@ import odoo
 from odoo import api, models, tools, _, Command
 from odoo.ormapping import fields
 from odoo.exceptions import MissingError, ValidationError, AccessError, UserError
-from odoo.tools import frozendict
+from odoo.technology.utils import frozendict
 from odoo.tools.safe_eval import safe_eval, test_python_expr
 from odoo.tools.float_utils import float_compare
 from odoo.technology.framework.http import request

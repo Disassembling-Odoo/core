@@ -112,7 +112,7 @@ def export_translation():
         fileformat = "po"
 
     with open(config["translate_out"], "wb") as buf:
-        registry = odoo.modules.registry.Registry.new(dbname)
+        registry = odoo.microkernel.modules.registry.Registry.new(dbname)
         with registry.cursor() as cr:
             odoo.tools.translate.trans_export(config["language"],
                 config["translate_modules"] or ["all"], buf, fileformat, cr)
@@ -124,7 +124,7 @@ def import_translation():
     overwrite = config["overwrite_existing_translations"]
     dbname = config['db_name']
 
-    registry = odoo.modules.registry.Registry.new(dbname)
+    registry = odoo.microkernel.modules.registry.Registry.new(dbname)
     with registry.cursor() as cr:
         translation_importer = odoo.tools.translate.TranslationImporter(cr)
         translation_importer.load_file(config["translate_in"], config["language"])

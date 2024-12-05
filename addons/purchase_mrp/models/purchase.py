@@ -5,7 +5,7 @@ from collections import defaultdict
 
 from odoo import api, models, _
 from odoo.ormapping import fields
-from odoo.tools import OrderedSet
+from odoo.technology.utils import OrderedSet
 
 
 class PurchaseOrder(models.Model):

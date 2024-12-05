@@ -5,7 +5,7 @@ from dateutil.relativedelta import relativedelta
 
 from odoo import _, api, models
 from odoo.ormapping import fields
-from odoo.tools import date_utils
+from odoo.technology.utils import date_utils
 
 
 class KarmaTracking(models.Model):

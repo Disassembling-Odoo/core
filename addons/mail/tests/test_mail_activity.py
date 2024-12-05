@@ -7,7 +7,7 @@ from unittest.mock import patch
 from odoo.addons.mail.models.mail_activity import MailActivity
 from odoo.addons.mail.tests.common import MailCommon
 from odoo.tests import Form, tagged, HttpCase
-from odoo.tools.misc import format_date
+from odoo.microkernel.utils import format_date
 
 
 class ActivityScheduleCase(MailCommon):

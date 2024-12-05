@@ -9,7 +9,7 @@ from dateutil.relativedelta import relativedelta
 from odoo import api, models, _
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
-from odoo.tools.misc import format_date, get_lang
+from odoo.microkernel.utils import format_date, get_lang
 
 COLORS_MAP = {
     0: 'lightgrey',

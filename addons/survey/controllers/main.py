@@ -15,7 +15,8 @@ from odoo.exceptions import UserError
 from odoo.technology.framework.http import request, content_disposition
 from odoo.osv import expression
 from odoo.technology.framework import http
-from odoo.tools import format_datetime, format_date, is_html_empty
+from odoo.tools import is_html_empty
+from odoo.microkernel.utils import format_datetime, format_date
 from odoo.addons.base.models.ir_qweb import keep_query
 
 _logger = logging.getLogger(__name__)

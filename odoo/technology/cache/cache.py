@@ -150,7 +150,7 @@ class ormcache_context(ormcache):
 
 def log_ormcache_stats(sig=None, frame=None):   # noqa: ARG001 (arguments are there for signals)
     """ Log statistics of ormcache usage by database, model, and method. """
-    from odoo.modules.registry import Registry
+    from odoo.microkernel.modules.registry import Registry
     cache_entries = {}
     current_db = None
     cache_stats = ['Caches stats:']

@@ -21,7 +21,7 @@ from odoo.addons.base.tests.test_expression import TransactionExpressionCase
 from odoo.exceptions import AccessError, MissingError, UserError, ValidationError
 from odoo.tests import TransactionCase, tagged, Form, users
 from odoo.tools import mute_logger, float_repr
-from odoo.tools.date_utils import add, subtract, start_of, end_of
+from odoo.technology.utils.date_utils import add, subtract, start_of, end_of
 from odoo.tools.image import image_data_uri
 
 

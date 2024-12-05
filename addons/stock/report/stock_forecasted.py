@@ -6,7 +6,8 @@ from datetime import date
 
 from odoo import api, models
 from odoo.osv.expression import AND
-from odoo.tools import float_is_zero, format_date, float_round, float_compare
+from odoo.tools import float_is_zero, float_round, float_compare
+from odoo.microkernel.utils import format_date
 
 class StockForecasted(models.AbstractModel):
     _name = 'stock.forecasted_product_product'

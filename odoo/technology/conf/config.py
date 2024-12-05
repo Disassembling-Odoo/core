@@ -408,7 +408,7 @@ class configmanager(object):
                     stacklevel=2,
                 )
         self._warn_deprecated_options()
-        odoo.modules.module.initialize_sys_path()
+        odoo.microkernel.modules.module.initialize_sys_path()
         return opt
 
     def _parse_config(self, args=None):
@@ -622,7 +622,7 @@ class configmanager(object):
                     )
 
     def _is_addons_path(self, path):
-        from odoo.modules.module import MANIFEST_NAMES
+        from odoo.microkernel.modules.module import MANIFEST_NAMES
         for f in os.listdir(path):
             modpath = os.path.join(path, f)
             if os.path.isdir(modpath):

@@ -15,13 +15,13 @@ import re
 import logging
 from functools import partial
 
-from odoo.tools.misc import OrderedSet
+from odoo.technology.utils import OrderedSet
 
 _logger = logging.getLogger(__name__)
 
 def transpile_javascript(url, content):
     """
-    Transpile the code from native JS modules to custom odoo modules.
+    Transpile the code from native JS modules to custom odoo microkernel modules.
 
     :param content: The original source code
     :param url: The url of the file in the project

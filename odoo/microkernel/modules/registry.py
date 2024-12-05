@@ -22,22 +22,21 @@ from operator import attrgetter
 import psycopg2
 
 import odoo
+from odoo import SUPERUSER_ID
 from odoo.technology.conf import config
-from odoo.modules.db import FunctionStatus
-from .. import SUPERUSER_ID
-from odoo.technology.db import sql, TestCursor
+from odoo.microkernel.modules.db import FunctionStatus
 from odoo.tools import (
-    lazy_classproperty,
-    lazy_property, OrderedSet,
+    lazy_classproperty, lazy_property, 
     remove_accents,
 )
 from odoo.tools.func import locked
 from odoo.tools.lru import LRU
 from odoo.tools.misc import Collector, format_frame
+from odoo.technology.utils import OrderedSet
 
 if typing.TYPE_CHECKING:
     from odoo.ormapping import BaseModel
-
+from odoo.technology.db import sql, SQL, TestCursor
 
 _logger = logging.getLogger(__name__)
 _schema = logging.getLogger('odoo.schema')
@@ -129,9 +128,9 @@ class Registry(Mapping):
             registry.setup_signaling()
             # This should be a method on Registry
             try:
-                odoo.modules.load_modules(registry, force_demo, status, update_module)
+                odoo.microkernel.modules.load_modules(registry, force_demo, status, update_module)
             except Exception:
-                odoo.modules.reset_modules_state(db_name)
+                odoo.microkernel.modules.reset_modules_state(db_name)
                 raise
         except Exception:
             _logger.error('Failed to load registry')
@@ -209,8 +208,8 @@ class Registry(Mapping):
         self._invalidation_flags = threading.local()
 
         with closing(self.cursor()) as cr:
-            self.has_unaccent = odoo.modules.db.has_unaccent(cr)
-            self.has_trigram = odoo.modules.db.has_trigram(cr)
+            self.has_unaccent = odoo.microkernel.modules.db.has_unaccent(cr)
+            self.has_trigram = odoo.microkernel.modules.db.has_trigram(cr)
 
         self.unaccent = _unaccent if self.has_unaccent else lambda x: x
         self.unaccent_python = remove_accents if self.has_unaccent else lambda x: x

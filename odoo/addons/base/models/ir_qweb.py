@@ -390,7 +390,7 @@ from psycopg2.extensions import TransactionRollbackError
 
 from odoo import api, models, tools
 from odoo.technology.conf import config
-from odoo.modules import registry
+from odoo.microkernel.modules import registry
 from odoo.technology import conf
 from odoo.tools import safe_eval, pycompat
 from odoo.tools.constants import SUPPORTED_DEBUGGER, EXTERNAL_ASSET

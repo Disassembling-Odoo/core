@@ -19,24 +19,26 @@ from odoo.exceptions import UserError, AccessError
 from odoo.tools.mail import is_html_empty, prepend_html_content, html_normalize
 from odoo.tools.rendering_tools import convert_inline_template_to_qweb, parse_inline_template, render_inline_template, template_env_globals
 
+from odoo.microkernel import utils
+
 _logger = logging.getLogger(__name__)
 
 def format_date(env, date, pattern=False, lang_code=False):
     try:
-        return tools.format_date(env, date, date_format=pattern, lang_code=lang_code)
+        return utils.format_date(env, date, date_format=pattern, lang_code=lang_code)
     except babel.core.UnknownLocaleError:
         return date
 
 
 def format_datetime(env, dt, tz=False, dt_format='medium', lang_code=False):
     try:
-        return tools.format_datetime(env, dt, tz=tz, dt_format=dt_format, lang_code=lang_code)
+        return utils.format_datetime(env, dt, tz=tz, dt_format=dt_format, lang_code=lang_code)
     except babel.core.UnknownLocaleError:
         return dt
 
 def format_time(env, time, tz=False, time_format='medium', lang_code=False):
     try:
-        return tools.format_time(env, time, tz=tz, time_format=time_format, lang_code=lang_code)
+        return utils.format_time(env, time, tz=tz, time_format=time_format, lang_code=lang_code)
     except babel.core.UnknownLocaleError:
         return time
 
@@ -266,7 +268,7 @@ class MailRenderMixin(models.AbstractModel):
             'format_datetime': lambda dt, tz=False, dt_format=False, lang_code=False: format_datetime(self.env, dt, tz, dt_format, lang_code),
             'format_time': lambda time, tz=False, time_format=False, lang_code=False: format_time(self.env, time, tz, time_format, lang_code),
             'format_amount': lambda amount, currency, lang_code=False: tools.format_amount(self.env, amount, currency, lang_code),
-            'format_duration': lambda value: tools.format_duration(value),
+            'format_duration': lambda value: utils.format_duration(value),
             'is_html_empty': is_html_empty,
             'slug': self.env['ir.http']._slug,
             'user': self.env.user,

@@ -9,7 +9,7 @@ from odoo import api, models, _
 from odoo.ormapping import fields
 from odoo.exceptions import ValidationError
 from odoo.osv.expression import AND
-from odoo.tools import format_date
+from odoo.microkernel.utils import format_date
 
 
 class HrLeaveType(models.Model):

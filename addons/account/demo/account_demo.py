@@ -6,7 +6,8 @@ from dateutil.relativedelta import relativedelta
 
 from odoo import api, models, Command
 from odoo.ormapping import fields
-from odoo.tools.misc import file_open, formatLang
+from odoo.tools.misc import file_open
+from odoo.microkernel.utils import formatLang
 from odoo.exceptions import UserError, ValidationError
 
 _logger = logging.getLogger(__name__)

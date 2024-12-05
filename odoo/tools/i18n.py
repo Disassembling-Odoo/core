@@ -5,7 +5,7 @@ from typing import TYPE_CHECKING, Literal, Optional, Sequence
 
 from babel import lists
 
-from odoo.tools.misc import babel_locale_parse, get_lang
+from odoo.microkernel.utils import babel_locale_parse, get_lang
 
 if TYPE_CHECKING:
     import odoo.api

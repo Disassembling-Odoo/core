@@ -11,7 +11,7 @@ from psycopg2 import errors as pgerrors
 from odoo import api, models, _
 from odoo.ormapping import fields
 from odoo.osv import expression
-from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT, mute_logger
+from odoo.tools import mute_logger
 from odoo.exceptions import ValidationError, UserError
 from odoo.addons.base.models.res_partner import WARNING_MESSAGE, WARNING_HELP
 from odoo.tools import unique

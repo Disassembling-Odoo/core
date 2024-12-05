@@ -8,7 +8,7 @@ import psycopg2.errors
 
 import odoo
 from odoo.exceptions import UserError
-from odoo.modules.registry import Registry
+from odoo.microkernel.modules.registry import Registry
 from odoo.tests import common
 from odoo.tests.common import BaseCase
 from odoo.tools.misc import mute_logger

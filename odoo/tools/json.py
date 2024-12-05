@@ -5,7 +5,7 @@ import re
 
 import markupsafe
 from .func import lazy
-from .misc import ReadonlyDict
+from ..technology.utils import ReadonlyDict
 
 JSON_SCRIPTSAFE_MAPPER = {
     '&': r'\u0026',

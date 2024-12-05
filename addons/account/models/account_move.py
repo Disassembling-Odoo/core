@@ -20,19 +20,16 @@ from odoo.technology.db import SQL, column_exists, create_column
 from odoo.addons.account.tools import format_structured_reference_iso
 from odoo.exceptions import UserError, ValidationError, AccessError, RedirectWarning
 from odoo.osv import expression
+from odoo.technology.utils import date_utils
 from odoo.tools import (
-    date_utils,
     float_compare,
     float_is_zero,
     float_repr,
     format_amount,
-    format_date,
-    formatLang,
-    frozendict,
-    get_lang,
     groupby,
-    OrderedSet
 )
+from odoo.microkernel.utils import format_date, formatLang, get_lang
+from odoo.technology.utils import OrderedSet, frozendict
 from odoo.technology.db import create_index, index_exists
 from odoo.tools.mail import email_re, email_split, is_html_empty
 

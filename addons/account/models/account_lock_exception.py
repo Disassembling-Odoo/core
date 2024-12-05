@@ -2,7 +2,7 @@ from odoo import _, api, models, Command
 from odoo.ormapping import fields
 from odoo.osv import expression
 from odoo.technology.db import create_index
-from odoo.tools.misc import format_datetime
+from odoo.microkernel.utils import format_datetime
 from odoo.exceptions import UserError, ValidationError
 
 from odoo.addons.account.models.company import SOFT_LOCK_DATE_FIELDS

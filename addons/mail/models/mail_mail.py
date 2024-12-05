@@ -17,7 +17,7 @@ from dateutil.parser import parse
 from odoo import _, api, models, modules, SUPERUSER_ID, tools
 from odoo.ormapping import fields
 from odoo.addons.base.models.ir_mail_server import MailDeliveryException
-from odoo.modules.registry import Registry
+from odoo.microkernel.modules.registry import Registry
 
 _logger = logging.getLogger(__name__)
 _UNFOLLOW_REGEX = re.compile(r'<span id="mail_unfollow".*?<\/span>', re.DOTALL)

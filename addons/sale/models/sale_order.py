@@ -22,9 +22,9 @@ from odoo.osv import expression
 from odoo.tools import (
     float_is_zero,
     format_amount,
-    format_date,
     is_html_empty,
 )
+from odoo.microkernel.utils import format_date
 from odoo.tools.mail import html_keep_url
 
 from odoo.addons.payment import utils as payment_utils

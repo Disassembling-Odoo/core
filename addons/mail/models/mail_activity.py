@@ -12,7 +12,8 @@ from odoo import api, models, _
 from odoo.ormapping import fields
 from odoo.exceptions import AccessError
 from odoo.tools import is_html_empty
-from odoo.tools.misc import clean_context, get_lang, groupby
+from odoo.tools.misc import clean_context, groupby
+from odoo.microkernel.utils import get_lang
 from odoo.addons.mail.tools.discuss import Store
 
 _logger = logging.getLogger(__name__)

@@ -33,7 +33,7 @@ from odoo.tools.parse_version import parse_version
 from odoo.tools.misc import topological_sort, get_flag
 from odoo.tools.translate import TranslationImporter, get_po_paths
 from odoo.technology.framework.http import request
-from odoo.modules import get_module_path
+from odoo.microkernel.modules import get_module_path
 from odoo.technology.cache import ormcache
 
 

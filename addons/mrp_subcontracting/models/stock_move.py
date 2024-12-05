@@ -7,7 +7,7 @@ from odoo import models, api, _
 from odoo.ormapping import fields
 from odoo.exceptions import AccessError
 from odoo.tools.float_utils import float_compare, float_is_zero, float_round
-from odoo.tools.misc import OrderedSet
+from odoo.technology.utils import OrderedSet
 
 
 class StockMove(models.Model):

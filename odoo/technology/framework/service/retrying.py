@@ -7,7 +7,7 @@ from psycopg2 import IntegrityError, OperationalError, errorcodes, errors
 
 from odoo.constant import PG_CONCURRENCY_EXCEPTIONS_TO_RETRY, MAX_TRIES_ON_CONCURRENCY_FAILURE
 from odoo.exceptions import ValidationError
-from odoo.tools import DotDict
+from odoo.technology.utils import DotDict
 from odoo.tools.translate import translate_sql_constraint
 
 from ..http import request

@@ -6,7 +6,7 @@ import psycopg2
 
 import odoo.exceptions
 from odoo.tools.translate import _
-import odoo.modules.registry
+import odoo.microkernel.modules.registry
 from odoo.technology.framework import http
 from odoo.exceptions import AccessError
 from odoo.technology.framework import request, security

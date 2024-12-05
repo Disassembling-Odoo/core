@@ -16,7 +16,7 @@ from odoo.addons.base.models.res_partner import _tz_get
 from odoo.addons.resource.models.utils import float_to_time, HOURS_PER_DAY
 from odoo.exceptions import AccessError, UserError, ValidationError
 from odoo.tools.float_utils import float_round, float_compare
-from odoo.tools.misc import format_date
+from odoo.microkernel.utils import format_date
 from odoo.tools.translate import _
 from odoo.osv import expression
 from odoo.technology import db

@@ -9,7 +9,8 @@ from lxml import etree
 from odoo import api, models, tools, _
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
-from odoo.tools import parse_date
+from odoo.microkernel.utils import parse_date
+from odoo.microkernel import utils as microkernel_utils
 
 _logger = logging.getLogger(__name__)
 
@@ -184,7 +185,7 @@ class Currency(models.Model):
 
         integral, _sep, fractional = f"{amount:.{self.decimal_places}f}".partition('.')
         integer_value = int(integral)
-        lang = tools.get_lang(self.env)
+        lang = microkernel_utils.get_lang(self.env)
         if self.is_zero(amount - integer_value):
             return _(
                 '%(integral_amount)s %(currency_unit)s',

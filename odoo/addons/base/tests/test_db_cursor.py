@@ -9,7 +9,7 @@ import psycopg2
 from psycopg2.extensions import ISOLATION_LEVEL_REPEATABLE_READ
 
 import odoo
-from odoo.modules.registry import Registry
+from odoo.microkernel.modules.registry import Registry
 from odoo.technology.db import db_connect, TestCursor
 from odoo.tests import common
 from odoo.tests.common import BaseCase, HttpCase

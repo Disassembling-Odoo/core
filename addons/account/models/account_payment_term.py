@@ -3,8 +3,10 @@
 from odoo import api, models, _, Command
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
-from odoo.tools import format_date, formatLang, frozendict, date_utils
+from odoo.technology.utils import date_utils
+from odoo.technology.utils import frozendict
 from odoo.tools.float_utils import float_round
+from odoo.microkernel.utils import format_date, formatLang
 
 from dateutil.relativedelta import relativedelta
 

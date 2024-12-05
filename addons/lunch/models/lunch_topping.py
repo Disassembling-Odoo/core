@@ -4,7 +4,7 @@
 from odoo import api, models
 
 from odoo.ormapping import fields
-from odoo.tools import formatLang
+from odoo.microkernel.utils import formatLang
 
 
 class LunchTopping(models.Model):

@@ -12,7 +12,7 @@ from odoo.exceptions import AccessError
 from odoo.osv import expression
 from odoo.technology.db import SQL
 from odoo.tools import clean_context, format_list, groupby
-from odoo.tools.misc import OrderedSet
+from odoo.technology.utils import OrderedSet
 from odoo.addons.mail.tools.discuss import Store
 
 _logger = logging.getLogger(__name__)

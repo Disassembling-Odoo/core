@@ -32,10 +32,11 @@ import odoo
 from odoo import api, models, tools, SUPERUSER_ID
 from odoo.exceptions import AccessDenied
 from odoo.technology.framework.http import request, Response, ROUTING_KEYS
-from odoo.modules.registry import Registry
+from odoo.microkernel.modules.registry import Registry
 from odoo.technology.framework import check_session
 from odoo.tools.json import json_default
-from odoo.tools.misc import get_lang, submap
+from odoo.tools.misc import submap
+from odoo.microkernel.utils import get_lang
 from odoo.tools.translate import code_translations
 from odoo.technology.cache import ormcache
 

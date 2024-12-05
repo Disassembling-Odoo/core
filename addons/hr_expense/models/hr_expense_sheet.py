@@ -4,7 +4,7 @@ from odoo import api, Command, models, _
 from odoo.ormapping import fields
 from odoo.exceptions import AccessError, UserError, ValidationError, RedirectWarning
 from odoo.tools.misc import clean_context
-from odoo.tools import format_date
+from odoo.microkernel.utils import format_date
 
 
 class HrExpenseSheet(models.Model):

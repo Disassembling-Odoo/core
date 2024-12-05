@@ -9,8 +9,8 @@ from odoo import SUPERUSER_ID, Command
 from odoo.ormapping import Date
 from odoo.tests import Form, tagged, freeze_time
 from odoo.tests.common import TransactionCase
-from odoo.tools import format_date
-from odoo.tools.date_utils import add
+from odoo.microkernel.utils import format_date
+from odoo.technology.utils.date_utils import add
 from odoo.exceptions import UserError, ValidationError
 
 

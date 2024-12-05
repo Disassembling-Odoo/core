@@ -8,8 +8,9 @@ from odoo.ormapping import fields
 from odoo.addons.mail.tools.parser import parse_res_ids
 from odoo.exceptions import ValidationError
 from odoo.tools import html2plaintext
-from odoo.tools.misc import clean_context, format_date
+from odoo.tools.misc import clean_context
 from odoo.osv import expression
+from odoo.microkernel.utils import format_date
 
 
 class MailActivitySchedule(models.TransientModel):

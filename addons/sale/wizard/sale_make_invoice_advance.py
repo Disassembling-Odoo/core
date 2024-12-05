@@ -3,7 +3,8 @@
 from odoo import _, api, models, SUPERUSER_ID
 from odoo.ormapping import fields, Command
 from odoo.exceptions import UserError
-from odoo.tools import format_date, frozendict
+from odoo.technology.utils import frozendict
+from odoo.microkernel.utils import format_date
 
 
 class SaleAdvancePaymentInv(models.TransientModel):

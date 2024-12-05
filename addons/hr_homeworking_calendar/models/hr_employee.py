@@ -3,7 +3,7 @@
 from collections import defaultdict
 
 from odoo import models
-from odoo.tools import DEFAULT_SERVER_DATE_FORMAT
+from odoo.microkernel.utils import DEFAULT_SERVER_DATE_FORMAT
 
 from odoo.addons.hr_homeworking.models.hr_homeworking import DAYS
 

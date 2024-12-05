@@ -12,9 +12,11 @@ from odoo import SUPERUSER_ID, _, api, models
 from odoo.ormapping import fields
 from odoo.addons.stock.models.stock_rule import ProcurementException
 from odoo.exceptions import RedirectWarning, UserError, ValidationError
-from odoo.modules.registry import Registry
+from odoo.microkernel.modules.registry import Registry
 from odoo.osv import expression
-from odoo.tools import float_compare, float_is_zero, frozendict, split_every, format_date
+from odoo.tools import float_compare, float_is_zero, split_every
+from odoo.technology.utils import frozendict
+from odoo.microkernel.utils import format_date
 
 _logger = logging.getLogger(__name__)
 

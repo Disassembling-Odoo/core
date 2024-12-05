@@ -6,7 +6,7 @@ from datetime import timedelta, datetime
 from odoo import _, api, models
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
-from odoo.tools import format_time
+from odoo.microkernel.utils import format_time
 
 
 class HrEmployeeBase(models.AbstractModel):

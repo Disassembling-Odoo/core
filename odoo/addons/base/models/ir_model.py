@@ -16,9 +16,10 @@ from odoo import api, models, tools, Command
 from odoo.ormapping import fields
 from odoo.exceptions import AccessError, UserError, ValidationError
 from odoo.osv import expression
+from odoo.technology.utils import OrderedSet
 from odoo.technology import conf
 from odoo.technology.db import sql, SQL
-from odoo.tools import format_list, lazy_property, unique, OrderedSet
+from odoo.tools import format_list, lazy_property, unique
 from odoo.tools.safe_eval import safe_eval, datetime, dateutil, time
 from odoo.tools.translate import _, LazyTranslate
 from odoo.technology.cache import ormcache, ormcache_context
@@ -365,7 +366,7 @@ class IrModel(models.Model):
         res = super(IrModel, self).unlink()
 
         # Reload registry for normal unlink only. For module uninstall, the
-        # reload is done independently in odoo.modules.loading.
+        # reload is done independently in odoo.microkernel.modules.loading.
         if not self._context.get(MODULE_UNINSTALL_FLAG):
             # setup models; this automatically removes model from registry
             self.env.flush_all()
@@ -1710,7 +1711,7 @@ class IrModelSelection(models.Model):
         result = super().unlink()
 
         # Reload registry for normal unlink only. For module uninstall, the
-        # reload is done independently in odoo.modules.loading.
+        # reload is done independently in odoo.microkernel.modules.loading.
         if not self._context.get(MODULE_UNINSTALL_FLAG):
             # setup models; this re-initializes model in registry
             self.env.flush_all()
@@ -1973,7 +1974,7 @@ class IrModelRelation(models.Model):
             raise AccessError(_('Administrator access is required to uninstall a module'))
 
         ids_set = set(self.ids)
-        to_drop = tools.OrderedSet()
+        to_drop = OrderedSet()
         for data in self.sorted(key='id', reverse=True):
             name = data.name
 
@@ -2332,7 +2333,7 @@ class IrModelData(models.Model):
         if not data_list:
             return
 
-        rows = tools.OrderedSet()
+        rows = OrderedSet()
         for data in data_list:
             prefix, suffix = data['xml_id'].split('.', 1)
             record = data['record']

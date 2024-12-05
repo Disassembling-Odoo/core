@@ -12,6 +12,7 @@ from odoo.exceptions import UserError, ValidationError, AccessError
 from odoo.osv import expression
 from odoo.technology.db import increment_fields_skiplock, SQL
 from odoo.tools.json import scriptsafe as json_safe
+from odoo.microkernel import utils as microkernel_utils
 
 _logger = logging.getLogger(__name__)
 
@@ -522,7 +523,7 @@ class Post(models.Model):
         self.write({
             'state': 'close',
             'closed_uid': self._uid,
-            'closed_date': datetime.today().strftime(tools.DEFAULT_SERVER_DATETIME_FORMAT),
+            'closed_date': datetime.today().strftime(microkernel_utils.DEFAULT_SERVER_DATETIME_FORMAT),
             'closed_reason_id': reason_id,
         })
         return True

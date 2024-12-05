@@ -15,7 +15,7 @@ import os
 from os.path import join
 
 from odoo import tools
-from odoo.modules import get_modules, get_module_path
+from odoo.microkernel.modules import get_modules, get_module_path
 from odoo.tests import TransactionCase
 from odoo.tools.which import which
 

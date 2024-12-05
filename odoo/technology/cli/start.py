@@ -9,7 +9,7 @@ from pathlib import Path
 import odoo
 from . import Command
 from .server import main
-from odoo.modules.module import get_module_root, MANIFEST_NAMES
+from odoo.microkernel.modules.module import get_module_root, MANIFEST_NAMES
 from odoo.technology.db import create_empty_database, DatabaseExists
 
 

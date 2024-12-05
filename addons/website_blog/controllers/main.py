@@ -13,8 +13,9 @@ from odoo.addons.website.controllers.main import QueryURL
 from odoo.technology.framework.http import request
 from odoo.technology.framework import http
 from odoo.tools import html2plaintext
-from odoo.tools.misc import get_lang
+from odoo.microkernel.utils import get_lang
 from odoo.technology import db
+from odoo.microkernel import utils as microkernel_utils
 
 
 class WebsiteBlog(http.Controller):
@@ -39,7 +40,7 @@ class WebsiteBlog(http.Controller):
 
         locale = get_lang(request.env).code
         tzinfo = pytz.timezone(request.context.get('tz', 'utc') or 'utc')
-        fmt = tools.DEFAULT_SERVER_DATETIME_FORMAT
+        fmt = microkernel_utils.DEFAULT_SERVER_DATETIME_FORMAT
 
         res = defaultdict(list)
         for [start] in groups:

@@ -6,7 +6,7 @@ import json
 from odoo import api, models, _
 from odoo.ormapping import fields
 from odoo.exceptions import ValidationError, UserError
-from odoo.tools.misc import formatLang
+from odoo.microkernel.utils import formatLang
 
 
 class EventTemplateTicket(models.Model):

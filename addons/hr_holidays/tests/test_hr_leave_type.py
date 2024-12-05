@@ -5,7 +5,7 @@ from datetime import date
 from dateutil.relativedelta import relativedelta
 
 from odoo.exceptions import AccessError
-from odoo.tools import date_utils
+from odoo.technology.utils import date_utils
 
 from odoo.addons.hr_holidays.tests.common import TestHrHolidaysCommon
 

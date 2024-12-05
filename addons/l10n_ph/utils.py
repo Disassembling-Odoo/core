@@ -4,7 +4,7 @@ import re
 import xlwt
 import xlsxwriter
 
-from odoo.tools.misc import format_date
+from odoo.microkernel.utils import format_date
 
 
 COLUMN_HEADER_MAP = {

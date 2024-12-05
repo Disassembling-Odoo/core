@@ -15,9 +15,10 @@ from odoo.addons.mail.tools import mail_validation
 from odoo.addons.phone_validation.tools import phone_validation
 from odoo.exceptions import UserError, AccessError
 from odoo.osv import expression
+from odoo.technology.utils import date_utils
 from odoo.tools.translate import _
-from odoo.tools import date_utils, email_split, is_html_empty, groupby, parse_contact_from_email
-from odoo.tools.misc import get_lang
+from odoo.tools import email_split, is_html_empty, groupby, parse_contact_from_email
+from odoo.microkernel.utils import get_lang
 from odoo.technology.db import SQL
 from odoo.technology import db
 

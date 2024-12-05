@@ -9,8 +9,9 @@ from odoo import api, models
 from odoo.ormapping import fields, Command
 from odoo.exceptions import UserError, ValidationError
 from odoo.osv import expression
-from odoo.tools import float_compare, float_is_zero, format_date, groupby
+from odoo.tools import float_compare, float_is_zero, groupby
 from odoo.tools.translate import _
+from odoo.microkernel.utils import format_date
 
 
 class SaleOrderLine(models.Model):

@@ -10,9 +10,9 @@ from dateutil.relativedelta import relativedelta
 from odoo import api, models, SUPERUSER_ID, _
 from odoo.ormapping import fields
 from odoo.osv.expression import AND
-from odoo.tools.date_utils import get_month, subtract
+from odoo.technology.utils.date_utils import get_month, subtract
 from odoo.tools.float_utils import float_compare
-from odoo.tools.misc import get_lang, format_date
+from odoo.microkernel.utils import get_lang, format_date
 
 
 class StockReplenishmentInfo(models.TransientModel):

@@ -4,7 +4,7 @@
 import logging
 from pathlib import Path
 
-from odoo.modules import get_modules, get_module_path
+from odoo.microkernel.modules import get_modules, get_module_path
 from . import lint_case
 
 _logger = logging.getLogger(__name__)

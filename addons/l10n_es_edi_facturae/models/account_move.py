@@ -10,7 +10,8 @@ from markupsafe import Markup
 from odoo import Command, _, api, models
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
-from odoo.tools import float_round, float_repr, date_utils
+from odoo.technology.utils import date_utils
+from odoo.tools import float_round, float_repr
 from odoo.tools.xml_utils import cleanup_xml_node, find_xml_value
 from odoo.technology.db import SQL
 from odoo.addons.l10n_es_edi_facturae.xml_utils import (

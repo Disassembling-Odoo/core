@@ -16,7 +16,7 @@ from odoo.addons.hw_drivers.tools import helpers
 from odoo.addons.hw_drivers.main import iot_devices
 from odoo.addons.web.controllers.home import Home
 from odoo.addons.hw_drivers.connection_manager import connection_manager
-from odoo.tools.misc import file_path
+from odoo.technology.utils import file_paths
 from odoo.addons.hw_drivers.server_logger import (
     check_and_update_odoo_config_log_to_server_option,
     get_odoo_config_log_to_server_option,
@@ -210,9 +210,9 @@ class IotBoxOwlHomePage(Home):
     @http.route('/hw_posbox_homepage/log_levels', auth="none", type="http", cors='*')
     def log_levels(self):
         drivers_list = helpers.list_file_by_os(
-            file_path('hw_drivers/iot_handlers/drivers'))
+            file_paths('hw_drivers/iot_handlers/drivers'))
         interfaces_list = helpers.list_file_by_os(
-            file_path('hw_drivers/iot_handlers/interfaces'))
+            file_paths('hw_drivers/iot_handlers/interfaces'))
         return json.dumps({
             'title': "Odoo's IoT Box - Handlers list",
             'breadcrumb': 'Handlers list',
@@ -240,7 +240,7 @@ class IotBoxOwlHomePage(Home):
     @http.route('/hw_posbox_homepage/clear_iot_handlers', auth="none", type="http", cors='*')
     def clear_iot_handlers(self):
         for directory in ['drivers', 'interfaces']:
-            for file in list(Path(file_path(f'hw_drivers/iot_handlers/{directory}')).glob('*')):
+            for file in list(Path(file_paths(f'hw_drivers/iot_handlers/{directory}')).glob('*')):
                 if file.name != '__pycache__':
                     helpers.unlink_file(str(file.relative_to(*file.parts[:3])))
 
@@ -280,7 +280,7 @@ class IotBoxOwlHomePage(Home):
     @http.route('/hw_posbox_homepage/update_wifi', auth="none", type="json", methods=['POST'], cors='*')
     def update_wifi(self, essid, password, persistent=False):
         persistent = "1" if persistent else ""
-        subprocess.check_call([file_path(
+        subprocess.check_call([file_paths(
             'point_of_sale/tools/posbox/configuration/connect_to_wifi.sh'), essid, password, persistent])
         server = helpers.get_odoo_server_url()
 
@@ -332,7 +332,7 @@ class IotBoxOwlHomePage(Home):
                 }
 
         if iotname and platform.system() == 'Linux' and iotname != helpers.get_hostname():
-            subprocess.run([file_path(
+            subprocess.run([file_paths(
                 'point_of_sale/tools/posbox/configuration/rename_iot.sh'), iotname], check=False)
 
         # 1 sec delay for IO operations (save_conf_server)

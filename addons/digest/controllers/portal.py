@@ -4,8 +4,8 @@
 from werkzeug.exceptions import Forbidden, NotFound
 
 from odoo import _
-from odoo.technology.framework.http import Controller, request, Response, route
-from odoo.tools import consteq
+from odoo.technology.utils import consteq
+from odoo.technology.framework import Controller, request, Response, route
 
 
 class DigestController(Controller):

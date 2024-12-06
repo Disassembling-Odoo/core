@@ -7,7 +7,7 @@ from odoo.exceptions import UserError
 from odoo.tools import float_compare, float_is_zero
 
 from itertools import chain
-from odoo.tools import groupby
+from odoo.technology.utils import groupby
 from collections import defaultdict
 from odoo.technology import db
 

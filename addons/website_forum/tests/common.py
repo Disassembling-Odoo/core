@@ -2,7 +2,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo.tests import common
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 KARMA = {
     'ask': 5, 'ans': 10,

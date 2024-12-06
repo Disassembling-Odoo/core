@@ -14,8 +14,8 @@ from odoo.addons.website.controllers.main import QueryURL
 from odoo.technology.framework.http import request
 from odoo.osv import expression
 from odoo.technology.framework import http
-from odoo.microkernel.utils import get_lang
-from odoo.tools import lazy
+from odoo.tools.i18n import get_lang
+from odoo.technology.utils import lazy
 from odoo.exceptions import UserError
 
 class WebsiteEventController(http.Controller):

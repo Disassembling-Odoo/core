@@ -24,7 +24,8 @@ from odoo.addons.mail.models.mail_notification import MailNotification
 from odoo.addons.mail.models.res_users import Users
 from odoo.addons.mail.tools.discuss import Store
 from odoo.tests import common, new_test_user
-from odoo.tools import email_normalize, formataddr, mute_logger
+from odoo.tools import email_normalize, formataddr
+from odoo.technology.adjustable import mute_logger
 from odoo.tools.translate import code_translations
 
 mail_new_test_user = partial(new_test_user, context={'mail_create_nolog': True,

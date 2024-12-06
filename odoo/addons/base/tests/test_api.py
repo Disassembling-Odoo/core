@@ -3,9 +3,9 @@
 
 from odoo import api, models, Command
 from odoo.addons.base.tests.common import SavepointCaseWithUserDemo
-from odoo.tools import mute_logger, unique, lazy
 from odoo.exceptions import AccessError
-
+from odoo.technology.adjustable import mute_logger
+from odoo.technology.utils import unique, lazy
 
 class TestAPI(SavepointCaseWithUserDemo):
     """ test the new API of the ORM """

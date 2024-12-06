@@ -6,7 +6,7 @@ from requests import Response
 from unittest.mock import patch
 
 import odoo
-from odoo.tools.misc import file_open
+from odoo.technology.utils import file_open
 from odoo.addons.cloud_storage_azure.tests.test_cloud_storage_azure import (
     TestCloudStorageAzureCommon,
 )

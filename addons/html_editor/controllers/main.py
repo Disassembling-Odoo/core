@@ -14,7 +14,7 @@ from odoo.exceptions import UserError, MissingError, AccessError
 from odoo.technology.framework.http import request
 from odoo.technology.framework import http
 from odoo.tools.mimetypes import guess_mimetype
-from odoo.tools.misc import file_open
+from odoo.technology.utils import file_open
 from odoo.addons.iap.tools import iap_tools
 from odoo.addons.mail.tools import link_preview
 

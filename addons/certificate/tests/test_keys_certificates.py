@@ -7,7 +7,7 @@ from datetime import datetime, timedelta, timezone
 
 from odoo.exceptions import UserError
 from odoo.tests import TransactionCase, tagged
-from odoo.tools import file_open
+from odoo.technology.utils import file_open
 
 
 @tagged('post_install', '-at_install')

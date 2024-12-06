@@ -10,7 +10,8 @@ from odoo.technology.conf import config
 from odoo.technology.framework.http import root, content_disposition
 from odoo.tests import tagged
 from odoo.tests.common import HOST, new_test_user, get_db_name, BaseCase
-from odoo.tools import file_path, parse_version
+from odoo.tools import parse_version
+from odoo.technology.utils import file_path
 from odoo.addons.test_http.controllers import CT_JSON
 
 from odoo.addons.test_http.utils import TEST_IP

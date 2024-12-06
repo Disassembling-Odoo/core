@@ -2,7 +2,7 @@
 
 from odoo.technology.framework import http
 from odoo.technology.framework.http import request
-from odoo.tools import file_open
+from odoo.technology.utils import file_open
 
 
 class VoiceController(http.Controller):

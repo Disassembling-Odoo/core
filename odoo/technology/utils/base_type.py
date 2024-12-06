@@ -1,9 +1,55 @@
+from collections.abc import Collection
 from collections.abc import Iterable, Iterator, Mapping, MutableMapping, MutableSet, Reversible
 import typing
+from functools import reduce, wraps
+
+#########################################################################
+#                       basic algorithm
+#########################################################################
+def freehash(arg: typing.Any) -> int:
+    try:
+        return hash(arg)
+    except Exception:
+        if isinstance(arg, Mapping):
+            return hash(frozendict(arg))
+        elif isinstance(arg, Iterable):
+            return hash(frozenset(freehash(item) for item in arg))
+        else:
+            return id(arg)
+
+#########################################################################
+#                       basic types
+#########################################################################
 
 K = typing.TypeVar('K')
 T = typing.TypeVar('T')
 
+class Collector(dict[K, tuple[T, ...]], typing.Generic[K, T]):
+    """ A mapping from keys to tuples.  This implements a relation, and can be
+        seen as a space optimization for ``defaultdict(tuple)``.
+    """
+    __slots__ = ()
+
+    def __getitem__(self, key: K) -> tuple[T, ...]:
+        return self.get(key, ())
+
+    def __setitem__(self, key: K, val: Iterable[T]):
+        val = tuple(val)
+        if val:
+            super().__setitem__(key, val)
+        else:
+            super().pop(key, None)
+
+    def add(self, key: K, val: T):
+        vals = self[key]
+        if val not in vals:
+            self[key] = vals + (val,)
+
+    def discard_keys_and_values(self, excludes: Collection[K | T]) -> None:
+        for key in excludes:
+            self.pop(key, None)  # type: ignore
+        for key, vals in list(self.items()):
+            self[key] = tuple(val for val in vals if val not in excludes)  # type: ignore
 
 class frozendict(dict[K, T], typing.Generic[K, T]):
     """ An implementation of an immutable dictionary. """
@@ -161,3 +207,32 @@ class LastOrderedSet(OrderedSet[T], typing.Generic[T]):
     def add(self, elem):
         self.discard(elem)
         super().add(elem)
+
+
+class ConstantMapping(Mapping[typing.Any, T], typing.Generic[T]):
+    """
+    An immutable mapping returning the provided value for every single key.
+
+    Useful for default value to methods
+    """
+    __slots__ = ['_value']
+
+    def __init__(self, val: T):
+        self._value = val
+
+    def __len__(self):
+        """
+        defaultdict updates its length for each individually requested key, is
+        that really useful?
+        """
+        return 0
+
+    def __iter__(self):
+        """
+        same as len, defaultdict updates its iterable keyset with each key
+        requested, is there a point for this?
+        """
+        return iter([])
+
+    def __getitem__(self, item) -> T:
+        return self._value

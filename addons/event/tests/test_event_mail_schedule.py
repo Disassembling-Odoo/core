@@ -10,7 +10,8 @@ from odoo.addons.base.tests.test_ir_cron import CronMixinCase
 from odoo.addons.event.tests.common import EventCase
 from odoo.addons.mail.tests.common import MockEmail
 from odoo.tests import tagged, users, warmup
-from odoo.tools import formataddr, mute_logger
+from odoo.tools import formataddr
+from odoo.technology.adjustable import mute_logger
 
 
 @tagged('event_mail', 'post_install', '-at_install')

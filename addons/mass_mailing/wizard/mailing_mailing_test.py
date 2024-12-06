@@ -5,7 +5,7 @@ from markupsafe import Markup
 
 from odoo import _, models, tools
 from odoo.ormapping import fields
-from odoo.tools.misc import file_open
+from odoo.technology.utils import file_open
 
 
 class TestMassMailing(models.TransientModel):

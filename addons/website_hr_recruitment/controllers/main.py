@@ -12,7 +12,7 @@ from odoo.osv.expression import AND
 from odoo.technology.framework.http import request
 from odoo.technology.framework import http
 from odoo.tools import email_normalize
-from odoo.tools.misc import groupby
+from odoo.technology.utils import groupby
 
 
 class WebsiteHrRecruitment(WebsiteForm):

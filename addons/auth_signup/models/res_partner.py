@@ -8,6 +8,7 @@ from collections import defaultdict
 from datetime import datetime, timedelta
 
 from odoo import api, exceptions, models, tools, _
+from odoo.technology import utils as tech_utils
 from odoo.ormapping import fields
 
 class SignupError(Exception):
@@ -175,12 +176,12 @@ class ResPartner(models.Model):
             else:
                 expiration = int(self.env['ir.config_parameter'].get_param("auth_signup.signup.validity.hours", 144))
         plist = [self.id, self._get_login_date(), self.signup_type]
-        payload = tools.hash_sign(self.sudo().env, 'signup', plist, expiration_hours=expiration)
+        payload = tech_utils.hash_sign(self.sudo().env, 'signup', plist, expiration_hours=expiration)
         return payload
 
     @api.model
     def _get_partner_from_token(self, token):
-        if payload := tools.verify_hash_signed(self.sudo().env, 'signup', token):
+        if payload := tech_utils.verify_hash_signed(self.sudo().env, 'signup', token):
             partner_id, login_date, signup_type = payload
             # login_date can be either an int or "None" as a string for signup
             partner = self.browse(partner_id)

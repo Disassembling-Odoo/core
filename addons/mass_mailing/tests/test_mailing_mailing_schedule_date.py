@@ -7,7 +7,7 @@ from freezegun import freeze_time
 from odoo.addons.base.tests.test_ir_cron import CronMixinCase
 from odoo.addons.mass_mailing.tests.common import MassMailCommon
 from odoo.tests import users, Form
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 class TestMailingScheduleDateWizard(MassMailCommon, CronMixinCase):

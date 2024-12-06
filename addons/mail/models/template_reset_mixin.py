@@ -10,7 +10,7 @@ from odoo.ormapping import fields
 from odoo.exceptions import UserError
 from odoo.microkernel.modules.module import get_resource_from_path
 from odoo.tools.convert import xml_import
-from odoo.tools.misc import file_path
+from odoo.technology.utils import file_path
 from odoo.tools.translate import TranslationImporter, get_po_paths
 
 

@@ -9,12 +9,14 @@ from markupsafe import escape, Markup
 from werkzeug.urls import url_encode
 
 from odoo import api, Command, models, _
+from odoo.tools.i18n import formatLang
 from odoo.ormapping import fields
 from odoo.osv import expression
-from odoo.tools import format_amount, format_list, groupby
+from odoo.tools import format_amount, format_list
 from odoo.tools.float_utils import float_is_zero
 from odoo.exceptions import UserError, ValidationError
-from odoo.microkernel.utils import format_date, formatLang
+from odoo.technology.utils import groupby
+from odoo.microkernel.utils import format_date
 
 class PurchaseOrder(models.Model):
     _name = "purchase.order"

@@ -8,7 +8,7 @@ from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
 from odoo.osv import expression
 from odoo.tools import float_compare, float_is_zero, clean_context
-from odoo.tools.misc import groupby
+from odoo.technology.utils import groupby
 from odoo.microkernel.utils import format_date
 
 MAP_REPAIR_TO_PICKING_LOCATIONS = {

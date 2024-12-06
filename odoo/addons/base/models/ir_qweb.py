@@ -395,12 +395,13 @@ from odoo.technology import conf
 from odoo.tools import safe_eval, pycompat
 from odoo.tools.constants import SUPPORTED_DEBUGGER, EXTERNAL_ASSET
 from odoo.tools.safe_eval import assert_valid_codeobj, _BUILTINS, to_opcodes, _EXPR_OPCODES, _BLACKLIST
-from odoo.tools.json import scriptsafe
+from odoo.technology.utils.json import scriptsafe
 from odoo.tools.lru import LRU
 from odoo.tools.misc import str2bool
 from odoo.tools.image import image_data_uri, FILETYPE_BASE64_MAGICWORD
-from odoo.technology.framework.http import request
-from odoo.tools.profiler import QwebTracker
+from odoo.technology import utils as tech_utils
+from odoo.technology.framework import request
+from odoo.technology.adjustable.profiler import QwebTracker
 from odoo.exceptions import UserError, AccessDenied, AccessError, MissingError, ValidationError
 
 from odoo.addons.base.models.assetsbundle import AssetsBundle
@@ -609,7 +610,7 @@ class IrQWeb(models.AbstractModel):
         """ Return the list of context keys to use for caching ``_compile``. """
         return ['lang', 'inherit_branding', 'inherit_branding_auto', 'edit_translations', 'profile']
 
-    @tools.conditional(
+    @tech_utils.conditional(
         'xml' not in conf.config['dev_mode'],
         ormcache('template', 'tuple(self.env.context.get(k) for k in self._get_template_cache_keys())', cache='templates'),
     )
@@ -2534,7 +2535,7 @@ class IrQWeb(models.AbstractModel):
 
     # The cache does not need to be invalidated if the 'base_key_cache'
     # in '_compile' method contains the write_date of all inherited views.
-    @tools.conditional(
+    @tech_utils.conditional(
         'xml' not in conf.config['dev_mode'],
         ormcache('cache_key', cache='templates.cached_values'),
     )
@@ -2543,7 +2544,7 @@ class IrQWeb(models.AbstractModel):
         return get_value()
 
     # other methods used for the asset bundles
-    @tools.conditional(
+    @tech_utils.conditional(
         # in non-xml-debug mode we want assets to be cached forever, and the admin can force a cache clear
         # by restarting the server after updating the source code (or using the "Clear server cache" in debug tools)
         'xml' not in conf.config['dev_mode'],

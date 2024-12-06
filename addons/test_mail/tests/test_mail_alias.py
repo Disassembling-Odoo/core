@@ -9,8 +9,8 @@ from odoo import exceptions
 from odoo.addons.mail.tests.common import MailCommon
 from odoo.tests import tagged
 from odoo.tests.common import users
-from odoo.tools import formataddr, mute_logger
-
+from odoo.tools import formataddr
+from odoo.technology.adjustable import mute_logger
 
 class TestMailAliasCommon(MailCommon):
 

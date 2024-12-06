@@ -17,7 +17,7 @@ from reportlab.pdfgen import canvas
 
 from odoo.tools.arabic_reshaper import reshape
 from odoo.tools.parse_version import parse_version
-from odoo.tools.misc import file_open
+from odoo.technology.utils.file_paths import file_open
 
 try:
     import fontTools

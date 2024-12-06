@@ -7,7 +7,7 @@ import os
 import re
 
 from lxml import etree
-from odoo import tools
+from odoo.technology import utils as tech_utils
 from odoo.osv.expression import DOMAIN_OPERATORS
 
 _logger = logging.getLogger(__name__)
@@ -294,7 +294,7 @@ def validate(*view_types):
 def relaxng(view_type):
     """ Return a validator for the given view type, or None. """
     if view_type not in _relaxng_cache:
-        with tools.file_open(os.path.join('base', 'rng', '%s_view.rng' % view_type)) as frng:
+        with tech_utils.file_open(os.path.join('base', 'rng', '%s_view.rng' % view_type)) as frng:
             try:
                 relaxng_doc = etree.parse(frng)
                 _relaxng_cache[view_type] = etree.RelaxNG(relaxng_doc)

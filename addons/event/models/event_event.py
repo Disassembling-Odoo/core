@@ -8,6 +8,7 @@ import textwrap
 from datetime import timedelta
 from dateutil.relativedelta import relativedelta
 
+from odoo.technology import utils as tech_utils
 from odoo import _, api, Command, models, tools
 from odoo.ormapping import fields
 from odoo.addons.base.models.res_partner import _tz_get
@@ -16,7 +17,7 @@ from odoo.osv import expression
 from odoo.technology.utils import frozendict
 from odoo.microkernel.utils import format_date, format_datetime, format_time
 from odoo.tools.mail import is_html_empty, html_to_inner_content
-from odoo.microkernel.utils import formatLang
+from odoo.tools.i18n import formatLang
 from odoo.tools.translate import html_translate
 
 _logger = logging.getLogger(__name__)
@@ -767,7 +768,7 @@ class EventEvent(models.Model):
         The dl links are always made event-dependant, hence the method linked to the record in self.
         """
         self.ensure_one()
-        return tools.hmac(self.env(su=True), 'event-registration-ticket-report-access', (self.id, sorted(registration_ids)))
+        return tech_utils.hmac(self.env(su=True), 'event-registration-ticket-report-access', (self.id, sorted(registration_ids)))
 
     @api.autovacuum
     def _gc_mark_events_done(self):

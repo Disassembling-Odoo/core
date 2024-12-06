@@ -7,8 +7,8 @@ from io import BytesIO
 from PIL import Image
 
 from odoo.tests.common import HttpCase, new_test_user, tagged
-from odoo.tools.json import scriptsafe as json_safe
-from odoo.tools.misc import file_open
+from odoo.technology.utils.json import scriptsafe as json_safe
+from odoo.technology.utils import file_open
 
 
 @tagged('-at_install', 'post_install')

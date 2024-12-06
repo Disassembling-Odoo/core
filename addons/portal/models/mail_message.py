@@ -1,8 +1,8 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo import models
-from odoo.technology.framework.http import request
-from odoo.tools import groupby
+from odoo.technology.utils import groupby
+from odoo.technology.framework import request
 from odoo.microkernel.utils import format_datetime
 from odoo.addons.portal.utils import get_portal_partner
 

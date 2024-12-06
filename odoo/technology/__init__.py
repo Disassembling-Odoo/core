@@ -14,9 +14,7 @@ and provide the most basic capabilities, including:
 """
 import sys
 
-
-# Command line tools
-from . import cli
+from . import utils
 
 # Configuration management
 '''
@@ -39,3 +37,6 @@ from . import cache
 # Adjustable capabilities
 from . import adjustable
 # sys.modules['odoo.adjustable'] = adjustable
+
+# Command line tools
+from . import cli

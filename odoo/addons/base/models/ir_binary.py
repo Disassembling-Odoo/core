@@ -6,7 +6,8 @@ from mimetypes import guess_extension
 from odoo import models
 from odoo.exceptions import MissingError, UserError
 from odoo.technology.framework.http import Stream, request
-from odoo.tools import file_open, replace_exceptions
+from odoo.tools import replace_exceptions
+from odoo.technology.utils import file_open
 from odoo.tools.image import image_process, image_guess_size_from_field_name
 from odoo.tools.mimetypes import guess_mimetype, get_extension
 

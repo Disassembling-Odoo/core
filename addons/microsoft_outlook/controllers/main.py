@@ -9,8 +9,8 @@ from werkzeug.exceptions import Forbidden
 
 from odoo.technology.framework import http
 from odoo.exceptions import UserError
-from odoo.technology.framework.http import request
-from odoo.tools import consteq
+from odoo.technology.framework import request
+from odoo.technology.utils import consteq
 
 _logger = logging.getLogger(__name__)
 

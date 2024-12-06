@@ -3,7 +3,7 @@
 import unittest
 
 from odoo.tests import TransactionCase, can_import, loaded_demo_data, tagged
-from odoo.tools.misc import file_open
+from odoo.technology.utils import file_open
 
 
 @tagged("post_install", "-at_install")

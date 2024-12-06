@@ -4,7 +4,7 @@ from unittest.mock import patch
 
 from odoo.exceptions import ValidationError
 from odoo.tests import tagged
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 from odoo.addons.payment.tests.http_common import PaymentHttpCommon
 from odoo.addons.payment_paypal.controllers.main import PaypalController

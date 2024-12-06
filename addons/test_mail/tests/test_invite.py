@@ -3,7 +3,7 @@
 
 from odoo.addons.mail.tests.common import MailCommon
 from odoo.tests import tagged
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 @tagged('mail_followers')

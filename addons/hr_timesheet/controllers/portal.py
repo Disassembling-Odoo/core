@@ -8,8 +8,7 @@ from odoo import _
 from odoo.ormapping import fields
 from odoo.technology.framework.http import request
 from odoo.technology.framework import http
-from odoo.technology.utils import date_utils
-from odoo.tools import groupby as groupbyelem
+from odoo.technology.utils import date_utils, groupby as groupbyelem
 from odoo.osv.expression import AND, FALSE_DOMAIN
 
 from odoo.addons.portal.controllers.portal import CustomerPortal, pager as portal_pager

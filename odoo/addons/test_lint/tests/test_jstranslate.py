@@ -5,7 +5,7 @@
 import logging
 import re
 
-from odoo import tools
+from odoo.technology import utils as tech_utils
 from odoo.microkernel.modules import get_resource_from_path
 
 from . import lint_case
@@ -90,7 +90,7 @@ class TestJsTranslations(lint_case.LintCase):
                 continue
 
             counter += 1
-            with tools.file_open(js_file, 'r') as f:
+            with tech_utils.file_open(js_file, 'r') as f:
                 js_txt = f.read()
 
             error_list = self.check_text(js_txt)

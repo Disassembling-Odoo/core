@@ -157,6 +157,8 @@ from zlib import adler32
 
 import babel.core
 
+from ..adjustable import profiler
+
 try:
     import geoip2.database
     import geoip2.models
@@ -192,20 +194,19 @@ except ImportError:
     from ...tools._vendor.send_file import send_file as _send_file
 
 import odoo
-from ...tools import (consteq, file_path, json_default,
-                    parse_version, profiler, unique, exception_to_unicode)
-from ...tools.func import filter_kwargs, lazy_property
-from ...tools.misc import submap
+from ...tools import (parse_version, exception_to_unicode)
+from ..utils.func import filter_kwargs, lazy_property
 from ...tools._vendor import sessions
 from ...tools._vendor.useragents import UserAgent
 from ...exceptions import UserError, AccessError, AccessDenied
 from ..conf import config
 from ..db import available_db_list, db_filter
-from ...modules.module import get_manifest
-from ...modules.registry import Registry
+from ..utils import consteq, file_path, unique, submap, json_default
 from .geoip import GeoIP
-from odoo.microkernel.utils import get_lang
+from odoo.tools.i18n import get_lang
 from .service import retrying as service_model, security
+from odoo.microkernel.modules import get_manifest
+from odoo.microkernel.modules.registry import Registry
 
 _logger = logging.getLogger(__name__)
 

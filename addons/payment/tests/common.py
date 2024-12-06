@@ -7,7 +7,7 @@ from lxml import objectify
 
 from odoo.ormapping import Command
 from odoo.osv.expression import AND
-from odoo.tools.misc import hmac as hmac_tool
+from odoo.technology.utils import hmac as hmac_tool
 
 from odoo.addons.base.tests.common import BaseCommon
 

@@ -21,17 +21,20 @@ from odoo.exceptions import ValidationError, AccessError, UserError
 from odoo.technology.framework.http import request
 from odoo.microkernel.modules.module import get_resource_from_path
 from odoo.osv.expression import expression
+from odoo.technology import utils as tech_utils
 from odoo.technology.conf import config
 from odoo.technology.db import SQL
-from odoo.tools import lazy_property
+from odoo.technology.utils import lazy_property
 from odoo.technology.utils import frozendict
 from odoo.tools.convert import _fix_multiple_roots
-from odoo.tools.misc import file_path, get_diff, ConstantMapping
+from odoo.tools.misc import get_diff
+from odoo.technology.utils import ConstantMapping
 from odoo.tools.template_inheritance import apply_inheritance_specs, locate_node
 from odoo.tools.translate import xml_translate, TRANSLATED_ATTRS
 from odoo.tools.view_validation import valid_view, get_domain_value_names, get_expression_field_names, get_dict_asts
 from odoo.technology.cache import ormcache
 from odoo.technology import db
+from odoo.technology.utils import file_path
 
 _logger = logging.getLogger(__name__)
 
@@ -2699,7 +2702,7 @@ class Model(models.AbstractModel):
         )
 
     @api.model
-    @tools.conditional(
+    @tech_utils.conditional(
         'xml' not in config['dev_mode'],
         ormcache('self._get_view_cache_key(view_id, view_type, **options)', cache='templates'),
     )

@@ -3,7 +3,7 @@ import threading
 import typing
 from collections.abc import Iterable, Iterator, MutableMapping
 
-from .func import locked
+from ..technology.utils.func import locked
 
 __all__ = ['LRU']
 

@@ -5,7 +5,8 @@ from odoo.addons.test_mass_mailing.data.mail_test_data import MAIL_TEMPLATE
 from odoo.addons.test_mass_mailing.tests.common import TestMassMailCommon
 from odoo.tests import tagged
 from odoo.tests.common import users
-from odoo.tools import mute_logger, email_normalize
+from odoo.tools import email_normalize
+from odoo.technology.adjustable import mute_logger
 
 
 @tagged('mass_mailing')

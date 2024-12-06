@@ -6,7 +6,7 @@ from psycopg2.errors import NotNullViolation
 
 from odoo.exceptions import ValidationError
 from odoo.tests import Form, TransactionCase, HttpCase, tagged
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 from odoo import Command
 
 

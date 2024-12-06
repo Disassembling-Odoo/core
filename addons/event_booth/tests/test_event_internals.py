@@ -7,7 +7,7 @@ from odoo import Command
 from odoo.addons.event_booth.tests.common import TestEventBoothCommon
 from odoo.ormapping import Datetime as FieldsDatetime
 from odoo.tests import Form, users, tagged
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 @tagged('post_install', '-at_install')

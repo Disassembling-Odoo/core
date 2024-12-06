@@ -6,7 +6,8 @@ from odoo.tests.common import TransactionCase, users
 from odoo.addons.mail.tests.common import mail_new_test_user
 from odoo.exceptions import AccessError
 from odoo.tests import tagged
-from odoo.tools import mute_logger, convert_file
+from odoo.tools import convert_file
+from odoo.technology.adjustable import mute_logger
 
 
 @tagged('post_install', '-at_install')

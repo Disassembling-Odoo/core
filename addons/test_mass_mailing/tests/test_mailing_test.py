@@ -5,7 +5,7 @@ import lxml.html
 from odoo.addons.test_mass_mailing.tests.common import TestMassMailCommon
 from odoo.ormapping import Command
 from odoo.tests.common import users, tagged
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 @tagged('mailing_manage')

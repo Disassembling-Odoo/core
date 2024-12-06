@@ -5,7 +5,7 @@ from unittest.mock import patch
 
 from odoo import Command
 from odoo.ormapping import fields
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon
 from odoo.addons.mail.tests.common import mail_new_test_user
 from odoo.addons.pos_online_payment.tests.online_payment_common import OnlinePaymentCommon

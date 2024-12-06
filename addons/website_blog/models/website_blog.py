@@ -7,7 +7,7 @@ import random
 from odoo import api, models, _
 from odoo.ormapping import fields
 from odoo.addons.website.tools import text_from_html
-from odoo.tools.json import scriptsafe as json_scriptsafe
+from odoo.technology.utils.json import scriptsafe as json_scriptsafe
 from odoo.tools.translate import html_translate
 from odoo.tools import html_escape
 

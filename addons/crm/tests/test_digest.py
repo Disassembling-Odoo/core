@@ -4,7 +4,7 @@
 from datetime import datetime, timedelta
 
 from odoo.addons.digest.tests.common import TestDigestCommon
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 class TestCrmDigest(TestDigestCommon):

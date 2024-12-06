@@ -16,7 +16,7 @@ from odoo.addons.mass_mailing.tests.common import MassMailCommon
 from odoo.exceptions import ValidationError
 from odoo.technology.db import Cursor
 from odoo.tests import Form, HttpCase, users, tagged
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 BASE_64_STRING = 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII='
 

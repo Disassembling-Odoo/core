@@ -4,7 +4,7 @@ from freezegun import freeze_time
 from odoo.addons.l10n_in.models.iap_account import IapAccount
 from odoo.tests.common import TransactionCase, tagged
 from odoo.exceptions import UserError
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 from datetime import date
 
 

@@ -8,7 +8,7 @@ from odoo.addons.test_mass_mailing.tests.common import TestMassSMSCommon
 from odoo import exceptions
 from odoo.tests import tagged
 from odoo.tests.common import users
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 @tagged('mass_mailing', 'mass_mailing_sms')

@@ -10,7 +10,7 @@ from odoo.addons.mass_mailing.models.mail_thread import BLACKLIST_MAX_BOUNCED_LI
 from odoo.addons.test_mass_mailing.tests import common
 from odoo.tests import tagged
 from odoo.tests.common import users
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 from odoo.technology.db import Cursor
 
 

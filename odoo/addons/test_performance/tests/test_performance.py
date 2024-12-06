@@ -8,7 +8,7 @@ import logging
 from odoo.addons.base.tests.common import SavepointCaseWithUserDemo
 import odoo.technology.db as sql
 from odoo.tests.common import TransactionCase, users, warmup, tagged
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 from odoo import Command
 
 _logger = logging.getLogger(__name__)

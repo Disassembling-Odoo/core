@@ -16,7 +16,7 @@ from odoo import api, models, tools
 from odoo import SUPERUSER_ID
 from odoo.exceptions import AccessError
 from odoo.technology.framework.http import request
-from odoo.tools.json import scriptsafe as json_scriptsafe
+from odoo.technology.utils.json import scriptsafe as json_scriptsafe
 from odoo.tools.safe_eval import safe_eval
 from odoo.osv.expression import FALSE_DOMAIN
 from odoo.addons.base.models.ir_http import EXTENSION_TO_WEB_MIMETYPES

@@ -4,7 +4,7 @@ from unittest.mock import patch
 
 from odoo.technology.framework import http
 from odoo.tests import common, tagged
-from odoo.microkernel.utils import get_lang
+from odoo.tools.i18n import get_lang
 from odoo.addons.web.controllers.export import ExportXlsxWriter
 
 

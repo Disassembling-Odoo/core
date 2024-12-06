@@ -8,6 +8,7 @@ import requests
 
 from werkzeug.urls import url_encode, url_join
 
+from odoo.technology import utils as tech_utils
 from odoo import _, api, models, tools
 from odoo.ormapping import fields
 from odoo.exceptions import AccessError, UserError
@@ -173,7 +174,7 @@ class GoogleGmailMixin(models.AbstractModel):
         """
         self.ensure_one()
         _logger.info('Google Gmail: generate CSRF token for %s #%i', self._name, self.id)
-        return tools.misc.hmac(
+        return tech_utils.hmac(
             env=self.env(su=True),
             scope='google_gmail_oauth',
             message=(self._name, self.id),

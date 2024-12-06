@@ -4,7 +4,7 @@ from unittest.mock import patch
 from urllib.parse import quote as url_quote
 
 from odoo.tests import tagged
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 from odoo.addons.payment.tests.http_common import PaymentHttpCommon
 from odoo.addons.payment_mercado_pago.tests.common import MercadoPagoCommon

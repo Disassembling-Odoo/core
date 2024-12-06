@@ -7,7 +7,7 @@ from odoo.tools import float_repr, format_list
 from odoo.tools.float_utils import float_round
 from odoo.tools.misc import clean_context, html_escape
 from odoo.tools.xml_utils import find_xml_value
-from odoo.microkernel.utils import formatLang
+from odoo.tools.i18n import formatLang
 
 # -------------------------------------------------------------------------
 # UNIT OF MEASURE

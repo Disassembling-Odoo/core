@@ -52,6 +52,7 @@ _monkeypatches.patch_all()
 # ----------------------------------------------------------
 # Imports
 # ----------------------------------------------------------
+from . import addons
 from . import tools
 from . import technology
 from .technology import conf
@@ -62,9 +63,6 @@ from . import loglevels
 from . import netsvc
 from . import osv
 from . import release
-
-from . import addons
-from . import modules
 from . import api
 
 # ----------------------------------------------------------

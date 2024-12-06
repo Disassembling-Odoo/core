@@ -10,7 +10,7 @@ from odoo import tests
 from odoo.addons.hr_holidays.tests.common import TestHrHolidaysCommon
 from odoo.exceptions import AccessError, UserError, ValidationError
 from odoo.technology.utils import date_utils
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 @tests.tagged('access_rights', 'post_install', '-at_install')

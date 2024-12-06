@@ -5,7 +5,7 @@ from odoo import _, models
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
 from odoo.tools.float_utils import float_round
-from odoo.tools.misc import groupby
+from odoo.technology.utils import groupby
 
 from .delivery_request_objects import DeliveryCommodity, DeliveryPackage
 

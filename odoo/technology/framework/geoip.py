@@ -17,7 +17,7 @@ try:
 except ImportError:
     maxminddb = None
 
-from ...tools.func import filter_kwargs, lazy_property
+from ..utils.func import filter_kwargs, lazy_property
 from ..conf import config
 
 _logger = logging.getLogger(__name__)

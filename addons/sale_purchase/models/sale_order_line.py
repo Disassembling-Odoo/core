@@ -7,7 +7,7 @@ from odoo import api, models, _
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
 from odoo.tools import float_compare
-from odoo.microkernel.utils import get_lang
+from odoo.tools.i18n import get_lang
 
 
 class SaleOrderLine(models.Model):

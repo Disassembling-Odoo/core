@@ -9,7 +9,8 @@ from psycopg2 import IntegrityError
 
 from odoo import Command
 from odoo.technology.utils import date_utils
-from odoo.tools import mute_logger, test_reports
+from odoo.tools import test_reports
+from odoo.technology.adjustable import mute_logger
 
 from odoo.addons.hr_holidays.tests.common import TestHrHolidaysCommon
 

@@ -3,7 +3,7 @@
 from unittest.mock import patch
 
 from odoo.tests import tagged
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 from odoo.addons.payment_authorize.tests.common import AuthorizeCommon
 

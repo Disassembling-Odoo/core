@@ -5,7 +5,7 @@ import json
 
 from unittest.mock import patch
 
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 from odoo.tests.common import HttpCase, tagged
 
 

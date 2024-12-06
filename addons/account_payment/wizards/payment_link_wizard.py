@@ -2,7 +2,8 @@
 
 from odoo import _, api, models
 from odoo.ormapping import fields
-from odoo.microkernel.utils import format_date, formatLang
+from odoo.microkernel.utils import format_date
+from odoo.tools.i18n import formatLang
 
 from odoo.addons.payment import utils as payment_utils
 

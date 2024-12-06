@@ -7,9 +7,9 @@ from werkzeug import urls
 import odoo
 from odoo.ormapping import fields
 import odoo.microkernel.modules.module  # get_manifest, don't from-import it
-from odoo import api, models, tools
+from odoo import api, models
 from odoo.technology import conf
-from odoo.tools import misc
+from odoo.technology import utils as tech_utils
 from odoo.tools.constants import ASSET_EXTENSIONS, EXTERNAL_ASSET
 from odoo.technology.cache import ormcache
 
@@ -122,7 +122,7 @@ class IrAsset(models.Model):
             raise ValueError(f'{bundle_name} is not a valid bundle name, should have two parts')
         return bundle_name, rtl, asset_type
 
-    @tools.conditional(
+    @tech_utils.conditional(
         'xml' not in conf.config['dev_mode'],
         ormcache('bundle', 'tuple(sorted(assets_params.items()))', cache='assets'),
     )
@@ -301,7 +301,7 @@ class IrAsset(models.Model):
 
         manifs = sorted(manifs, key=sort_key)
 
-        return misc.topological_sort({manif['name']: tuple(manif['depends']) for manif in manifs})
+        return tech_utils.topological_sort({manif['name']: tuple(manif['depends']) for manif in manifs})
 
     @api.model
     @ormcache()

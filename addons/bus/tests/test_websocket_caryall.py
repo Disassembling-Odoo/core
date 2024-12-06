@@ -13,7 +13,7 @@ from weakref import WeakSet
 from odoo.technology.framework import http
 from odoo.api import Environment
 from odoo.tests import common, new_test_user
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 from .common import WebsocketCase
 from .. import websocket as websocket_module
 from ..models.bus import dispatch

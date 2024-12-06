@@ -4,7 +4,7 @@ from odoo import Command
 from odoo.osv import expression
 from odoo.exceptions import AccessError
 from odoo.tests import Form, tagged
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 from .test_project_base import TestProjectCommon
 

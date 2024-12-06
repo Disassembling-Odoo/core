@@ -16,8 +16,7 @@ from odoo.addons.web.controllers.utils import clean_action
 from odoo.exceptions import UserError, ValidationError
 from odoo.osv import expression
 from odoo.tools import float_compare, float_round, float_is_zero
-from odoo.tools.misc import groupby as tools_groupby, topological_sort
-from odoo.technology.utils import OrderedSet
+from odoo.technology.utils import OrderedSet, groupby as tools_groupby, topological_sort
 from odoo.microkernel.utils import format_date, format_datetime
 
 from odoo.addons.stock.models.stock_move import PROCUREMENT_PRIORITIES

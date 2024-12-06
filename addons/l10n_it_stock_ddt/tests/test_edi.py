@@ -4,7 +4,7 @@
 import logging
 from lxml import etree
 from freezegun import freeze_time
-from odoo import tools
+from odoo.technology import utils as tech_utils
 from odoo.tests import Form, tagged
 from odoo.addons.l10n_it_edi.tests.common import TestItEdi
 
@@ -147,5 +147,5 @@ class TestItEdiDDT(TestItEdi):
     def _get_stock_ddt_test_file_content(cls, filename):
         """ Get the content of a test file inside this module """
         path = 'l10n_it_stock_ddt/tests/expected_xmls/' + filename
-        with tools.file_open(path, mode='rb') as test_file:
+        with tech_utils.file_open(path, mode='rb') as test_file:
             return test_file.read()

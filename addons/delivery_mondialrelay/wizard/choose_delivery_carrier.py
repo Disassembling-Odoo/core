@@ -3,7 +3,7 @@
 
 from odoo import models, api, _
 from odoo.ormapping import fields
-from odoo.tools.json import scriptsafe as json_safe
+from odoo.technology.utils.json import scriptsafe as json_safe
 from odoo.exceptions import ValidationError
 
 

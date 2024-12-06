@@ -9,7 +9,7 @@ from odoo.addons.base.models.res_users import is_selection_groups, get_selection
 from odoo.exceptions import UserError, ValidationError
 from odoo.technology.framework.http import _request_stack
 from odoo.tests import Form, TransactionCase, new_test_user, tagged, HttpCase, users
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 class TestUsers(TransactionCase):

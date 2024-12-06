@@ -3,7 +3,7 @@ from lxml import html
 from unittest.mock import patch
 
 from odoo import exceptions
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 from odoo.tests.common import users
 from odoo.tests import Form, HttpCase, tagged, warmup
 from odoo.addons.mail.tests.common import MailCase

@@ -5,7 +5,7 @@ from psycopg2 import IntegrityError
 
 from odoo.addons.website_forum.tests.common import KARMA, TestForumCommon
 from odoo.exceptions import UserError, AccessError
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 class TestForumCRUD(TestForumCommon):

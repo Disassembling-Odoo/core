@@ -5,7 +5,7 @@ import psycopg2
 
 from odoo.addons.website_slides.tests import common as slides_common
 from odoo.tests.common import users
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 class TestSlideInternals(slides_common.SlidesCase):

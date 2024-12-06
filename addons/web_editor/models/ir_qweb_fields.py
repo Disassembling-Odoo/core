@@ -27,8 +27,9 @@ from werkzeug import urls
 from odoo import _, api, models
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
-from odoo.microkernel.utils import posix_to_ldml, get_lang, babel_locale_parse
-from odoo.tools.misc import file_open
+from odoo.tools.i18n import get_lang, babel_locale_parse
+from odoo.microkernel.utils import posix_to_ldml
+from odoo.technology.utils import file_open
 
 REMOTE_CONNECTION_TIMEOUT = 2.5
 

@@ -41,6 +41,8 @@ from typing import Optional, Iterable
 from unittest.mock import patch, _patch, Mock
 from xmlrpc import client as xmlrpclib
 
+from odoo.technology.adjustable import profiler
+
 try:
     from concurrent.futures import InvalidStateError
 except ImportError:
@@ -59,12 +61,14 @@ from odoo.technology.conf import config
 from odoo.exceptions import AccessError
 from odoo.ormapping import Command
 from odoo.microkernel.modules.registry import Registry
+from odoo.technology.adjustable import mute_logger
 from odoo.technology.utils import DotDict
 from odoo.technology.framework import compute_session_token
 from odoo.technology.db import BaseCursor, Cursor
-from odoo.tools import float_compare, mute_logger, profiler
+from odoo.tools import float_compare
 from odoo.tools.mail import single_email_re
-from odoo.tools.misc import find_in_path, lower_logging
+from odoo.tools.misc import find_in_path
+from odoo.technology.adjustable import lower_logging
 from odoo.tools.xml_utils import _validate_xml
 from odoo.technology.db import SQL
 

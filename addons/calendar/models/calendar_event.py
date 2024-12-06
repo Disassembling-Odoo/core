@@ -24,7 +24,7 @@ from odoo.addons.calendar.models.calendar_recurrence import (
     BYDAY_SELECTION
 )
 from odoo.tools.translate import _
-from odoo.microkernel.utils import get_lang
+from odoo.tools.i18n import get_lang
 from odoo.tools import html2plaintext, html_sanitize, is_html_empty, single_email_re
 from odoo.exceptions import UserError, ValidationError
 

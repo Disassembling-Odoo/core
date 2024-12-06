@@ -9,7 +9,7 @@ from odoo import models, api, _
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
 from odoo.technology.framework.http import request
-from odoo.tools import json
+from odoo.technology.utils import json
 
 
 class ResCompany(models.Model):

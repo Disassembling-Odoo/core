@@ -2,7 +2,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 import odoo.tests
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 @odoo.tests.common.tagged('post_install', '-at_install')

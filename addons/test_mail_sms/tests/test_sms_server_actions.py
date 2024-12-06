@@ -4,7 +4,7 @@
 from odoo.addons.sms.tests.common import SMSCommon
 from odoo.addons.test_mail_sms.tests.common import TestSMSRecipients
 from odoo.tests import tagged
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 @tagged('ir_actions')

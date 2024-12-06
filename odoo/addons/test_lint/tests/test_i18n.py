@@ -3,7 +3,7 @@ import re
 
 from . import lint_case
 
-from odoo import tools
+from odoo.technology import utils as tech_utils
 
 _logger = logging.getLogger(__name__)
 
@@ -113,7 +113,7 @@ class TestI18n(lint_case.LintCase):
         """
         error_count = 0
         for file_path in self.iter_module_files("**/static/**/*.xml"):
-            with tools.file_open(file_path, "r") as f:
+            with tech_utils.file_open(file_path, "r") as f:
                 file_content = f.read()
                 for m in self.PROPS_RE.finditer(file_content):
                     lineno = file_content[: m.start()].count("\n") + 1

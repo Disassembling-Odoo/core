@@ -10,7 +10,7 @@ from odoo import Command
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
 from odoo.technology.utils import date_utils
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 from odoo.tests import Form, tagged
 
 from odoo.addons.hr_holidays.tests.common import TestHrHolidaysCommon

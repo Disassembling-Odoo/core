@@ -7,7 +7,7 @@ from urllib3.util import parse_url
 
 from odoo import models
 from odoo.technology.framework.http import request
-from odoo.tools import lazy
+from odoo.technology.utils import lazy
 from odoo.addons.base.models.assetsbundle import AssetsBundle
 from odoo.osv import expression
 from odoo.addons.website.models import ir_http

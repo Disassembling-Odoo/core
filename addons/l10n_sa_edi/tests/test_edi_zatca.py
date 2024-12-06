@@ -5,7 +5,7 @@ import logging
 from pytz import timezone
 
 from odoo.tests import tagged
-from odoo.tools import misc
+from odoo.technology import utils as tech_utils
 
 from .common import TestSaEdiCommon
 
@@ -18,7 +18,7 @@ class TestEdiZatca(TestSaEdiCommon):
     def testInvoiceStandard(self):
 
         with freeze_time(datetime(year=2022, month=9, day=5, hour=8, minute=20, second=2, tzinfo=timezone('Etc/GMT-3'))):
-            standard_invoice = misc.file_open('l10n_sa_edi/tests/compliance/standard/invoice.xml', 'rb').read()
+            standard_invoice = tech_utils.file_open('l10n_sa_edi/tests/compliance/standard/invoice.xml', 'rb').read()
             expected_tree = self.get_xml_tree_from_string(standard_invoice)
             expected_tree = self.with_applied_xpath(expected_tree, self.invoice_applied_xpath)
 
@@ -42,7 +42,7 @@ class TestEdiZatca(TestSaEdiCommon):
                 </xpath>
             '''
 
-            standard_credit_note = misc.file_open('l10n_sa_edi/tests/compliance/standard/credit.xml', 'rb').read()
+            standard_credit_note = tech_utils.file_open('l10n_sa_edi/tests/compliance/standard/credit.xml', 'rb').read()
             expected_tree = self.get_xml_tree_from_string(standard_credit_note)
             expected_tree = self.with_applied_xpath(expected_tree, applied_xpath)
 
@@ -64,7 +64,7 @@ class TestEdiZatca(TestSaEdiCommon):
                 </xpath>
             '''
 
-            standard_debit_note = misc.file_open('l10n_sa_edi/tests/compliance/standard/debit.xml', 'rb').read()
+            standard_debit_note = tech_utils.file_open('l10n_sa_edi/tests/compliance/standard/debit.xml', 'rb').read()
             expected_tree = self.get_xml_tree_from_string(standard_debit_note)
             expected_tree = self.with_applied_xpath(expected_tree, applied_xpath)
 
@@ -79,7 +79,7 @@ class TestEdiZatca(TestSaEdiCommon):
 
     def testInvoiceSimplified(self):
         with freeze_time(datetime(year=2023, month=3, day=10, hour=14, minute=56, second=55, tzinfo=timezone('Etc/GMT-3'))):
-            simplified_invoice = misc.file_open('l10n_sa_edi/tests/compliance/simplified/invoice.xml', 'rb').read()
+            simplified_invoice = tech_utils.file_open('l10n_sa_edi/tests/compliance/simplified/invoice.xml', 'rb').read()
             expected_tree = self.get_xml_tree_from_string(simplified_invoice)
             expected_tree = self.with_applied_xpath(expected_tree, self.invoice_applied_xpath)
 
@@ -94,7 +94,7 @@ class TestEdiZatca(TestSaEdiCommon):
 
     def testCreditNoteSimplified(self):
         with freeze_time(datetime(year=2023, month=3, day=10, hour=14, minute=59, second=38, tzinfo=timezone('Etc/GMT-3'))):
-            simplified_credit_note = misc.file_open('l10n_sa_edi/tests/compliance/simplified/credit.xml', 'rb').read()
+            simplified_credit_note = tech_utils.file_open('l10n_sa_edi/tests/compliance/simplified/credit.xml', 'rb').read()
             expected_tree = self.get_xml_tree_from_string(simplified_credit_note)
             expected_tree = self.with_applied_xpath(expected_tree, self.credit_note_applied_xpath)
 
@@ -110,7 +110,7 @@ class TestEdiZatca(TestSaEdiCommon):
 
     def testDebitNoteSimplified(self):
         with freeze_time(datetime(year=2023, month=3, day=10, hour=15, minute=1, second=46, tzinfo=timezone('Etc/GMT-3'))):
-            simplified_credit_note = misc.file_open('l10n_sa_edi/tests/compliance/simplified/debit.xml', 'rb').read()
+            simplified_credit_note = tech_utils.file_open('l10n_sa_edi/tests/compliance/simplified/debit.xml', 'rb').read()
             expected_tree = self.get_xml_tree_from_string(simplified_credit_note)
             expected_tree = self.with_applied_xpath(expected_tree, self.debit_note_applied_xpath)
 

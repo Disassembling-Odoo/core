@@ -11,7 +11,7 @@ from requests.exceptions import HTTPError, RequestException
 from odoo import _, models
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
-from odoo.tools.misc import file_open
+from odoo.technology.utils import file_open
 
 ZATCA_API_URLS = {
     "sandbox": "https://gw-fatoora.zatca.gov.sa/e-invoicing/developer-portal/",

@@ -15,7 +15,7 @@ from os.path import join as opj
 import odoo.release as release
 import odoo.upgrade
 from odoo.tools.parse_version import parse_version
-from odoo.tools.misc import file_path
+from odoo.technology.utils import file_path
 
 _logger = logging.getLogger(__name__)
 

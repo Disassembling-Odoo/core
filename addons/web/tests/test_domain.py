@@ -5,7 +5,7 @@ import json
 
 from odoo.addons.base.tests.common import HttpCaseWithUserDemo
 from odoo.tests import tagged
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 @tagged('post_install', '-at_install')

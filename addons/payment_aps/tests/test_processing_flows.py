@@ -5,7 +5,7 @@ from unittest.mock import patch
 from werkzeug.exceptions import Forbidden
 
 from odoo.tests import tagged
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 from odoo.addons.payment_aps.controllers.main import APSController
 from odoo.addons.payment_aps.tests.common import APSCommon

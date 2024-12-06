@@ -8,7 +8,7 @@ from odoo.addons.website_slides.tests import common
 from odoo.exceptions import ValidationError
 from odoo.tests import HttpCase
 from odoo.tests.common import users
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 class TestResources(common.SlidesCase, HttpCase):

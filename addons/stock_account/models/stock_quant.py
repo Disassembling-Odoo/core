@@ -5,7 +5,7 @@ import itertools
 from odoo import api, models, _
 from odoo.ormapping import fields
 from odoo.tools.float_utils import float_is_zero
-from odoo.tools.misc import groupby
+from odoo.technology.utils import groupby
 
 
 class StockQuant(models.Model):

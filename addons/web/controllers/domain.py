@@ -5,7 +5,7 @@ from odoo import _
 from odoo.technology.framework.http import Controller, request
 from odoo.exceptions import ValidationError
 from odoo.technology.framework import http
-from odoo.tools.misc import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 class Domain(Controller):
 

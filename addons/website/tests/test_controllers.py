@@ -6,7 +6,8 @@ from werkzeug.urls import url_encode
 
 from unittest.mock import patch, Mock
 from odoo import tests
-from odoo.tools.misc import mute_logger, submap
+from odoo.technology.utils import submap
+from odoo.technology.adjustable import mute_logger
 from odoo.addons.website.controllers.main import Website
 
 

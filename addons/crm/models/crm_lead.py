@@ -17,8 +17,9 @@ from odoo.exceptions import UserError, AccessError
 from odoo.osv import expression
 from odoo.technology.utils import date_utils
 from odoo.tools.translate import _
-from odoo.tools import email_split, is_html_empty, groupby, parse_contact_from_email
-from odoo.microkernel.utils import get_lang
+from odoo.tools import email_split, is_html_empty, parse_contact_from_email
+from odoo.technology.utils import groupby
+from odoo.tools.i18n import get_lang
 from odoo.technology.db import SQL
 from odoo.technology import db
 

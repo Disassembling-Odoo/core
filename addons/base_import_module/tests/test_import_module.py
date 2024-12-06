@@ -16,7 +16,7 @@ from unittest.mock import patch
 from odoo import release
 from odoo.addons import __path__ as __addons_path__
 from odoo.exceptions import UserError
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 @odoo.tests.tagged('post_install', '-at_install')

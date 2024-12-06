@@ -7,7 +7,7 @@ import werkzeug
 from odoo.technology.framework import http
 from odoo.technology.framework.http import request
 from odoo.tools.translate import _
-from odoo.microkernel.utils import get_lang
+from odoo.tools.i18n import get_lang
 
 _logger = logging.getLogger(__name__)
 

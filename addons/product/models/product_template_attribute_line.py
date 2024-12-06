@@ -4,7 +4,7 @@ from odoo import api, models, tools, _
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
 from odoo.ormapping import Command
-
+from odoo.technology import adjustable
 
 class ProductTemplateAttributeLine(models.Model):
     """Attributes available on product.template with their selected values in a m2m.
@@ -178,7 +178,7 @@ class ProductTemplateAttributeLine(models.Model):
         ptal_to_archive = self.env['product.template.attribute.line']
         for ptal in self:
             try:
-                with self.env.cr.savepoint(), tools.mute_logger('odoo.technology.db.sql_db'):
+                with self.env.cr.savepoint(), adjustable.mute_logger('odoo.technology.db.sql_db'):
                     super(ProductTemplateAttributeLine, ptal).unlink()
             except Exception:
                 # We catch all kind of exceptions to be sure that the operation

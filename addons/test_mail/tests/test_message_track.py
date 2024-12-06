@@ -8,7 +8,7 @@ from odoo.addons.mail.tests.common import MailCommon
 from odoo.addons.mail.tools.discuss import Store
 from odoo.addons.test_mail.data.test_mail_data import MAIL_TEMPLATE
 from odoo.tests import Form, tagged, users
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 @tagged('mail_track')

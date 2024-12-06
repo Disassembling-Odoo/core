@@ -2,10 +2,11 @@
 from contextlib import contextmanager
 
 from odoo import api, models, _, Command
+from odoo.tools.i18n import formatLang
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
 from odoo.technology.db import create_index
-from odoo.microkernel.utils import formatLang
+
 
 class AccountBankStatement(models.Model):
     _name = "account.bank.statement"

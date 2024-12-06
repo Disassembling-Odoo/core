@@ -5,7 +5,7 @@ import json
 import odoo
 from odoo.ormapping import fields
 from odoo.technology.framework import http
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 from odoo.addons.base.tests.common import HttpCaseWithUserDemo
 from odoo.technology.framework.http import STATIC_CACHE_LONG
 from odoo import Command

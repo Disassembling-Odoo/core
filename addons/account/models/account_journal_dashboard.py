@@ -11,8 +11,9 @@ from odoo.ormapping import fields
 from odoo.exceptions import UserError
 from odoo.osv import expression
 from odoo.release import version
+from odoo.tools.i18n import get_lang
 from odoo.technology import conf
-from odoo.microkernel.utils import DEFAULT_SERVER_DATE_FORMAT as DF, format_date as odoo_format_date, get_lang
+from odoo.microkernel.utils import DEFAULT_SERVER_DATE_FORMAT as DF, format_date as odoo_format_date
 from odoo.technology.db import SQL
 
 

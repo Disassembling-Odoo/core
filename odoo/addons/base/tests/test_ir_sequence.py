@@ -11,7 +11,7 @@ from odoo.exceptions import UserError
 from odoo.microkernel.modules.registry import Registry
 from odoo.tests import common
 from odoo.tests.common import BaseCase
-from odoo.tools.misc import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 ADMIN_USER_ID = common.ADMIN_USER_ID
 

@@ -1,4 +1,4 @@
-from odoo import tools
+from odoo.technology import utils as tech_utils
 from odoo.ormapping import fields
 from odoo.tests.common import tagged
 from odoo.addons.l10n_hu_edi.tests.common import L10nHuEdiTestCommon
@@ -23,7 +23,7 @@ class L10nHuEdiTestInvoiceXml(L10nHuEdiTestCommon):
             invoice._l10n_hu_edi_set_chain_index()
             invoice_xml = invoice._l10n_hu_edi_generate_xml()
 
-            with tools.file_open('l10n_hu_edi/tests/invoice_xmls/invoice_simple.xml', 'rb') as expected_xml_file:
+            with tech_utils.file_open('l10n_hu_edi/tests/invoice_xmls/invoice_simple.xml', 'rb') as expected_xml_file:
                 self.assertXmlTreeEqual(
                     self.get_xml_tree_from_string(invoice_xml),
                     self.get_xml_tree_from_string(expected_xml_file.read()),
@@ -37,7 +37,7 @@ class L10nHuEdiTestInvoiceXml(L10nHuEdiTestCommon):
             credit_note._l10n_hu_edi_set_chain_index()
             credit_note_xml = credit_note._l10n_hu_edi_generate_xml()
 
-            with tools.file_open('l10n_hu_edi/tests/invoice_xmls/credit_note.xml', 'rb') as expected_xml_file:
+            with tech_utils.file_open('l10n_hu_edi/tests/invoice_xmls/credit_note.xml', 'rb') as expected_xml_file:
                 self.assertXmlTreeEqual(
                     self.get_xml_tree_from_string(credit_note_xml),
                     self.get_xml_tree_from_string(expected_xml_file.read()),
@@ -49,7 +49,7 @@ class L10nHuEdiTestInvoiceXml(L10nHuEdiTestCommon):
             invoice.action_post()
             invoice_xml = invoice._l10n_hu_edi_generate_xml()
 
-            with tools.file_open('l10n_hu_edi/tests/invoice_xmls/invoice_complex_huf.xml', 'rb') as expected_xml_file:
+            with tech_utils.file_open('l10n_hu_edi/tests/invoice_xmls/invoice_complex_huf.xml', 'rb') as expected_xml_file:
                 self.assertXmlTreeEqual(
                     self.get_xml_tree_from_string(invoice_xml),
                     self.get_xml_tree_from_string(expected_xml_file.read()),
@@ -61,7 +61,7 @@ class L10nHuEdiTestInvoiceXml(L10nHuEdiTestCommon):
             invoice.action_post()
             invoice_xml = invoice._l10n_hu_edi_generate_xml()
 
-            with tools.file_open('l10n_hu_edi/tests/invoice_xmls/invoice_complex_eur.xml', 'rb') as expected_xml_file:
+            with tech_utils.file_open('l10n_hu_edi/tests/invoice_xmls/invoice_complex_eur.xml', 'rb') as expected_xml_file:
                 self.assertXmlTreeEqual(
                     self.get_xml_tree_from_string(invoice_xml),
                     self.get_xml_tree_from_string(expected_xml_file.read()),
@@ -78,7 +78,7 @@ class L10nHuEdiTestInvoiceXml(L10nHuEdiTestCommon):
             advance_invoice.action_post()
             advance_invoice_xml = advance_invoice._l10n_hu_edi_generate_xml()
 
-            with tools.file_open('l10n_hu_edi/tests/invoice_xmls/invoice_advance.xml', 'rb') as expected_xml_file:
+            with tech_utils.file_open('l10n_hu_edi/tests/invoice_xmls/invoice_advance.xml', 'rb') as expected_xml_file:
                 self.assertXmlTreeEqual(
                     self.get_xml_tree_from_string(advance_invoice_xml),
                     self.get_xml_tree_from_string(expected_xml_file.read()),
@@ -94,7 +94,7 @@ class L10nHuEdiTestInvoiceXml(L10nHuEdiTestCommon):
             final_invoice.action_post()
             final_invoice_xml = final_invoice._l10n_hu_edi_generate_xml()
 
-            with tools.file_open('l10n_hu_edi/tests/invoice_xmls/invoice_final.xml', 'rb') as expected_xml_file:
+            with tech_utils.file_open('l10n_hu_edi/tests/invoice_xmls/invoice_final.xml', 'rb') as expected_xml_file:
                 self.assertXmlTreeEqual(
                     self.get_xml_tree_from_string(final_invoice_xml),
                     self.get_xml_tree_from_string(expected_xml_file.read()),
@@ -118,7 +118,7 @@ class L10nHuEdiTestInvoiceXml(L10nHuEdiTestCommon):
                     with zip_file.open(filenames[0]) as invoice_file:
                         invoice_xml = invoice_file.read()
 
-            with tools.file_open('l10n_hu_edi/tests/invoice_xmls/invoice_simple.xml', 'rb') as expected_xml_file:
+            with tech_utils.file_open('l10n_hu_edi/tests/invoice_xmls/invoice_simple.xml', 'rb') as expected_xml_file:
                 self.assertXmlTreeEqual(
                     self.get_xml_tree_from_string(invoice_xml),
                     self.get_xml_tree_from_string(expected_xml_file.read()),

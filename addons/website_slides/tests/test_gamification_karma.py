@@ -4,7 +4,7 @@
 from odoo.addons.website_slides.tests import common
 from odoo.tests import tagged
 from odoo.tests.common import users
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 @tagged('gamification')

@@ -8,7 +8,7 @@ import psycopg2
 from odoo.exceptions import AccessError
 from odoo.technology.db import BaseCursor
 from odoo.tests import common
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 class CustomError(Exception):

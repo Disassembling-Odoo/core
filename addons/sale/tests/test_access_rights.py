@@ -3,7 +3,7 @@
 
 from odoo.exceptions import AccessError, UserError
 from odoo.tests import tagged
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 from odoo.addons.base.tests.common import BaseUsersCommon
 from odoo.addons.sale.tests.common import SaleCommon

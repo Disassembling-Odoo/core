@@ -4,7 +4,7 @@
 import time
 
 from odoo.tests import Form, TransactionCase
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 from odoo import Command
 
 

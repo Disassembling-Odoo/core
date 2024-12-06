@@ -6,7 +6,7 @@ from odoo.addons.mail.tests.common import MailCommon
 from odoo.addons.mail.tests.mail_tracking_duration_mixin_case import MailTrackingDurationMixinCase
 from odoo.addons.test_mail.tests.common import TestRecipients
 from odoo.tests.common import tagged, users
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 @tagged('mail_thread', 'mail_track')

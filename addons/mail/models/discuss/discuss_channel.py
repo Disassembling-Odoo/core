@@ -14,7 +14,7 @@ from odoo.addons.mail.tools.discuss import Store
 from odoo.exceptions import AccessError, UserError, ValidationError
 from odoo.osv import expression
 from odoo.tools import format_list, html_escape
-from odoo.microkernel.utils import get_lang
+from odoo.tools.i18n import get_lang
 
 channel_avatar = '''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 530.06 530.06">
 <circle cx="265.03" cy="265.03" r="265.03" fill="#875a7b"/>

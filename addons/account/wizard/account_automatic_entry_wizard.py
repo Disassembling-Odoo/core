@@ -2,9 +2,10 @@
 from odoo import api, models, _
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
-from odoo.microkernel.utils import format_date, formatLang
+from odoo.tools.i18n import formatLang
+from odoo.microkernel.utils import format_date
 from odoo.tools.float_utils import float_repr
-from odoo.tools import groupby
+from odoo.technology.utils import groupby
 
 from collections import defaultdict
 from markupsafe import Markup, escape

@@ -12,7 +12,7 @@ from odoo import api, models, Command
 from odoo import _
 from odoo.ormapping import fields
 from odoo.exceptions import ValidationError, UserError
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 from odoo.technology.db import SQL
 
 _logger = logging.getLogger('odoo.addons.base.partner.merge')

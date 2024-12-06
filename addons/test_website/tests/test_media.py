@@ -4,7 +4,7 @@
 import base64
 
 import odoo.tests
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 @odoo.tests.common.tagged('post_install', '-at_install')

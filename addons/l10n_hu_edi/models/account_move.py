@@ -10,11 +10,12 @@ from psycopg2.errors import LockNotAvailable
 
 from odoo import models, api, _
 from odoo.ormapping import fields
-from odoo.technology.framework.http import request
+from odoo.technology.utils import groupby
+from odoo.technology.framework import request
 from odoo.exceptions import UserError, ValidationError
-from odoo.tools import float_round, float_repr, cleanup_xml_node, groupby
+from odoo.tools import float_round, float_repr, cleanup_xml_node, 
 from odoo.tools.misc import split_every
-from odoo.microkernel.utils import formatLang
+from odoo.tools.i18n import formatLang
 from odoo.addons.base_iban.models.res_partner_bank import normalize_iban
 from odoo.addons.l10n_hu_edi.models.l10n_hu_edi_connection import format_bool, L10nHuEdiConnection, L10nHuEdiConnectionError
 

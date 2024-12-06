@@ -2,7 +2,7 @@
 
 from odoo import models
 from odoo.ormapping import fields
-from odoo.tools import groupby
+from odoo.technology.utils import groupby
 from odoo.addons.mail.tools.discuss import Store
 
 

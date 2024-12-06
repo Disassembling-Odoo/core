@@ -14,7 +14,8 @@ from werkzeug.exceptions import InternalServerError
 from odoo.technology.framework import http
 from odoo.exceptions import UserError
 from odoo.technology.framework.http import content_disposition, request
-from odoo.tools import lazy_property, osutil
+from odoo.technology.utils import lazy_property
+from odoo.tools import osutil
 from odoo.tools.misc import xlsxwriter
 
 

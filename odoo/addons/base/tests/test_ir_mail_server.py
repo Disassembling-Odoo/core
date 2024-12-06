@@ -13,7 +13,7 @@ from odoo.addons.base.tests import test_mail_examples
 from odoo.addons.base.tests.common import MockSmtplibCase
 from odoo.tests import tagged, users
 from odoo.tests.common import TransactionCase
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 from odoo.technology.conf import config
 
 

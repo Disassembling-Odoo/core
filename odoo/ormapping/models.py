@@ -58,23 +58,24 @@ from .base import NewId, IdType
 import odoo
 from .. import SUPERUSER_ID
 from .. import api
-from ..technology.utils import check_pg_name, date_utils
+from ..technology.utils import check_pg_name, date_utils, lazy_classproperty
 from .. import tools
 from ..exceptions import AccessError, MissingError, ValidationError, UserError
 from ..technology.conf import config
 from ..technology.db import SQL, Query
 from ..tools import (
     clean_context, discardattr,
-    format_list, lazy_classproperty,
-    partition, split_every, unique,
+    format_list, 
+    split_every, 
 )
-from ..technology.utils import frozendict, OrderedSet, LastOrderedSet
+
+from ..technology.utils import frozendict, OrderedSet, LastOrderedSet, partition, unique
 from ..tools.lru import LRU
+from ..tools.i18n import get_lang
 from ..tools.misc import ReversedIterable, unquote
 from ..tools.translate import _, LazyTranslate
 from ..technology.cache import ormcache
 from odoo.microkernel.utils import (
-    get_lang,
     DEFAULT_SERVER_DATE_FORMAT, DEFAULT_SERVER_DATETIME_FORMAT,
 )
 

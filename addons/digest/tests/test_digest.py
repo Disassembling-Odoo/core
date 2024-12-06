@@ -16,7 +16,7 @@ from odoo.addons.digest.tests.common import TestDigestCommon
 from odoo.addons.mail.tests.common import MailCommon
 from odoo.tests import tagged
 from odoo.tests.common import users
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 class TestDigest(TestDigestCommon):

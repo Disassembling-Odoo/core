@@ -14,7 +14,8 @@ import functools
 from psycopg2 import OperationalError
 
 from odoo import tools
-from ..technology.db import SQL
+from ..utils import file_open
+from ..db import SQL
 
 
 _logger = logging.getLogger(__name__)
@@ -650,7 +651,7 @@ class Profiler:
                 filelines = self.filecache[filename]
             except KeyError:
                 try:
-                    with tools.file_open(filename, filter_ext=('.py',)) as f:
+                    with file_open(filename, filter_ext=('.py',)) as f:
                         filelines = f.readlines()
                 except (ValueError, FileNotFoundError):  # mainly for <decorator> "filename"
                     filelines = None

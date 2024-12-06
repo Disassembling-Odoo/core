@@ -4,7 +4,7 @@
 from odoo.addons.mail_group.tests.common import TestMailListCommon
 from odoo.addons.mail_group.tests.data import GROUP_TEMPLATE
 from odoo.exceptions import AccessError
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 class TestMailGroupMessage(TestMailListCommon):

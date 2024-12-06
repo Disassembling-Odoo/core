@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 from odoo.tests import HttpCase, tagged
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 from odoo.addons.base.tests.common import BaseUsersCommon, HttpCaseWithUserPortal
 from odoo.addons.sale.tests.common import SaleCommon

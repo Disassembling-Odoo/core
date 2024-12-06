@@ -16,11 +16,11 @@ import pytz
 
 from odoo import exceptions, tools, _
 from odoo.ormapping import fields
-from odoo.technology.framework.http import request
+from odoo.technology.framework import request
 from odoo.osv import expression
 from odoo.technology.framework import http
 from odoo.tools import is_html_empty, plaintext2html
-from odoo.microkernel.utils import babel_locale_parse
+from odoo.tools.i18n import babel_locale_parse
 
 
 class EventTrackController(http.Controller):

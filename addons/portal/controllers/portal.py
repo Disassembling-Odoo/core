@@ -7,9 +7,9 @@ from werkzeug import urls
 
 from odoo import tools, _, SUPERUSER_ID
 from odoo.exceptions import AccessDenied, AccessError, MissingError, UserError, ValidationError
-from odoo.technology.framework.http import content_disposition, Controller, request, route
+from odoo.technology.framework import content_disposition, Controller, request, route
 from odoo.technology.framework import http
-from odoo.tools import consteq
+from odoo.technology.utils import consteq
 
 # --------------------------------------------------
 # Misc tools

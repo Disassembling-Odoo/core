@@ -11,7 +11,7 @@ from odoo.exceptions import AccessError
 from odoo.technology.framework.http import request, content_disposition
 
 from odoo.technology.framework import http
-from odoo.tools import consteq
+from odoo.technology.utils import consteq
 from ..models.discuss.mail_guest import add_guest_to_context
 from odoo.addons.mail.tools.discuss import Store
 

@@ -5,7 +5,7 @@ import re
 from contextlib import suppress
 
 import odoo.tests
-from odoo.tools.misc import file_open
+from odoo.technology.utils import file_open
 
 RE_FORBIDDEN_STATEMENTS = re.compile(r'test.*\.(only|debug)\(')
 RE_ONLY = re.compile(r'QUnit\.(only|debug)\(')

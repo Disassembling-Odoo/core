@@ -9,6 +9,7 @@ from werkzeug.urls import url_join
 
 from odoo import api, models, tools, _
 from odoo.ormapping import fields
+from odoo.technology import utils as tech_utils
 from odoo.addons.sms.tools.sms_api import SmsApi
 
 _logger = logging.getLogger(__name__)
@@ -187,7 +188,7 @@ class SmsSms(models.Model):
         results_uuids = [result['uuid'] for result in results]
         all_sms_sudo = self.env['sms.sms'].sudo().search([('uuid', 'in', results_uuids)]).with_context(sms_skip_msg_notification=True)
 
-        for iap_state, results_group in tools.groupby(results, key=lambda result: result['state']):
+        for iap_state, results_group in tech_utils.groupby(results, key=lambda result: result['state']):
             sms_sudo = all_sms_sudo.filtered(lambda s: s.uuid in {result['uuid'] for result in results_group})
             if success_state := self.IAP_TO_SMS_STATE_SUCCESS.get(iap_state):
                 sms_sudo.sms_tracker_id._action_update_from_sms_state(success_state)

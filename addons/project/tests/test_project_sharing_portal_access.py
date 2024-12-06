@@ -8,7 +8,7 @@ from re import search
 
 from odoo import Command
 from odoo.technology.conf import config
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 from odoo.exceptions import AccessError
 from odoo.tests import HttpCase, tagged
 

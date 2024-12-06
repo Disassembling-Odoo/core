@@ -9,7 +9,7 @@ from urllib.parse import parse_qs
 from odoo import models, api, _
 from odoo.ormapping import fields
 from odoo.exceptions import ValidationError, UserError, AccessDenied
-from odoo.tools import hmac
+from odoo.technology.utils import hmac
 
 _logger = logging.getLogger(__name__)
 

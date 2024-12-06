@@ -11,7 +11,7 @@ from odoo.addons.mail.tests.common import mail_new_test_user
 from odoo.addons.website_event.tests.common import TestEventOnlineCommon, OnlineEventCase
 from odoo.exceptions import AccessError
 from odoo.tests import HttpCase, tagged
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 from odoo.tests.common import users
 
 class TestEventRegisterUTM(HttpCase, TestEventOnlineCommon):

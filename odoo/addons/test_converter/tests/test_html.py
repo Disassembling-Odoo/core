@@ -7,7 +7,7 @@ import re
 
 from odoo.tests import common
 from odoo.tools import html_escape as e
-from odoo.tools.misc import file_open
+from odoo.technology.utils import file_open
 
 directory = os.path.dirname(__file__)
 

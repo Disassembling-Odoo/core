@@ -24,8 +24,9 @@ except ImportError:
 
 import odoo
 from ..technology.conf import config
-from .misc import file_open, file_path, SKIPPED_ELEMENT_TYPES
+from .misc import SKIPPED_ELEMENT_TYPES
 from odoo.exceptions import ValidationError
+from ..technology.utils import file_open, file_path
 
 from .safe_eval import safe_eval as s_eval, pytz, time
 

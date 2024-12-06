@@ -10,7 +10,7 @@ from odoo import api, models, _
 from odoo.ormapping import fields
 from odoo.addons.iap.tools import iap_tools
 from odoo.exceptions import AccessError, UserError
-from odoo.microkernel.utils import get_lang
+from odoo.tools.i18n import get_lang
 
 _logger = logging.getLogger(__name__)
 

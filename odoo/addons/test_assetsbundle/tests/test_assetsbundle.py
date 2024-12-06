@@ -23,8 +23,9 @@ from odoo.technology.framework import http
 from odoo.tests import HttpCase, tagged
 from odoo.tests.common import TransactionCase
 from odoo.addons.base.models.ir_qweb import QWebException
-from odoo.tools import mute_logger, func
-from odoo.tools.misc import file_path
+from odoo.technology.utils import func
+from odoo.technology.utils import file_path
+from odoo.technology.adjustable import mute_logger
 
 GETMTINE = os.path.getmtime
 

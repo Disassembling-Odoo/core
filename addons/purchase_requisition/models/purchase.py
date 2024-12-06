@@ -5,7 +5,8 @@ from collections import defaultdict
 
 from odoo import api, models, _, Command
 from odoo.ormapping import fields
-from odoo.microkernel.utils import DEFAULT_SERVER_DATETIME_FORMAT, get_lang
+from odoo.tools.i18n import get_lang
+from odoo.microkernel.utils import DEFAULT_SERVER_DATETIME_FORMAT
 
 
 class PurchaseOrderGroup(models.Model):

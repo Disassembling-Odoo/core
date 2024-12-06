@@ -4,7 +4,7 @@ from werkzeug.exceptions import Forbidden
 
 from odoo import models, api, _
 from odoo.ormapping import fields
-from odoo.tools import consteq
+from odoo.technology.utils import consteq
 
 class SpreadsheetDashboardShare(models.Model):
     _name = 'spreadsheet.dashboard.share'

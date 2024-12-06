@@ -17,6 +17,7 @@ from werkzeug import urls
 from odoo import api, models, tools, SUPERUSER_ID, _, Command
 from odoo.ormapping import fields
 from odoo.exceptions import RedirectWarning, UserError, ValidationError
+from odoo.technology import utils as tech_utils
 
 import typing
 if typing.TYPE_CHECKING:
@@ -341,7 +342,7 @@ class Partner(models.Model):
         partners_with_internal_user = self.filtered(lambda partner: partner.user_ids - partner.user_ids.filtered('share'))
         super(Partner, partners_with_internal_user)._compute_avatar(avatar_field, image_field)
         partners_without_image = (self - partners_with_internal_user).filtered(lambda p: not p[image_field])
-        for _, group in tools.groupby(partners_without_image, key=lambda p: p._avatar_get_placeholder_path()):
+        for _, group in tech_utils.groupby(partners_without_image, key=lambda p: p._avatar_get_placeholder_path()):
             group_partners = self.env['res.partner'].concat(*group)
             group_partners[avatar_field] = base64.b64encode(group_partners[0]._avatar_get_placeholder())
 

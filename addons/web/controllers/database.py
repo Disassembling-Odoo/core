@@ -16,7 +16,8 @@ from odoo.technology.framework import (
     http, content_disposition, 
     dispatch_rpc, request, Response
 )
-from odoo.tools.misc import file_open, str2bool
+from odoo.technology.utils import file_open
+from odoo.tools import str2bool
 from odoo.tools.translate import _
 
 from odoo.addons.base.models.ir_qweb import render as qweb_render

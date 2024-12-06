@@ -5,7 +5,7 @@ from psycopg2 import IntegrityError
 from odoo.exceptions import ValidationError
 from odoo.ormapping import Command
 from odoo.tests import tagged, TransactionCase, Form
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 from unittest.mock import patch
 

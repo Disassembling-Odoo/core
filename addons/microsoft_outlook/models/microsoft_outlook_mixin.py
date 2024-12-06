@@ -11,7 +11,7 @@ from werkzeug.urls import url_encode, url_join
 from odoo import _, api, models
 from odoo.ormapping import fields
 from odoo.exceptions import AccessError, UserError
-from odoo.tools.misc import hmac
+from odoo.technology.utils import hmac
 
 _logger = logging.getLogger(__name__)
 

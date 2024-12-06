@@ -14,8 +14,9 @@ from textwrap import dedent
 
 from odoo.tests.common import TransactionCase
 from odoo.addons.base.models.ir_qweb import QWebException, render
-from odoo.tools import misc, mute_logger
-from odoo.tools.json import scriptsafe as json_scriptsafe
+from odoo.tools import misc
+from odoo.technology.adjustable import mute_logger
+from odoo.technology.utils.json import scriptsafe as json_scriptsafe
 from odoo.exceptions import UserError, ValidationError, MissingError
 
 unsafe_eval = eval

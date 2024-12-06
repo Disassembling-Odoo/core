@@ -7,7 +7,7 @@ from odoo.addons.survey.tests import common
 from odoo.exceptions import AccessError, ValidationError
 from odoo.tests import tagged
 from odoo.tests.common import users, HttpCase
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 @tagged('security')

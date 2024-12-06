@@ -4,8 +4,9 @@ from hashlib import sha1
 
 from odoo.ormapping import fields
 from odoo.technology.framework.http import request
-from odoo.tools import consteq, float_round, ustr
-from odoo.tools.misc import hmac as hmac_tool
+from odoo.tools import float_round, ustr
+from odoo.technology.utils import consteq
+from odoo.technology.utils import hmac as hmac_tool
 
 from odoo.addons.payment.const import CURRENCY_MINOR_UNITS
 

@@ -12,7 +12,7 @@ import requests
 from lxml import etree
 
 from odoo.exceptions import UserError
-from odoo.tools.misc import file_open
+from odoo.technology.utils import file_open
 
 __all__ = [
     "cleanup_xml_node",

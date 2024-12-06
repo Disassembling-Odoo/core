@@ -12,7 +12,8 @@ from odoo import api, models, _
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
 from odoo.osv import expression
-from odoo.microkernel.utils import get_lang, format_date
+from odoo.tools.i18n import get_lang
+from odoo.microkernel.utils import format_date
 
 GOOGLE_CALENDAR_URL = 'https://www.google.com/calendar/render?'
 

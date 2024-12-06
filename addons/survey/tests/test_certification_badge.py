@@ -4,7 +4,7 @@
 from odoo.addons.survey.tests import common
 from psycopg2 import IntegrityError
 from odoo.exceptions import AccessError
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 class TestCertificationBadge(common.TestSurveyCommon):

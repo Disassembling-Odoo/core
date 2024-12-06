@@ -11,7 +11,8 @@ from odoo.ormapping import fields
 from odoo.exceptions import AccessError
 from odoo.osv import expression
 from odoo.technology.db import SQL
-from odoo.tools import clean_context, format_list, groupby
+from odoo.tools import clean_context, format_list
+from odoo.technology.utils import groupby
 from odoo.technology.utils import OrderedSet
 from odoo.addons.mail.tools.discuss import Store
 

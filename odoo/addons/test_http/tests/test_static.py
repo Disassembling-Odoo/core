@@ -11,8 +11,8 @@ from urllib3.util import parse_url
 import odoo
 from odoo.technology.conf import config
 from odoo.tests import new_test_user, tagged, RecordCapturer
-from odoo.tools import file_open, image_process
-from odoo.tools.misc import submap
+from odoo.tools import image_process
+from odoo.technology.utils import file_open, submap
 
 from .test_common import TestHttpBase, HTTP_DATETIME_FORMAT
 

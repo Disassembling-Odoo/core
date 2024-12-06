@@ -9,7 +9,8 @@ from odoo.addons.mail.tools.discuss import Store
 from odoo.addons.test_mail.models.test_mail_models import MailTestSimple
 from odoo.exceptions import AccessError, UserError
 from odoo.tests.common import tagged, users, HttpCase
-from odoo.tools import is_html_empty, mute_logger, formataddr
+from odoo.tools import is_html_empty, formataddr
+from odoo.technology.adjustable import mute_logger
 
 
 @tagged("mail_message", "post_install", "-at_install")

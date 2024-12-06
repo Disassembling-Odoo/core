@@ -1,6 +1,6 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import tools
+from odoo.technology import utils as tech_utils
 from odoo.tests.common import tagged
 from odoo.exceptions import UserError
 from odoo.addons.account.tests.test_account_move_send import TestAccountMoveSendCommon
@@ -40,7 +40,7 @@ class L10nHuEdiTestFlowsMocked(L10nHuEdiTestCommon, TestAccountMoveSendCommon):
             self.assertRecordValues(credit_note, [{'l10n_hu_edi_state': 'confirmed', 'l10n_hu_invoice_chain_index': 1}])
 
     def test_send_invoice_warning(self):
-        with tools.file_open('l10n_hu_edi/tests/mocked_requests/queryTransactionStatus_response_warning.xml', 'r') as response_file:
+        with tech_utils.file_open('l10n_hu_edi/tests/mocked_requests/queryTransactionStatus_response_warning.xml', 'r') as response_file:
             response_data = response_file.read()
         with self.patch_post({'queryTransactionStatus': response_data}), \
                 freeze_time('2024-01-25T15:28:53Z'):
@@ -53,7 +53,7 @@ class L10nHuEdiTestFlowsMocked(L10nHuEdiTestCommon, TestAccountMoveSendCommon):
             self.assertRecordValues(invoice, [{'l10n_hu_edi_state': 'confirmed_warning', 'l10n_hu_invoice_chain_index': -1}])
 
     def test_send_invoice_error(self):
-        with tools.file_open('l10n_hu_edi/tests/mocked_requests/queryTransactionStatus_response_error.xml', 'r') as response_file:
+        with tech_utils.file_open('l10n_hu_edi/tests/mocked_requests/queryTransactionStatus_response_error.xml', 'r') as response_file:
             response_data = response_file.read()
         with self.patch_post({'queryTransactionStatus': response_data}), \
                 freeze_time('2024-01-25T15:28:53Z'):
@@ -78,7 +78,7 @@ class L10nHuEdiTestFlowsMocked(L10nHuEdiTestCommon, TestAccountMoveSendCommon):
             send_and_print.action_send_and_print()
             self.assertRecordValues(invoice, [{'l10n_hu_edi_state': 'send_timeout', 'l10n_hu_invoice_chain_index': -1}])
 
-        with tools.file_open('l10n_hu_edi/tests/mocked_requests/queryTransactionStatus_response_original.xml', 'r') as response_file:
+        with tech_utils.file_open('l10n_hu_edi/tests/mocked_requests/queryTransactionStatus_response_original.xml', 'r') as response_file:
             response_data = response_file.read()
         # Advance 10 minutes so the timeout recovery mechanism triggers.
         with freeze_time('2024-01-25T15:38:53Z'), \
@@ -101,7 +101,7 @@ class L10nHuEdiTestFlowsMocked(L10nHuEdiTestCommon, TestAccountMoveSendCommon):
             self.assertRecordValues(invoice, [{'l10n_hu_edi_state': 'send_timeout', 'l10n_hu_invoice_chain_index': -1}])
 
         # This returns an original XML with name INV/2024/00999
-        with tools.file_open('l10n_hu_edi/tests/mocked_requests/queryTransactionStatus_response_original.xml', 'r') as response_file:
+        with tech_utils.file_open('l10n_hu_edi/tests/mocked_requests/queryTransactionStatus_response_original.xml', 'r') as response_file:
             response_data = response_file.read()
 
         # Advance 10 minutes so the timeout recovery mechanism triggers.
@@ -115,7 +115,7 @@ class L10nHuEdiTestFlowsMocked(L10nHuEdiTestCommon, TestAccountMoveSendCommon):
             with self.patch_post():
                 invoice, cancel_wizard = self.create_cancel_wizard()
                 self.assertRecordValues(invoice, [{'l10n_hu_edi_state': 'confirmed'}])
-            with tools.file_open('l10n_hu_edi/tests/mocked_requests/queryTransactionStatus_response_error.xml', 'r') as response_file:
+            with tech_utils.file_open('l10n_hu_edi/tests/mocked_requests/queryTransactionStatus_response_error.xml', 'r') as response_file:
                 response_data = response_file.read()
             with self.patch_post({'queryTransactionStatus': response_data}):
                 with contextlib.suppress(UserError):
@@ -127,7 +127,7 @@ class L10nHuEdiTestFlowsMocked(L10nHuEdiTestCommon, TestAccountMoveSendCommon):
             with self.patch_post():
                 invoice, cancel_wizard = self.create_cancel_wizard()
                 self.assertRecordValues(invoice, [{'l10n_hu_edi_state': 'confirmed'}])
-            with tools.file_open('l10n_hu_edi/tests/mocked_requests/queryTransactionStatus_response_annulment_pending.xml', 'r') as response_file:
+            with tech_utils.file_open('l10n_hu_edi/tests/mocked_requests/queryTransactionStatus_response_annulment_pending.xml', 'r') as response_file:
                 response_data = response_file.read()
             with self.patch_post({'queryTransactionStatus': response_data}):
                 cancel_wizard.button_request_cancel()
@@ -138,7 +138,7 @@ class L10nHuEdiTestFlowsMocked(L10nHuEdiTestCommon, TestAccountMoveSendCommon):
             with self.patch_post():
                 invoice, cancel_wizard = self.create_cancel_wizard()
                 self.assertRecordValues(invoice, [{'l10n_hu_edi_state': 'confirmed', 'l10n_hu_invoice_chain_index': -1}])
-            with tools.file_open('l10n_hu_edi/tests/mocked_requests/queryTransactionStatus_response_annulment_done.xml', 'r') as response_file:
+            with tech_utils.file_open('l10n_hu_edi/tests/mocked_requests/queryTransactionStatus_response_annulment_done.xml', 'r') as response_file:
                 response_data = response_file.read()
             with self.patch_post({'queryTransactionStatus': response_data}):
                 cancel_wizard.button_request_cancel()
@@ -168,7 +168,7 @@ class L10nHuEdiTestFlowsMocked(L10nHuEdiTestCommon, TestAccountMoveSendCommon):
                 send_and_print.action_send_and_print()
                 self.assertRecordValues(new_invoice, [{'l10n_hu_edi_state': 'confirmed', 'l10n_hu_invoice_chain_index': 2}])
 
-            with tools.file_open('l10n_hu_edi/tests/mocked_requests/queryTransactionStatus_response_annulment_done.xml', 'r') as response_file:
+            with tech_utils.file_open('l10n_hu_edi/tests/mocked_requests/queryTransactionStatus_response_annulment_done.xml', 'r') as response_file:
                 response_data = response_file.read()
             with self.patch_post({'queryTransactionStatus': response_data}):
                 cancel_wizard.button_request_cancel()
@@ -223,7 +223,7 @@ class L10nHuEdiTestFlowsMocked(L10nHuEdiTestCommon, TestAccountMoveSendCommon):
                 if base_url not in (prod_url, demo_url) or service not in mocked_requests:
                     test_case.fail(f'Invalid POST url: {url}')
 
-                with tools.file_open(f'l10n_hu_edi/tests/mocked_requests/{service}_request.xml', 'rb') as expected_request_file:
+                with tech_utils.file_open(f'l10n_hu_edi/tests/mocked_requests/{service}_request.xml', 'rb') as expected_request_file:
                     test_case.assertXmlTreeEqual(
                         test_case.get_xml_tree_from_string(data),
                         test_case.get_xml_tree_from_string(expected_request_file.read()),
@@ -238,7 +238,7 @@ class L10nHuEdiTestFlowsMocked(L10nHuEdiTestCommon, TestAccountMoveSendCommon):
                         raise responses[service]
                     mock_response.text = responses[service]
                 else:
-                    with tools.file_open(f'l10n_hu_edi/tests/mocked_requests/{service}_response.xml', 'r') as response_file:
+                    with tech_utils.file_open(f'l10n_hu_edi/tests/mocked_requests/{service}_response.xml', 'r') as response_file:
                         mock_response.text = response_file.read()
                 return mock_response
 

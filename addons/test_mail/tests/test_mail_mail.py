@@ -20,8 +20,8 @@ from odoo.addons.base.models.ir_mail_server import MailDeliveryException
 from odoo.addons.mail.tests.common import MailCommon
 from odoo.exceptions import AccessError
 from odoo.tests import common, tagged, users
-from odoo.tools import formataddr, mute_logger
-
+from odoo.tools import formataddr
+from odoo.technology.adjustable import mute_logger
 
 @tagged('mail_mail')
 class TestMailMail(MailCommon):

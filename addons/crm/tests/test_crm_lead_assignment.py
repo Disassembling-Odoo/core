@@ -10,7 +10,7 @@ from unittest.mock import patch
 from odoo.ormapping import fields
 from odoo.addons.crm.tests.common import TestLeadConvertCommon
 from odoo.tests.common import tagged
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 class TestLeadAssignCommon(TestLeadConvertCommon):

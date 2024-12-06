@@ -4,7 +4,7 @@
 from odoo import exceptions
 from odoo.addons.sales_team.tests.common import TestSalesCommon
 from odoo.tests.common import users
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 class TestMembership(TestSalesCommon):

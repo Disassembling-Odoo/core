@@ -10,10 +10,8 @@ from . import win32
 from .parse_version import parse_version
 from .barcode import check_barcode_encoding
 from .float_utils import *
-from .func import *
 from .i18n import format_list, py_to_js_locale
 from .image import image_process
-from .json import json_default
 from .mail import *
 from .misc import *
 from .translate import _, html_translate, xml_translate, LazyTranslate

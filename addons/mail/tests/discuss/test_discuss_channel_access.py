@@ -6,7 +6,7 @@ from odoo.addons.mail.tests.common import mail_new_test_user
 from odoo.addons.mail.tests.common import MailCommon
 from odoo.exceptions import AccessError, UserError
 from odoo.tests.common import tagged
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 @tagged("post_install", "-at_install")

@@ -4,7 +4,7 @@
 from odoo import models, api
 from odoo.ormapping import fields
 from odoo.tools import float_compare, float_is_zero
-from odoo.tools.misc import groupby
+from odoo.technology.utils import groupby
 
 
 class AccountMove(models.Model):

@@ -9,7 +9,7 @@ from odoo.ormapping import Command
 from odoo.tests.common import HttpCase, tagged
 from base64 import b64decode
 
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 _logger = logging.getLogger(__name__)
 
 try:

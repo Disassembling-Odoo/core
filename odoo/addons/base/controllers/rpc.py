@@ -10,8 +10,7 @@ from markupsafe import Markup
 import odoo
 from odoo.technology.framework import Controller, route, dispatch_rpc, request, Response
 from odoo.ormapping import Command, Date, Datetime
-from odoo.tools import lazy
-from odoo.technology.utils import frozendict
+from odoo.technology.utils import frozendict, lazy
 
 # ==========================================================
 # XML-RPC helpers

@@ -7,9 +7,9 @@ from werkzeug.exceptions import NotFound, Unauthorized
 
 from odoo import _
 from odoo.exceptions import AccessError
-from odoo.technology.framework.http import request
+from odoo.technology.framework import request
 from odoo.technology.framework import http
-from odoo.tools import consteq
+from odoo.technology.utils import consteq
 from odoo.addons.mail.controllers.discuss.public_page import PublicPageController
 from odoo.addons.mail.models.discuss.mail_guest import add_guest_to_context
 from odoo.addons.mail.tools.discuss import Store

@@ -3,7 +3,7 @@
 
 from odoo import api, models, tools
 from odoo.ormapping import fields
-from odoo.microkernel.utils import formatLang
+from odoo.tools.i18n import formatLang
 from odoo.technology import db
 
 class PurchaseBillUnion(models.Model):

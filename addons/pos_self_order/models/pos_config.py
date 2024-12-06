@@ -8,7 +8,8 @@ from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError, AccessError
 
 from odoo import api, models, _, service
-from odoo.tools import file_open, split_every
+from odoo.tools import split_every
+from odoo.technology.utils import file_open
 
 
 class PosConfig(models.Model):

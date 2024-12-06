@@ -10,7 +10,8 @@ from unittest.mock import patch
 from odoo.addons.mail.tests.common import MailCommon
 from odoo.addons.test_mail.tests.common import TestRecipients
 from odoo.tests import tagged, users, warmup
-from odoo.tools import mute_logger, safe_eval
+from odoo.tools import safe_eval
+from odoo.technology.adjustable import mute_logger
 
 
 class TestMailTemplateCommon(MailCommon, TestRecipients):

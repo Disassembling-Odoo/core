@@ -6,7 +6,7 @@ import json
 
 import odoo.tests
 from odoo.tests.common import HttpCase, new_test_user
-from odoo.tools.json import scriptsafe as json_safe
+from odoo.technology.utils.json import scriptsafe as json_safe
 
 
 @odoo.tests.tagged('-at_install', 'post_install')

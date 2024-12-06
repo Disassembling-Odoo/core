@@ -2,7 +2,7 @@
 import os.path
 
 from odoo.tests.common import BaseCase
-from odoo.tools.misc import file_open
+from odoo.technology.utils import file_open
 from odoo.tools.mimetypes import guess_mimetype
 
 def contents(extension):

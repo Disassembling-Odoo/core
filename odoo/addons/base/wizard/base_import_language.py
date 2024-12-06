@@ -11,6 +11,7 @@ from odoo import api, models, tools, _
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
 from odoo.tools.translate import TranslationImporter
+from odoo.technology import utils as tech_utils
 
 _logger = logging.getLogger(__name__)
 
@@ -31,7 +32,7 @@ class BaseLanguageImport(models.TransientModel):
 
     def import_lang(self):
         Lang = self.env["res.lang"]
-        for overwrite, base_lang_imports in tools.groupby(self, operator.itemgetter('overwrite')):
+        for overwrite, base_lang_imports in tech_utils.groupby(self, operator.itemgetter('overwrite')):
             translation_importer = TranslationImporter(self.env.cr)
             for base_lang_import in base_lang_imports:
                 if not Lang._activate_lang(base_lang_import.code):

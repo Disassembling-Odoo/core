@@ -2,7 +2,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 from odoo import models, api, _
 from odoo.ormapping import fields
-from odoo.tools import unique
+from odoo.technology.utils import unique
 from odoo.tools.float_utils import float_round, float_compare
 from odoo.exceptions import UserError, ValidationError
 from odoo.technology.db import SQL, Query

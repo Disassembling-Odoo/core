@@ -4,7 +4,7 @@ import json
 import re
 
 import odoo
-from odoo.tools.misc import file_open
+from odoo.technology.utils import file_open
 from odoo.addons.cloud_storage_google.tests.test_cloud_storage_google import (
     TestCloudStorageGoogleCommon,
 )

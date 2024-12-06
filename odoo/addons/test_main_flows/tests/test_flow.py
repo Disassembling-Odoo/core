@@ -1,7 +1,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 from odoo import Command
 from odoo.addons.account.tests.common import AccountTestMockOnlineSyncCommon
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 import logging
 import odoo.tests

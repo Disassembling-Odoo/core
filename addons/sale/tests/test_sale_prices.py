@@ -6,7 +6,8 @@ from datetime import timedelta
 
 from odoo.ormapping import fields, Command
 from odoo.tests import Form, tagged
-from odoo.tools import float_compare, mute_logger, float_round
+from odoo.tools import float_compare, float_round
+from odoo.technology.adjustable import mute_logger
 
 from odoo.addons.sale.tests.common import SaleCommon
 

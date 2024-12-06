@@ -11,6 +11,8 @@ import re
 import textwrap
 import uuid
 
+from odoo.technology.adjustable import profiler
+
 try:
     import sass as libsass
 except ImportError:
@@ -22,12 +24,12 @@ from rjsmin import jsmin as rjsmin
 
 from odoo import release, SUPERUSER_ID, _
 from odoo.technology.framework.http import request
-from odoo.tools import (func, misc, transpile_javascript,
-    is_odoo_module, SourceMapGenerator, profiler)
-from odoo.technology.utils import OrderedSet
-from odoo.tools.json import scriptsafe as json
+from odoo.tools import (misc, transpile_javascript,
+    is_odoo_module, SourceMapGenerator)
+from odoo.technology.utils import OrderedSet, func
+from odoo.technology.utils.json import scriptsafe as json
 from odoo.tools.constants import SCRIPT_EXTENSIONS, STYLE_EXTENSIONS
-from odoo.tools.misc import file_open, file_path
+from odoo.technology.utils import file_open, file_path
 
 _logger = logging.getLogger(__name__)
 

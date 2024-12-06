@@ -12,7 +12,7 @@ from odoo.addons.test_mail.models.test_mail_models import MailTestSimple
 from odoo.addons.test_mail.tests.common import TestRecipients
 from odoo.addons.mail.tools.discuss import Store
 from odoo.tests import Form, tagged, users
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 @tagged('mail_thread')

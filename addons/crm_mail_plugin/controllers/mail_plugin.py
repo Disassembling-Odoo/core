@@ -4,7 +4,7 @@
 import logging
 
 from odoo.technology.framework import request
-from odoo.microkernel.utils import formatLang
+from odoo.tools.i18n import formatLang
 
 from odoo.addons.mail_plugin.controllers import mail_plugin
 

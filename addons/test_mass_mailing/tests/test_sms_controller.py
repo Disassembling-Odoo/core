@@ -2,7 +2,7 @@
 
 from odoo.addons.test_mass_mailing.tests.common import TestMassSMSCommon
 from odoo.tests.common import HttpCase
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 class TestSmsController(HttpCase, TestMassSMSCommon):

@@ -6,7 +6,7 @@ from http import HTTPStatus
 import odoo
 from odoo.tests import tagged
 from odoo.tests.common import new_test_user, Like
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 from odoo.addons.test_http.utils import HtmlTokenizer
 
 from .test_common import TestHttpBase

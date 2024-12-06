@@ -6,7 +6,7 @@ import uuid
 
 from odoo import _, modules
 from odoo.ormapping import fields
-from odoo.tools.misc import file_open
+from odoo.technology.utils import file_open
 
 DEMO_BILL_PATH = 'account_peppol/tools/demo_bill'
 DEMO_ENC_KEY = 'account_peppol/tools/enc_key'

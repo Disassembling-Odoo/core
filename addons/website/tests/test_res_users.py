@@ -5,7 +5,7 @@ from odoo.addons.website.tools import MockRequest
 from odoo.exceptions import ValidationError
 from odoo.technology.framework import retrying
 from odoo.tests.common import TransactionCase, new_test_user
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 from unittest import TestCase
 

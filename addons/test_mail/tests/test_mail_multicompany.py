@@ -15,7 +15,7 @@ from odoo.addons.test_mail.models.test_mail_corner_case_models import MailTestMu
 from odoo.addons.test_mail.tests.common import TestRecipients
 from odoo.exceptions import AccessError
 from odoo.tests import tagged, users, HttpCase
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 class TestMailMCCommon(MailCommon, TestRecipients):

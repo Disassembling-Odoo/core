@@ -2,10 +2,10 @@
 
 import re
 
-from odoo import api, models, tools, _
+from odoo import api, models, _
 from odoo.ormapping import fields
 from odoo.exceptions import ValidationError
-
+from odoo.technology import utils as tech_utils
 
 class WebsiteConfiguratorFeature(models.Model):
 
@@ -34,7 +34,7 @@ class WebsiteConfiguratorFeature(models.Model):
     def _process_svg(theme, colors, image_mapping):
         svg = None
         try:
-            with tools.file_open(f'{theme}/static/description/{theme}.svg', 'r') as file:
+            with tech_utils.file_open(f'{theme}/static/description/{theme}.svg', 'r') as file:
                 svg = file.read()
         except FileNotFoundError:
             return False

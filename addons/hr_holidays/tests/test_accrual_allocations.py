@@ -8,7 +8,7 @@ from odoo import Command
 from odoo.exceptions import UserError
 from odoo.tests import tagged, Form
 from odoo.exceptions import ValidationError
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 from odoo.addons.hr_holidays.tests.common import TestHrHolidaysCommon
 

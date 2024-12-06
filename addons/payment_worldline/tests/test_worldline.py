@@ -9,7 +9,7 @@ from unittest.mock import patch
 from werkzeug.exceptions import Forbidden
 
 from odoo.tests import tagged
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 from odoo.addons.payment.tests.http_common import PaymentHttpCommon
 from odoo.addons.payment_worldline.controllers.main import WorldlineController

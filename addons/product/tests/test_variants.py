@@ -14,7 +14,7 @@ from PIL import Image
 from odoo.ormapping import Command
 from odoo.exceptions import UserError
 from odoo.tests import tagged, TransactionCase, Form
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 from odoo.addons.product.tests.common import ProductVariantsCommon, ProductAttributesCommon
 

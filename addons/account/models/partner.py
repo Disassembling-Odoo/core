@@ -11,11 +11,11 @@ from psycopg2 import errors as pgerrors
 from odoo import api, models, _
 from odoo.ormapping import fields
 from odoo.osv import expression
-from odoo.tools import mute_logger
 from odoo.exceptions import ValidationError, UserError
-from odoo.addons.base.models.res_partner import WARNING_MESSAGE, WARNING_HELP
-from odoo.tools import unique
+from odoo.technology.adjustable import mute_logger
+from odoo.technology.utils import unique
 from odoo.technology.db import SQL
+from odoo.addons.base.models.res_partner import WARNING_MESSAGE, WARNING_HELP
 from odoo.addons.base_vat.models.res_partner import _ref_vat
 
 _logger = logging.getLogger(__name__)

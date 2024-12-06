@@ -9,7 +9,7 @@ from odoo import Command
 from odoo.addons.mail.tests.common import mail_new_test_user
 from odoo.addons.onboarding.tests.common import TestOnboardingCommon
 from odoo.exceptions import ValidationError
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 class TestOnboarding(TestOnboardingCommon):

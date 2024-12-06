@@ -1,6 +1,6 @@
 from lxml import html
 
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 from odoo.exceptions import AccessError
 from odoo.tests import HttpCase, tagged
 

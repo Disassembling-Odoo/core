@@ -16,7 +16,7 @@ from odoo.ormapping import fields
 from odoo.addons.mail.tools.alias_error import AliasError
 from odoo.exceptions import ValidationError, UserError
 from odoo.osv import expression
-from odoo.tools import hmac
+from odoo.technology.utils import hmac
 from odoo.tools.mail import email_normalize, generate_tracking_message_id, append_content_to_html
 
 _logger = logging.getLogger(__name__)
@@ -668,7 +668,7 @@ class MailGroup(models.Model):
 
         :param str email: email included in hash, should be normalized
         """
-        return tools.hmac(self.env(su=True), 'mail_group-access-token-portal-email', (self.id, email))
+        return hmac(self.env(su=True), 'mail_group-access-token-portal-email', (self.id, email))
 
     def _generate_group_access_token(self):
         """Generate an action token to be able to subscribe / unsubscribe from the mailing list."""

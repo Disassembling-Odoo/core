@@ -6,7 +6,7 @@ from unittest.mock import patch
 from odoo.addons.mail.tests.common import MailCommon
 from odoo.technology.conf import config
 from odoo.tests import tagged, users
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 @tagged('mail_server')

@@ -4,7 +4,7 @@ from werkzeug import urls
 from odoo import api, models
 from odoo.ormapping import fields
 from odoo.technology.framework.http import request
-from odoo.tools.json import scriptsafe as json_scriptsafe
+from odoo.technology.utils.json import scriptsafe as json_scriptsafe
 
 
 class ServerAction(models.Model):

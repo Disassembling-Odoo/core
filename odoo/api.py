@@ -30,9 +30,9 @@ except ImportError:
     from decorator import decorator
 
 from .exceptions import AccessError, UserError, CacheMiss
-from .tools import clean_context, lazy_property
+from .tools import clean_context
 from .tools.translate import get_translation, get_translated_module, LazyGettext
-from .technology.utils import StackMap, OrderedSet, frozendict
+from .technology.utils import StackMap, OrderedSet, frozendict, lazy_property
 from .technology.db import SQL, Query
 
 import typing

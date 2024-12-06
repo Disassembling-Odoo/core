@@ -7,7 +7,7 @@ from unittest.mock import patch
 
 from odoo.addons.base.tests.common import HttpCaseWithUserDemo
 from odoo.tests.common import JsonRpcException, new_test_user, tagged
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 SAMPLE = {
     "text": "<p>Al mal tiempo, buena cara.</p>",

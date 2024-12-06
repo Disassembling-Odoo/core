@@ -1,5 +1,5 @@
 from odoo.tests.common import TransactionCase
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 class IrModuleCase(TransactionCase):

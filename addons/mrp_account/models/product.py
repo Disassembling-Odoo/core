@@ -3,7 +3,8 @@
 
 from odoo import models
 from odoo.ormapping import fields
-from odoo.tools import float_round, groupby
+from odoo.tools import float_round
+from odoo.technology.utils import groupby
 
 
 class ProductTemplate(models.Model):

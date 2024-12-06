@@ -15,7 +15,7 @@ from odoo.exceptions import UserError, ValidationError
 from odoo.addons.resource.models.utils import make_aware, Intervals
 from odoo.technology.utils.date_utils import start_of, end_of
 from odoo.tools.float_utils import float_compare, float_round
-from odoo.microkernel.utils import get_lang
+from odoo.tools.i18n import get_lang
 
 
 class MrpWorkcenter(models.Model):

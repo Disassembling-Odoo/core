@@ -16,6 +16,7 @@ import odoo.release
 from odoo import SUPERUSER_ID
 import odoo.exceptions
 import odoo.tools
+from odoo.technology import adjustable as adju
 import odoo.technology.db
 from odoo.technology.db import check_db_management_enabled, create_empty_database
 import odoo.microkernel
@@ -134,7 +135,7 @@ def exp_migrate_databases(databases):
 # No master password required
 #----------------------------------------------------------
 
-@odoo.tools.mute_logger('odoo.technology.db')
+@adju.mute_logger('odoo.technology.db')
 def exp_db_exist(db_name):
     return odoo.technology.db.check_db_exist(db_name)
 
@@ -144,7 +145,7 @@ def exp_list(document=False):
     return odoo.technology.db.list_dbs()
 
 def exp_list_lang():
-    return odoo.tools.misc.scan_languages()
+    return odoo.tools.i18n.scan_languages()
 
 def exp_list_countries():
     list_countries = []

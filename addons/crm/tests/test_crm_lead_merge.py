@@ -7,7 +7,7 @@ from datetime import timedelta
 from odoo.addons.crm.tests.common import TestLeadConvertMassCommon
 from odoo.ormapping import Datetime
 from odoo.tests.common import tagged, users
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 class TestLeadMergeCommon(TestLeadConvertMassCommon):

@@ -36,7 +36,7 @@ from odoo.addons.portal.controllers.web import Home
 from odoo.addons.web.controllers.binary import Binary
 from odoo.addons.web.controllers.session import Session
 from odoo.addons.website.tools import get_base_domain
-from odoo.tools.json import scriptsafe as json
+from odoo.technology.utils.json import scriptsafe as json
 
 logger = logging.getLogger(__name__)
 

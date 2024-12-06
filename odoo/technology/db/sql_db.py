@@ -31,8 +31,8 @@ import odoo
 from .. import conf
 from ... import tools
 from .sql import SQL
-from ...tools.func import frame_codeinfo, locked
-from ..utils import Callbacks
+from ..utils.func import frame_codeinfo, locked
+from ..utils import Callbacks, reverse_enumerate
 
 if typing.TYPE_CHECKING:
     from collections.abc import Iterable, Iterator
@@ -668,7 +668,7 @@ class ConnectionPool(object):
         :rtype: PsycoConnection
         """
         # free idle, dead and leaked connections
-        for i, (cnx, used, last_used) in tools.reverse_enumerate(self._connections):
+        for i, (cnx, used, last_used) in reverse_enumerate(self._connections):
             if not used and not cnx.closed and time.time() - last_used > MAX_IDLE_TIMEOUT:
                 self._debug('Close connection at index %d: %r', i, cnx.dsn)
                 cnx.close()
@@ -743,7 +743,7 @@ class ConnectionPool(object):
     def close_all(self, dsn=None):
         count = 0
         last = None
-        for i, (cnx, _, _) in tools.reverse_enumerate(self._connections):
+        for i, (cnx, _, _) in reverse_enumerate(self._connections):
             if dsn is None or self._dsn_equals(cnx.dsn, dsn):
                 cnx.close()
                 last = self._connections.pop(i)[0]

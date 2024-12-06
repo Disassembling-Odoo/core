@@ -4,7 +4,7 @@
 from odoo.addons.crm.tests import common as crm_common
 from odoo.exceptions import AccessError
 from odoo.tests.common import tagged, users
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 @tagged('lead_manage', 'lead_lost')

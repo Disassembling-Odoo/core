@@ -9,12 +9,14 @@ from dateutil.relativedelta import relativedelta
 from markupsafe import Markup
 from werkzeug.urls import url_encode, url_join
 
+from odoo.tools.float_utils import float_round
+from odoo.exceptions import AccessError
 from odoo import api, models, tools, _
+from odoo.technology import utils as tech_utils
 from odoo.ormapping import fields
 from odoo.addons.base.models.ir_mail_server import MailDeliveryException
-from odoo.exceptions import AccessError
 from odoo.osv import expression
-from odoo.tools.float_utils import float_round
+
 
 _logger = logging.getLogger(__name__)
 
@@ -238,7 +240,7 @@ class Digest(models.Model):
 
         :param int user_id: ID of the user to unsubscribe
         """
-        return tools.hmac(self.env(su=True), 'digest-unsubscribe', (self.id, user_id))
+        return tech_utils.hmac(self.env(su=True), 'digest-unsubscribe', (self.id, user_id))
 
     # ------------------------------------------------------------
     # KPIS

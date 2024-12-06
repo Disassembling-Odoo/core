@@ -8,8 +8,8 @@ import unittest
 from PIL import Image
 
 from odoo.tests.common import TransactionCase, can_import, RecordCapturer
-from odoo.tools import mute_logger
-from odoo.tools.misc import file_open
+from odoo.technology.adjustable import mute_logger
+from odoo.technology.utils import file_open
 from odoo.addons.base_import.models.base_import import ImportValidationError
 
 

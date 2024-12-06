@@ -5,7 +5,7 @@ from unittest.mock import patch
 from werkzeug.urls import url_encode, url_join
 
 from odoo.tests import tagged
-from odoo.tools import mute_logger
+from odoo.technology.adjustables import mute_logger
 
 from odoo.addons.payment.tests.http_common import PaymentHttpCommon
 from odoo.addons.payment_stripe.controllers.main import StripeController

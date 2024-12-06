@@ -13,7 +13,8 @@ from odoo.addons.mail.tests.common import MailCommon
 from odoo.addons.mail.tools.discuss import Store
 from odoo.exceptions import ValidationError
 from odoo.tests import HttpCase, tagged, users
-from odoo.tools import html_escape, mute_logger
+from odoo.tools import html_escape
+from odoo.technology.adjustable import mute_logger
 
 
 @tagged("post_install", "-at_install")

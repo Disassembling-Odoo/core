@@ -9,7 +9,7 @@ import psycopg2.errors
 import odoo
 from odoo.microkernel.modules.registry import Registry
 from odoo.tests.common import get_db_name, tagged, BaseCase
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 @tagged('-standard', '-at_install', 'post_install', 'database_breaking')

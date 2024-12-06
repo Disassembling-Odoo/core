@@ -5,7 +5,7 @@ import base64
 import re
 
 from odoo import api, models
-from odoo.tools import misc
+from odoo.technology import utils as tech_utils
 from odoo.addons.base.models.assetsbundle import EXTENSIONS
 
 _match_asset_file_url_regex = re.compile(r"^(/_custom/([^/]+))?/(\w+)/([/\w]+\.\w+)$")
@@ -133,7 +133,7 @@ class Assets(models.AbstractModel):
 
         # If the file is not yet customized, the content is found by reading
         # the local file
-        with misc.file_open(url.strip('/'), 'rb', filter_ext=EXTENSIONS) as f:
+        with tech_utils.file_open(url.strip('/'), 'rb', filter_ext=EXTENSIONS) as f:
             return f.read()
 
     @api.model

@@ -36,10 +36,9 @@ from psycopg2.extras import Json
 
 import odoo
 from odoo.exceptions import UserError
-import odoo.microkernel
 from ..technology.conf import config
-from .misc import file_open, file_path, get_iso_codes, SKIPPED_ELEMENT_TYPES
-from ..technology.utils import ReadonlyDict, OrderedSet
+from .misc import get_iso_codes, SKIPPED_ELEMENT_TYPES
+from ..technology.utils import ReadonlyDict, OrderedSet, file_open, file_path
 
 __all__ = [
     "_",

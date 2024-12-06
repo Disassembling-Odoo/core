@@ -12,7 +12,7 @@ from odoo import tools
 from odoo.addons.mail.tests.common import mail_new_test_user
 from odoo.addons.mass_mailing.tests.common import MassMailCommon
 from odoo.tests import HttpCase, tagged
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 class TestMailingControllersCommon(MassMailCommon, HttpCase):

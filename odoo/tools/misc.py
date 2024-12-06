@@ -4,27 +4,18 @@ Miscellaneous tools used by Odoo.
 """
 from __future__ import annotations
 
-import base64
 import collections
 import csv
-import datetime
-import enum
-import hashlib
-import hmac as hmac_lib
+
 import itertools
-import json
 import logging
 import os
 import re
 import sys
-import tempfile
-import threading
-import time
 import traceback
 import typing
 import unicodedata
 import warnings
-from collections import defaultdict
 from collections.abc import Iterable, Iterator, Mapping, MutableMapping, MutableSet, Reversible
 from contextlib import ContextDecorator, contextmanager
 from difflib import HtmlDiff
@@ -37,6 +28,7 @@ import babel.dates
 import markupsafe
 import pytz
 from lxml import etree, objectify
+from .i18n import get_lang
 
 import odoo
 import odoo.addons
@@ -58,43 +50,24 @@ if typing.TYPE_CHECKING:
     P = typing.TypeVar('P')
 
 __all__ = [
-    'NON_BREAKING_SPACE',
     'SKIPPED_ELEMENT_TYPES',
     'Reverse',
-    'babel_locale_parse',
     'clean_context',
-    'consteq',
     'discardattr',
     'exception_to_unicode',
-    'file_open',
-    'file_open_temporary_directory',
-    'file_path',
     'find_in_path',
     'format_amount',
-    'frozendict',
     'get_encodings',
     'get_iso_codes',
-    'get_lang',
-    'groupby',
-    'hmac',
-    'hash_sign',
-    'verify_hash_signed',
     'html_escape',
     'human_size',
     'is_list_of',
-    'merge_sequences',
     'mod10r',
-    'mute_logger',
-    'parse_date',
-    'partition',
     'remove_accents',
     'replace_exceptions',
-    'reverse_enumerate',
     'split_every',
     'str2bool',
     'street_split',
-    'topological_sort',
-    'unique',
     'ustr',
 ]
 
@@ -110,15 +83,7 @@ default_parser = etree.XMLParser(resolve_entities=False, remove_blank_text=True)
 default_parser.set_element_class_lookup(objectify.ObjectifyElementClassLookup())
 objectify.set_default_parser(default_parser)
 
-NON_BREAKING_SPACE = u'\N{NO-BREAK SPACE}'
 
-
-class Sentinel(enum.Enum):
-    """Class for typing parameters with a sentinel as a default"""
-    SENTINEL = -1
-
-
-SENTINEL = Sentinel.SENTINEL
 
 #----------------------------------------------------------
 # Subprocesses
@@ -129,245 +94,6 @@ def find_in_path(name):
     if config.get('bin_path') and config['bin_path'] != 'None':
         path.append(config['bin_path'])
     return which(name, path=os.pathsep.join(path))
-
-
-# ----------------------------------------------------------
-# File paths
-# ----------------------------------------------------------
-
-
-def file_path(file_path: str, filter_ext: tuple[str, ...] = ('',), env: Environment | None = None) -> str:
-    """Verify that a file exists under a known `addons_path` directory and return its full path.
-
-    Examples::
-
-    >>> file_path('hr')
-    >>> file_path('hr/static/description/icon.png')
-    >>> file_path('hr/static/description/icon.png', filter_ext=('.png', '.jpg'))
-
-    :param str file_path: absolute file path, or relative path within any `addons_path` directory
-    :param list[str] filter_ext: optional list of supported extensions (lowercase, with leading dot)
-    :param env: optional environment, required for a file path within a temporary directory
-        created using `file_open_temporary_directory()`
-    :return: the absolute path to the file
-    :raise FileNotFoundError: if the file is not found under the known `addons_path` directories
-    :raise ValueError: if the file doesn't have one of the supported extensions (`filter_ext`)
-    """
-    root_path = os.path.abspath(config['root_path'])
-    temporary_paths = env.transaction._Transaction__file_open_tmp_paths if env else ()
-    addons_paths = [*odoo.addons.__path__, root_path, *temporary_paths]
-    is_abs = os.path.isabs(file_path)
-    normalized_path = os.path.normpath(os.path.normcase(file_path))
-
-    if filter_ext and not normalized_path.lower().endswith(filter_ext):
-        raise ValueError("Unsupported file: " + file_path)
-
-    # ignore leading 'addons/' if present, it's the final component of root_path, but
-    # may sometimes be included in relative paths
-    if normalized_path.startswith('addons' + os.sep):
-        normalized_path = normalized_path[7:]
-
-    for addons_dir in addons_paths:
-        # final path sep required to avoid partial match
-        parent_path = os.path.normpath(os.path.normcase(addons_dir)) + os.sep
-        fpath = (normalized_path if is_abs else
-                 os.path.normpath(os.path.normcase(os.path.join(parent_path, normalized_path))))
-        if fpath.startswith(parent_path) and os.path.exists(fpath):
-            return fpath
-
-    raise FileNotFoundError("File not found: " + file_path)
-
-
-def file_open(name: str, mode: str = "r", filter_ext: tuple[str, ...] = (), env: Environment | None = None):
-    """Open a file from within the addons_path directories, as an absolute or relative path.
-
-    Examples::
-
-        >>> file_open('hr/static/description/icon.png')
-        >>> file_open('hr/static/description/icon.png', filter_ext=('.png', '.jpg'))
-        >>> with file_open('/opt/odoo/addons/hr/static/description/icon.png', 'rb') as f:
-        ...     contents = f.read()
-
-    :param name: absolute or relative path to a file located inside an addon
-    :param mode: file open mode, as for `open()`
-    :param list[str] filter_ext: optional list of supported extensions (lowercase, with leading dot)
-    :param env: optional environment, required to open a file within a temporary directory
-        created using `file_open_temporary_directory()`
-    :return: file object, as returned by `open()`
-    :raise FileNotFoundError: if the file is not found under the known `addons_path` directories
-    :raise ValueError: if the file doesn't have one of the supported extensions (`filter_ext`)
-    """
-    path = file_path(name, filter_ext=filter_ext, env=env)
-    if os.path.isfile(path):
-        if 'b' not in mode:
-            # Force encoding for text mode, as system locale could affect default encoding,
-            # even with the latest Python 3 versions.
-            # Note: This is not covered by a unit test, due to the platform dependency.
-            #       For testing purposes you should be able to force a non-UTF8 encoding with:
-            #         `sudo locale-gen fr_FR; LC_ALL=fr_FR.iso8859-1 python3 ...'
-            # See also PEP-540, although we can't rely on that at the moment.
-            return open(path, mode, encoding="utf-8")
-        return open(path, mode)
-    raise FileNotFoundError("Not a file: " + name)
-
-
-@contextmanager
-def file_open_temporary_directory(env: Environment):
-    """Create and return a temporary directory added to the directories `file_open` is allowed to read from.
-
-    `file_open` will be allowed to open files within the temporary directory
-    only for environments of the same transaction than `env`.
-    Meaning, other transactions/requests from other users or even other databases
-    won't be allowed to open files from this directory.
-
-    Examples::
-
-        >>> with odoo.tools.file_open_temporary_directory(self.env) as module_dir:
-        ...    with zipfile.ZipFile('foo.zip', 'r') as z:
-        ...        z.extract('foo/__manifest__.py', module_dir)
-        ...    with odoo.tools.file_open('foo/__manifest__.py', env=self.env) as f:
-        ...        manifest = f.read()
-
-    :param env: environment for which the temporary directory is created.
-    :return: the absolute path to the created temporary directory
-    """
-    assert not env.transaction._Transaction__file_open_tmp_paths, 'Reentrancy is not implemented for this method'
-    with tempfile.TemporaryDirectory() as module_dir:
-        try:
-            env.transaction._Transaction__file_open_tmp_paths = (module_dir,)
-            yield module_dir
-        finally:
-            env.transaction._Transaction__file_open_tmp_paths = ()
-
-
-#----------------------------------------------------------
-# iterables
-#----------------------------------------------------------
-def flatten(list):
-    """Flatten a list of elements into a unique list
-    Author: Christophe Simonis (christophe@tinyerp.com)
-
-    Examples::
-    >>> flatten(['a'])
-    ['a']
-    >>> flatten('b')
-    ['b']
-    >>> flatten( [] )
-    []
-    >>> flatten( [[], [[]]] )
-    []
-    >>> flatten( [[['a','b'], 'c'], 'd', ['e', [], 'f']] )
-    ['a', 'b', 'c', 'd', 'e', 'f']
-    >>> t = (1,2,(3,), [4, 5, [6, [7], (8, 9), ([10, 11, (12, 13)]), [14, [], (15,)], []]])
-    >>> flatten(t)
-    [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
-    """
-    warnings.warn(
-        "deprecated since 18.0",
-        category=DeprecationWarning,
-        stacklevel=2,
-    )
-    r = []
-    for e in list:
-        if isinstance(e, (bytes, str)) or not isinstance(e, collections.abc.Iterable):
-            r.append(e)
-        else:
-            r.extend(flatten(e))
-    return r
-
-
-def reverse_enumerate(lst: Sequence[T]) -> Iterator[tuple[int, T]]:
-    """Like enumerate but in the other direction
-
-    Usage::
-
-        >>> a = ['a', 'b', 'c']
-        >>> it = reverse_enumerate(a)
-        >>> it.next()
-        (2, 'c')
-        >>> it.next()
-        (1, 'b')
-        >>> it.next()
-        (0, 'a')
-        >>> it.next()
-        Traceback (most recent call last):
-          File "<stdin>", line 1, in <module>
-        StopIteration
-    """
-    return zip(range(len(lst) - 1, -1, -1), reversed(lst))
-
-
-def partition(pred: Callable[[T], bool], elems: Iterable[T]) -> tuple[list[T], list[T]]:
-    """ Return a pair equivalent to:
-    ``filter(pred, elems), filter(lambda x: not pred(x), elems)`` """
-    yes: list[T] = []
-    nos: list[T] = []
-    for elem in elems:
-        (yes if pred(elem) else nos).append(elem)
-    return yes, nos
-
-
-def topological_sort(elems: Mapping[T, Collection[T]]) -> list[T]:
-    """ Return a list of elements sorted so that their dependencies are listed
-    before them in the result.
-
-    :param elems: specifies the elements to sort with their dependencies; it is
-        a dictionary like `{element: dependencies}` where `dependencies` is a
-        collection of elements that must appear before `element`. The elements
-        of `dependencies` are not required to appear in `elems`; they will
-        simply not appear in the result.
-
-    :returns: a list with the keys of `elems` sorted according to their
-        specification.
-    """
-    # the algorithm is inspired by [Tarjan 1976],
-    # http://en.wikipedia.org/wiki/Topological_sorting#Algorithms
-    result = []
-    visited = set()
-
-    def visit(n):
-        if n not in visited:
-            visited.add(n)
-            if n in elems:
-                # first visit all dependencies of n, then append n to result
-                for it in elems[n]:
-                    visit(it)
-                result.append(n)
-
-    for el in elems:
-        visit(el)
-
-    return result
-
-
-def merge_sequences(*iterables: Iterable[T]) -> list[T]:
-    """ Merge several iterables into a list. The result is the union of the
-        iterables, ordered following the partial order given by the iterables,
-        with a bias towards the end for the last iterable::
-
-            seq = merge_sequences(['A', 'B', 'C'])
-            assert seq == ['A', 'B', 'C']
-
-            seq = merge_sequences(
-                ['A', 'B', 'C'],
-                ['Z'],                  # 'Z' can be anywhere
-                ['Y', 'C'],             # 'Y' must precede 'C';
-                ['A', 'X', 'Y'],        # 'X' must follow 'A' and precede 'Y'
-            )
-            assert seq == ['A', 'B', 'X', 'Y', 'C', 'Z']
-    """
-    # dict is ordered
-    deps: defaultdict[T, list[T]] = defaultdict(list)  # {item: elems_before_item}
-    for iterable in iterables:
-        prev: T | Sentinel = SENTINEL
-        for item in iterable:
-            if prev is SENTINEL:
-                deps[item]  # just set the default
-            else:
-                deps[item].append(prev)
-            prev = item
-    return topological_sort(deps)
-
 
 try:
     import xlwt
@@ -577,84 +303,6 @@ class unquote(str):
         return self
 
 
-class mute_logger(logging.Handler):
-    """Temporary suppress the logging.
-
-    Can be used as context manager or decorator::
-
-        @mute_logger('odoo.plic.ploc')
-        def do_stuff():
-            blahblah()
-
-        with mute_logger('odoo.foo.bar'):
-            do_suff()
-    """
-    def __init__(self, *loggers):
-        super().__init__()
-        self.loggers = loggers
-        self.old_params = {}
-
-    def __enter__(self):
-        for logger_name in self.loggers:
-            logger = logging.getLogger(logger_name)
-            self.old_params[logger_name] = (logger.handlers, logger.propagate)
-            logger.propagate = False
-            logger.handlers = [self]
-
-    def __exit__(self, exc_type=None, exc_val=None, exc_tb=None):
-        for logger_name in self.loggers:
-            logger = logging.getLogger(logger_name)
-            logger.handlers, logger.propagate = self.old_params[logger_name]
-
-    def __call__(self, func):
-        @wraps(func)
-        def deco(*args, **kwargs):
-            with self:
-                return func(*args, **kwargs)
-        return deco
-
-    def emit(self, record):
-        pass
-
-
-class lower_logging(logging.Handler):
-    """Temporary lower the max logging level.
-    """
-    def __init__(self, max_level, to_level=None):
-        super().__init__()
-        self.old_handlers = None
-        self.old_propagate = None
-        self.had_error_log = False
-        self.max_level = max_level
-        self.to_level = to_level or max_level
-
-    def __enter__(self):
-        logger = logging.getLogger()
-        self.old_handlers = logger.handlers[:]
-        self.old_propagate = logger.propagate
-        logger.propagate = False
-        logger.handlers = [self]
-        self.had_error_log = False
-        return self
-
-    def __exit__(self, exc_type=None, exc_val=None, exc_tb=None):
-        logger = logging.getLogger()
-        logger.handlers = self.old_handlers
-        logger.propagate = self.old_propagate
-
-    def emit(self, record):
-        if record.levelno > self.max_level:
-            record.levelname = f'_{record.levelname}'
-            record.levelno = self.to_level
-            self.had_error_log = True
-            record.args = tuple(arg.replace('Traceback (most recent call last):', '_Traceback_ (most recent call last):') if isinstance(arg, str) else arg for arg in record.args)
-
-        if logging.getLogger(record.name).isEnabledFor(record.levelno):
-            for handler in self.old_handlers:
-                if handler.level <= record.levelno:
-                    handler.emit(record)
-
-
 def stripped_sys_argv(*strip_args):
     """Return sys.argv with some arguments stripped, suitable for reexecution or subprocesses"""
     strip_args = sorted(set(strip_args) | set(['-s', '--save', '-u', '--update', '-i', '--init', '--i18n-overwrite']))
@@ -673,105 +321,6 @@ def stripped_sys_argv(*strip_args):
 
     return [x for i, x in enumerate(args) if not strip(args, i)]
 
-
-class ConstantMapping(Mapping[typing.Any, T], typing.Generic[T]):
-    """
-    An immutable mapping returning the provided value for every single key.
-
-    Useful for default value to methods
-    """
-    __slots__ = ['_value']
-
-    def __init__(self, val: T):
-        self._value = val
-
-    def __len__(self):
-        """
-        defaultdict updates its length for each individually requested key, is
-        that really useful?
-        """
-        return 0
-
-    def __iter__(self):
-        """
-        same as len, defaultdict updates its iterable keyset with each key
-        requested, is there a point for this?
-        """
-        return iter([])
-
-    def __getitem__(self, item) -> T:
-        return self._value
-
-
-def dumpstacks(sig=None, frame=None, thread_idents=None, log_level=logging.INFO):
-    """ Signal handler: dump a stack trace for each existing thread or given
-    thread(s) specified through the ``thread_idents`` sequence.
-    """
-    code = []
-
-    def extract_stack(stack):
-        for filename, lineno, name, line in traceback.extract_stack(stack):
-            yield 'File: "%s", line %d, in %s' % (filename, lineno, name)
-            if line:
-                yield "  %s" % (line.strip(),)
-
-    # code from http://stackoverflow.com/questions/132058/getting-stack-trace-from-a-running-python-application#answer-2569696
-    # modified for python 2.5 compatibility
-    threads_info = {th.ident: {'repr': repr(th),
-                               'uid': getattr(th, 'uid', 'n/a'),
-                               'dbname': getattr(th, 'dbname', 'n/a'),
-                               'url': getattr(th, 'url', 'n/a'),
-                               'query_count': getattr(th, 'query_count', 'n/a'),
-                               'query_time': getattr(th, 'query_time', None),
-                               'perf_t0': getattr(th, 'perf_t0', None)}
-                    for th in threading.enumerate()}
-    for threadId, stack in sys._current_frames().items():
-        if not thread_idents or threadId in thread_idents:
-            thread_info = threads_info.get(threadId, {})
-            query_time = thread_info.get('query_time')
-            perf_t0 = thread_info.get('perf_t0')
-            remaining_time = None
-            if query_time is not None and perf_t0:
-                remaining_time = '%.3f' % (time.time() - perf_t0 - query_time)
-                query_time = '%.3f' % query_time
-            # qc:query_count qt:query_time pt:python_time (aka remaining time)
-            code.append("\n# Thread: %s (db:%s) (uid:%s) (url:%s) (qc:%s qt:%s pt:%s)" %
-                        (thread_info.get('repr', threadId),
-                         thread_info.get('dbname', 'n/a'),
-                         thread_info.get('uid', 'n/a'),
-                         thread_info.get('url', 'n/a'),
-                         thread_info.get('query_count', 'n/a'),
-                         query_time or 'n/a',
-                         remaining_time or 'n/a'))
-            for line in extract_stack(stack):
-                code.append(line)
-
-    if odoo.evented:
-        # code from http://stackoverflow.com/questions/12510648/in-gevent-how-can-i-dump-stack-traces-of-all-running-greenlets
-        import gc
-        from greenlet import greenlet
-        for ob in gc.get_objects():
-            if not isinstance(ob, greenlet) or not ob:
-                continue
-            code.append("\n# Greenlet: %r" % (ob,))
-            for line in extract_stack(ob.gr_frame):
-                code.append(line)
-
-    _logger.log(log_level, "\n".join(code))
-
-
-def freehash(arg: typing.Any) -> int:
-    try:
-        return hash(arg)
-    except Exception:
-        if isinstance(arg, Mapping):
-            return hash(frozendict(arg))
-        elif isinstance(arg, Iterable):
-            return hash(frozenset(freehash(item) for item in arg))
-        else:
-            return id(arg)
-
-
 def clean_context(context: dict[str, typing.Any]) -> dict[str, typing.Any]:
     """ This function take a dictionary and remove each entry with its key
     starting with ``default_``
@@ -779,63 +328,9 @@ def clean_context(context: dict[str, typing.Any]) -> dict[str, typing.Any]:
     return {k: v for k, v in context.items() if not k.startswith('default_')}
 
 
-class frozendict(dict[K, T], typing.Generic[K, T]):
-    """ An implementation of an immutable dictionary. """
-    __slots__ = ()
-
-    def __delitem__(self, key):
-        raise NotImplementedError("'__delitem__' not supported on frozendict")
-
-    def __setitem__(self, key, val):
-        raise NotImplementedError("'__setitem__' not supported on frozendict")
-
-    def clear(self):
-        raise NotImplementedError("'clear' not supported on frozendict")
-
-    def pop(self, key, default=None):
-        raise NotImplementedError("'pop' not supported on frozendict")
-
-    def popitem(self):
-        raise NotImplementedError("'popitem' not supported on frozendict")
-
-    def setdefault(self, key, default=None):
-        raise NotImplementedError("'setdefault' not supported on frozendict")
-
-    def update(self, *args, **kwargs):
-        raise NotImplementedError("'update' not supported on frozendict")
-
-    def __hash__(self) -> int:  # type: ignore
-        return hash(frozenset((key, freehash(val)) for key, val in self.items()))
-
-
-class Collector(dict[K, tuple[T, ...]], typing.Generic[K, T]):
-    """ A mapping from keys to tuples.  This implements a relation, and can be
-        seen as a space optimization for ``defaultdict(tuple)``.
-    """
-    __slots__ = ()
-
-    def __getitem__(self, key: K) -> tuple[T, ...]:
-        return self.get(key, ())
-
-    def __setitem__(self, key: K, val: Iterable[T]):
-        val = tuple(val)
-        if val:
-            super().__setitem__(key, val)
-        else:
-            super().pop(key, None)
-
-    def add(self, key: K, val: T):
-        vals = self[key]
-        if val not in vals:
-            self[key] = vals + (val,)
-
-    def discard_keys_and_values(self, excludes: Collection[K | T]) -> None:
-        for key in excludes:
-            self.pop(key, None)  # type: ignore
-        for key, vals in list(self.items()):
-            self[key] = tuple(val for val in vals if val not in excludes)  # type: ignore
-
-
+#----------------------------------------------------------
+# iterables
+#----------------------------------------------------------
 class ReversedIterable(Reversible[T], typing.Generic[T]):
     """ An iterable implementing the reversal of another iterable. """
     __slots__ = ['iterable']
@@ -848,47 +343,6 @@ class ReversedIterable(Reversible[T], typing.Generic[T]):
 
     def __reversed__(self):
         return iter(self.iterable)
-
-
-def groupby(iterable: Iterable[T], key: Callable[[T], K] = lambda arg: arg) -> Iterable[tuple[K, list[T]]]:
-    """ Return a collection of pairs ``(key, elements)`` from ``iterable``. The
-        ``key`` is a function computing a key value for each element. This
-        function is similar to ``itertools.groupby``, but aggregates all
-        elements under the same key, not only consecutive elements.
-    """
-    groups = defaultdict(list)
-    for elem in iterable:
-        groups[key(elem)].append(elem)
-    return groups.items()
-
-
-def unique(it: Iterable[T]) -> Iterator[T]:
-    """ "Uniquifier" for the provided iterable: will output each element of
-    the iterable once.
-
-    The iterable's elements must be hashahble.
-
-    :param Iterable it:
-    :rtype: Iterator
-    """
-    seen = set()
-    for e in it:
-        if e not in seen:
-            seen.add(e)
-            yield e
-
-
-def submap(mapping: Mapping[K, T], keys: Iterable[K]) -> Mapping[K, T]:
-    """
-    Get a filtered copy of the mapping where only some keys are present.
-
-    :param Mapping mapping: the original dict-like structure to filter
-    :param Iterable keys: the list of keys to keep
-    :return dict: a filtered dict copy of the original mapping
-    """
-    keys = frozenset(keys)
-    return {key: mapping[key] for key in mapping if key in keys}
-
 
 class Reverse(object):
     """ Wraps a value and reverses its ordering, useful in key functions when
@@ -957,131 +411,6 @@ class replace_exceptions(ContextDecorator):
 html_escape = markupsafe.escape
 
 
-def get_lang(env: Environment, lang_code: str | None = None) -> LangData:
-    """
-    Retrieve the first lang object installed, by checking the parameter lang_code,
-    the context and then the company. If no lang is installed from those variables,
-    fallback on english or on the first lang installed in the system.
-
-    :param env:
-    :param str lang_code: the locale (i.e. en_US)
-    :return LangData: the first lang found that is installed on the system.
-    """
-    langs = [code for code, _ in env['res.lang'].get_installed()]
-    lang = 'en_US' if 'en_US' in langs else langs[0]
-    if lang_code and lang_code in langs:
-        lang = lang_code
-    elif (context_lang := env.context.get('lang')) in langs:
-        lang = context_lang
-    elif (company_lang := env.user.with_context(lang='en_US').company_id.partner_id.lang) in langs:
-        lang = company_lang
-    return env['res.lang']._get_data(code=lang)
-
-
-def babel_locale_parse(lang_code: str | None) -> babel.Locale:
-    if lang_code:
-        try:
-            return babel.Locale.parse(lang_code)
-        except Exception:  # noqa: BLE001
-            pass
-    try:
-        return babel.Locale.default()
-    except Exception:  # noqa: BLE001
-        return babel.Locale.parse("en_US")
-
-
-def formatLang(
-    env: Environment,
-    value: float | typing.Literal[''],
-    digits: int = 2,
-    grouping: bool = True,
-    monetary: bool | Sentinel = SENTINEL,
-    dp: str | None = None,
-    currency_obj=None,
-    rounding_method: typing.Literal['HALF-UP', 'HALF-DOWN', 'HALF-EVEN', "UP", "DOWN"] = 'HALF-EVEN',
-    rounding_unit: typing.Literal['decimals', 'units', 'thousands', 'lakhs', 'millions'] = 'decimals',
-) -> str:
-    """
-    This function will format a number `value` to the appropriate format of the language used.
-
-    :param Object env: The environment.
-    :param float value: The value to be formatted.
-    :param int digits: The number of decimals digits.
-    :param bool grouping: Usage of language grouping or not.
-    :param bool monetary: Usage of thousands separator or not.
-        .. deprecated:: 13.0
-    :param str dp: Name of the decimals precision to be used. This will override ``digits``
-                   and ``currency_obj`` precision.
-    :param Object currency_obj: Currency to be used. This will override ``digits`` precision.
-    :param str rounding_method: The rounding method to be used:
-        **'HALF-UP'** will round to the closest number with ties going away from zero,
-        **'HALF-DOWN'** will round to the closest number with ties going towards zero,
-        **'HALF_EVEN'** will round to the closest number with ties going to the closest
-        even number,
-        **'UP'** will always round away from 0,
-        **'DOWN'** will always round towards 0.
-    :param str rounding_unit: The rounding unit to be used:
-        **decimals** will round to decimals with ``digits`` or ``dp`` precision,
-        **units** will round to units without any decimals,
-        **thousands** will round to thousands without any decimals,
-        **lakhs** will round to lakhs without any decimals,
-        **millions** will round to millions without any decimals.
-
-    :returns: The value formatted.
-    :rtype: str
-    """
-    if monetary is not SENTINEL:
-        warnings.warn("monetary argument deprecated since 13.0", DeprecationWarning, 2)
-    # We don't want to return 0
-    if value == '':
-        return ''
-
-    if rounding_unit == 'decimals':
-        if dp:
-            digits = env['decimal.precision'].precision_get(dp)
-        elif currency_obj:
-            digits = currency_obj.decimal_places
-    else:
-        digits = 0
-
-    rounding_unit_mapping = {
-        'decimals': 1,
-        'thousands': 10**3,
-        'lakhs': 10**5,
-        'millions': 10**6,
-        'units': 1,
-    }
-
-    value /= rounding_unit_mapping[rounding_unit]
-
-    rounded_value = float_round(value, precision_digits=digits, rounding_method=rounding_method)
-    lang = env['res.lang'].browse(get_lang(env).id)
-    formatted_value = lang.format(f'%.{digits}f', rounded_value, grouping=grouping)
-
-    if currency_obj and currency_obj.symbol:
-        arguments = (formatted_value, NON_BREAKING_SPACE, currency_obj.symbol)
-
-        return '%s%s%s' % (arguments if currency_obj.position == 'after' else arguments[::-1])
-
-    return formatted_value
-
-def _format_time_ago(
-    env: Environment,
-    time_delta: datetime.timedelta,
-    lang_code: str | None = None,
-    add_direction: bool = True,
-) -> str:
-    if not lang_code:
-        langs: list[str] = [code for code, _ in env['res.lang'].get_installed()]
-        if (ctx_lang := env.context.get('lang')) in langs:
-            lang_code = ctx_lang
-        else:
-            lang_code = env.user.company_id.partner_id.lang or langs[0]
-        assert isinstance(lang_code, str)
-    locale = babel_locale_parse(lang_code)
-    return babel.dates.format_timedelta(-time_delta, add_direction=add_direction, locale=locale)
-
-
 def format_decimalized_number(number: float, decimal: int = 1) -> str:
     """Format a number to display to nearest metrics unit next to it.
 
@@ -1143,8 +472,6 @@ def format_amount(env: Environment, amount: float, currency, lang_code: str | No
     return u'{pre}{0}{post}'.format(formatted_amount, pre=pre, post=post)
 
 
-consteq = hmac_lib.compare_digest
-
 def get_diff(data_from, data_to, custom_style=False, dark_color_scheme=False):
     """
     Return, in an HTML table, the diff between two texts.
@@ -1202,80 +529,6 @@ def get_diff(data_from, data_to, custom_style=False, dark_color_scheme=False):
     )
     return handle_style(diff, custom_style, dark_color_scheme)
 
-
-def hmac(env, scope, message, hash_function=hashlib.sha256):
-    """Compute HMAC with `database.secret` config parameter as key.
-
-    :param env: sudo environment to use for retrieving config parameter
-    :param message: message to authenticate
-    :param scope: scope of the authentication, to have different signature for the same
-        message in different usage
-    :param hash_function: hash function to use for HMAC (default: SHA-256)
-    """
-    if not scope:
-        raise ValueError('Non-empty scope required')
-
-    secret = env['ir.config_parameter'].get_param('database.secret')
-    message = repr((scope, message))
-    return hmac_lib.new(
-        secret.encode(),
-        message.encode(),
-        hash_function,
-    ).hexdigest()
-
-
-def hash_sign(env, scope, message_values, expiration=None, expiration_hours=None):
-    """ Generate an urlsafe payload signed with the HMAC signature for an iterable set of data.
-    This feature is very similar to JWT, but in a more generic implementation that is inline with out previous hmac implementation.
-
-    :param env: sudo environment to use for retrieving config parameter
-    :param scope: scope of the authentication, to have different signature for the same
-        message in different usage
-    :param message_values: values to be encoded inside the payload
-    :param expiration: optional, a datetime or timedelta
-    :param expiration_hours: optional, a int representing a number of hours before expiration. Cannot be set at the same time as expiration
-    :return: the payload that can be used as a token
-    """
-    assert not (expiration and expiration_hours)
-    assert message_values is not None
-
-    if expiration_hours:
-        expiration = datetime.datetime.now() + datetime.timedelta(hours=expiration_hours)
-    else:
-        if isinstance(expiration, datetime.timedelta):
-            expiration = datetime.datetime.now() + expiration
-    expiration_timestamp = 0 if not expiration else int(expiration.timestamp())
-    message_strings = json.dumps(message_values)
-    hash_value = hmac(env, scope, f'1:{message_strings}:{expiration_timestamp}', hash_function=hashlib.sha256)
-    token = b"\x01" + expiration_timestamp.to_bytes(8, 'little') + bytes.fromhex(hash_value) + message_strings.encode()
-    return base64.urlsafe_b64encode(token).decode().rstrip('=')
-
-
-def verify_hash_signed(env, scope, payload):
-    """ Verify and extract data from a given urlsafe  payload generated with hash_sign()
-
-    :param env: sudo environment to use for retrieving config parameter
-    :param scope: scope of the authentication, to have different signature for the same
-        message in different usage
-    :param payload: the token to verify
-    :return: The payload_values if the check was successful, None otherwise.
-    """
-
-    token = base64.urlsafe_b64decode(payload.encode()+b'===')
-    version = token[:1]
-    if version != b'\x01':
-        raise ValueError('Unknown token version')
-
-    expiration_value, hash_value, message = token[1:9], token[9:41].hex(), token[41:].decode()
-    expiration_value = int.from_bytes(expiration_value, byteorder='little')
-    hash_value_expected = hmac(env, scope, f'1:{message}:{expiration_value}', hash_function=hashlib.sha256)
-
-    if consteq(hash_value, hash_value_expected) and (expiration_value == 0 or datetime.datetime.now().timestamp() < expiration_value):
-        message_values = json.loads(message)
-        return message_values
-    return None
-
-
 ADDRESS_REGEX = re.compile(r'^(.*?)(\s[0-9][0-9\S]*)?(?: - (.+))?$', flags=re.DOTALL)
 def street_split(street):
     match = ADDRESS_REGEX.match(street or '')
@@ -1315,9 +568,3 @@ def get_flag(country_code: str) -> str:
     This emoji is composed of the two regional indicator emoji of the country code.
     """
     return "".join(chr(int(f"1f1{ord(c)+165:02x}", base=16)) for c in country_code)
-
-
-def format_frame(frame) -> str:
-    code = frame.f_code
-    return f'{code.co_name} {code.co_filename}:{frame.f_lineno}'
-

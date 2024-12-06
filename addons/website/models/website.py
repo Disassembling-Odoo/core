@@ -28,6 +28,7 @@ from odoo.osv.expression import AND, OR, FALSE_DOMAIN
 from odoo.technology.db import SQL, Query, sql as sqltools
 from odoo.tools.translate import _, xml_translate
 from odoo.technology.cache import ormcache
+from odoo.technology import utils as tech_utils
 
 logger = logging.getLogger(__name__)
 
@@ -156,7 +157,7 @@ class Website(models.Model):
         return self.env.ref('base.main_company').social_tiktok
 
     def _default_logo(self):
-        with tools.file_open('website/static/src/img/website_logo.svg', 'rb') as f:
+        with tech_utils.file_open('website/static/src/img/website_logo.svg', 'rb') as f:
             return base64.b64encode(f.read())
 
     logo = fields.Binary('Website Logo', default=_default_logo, help="Display this logo on the website.")
@@ -191,7 +192,7 @@ class Website(models.Model):
     robots_txt = fields.Html('Robots.txt', translate=False, groups='website.group_website_designer', sanitize=False)
 
     def _default_favicon(self):
-        with tools.file_open('web/static/img/favicon.ico', 'rb') as f:
+        with tech_utils.file_open('web/static/img/favicon.ico', 'rb') as f:
             return base64.b64encode(f.read())
 
     favicon = fields.Binary(string="Website Favicon", help="This field holds the image used to display a favicon on the website.", default=_default_favicon)

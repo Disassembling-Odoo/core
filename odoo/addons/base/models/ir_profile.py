@@ -12,7 +12,7 @@ from odoo import models, api, _
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
 from odoo.technology.framework.http import request
-from odoo.tools.profiler import make_session
+from odoo.technology.adjustable.profiler import make_session
 from odoo.tools.speedscope import Speedscope
 
 _logger = logging.getLogger(__name__)

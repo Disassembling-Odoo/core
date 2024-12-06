@@ -7,7 +7,7 @@ from passlib.totp import TOTP
 
 from odoo.technology.framework import http
 from odoo.tests import tagged, get_db_name, new_test_user, HttpCase
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 from ..controllers.home import Home
 

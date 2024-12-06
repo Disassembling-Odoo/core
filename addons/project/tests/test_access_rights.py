@@ -6,7 +6,7 @@ from odoo.addons.project.tests.test_project_base import TestProjectCommon
 from odoo import Command
 from odoo.exceptions import AccessError, ValidationError
 from odoo.tests.common import users
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 class TestAccessRights(TestProjectCommon):
     def setUp(self):

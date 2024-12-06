@@ -9,7 +9,7 @@ from odoo.addons.base.models.res_users import Users
 from odoo.addons.mail.tests.common import MailCommon, mail_new_test_user
 from odoo.addons.base.tests.common import HttpCaseWithUserDemo
 from odoo.tests import tagged, users
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 class TestNotifySecurityUpdate(MailCommon):

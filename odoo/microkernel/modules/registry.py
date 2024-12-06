@@ -24,15 +24,15 @@ import psycopg2
 import odoo
 from odoo import SUPERUSER_ID
 from odoo.technology.conf import config
+from odoo.technology.utils import lazy_classproperty, lazy_property
 from odoo.microkernel.modules.db import FunctionStatus
 from odoo.tools import (
-    lazy_classproperty, lazy_property, 
     remove_accents,
 )
-from odoo.tools.func import locked
+from odoo.technology.utils.func import locked
 from odoo.tools.lru import LRU
-from odoo.tools.misc import Collector, format_frame
-from odoo.technology.utils import OrderedSet
+from odoo.technology.adjustable.stack_frame import format_frame
+from odoo.technology.utils import OrderedSet, Collector
 
 if typing.TYPE_CHECKING:
     from odoo.ormapping import BaseModel

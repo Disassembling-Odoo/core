@@ -7,7 +7,7 @@ from odoo.addons.test_event_full.tests.common import TestEventFullCommon
 from odoo.exceptions import AccessError
 from odoo.tests import tagged
 from odoo.tests.common import users
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 @tagged('security')

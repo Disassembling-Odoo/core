@@ -9,7 +9,7 @@ from odoo.exceptions import UserError
 from odoo.microkernel.modules.registry import Registry
 from ..service import security
 from ..service import retrying
-from odoo.tools import lazy
+from ...utils import lazy
 from odoo.ormapping import check_method_name
 
 _logger = logging.getLogger(__name__)

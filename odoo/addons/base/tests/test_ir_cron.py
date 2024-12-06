@@ -12,7 +12,7 @@ from freezegun import freeze_time
 
 from odoo.ormapping import fields
 from odoo.tests.common import TransactionCase, RecordCapturer
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 from odoo.addons.base.models.ir_cron import MIN_FAILURE_COUNT_BEFORE_DEACTIVATION, MIN_DELTA_BEFORE_DEACTIVATION
 
 

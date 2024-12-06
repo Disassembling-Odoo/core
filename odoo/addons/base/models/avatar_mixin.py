@@ -5,7 +5,8 @@ from base64 import b64encode
 from hashlib import sha512
 from odoo import models, api
 from odoo.ormapping import fields
-from odoo.tools import html_escape, file_open
+from odoo.tools import html_escape 
+from odoo.technology.utils import file_open
 
 
 def get_hsl_from_seed(seed):

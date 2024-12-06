@@ -27,8 +27,8 @@ import zipfile
 
 from odoo import release
 from odoo.technology.framework import http, server
-from odoo.tools.func import lazy_property
-from odoo.tools.misc import file_path
+from odoo.technology.utils.func import lazy_property
+from odoo.technology.utils import file_path
 
 lock = Lock()
 _logger = logging.getLogger(__name__)

@@ -5,7 +5,7 @@ from psycopg2 import IntegrityError
 
 from odoo.exceptions import ValidationError, UserError
 from odoo.tests.common import tagged, TransactionCase, freeze_time
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 ID_CLIENT = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 FAKE_UUID = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'

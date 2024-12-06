@@ -3,6 +3,7 @@ import re
 
 import odoo.tests
 
+import odoo.technology.adjustable as adju
 from odoo.technology.conf import config
 
 
@@ -142,7 +143,7 @@ class TestWebAssets(odoo.tests.HttpCase):
     def test_assets_url_validation(self):
         website_id = self.env['website'].search([], limit=1, order='id desc').id
 
-        with odoo.tools.mute_logger('odoo.addons.web.controllers.binary'):
+        with adju.mute_logger('odoo.addons.web.controllers.binary'):
             self.assertEqual(
                 self.url_open(f'/web/assets/{website_id}/debug/hello/web.assets_frontend.css', allow_redirects=False).status_code,
                 404,

@@ -8,7 +8,7 @@ from freezegun import freeze_time
 
 from odoo.addons.event.tests.common import EventCase
 from odoo.tests.common import tagged, users
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 @tagged("event_mail")

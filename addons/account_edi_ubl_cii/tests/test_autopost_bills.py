@@ -3,7 +3,7 @@ from datetime import datetime
 
 from odoo.ormapping import fields
 from odoo.tests import tagged
-from odoo.tools import file_open
+from odoo.technology.utils import file_open
 
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon
 

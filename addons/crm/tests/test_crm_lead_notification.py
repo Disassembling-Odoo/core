@@ -3,7 +3,8 @@
 
 from odoo.addons.crm.tests.common import TestCrmCommon
 from odoo.tests import tagged, users
-from odoo.tools import formataddr, mute_logger
+from odoo.tools import formataddr
+from odoo.technology.adjustable import mute_logger
 
 
 @tagged('mail_thread', 'mail_gateway')

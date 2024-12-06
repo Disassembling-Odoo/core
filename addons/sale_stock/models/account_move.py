@@ -5,7 +5,7 @@ from collections import defaultdict
 
 from odoo import models, api
 from odoo.tools import float_is_zero, float_compare
-from odoo.microkernel.utils import formatLang
+from odoo.tools.i18n import formatLang
 
 
 class AccountMove(models.Model):

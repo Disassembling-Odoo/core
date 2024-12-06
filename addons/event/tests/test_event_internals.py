@@ -9,7 +9,7 @@ from odoo.addons.event.tests.common import EventCase
 from odoo import exceptions
 from odoo.ormapping import Datetime as FieldsDatetime
 from odoo.tests import Form, users, tagged
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 class TestEventInternalsCommon(EventCase):

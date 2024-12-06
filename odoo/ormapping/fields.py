@@ -34,13 +34,13 @@ from .constant import Command, PREFETCH_MAX
 from .utils import determine, first, check_property_field_value_name, expand_ids, is_definition_class
 
 from ..technology.db import SQL, pg_varchar
-from ..technology.utils import check_pg_name, date_utils
-from ..technology.utils import OrderedSet
+from ..technology.utils import (
+    check_pg_name, date_utils, OrderedSet, merge_sequences, unique, lazy_property
+)
 from ..netsvc import ColoredFormatter, GREEN, RED, DEFAULT, COLOR_PATTERN
 from ..tools import (
     float_repr, float_round, float_compare, float_is_zero, human_size,
-    unique, lazy_property,
-    image_process, merge_sequences, is_list_of,
+    image_process, is_list_of,
     html_normalize, html_sanitize
 )
 from ..tools.mimetypes import guess_mimetype
@@ -52,7 +52,7 @@ from odoo.microkernel.utils import (
     DEFAULT_SERVER_DATETIME_FORMAT as DATETIME_FORMAT
 )
 
-from .constant import SENTINEL, Sentinel
+from odoo.tools.i18n import SENTINEL, Sentinel
 
 from odoo import SUPERUSER_ID
 from odoo.exceptions import CacheMiss

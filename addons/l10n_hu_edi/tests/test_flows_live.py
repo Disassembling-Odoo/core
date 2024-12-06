@@ -1,4 +1,4 @@
-from odoo import tools
+from odoo.technology import utils as tech_utils
 from odoo.exceptions import UserError
 from odoo.tests.common import tagged
 from odoo.addons.account.tests.test_account_move_send import TestAccountMoveSendCommon
@@ -148,7 +148,7 @@ class L10nHuEdiTestFlowsLive(L10nHuEdiTestCommon, TestAccountMoveSendCommon):
             if invoice.l10n_hu_edi_state not in ['confirmed', 'confirmed_warning', 'cancel_sent', 'cancel_pending', 'cancelled']:
                 last_invoice[prefix] -= 1
             else:
-                with tools.file_open('l10n_hu_edi/tests/credentials.py', 'a') as credentials_file:
+                with tech_utils.file_open('l10n_hu_edi/tests/credentials.py', 'a') as credentials_file:
                     credentials_file.write(f'last_invoice = {last_invoice}\n')
 
     @contextlib.contextmanager

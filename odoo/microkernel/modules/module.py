@@ -18,8 +18,9 @@ from os.path import join as opj, normpath
 import odoo
 import odoo.technology.conf as conf
 import odoo.tools as tools
+from odoo.technology import utils as tech_utils
 import odoo.release as release
-from odoo.tools.misc import file_path
+from odoo.technology.utils import file_path
 
 try:
     from packaging.requirements import InvalidRequirement, Requirement
@@ -310,14 +311,14 @@ def load_manifest(module, mod_path=None):
 
     manifest['icon'] = get_module_icon(module)
 
-    with tools.file_open(manifest_file, mode='r') as f:
+    with tech_utils.file_open(manifest_file, mode='r') as f:
         manifest.update(ast.literal_eval(f.read()))
 
     if not manifest['description']:
         readme_path = [opj(mod_path, x) for x in README
                        if os.path.isfile(opj(mod_path, x))]
         if readme_path:
-            with tools.file_open(readme_path[0]) as fd:
+            with tech_utils.file_open(readme_path[0]) as fd:
                 manifest['description'] = fd.read()
 
     if not manifest.get('license'):

@@ -10,8 +10,8 @@ from werkzeug.exceptions import Forbidden
 
 from odoo.technology.framework import http
 from odoo.exceptions import ValidationError
-from odoo.technology.framework.http import request
-from odoo.tools.misc import file_open
+from odoo.technology.framework import request
+from odoo.technology.utils import file_open
 
 from odoo.addons.payment import utils as payment_utils
 from odoo.addons.payment_stripe import utils as stripe_utils

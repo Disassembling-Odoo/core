@@ -13,7 +13,7 @@ from odoo.addons.mail.tests.mail_tracking_duration_mixin_case import MailTrackin
 from odoo.addons.phone_validation.tools.phone_validation import phone_format
 from odoo.exceptions import UserError
 from odoo.tests import Form, tagged, users
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 @tagged('lead_internals')

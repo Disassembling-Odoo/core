@@ -4,7 +4,7 @@ import contextlib
 
 from odoo.technology.framework import http
 from odoo.technology.framework.http import request
-from odoo.tools.json import scriptsafe
+from odoo.technology.utils.json import scriptsafe
 
 
 class GoogleMap(http.Controller):

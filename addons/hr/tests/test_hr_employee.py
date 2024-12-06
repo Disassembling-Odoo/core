@@ -3,7 +3,7 @@ from psycopg2.errors import UniqueViolation
 
 from odoo.tests import Form, users
 from odoo.addons.hr.tests.common import TestHrCommon
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 from odoo.exceptions import ValidationError
 
 class TestHrEmployee(TestHrCommon):

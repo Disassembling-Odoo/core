@@ -3,7 +3,7 @@
 
 from odoo.exceptions import AccessError, ValidationError
 from odoo.tests.common import TransactionCase
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 from odoo import Command
 
 

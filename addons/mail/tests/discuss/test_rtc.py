@@ -7,7 +7,7 @@ from odoo.ormapping import fields
 from odoo.addons.mail.tests.common import MailCommon
 from odoo.addons.mail.tools.discuss import Store
 from odoo.tests.common import tagged, users
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 @tagged("RTC", "post_install", "-at_install")

@@ -5,9 +5,9 @@ import json
 from werkzeug.exceptions import NotFound
 
 from odoo import _
-from odoo.technology.framework.http import Controller, request, route, content_disposition
+from odoo.technology.utils import consteq
+from odoo.technology.framework import Controller, request, route, content_disposition
 from odoo.technology.framework import http
-from odoo.tools import consteq
 
 
 class EventController(Controller):

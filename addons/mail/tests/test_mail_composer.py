@@ -4,7 +4,7 @@
 from odoo.addons.mail.tests.common import MailCommon
 from odoo.exceptions import AccessError
 from odoo.tests import Form, HttpCase, tagged, users
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 @tagged('mail_composer')

@@ -6,7 +6,7 @@ import itertools
 from odoo import api, models, _
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
-from odoo.tools import groupby
+from odoo.technology.utils import groupby
 
 
 class AccountAnalyticAccount(models.Model):

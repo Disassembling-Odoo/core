@@ -6,7 +6,7 @@ from requests import Session, PreparedRequest, Response
 from odoo.addons.account.tests.test_account_move_send import TestAccountMoveSendCommon
 from odoo.exceptions import UserError
 from odoo.tests.common import tagged, freeze_time
-from odoo.tools.misc import file_open
+from odoo.technology.utils import file_open
 
 
 ID_CLIENT = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'

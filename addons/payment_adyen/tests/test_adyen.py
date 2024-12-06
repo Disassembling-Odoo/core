@@ -6,7 +6,7 @@ from werkzeug.exceptions import Forbidden
 
 from odoo.exceptions import UserError
 from odoo.tests import tagged
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 from odoo.addons.payment import utils as payment_utils
 from odoo.addons.payment.tests.http_common import PaymentHttpCommon

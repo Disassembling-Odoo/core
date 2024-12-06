@@ -4,7 +4,7 @@ import base64
 
 from odoo.ormapping import Command
 from odoo.tests import tagged
-from odoo.tools.misc import file_open
+from odoo.technology.utils import file_open
 
 from odoo.addons.base.tests.common import HttpCaseWithUserDemo, HttpCaseWithUserPortal
 from odoo.addons.sale.tests.product_configurator_common import TestProductConfiguratorCommon

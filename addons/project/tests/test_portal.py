@@ -3,7 +3,7 @@
 
 from odoo.addons.project.tests.test_access_rights import TestProjectPortalCommon
 from odoo.exceptions import AccessError
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 class TestPortalProject(TestProjectPortalCommon):

@@ -134,10 +134,3 @@ class Command(enum.IntEnum):
         Return the command triple :samp:`(SET, 0, {ids})`
         """
         return (cls.SET, 0, ids)
-
-class Sentinel(enum.Enum):
-    """Class for typing parameters with a sentinel as a default"""
-    SENTINEL = -1
-
-
-SENTINEL = Sentinel.SENTINEL

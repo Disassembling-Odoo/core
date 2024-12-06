@@ -4,9 +4,8 @@
 import functools
 
 from odoo.tests.common import BaseCase
-from odoo.tools import lazy
 from odoo import Command
-from odoo.technology.utils import frozendict
+from odoo.technology.utils import frozendict, lazy
 
 
 class TestFrozendict(BaseCase):

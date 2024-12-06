@@ -4,7 +4,8 @@ import json
 from requests.exceptions import HTTPError
 
 import odoo
-from odoo.tools import file_open, mute_logger
+from odoo.technology.utils import file_open
+from odoo.technology.adjustable import mute_logger
 from odoo.addons.mail.tests.test_controller_common import TestControllerCommon
 
 

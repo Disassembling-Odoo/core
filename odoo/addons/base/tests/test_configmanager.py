@@ -3,7 +3,8 @@ import unittest
 import odoo
 from odoo.technology import conf
 from odoo.tests import TransactionCase
-from odoo.tools import file_path, file_open, file_open_temporary_directory
+from odoo.microkernel.utils import file_open_temporary_directory
+from odoo.technology.utils import file_path, file_open
 from odoo.technology.conf import configmanager, _get_default_datadir
 
 

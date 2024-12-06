@@ -5,7 +5,7 @@ import werkzeug
 
 from odoo.addons.test_mail_full.tests.common import TestMailFullCommon
 from odoo.tests.common import users
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 from odoo.tests import tagged
 
 

@@ -13,8 +13,8 @@ from odoo.addons.mail.tests.common import MailCommon
 from odoo.exceptions import AccessError
 from odoo.tests import tagged, users
 from odoo.tests.common import HttpCase
-from odoo.tools import email_normalize, mail, mute_logger, parse_contact_from_email
-
+from odoo.tools import email_normalize, mail, parse_contact_from_email
+from odoo.technology.adjustable import mute_logger
 
 @tagged('mail_followers')
 class BaseFollowersTest(MailCommon):

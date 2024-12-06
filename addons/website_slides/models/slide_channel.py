@@ -14,6 +14,7 @@ from odoo.ormapping import fields
 from odoo.exceptions import AccessError, UserError, ValidationError
 from odoo.osv import expression
 from odoo.tools import is_html_empty
+from odoo.technology import utils as tech_utils
 
 _logger = logging.getLogger(__name__)
 
@@ -171,7 +172,7 @@ class ChannelUsersRelation(models.Model):
         """ Returns the invitation hash of the attendee, used to access courses as invited / joined. """
         self.ensure_one()
         token = (self.partner_id.id, self.channel_id.id)
-        return tools.hmac(self.env(su=True), 'website_slides-channel-invite', token)
+        return tech_utils.hmac(self.env(su=True), 'website_slides-channel-invite', token)
 
     def _post_completion_update_hook(self, completed=True):
         """ Post hook of _recompute_completion. Adds or removes

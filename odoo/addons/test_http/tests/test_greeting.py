@@ -3,7 +3,7 @@ import datetime
 
 from odoo.tests import tagged
 from odoo.tests.common import new_test_user
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 from .test_common import TestHttpBase
 from .test_webjson import CSRF_USER_HEADERS

@@ -4,7 +4,7 @@ from unittest.mock import ANY, patch
 
 from odoo.exceptions import AccessError
 from odoo.tests import JsonRpcException, tagged
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 from odoo.addons.account_payment.tests.common import AccountPaymentCommon
 from odoo.addons.payment.tests.http_common import PaymentHttpCommon

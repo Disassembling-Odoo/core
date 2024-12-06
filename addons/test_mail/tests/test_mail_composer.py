@@ -18,7 +18,8 @@ from odoo.addons.test_mail.tests.common import TestRecipients
 from odoo.ormapping import Datetime as FieldDatetime
 from odoo.exceptions import AccessError, UserError
 from odoo.tests import Form, tagged, users
-from odoo.tools import email_normalize, mute_logger, formataddr
+from odoo.tools import email_normalize, formataddr
+from odoo.technology.adjustable import mute_logger
 
 
 @tagged('mail_composer')

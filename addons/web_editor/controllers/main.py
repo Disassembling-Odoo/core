@@ -13,10 +13,10 @@ from base64 import b64decode, b64encode
 from math import floor
 from os.path import join as opj
 
-from odoo.technology.framework.http import request, Response
+from odoo.technology.framework import request, Response
 from odoo import tools, _
 from odoo.technology.framework import http
-from odoo.tools.misc import file_open
+from odoo.technology.utils import file_open
 from odoo.tools.image import image_data_uri, binary_to_image
 
 

@@ -5,7 +5,7 @@ from xmlrpc.client import Fault
 
 from odoo.technology.framework import http
 from odoo.tests import common, tagged
-from odoo.tools.misc import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 @tagged('-at_install', 'post_install')

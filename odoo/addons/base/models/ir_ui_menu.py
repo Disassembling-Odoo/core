@@ -13,6 +13,7 @@ from odoo.exceptions import ValidationError
 from odoo.technology.framework.http import request
 from odoo.osv import expression
 from odoo.technology.cache import ormcache, ormcache_context
+from odoo.technology import utils as tech_utils
 
 MENU_ITEM_SEPARATOR = "/"
 NUMBER_PARENS = re.compile(r"\(([0-9]+)\)")
@@ -65,7 +66,7 @@ class IrUiMenu(models.Model):
         path_info = path.split(',')
         icon_path = opj(path_info[0], path_info[1])
         try:
-            with tools.file_open(icon_path, 'rb', filter_ext=('.png',)) as icon_file:
+            with tech_utils.file_open(icon_path, 'rb', filter_ext=('.png',)) as icon_file:
                 return base64.encodebytes(icon_file.read())
         except FileNotFoundError:
             return False

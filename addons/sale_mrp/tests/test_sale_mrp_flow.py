@@ -4,7 +4,8 @@
 from odoo.addons.stock_account.tests.test_anglo_saxon_valuation_reconciliation_common import ValuationReconciliationTestCommon
 from odoo.tests import common, Form
 from odoo.exceptions import UserError
-from odoo.tools import mute_logger, float_compare
+from odoo.tools import float_compare
+from odoo.technology.adjustable import mute_logger
 from odoo.addons.stock_account.tests.test_stockvaluation import _create_accounting_data
 
 

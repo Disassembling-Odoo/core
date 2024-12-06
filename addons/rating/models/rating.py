@@ -7,7 +7,7 @@ from odoo import api, models
 from odoo.ormapping import fields
 from odoo.addons.mail.tools.discuss import Store
 from odoo.addons.rating.models import rating_data
-from odoo.tools.misc import file_open
+from odoo.technology.utils import file_open
 
 
 class Rating(models.Model):

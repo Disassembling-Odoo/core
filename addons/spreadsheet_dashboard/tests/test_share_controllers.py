@@ -2,7 +2,7 @@ import json
 import base64
 
 from odoo.tests.common import HttpCase
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 from .common import DashboardTestCommon
 

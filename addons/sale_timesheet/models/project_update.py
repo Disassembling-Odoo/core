@@ -3,7 +3,8 @@
 
 from odoo import api, models
 from odoo.tools import float_utils
-from odoo.microkernel.utils import formatLang, format_duration
+from odoo.tools.i18n import formatLang
+from odoo.microkernel.utils import format_duration
 
 
 class ProjectUpdate(models.Model):

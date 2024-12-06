@@ -4,7 +4,7 @@ from unittest.mock import patch
 
 from odoo.exceptions import AccessError
 from odoo.tests import tagged
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 from odoo.addons.payment.tests.common import PaymentCommon
 

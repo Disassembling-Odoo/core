@@ -10,7 +10,7 @@ from odoo import tools
 from odoo.addons.base.models.res_partner import Partner
 from odoo.addons.mail.tests.common import MailCommon, mail_new_test_user
 from odoo.tests import Form, tagged, users
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 @tagged('res_partner', 'mail_tools')

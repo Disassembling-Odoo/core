@@ -6,7 +6,7 @@ from werkzeug.exceptions import Forbidden, NotFound
 from odoo.technology.framework import http
 from odoo.technology.framework.http import request
 from odoo.osv import expression
-from odoo.tools import consteq
+from odoo.technology.utils import consteq
 from odoo.addons.mail.controllers import mail
 from odoo.addons.mail.tools.discuss import Store
 from odoo.addons.portal.utils import get_portal_partner

@@ -6,10 +6,10 @@ from collections import Counter, defaultdict
 from odoo import _, api, tools, models, Command
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
-from odoo.tools import format_list, groupby
+from odoo.tools import format_list
 from odoo.tools.float_utils import float_compare, float_is_zero, float_round
 from odoo.technology import db
-from odoo.technology.utils import OrderedSet
+from odoo.technology.utils import OrderedSet, groupby
 
 
 class StockMoveLine(models.Model):

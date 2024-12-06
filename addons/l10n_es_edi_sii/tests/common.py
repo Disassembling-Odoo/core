@@ -3,7 +3,7 @@ import base64
 from pytz import timezone
 from datetime import datetime
 
-from odoo.tools import misc
+from odoo.technology import utils as tech_utils
 from odoo.addons.account_edi.tests.common import AccountEdiTestCommon
 
 
@@ -25,7 +25,7 @@ class TestEsEdiCommon(AccountEdiTestCommon):
         cls.certificate = cls.env['certificate.certificate'].create({
             'name': 'Test ES certificate',
             'content': base64.b64encode(
-                misc.file_open("l10n_es_edi_sii/demo/certificates/sello_entidad_act.p12", 'rb').read()),
+                tech_utils.file_open("l10n_es_edi_sii/demo/certificates/sello_entidad_act.p12", 'rb').read()),
             'pkcs12_password': 'IZDesa2021',
             'scope': 'sii',
             'company_id': cls.company_data['company'].id,

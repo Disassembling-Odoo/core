@@ -4,7 +4,8 @@
 from odoo import models, api, _
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError, RedirectWarning
-from odoo.microkernel.utils import formatLang, format_date
+from odoo.tools.i18n import formatLang
+from odoo.microkernel.utils import format_date
 from odoo.technology.db import column_exists, create_column
 
 INV_LINES_PER_STUB = 9

@@ -6,6 +6,7 @@ from odoo import api, models, tools, _
 from odoo.ormapping import fields
 from odoo.exceptions import AccessError, ValidationError
 from odoo.osv import expression
+from odoo.technology import utils as tech_utils
 from odoo.technology.conf import config
 from odoo.technology.db import SQL
 from odoo.tools.safe_eval import safe_eval, time
@@ -136,7 +137,7 @@ class IrRule(models.Model):
         return self.browse(v for v, in self.env.execute_query(sql))
 
     @api.model
-    @tools.conditional(
+    @tech_utils.conditional(
         'xml' not in config['dev_mode'],
         ormcache('self.env.uid', 'self.env.su', 'model_name', 'mode',
                        'tuple(self._compute_domain_context_values())'),

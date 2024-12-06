@@ -2,9 +2,8 @@
 import base64
 from lxml import etree
 
-from odoo import tools
 from odoo.tests import tagged
-from odoo.tools.misc import file_open
+from odoo.technology.utils import file_open
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon
 
 
@@ -132,7 +131,7 @@ class TestItEdi(AccountTestInvoicingCommon):
 
     def _assert_export_invoice(self, invoice, filename):
         path = f'{self.module}/tests/export_xmls/{filename}'
-        with tools.file_open(path, mode='rb') as fd:
+        with file_open(path, mode='rb') as fd:
             expected_tree = etree.fromstring(fd.read())
         xml = invoice._l10n_it_edi_render_xml()
         invoice_etree = etree.fromstring(xml)
@@ -148,7 +147,7 @@ class TestItEdi(AccountTestInvoicingCommon):
             argument to the XML content before it's imported.
         """
         path = f'{self.module}/tests/import_xmls/{filename}'
-        with tools.file_open(path, mode='rb') as fd:
+        with file_open(path, mode='rb') as fd:
             import_content = fd.read()
 
         if xml_to_apply:

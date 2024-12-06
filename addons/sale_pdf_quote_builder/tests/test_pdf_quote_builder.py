@@ -5,7 +5,7 @@ from functools import partial
 
 from odoo import Command
 from odoo.tests import tagged
-from odoo.tools.misc import file_open
+from odoo.technology.utils import file_open
 
 from odoo.addons.base.tests.common import HttpCaseWithUserDemo
 from odoo.addons.sale.tests.common import SaleCommon

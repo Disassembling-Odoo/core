@@ -4,7 +4,8 @@ from datetime import timedelta
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon
 from odoo.addons.mail.tests.common import MailCase
 from odoo.tests import tagged, Form, new_test_user
-from odoo.tools import mute_logger, format_amount
+from odoo.tools import format_amount
+from odoo.technology.adjustable import mute_logger
 from odoo.ormapping import fields
 
 @tagged('-at_install', 'post_install')

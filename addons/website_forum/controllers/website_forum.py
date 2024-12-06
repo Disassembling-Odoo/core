@@ -13,6 +13,7 @@ from odoo import _, tools
 from odoo.addons.website.models.ir_http import sitemap_qs2dom
 from odoo.addons.website_profile.controllers.main import WebsiteProfile
 from odoo.exceptions import AccessError, UserError
+from odoo.technology import utils as tech_utils
 from odoo.technology.framework.http import request
 from odoo.osv import expression
 from odoo.technology.framework import http
@@ -47,7 +48,7 @@ class WebsiteForum(WebsiteProfile):
                     [('id', '!=', forum.id)],
                     [('post_ids', 'any', post_domain)]
                 ]))
-            values['my_other_forums'] = tools.lazy(_get_my_other_forums)
+            values['my_other_forums'] = tech_utils.lazy(_get_my_other_forums)
         else:
             values['my_other_forums'] = request.env['forum.forum']
         return values
@@ -161,7 +162,7 @@ class WebsiteForum(WebsiteProfile):
             if value:
                 url_args[name] = value
 
-        pager = tools.lazy(lambda: request.website.pager(
+        pager = tech_utils.lazy(lambda: request.website.pager(
             url=url, total=question_count, page=page, step=self._post_per_page,
             scope=5, url_args=url_args))
 

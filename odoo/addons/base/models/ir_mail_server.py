@@ -23,6 +23,7 @@ from odoo.ormapping import fields
 from odoo.exceptions import UserError
 from odoo.technology import conf
 from odoo.tools import formataddr, email_normalize, encapsulate_email, email_domain_extract, email_domain_normalize, human_size
+from odoo.technology import utils as tech_utils
 
 _logger = logging.getLogger(__name__)
 _test_logger = logging.getLogger('odoo.tests')
@@ -645,7 +646,7 @@ class IrMailServer(models.Model):
             for base in [email_to, email_cc, email_bcc]
             # be sure a given address does not return duplicates (but duplicates
             # in final smtp to list is still ok)
-            for address in tools.misc.unique(extract_rfc2822_addresses(base))
+            for address in tech_utils.unique(extract_rfc2822_addresses(base))
             if address and (not validated_to or address in validated_to)
         ]
         assert smtp_to_list, self.NO_VALID_RECIPIENT

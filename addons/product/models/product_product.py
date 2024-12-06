@@ -8,10 +8,11 @@ from odoo import api, models, tools, _
 from odoo.ormapping import fields
 from odoo.exceptions import ValidationError
 from odoo.osv import expression
-from odoo.tools import float_compare, format_list, groupby
+from odoo.tools import float_compare, format_list
+from odoo.technology.utils import groupby
 from odoo.tools.image import is_image_size_above
-from odoo.tools.misc import unique
-
+from odoo.technology.utils import unique
+from odoo.technology import adjustable
 
 class ProductProduct(models.Model):
     _name = "product.product"
@@ -425,7 +426,7 @@ class ProductProduct(models.Model):
             self = to_unlink
 
         try:
-            with self.env.cr.savepoint(), tools.mute_logger('odoo.technology.db.sql_db'):
+            with self.env.cr.savepoint(), adjustable.mute_logger('odoo.technology.db.sql_db'):
                 self.unlink()
         except Exception:
             # We catch all kind of exceptions to be sure that the operation

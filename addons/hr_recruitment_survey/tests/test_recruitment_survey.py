@@ -4,7 +4,7 @@
 from odoo.addons.mail.tests.common import mail_new_test_user
 from odoo.exceptions import AccessError
 from odoo.tests import common, Form, tagged
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 @tagged('security')

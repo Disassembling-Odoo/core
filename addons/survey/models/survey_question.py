@@ -9,6 +9,7 @@ import operator
 from textwrap import shorten
 
 from odoo import api, models, tools, _
+from odoo.technology import utils as tech_utils
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
 from odoo.microkernel import utils
@@ -715,7 +716,7 @@ class SurveyQuestion(models.Model):
         right_inputs, partial_inputs = self.env['survey.user_input'], self.env['survey.user_input']
         right_answers = self.suggested_answer_ids.filtered(lambda label: label.is_correct)
         if self.question_type == 'multiple_choice':
-            for user_input, lines in tools.groupby(user_input_lines, operator.itemgetter('user_input_id')):
+            for user_input, lines in tech_utils.groupby(user_input_lines, operator.itemgetter('user_input_id')):
                 user_input_answers = self.env['survey.user_input.line'].concat(*lines).filtered(lambda l: l.answer_is_correct).mapped('suggested_answer_id')
                 if user_input_answers and user_input_answers < right_answers:
                     partial_inputs += user_input

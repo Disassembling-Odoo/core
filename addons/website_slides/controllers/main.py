@@ -20,7 +20,9 @@ from odoo.exceptions import AccessError, ValidationError, UserError, MissingErro
 from odoo.technology.framework.http import request, Response
 from odoo.osv import expression
 from odoo.technology.framework import http
-from odoo.tools import consteq, email_split
+from odoo.tools import email_split
+from odoo.technology import utils as tech_utils
+from odoo.technology.utils import consteq
 
 _logger = logging.getLogger(__name__)
 
@@ -342,31 +344,31 @@ class WebsiteSlides(WebsiteProfile):
     @http.route('/slides', type='http', auth="public", website=True, sitemap=True, readonly=True)
     def slides_channel_home(self, **post):
         """ Home page for eLearning platform. Is mainly a container page, does not allow search / filter. """
-        channels_all = tools.lazy(lambda: request.env['slide.channel'].search(request.website.website_domain()))
+        channels_all = tech_utils.lazy(lambda: request.env['slide.channel'].search(request.website.website_domain()))
         if not request.env.user._is_public():
             #If a course is completed, we don't want to see it in first position but in last
-            channels_my = tools.lazy(lambda: channels_all.filtered(lambda channel: channel.is_member).sorted(lambda channel: 0 if channel.completed else channel.completion, reverse=True)[:3])
+            channels_my = tech_utils.lazy(lambda: channels_all.filtered(lambda channel: channel.is_member).sorted(lambda channel: 0 if channel.completed else channel.completion, reverse=True)[:3])
         else:
             channels_my = request.env['slide.channel']
-        channels_popular = tools.lazy(lambda: channels_all.sorted('total_votes', reverse=True)[:3])
-        channels_newest = tools.lazy(lambda: channels_all.sorted('create_date', reverse=True)[:3])
+        channels_popular = tech_utils.lazy(lambda: channels_all.sorted('total_votes', reverse=True)[:3])
+        channels_newest = tech_utils.lazy(lambda: channels_all.sorted('create_date', reverse=True)[:3])
 
-        achievements = tools.lazy(lambda: request.env['gamification.badge.user'].sudo().search([('badge_id.is_published', '=', True)], limit=5))
+        achievements = tech_utils.lazy(lambda: request.env['gamification.badge.user'].sudo().search([('badge_id.is_published', '=', True)], limit=5))
         if request.env.user._is_public():
             challenges = None
             challenges_done = None
         else:
-            challenges = tools.lazy(lambda: request.env['gamification.challenge'].sudo().search([
+            challenges = tech_utils.lazy(lambda: request.env['gamification.challenge'].sudo().search([
                 ('challenge_category', '=', 'slides'),
                 ('reward_id.is_published', '=', True)
             ], order='id asc', limit=5))
-            challenges_done = tools.lazy(lambda: request.env['gamification.badge.user'].sudo().search([
+            challenges_done = tech_utils.lazy(lambda: request.env['gamification.badge.user'].sudo().search([
                 ('challenge_id', 'in', challenges.ids),
                 ('user_id', '=', request.env.user.id),
                 ('badge_id.is_published', '=', True)
             ]).mapped('challenge_id'))
 
-        users = tools.lazy(lambda: request.env['res.users'].sudo().search([
+        users = tech_utils.lazy(lambda: request.env['res.users'].sudo().search([
             ('karma', '>', 0),
             ('website_published', '=', True)], limit=5, order='karma desc'))
 
@@ -378,7 +380,7 @@ class WebsiteSlides(WebsiteProfile):
             'channels_newest': channels_newest,
             'achievements': achievements,
             'users': users,
-            'top3_users': tools.lazy(self._get_top3_users),
+            'top3_users': tech_utils.lazy(self._get_top3_users),
             'challenges': challenges,
             'challenges_done': challenges_done,
             'search_tags': request.env['slide.channel.tag'],
@@ -1548,7 +1550,7 @@ class WebsiteSlides(WebsiteProfile):
         if kwargs.get('channel'):
             channels = kwargs['channel']
         elif kwargs.get('channel_id'):
-            channels = tools.lazy(lambda: request.env['slide.channel'].browse(int(kwargs['channel_id'])))
+            channels = tech_utils.lazy(lambda: request.env['slide.channel'].browse(int(kwargs['channel_id'])))
         return channels
 
     @staticmethod

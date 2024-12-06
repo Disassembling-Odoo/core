@@ -1,6 +1,6 @@
 from odoo import api, models
 from odoo.ormapping import fields
-from odoo.microkernel.utils import get_lang
+from odoo.tools.i18n import get_lang
 
 
 class AccountMoveSendWizard(models.TransientModel):

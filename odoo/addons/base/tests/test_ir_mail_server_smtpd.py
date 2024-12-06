@@ -14,7 +14,8 @@ from socket import getaddrinfo  # keep a reference on the non-patched function
 from odoo import modules
 from odoo.technology.conf import config
 from odoo.exceptions import UserError
-from odoo.tools import file_path, mute_logger
+from odoo.technology.utils import file_path
+from odoo.technology.adjustable import mute_logger
 from .common import TransactionCaseWithUserDemo
 
 try:

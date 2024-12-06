@@ -5,7 +5,7 @@ from odoo import _
 from odoo.exceptions import ValidationError
 from odoo.technology.framework.http import request
 from odoo.technology.framework import http
-from odoo.tools.json import scriptsafe as json_safe
+from odoo.technology.utils.json import scriptsafe as json_safe
 
 from odoo.addons.payment import utils as payment_utils
 from odoo.addons.payment.controllers import portal as payment_portal

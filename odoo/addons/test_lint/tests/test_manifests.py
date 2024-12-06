@@ -7,7 +7,7 @@ from os.path import join as opj
 from odoo.microkernel.modules import get_modules
 from odoo.microkernel.modules.module import _DEFAULT_MANIFEST, module_manifest, get_module_path
 from odoo.tests import BaseCase
-from odoo.tools.misc import file_open, file_path
+from odoo.technology.utils import file_open, file_paths
 
 _logger = logging.getLogger(__name__)
 
@@ -107,7 +107,7 @@ class ManifestLinter(BaseCase):
         else:
             path_parts = value.split('/')
             try:
-                file_path(opj(*path_parts[1:]))
+                file_paths(opj(*path_parts[1:]))
             except FileNotFoundError:
                 _logger.warning(
                     "Icon value specified in manifest of module %s wasn't found in given path."

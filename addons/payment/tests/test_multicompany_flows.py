@@ -2,7 +2,7 @@
 
 from odoo.ormapping import Command
 from odoo.tests import tagged
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 from odoo.addons.payment.tests.http_common import PaymentHttpCommon
 

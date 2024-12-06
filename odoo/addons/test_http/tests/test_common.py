@@ -9,7 +9,7 @@ from werkzeug.http import parse_cache_control_header
 import odoo
 from odoo.technology.framework.http import Session
 from odoo.addons.base.tests.common import HttpCaseWithUserDemo
-from odoo.tools.func import lazy_property
+from odoo.technology.utils.func import lazy_property
 from odoo.addons.test_http.utils import MemoryGeoipResolver, MemorySessionStore
 
 HTTP_DATETIME_FORMAT = '%a, %d %b %Y %H:%M:%S GMT'

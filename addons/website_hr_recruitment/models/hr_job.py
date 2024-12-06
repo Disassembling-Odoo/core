@@ -4,7 +4,7 @@ from werkzeug.urls import url_join
 
 from odoo import api, models, _
 from odoo.ormapping import fields
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 from odoo.tools.translate import html_translate
 
 

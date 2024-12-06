@@ -12,8 +12,8 @@ from odoo.addons.base.models.res_partner import _tz_get
 from odoo.exceptions import UserError
 from odoo.tools import split_every
 from odoo.technology.db import SQL
-from odoo.tools.misc import _format_time_ago
-from odoo.technology.framework.http import request
+from odoo.technology.framework import request
+from odoo.microkernel.utils import format_time_ago
 from odoo.osv import expression
 
 
@@ -154,7 +154,7 @@ class WebsiteVisitor(models.Model):
     @api.depends('last_connection_datetime')
     def _compute_time_statistics(self):
         for visitor in self:
-            visitor.time_since_last_action = _format_time_ago(self.env, (datetime.now() - visitor.last_connection_datetime))
+            visitor.time_since_last_action = format_time_ago(self.env, (datetime.now() - visitor.last_connection_datetime))
             visitor.is_connected = (datetime.now() - visitor.last_connection_datetime) < timedelta(minutes=5)
 
     def _check_for_message_composer(self):

@@ -4,7 +4,7 @@
 from odoo import Command
 
 from odoo.tests import common, Form
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 class TestDropship(common.TransactionCase):

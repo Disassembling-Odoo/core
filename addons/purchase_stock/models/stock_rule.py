@@ -9,7 +9,7 @@ from odoo.tools import float_compare
 
 from odoo import api, models, SUPERUSER_ID, _
 from odoo.addons.stock.models.stock_rule import ProcurementException
-from odoo.tools import groupby
+from odoo.technology.utils import groupby
 
 
 class StockRule(models.Model):

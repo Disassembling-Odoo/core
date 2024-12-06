@@ -5,9 +5,9 @@ import re
 from odoo.ormapping import fields
 from odoo.addons.base.tests.common import SavepointCaseWithUserDemo
 from odoo.tests import common
-from odoo.tools.misc import file_open, mute_logger
+from odoo.technology.utils import file_open
 from odoo.tools.translate import code_translations
-
+from odoo.technology.adjustable import  mute_logger
 
 def message(msg, type_='error', from_=0, to_=0, record=0, field='value', **kwargs):
     return dict(kwargs, type=type_, rows={'from': from_, 'to': to_}, record=record, field=field, message=msg)

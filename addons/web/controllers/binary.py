@@ -22,7 +22,8 @@ from odoo import SUPERUSER_ID, _, api
 from odoo.addons.base.models.assetsbundle import ANY_UNIQUE
 from odoo.exceptions import AccessError, UserError
 from odoo.technology.framework.http import request, Response
-from odoo.tools import file_open, file_path, replace_exceptions, str2bool
+from odoo.tools import replace_exceptions, str2bool
+from odoo.technology.utils import file_open, file_paths
 from odoo.tools.image import image_guess_size_from_field_name
 from odoo.tools.mimetypes import guess_mimetype
 
@@ -262,7 +263,7 @@ class Binary(http.Controller):
         uid = (request.session.uid if dbname else None) or odoo.SUPERUSER_ID
 
         if not dbname:
-            response = http.Stream.from_path(file_path('web/static/img/logo.png')).get_response()
+            response = http.Stream.from_path(file_paths('web/static/img/logo.png')).get_response()
         else:
             try:
                 company = int(kw['company']) if kw and kw.get('company') else False
@@ -297,10 +298,10 @@ class Binary(http.Controller):
                         response_class=Response,
                     )
                 else:
-                    response = http.Stream.from_path(file_path('web/static/img/nologo.png')).get_response()
+                    response = http.Stream.from_path(file_paths('web/static/img/nologo.png')).get_response()
             except Exception:
                 _logger.warning("While retrieving the company logo, using the Odoo logo instead", exc_info=True)
-                response = http.Stream.from_path(file_path(f'web/static/img/{imgname}{imgext}')).get_response()
+                response = http.Stream.from_path(file_paths(f'web/static/img/{imgname}{imgext}')).get_response()
 
         return response
 
@@ -319,7 +320,7 @@ class Binary(http.Controller):
         """
         supported_exts = ('.ttf', '.otf', '.woff', '.woff2')
         fonts = []
-        fonts_directory = file_path('web/static/fonts/sign')
+        fonts_directory = file_paths('web/static/fonts/sign')
         if fontname:
             font_path = os.path.join(fonts_directory, fontname)
             with file_open(font_path, 'rb', filter_ext=supported_exts) as font_file:

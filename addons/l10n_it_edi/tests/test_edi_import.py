@@ -8,6 +8,7 @@ from unittest.mock import patch
 from odoo import tools, Command
 from odoo.ormapping import fields
 from odoo.technology.db import sql_db
+from odoo.technology.adjustable import mute_logger
 from odoo.tests import new_test_user, tagged
 from odoo.addons.l10n_it_edi.tests.common import TestItEdi
 
@@ -49,7 +50,7 @@ class TestItEdiImport(TestItEdi):
 
     def test_receive_invalid_xml(self):
         xml_decode = self.env['ir.attachment']._decode_edi_l10n_it_edi
-        with tools.mute_logger("odoo.addons.l10n_it_edi.models.ir_attachment"):
+        with mute_logger("odoo.addons.l10n_it_edi.models.ir_attachment"):
             self.assertEqual([], xml_decode("none.xml", None))
             self.assertEqual([], xml_decode("empty.xml", ""))
             self.assertEqual([], xml_decode("invalid.xml", "invalid"))
@@ -218,7 +219,7 @@ class TestItEdiImport(TestItEdi):
 
         with (patch.object(proxy_user.__class__, '_decrypt_data', return_value=self.fake_test_content),
               patch.object(sql_db.Cursor, "commit", mock_commit),
-              tools.mute_logger("odoo.addons.l10n_it_edi.models.account_move")):
+              mute_logger("odoo.addons.l10n_it_edi.models.account_move")):
             for dummy in range(2):
                 processed = self.env['account.move']._l10n_it_edi_process_downloads({
                     '999999999': {

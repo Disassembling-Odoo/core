@@ -5,7 +5,8 @@ from pytz import UTC
 
 from odoo import api, models, _
 from odoo.ormapping import fields
-from odoo.microkernel.utils import DEFAULT_SERVER_DATETIME_FORMAT, get_lang
+from odoo.tools.i18n import get_lang
+from odoo.microkernel.utils import DEFAULT_SERVER_DATETIME_FORMAT
 from odoo.tools.float_utils import float_compare, float_round
 from odoo.exceptions import UserError
 

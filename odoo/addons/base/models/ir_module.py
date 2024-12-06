@@ -30,10 +30,11 @@ from odoo.addons.base.models.ir_model import MODULE_UNINSTALL_FLAG
 from odoo.exceptions import AccessDenied, UserError, ValidationError
 from odoo.osv import expression
 from odoo.tools.parse_version import parse_version
-from odoo.tools.misc import topological_sort, get_flag
+from odoo.tools.misc import get_flag
 from odoo.tools.translate import TranslationImporter, get_po_paths
 from odoo.technology.framework.http import request
 from odoo.microkernel.modules import get_module_path
+from odoo.technology import utils as tech_utils
 from odoo.technology.cache import ormcache
 
 
@@ -182,7 +183,7 @@ class Module(models.Model):
                 continue
             path = os.path.join(module.name, 'static/description/index.html')
             try:
-                with tools.file_open(path, 'rb') as desc_file:
+                with tech_utils.file_open(path, 'rb') as desc_file:
                     doc = desc_file.read()
                     if doc.startswith(XML_DECLARATION):
                         warnings.warn(
@@ -264,7 +265,7 @@ class Module(models.Model):
                 path = modules.module.get_module_icon_path(module)
             if path:
                 try:
-                    with tools.file_open(path, 'rb', filter_ext=('.png', '.svg', '.gif', '.jpeg', '.jpg')) as image_file:
+                    with tech_utils.file_open(path, 'rb', filter_ext=('.png', '.svg', '.gif', '.jpeg', '.jpg')) as image_file:
                         module.icon_image = base64.b64encode(image_file.read())
                 except FileNotFoundError:
                     module.icon_image = ''
@@ -867,7 +868,7 @@ class Module(models.Model):
             mod.name: mod.dependencies_id.mapped('name')
             for mod in update_mods
         }
-        mod_names = topological_sort(mod_dict)
+        mod_names = tech_utils.topological_sort(mod_dict)
         self.env['ir.module.module']._load_module_terms(mod_names, filter_lang, overwrite)
 
     def _check(self):

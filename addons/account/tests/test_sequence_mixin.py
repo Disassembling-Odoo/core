@@ -3,7 +3,7 @@ from odoo.ormapping import fields
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon
 from odoo.tests import Form, tagged, TransactionCase
 from odoo import api, SUPERUSER_ID, Command
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 from dateutil.relativedelta import relativedelta
 from freezegun import freeze_time

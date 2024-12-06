@@ -8,7 +8,7 @@ from datetime import datetime, timedelta
 
 import odoo
 
-from odoo.tools.misc import mute_logger
+from odoo.technology.adjustable import mute_logger
 from odoo.addons.mail.tests.common import mail_new_test_user
 from odoo.addons.mail.tools.jwt import InvalidVapidError
 from odoo.addons.sms.tests.common import SMSCommon

@@ -6,7 +6,7 @@ from odoo.ormapping import fields
 from odoo.exceptions import ValidationError
 from odoo.technology.utils import date_utils
 from odoo.microkernel.utils import format_date
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 from odoo.technology.utils import frozendict
 from odoo.technology.db import SQL
 

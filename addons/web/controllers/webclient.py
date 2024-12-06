@@ -14,8 +14,8 @@ import odoo
 import odoo.microkernel.modules.registry
 from odoo.technology.framework import http
 from odoo.microkernel.modules import get_manifest
-from odoo.technology.framework.http import request
-from odoo.tools.misc import file_path
+from odoo.technology.framework import request
+from odoo.technology.utils import file_path
 from .utils import _local_web_translations
 
 

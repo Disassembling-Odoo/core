@@ -1,5 +1,5 @@
 from odoo.tests.common import TransactionCase
-from odoo.tools import file_open
+from odoo.technology.utils import file_open
 from odoo.addons.base.models.ir_actions_report import _split_table
 from lxml import etree
 

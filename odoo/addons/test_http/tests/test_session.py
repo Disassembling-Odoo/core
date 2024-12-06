@@ -14,7 +14,8 @@ from odoo.addons.base.tests.common import HttpCaseWithUserDemo
 from odoo.technology.conf import config
 from odoo.technology.framework.http import SESSION_LIFETIME
 from odoo.tests.common import get_db_name
-from odoo.tools import lazy_property, mute_logger
+from odoo.technology.utils import lazy_property
+from odoo.technology.adjustable import mute_logger
 from .test_common import TestHttpBase
 
 GEOIP_ODOO_FARM_2 = {

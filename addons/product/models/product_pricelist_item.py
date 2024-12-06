@@ -4,7 +4,8 @@ from odoo import SUPERUSER_ID, _, api, models, tools
 from odoo.ormapping import fields
 from odoo.exceptions import ValidationError
 from odoo.tools import format_amount
-from odoo.microkernel.utils import format_datetime, formatLang
+from odoo.microkernel.utils import format_datetime
+from odoo.tools.i18n import formatLang
 
 
 class PricelistItem(models.Model):

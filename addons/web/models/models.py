@@ -8,8 +8,7 @@ import json
 from odoo import api
 from odoo.ormapping import models, Command, BaseModel, NewId
 from odoo.osv.expression import AND, TRUE_DOMAIN, normalize_domain
-from odoo.tools import unique
-from odoo.technology.utils import OrderedSet
+from odoo.technology.utils import OrderedSet, unique
 from odoo.exceptions import AccessError, UserError
 from collections import defaultdict
 from odoo.tools.translate import LazyTranslate

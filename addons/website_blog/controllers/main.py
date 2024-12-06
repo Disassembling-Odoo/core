@@ -10,10 +10,11 @@ from collections import defaultdict
 from odoo import tools, models
 from odoo.ormapping import fields
 from odoo.addons.website.controllers.main import QueryURL
+from odoo.technology import utils as tech_utils
 from odoo.technology.framework.http import request
 from odoo.technology.framework import http
 from odoo.tools import html2plaintext
-from odoo.microkernel.utils import get_lang
+from odoo.tools.i18n import get_lang
 from odoo.technology import db
 from odoo.microkernel import utils as microkernel_utils
 
@@ -134,7 +135,7 @@ class WebsiteBlog(http.Controller):
             url_args["date_begin"] = date_begin
             url_args["date_end"] = date_end
 
-        pager = tools.lazy(lambda: request.website.pager(
+        pager = tech_utils.lazy(lambda: request.website.pager(
             url=request.httprequest.path.partition('/page/')[0],
             total=total,
             page=page,
@@ -145,10 +146,10 @@ class WebsiteBlog(http.Controller):
         if not blogs:
             all_tags = request.env['blog.tag']
         else:
-            all_tags = tools.lazy(lambda: blogs.all_tags(join=True) if not blog else blogs.all_tags().get(blog.id, request.env['blog.tag']))
-        tag_category = tools.lazy(lambda: sorted(all_tags.mapped('category_id'), key=lambda category: category.name.upper()))
-        other_tags = tools.lazy(lambda: sorted(all_tags.filtered(lambda x: not x.category_id), key=lambda tag: tag.name.upper()))
-        nav_list = tools.lazy(self.nav_list)
+            all_tags = tech_utils.lazy(lambda: blogs.all_tags(join=True) if not blog else blogs.all_tags().get(blog.id, request.env['blog.tag']))
+        tag_category = tech_utils.lazy(lambda: sorted(all_tags.mapped('category_id'), key=lambda category: category.name.upper()))
+        other_tags = tech_utils.lazy(lambda: sorted(all_tags.filtered(lambda x: not x.category_id), key=lambda tag: tag.name.upper()))
+        nav_list = tech_utils.lazy(self.nav_list)
         # and avoid accessing related blogs one by one
         posts.blog_id
 
@@ -184,7 +185,7 @@ class WebsiteBlog(http.Controller):
     ], type='http', auth="public", website=True, sitemap=True)
     def blog(self, blog=None, tag=None, page=1, search=None, **opt):
         Blog = request.env['blog.blog']
-        blogs = tools.lazy(lambda: Blog.search(request.website.website_domain(), order="create_date asc, id asc"))
+        blogs = tech_utils.lazy(lambda: Blog.search(request.website.website_domain(), order="create_date asc, id asc"))
 
         if not blog and len(blogs) == 1:
             url = QueryURL('/blog/%s' % request.env['ir.http']._slug(blogs[0]), search=search, **opt)()

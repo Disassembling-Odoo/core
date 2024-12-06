@@ -2,7 +2,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo.technology.framework import http, request
-from odoo.microkernel.utils import get_lang
+from odoo.tools.i18n import get_lang
 
 
 class CalendarController(http.Controller):

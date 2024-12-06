@@ -4,8 +4,9 @@ import json
 from odoo import models, api, _, Command
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
+from odoo.tools.i18n import formatLang
 from odoo.technology.utils import date_utils
-from odoo.microkernel.utils import format_date, formatLang
+from odoo.microkernel.utils import format_date
 
 class AccruedExpenseRevenue(models.TransientModel):
     _name = 'account.accrued.orders.wizard'

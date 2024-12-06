@@ -6,6 +6,7 @@ import werkzeug.urls
 
 from odoo import api, models, tools
 from odoo.ormapping import fields
+from odoo.technology import utils as tech_utils
 
 
 class MailMail(models.Model):
@@ -34,7 +35,7 @@ class MailMail(models.Model):
 
     @api.model
     def _generate_mail_recipient_token(self, mail_id):
-        return tools.hmac(self.env(su=True), 'mass_mailing-mail_mail-open', mail_id)
+        return tech_utils.hmac(self.env(su=True), 'mass_mailing-mail_mail-open', mail_id)
 
     def _prepare_outgoing_body(self):
         """ Override to add the tracking URL to the body and to add trace ID in

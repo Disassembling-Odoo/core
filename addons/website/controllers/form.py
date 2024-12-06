@@ -14,7 +14,7 @@ from odoo.technology.framework.http import request
 from odoo.technology.framework import http
 from odoo.tools import plaintext2html
 from odoo.exceptions import AccessDenied, ValidationError, UserError
-from odoo.tools.misc import hmac, consteq
+from odoo.technology.utils import hmac, consteq
 from odoo.tools.translate import _, LazyTranslate
 
 _lt = LazyTranslate(__name__)

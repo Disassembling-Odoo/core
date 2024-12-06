@@ -6,7 +6,7 @@ from datetime import date, datetime
 
 from odoo import models
 from odoo.ormapping import fields
-from odoo.tools import groupby
+from odoo.technology.utils import groupby
 
 
 def get_twilio_credentials(env) -> (str, str):

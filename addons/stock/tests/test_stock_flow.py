@@ -3,8 +3,9 @@
 from odoo.addons.stock.tests.common import TestStockCommon
 from odoo.exceptions import ValidationError
 from odoo.tests import Form, tagged
-from odoo.tools import mute_logger, float_round
+from odoo.tools import float_round
 from odoo.ormapping import fields
+from odoo.technology.adjustable import mute_logger
 
 
 class TestStockFlow(TestStockCommon):

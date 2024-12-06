@@ -5,7 +5,7 @@ import json
 
 from odoo.technology.framework import http
 from odoo.technology.framework.http import request
-from odoo.tools.misc import file_open
+from odoo.technology.utils import file_open
 from odoo.tools.translate import _
 
 

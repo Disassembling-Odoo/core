@@ -2,7 +2,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo.ormapping import Date, Datetime
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 from odoo.tests import Form, tagged
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon
 from odoo.addons.stock_account.tests.test_stockvaluation import _create_accounting_data

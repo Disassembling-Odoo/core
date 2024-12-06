@@ -2,7 +2,7 @@
 from odoo import SUPERUSER_ID, Command
 from odoo.exceptions import AccessError
 from odoo.tests import TransactionCase
-from odoo.tools.misc import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 class Feedback(TransactionCase):

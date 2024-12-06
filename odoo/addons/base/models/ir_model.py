@@ -19,7 +19,9 @@ from odoo.osv import expression
 from odoo.technology.utils import OrderedSet
 from odoo.technology import conf
 from odoo.technology.db import sql, SQL
-from odoo.tools import format_list, lazy_property, unique
+from odoo.technology.utils import lazy_property
+from odoo.tools import format_list
+from odoo.technology.utils import unique
 from odoo.tools.safe_eval import safe_eval, datetime, dateutil, time
 from odoo.tools.translate import _, LazyTranslate
 from odoo.technology.cache import ormcache, ormcache_context

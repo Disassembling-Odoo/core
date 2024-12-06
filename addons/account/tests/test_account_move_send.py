@@ -10,7 +10,8 @@ from odoo.addons.account.tests.common import AccountTestInvoicingCommon
 from odoo.addons.mail.tests.common import MailCommon
 from odoo.exceptions import UserError
 from odoo.tests import users, warmup, tagged
-from odoo.tools import formataddr, mute_logger
+from odoo.tools import formataddr
+from odoo.technology.adjustable import mute_logger
 
 
 @tagged('post_install_l10n', 'post_install', '-at_install')

@@ -5,7 +5,7 @@ import re
 from markupsafe import Markup
 
 from odoo.tests import common, tagged
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 from odoo.tools.mail import TEXT_URL_REGEX
 
 

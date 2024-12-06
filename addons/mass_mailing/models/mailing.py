@@ -27,6 +27,7 @@ from odoo.osv import expression
 from odoo.technology import conf
 from odoo.tools.float_utils import float_round
 from odoo.tools.image import ImageProcess
+from odoo.technology import utils as tech_utils
 from odoo.microkernel import utils as microkernel_utils
 
 _logger = logging.getLogger(__name__)
@@ -1319,7 +1320,7 @@ class MassMailing(models.Model):
     def _generate_mailing_report_token(self, user_id):
         """Generate a secure token for this user. It allows to opt out from
         mailing reports while keeping some security in that process. """
-        return tools.hmac(self.env(su=True), 'mailing-report-deactivated', user_id)
+        return tech_utils.hmac(self.env(su=True), 'mailing-report-deactivated', user_id)
 
     # ------------------------------------------------------
     # TOOLS

@@ -10,7 +10,7 @@ from odoo.ormapping import Command
 from odoo.technology.framework.http import root
 from odoo.tests import common, HttpCase, tagged
 from odoo.tests.common import HOST
-from odoo.tools import mute_logger
+from odoo.technology.adjustable import mute_logger
 
 
 @tagged('-at_install', 'post_install')

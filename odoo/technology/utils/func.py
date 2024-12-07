@@ -1,7 +1,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 from __future__ import annotations
 import typing
-from inspect import Parameter, getsourcefile, signature
+from inspect import Parameter, signature
 
 from decorator import decorator
 
@@ -99,26 +99,6 @@ def synchronized(lock_attr: str = '_lock'):
 
 
 locked = synchronized()
-
-
-def frame_codeinfo(fframe, back=0):
-    """ Return a (filename, line) pair for a previous frame .
-        @return (filename, lineno) where lineno is either int or string==''
-    """
-    try:
-        if not fframe:
-            return "<unknown>", ''
-        for i in range(back):
-            fframe = fframe.f_back
-        try:
-            fname = getsourcefile(fframe)
-        except TypeError:
-            fname = '<builtin>'
-        lineno = fframe.f_lineno or ''
-        return fname, lineno
-    except Exception:
-        return "<unknown>", ''
-
 
 class classproperty(typing.Generic[T]):
     def __init__(self, fget: Callable[[typing.Any], T]) -> None:

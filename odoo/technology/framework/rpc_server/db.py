@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 import base64
+import csv
 import logging
 import os
 import tempfile
 from contextlib import closing
+from operator import itemgetter
 from xml.etree import ElementTree as ET
 
 import psycopg2
@@ -21,6 +23,7 @@ import odoo.technology.db
 from odoo.technology.db import check_db_management_enabled, create_empty_database
 import odoo.microkernel
 from odoo.technology.utils import db_utils as DBUtils
+from odoo.technology import utils as tech_utils
 
 _logger = logging.getLogger(__name__)
 
@@ -146,6 +149,30 @@ def exp_list(document=False):
 
 def exp_list_lang():
     return odoo.tools.i18n.scan_languages()
+
+def scan_languages() -> list[tuple[str, str]]:
+    """ Returns all languages supported by OpenERP for translation
+
+    :returns: a list of (lang_code, lang_name) pairs
+    :rtype: [(str, unicode)]
+    """
+    try:
+        # read (code, name) from languages in base/data/res.lang.csv
+        with tech_utils.file_open('base/data/res.lang.csv') as csvfile:
+            reader = csv.reader(csvfile, delimiter=',', quotechar='"')
+            fields = next(reader)
+            code_index = fields.index("code")
+            name_index = fields.index("name")
+            result = [
+                (row[code_index], row[name_index])
+                for row in reader
+            ]
+    except Exception:
+        _logger.error("Could not read res.lang.csv")
+        result = []
+
+    return sorted(result or [('en_US', u'English')], key=itemgetter(1))
+
 
 def exp_list_countries():
     list_countries = []

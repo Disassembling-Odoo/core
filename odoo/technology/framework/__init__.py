@@ -2,7 +2,7 @@
 
 from .service import *
 
-from .geoip import *
+from .geoip_capability import *
 
 from .http import *
 from .rpc import *

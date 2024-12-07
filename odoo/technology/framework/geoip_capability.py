@@ -25,7 +25,6 @@ _logger = logging.getLogger(__name__)
 # =========================================================
 # GeoIP
 # =========================================================
-
 class GeoIP(collections.abc.Mapping):
     """
     Ip Geolocalization utility, determine information such as the
@@ -53,13 +52,14 @@ class GeoIP(collections.abc.Mapping):
         'FR'
     """
 
-    def __init__(self, ip):
+    def __init__(self, ip, root):
         self.ip = ip
+        self.root = root
 
     @lazy_property
     def _city_record(self):
         try:
-            return _geoip_city_db.city(self.ip)
+            return self.root.geoip_city_db.city(self.ip)
         except (OSError, maxminddb.InvalidDatabaseError):
             return GEOIP_EMPTY_CITY
         except geoip2.errors.AddressNotFoundError:
@@ -72,7 +72,7 @@ class GeoIP(collections.abc.Mapping):
             # city record is in cache already, save a geolocalization
             return self._city_record
         try:
-            return _geoip_country_db.country(self.ip)
+            return self.root.geoip_country_db.country(self.ip)
         except (OSError, maxminddb.InvalidDatabaseError):
             return self._city_record
         except geoip2.errors.AddressNotFoundError:
@@ -128,22 +128,3 @@ class GeoIP(collections.abc.Mapping):
 
     def __len__(self):
         raise NotImplementedError("The dictionnary GeoIP API is deprecated.")
-
-@lazy_property
-def _geoip_city_db(self):
-    try:
-        return geoip2.database.Reader(config['geoip_city_db'])
-    except (OSError, maxminddb.InvalidDatabaseError):
-        _logger.debug(
-            "Couldn't load Geoip City file at %s. IP Resolver disabled.",
-            config['geoip_city_db'], exc_info=True
-        )
-        raise
-
-@lazy_property
-def _geoip_country_db(self):
-    try:
-        return geoip2.database.Reader(config['geoip_country_db'])
-    except (OSError, maxminddb.InvalidDatabaseError) as exc:
-        _logger.debug("Couldn't load Geoip Country file (%s). Fallbacks on Geoip City.", exc,)
-        raise

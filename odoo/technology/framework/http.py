@@ -202,7 +202,7 @@ from ...exceptions import UserError, AccessError, AccessDenied
 from ..conf import config
 from ..db import available_db_list, db_filter
 from ..utils import consteq, file_path, unique, submap, json_default
-from .geoip import GeoIP
+from .geoip_capability import GeoIP
 from odoo.tools.i18n import get_lang
 from .service import retrying as service_model, security
 from odoo.microkernel.modules import get_manifest
@@ -1254,7 +1254,7 @@ class Request:
         self.dispatcher = _dispatchers['http'](self)  # until we match
         #self.params = {}  # set by the Dispatcher
 
-        self.geoip = GeoIP(httprequest.remote_addr)
+        self.geoip = GeoIP(httprequest.remote_addr, root)
         self.registry = None
         self.env = None
 

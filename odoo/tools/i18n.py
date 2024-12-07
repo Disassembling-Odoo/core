@@ -130,6 +130,12 @@ def get_lang(env: odoo.api.Environment, lang_code: str | None = None) -> LangDat
         lang = company_lang
     return env['res.lang']._get_data(code=lang)
 
+def get_iso_codes(lang: str) -> str:
+    if lang.find('_') != -1:
+        if lang.split('_')[0] == lang.split('_')[1].lower():
+            lang = lang.split('_')[0]
+    return lang
+
 def babel_locale_parse(lang_code: str | None) -> babel.Locale:
     if lang_code:
         try:

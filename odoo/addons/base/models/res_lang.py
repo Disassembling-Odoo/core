@@ -9,6 +9,7 @@ import re
 from typing import Any, Literal
 
 from odoo import api, models, tools, _
+from odoo.tools import i18n
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
 from odoo.technology.utils import OrderedSet, frozendict
@@ -165,7 +166,7 @@ class Lang(models.Model):
         """ Create the given language and make it active. """
         # create the language with locale information
         fail = True
-        iso_lang = tools.get_iso_codes(lang)
+        iso_lang = i18n.get_iso_codes(lang)
         for ln in tools.translate.get_locales(lang):
             try:
                 locale.setlocale(locale.LC_ALL, str(ln))

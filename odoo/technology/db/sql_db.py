@@ -31,8 +31,9 @@ import odoo
 from .. import conf
 from ... import tools
 from .sql import SQL
-from ..utils.func import frame_codeinfo, locked
+from ..utils.func import locked
 from ..utils import Callbacks, reverse_enumerate
+from ..adjustable.stack_frame import frame_codeinfo
 
 if typing.TYPE_CHECKING:
     from collections.abc import Iterable, Iterator

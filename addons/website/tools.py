@@ -61,7 +61,7 @@ def MockRequest(
             website_sale_current_pl=website_sale_current_pl,
             context={'lang': ''},
         ),
-        geoip=odoo.technology.framework.GeoIP('127.0.0.1'),
+        geoip=odoo.technology.framework.GeoIP('127.0.0.1', odoo.technology.framework.http.root),
         db=env.registry.db_name,
         env=env,
         registry=env.registry,

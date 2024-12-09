@@ -241,13 +241,6 @@ def get_default_session():
 
 DEFAULT_MAX_CONTENT_LENGTH = 128 * 1024 * 1024  # 128MiB
 
-# Two empty objects used when the geolocalization failed. They have the
-# sames attributes as real countries/cities except that accessing them
-# evaluates to None.
-if geoip2:
-    GEOIP_EMPTY_COUNTRY = geoip2.models.Country({})
-    GEOIP_EMPTY_CITY = geoip2.models.City({})
-
 # The request mimetypes that transport JSON in their body.
 JSON_MIMETYPES = ('application/json', 'application/json-rpc')
 

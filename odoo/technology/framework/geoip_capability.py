@@ -9,6 +9,9 @@ try:
 except ImportError:
     geoip2 = None
 
+# Two empty objects used when the geolocalization failed. They have the
+# sames attributes as real countries/cities except that accessing them
+# evaluates to None.
 if geoip2:
     GEOIP_EMPTY_COUNTRY = geoip2.models.Country({})
     GEOIP_EMPTY_CITY = geoip2.models.City({})

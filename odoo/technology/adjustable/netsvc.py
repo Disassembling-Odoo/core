@@ -14,10 +14,10 @@ import warnings
 
 import werkzeug.serving
 
-from . import release
-from . import tools
-from .technology.adjustable import mute_logger
-from .technology import conf, db
+from ... import release
+from ... import tools
+from . import mute_logger
+from .. import conf, db
 
 _logger = logging.getLogger(__name__)
 
@@ -207,7 +207,7 @@ def init_logger():
     warnings.filterwarnings('ignore', r'pkg_resources is deprecated as an API.+', category=DeprecationWarning)
     warnings.filterwarnings('ignore', r'Deprecated call to \`pkg_resources.declare_namespace.+', category=DeprecationWarning)
 
-    from .tools.translate import resetlocale
+    from ...tools.translate import resetlocale
     resetlocale()
 
     # create a format for log messages and dates

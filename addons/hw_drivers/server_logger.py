@@ -7,7 +7,7 @@ import time
 import urllib3.exceptions
 
 from odoo.addons.hw_drivers.tools import helpers
-from odoo.netsvc import DBFormatter
+from odoo.technology.adjustable.netsvc import DBFormatter
 
 _logger = logging.getLogger(__name__)
 

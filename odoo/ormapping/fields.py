@@ -37,7 +37,7 @@ from ..technology.db import SQL, pg_varchar
 from ..technology.utils import (
     check_pg_name, date_utils, OrderedSet, merge_sequences, unique, lazy_property
 )
-from ..netsvc import ColoredFormatter, GREEN, RED, DEFAULT, COLOR_PATTERN
+from ..technology.adjustable.netsvc import ColoredFormatter, GREEN, RED, DEFAULT, COLOR_PATTERN
 from ..tools import (
     float_repr, float_round, float_compare, float_is_zero, human_size,
     image_process, is_list_of,

@@ -59,7 +59,7 @@ from .technology import cli
 
 from . import upgrade  # this namespace must be imported first
 from . import loglevels
-from . import netsvc
+from .technology.adjustable import netsvc
 from . import osv
 from . import release
 from . import addons

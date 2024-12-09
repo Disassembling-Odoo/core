@@ -11,6 +11,7 @@ import requests
 
 from . import Command
 
+import odoo.microkernel.modules
 from .server import report_configuration
 from odoo.technology.db import dump_db, restore_db, check_db_exist, rename_db, drop_db, duplicate_db
 from odoo.technology.conf import config
@@ -117,6 +118,7 @@ class Db(Command):
                 v,
             ]
         ], setup_logging=True)
+        odoo.microkernel.modules.module.initialize_sys_path()
         # force db management active to bypass check when only a
         # `check_db_management_enabled` version is available.
         config['list_db'] = True

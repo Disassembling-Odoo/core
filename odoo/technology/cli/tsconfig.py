@@ -8,7 +8,7 @@ import sys
 from pathlib import Path
 
 from . import Command
-from odoo.microkernel.modules.module import MANIFEST_NAMES
+from odoo.constant import MANIFEST_NAMES
 
 
 class TSConfig(Command):

@@ -119,7 +119,7 @@ class Cloc(object):
     def count_path(self, path, exclude=None):
         path = path.rstrip('/')
         exclude_list = []
-        for i in odoo.microkernel.modules.module.MANIFEST_NAMES:
+        for i in odoo.constant.MANIFEST_NAMES:
             manifest_path = os.path.join(path, i)
             try:
                 with open(manifest_path, 'rb') as manifest:

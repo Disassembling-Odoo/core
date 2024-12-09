@@ -133,6 +133,7 @@ def import_translation():
 def main(args):
     check_root_user()
     odoo.conf.config.parse_config(args, setup_logging=True)
+    odoo.microkernel.modules.module.initialize_sys_path()
     check_postgres_user()
     report_configuration()
 

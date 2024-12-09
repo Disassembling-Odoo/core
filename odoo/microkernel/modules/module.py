@@ -16,6 +16,7 @@ import warnings
 from os.path import join as opj, normpath
 
 import odoo
+from odoo.constant import MANIFEST_NAMES, README
 import odoo.technology.conf as conf
 import odoo.tools as tools
 from odoo.technology import utils as tech_utils
@@ -36,10 +37,6 @@ except ImportError:
             self.marker = None
             self.specifier = None
             self.name = pydep
-
-
-MANIFEST_NAMES = ('__manifest__.py', '__openerp__.py')
-README = ['README.rst', 'README.md', 'README.txt']
 
 _DEFAULT_MANIFEST = {
     #addons_path: f'/path/to/the/addons/path/of/{module}',  # automatic

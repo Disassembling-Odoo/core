@@ -150,6 +150,7 @@ class Obfuscate(Command):
 
         try:
             opt = odoo.conf.config.parse_config(cmdargs, setup_logging=True)
+            odoo.microkernel.modules.module.initialize_sys_path()
             if not opt.pwd:
                 _logger.error("--pwd is required")
                 sys.exit("ERROR: --pwd is required")

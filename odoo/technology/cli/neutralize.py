@@ -24,6 +24,7 @@ class Neutralize(Command):
                          help="Output the neutralization SQL instead of applying it")
         parser.add_option_group(group)
         opt = config.parse_config(args, setup_logging=True)
+        odoo.microkernel.modules.module.initialize_sys_path()
 
         dbname = config['db_name']
         if not dbname:

@@ -9,6 +9,7 @@ from . import Command
 from .impl import cloc
 
 from odoo.technology.conf import config
+import odoo.microkernel.modules
 
 class Cloc(Command):
     """ Count lines of code per modules """
@@ -43,6 +44,7 @@ In the latter mode, only the custom code is accounted for.
         c = cloc.Cloc()
         if opt.database:
             config.parse_config(['-d', opt.database] + unknown)
+            odoo.microkernel.modules.module.initialize_sys_path()
             c.count_database(opt.database)
         if opt.path:
             for i in opt.path:

@@ -41,6 +41,7 @@ class Populate(Command):
                          default=DEFAULT_SEPARATOR)
         parser.add_option_group(group)
         opt = odoo.conf.config.parse_config(cmdargs, setup_logging=True)
+        odoo.microkernel.modules.module.initialize_sys_path()
 
         # deduplicate models if necessary, and keep the last corresponding
         # factor for each model

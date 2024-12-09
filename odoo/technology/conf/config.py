@@ -396,7 +396,7 @@ class configmanager(object):
         """
         opt = self._parse_config(args)
         if setup_logging is not False:
-            odoo.netsvc.init_logger()
+            odoo.technology.adjustable.netsvc.init_logger()
             # warn after having done setup, so it has a chance to show up
             # (mostly once this warning is bumped to DeprecationWarning proper)
             if setup_logging is None:
@@ -408,7 +408,6 @@ class configmanager(object):
                     stacklevel=2,
                 )
         self._warn_deprecated_options()
-        odoo.microkernel.modules.module.initialize_sys_path()
         return opt
 
     def _parse_config(self, args=None):
@@ -622,7 +621,7 @@ class configmanager(object):
                     )
 
     def _is_addons_path(self, path):
-        from odoo.microkernel.modules.module import MANIFEST_NAMES
+        from odoo.constant import MANIFEST_NAMES
         for f in os.listdir(path):
             modpath = os.path.join(path, f)
             if os.path.isdir(modpath):

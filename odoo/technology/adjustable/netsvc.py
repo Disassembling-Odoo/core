@@ -23,7 +23,7 @@ _logger = logging.getLogger(__name__)
 
 def log(logger, level, prefix, msg, depth=None):
     warnings.warn(
-        "odoo.netsvc.log is deprecated starting Odoo 18, use normal logging APIs",
+        "odoo.technology.adjustable.netsvc.log is deprecated starting Odoo 18, use normal logging APIs",
         category=DeprecationWarning,
         stacklevel=2,
     )

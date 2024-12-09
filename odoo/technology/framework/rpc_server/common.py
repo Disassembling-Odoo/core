@@ -48,7 +48,7 @@ def exp_about(extended=False):
 
 def exp_set_loglevel(loglevel, logger=None):
     # TODO Previously, the level was set on the now deprecated
-    # `odoo.netsvc.Logger` class.
+    # `odoo.technology.adjustable.netsvc.Logger` class.
     return True
 
 def dispatch(method, params):

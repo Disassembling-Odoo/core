@@ -57,6 +57,7 @@ class Shell(Command):
     def init(self, args):
         config.parser.prog = f'{Path(sys.argv[0]).name} {self.name}'
         config.parse_config(args, setup_logging=True)
+        odoo.microkernel.modules.module.initialize_sys_path()
         odoo.cli.server.report_configuration()
         odoo.technology.framework.start(preload=[], stop=True)
         signal.signal(signal.SIGINT, raise_keyboard_interrupt)

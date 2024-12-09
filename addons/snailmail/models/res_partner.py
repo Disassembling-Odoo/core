@@ -2,8 +2,9 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import api, models
+from odoo import models
 from odoo.addons.snailmail.country_utils import SNAILMAIL_COUNTRIES
+from odoo.microkernel.api import api
 
 
 class ResPartner(models.Model):

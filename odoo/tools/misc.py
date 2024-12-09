@@ -42,7 +42,7 @@ K = typing.TypeVar('K')
 T = typing.TypeVar('T')
 if typing.TYPE_CHECKING:
     from collections.abc import Callable, Collection, Sequence
-    from odoo.api import Environment
+    from odoo.microkernel.api.api import Environment
     from odoo.addons.base.models.res_lang import LangData
 
     P = typing.TypeVar('P')

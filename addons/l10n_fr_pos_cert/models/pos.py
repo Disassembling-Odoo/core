@@ -4,7 +4,8 @@ from hashlib import sha256
 from json import dumps, loads
 import logging
 
-from odoo import models, api, release, _
+from odoo import models, release, _
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
 

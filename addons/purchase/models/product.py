@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import api, models, _
+from odoo import models, _
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.addons.base.models.res_partner import WARNING_MESSAGE, WARNING_HELP
 from odoo.tools.float_utils import float_round

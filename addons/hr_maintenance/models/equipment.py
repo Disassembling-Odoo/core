@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from odoo import api, models, tools
+from odoo import models, tools
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 
 

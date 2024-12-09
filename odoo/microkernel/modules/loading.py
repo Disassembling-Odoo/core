@@ -12,12 +12,13 @@ import threading
 import time
 
 import odoo
+from ..api import api
 import odoo.microkernel.modules.db
 import odoo.microkernel.modules.graph
 import odoo.microkernel.modules.migration
 import odoo.microkernel.modules.registry
 from ...technology import conf
-from ... import SUPERUSER_ID, api, tools
+from ... import SUPERUSER_ID, tools
 from .module import adapt_version, initialize_sys_path, load_openerp_module
 
 _logger = logging.getLogger(__name__)

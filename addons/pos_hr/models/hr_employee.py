@@ -3,8 +3,9 @@
 
 import hashlib
 
-from odoo import api, models, _
+from odoo import models, _
 from odoo.exceptions import UserError
+from odoo.microkernel.api import api
 from odoo.tools import format_list
 
 class HrEmployee(models.Model):

@@ -388,7 +388,8 @@ from lxml import etree
 from dateutil.relativedelta import relativedelta
 from psycopg2.extensions import TransactionRollbackError
 
-from odoo import api, models, tools
+from odoo import models, tools
+from odoo.microkernel.api import api
 from odoo.technology.conf import config
 from odoo.microkernel.modules import registry
 from odoo.technology import conf

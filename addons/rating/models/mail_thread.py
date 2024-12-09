@@ -3,7 +3,8 @@
 import datetime
 import markupsafe
 
-from odoo import _, api, models, tools
+from odoo import _, models, tools
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 
 

@@ -1,6 +1,7 @@
 import base64
 
-from odoo import _, api, models, exceptions
+from odoo import _, models, exceptions
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 
 from .card_template import TEMPLATE_DIMENSIONS

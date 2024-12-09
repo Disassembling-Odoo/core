@@ -10,8 +10,9 @@ import werkzeug.urls
 import werkzeug.utils
 from werkzeug.exceptions import BadRequest
 
-from odoo import api, SUPERUSER_ID, _
+from odoo import SUPERUSER_ID, _
 from odoo.exceptions import AccessDenied
+from odoo.microkernel.api import api
 from odoo.tools.misc import clean_context
 from odoo.technology.framework import http, request, Response
 from odoo.technology import db

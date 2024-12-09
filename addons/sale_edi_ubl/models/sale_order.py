@@ -1,4 +1,5 @@
-from odoo import _, api, models, Command
+from odoo import _, models, Command
+from odoo.microkernel.api import api
 
 
 class SaleOrder(models.Model):

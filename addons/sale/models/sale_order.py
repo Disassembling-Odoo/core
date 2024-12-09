@@ -7,7 +7,8 @@ from collections import defaultdict
 from datetime import timedelta
 from itertools import groupby
 
-from odoo import SUPERUSER_ID, _, api, models
+from odoo import SUPERUSER_ID, _, models
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import (
     AccessError,

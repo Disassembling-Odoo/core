@@ -1,4 +1,5 @@
-from odoo import _, api, exceptions, models, osv
+from odoo import _, exceptions, models, osv
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 
 

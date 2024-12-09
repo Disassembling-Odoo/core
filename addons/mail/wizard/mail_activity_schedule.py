@@ -3,7 +3,8 @@
 
 from markupsafe import Markup
 
-from odoo import api, models, _
+from odoo import models, _
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.addons.mail.tools.parser import parse_res_ids
 from odoo.exceptions import ValidationError

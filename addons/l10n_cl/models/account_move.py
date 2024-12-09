@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import ValidationError
-from odoo import models, api, _
+from odoo import models, _
 from odoo.tools.i18n import formatLang
 from odoo.tools.float_utils import float_repr, float_round
 

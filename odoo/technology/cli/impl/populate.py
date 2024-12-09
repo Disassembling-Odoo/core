@@ -42,7 +42,7 @@ from datetime import datetime
 from psycopg2.errors import InsufficientPrivilege
 from dateutil.relativedelta import relativedelta
 
-from odoo.api import Environment
+from odoo.microkernel.api.api import Environment
 from odoo.technology.db import SQL
 from odoo.ormapping import Model, Field, Many2one
 

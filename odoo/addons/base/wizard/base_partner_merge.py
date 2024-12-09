@@ -8,8 +8,9 @@ import logging
 import psycopg2
 import datetime
 
-from odoo import api, models, Command
+from odoo import models, Command
 from odoo import _
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import ValidationError, UserError
 from odoo.technology.adjustable import mute_logger

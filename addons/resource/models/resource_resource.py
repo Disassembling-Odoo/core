@@ -5,7 +5,8 @@ from collections import defaultdict
 from dateutil.relativedelta import relativedelta
 from pytz import timezone
 
-from odoo import api, models
+from odoo import models
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.addons.base.models.res_partner import _tz_get
 

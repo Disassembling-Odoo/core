@@ -6,11 +6,12 @@ from urllib.parse import quote as url_quote
 
 from werkzeug import urls
 
-from odoo import _, api, models
+from odoo import _, models
 from odoo.exceptions import UserError, ValidationError
 
 from odoo.addons.payment_mercado_pago import const
 from odoo.addons.payment_mercado_pago.controllers.main import MercadoPagoController
+from odoo.microkernel.api import api
 
 
 _logger = logging.getLogger(__name__)

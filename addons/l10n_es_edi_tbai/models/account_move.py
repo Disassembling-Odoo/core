@@ -6,7 +6,8 @@ from collections import defaultdict
 from markupsafe import Markup
 from psycopg2.errors import LockNotAvailable
 
-from odoo import _, api, models
+from odoo import _, models
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
 

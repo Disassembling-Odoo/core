@@ -6,8 +6,9 @@ import logging
 import warnings
 import traceback
 
-from odoo import api, models
+from odoo import models
 from odoo.exceptions import AccessDenied
+from odoo.microkernel.api import api
 
 _logger = logging.getLogger(__name__)
 

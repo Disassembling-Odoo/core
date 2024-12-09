@@ -3,7 +3,8 @@
 import base64
 import json
 
-from odoo import SUPERUSER_ID, _, api, models
+from odoo import SUPERUSER_ID, _, models
+from odoo.microkernel.api import api
 
 
 class AccountMoveSend(models.AbstractModel):

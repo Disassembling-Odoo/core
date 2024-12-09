@@ -7,7 +7,8 @@ from hashlib import sha1
 from lxml import etree
 from markupsafe import Markup
 
-from odoo import Command, _, api, models
+from odoo import Command, _, models
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
 from odoo.technology.utils import date_utils

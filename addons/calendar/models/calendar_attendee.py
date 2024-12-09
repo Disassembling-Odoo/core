@@ -5,7 +5,8 @@ import base64
 import logging
 
 from collections import defaultdict
-from odoo import api, models, _
+from odoo import models, _
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.addons.base.models.res_partner import _tz_get
 from odoo.exceptions import UserError

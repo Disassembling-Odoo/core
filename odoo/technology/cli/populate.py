@@ -10,7 +10,7 @@ from .impl.populate import populate_models
 
 import odoo
 from odoo.microkernel.modules.registry import Registry
-from odoo.api import Environment
+from odoo.microkernel.api.api import Environment
 
 DEFAULT_FACTOR = '10000'
 DEFAULT_SEPARATOR = '_'

@@ -1,4 +1,5 @@
-from odoo import api, SUPERUSER_ID
+from odoo import SUPERUSER_ID
+from odoo.microkernel.api import api
 from odoo.osv import expression
 
 FIXED_ACCOUNTS_TYPE = {

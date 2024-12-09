@@ -5,6 +5,7 @@ import json
 import requests
 from datetime import datetime, timezone
 
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 
 try:
@@ -13,7 +14,7 @@ try:
 except ImportError:
     service_account = Request = None
 
-from odoo import models, api, _
+from odoo import models, _
 from odoo.exceptions import ValidationError, UserError
 
 from .ir_attachment import get_cloud_storage_google_credential

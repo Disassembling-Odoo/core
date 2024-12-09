@@ -6,7 +6,8 @@ import requests
 from collections import defaultdict
 from dateutil.relativedelta import relativedelta
 
-from odoo import api, models
+from odoo import models
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.addons.mail.tools import discuss, jwt
 from odoo.addons.mail.tools.discuss import Store

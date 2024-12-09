@@ -63,7 +63,7 @@ from .technology.adjustable import netsvc
 from . import osv
 from . import release
 from . import addons
-from . import api
+from .microkernel.api import api
 
 # ----------------------------------------------------------
 # Model classes, fields, api decorators, and translations

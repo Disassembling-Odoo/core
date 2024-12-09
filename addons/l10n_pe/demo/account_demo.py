@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from datetime import datetime, timedelta
-from odoo import api, Command, models
+from odoo import Command, models
+from odoo.microkernel.api import api
 
 
 class AccountChartTemplate(models.AbstractModel):

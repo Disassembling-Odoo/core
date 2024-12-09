@@ -6,7 +6,8 @@ from datetime import datetime
 import logging
 import pytz
 
-from odoo import api, models
+from odoo import models
+from odoo.microkernel.api import api
 from odoo.ormapping import fields, first as fieldsFirst
 from odoo.osv import expression
 from odoo.technology.db import SQL

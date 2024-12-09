@@ -5,7 +5,8 @@ import ast
 import base64
 import io
 
-from odoo import api, models, tools, _
+from odoo import models, tools, _
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.tools.translate import trans_export, trans_export_records
 from odoo.tools import i18n

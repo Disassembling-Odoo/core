@@ -2,9 +2,10 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 
-from odoo import models, api
+from odoo import models
 from markupsafe import escape
 
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 
 

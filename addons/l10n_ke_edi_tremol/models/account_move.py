@@ -5,7 +5,8 @@ import json
 import re
 from datetime import datetime
 
-from odoo import models, _, api
+from odoo import models, _
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
 

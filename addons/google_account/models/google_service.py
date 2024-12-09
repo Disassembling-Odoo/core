@@ -8,7 +8,8 @@ import json
 import requests
 from werkzeug import urls
 
-from odoo import api, models, _
+from odoo import models, _
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 
 _logger = logging.getLogger(__name__)

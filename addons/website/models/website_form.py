@@ -2,7 +2,8 @@
 
 from ast import literal_eval
 
-from odoo import models, api, SUPERUSER_ID
+from odoo import models, SUPERUSER_ID
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.technology.framework.http import request
 from odoo.osv import expression

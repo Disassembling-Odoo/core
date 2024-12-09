@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
-from odoo import api, models
+from odoo import models
+from odoo.microkernel.api import api
 
 class ReportSwissQR(models.AbstractModel):
     _name = 'report.l10n_ch.qr_report_main'

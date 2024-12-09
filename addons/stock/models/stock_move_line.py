@@ -3,7 +3,8 @@
 
 from collections import Counter, defaultdict
 
-from odoo import _, api, tools, models, Command
+from odoo import _, tools, models, Command
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
 from odoo.tools import format_list

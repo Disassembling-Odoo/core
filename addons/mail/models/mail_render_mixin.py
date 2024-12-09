@@ -12,7 +12,8 @@ from functools import reduce
 from markupsafe import Markup, escape
 from werkzeug import urls
 
-from odoo import _, api, models, tools
+from odoo import _, models, tools
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.addons.base.models.ir_qweb import QWebException
 from odoo.exceptions import UserError, AccessError

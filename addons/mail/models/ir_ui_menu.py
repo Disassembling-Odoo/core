@@ -2,8 +2,9 @@
 
 import contextlib
 
-from odoo import api, models
+from odoo import models
 from odoo.exceptions import AccessError
+from odoo.microkernel.api import api
 
 
 class IrUiMenu(models.Model):

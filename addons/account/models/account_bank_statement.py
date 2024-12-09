@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 from contextlib import contextmanager
 
-from odoo import api, models, _, Command
+from odoo import models, _, Command
+from odoo.microkernel.api import api
 from odoo.tools.i18n import formatLang
 from odoo.ormapping import fields
 from odoo.exceptions import UserError

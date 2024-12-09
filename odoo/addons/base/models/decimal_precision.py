@@ -1,7 +1,8 @@
 # -*- encoding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import api, models, tools, _
+from odoo import models, tools, _
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 import odoo.addons
 from odoo.technology.cache import ormcache

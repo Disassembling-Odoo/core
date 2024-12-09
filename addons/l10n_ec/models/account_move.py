@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.addons.l10n_ec.models.res_partner import PartnerIdTypeEc
-from odoo import models, api
+from odoo import models
 
 _DOCUMENTS_MAPPING = {
     "01": [

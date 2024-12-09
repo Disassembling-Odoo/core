@@ -3,7 +3,8 @@
 
 from collections import defaultdict
 
-from odoo import models, api, _
+from odoo import models, _
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 
 

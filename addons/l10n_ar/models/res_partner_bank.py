@@ -1,7 +1,9 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-from odoo import models, api, _
+from odoo import models, _
 from odoo.exceptions import ValidationError
 import logging
+
+from odoo.microkernel.api import api
 _logger = logging.getLogger(__name__)
 
 

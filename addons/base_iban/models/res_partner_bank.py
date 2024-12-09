@@ -2,8 +2,9 @@
 
 import re
 
-from odoo import api, models
+from odoo import models
 from odoo.exceptions import UserError, ValidationError
+from odoo.microkernel.api import api
 from odoo. tools import LazyTranslate
 
 _lt = LazyTranslate(__name__)  # TODO pass env to functions and remove _lt

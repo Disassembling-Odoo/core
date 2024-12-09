@@ -8,8 +8,9 @@ import requests
 
 from werkzeug.urls import url_encode, url_join
 
+from odoo.microkernel.api import api
 from odoo.technology import utils as tech_utils
-from odoo import _, api, models, tools
+from odoo import _, models, tools
 from odoo.ormapping import fields
 from odoo.exceptions import AccessError, UserError
 

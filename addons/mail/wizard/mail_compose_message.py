@@ -6,7 +6,8 @@ import base64
 import datetime
 import json
 
-from odoo import _, api, models, Command, tools
+from odoo import _, models, Command, tools
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
 from odoo.osv import expression

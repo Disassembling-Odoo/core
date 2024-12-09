@@ -4,7 +4,8 @@
 from collections import defaultdict
 from pytz import timezone, utc
 
-from odoo import api, models, _
+from odoo import models, _
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 
 

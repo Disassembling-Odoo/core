@@ -6,7 +6,8 @@ from cryptography import x509
 from cryptography.hazmat.primitives import constant_time, serialization
 from cryptography.hazmat.primitives.serialization import Encoding, pkcs12
 
-from odoo import _, api, models
+from odoo import _, models
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from .key import STR_TO_HASH, _get_formatted_value
 from odoo.exceptions import UserError

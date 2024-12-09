@@ -56,7 +56,7 @@ from requests import PreparedRequest, Session
 from urllib3.util import Url, parse_url
 
 import odoo
-from odoo import api
+from odoo.microkernel.api import api
 from odoo.technology.conf import config
 from odoo.exceptions import AccessError
 from odoo.ormapping import Command

@@ -4,7 +4,8 @@
 from datetime import datetime
 import random
 
-from odoo import api, models, _
+from odoo import models, _
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.addons.website.tools import text_from_html
 from odoo.technology.utils.json import scriptsafe as json_scriptsafe

@@ -1,7 +1,8 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import api, models, _
+from odoo import models, _
 from odoo.exceptions import UserError
+from odoo.microkernel.api import api
 
 
 class AccountFiscalPosition(models.Model):

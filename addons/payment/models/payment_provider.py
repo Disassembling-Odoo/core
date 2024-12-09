@@ -2,7 +2,8 @@
 
 import logging
 
-from odoo import _, api, models
+from odoo import _, models
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
 

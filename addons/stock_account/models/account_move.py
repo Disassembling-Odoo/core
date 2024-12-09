@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, api
+from odoo import models
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.tools import float_is_zero
 

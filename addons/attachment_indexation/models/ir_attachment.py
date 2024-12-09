@@ -5,7 +5,8 @@ import logging
 import xml.dom.minidom
 import zipfile
 
-from odoo import api, models
+from odoo import models
+from odoo.microkernel.api import api
 from odoo.tools.lru import LRU
 
 _logger = logging.getLogger(__name__)

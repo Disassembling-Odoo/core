@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
-from odoo import models, api, _
+from odoo import models, _
 from odoo.exceptions import UserError
+from odoo.microkernel.api import api
 
 
 class ResPartner(models.Model):

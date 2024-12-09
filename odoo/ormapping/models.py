@@ -57,7 +57,7 @@ from .base import NewId, IdType
 
 import odoo
 from .. import SUPERUSER_ID
-from .. import api
+from ..microkernel.api import api
 from ..technology.utils import check_pg_name, date_utils, lazy_classproperty
 from .. import tools
 from ..exceptions import AccessError, MissingError, ValidationError, UserError
@@ -83,7 +83,7 @@ import typing
 if typing.TYPE_CHECKING:
     from collections.abc import Reversible
     from odoo.microkernel.modules.registry import Registry
-    from odoo.api import Self, ValuesType
+    from odoo.microkernel.api.api import Self, ValuesType
 
 
 _lt = LazyTranslate('base')

@@ -59,7 +59,7 @@ from odoo.exceptions import CacheMiss
 from odoo.osv import expression
 
 import typing
-from odoo.api import ContextType, DomainType, M, T
+from odoo.microkernel.api.api import ContextType, DomainType, M, T
 
 
 DATE_LENGTH = len(date.today().strftime(DATE_FORMAT))

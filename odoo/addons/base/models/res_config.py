@@ -4,8 +4,9 @@ import logging
 import re
 from ast import literal_eval
 
-from odoo import api, models, _
+from odoo import models, _
 from odoo.exceptions import AccessError, RedirectWarning, UserError
+from odoo.microkernel.api import api
 
 _logger = logging.getLogger(__name__)
 

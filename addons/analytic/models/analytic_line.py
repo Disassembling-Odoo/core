@@ -2,7 +2,8 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 from lxml.builder import E
 
-from odoo import api, models, _
+from odoo import models, _
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import ValidationError
 from odoo.osv.expression import OR

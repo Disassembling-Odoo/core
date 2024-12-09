@@ -7,7 +7,8 @@ import threading
 
 from dateutil.relativedelta import relativedelta
 
-from odoo import api, models, tools
+from odoo import models, tools
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.tools import exception_to_unicode
 from odoo.tools.translate import _

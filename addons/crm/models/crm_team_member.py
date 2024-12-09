@@ -6,7 +6,8 @@ import logging
 
 from ast import literal_eval
 
-from odoo import api, exceptions, models, _
+from odoo import exceptions, models, _
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.tools import float_round
 

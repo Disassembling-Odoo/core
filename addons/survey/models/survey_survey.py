@@ -7,7 +7,8 @@ from collections import defaultdict
 
 import werkzeug
 
-from odoo import api, exceptions, models, _
+from odoo import exceptions, models, _
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import AccessError, UserError, ValidationError
 from odoo.osv import expression

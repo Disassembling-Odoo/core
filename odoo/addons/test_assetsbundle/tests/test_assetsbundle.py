@@ -13,7 +13,7 @@ import lxml
 import base64
 
 import odoo
-from odoo import api
+from odoo.microkernel.api import api
 from odoo.addons import __path__ as ADDONS_PATH
 from odoo.addons.base.models.assetsbundle import AssetsBundle, XMLAssetError, ANY_UNIQUE
 from odoo.addons.base.models.ir_asset import AssetPaths

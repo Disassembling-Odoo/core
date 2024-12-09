@@ -6,7 +6,8 @@ import logging
 import threading
 import warnings
 
-from odoo import api, models, tools, _, Command, SUPERUSER_ID
+from odoo import models, tools, _, Command, SUPERUSER_ID
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import ValidationError, UserError
 from odoo.osv import expression

@@ -1,7 +1,8 @@
 import base64
 import uuid
 from markupsafe import Markup
-from odoo import _, models, api
+from odoo import _, models
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.tools import float_repr
 from datetime import datetime

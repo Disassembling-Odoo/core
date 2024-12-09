@@ -1,4 +1,5 @@
-from odoo import api, models, _, Command
+from odoo import models, _, Command
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.technology.utils import get_month
 from odoo.technology.db import SQL

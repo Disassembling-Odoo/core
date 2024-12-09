@@ -3,7 +3,8 @@ from __future__ import division
 
 from itertools import count, zip_longest
 
-from odoo import api, models, Command
+from odoo import models, Command
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 
 class A(models.Model):

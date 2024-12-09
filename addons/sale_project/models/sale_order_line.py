@@ -2,7 +2,8 @@
 
 from collections import defaultdict
 
-from odoo import api, Command, models, _
+from odoo import Command, models, _
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import AccessError, UserError
 from odoo.tools import format_list

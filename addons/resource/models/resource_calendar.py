@@ -12,7 +12,8 @@ from dateutil.relativedelta import relativedelta
 from dateutil.rrule import rrule, DAILY
 from pytz import timezone, utc
 
-from odoo import api, models, _
+from odoo import models, _
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.addons.base.models.res_partner import _tz_get
 from odoo.exceptions import ValidationError

@@ -13,7 +13,8 @@ import math
 import re
 from textwrap import shorten
 
-from odoo import api, models, _, Command, SUPERUSER_ID, modules, tools
+from odoo import models, _, Command, SUPERUSER_ID, modules, tools
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.technology import conf
 from odoo.technology.db import SQL, column_exists, create_column

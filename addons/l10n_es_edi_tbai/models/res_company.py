@@ -2,7 +2,8 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 import markupsafe
-from odoo import api, models, release
+from odoo import models, release
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.tools import LazyTranslate
 

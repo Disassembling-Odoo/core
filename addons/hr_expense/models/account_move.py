@@ -1,8 +1,9 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import models, api, _
+from odoo import models, _
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
-from odoo.api import ondelete
+from odoo.microkernel.api.api import ondelete
 from odoo.exceptions import UserError
 from odoo.technology.utils import frozendict
 

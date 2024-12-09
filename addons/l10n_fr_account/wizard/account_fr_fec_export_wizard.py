@@ -2,10 +2,11 @@
 # Copyright (C) 2013-2015 Akretion (http://www.akretion.com)
 import csv
 import io
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.tools import float_is_zero
 from odoo.technology.db import SQL
-from odoo import models, api
+from odoo import models
 from odoo.tools.i18n import get_lang
 from stdnum.fr import siren
 

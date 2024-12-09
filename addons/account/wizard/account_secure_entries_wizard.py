@@ -1,6 +1,7 @@
 from datetime import timedelta
 
-from odoo import Command, api, models, _
+from odoo import Command, models, _
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
 from odoo.osv import expression

@@ -3,7 +3,8 @@
 from datetime import datetime, date, timezone, timedelta
 from dateutil.relativedelta import relativedelta
 
-from odoo import api, models, _
+from odoo import models, _
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
 from odoo.tools.float_utils import float_round

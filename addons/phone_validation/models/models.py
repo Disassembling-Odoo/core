@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import api, exceptions, models
+from odoo import exceptions, models
 from odoo.addons.phone_validation.tools import phone_validation
+from odoo.microkernel.api import api
 
 
 class BaseModel(models.AbstractModel):

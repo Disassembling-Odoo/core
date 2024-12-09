@@ -1,7 +1,8 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 import re
 
-from odoo import models, api, _
+from odoo import models, _
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.addons.mail.tools.mail_validation import mail_validate
 from odoo.exceptions import ValidationError

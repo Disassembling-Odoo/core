@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from odoo import api, models
+from odoo import models
 
 import logging
 
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 
 _logger = logging.getLogger(__name__)

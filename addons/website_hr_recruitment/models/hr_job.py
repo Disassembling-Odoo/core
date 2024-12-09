@@ -2,7 +2,8 @@
 
 from werkzeug.urls import url_join
 
-from odoo import api, models, _
+from odoo import models, _
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.technology.adjustable import mute_logger
 from odoo.tools.translate import html_translate

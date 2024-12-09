@@ -8,7 +8,8 @@ import re
 from dateutil.relativedelta import relativedelta
 
 import odoo
-from odoo import api, models, tools, _
+from odoo import models, tools, _
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.addons.iap.tools import iap_tools
 from odoo.addons.crm.models import crm_stage

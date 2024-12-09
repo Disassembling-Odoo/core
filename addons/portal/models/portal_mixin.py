@@ -3,7 +3,8 @@
 import uuid
 from ast import literal_eval
 from werkzeug.urls import url_encode
-from odoo import api, exceptions, models, _
+from odoo import exceptions, models, _
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 
 

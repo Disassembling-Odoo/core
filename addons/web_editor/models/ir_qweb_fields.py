@@ -24,7 +24,8 @@ from markupsafe import Markup, escape_silent
 from PIL import Image as I
 from werkzeug import urls
 
-from odoo import _, api, models
+from odoo import _, models
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
 from odoo.tools.i18n import get_lang, babel_locale_parse

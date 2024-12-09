@@ -1,5 +1,6 @@
-from odoo import models, Command, api, _
+from odoo import models, Command, _
 from odoo.addons.account.models.chart_template import template
+from odoo.microkernel.api import api
 
 
 class AccountChartTemplate(models.AbstractModel):

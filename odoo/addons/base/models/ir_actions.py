@@ -11,7 +11,8 @@ import json
 import re
 import contextlib
 import odoo
-from odoo import api, models, tools, _, Command
+from odoo import models, tools, _, Command
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import MissingError, ValidationError, AccessError, UserError
 from odoo.technology.utils import frozendict

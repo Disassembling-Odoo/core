@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import models, api
+from odoo import models
+from odoo.microkernel.api import api
 from odoo.tools.misc import str2bool
 
 

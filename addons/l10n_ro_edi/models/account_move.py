@@ -1,6 +1,7 @@
 import requests
 
-from odoo import models, _, api, modules, tools
+from odoo import models, _, modules, tools
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.technology import conf
 

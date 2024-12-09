@@ -4,7 +4,8 @@ from datetime import date
 import logging
 import re
 
-from odoo import api, models, Command, _
+from odoo import models, Command, _
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import ValidationError, UserError
 from odoo.osv import expression

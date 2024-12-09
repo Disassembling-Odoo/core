@@ -3,7 +3,8 @@
 
 import werkzeug.urls
 
-from odoo import _, api, Command, models
+from odoo import _, Command, models
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 
 

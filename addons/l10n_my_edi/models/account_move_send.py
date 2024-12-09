@@ -4,7 +4,8 @@ import base64
 import time
 from collections import defaultdict
 
-from odoo import _, api, models
+from odoo import _, models
+from odoo.microkernel.api import api
 
 
 class AccountMoveSend(models.AbstractModel):

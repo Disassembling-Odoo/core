@@ -4,7 +4,8 @@
 import base64
 import re
 
-from odoo import api, models
+from odoo import models
+from odoo.microkernel.api import api
 from odoo.technology import utils as tech_utils
 from odoo.addons.base.models.assetsbundle import EXTENSIONS
 

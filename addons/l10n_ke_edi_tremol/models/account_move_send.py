@@ -1,4 +1,5 @@
-from odoo import _, models, api
+from odoo import _, models
+from odoo.microkernel.api import api
 
 
 class AccountMoveSend(models.AbstractModel):

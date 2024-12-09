@@ -5,7 +5,8 @@ from datetime import timedelta
 from pytz import utc
 from random import randint
 
-from odoo import api, models, tools
+from odoo import models, tools
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.osv import expression
 from odoo.tools.mail import is_html_empty

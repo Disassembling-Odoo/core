@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import api, models, Command
+from odoo import models, Command
+from odoo.microkernel.api import api
 from odoo.tools import html2plaintext
 
 

@@ -3,11 +3,12 @@
 
 import logging
 import requests
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.addons.microsoft_calendar.models.microsoft_sync import microsoft_calendar_token
 from datetime import timedelta
 
-from odoo import api, models, _, Command
+from odoo import models, _, Command
 from odoo.exceptions import UserError
 from odoo.loglevels import exception_to_unicode
 from odoo.addons.microsoft_account.models import microsoft_service

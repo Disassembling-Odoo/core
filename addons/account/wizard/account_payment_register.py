@@ -2,7 +2,8 @@ from collections import defaultdict
 
 import markupsafe
 
-from odoo import Command, models, api, _
+from odoo import Command, models, _
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
 from odoo.technology.utils import frozendict

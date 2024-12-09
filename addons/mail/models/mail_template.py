@@ -6,7 +6,8 @@ import itertools
 import logging
 from ast import literal_eval
 
-from odoo import _, api, models, tools, Command
+from odoo import _, models, tools, Command
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import ValidationError, UserError
 from odoo.tools import is_html_empty

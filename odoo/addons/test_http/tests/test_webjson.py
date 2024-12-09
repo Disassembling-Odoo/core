@@ -4,7 +4,7 @@ from base64 import b64encode
 
 from datetime import date
 
-from odoo.api import Environment
+from odoo.microkernel.api.api import Environment
 from odoo.ormapping import Command
 from odoo.tests import tagged
 from odoo.technology.utils import file_open

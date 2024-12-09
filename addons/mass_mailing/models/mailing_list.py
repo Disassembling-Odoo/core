@@ -3,7 +3,8 @@
 
 from markupsafe import Markup
 
-from odoo import _, api, Command, models, tools
+from odoo import _, Command, models, tools
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
 

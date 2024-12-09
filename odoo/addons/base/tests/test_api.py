@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import api, models, Command
+from odoo import models, Command
 from odoo.addons.base.tests.common import SavepointCaseWithUserDemo
 from odoo.exceptions import AccessError
+from odoo.microkernel.api import api
 from odoo.technology.adjustable import mute_logger
 from odoo.technology.utils import unique, lazy
 

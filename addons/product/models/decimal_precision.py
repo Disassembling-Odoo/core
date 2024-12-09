@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import api, models, tools, _
+from odoo import models, tools, _
 from odoo.exceptions import ValidationError
+from odoo.microkernel.api import api
 
 
 class DecimalPrecision(models.Model):

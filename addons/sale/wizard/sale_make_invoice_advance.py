@@ -1,6 +1,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import _, api, models, SUPERUSER_ID
+from odoo import _, models, SUPERUSER_ID
+from odoo.microkernel.api import api
 from odoo.ormapping import fields, Command
 from odoo.exceptions import UserError
 from odoo.technology.utils import frozendict

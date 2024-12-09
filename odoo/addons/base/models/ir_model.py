@@ -12,7 +12,8 @@ from operator import itemgetter
 
 from psycopg2.extras import Json
 
-from odoo import api, models, tools, Command
+from odoo import models, tools, Command
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import AccessError, UserError, ValidationError
 from odoo.osv import expression

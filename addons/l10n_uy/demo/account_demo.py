@@ -1,8 +1,9 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 import time
 import logging
-from odoo import api, models, Command
+from odoo import models, Command
 from odoo.exceptions import UserError, ValidationError
+from odoo.microkernel.api import api
 
 _logger = logging.getLogger(__name__)
 

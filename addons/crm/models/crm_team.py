@@ -9,7 +9,8 @@ import threading
 from ast import literal_eval
 from markupsafe import Markup
 
-from odoo import api, exceptions, models, _
+from odoo import exceptions, models, _
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.osv import expression
 from odoo.tools import float_compare, float_round

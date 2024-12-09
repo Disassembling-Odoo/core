@@ -4,7 +4,8 @@
 import re
 from stdnum.util import clean
 
-from odoo import api, models, _
+from odoo import models, _
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.addons.base.models.res_bank import sanitize_account_number
 from odoo.addons.base_iban.models.res_partner_bank import normalize_iban, pretty_iban, validate_iban

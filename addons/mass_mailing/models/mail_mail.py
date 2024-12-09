@@ -4,7 +4,8 @@
 import re
 import werkzeug.urls
 
-from odoo import api, models, tools
+from odoo import models, tools
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.technology import utils as tech_utils
 

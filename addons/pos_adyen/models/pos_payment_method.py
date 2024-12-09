@@ -6,7 +6,8 @@ import pprint
 import requests
 from urllib.parse import parse_qs
 
-from odoo import models, api, _
+from odoo import models, _
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import ValidationError, UserError, AccessDenied
 from odoo.technology.utils import hmac

@@ -9,9 +9,10 @@ from dateutil.relativedelta import relativedelta
 from markupsafe import Markup
 from werkzeug.urls import url_encode, url_join
 
+from odoo.microkernel.api import api
 from odoo.tools.float_utils import float_round
 from odoo.exceptions import AccessError
-from odoo import api, models, tools, _
+from odoo import models, tools, _
 from odoo.technology import utils as tech_utils
 from odoo.ormapping import fields
 from odoo.addons.base.models.ir_mail_server import MailDeliveryException

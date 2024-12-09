@@ -2,7 +2,8 @@
 from datetime import datetime, time
 from dateutil.relativedelta import relativedelta
 
-from odoo import models, _, api, Command
+from odoo import models, _, Command
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
 from odoo.tools import format_list

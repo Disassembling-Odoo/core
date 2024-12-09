@@ -3,7 +3,8 @@
 
 # Copyright (c) 2011 Noviat nv/sa (www.noviat.be). All rights reserved.
 
-from odoo import api, models
+from odoo import models
+from odoo.microkernel.api import api
 
 
 class ResPartner(models.Model):

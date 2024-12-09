@@ -2,8 +2,9 @@
 
 import threading
 
-from odoo import api, models, tools, _
+from odoo import models, tools, _
 from odoo.exceptions import ValidationError
+from odoo.microkernel.api import api
 from odoo.technology.cache import ormcache
 
 class ProductProduct(models.Model):

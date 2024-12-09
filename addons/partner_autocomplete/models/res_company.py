@@ -5,9 +5,10 @@ import json
 import logging
 import threading
 
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.addons.iap.tools import iap_tools
-from odoo import api, models, _
+from odoo import models, _
 from odoo.tools.mail import email_domain_extract, url_domain_extract
 
 _logger = logging.getLogger(__name__)

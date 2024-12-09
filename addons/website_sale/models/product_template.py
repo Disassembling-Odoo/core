@@ -2,7 +2,8 @@
 
 import logging
 
-from odoo import api, models
+from odoo import models
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.osv import expression
 from odoo.tools import float_is_zero, is_html_empty

@@ -3,7 +3,8 @@
 from datetime import datetime, timezone
 from dateutil.relativedelta import relativedelta
 
-from odoo import api, models
+from odoo import models
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.osv import expression
 import ast

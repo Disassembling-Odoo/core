@@ -13,7 +13,7 @@ import enum
 from .float_utils import float_round
 
 if TYPE_CHECKING:
-    import odoo.api
+    import odoo.microkernel.api.api
     from collections.abc import Callable, Collection, Sequence
     from odoo.addons.base.models.res_lang import LangData
 

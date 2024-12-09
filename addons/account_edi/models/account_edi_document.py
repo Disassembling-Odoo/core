@@ -5,7 +5,8 @@ import logging
 
 import psycopg2.errors
 
-from odoo import models, api, _
+from odoo import models, _
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
 

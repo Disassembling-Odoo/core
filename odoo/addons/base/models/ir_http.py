@@ -15,6 +15,7 @@ import werkzeug.exceptions
 import werkzeug.routing
 import werkzeug.utils
 
+from odoo.microkernel.api import api
 from odoo.technology.framework import http
 
 try:
@@ -29,7 +30,7 @@ except ImportError:
     slugify_lib = None
 
 import odoo
-from odoo import api, models, tools, SUPERUSER_ID
+from odoo import models, tools, SUPERUSER_ID
 from odoo.exceptions import AccessDenied
 from odoo.technology.framework.http import request, Response, ROUTING_KEYS
 from odoo.microkernel.modules.registry import Registry

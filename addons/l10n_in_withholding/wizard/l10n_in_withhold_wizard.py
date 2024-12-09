@@ -1,6 +1,7 @@
 from markupsafe import Markup
 
-from odoo import _, api, Command, models
+from odoo import _, Command, models
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import ValidationError, UserError
 from odoo.tools import float_compare

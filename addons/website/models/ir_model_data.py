@@ -2,7 +2,8 @@
 
 import logging
 
-from odoo import api, models
+from odoo import models
+from odoo.microkernel.api import api
 from odoo.technology.framework.http import request
 
 _logger = logging.getLogger(__name__)

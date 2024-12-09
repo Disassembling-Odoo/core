@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import api, models, _
+from odoo import models, _
 
 from collections import defaultdict
 
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 
 

@@ -2,8 +2,9 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 from collections import defaultdict
 
-from odoo import api, models
+from odoo import models
 from odoo import Command
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 
 

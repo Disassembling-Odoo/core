@@ -29,17 +29,17 @@ try:
 except ImportError:
     from decorator import decorator
 
-from .exceptions import AccessError, UserError, CacheMiss
-from .tools import clean_context
-from .tools.translate import get_translation, get_translated_module, LazyGettext
-from .technology.utils import StackMap, OrderedSet, frozendict, lazy_property
-from .technology.db import SQL, Query
+from ...exceptions import AccessError, UserError, CacheMiss
+from ...tools import clean_context
+from ...tools.translate import get_translation, get_translated_module, LazyGettext
+from ...technology.utils import StackMap, OrderedSet, frozendict, lazy_property
+from ...technology.db import SQL, Query
 
 import typing
 if typing.TYPE_CHECKING:
     from collections.abc import Callable
-    from .technology.db import BaseCursor
-    from .ormapping import BaseModel
+    from ...technology.db import BaseCursor
+    from ...ormapping import BaseModel
     try:
         from typing_extensions import Self  # noqa: F401
     except ImportError:
@@ -1502,4 +1502,4 @@ class Starred:
 # keep those imports here in order to handle cyclic dependencies correctly
 from odoo import SUPERUSER_ID
 from odoo.microkernel.modules.registry import Registry
-from .technology.db import BaseCursor
+from ...technology.db import BaseCursor

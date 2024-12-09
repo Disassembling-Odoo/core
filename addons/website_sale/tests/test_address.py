@@ -4,7 +4,7 @@ from unittest.mock import patch
 
 from werkzeug.exceptions import Forbidden
 
-from odoo import api
+from odoo.microkernel.api import api
 from odoo.ormapping import Command
 from odoo.tests import tagged
 

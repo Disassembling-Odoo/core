@@ -4,10 +4,11 @@ import base64
 from os.path import join as opj
 from typing import Optional, List, Dict
 from werkzeug.urls import url_quote
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError, AccessError
 
-from odoo import api, models, _, service
+from odoo import models, _, service
 from odoo.tools import split_every
 from odoo.technology.utils import file_open
 

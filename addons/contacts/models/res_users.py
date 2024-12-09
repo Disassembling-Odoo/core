@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import api, models, modules
+from odoo import models, modules
+from odoo.microkernel.api import api
 
 
 class Users(models.Model):

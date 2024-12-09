@@ -3,7 +3,8 @@
 
 from odoo.exceptions import AccessDenied
 
-from odoo import api, models, SUPERUSER_ID
+from odoo import models, SUPERUSER_ID
+from odoo.microkernel.api import api
 from odoo.microkernel.modules.registry import Registry
 
 

@@ -1,11 +1,12 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
+from odoo.microkernel.api import api
 from . import controllers
 from . import models
 from . import wizard
 
 import odoo
-from odoo import api, SUPERUSER_ID
+from odoo import SUPERUSER_ID
 from odoo.technology.framework.http import request
 from functools import partial
 

@@ -5,7 +5,8 @@ from collections import defaultdict
 from dateutil.relativedelta import relativedelta
 import pytz
 
-from odoo import _, api, models
+from odoo import _, models
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 
 

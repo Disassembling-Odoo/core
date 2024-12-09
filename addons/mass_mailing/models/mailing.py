@@ -19,7 +19,8 @@ from markupsafe import Markup
 from werkzeug.urls import url_join
 from PIL import Image, UnidentifiedImageError
 
-from odoo import api, models, tools, _
+from odoo import models, tools, _
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.addons.base_import.models.base_import import ImportValidationError
 from odoo.exceptions import UserError, ValidationError

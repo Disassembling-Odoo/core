@@ -1,6 +1,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import api, Command, models
+from odoo import Command, models
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.technology.utils import groupby
 

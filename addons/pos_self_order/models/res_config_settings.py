@@ -4,7 +4,8 @@ import qrcode
 import zipfile
 from io import BytesIO
 
-from odoo import models, api, _
+from odoo import models, _
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import ValidationError
 from odoo.tools.misc import split_every

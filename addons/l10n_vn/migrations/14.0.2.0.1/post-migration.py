@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-from odoo import api, SUPERUSER_ID
+from odoo import SUPERUSER_ID
+from odoo.microkernel.api import api
 
 FIXED_ACCOUNTS_MAP = {
     '5221': '5211',

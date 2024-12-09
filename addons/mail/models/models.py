@@ -6,11 +6,13 @@ from datetime import datetime
 from lxml.builder import E
 from markupsafe import Markup
 
-from odoo import api, exceptions, models, tools, _
+from odoo import exceptions, models, tools, _
 from odoo.addons.mail.tools.alias_error import AliasError
 from odoo.microkernel import utils as microkernel_utils
 
 import logging
+
+from odoo.microkernel.api import api
 
 _logger = logging.getLogger(__name__)
 

@@ -5,7 +5,8 @@ from dateutil.relativedelta import relativedelta
 from collections import defaultdict
 import json
 
-from odoo import api, models, _
+from odoo import models, _
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
 from odoo.tools import float_compare, float_is_zero, float_round

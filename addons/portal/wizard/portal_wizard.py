@@ -2,12 +2,13 @@
 
 import logging
 
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.tools.translate import _
 from odoo.tools import email_normalize
 from odoo.exceptions import UserError
 
-from odoo import api, models, Command
+from odoo import models, Command
 
 
 _logger = logging.getLogger(__name__)

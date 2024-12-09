@@ -3,7 +3,8 @@
 import ast
 from collections import defaultdict
 
-from odoo import api, models, _, Command
+from odoo import models, _, Command
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
 from odoo.osv.expression import AND, NEGATIVE_TERM_OPERATORS, TERM_OPERATORS_NEGATION

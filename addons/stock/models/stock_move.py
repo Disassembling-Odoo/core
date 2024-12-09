@@ -7,7 +7,8 @@ from datetime import timedelta
 from operator import itemgetter
 from re import findall as regex_findall
 
-from odoo import _, api, Command, models
+from odoo import _, Command, models
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
 from odoo.osv import expression

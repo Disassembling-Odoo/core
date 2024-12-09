@@ -1,4 +1,5 @@
-from odoo import api, Command, models
+from odoo import Command, models
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 
 

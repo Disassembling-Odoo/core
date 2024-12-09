@@ -3,7 +3,8 @@
 
 from uuid import uuid4
 
-from odoo import _, api, models
+from odoo import _, models
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import ValidationError
 from odoo.tools import format_amount

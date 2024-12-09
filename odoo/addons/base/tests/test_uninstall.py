@@ -6,7 +6,8 @@
 from contextlib import contextmanager
 import unittest
 
-from odoo import api, SUPERUSER_ID
+from odoo import SUPERUSER_ID
+from odoo.microkernel.api import api
 from odoo.tests import common
 from odoo.tests.common import BaseCase
 

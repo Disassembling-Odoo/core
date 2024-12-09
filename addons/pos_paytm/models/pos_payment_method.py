@@ -8,9 +8,10 @@ import requests
 import secrets
 import string
 
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
-from odoo import models, api, _
+from odoo import models, _
 from datetime import datetime
 from dateutil import tz
 

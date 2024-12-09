@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import api, models
+from odoo import models
+from odoo.microkernel.api import api
 from odoo.tools import float_utils
 from odoo.tools.i18n import formatLang
 from odoo.microkernel.utils import format_duration

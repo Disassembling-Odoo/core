@@ -4,7 +4,8 @@
 import base64
 import binascii
 
-from odoo import _, api, exceptions, models
+from odoo import _, exceptions, models
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 
 class ResConfigSettings(models.TransientModel):

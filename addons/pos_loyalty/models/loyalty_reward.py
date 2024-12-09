@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import models, api
+from odoo import models
 import ast
 import json
+
+from odoo.microkernel.api import api
 
 class LoyaltyReward(models.Model):
     _name = 'loyalty.reward'

@@ -10,7 +10,8 @@ from uuid import uuid4
 import psycopg2
 import pytz
 
-from odoo import api, models, tools, _
+from odoo import models, tools, _
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.tools import float_is_zero, float_round, float_repr, float_compare, 
 from odoo.tools.i18n import formatLang

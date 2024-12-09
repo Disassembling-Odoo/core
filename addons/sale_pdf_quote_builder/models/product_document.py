@@ -2,7 +2,8 @@
 
 import base64
 
-from odoo import Command, _, api, models
+from odoo import Command, _, models
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import ValidationError
 

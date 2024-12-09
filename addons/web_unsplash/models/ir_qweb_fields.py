@@ -1,6 +1,7 @@
 from werkzeug import urls
 
-from odoo import models, api
+from odoo import models
+from odoo.microkernel.api import api
 
 
 class Image(models.AbstractModel):

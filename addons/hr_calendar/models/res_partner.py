@@ -5,8 +5,9 @@ from datetime import datetime
 from collections import defaultdict
 from functools import reduce
 
-from odoo import api, models
+from odoo import models
 
+from odoo.microkernel.api import api
 from odoo.osv import expression
 from odoo.addons.resource.models.utils import Intervals
 

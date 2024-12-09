@@ -2,9 +2,10 @@
 
 import re
 
+from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.addons.website.tools import text_from_html
-from odoo import api, models
+from odoo import models
 from odoo.osv import expression
 from odoo.technology.db import escape_psql, SQL
 from odoo.tools.translate import _

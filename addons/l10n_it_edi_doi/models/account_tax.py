@@ -1,5 +1,6 @@
-from odoo import api, models, _
+from odoo import models, _
 from odoo.exceptions import UserError
+from odoo.microkernel.api import api
 
 
 class AccountTax(models.Model):

@@ -10,6 +10,7 @@ import unicodedata
 
 from contextlib import nullcontext
 
+from odoo.microkernel.api import api
 from odoo.technology.framework import http
 try:
     from werkzeug.utils import send_file
@@ -18,7 +19,7 @@ except ImportError:
 
 import odoo
 import odoo.microkernel.modules.registry
-from odoo import SUPERUSER_ID, _, api
+from odoo import SUPERUSER_ID, _
 from odoo.addons.base.models.assetsbundle import ANY_UNIQUE
 from odoo.exceptions import AccessError, UserError
 from odoo.technology.framework.http import request, Response

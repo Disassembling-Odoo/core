@@ -11,7 +11,7 @@ import psycopg2
 from odoo.addons.base.tests.common import SavepointCaseWithUserDemo
 from odoo.tests.common import BaseCase, TransactionCase
 from odoo.technology.adjustable import mute_logger
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo import Command
 
 
@@ -198,7 +198,7 @@ class TestExpression(SavepointCaseWithUserDemo, TransactionExpressionCase):
         self.assertEqual(len(cats), 0)
 
         # test hierarchical search in m2m with 'False' value
-        with self.assertLogs('odoo.osv.expression'):
+        with self.assertLogs('odoo.microkernel.osv.expression'):
             cats = self._search(Category, [('id', 'child_of', False)])
         self.assertEqual(len(cats), 0)
 
@@ -227,7 +227,7 @@ class TestExpression(SavepointCaseWithUserDemo, TransactionExpressionCase):
         self.assertEqual(len(cats), 0)
 
         # test hierarchical search in m2m with 'False' value
-        with self.assertLogs('odoo.osv.expression'):
+        with self.assertLogs('odoo.microkernel.osv.expression'):
             cats = self._search(Category, [('id', 'parent_of', False)])
         self.assertEqual(len(cats), 0)
 

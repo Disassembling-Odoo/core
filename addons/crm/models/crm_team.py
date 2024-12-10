@@ -12,7 +12,7 @@ from markupsafe import Markup
 from odoo import exceptions, models, _
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.tools import float_compare, float_round
 from odoo.technology.db import SQL
 from odoo.tools.safe_eval import safe_eval

@@ -16,7 +16,7 @@ from odoo.ormapping import fields
 from odoo.tools import float_is_zero, float_round, float_repr, float_compare, 
 from odoo.tools.i18n import formatLang
 from odoo.exceptions import ValidationError, UserError
-from odoo.osv.expression import AND
+from odoo.microkernel.osv.expression import AND
 import base64
 
 _logger = logging.getLogger(__name__)

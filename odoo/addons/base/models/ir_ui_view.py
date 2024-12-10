@@ -21,7 +21,7 @@ from odoo.ormapping import fields, check_method_name
 from odoo.exceptions import ValidationError, AccessError, UserError
 from odoo.technology.framework.http import request
 from odoo.microkernel.modules.module import get_resource_from_path
-from odoo.osv.expression import expression
+from odoo.microkernel.osv.expression import expression
 from odoo.technology import utils as tech_utils
 from odoo.technology.conf import config
 from odoo.technology.db import SQL

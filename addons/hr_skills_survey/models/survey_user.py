@@ -5,7 +5,7 @@ from dateutil.relativedelta import relativedelta
 
 from odoo import models
 from odoo.ormapping import fields
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.tools import html2plaintext
 
 

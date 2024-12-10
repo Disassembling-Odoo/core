@@ -3,7 +3,7 @@
 from odoo import models
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
-from odoo.osv.expression import OR
+from odoo.microkernel.osv.expression import OR
 
 import uuid
 from werkzeug.urls import url_join

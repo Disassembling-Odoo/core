@@ -1,7 +1,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo import models, _
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 
 
 class ProductReplenishMixin(models.AbstractModel):

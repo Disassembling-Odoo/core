@@ -10,7 +10,7 @@ from odoo.addons.account.tests.common import AccountTestInvoicingCommon
 from odoo.addons.mail.tests.common import mail_new_test_user
 from odoo.addons.pos_online_payment.tests.online_payment_common import OnlinePaymentCommon
 from odoo.addons.account.models.account_payment_method import AccountPaymentMethod
-from odoo.osv.expression import AND
+from odoo.microkernel.osv.expression import AND
 from odoo.addons.point_of_sale.tests.common import archive_products
 
 import odoo.tests

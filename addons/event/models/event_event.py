@@ -14,7 +14,7 @@ from odoo import _, Command, models, tools
 from odoo.ormapping import fields
 from odoo.addons.base.models.res_partner import _tz_get
 from odoo.exceptions import UserError, ValidationError
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.technology.utils import frozendict
 from odoo.microkernel.utils import format_date, format_datetime, format_time
 from odoo.tools.mail import is_html_empty, html_to_inner_content

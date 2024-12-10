@@ -5,7 +5,7 @@ from odoo import models, _, Command
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
-from odoo.osv.expression import AND, OR
+from odoo.microkernel.osv.expression import AND, OR
 from odoo.tools import float_round
 from odoo.tools.misc import clean_context
 

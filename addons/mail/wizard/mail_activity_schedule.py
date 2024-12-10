@@ -10,7 +10,7 @@ from odoo.addons.mail.tools.parser import parse_res_ids
 from odoo.exceptions import ValidationError
 from odoo.tools import html2plaintext
 from odoo.tools.misc import clean_context
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.microkernel.utils import format_date
 
 

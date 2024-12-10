@@ -8,7 +8,7 @@ from lxml import etree, html
 
 from odoo import models, _
 from odoo.microkernel.api import api
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.exceptions import ValidationError
 from odoo.addons.base.models.ir_ui_view import MOVABLE_BRANDING
 

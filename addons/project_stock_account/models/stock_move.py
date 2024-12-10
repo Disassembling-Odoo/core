@@ -2,7 +2,7 @@
 
 from odoo import _, models
 from odoo.exceptions import ValidationError
-from odoo.osv.expression import OR
+from odoo.microkernel.osv.expression import OR
 from odoo.tools import format_list
 
 

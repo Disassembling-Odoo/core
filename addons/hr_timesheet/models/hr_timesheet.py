@@ -8,7 +8,7 @@ from odoo import models
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, AccessError, ValidationError
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.tools import format_list
 from odoo.tools.translate import _
 

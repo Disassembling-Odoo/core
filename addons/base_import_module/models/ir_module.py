@@ -20,7 +20,7 @@ from odoo.ormapping import fields
 from odoo.exceptions import AccessDenied, AccessError, UserError
 from odoo.technology.framework.http import request
 from odoo.microkernel.modules.module import adapt_version
-from odoo.osv.expression import is_leaf
+from odoo.microkernel.osv.expression import is_leaf
 from odoo.release import major_version
 from odoo.tools import convert_csv_import, convert_sql_import, convert_xml_import, exception_to_unicode
 from odoo.microkernel.utils import file_open_temporary_directory

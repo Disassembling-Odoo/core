@@ -3,7 +3,7 @@ import logging
 
 from odoo import _
 from odoo.technology.framework.http import request
-from odoo.osv.expression import AND
+from odoo.microkernel.osv.expression import AND
 from odoo.technology.framework import http
 from odoo.tools import format_amount
 from odoo.addons.account.controllers.portal import PortalAccount

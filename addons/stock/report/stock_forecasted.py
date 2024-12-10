@@ -6,7 +6,7 @@ from datetime import date
 
 from odoo import models
 from odoo.microkernel.api import api
-from odoo.osv.expression import AND
+from odoo.microkernel.osv.expression import AND
 from odoo.tools import float_is_zero, float_round, float_compare
 from odoo.microkernel.utils import format_date
 

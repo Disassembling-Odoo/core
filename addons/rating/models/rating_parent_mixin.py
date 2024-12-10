@@ -8,7 +8,7 @@ from odoo import models
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.addons.rating.models import rating_data
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.tools.float_utils import float_compare
 
 

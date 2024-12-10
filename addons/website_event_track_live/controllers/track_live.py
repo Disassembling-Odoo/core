@@ -4,7 +4,7 @@
 from odoo.technology.framework import http
 
 from odoo.addons.website_event_track.controllers.event_track import EventTrackController
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 
 class EventTrackLiveController(EventTrackController):
 

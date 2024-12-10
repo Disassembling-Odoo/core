@@ -19,7 +19,7 @@ from odoo.exceptions import AccessError, UserError, ValidationError
 from odoo.tools.float_utils import float_round, float_compare
 from odoo.microkernel.utils import format_date
 from odoo.tools.translate import _
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.technology import db
 
 _logger = logging.getLogger(__name__)

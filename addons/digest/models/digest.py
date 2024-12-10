@@ -16,7 +16,7 @@ from odoo import models, tools, _
 from odoo.technology import utils as tech_utils
 from odoo.ormapping import fields
 from odoo.addons.base.models.ir_mail_server import MailDeliveryException
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 
 
 _logger = logging.getLogger(__name__)

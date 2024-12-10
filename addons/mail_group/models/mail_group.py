@@ -16,7 +16,7 @@ from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.addons.mail.tools.alias_error import AliasError
 from odoo.exceptions import ValidationError, UserError
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.technology.utils import hmac
 from odoo.tools.mail import email_normalize, generate_tracking_message_id, append_content_to_html
 

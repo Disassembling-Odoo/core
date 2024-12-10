@@ -56,7 +56,7 @@ from odoo.tools.i18n import SENTINEL, Sentinel
 
 from odoo import SUPERUSER_ID
 from odoo.exceptions import CacheMiss
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 
 import typing
 from odoo.microkernel.api.api import ContextType, DomainType, M, T

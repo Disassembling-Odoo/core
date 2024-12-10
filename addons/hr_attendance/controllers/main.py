@@ -1,7 +1,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo import _
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.tools import float_round, py_to_js_locale
 from odoo.tools.image import image_data_uri
 from odoo.technology.db import SQL

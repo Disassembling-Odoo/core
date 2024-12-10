@@ -11,8 +11,8 @@ from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.addons.rating.models import rating_data
 from odoo.addons.web_editor.tools import handle_history_divergence
-from odoo.exceptions import UserError, ValidationError, AccessError
-from odoo.osv import expression
+from odoo.microkernel.exceptions import UserError, ValidationError, AccessError
+from odoo.microkernel.osv import expression
 from odoo.tools import format_list
 from odoo.technology.db import SQL
 from odoo.addons.resource.models.utils import filter_domain_leaf

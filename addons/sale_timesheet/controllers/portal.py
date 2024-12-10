@@ -6,7 +6,7 @@ from werkzeug.exceptions import NotFound
 from odoo import _
 from odoo.exceptions import AccessError, MissingError
 from odoo.technology.framework.http import request
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 
 from odoo.addons.account.controllers.portal import PortalAccount
 from odoo.addons.hr_timesheet.controllers.portal import TimesheetCustomerPortal

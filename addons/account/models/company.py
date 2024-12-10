@@ -8,7 +8,7 @@ from odoo import models, _, Command
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import ValidationError, UserError, RedirectWarning
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.technology.utils import date_utils
 from odoo.tools import format_list
 from odoo.technology.db import SQL

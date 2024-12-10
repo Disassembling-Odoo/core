@@ -8,7 +8,7 @@ from odoo.addons.hr_recruitment.models.hr_applicant import AVAILABLE_PRIORITIES
 
 from odoo import models, SUPERUSER_ID, tools, _
 from odoo.exceptions import UserError
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 
 
 class HrCandidate(models.Model):

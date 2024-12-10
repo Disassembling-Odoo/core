@@ -11,7 +11,7 @@ from odoo.ormapping import fields
 from odoo.exceptions import AccessDenied, AccessError, UserError, ValidationError
 from odoo.tools import float_is_zero, float_compare, convert, plaintext2html
 from odoo.technology.framework import dispatch_rpc
-from odoo.osv.expression import AND
+from odoo.microkernel.osv.expression import AND
 
 
 class PosSession(models.Model):

@@ -14,7 +14,7 @@ from operator import itemgetter
 from odoo import _, tools
 from odoo.ormapping import fields
 from odoo.technology.framework.http import request
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.technology.framework import http
 
 

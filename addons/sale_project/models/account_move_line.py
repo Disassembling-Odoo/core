@@ -1,7 +1,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo import models
-from odoo.osv.expression import AND, OR
+from odoo.microkernel.osv.expression import AND, OR
 
 
 class AccountMoveLine(models.Model):

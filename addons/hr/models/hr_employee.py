@@ -13,7 +13,7 @@ from odoo import models, _
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import ValidationError, AccessError
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.tools import convert
 from odoo.microkernel.utils import format_date
 

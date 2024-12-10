@@ -24,7 +24,7 @@ from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.addons.base_import.models.base_import import ImportValidationError
 from odoo.exceptions import UserError, ValidationError
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.technology import conf
 from odoo.tools.float_utils import float_round
 from odoo.tools.image import ImageProcess

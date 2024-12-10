@@ -6,7 +6,7 @@ from markupsafe import Markup
 from odoo import models, _
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 
 class ChannelUsersRelation(models.Model):
     _inherit = 'slide.channel.partner'

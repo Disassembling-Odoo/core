@@ -17,7 +17,7 @@ from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.addons.base.models.res_partner import _tz_get
 from odoo.exceptions import ValidationError
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.tools.float_utils import float_round
 
 from odoo.technology.utils import date_utils

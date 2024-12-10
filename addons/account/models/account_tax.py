@@ -2,7 +2,7 @@
 from odoo import models, _, Command
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.exceptions import UserError, ValidationError
 from odoo.tools import html2plaintext, is_html_empty, split_every
 from odoo.technology.utils import frozendict, groupby

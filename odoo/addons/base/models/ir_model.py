@@ -16,7 +16,7 @@ from odoo import models, tools, Command
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import AccessError, UserError, ValidationError
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.technology.utils import OrderedSet
 from odoo.technology import conf
 from odoo.technology.db import sql, SQL

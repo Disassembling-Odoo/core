@@ -3,7 +3,7 @@ from dateutil.relativedelta import relativedelta
 
 from odoo.ormapping import Datetime
 from odoo.tests.common import TransactionCase
-from odoo.osv.expression import normalize_domain
+from odoo.microkernel.osv.expression import normalize_domain
 from odoo.addons.resource.models import utils
 from odoo.tests import Form
 

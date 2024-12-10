@@ -9,7 +9,7 @@ from dateutil.relativedelta import relativedelta
 from odoo import _, models
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.addons.resource.models.utils import Intervals
 from odoo.exceptions import UserError
 

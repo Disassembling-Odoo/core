@@ -13,7 +13,7 @@ from odoo import SUPERUSER_ID, _
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
 from odoo.technology.framework.http import request, content_disposition
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.technology.framework import http
 from odoo.tools import is_html_empty
 from odoo.microkernel.utils import format_datetime, format_date

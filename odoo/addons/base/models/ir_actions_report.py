@@ -17,7 +17,7 @@ from odoo.technology.conf import config
 from odoo.tools import check_barcode_encoding, is_html_empty, parse_version, split_every
 from odoo.technology.framework.http import request, root
 from odoo.tools.pdf import PdfFileWriter, PdfFileReader, PdfReadError
-from odoo.osv.expression import NEGATIVE_TERM_OPERATORS, FALSE_DOMAIN
+from odoo.microkernel.osv.expression import NEGATIVE_TERM_OPERATORS, FALSE_DOMAIN
 
 import io
 import logging

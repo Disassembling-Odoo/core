@@ -4,7 +4,7 @@ from odoo import SUPERUSER_ID, models, tools
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.technology.framework.http import request
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.tools.translate import _, LazyTranslate
 from odoo.technology.cache import ormcache
 

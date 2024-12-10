@@ -18,7 +18,7 @@ from odoo.addons.website.models.ir_http import sitemap_qs2dom
 from odoo.addons.website_profile.controllers.main import WebsiteProfile
 from odoo.exceptions import AccessError, ValidationError, UserError, MissingError
 from odoo.technology.framework.http import request, Response
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.technology.framework import http
 from odoo.tools import email_split
 from odoo.technology import utils as tech_utils

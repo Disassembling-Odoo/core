@@ -4,7 +4,7 @@
 from odoo import models, tools
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 
 
 class PosOrder(models.Model):

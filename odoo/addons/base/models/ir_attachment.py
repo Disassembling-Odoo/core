@@ -23,7 +23,7 @@ from odoo.technology.conf import config
 from odoo.tools import human_size, image, str2bool
 from odoo.technology.utils import consteq
 from odoo.tools.mimetypes import guess_mimetype, fix_filename_extension
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.technology import db
 
 _logger = logging.getLogger(__name__)

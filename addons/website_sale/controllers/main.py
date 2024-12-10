@@ -12,7 +12,7 @@ from odoo.exceptions import ValidationError
 from odoo.ormapping import Command
 from odoo.technology.framework import request, route
 from odoo.technology.utils import groupby, lazy
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.tools import clean_context, float_round, single_email_re, str2bool
 from odoo.technology.utils.json import scriptsafe as json_scriptsafe
 from odoo.tools.translate import _

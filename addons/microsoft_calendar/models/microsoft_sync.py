@@ -12,7 +12,7 @@ from odoo import models
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.microkernel.modules.registry import Registry
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 
 from odoo.addons.microsoft_calendar.utils.microsoft_event import MicrosoftEvent
 from odoo.addons.microsoft_calendar.utils.microsoft_calendar import MicrosoftCalendarService

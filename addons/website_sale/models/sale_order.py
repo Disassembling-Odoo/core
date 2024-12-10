@@ -12,7 +12,7 @@ from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
 from odoo.ormapping import Command
 from odoo.technology.framework.http import request
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.tools import float_is_zero
 
 

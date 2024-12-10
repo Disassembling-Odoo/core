@@ -12,7 +12,7 @@ from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import ValidationError
 from odoo.technology.framework.http import request
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.technology.cache import ormcache, ormcache_context
 from odoo.technology import utils as tech_utils
 

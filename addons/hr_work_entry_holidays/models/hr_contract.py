@@ -4,7 +4,7 @@
 import pytz
 
 from odoo import models
-from odoo.osv.expression import OR
+from odoo.microkernel.osv.expression import OR
 
 
 class HrContract(models.Model):

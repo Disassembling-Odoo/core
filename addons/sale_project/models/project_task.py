@@ -4,7 +4,7 @@ from odoo import models, _
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import ValidationError, AccessError
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.technology.db import SQL
 from odoo.tools.misc import unquote
 

@@ -3,7 +3,7 @@ import ast
 import werkzeug
 
 from odoo.technology.framework.http import Controller, request, route
-from odoo.osv.expression import AND, OR
+from odoo.microkernel.osv.expression import AND, OR
 
 
 class ModelPageController(Controller):

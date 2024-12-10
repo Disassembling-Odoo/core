@@ -5,7 +5,7 @@ from collections import Counter
 from odoo import _, models
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 
 
 class WebsiteSnippetFilter(models.Model):

@@ -13,7 +13,7 @@ from odoo.ormapping import fields
 from odoo.addons.base.models.avatar_mixin import get_hsl_from_seed
 from odoo.addons.mail.tools.discuss import Store
 from odoo.exceptions import AccessError, UserError, ValidationError
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.tools import format_list, html_escape
 from odoo.tools.i18n import get_lang
 

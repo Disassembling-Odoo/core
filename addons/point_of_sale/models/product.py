@@ -7,7 +7,7 @@ from collections import defaultdict
 from itertools import groupby
 from operator import itemgetter
 from datetime import date
-from odoo.osv.expression import AND
+from odoo.microkernel.osv.expression import AND
 
 
 class ProductTemplate(models.Model):

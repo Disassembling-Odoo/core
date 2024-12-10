@@ -12,7 +12,7 @@ from odoo import Command, models, _
 from odoo.microkernel.api import api
 from odoo.tools.i18n import formatLang
 from odoo.ormapping import fields
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.tools import format_amount, format_list
 from odoo.tools.float_utils import float_is_zero
 from odoo.exceptions import UserError, ValidationError

@@ -6,7 +6,7 @@ from odoo.technology.framework import http
 from odoo.technology.framework.http import request
 from odoo.addons.mail.models.discuss.mail_guest import add_guest_to_context
 from odoo.addons.mail.tools.discuss import Store
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 
 
 class WebclientController(http.Controller):

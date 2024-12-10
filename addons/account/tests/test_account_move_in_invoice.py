@@ -5,7 +5,7 @@ from odoo.ormapping import fields
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon
 from odoo.tests import Form, tagged
 from odoo import Command
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.exceptions import ValidationError, UserError
 from datetime import date
 

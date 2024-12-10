@@ -9,7 +9,7 @@ from odoo import _
 from odoo.technology.framework import http
 from odoo.exceptions import AccessError
 from odoo.technology.framework.http import request
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 
 from odoo.addons.website_slides.controllers.main import WebsiteSlides
 

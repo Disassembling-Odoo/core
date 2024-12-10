@@ -11,7 +11,7 @@ from psycopg2 import errors as pgerrors
 from odoo import models, _
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.exceptions import ValidationError, UserError
 from odoo.technology.adjustable import mute_logger
 from odoo.technology.utils import unique

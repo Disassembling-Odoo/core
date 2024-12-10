@@ -10,7 +10,7 @@ from odoo import _, models
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.tools import float_is_zero, check_barcode_encoding
 from odoo.tools.float_utils import float_round
 from odoo.tools.mail import html2plaintext, is_html_empty

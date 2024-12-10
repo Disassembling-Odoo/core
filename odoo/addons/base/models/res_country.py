@@ -6,7 +6,7 @@ import logging
 from odoo import models, tools
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.exceptions import UserError
 from psycopg2 import IntegrityError
 from odoo.tools.translate import _

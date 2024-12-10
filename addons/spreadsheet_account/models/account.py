@@ -7,7 +7,7 @@ from dateutil.relativedelta import relativedelta
 
 from odoo import models, _
 from odoo.microkernel.api import api
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.technology.utils import date_utils
 
 

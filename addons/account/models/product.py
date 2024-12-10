@@ -4,7 +4,7 @@ from odoo import Command, models, _
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import ValidationError
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.tools import format_amount
 
 ACCOUNT_DOMAIN = "['&', ('deprecated', '=', False), ('account_type', 'not in', ('asset_receivable','liability_payable','asset_cash','liability_credit_card','off_balance'))]"

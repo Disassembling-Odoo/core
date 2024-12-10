@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from odoo import models, _
-from odoo import osv
+from odoo.microkernel import osv
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import UserError

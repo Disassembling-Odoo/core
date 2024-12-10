@@ -11,7 +11,7 @@ from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import ValidationError
 
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 
 import logging
 _logger = logging.getLogger(__name__)

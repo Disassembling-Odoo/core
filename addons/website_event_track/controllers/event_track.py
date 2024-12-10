@@ -17,7 +17,7 @@ import pytz
 from odoo import exceptions, tools, _
 from odoo.ormapping import fields
 from odoo.technology.framework import request
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.technology.framework import http
 from odoo.tools import is_html_empty, plaintext2html
 from odoo.tools.i18n import babel_locale_parse

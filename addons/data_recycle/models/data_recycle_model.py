@@ -12,7 +12,7 @@ from odoo.ormapping import fields
 from odoo.technology.conf import config
 from odoo.exceptions import UserError
 from odoo.tools import split_every
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 
 # When recycle_mode = automatic, _recycle_records calls action_validate.
 # This is quite slow so requires smaller batch size.

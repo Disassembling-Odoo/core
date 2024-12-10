@@ -5,7 +5,7 @@ from odoo import _
 from odoo.ormapping import fields
 from odoo.exceptions import AccessError
 from odoo.technology.framework.http import request
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.technology.framework import http
 from odoo.tools import float_round, float_repr
 

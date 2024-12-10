@@ -20,7 +20,7 @@ from odoo.technology import conf
 from odoo.technology.db import SQL, column_exists, create_column
 from odoo.addons.account.tools import format_structured_reference_iso
 from odoo.exceptions import UserError, ValidationError, AccessError, RedirectWarning
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.technology.utils import date_utils
 from odoo.tools.i18n import formatLang, get_lang
 from odoo.tools import (

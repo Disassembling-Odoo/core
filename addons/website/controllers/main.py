@@ -24,7 +24,7 @@ from odoo import models, _
 from odoo.ormapping import fields
 from odoo.exceptions import AccessError, UserError
 from odoo.technology.framework.http import request, SessionExpiredException
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.technology.framework import http
 from odoo.tools import html_escape as escape, py_to_js_locale
 from odoo.technology.utils import OrderedSet

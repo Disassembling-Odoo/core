@@ -4,7 +4,7 @@ from odoo import Command, _, models
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 
 from odoo.addons.payment import utils as payment_utils
 from odoo.addons.payment.const import REPORT_REASONS_MAPPING

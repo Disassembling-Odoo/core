@@ -19,7 +19,7 @@ from odoo.exceptions import (
 from odoo.ormapping import Command
 from odoo.technology.db import create_index, SQL
 from odoo.technology.framework.http import request
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.tools import (
     float_is_zero,
     format_amount,

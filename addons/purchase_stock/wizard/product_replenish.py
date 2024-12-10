@@ -4,7 +4,7 @@
 from odoo import _, models
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
-from odoo.osv.expression import AND
+from odoo.microkernel.osv.expression import AND
 
 
 class ProductReplenish(models.TransientModel):

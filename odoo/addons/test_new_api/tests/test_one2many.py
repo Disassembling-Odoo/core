@@ -455,9 +455,9 @@ class One2manyCase(TransactionExpressionCase):
         self._search(Team, [('id', 'parent_of', team1.id)])
         self._search(Team, [('id', 'child_of', team1.id)])
 
-    @mute_logger('odoo.osv.expression')
+    @mute_logger('odoo.microkernel.osv.expression')
     def test_create_one2many_with_unsearchable_field(self):
-        # odoo.osv.expression is muted as reading a non-stored and unsearchable field will log an error and makes the runbot red
+        # odoo.microkernel.osv.expression is muted as reading a non-stored and unsearchable field will log an error and makes the runbot red
 
         unsearchableO2M = self.env['test_new_api.unsearchable.o2m']
 

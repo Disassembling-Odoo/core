@@ -10,7 +10,7 @@ from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.addons.website.tools import add_form_signature
 from odoo.exceptions import AccessError
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.technology.framework.http import request
 from odoo.technology.cache import ormcache
 

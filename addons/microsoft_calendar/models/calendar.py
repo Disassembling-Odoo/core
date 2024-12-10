@@ -13,7 +13,7 @@ from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
 from odoo.tools import email_normalize
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 
 ATTENDEE_CONVERTER_O2M = {
     'needsAction': 'notresponded',

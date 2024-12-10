@@ -10,7 +10,7 @@ from odoo import _, models
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import ValidationError, UserError
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.tools import is_html_empty, remove_accents
 
 # see rfc5322 section 3.2.3

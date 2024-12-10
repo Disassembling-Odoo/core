@@ -9,7 +9,7 @@ from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
 from odoo.ormapping import Command
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.tools import float_round, str2bool
 from odoo.technology.utils import lazy
 

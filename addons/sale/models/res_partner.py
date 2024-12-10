@@ -4,7 +4,7 @@ from odoo import models
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.addons.base.models.res_partner import WARNING_MESSAGE, WARNING_HELP
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 
 
 class ResPartner(models.Model):

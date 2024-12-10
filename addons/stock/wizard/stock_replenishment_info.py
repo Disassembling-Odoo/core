@@ -10,7 +10,7 @@ from dateutil.relativedelta import relativedelta
 from odoo import models, SUPERUSER_ID, _
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
-from odoo.osv.expression import AND
+from odoo.microkernel.osv.expression import AND
 from odoo.technology.utils.date_utils import get_month, subtract
 from odoo.tools.i18n import get_lang
 from odoo.tools.float_utils import float_compare

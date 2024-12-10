@@ -9,7 +9,7 @@ from odoo import _, models, tools
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.tools.image import is_image_size_above
 from odoo.technology.cache import ormcache
 

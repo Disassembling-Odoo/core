@@ -5,7 +5,7 @@ from collections import OrderedDict
 
 from odoo import _
 from odoo.ormapping import fields
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.addons.portal.controllers.portal import CustomerPortal, pager as portal_pager
 from odoo.addons.account.controllers.download_docs import _get_headers, _build_zip_from_data
 from odoo.exceptions import AccessError, MissingError

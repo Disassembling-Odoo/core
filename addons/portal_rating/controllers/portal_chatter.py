@@ -1,6 +1,6 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 
 from odoo.addons.portal.controllers import mail
 

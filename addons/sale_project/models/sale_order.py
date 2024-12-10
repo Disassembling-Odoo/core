@@ -7,7 +7,7 @@ from odoo import models, _, Command
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import UserError
-from odoo.osv.expression import AND, NEGATIVE_TERM_OPERATORS, TERM_OPERATORS_NEGATION
+from odoo.microkernel.osv.expression import AND, NEGATIVE_TERM_OPERATORS, TERM_OPERATORS_NEGATION
 from odoo.addons.project.models.project_task import CLOSED_STATES
 
 

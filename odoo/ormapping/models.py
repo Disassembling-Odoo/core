@@ -57,24 +57,24 @@ from .base import NewId, IdType
 
 import odoo
 from .. import SUPERUSER_ID
-from ..microkernel.api import api
-from ..technology.utils import check_pg_name, date_utils, lazy_classproperty
-from .. import tools
 from ..exceptions import AccessError, MissingError, ValidationError, UserError
-from ..technology.conf import config
-from ..technology.db import SQL, Query
+from .. import tools
 from ..tools import (
     clean_context, discardattr,
     format_list, 
     split_every, 
 )
 
+from ..technology.utils import check_pg_name, date_utils, lazy_classproperty
 from ..technology.utils import frozendict, OrderedSet, LastOrderedSet, partition, unique
 from ..tools.lru import LRU
 from ..tools.i18n import get_lang
 from ..tools.misc import ReversedIterable, unquote
 from ..tools.translate import _, LazyTranslate
 from ..technology.cache import ormcache
+from ..technology.conf import config
+from ..technology.db import SQL, Query
+from ..microkernel.api import api
 from odoo.microkernel.utils import (
     DEFAULT_SERVER_DATE_FORMAT, DEFAULT_SERVER_DATETIME_FORMAT,
 )
@@ -7478,5 +7478,5 @@ PGERROR_TO_OE = defaultdict(
 # keep those imports here to avoid dependency cycle errors
 # pylint: disable=wrong-import-position
 from . import fields
-from ..osv import expression
+from ..microkernel.osv import expression
 from .fields import Field, Datetime

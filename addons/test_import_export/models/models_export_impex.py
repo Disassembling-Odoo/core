@@ -1,7 +1,7 @@
 from odoo import models, _
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
-from odoo.osv.expression import FALSE_DOMAIN
+from odoo.microkernel.osv.expression import FALSE_DOMAIN
 
 
 def selection_fn(self):

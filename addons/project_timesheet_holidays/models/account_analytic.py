@@ -5,7 +5,7 @@ from odoo import models, _
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import RedirectWarning, UserError
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 
 
 class AccountAnalyticLine(models.Model):

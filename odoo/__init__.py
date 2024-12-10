@@ -59,7 +59,6 @@ from .technology import cli
 
 from . import upgrade  # this namespace must be imported first
 from . import loglevels
-from . import osv
 from . import release
 from . import addons
 from .microkernel.api import api

@@ -19,7 +19,7 @@ from odoo.microkernel.api import api
 from odoo.technology.framework.http import request
 from odoo.technology.utils.json import scriptsafe as json_scriptsafe
 from odoo.tools.safe_eval import safe_eval
-from odoo.osv.expression import FALSE_DOMAIN
+from odoo.microkernel.osv.expression import FALSE_DOMAIN
 from odoo.addons.base.models.ir_http import EXTENSION_TO_WEB_MIMETYPES
 from odoo.addons.http_routing.models import ir_http
 from odoo.addons.portal.controllers.portal import _build_url_w_params

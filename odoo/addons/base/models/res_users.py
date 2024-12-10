@@ -29,7 +29,7 @@ from odoo.ormapping import fields
 from odoo.addons.base.models.ir_model import MODULE_UNINSTALL_FLAG
 from odoo.exceptions import AccessDenied, AccessError, UserError, ValidationError
 from odoo.technology.framework.http import request, DEFAULT_LANG
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.tools import is_html_empty, SetDefinitions
 from odoo.technology.utils import frozendict, partition, lazy_property
 from odoo.technology.db import SQL

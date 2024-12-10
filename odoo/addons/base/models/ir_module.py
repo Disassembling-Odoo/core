@@ -29,7 +29,7 @@ from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.addons.base.models.ir_model import MODULE_UNINSTALL_FLAG
 from odoo.exceptions import AccessDenied, UserError, ValidationError
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.tools.parse_version import parse_version
 from odoo.tools.misc import get_flag
 from odoo.tools.translate import TranslationImporter, get_po_paths

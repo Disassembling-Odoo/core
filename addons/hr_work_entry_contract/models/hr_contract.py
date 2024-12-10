@@ -12,7 +12,7 @@ from odoo import models, _
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.addons.resource.models.utils import string_to_datetime, Intervals
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.tools import format_list
 from odoo.exceptions import UserError
 from odoo.technology.cache import ormcache

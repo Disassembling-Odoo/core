@@ -5,7 +5,7 @@ from collections import defaultdict
 
 from odoo import _, Command, models
 from odoo.ormapping import fields
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.tools.float_utils import float_is_zero
 from odoo.technology.utils import OrderedSet
 

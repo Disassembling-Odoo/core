@@ -6,7 +6,7 @@ from odoo import models, SUPERUSER_ID
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.technology.framework.http import request
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 
 
 class website_form_config(models.Model):

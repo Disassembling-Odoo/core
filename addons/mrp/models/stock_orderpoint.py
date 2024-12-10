@@ -5,7 +5,7 @@ from odoo import _, models
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.tools.float_utils import float_is_zero
-from odoo.osv.expression import AND
+from odoo.microkernel.osv.expression import AND
 from dateutil.relativedelta import relativedelta
 from datetime import datetime, time
 

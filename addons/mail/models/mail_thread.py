@@ -33,7 +33,7 @@ from odoo.technology.db import Query, SQL
 from odoo.addons.mail.tools.discuss import Store
 from odoo.addons.mail.tools.web_push import push_to_end_point, DeviceUnreachableError
 from odoo.exceptions import MissingError, AccessError
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.tools import (
     is_html_empty, html_escape, html2plaintext, parse_contact_from_email,
     clean_context, split_every, email_normalize_all, is_list_of,

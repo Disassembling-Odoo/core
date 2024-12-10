@@ -10,7 +10,7 @@ from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.addons.website.tools import text_from_html
 from odoo.technology.framework.http import request
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.exceptions import AccessError
 from odoo.technology.db import escape_psql
 from odoo.technology.utils.json import scriptsafe as json_safe

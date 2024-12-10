@@ -4,7 +4,7 @@
 from odoo import models, _
 from odoo.exceptions import ValidationError
 from odoo.microkernel.api import api
-from odoo.osv.expression import AND
+from odoo.microkernel.osv.expression import AND
 from odoo.microkernel.utils import format_date
 
 class HrLeave(models.Model):

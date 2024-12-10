@@ -12,7 +12,7 @@ from odoo import _
 from odoo.ormapping import fields
 from odoo.addons.website.controllers.main import QueryURL
 from odoo.technology.framework.http import request
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.technology.framework import http
 from odoo.tools.i18n import get_lang
 from odoo.technology.utils import lazy

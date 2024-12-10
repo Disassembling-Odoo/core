@@ -1,6 +1,6 @@
 from odoo import SUPERUSER_ID
 from odoo.microkernel.api import api
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 
 FIXED_ACCOUNTS_TYPE = {
     'asset_prepayments': ['242'],

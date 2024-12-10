@@ -11,7 +11,7 @@ from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.addons.mail.tools.discuss import Store
 from odoo.exceptions import AccessError, UserError, ValidationError
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from ...tools import jwt, discuss
 
 _logger = logging.getLogger(__name__)

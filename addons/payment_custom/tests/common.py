@@ -1,6 +1,6 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo.osv.expression import OR
+from odoo.microkernel.osv.expression import OR
 
 from odoo.addons.payment.tests.common import PaymentCommon
 

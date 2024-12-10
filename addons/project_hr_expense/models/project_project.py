@@ -3,7 +3,7 @@
 import json
 
 from odoo import models
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 
 
 class Project(models.Model):

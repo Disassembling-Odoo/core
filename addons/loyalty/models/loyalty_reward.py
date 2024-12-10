@@ -7,7 +7,7 @@ from odoo import _, models
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import ValidationError
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 
 
 class LoyaltyReward(models.Model):

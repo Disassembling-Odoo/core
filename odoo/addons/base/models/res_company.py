@@ -10,7 +10,7 @@ from odoo import models, tools, _, Command, SUPERUSER_ID
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import ValidationError, UserError
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.technology import conf
 from odoo.tools import html2plaintext
 from odoo.technology.utils import file_open

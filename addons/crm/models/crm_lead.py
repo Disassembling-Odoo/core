@@ -15,7 +15,7 @@ from odoo.addons.iap.tools import iap_tools
 from odoo.addons.mail.tools import mail_validation
 from odoo.addons.phone_validation.tools import phone_validation
 from odoo.exceptions import UserError, AccessError
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.technology.utils import date_utils
 from odoo.tools.translate import _
 from odoo.tools import email_split, is_html_empty, parse_contact_from_email

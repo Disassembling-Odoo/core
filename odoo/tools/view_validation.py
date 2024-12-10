@@ -8,7 +8,7 @@ import re
 
 from lxml import etree
 from odoo.technology import utils as tech_utils
-from odoo.osv.expression import DOMAIN_OPERATORS
+from odoo.microkernel.osv.expression import DOMAIN_OPERATORS
 
 _logger = logging.getLogger(__name__)
 

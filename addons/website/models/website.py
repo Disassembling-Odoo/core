@@ -25,7 +25,7 @@ from odoo.addons.iap.tools import iap_tools
 from odoo.exceptions import AccessError, UserError, ValidationError
 from odoo.technology.framework.http import request
 from odoo.microkernel.modules.module import get_manifest
-from odoo.osv.expression import AND, OR, FALSE_DOMAIN
+from odoo.microkernel.osv.expression import AND, OR, FALSE_DOMAIN
 from odoo.technology.db import SQL, Query, sql as sqltools
 from odoo.tools.translate import _, xml_translate
 from odoo.technology.cache import ormcache

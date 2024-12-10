@@ -10,7 +10,7 @@ from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.addons.link_tracker.models.link_tracker import LINK_TRACKER_MIN_CODE_LENGTH
 from odoo.exceptions import UserError
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 
 _logger = logging.getLogger(__name__)
 

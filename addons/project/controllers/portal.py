@@ -10,7 +10,7 @@ from odoo import _
 from odoo.exceptions import AccessError, MissingError, UserError
 from odoo.technology import conf
 from odoo.technology.framework.http import request
-from odoo.osv.expression import AND, FALSE_DOMAIN
+from odoo.microkernel.osv.expression import AND, FALSE_DOMAIN
 from odoo.technology.framework import http
 from odoo.technology.utils import groupby as groupbyelem
 

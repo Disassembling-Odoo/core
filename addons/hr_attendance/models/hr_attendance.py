@@ -15,7 +15,7 @@ from odoo.ormapping import fields
 from odoo.technology.framework.http import request
 from odoo import models, exceptions, _
 from odoo.addons.resource.models.utils import Intervals
-from odoo.osv.expression import AND, OR
+from odoo.microkernel.osv.expression import AND, OR
 from odoo.tools.float_utils import float_is_zero
 from odoo.exceptions import AccessError
 from odoo.tools import convert

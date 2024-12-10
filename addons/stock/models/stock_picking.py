@@ -11,7 +11,7 @@ from odoo import SUPERUSER_ID, _, models
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.tools import format_list
 from odoo.technology.utils import groupby
 from odoo.microkernel.utils import format_datetime, format_date

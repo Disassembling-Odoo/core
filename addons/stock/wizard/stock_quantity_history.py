@@ -3,7 +3,7 @@
 
 from odoo import _, models
 from odoo.ormapping import fields
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.microkernel.utils import format_datetime
 
 

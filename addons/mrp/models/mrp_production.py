@@ -15,7 +15,7 @@ from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.addons.web.controllers.utils import clean_action
 from odoo.exceptions import UserError, ValidationError
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.tools import float_compare, float_round, float_is_zero
 from odoo.technology.utils import OrderedSet, groupby as tools_groupby, topological_sort
 from odoo.microkernel.utils import format_date, format_datetime

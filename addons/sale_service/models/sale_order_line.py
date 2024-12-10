@@ -6,7 +6,7 @@ from itertools import groupby
 from odoo import models
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.tools import format_amount
 from odoo.technology.db import column_exists, create_column, create_index
 

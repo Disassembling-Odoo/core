@@ -5,7 +5,8 @@ import ast
 import re
 from collections import defaultdict
 
-from odoo import models, _, osv, Command
+from odoo import models, _, Command
+from odoo.microkernel import osv
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import ValidationError, UserError

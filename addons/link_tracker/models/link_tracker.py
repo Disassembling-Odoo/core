@@ -12,7 +12,7 @@ from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.addons.mail.tools import link_preview
 from odoo.exceptions import UserError
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.tools.mail import validate_url
 
 LINK_TRACKER_UNIQUE_FIELDS = ('url', 'campaign_id', 'medium_id', 'source_id', 'label')

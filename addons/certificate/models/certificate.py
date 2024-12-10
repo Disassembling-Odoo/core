@@ -11,7 +11,7 @@ from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from .key import STR_TO_HASH, _get_formatted_value
 from odoo.exceptions import UserError
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.tools import parse_version
 
 

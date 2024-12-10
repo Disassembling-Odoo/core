@@ -9,7 +9,7 @@ from odoo.ormapping import Datetime as FieldDateTime
 from dateutil.relativedelta import relativedelta
 from odoo.tools.translate import _
 from odoo.exceptions import UserError
-from odoo.osv.expression import AND
+from odoo.microkernel.osv.expression import AND
 
 
 class AccountClosing(models.Model):

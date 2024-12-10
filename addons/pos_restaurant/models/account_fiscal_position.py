@@ -1,6 +1,6 @@
 from odoo import models
 from odoo.microkernel.api import api
-from odoo.osv.expression import OR
+from odoo.microkernel.osv.expression import OR
 
 
 class AccountFiscalPosition(models.Model):

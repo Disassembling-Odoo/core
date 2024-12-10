@@ -8,7 +8,7 @@ from random import randint
 from odoo import models, tools
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.tools.mail import is_html_empty
 from odoo.tools.translate import _, html_translate
 

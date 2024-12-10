@@ -15,7 +15,7 @@ from odoo.tools import split_every
 from odoo.technology.db import SQL
 from odoo.technology.framework import request
 from odoo.microkernel.utils import format_time_ago
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 
 
 class WebsiteTrack(models.Model):

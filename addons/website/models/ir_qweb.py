@@ -9,7 +9,7 @@ from odoo import models
 from odoo.technology.framework.http import request
 from odoo.technology.utils import lazy
 from odoo.addons.base.models.assetsbundle import AssetsBundle
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.addons.website.models import ir_http
 from odoo.exceptions import AccessError
 

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 import odoo.tests
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 
 
 @odoo.tests.tagged('post_install', '-at_install', 'assets_bundle')

@@ -10,7 +10,7 @@ from odoo import models, tools, _
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError, AccessError
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.technology.db import increment_fields_skiplock, SQL
 from odoo.technology.utils.json import scriptsafe as json_safe
 from odoo.microkernel import utils as microkernel_utils

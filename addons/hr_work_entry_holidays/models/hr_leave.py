@@ -9,7 +9,7 @@ from odoo import models, _
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import ValidationError
-from odoo.osv.expression import AND
+from odoo.microkernel.osv.expression import AND
 from odoo.microkernel.utils import format_date
 
 

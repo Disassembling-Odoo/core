@@ -13,7 +13,7 @@ from odoo import models, tools, _
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import AccessError, UserError, ValidationError
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.tools import is_html_empty
 from odoo.technology import utils as tech_utils
 

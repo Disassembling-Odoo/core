@@ -10,7 +10,7 @@ from odoo.ormapping import fields
 from odoo.addons.mail.tools.discuss import Store
 from odoo.addons.rating.models import rating_data
 from odoo.exceptions import UserError
-from odoo.osv.expression import AND
+from odoo.microkernel.osv.expression import AND
 from odoo.tools.i18n import get_lang
 from odoo.tools.misc import unquote
 from odoo.tools.translate import _

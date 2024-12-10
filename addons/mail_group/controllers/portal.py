@@ -9,7 +9,7 @@ from odoo.ormapping import fields
 from odoo.addons.portal.controllers.portal import pager as portal_pager
 from odoo.exceptions import AccessError
 from odoo.technology.framework.http import request, Response
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.technology.framework import http
 from odoo.technology.utils import consteq
 from odoo.tools.i18n import get_lang

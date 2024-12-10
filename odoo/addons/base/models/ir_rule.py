@@ -6,7 +6,7 @@ from odoo import models, tools, _
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import AccessError, ValidationError
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.technology import utils as tech_utils
 from odoo.technology.conf import config
 from odoo.technology.db import SQL

@@ -9,7 +9,7 @@ from odoo import _, models
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import AccessError, UserError
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.tools.mail import email_normalize, append_content_to_html
 
 _logger = logging.getLogger(__name__)

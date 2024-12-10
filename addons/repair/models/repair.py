@@ -7,7 +7,7 @@ from odoo import Command, models, _
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.tools import float_compare, float_is_zero, clean_context
 from odoo.technology.utils import groupby
 from odoo.microkernel.utils import format_date

@@ -5,7 +5,7 @@ from odoo import _, models
 from odoo.microkernel.api import api
 from odoo.ormapping import fields, Command
 from odoo.exceptions import ValidationError
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.tools import html2plaintext, is_html_empty, email_normalize, plaintext2html
 from odoo.addons.mail.tools.discuss import Store
 

@@ -18,7 +18,7 @@ from odoo.addons.base.models.res_lang import LangData
 from odoo.exceptions import AccessError, MissingError
 from odoo.microkernel.api import api
 from odoo.technology.framework.http import request, Response
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.technology.cache import ormcache
 from odoo.technology.framework import http
 

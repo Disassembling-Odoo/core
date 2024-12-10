@@ -1,7 +1,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo import Command
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.exceptions import AccessError
 from odoo.tests import Form, tagged
 from odoo.technology.adjustable import mute_logger

@@ -11,7 +11,7 @@ from odoo import _, models, SUPERUSER_ID
 from odoo.microkernel.api import api
 from odoo.ormapping import fields
 from odoo.exceptions import UserError, ValidationError
-from odoo.osv import expression
+from odoo.microkernel.osv import expression
 from odoo.tools import check_barcode_encoding, format_list
 from odoo.technology.utils import groupby
 from odoo.tools.float_utils import float_compare, float_is_zero

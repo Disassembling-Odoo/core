@@ -3,7 +3,7 @@
 
 """ Implementation of "INVENTORY VALUATION TESTS (With valuation layers)" spreadsheet. """
 
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon
 from odoo.addons.stock_account.tests.test_stockvaluation import _create_accounting_data
 from odoo.tests import Form, tagged

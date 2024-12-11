@@ -1,6 +1,6 @@
 from lxml import etree
 
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.tests import tagged
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon
 from odoo.addons.l10n_fr_facturx_chorus_pro.models.account_edi_xml_ubl_bis3 import CHORUS_PRO_PEPPOL_ID

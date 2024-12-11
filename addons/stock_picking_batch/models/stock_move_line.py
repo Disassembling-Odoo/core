@@ -3,8 +3,8 @@
 
 from collections import defaultdict
 
-from odoo import _, Command, models
-from odoo.ormapping import fields
+from odoo import _
+from odoo.microkernel.ormapping import Command, models, fields
 from odoo.microkernel.osv import expression
 from odoo.tools.float_utils import float_is_zero
 from odoo.technology.utils import OrderedSet

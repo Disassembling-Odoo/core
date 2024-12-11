@@ -1,6 +1,6 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo.ormapping import Command
+from odoo.microkernel.ormapping import Command
 from odoo.tests import HttpCase, tagged
 
 

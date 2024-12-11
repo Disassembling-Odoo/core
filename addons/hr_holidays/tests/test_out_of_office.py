@@ -5,7 +5,7 @@ from dateutil.relativedelta import relativedelta
 
 from freezegun import freeze_time
 
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.addons.base.tests.common import TransactionCaseWithUserDemo
 from odoo.tests.common import tagged, users, warmup
 from odoo.addons.hr_holidays.tests.common import TestHrHolidaysCommon

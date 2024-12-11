@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, tools
+from odoo import tools
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 
 
 class MaintenanceEquipment(models.Model):

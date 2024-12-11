@@ -1,6 +1,5 @@
-from odoo import models
+from odoo.microkernel.ormapping import models
 from odoo.microkernel.api import api
-
 
 class IrAttachment(models.Model):
     _inherit = 'ir.attachment'

@@ -3,7 +3,7 @@
 from freezegun import freeze_time
 from odoo.addons.sale.tests.common import TestSaleCommon
 from odoo.tests import Form, tagged
-from odoo.ormapping import Command
+from odoo.microkernel.ormapping import Command
 
 
 @tagged('post_install', '-at_install')

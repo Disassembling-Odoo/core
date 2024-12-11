@@ -3,7 +3,7 @@
 from odoo.addons.point_of_sale.tests.test_frontend import TestPointOfSaleHttpCommon
 from odoo.addons.pos_viva_wallet.models.pos_payment_method import PosPaymentMethod
 from unittest.mock import patch
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 import odoo.tests
 
 

@@ -1,7 +1,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import models, _
-from odoo.ormapping import fields
+from odoo import _
+from odoo.microkernel.ormapping import models, fields
 from odoo.addons.sms.tools.sms_api import ERROR_MESSAGES, SmsApi
 from odoo.exceptions import ValidationError
 

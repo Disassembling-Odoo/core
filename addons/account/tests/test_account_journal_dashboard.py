@@ -1,7 +1,7 @@
 from dateutil.relativedelta import relativedelta
 from freezegun import freeze_time
 
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.addons.account.tests.test_account_journal_dashboard_common import TestAccountJournalDashboardCommon
 from odoo.tests import tagged
 from odoo.tools.misc import format_amount

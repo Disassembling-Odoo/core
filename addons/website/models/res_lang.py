@@ -1,9 +1,10 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import models, tools, _
+from odoo import tools, _
 from odoo.addons.base.models.res_lang import LangDataDict, LangData
 from odoo.exceptions import UserError
 from odoo.technology.framework.http import request
+from odoo.microkernel.ormapping import models
 
 
 class Lang(models.Model):

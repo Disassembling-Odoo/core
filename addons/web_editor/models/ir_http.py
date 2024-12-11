@@ -1,8 +1,6 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-
-from odoo import models
+from odoo.microkernel.ormapping import models
 from odoo.technology.framework.http import request
-
 
 CONTEXT_KEYS = ['editable', 'edit_translations', 'translatable']
 

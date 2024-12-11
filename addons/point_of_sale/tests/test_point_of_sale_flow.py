@@ -7,8 +7,7 @@ from datetime import datetime
 
 import odoo
 from odoo import tools
-from odoo.ormapping import fields
-from odoo.ormapping import Command
+from odoo.microkernel.ormapping import Command, fields
 from odoo.tools import float_compare, test_reports
 from odoo.technology.adjustable import mute_logger
 from odoo.tests import Form

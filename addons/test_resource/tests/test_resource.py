@@ -4,7 +4,7 @@ from datetime import date, datetime
 from freezegun import freeze_time
 from pytz import timezone, utc
 
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.exceptions import ValidationError
 from odoo.addons.resource.models.utils import Intervals, sum_intervals
 from odoo.addons.test_resource.tests.common import TestResourceCommon

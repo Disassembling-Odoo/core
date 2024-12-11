@@ -3,9 +3,8 @@
 
 from datetime import datetime, timedelta
 
-from odoo import Command
 from odoo.addons.event_booth.tests.common import TestEventBoothCommon
-from odoo.ormapping import Datetime as FieldsDatetime
+from odoo.microkernel.ormapping import Command, Datetime as FieldsDatetime
 from odoo.tests import Form, users, tagged
 from odoo.technology.adjustable import mute_logger
 

@@ -1,4 +1,4 @@
-from odoo import models
+from odoo.microkernel.ormapping import models
 
 
 class CalendarEvent(models.Model):

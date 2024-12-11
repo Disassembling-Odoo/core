@@ -3,7 +3,7 @@
 
 import logging
 from unittest.mock import patch
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 
 from odoo.microkernel.utils import DEFAULT_SERVER_DATE_FORMAT
 from odoo.tests import tagged

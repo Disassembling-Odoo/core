@@ -1,5 +1,4 @@
-from odoo import models
-
+from odoo.microkernel.ormapping import models
 
 class PosPaymentMethod(models.Model):
     _inherit = "pos.payment.method"

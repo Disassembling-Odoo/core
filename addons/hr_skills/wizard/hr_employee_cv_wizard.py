@@ -3,9 +3,9 @@
 
 from werkzeug.urls import url_encode
 
-from odoo import _, models
+from odoo import _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 
 
 class HrEmployeeCVWizard(models.TransientModel):

@@ -2,7 +2,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from lxml import etree
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon
 from odoo.tests import tagged
 from odoo.technology.utils import file_open

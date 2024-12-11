@@ -5,7 +5,7 @@ from unittest.mock import patch
 
 import odoo
 
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.addons.test_http.utils import (
     TEST_IP,
     USER_AGENT_android_chrome,

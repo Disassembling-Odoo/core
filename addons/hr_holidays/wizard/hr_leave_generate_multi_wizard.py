@@ -3,8 +3,8 @@
 from datetime import datetime, timedelta
 from pytz import timezone, UTC
 
-from odoo import models, _
-from odoo.ormapping import fields
+from odoo import _
+from odoo.microkernel.ormapping import models, fields
 from odoo.exceptions import UserError
 
 

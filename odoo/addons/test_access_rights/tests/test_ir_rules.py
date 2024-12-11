@@ -4,7 +4,7 @@
 from odoo.exceptions import AccessError, ValidationError
 from odoo.tests.common import TransactionCase
 from odoo.technology.adjustable import mute_logger
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 
 
 class TestRules(TransactionCase):

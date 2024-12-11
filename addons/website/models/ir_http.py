@@ -12,8 +12,9 @@ import werkzeug.routing
 import werkzeug.utils
 
 import odoo
-from odoo import models, tools
+from odoo import tools
 from odoo import SUPERUSER_ID
+from odoo.microkernel.ormapping import models
 from odoo.exceptions import AccessError
 from odoo.microkernel.api import api
 from odoo.technology.framework.http import request

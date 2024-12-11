@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import _, models
+from odoo import _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields, Command
+from odoo.microkernel.ormapping import Command, models, fields
 from odoo.exceptions import ValidationError
 from odoo.microkernel.osv import expression
 from odoo.tools import html2plaintext, is_html_empty, email_normalize, plaintext2html

@@ -4,9 +4,9 @@
 import re
 from operator import itemgetter
 
-from odoo import models, tools, _
+from odoo import tools, _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.exceptions import ValidationError
 from odoo.microkernel.osv import expression
 from odoo.tools import float_compare, format_list

@@ -3,9 +3,8 @@
 import logging
 from collections import defaultdict, OrderedDict
 
-from odoo import models
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.addons.base.models.ir_model import MODULE_UNINSTALL_FLAG
 from odoo.exceptions import MissingError
 from odoo.technology.framework.http import request

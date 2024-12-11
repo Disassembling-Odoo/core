@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 from markupsafe import Markup
 from unittest.mock import patch, MagicMock
 
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 
 from odoo.tests.common import HttpCase
 

@@ -2,10 +2,10 @@
 
 from werkzeug import urls
 
-from odoo import _, models
+from odoo import _
 
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.addons.payment import utils as payment_utils
 
 

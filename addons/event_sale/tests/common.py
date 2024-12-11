@@ -3,7 +3,7 @@
 
 from datetime import datetime, timedelta
 
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.addons.event_product.tests.common import TestEventProductCommon
 from odoo.addons.sales_team.tests.common import TestSalesCommon
 

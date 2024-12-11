@@ -5,7 +5,7 @@ from freezegun import freeze_time
 
 from odoo.addons.stock.tests.common import TestStockCommon
 from odoo.tests import Form
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 
 
 

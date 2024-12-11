@@ -3,7 +3,7 @@
 from unittest.mock import patch
 
 import odoo
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.tests import HttpCase, tagged
 
 

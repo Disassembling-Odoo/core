@@ -5,8 +5,8 @@ import datetime
 
 from freezegun import freeze_time
 
-from odoo import _, Command
-from odoo.ormapping import fields
+from odoo import _
+from odoo.microkernel.ormapping import fields, Command
 from odoo.addons.mail.tests.common import MailCase
 from odoo.addons.survey.tests import common
 from odoo.tests.common import users

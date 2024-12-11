@@ -4,7 +4,7 @@
 from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta
 
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.addons.mail.tests.common import mail_new_test_user
 from odoo.addons.stock.tests.common import TestStockCommon
 from odoo.tests import Form

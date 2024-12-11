@@ -3,7 +3,7 @@
 from base64 import b64encode
 from functools import partial
 
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.tests import tagged
 from odoo.technology.utils import file_open
 

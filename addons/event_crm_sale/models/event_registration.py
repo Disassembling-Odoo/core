@@ -3,8 +3,7 @@
 
 from collections import defaultdict
 
-from odoo import models
-
+from odoo.microkernel.ormapping import models
 
 class EventRegistration(models.Model):
     _inherit = 'event.registration'

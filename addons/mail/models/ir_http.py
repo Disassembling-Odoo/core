@@ -1,9 +1,8 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 import odoo
-from odoo import models
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.technology.framework.http import request
 from odoo.addons.mail.tools.discuss import Store
 

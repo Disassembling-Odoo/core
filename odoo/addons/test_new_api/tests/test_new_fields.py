@@ -14,8 +14,7 @@ from unittest.mock import patch
 import psycopg2
 import threading
 
-from odoo import models, Command
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, models, fields
 from odoo.addons.base.tests.common import TransactionCaseWithUserDemo
 from odoo.addons.base.tests.test_expression import TransactionExpressionCase
 from odoo.exceptions import AccessError, MissingError, UserError, ValidationError

@@ -1,5 +1,5 @@
-from odoo import _, models
-from odoo.ormapping import fields
+from odoo import _
+from odoo.microkernel.ormapping import models, fields
 
 
 class AccountJournal(models.Model):

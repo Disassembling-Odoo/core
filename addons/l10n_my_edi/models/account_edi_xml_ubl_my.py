@@ -5,7 +5,8 @@ from datetime import datetime
 
 from pytz import UTC
 
-from odoo import _, models
+from odoo import _
+from odoo.microkernel.ormapping import models
 from odoo.addons.account_edi_ubl_cii.models.account_edi_xml_ubl_20 import UBL_NAMESPACES
 from odoo.microkernel.api import api
 

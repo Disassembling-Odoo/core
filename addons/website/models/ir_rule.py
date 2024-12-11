@@ -1,4 +1,4 @@
-from odoo import models
+from odoo.microkernel.ormapping import models
 from odoo.addons.website.models import ir_http
 from odoo.microkernel.api import api
 

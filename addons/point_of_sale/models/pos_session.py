@@ -5,9 +5,9 @@ from datetime import timedelta
 from itertools import groupby, starmap
 from markupsafe import Markup
 
-from odoo import models, _, Command
+from odoo import _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, models, fields
 from odoo.exceptions import AccessDenied, AccessError, UserError, ValidationError
 from odoo.tools import float_is_zero, float_compare, convert, plaintext2html
 from odoo.technology.framework import dispatch_rpc

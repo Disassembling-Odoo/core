@@ -1,4 +1,4 @@
-from odoo.ormapping import Command
+from odoo.microkernel.ormapping import Command
 
 
 def setup_product_combo_items(self):

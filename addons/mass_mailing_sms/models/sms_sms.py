@@ -3,8 +3,7 @@
 
 import re
 
-from odoo import models
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.tools.mail import TEXT_URL_REGEX
 
 

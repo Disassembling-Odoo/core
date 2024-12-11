@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
-
-from odoo import models
-
+from odoo.microkernel.ormapping import models
 
 class AccountTax(models.Model):
     _inherit = "account.tax"

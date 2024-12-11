@@ -6,7 +6,7 @@ import contextlib
 from datetime import timedelta
 from markupsafe import Markup
 
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.exceptions import AccessError
 from odoo.addons.l10n_in_edi_ewaybill.models.error_codes import ERROR_CODES
 from odoo.tools import _, LazyTranslate

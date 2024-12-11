@@ -6,9 +6,9 @@ import math
 import re
 from datetime import datetime
 
-from odoo import models, tools, _
+from odoo import tools, _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.exceptions import UserError, ValidationError, AccessError
 from odoo.microkernel.osv import expression
 from odoo.technology.db import increment_fields_skiplock, SQL

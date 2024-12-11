@@ -5,9 +5,9 @@ import re
 
 from werkzeug.urls import url_join
 
-from odoo import models, _
+from odoo import _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.addons.website.tools import text_from_html
 from odoo.technology.framework.http import request
 from odoo.microkernel.osv import expression

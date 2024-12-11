@@ -4,7 +4,8 @@ import logging
 import re
 from ast import literal_eval
 
-from odoo import models, _
+from odoo import _
+from odoo.microkernel.ormapping import models
 from odoo.exceptions import AccessError, RedirectWarning, UserError
 from odoo.microkernel.api import api
 

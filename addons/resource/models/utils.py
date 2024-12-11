@@ -6,7 +6,7 @@ from datetime import time
 from itertools import chain
 from pytz import utc
 
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.microkernel.osv.expression import normalize_domain, is_leaf, NOT_OPERATOR
 from odoo.tools.float_utils import float_round
 

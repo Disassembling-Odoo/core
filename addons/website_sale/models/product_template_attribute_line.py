@@ -2,7 +2,7 @@
 
 from collections import OrderedDict
 
-from odoo import models
+from odoo.microkernel.ormapping import models
 
 
 class ProductTemplateAttributeLine(models.Model):

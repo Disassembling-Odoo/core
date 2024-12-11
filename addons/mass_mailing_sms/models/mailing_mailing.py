@@ -5,9 +5,9 @@ import logging
 
 from urllib.parse import urljoin
 
-from odoo import models, _
+from odoo import _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.addons.link_tracker.models.link_tracker import LINK_TRACKER_MIN_CODE_LENGTH
 from odoo.exceptions import UserError
 from odoo.microkernel.osv import expression

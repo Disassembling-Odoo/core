@@ -1,5 +1,4 @@
-from odoo import models
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 
 class ModelMultiCompany(models.Model):
     _name = "test.model_multicompany"

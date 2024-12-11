@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-
-from odoo import models
+from odoo.microkernel.ormapping import models
 from odoo.addons.l10n_it_edi.tools.remove_signature import remove_signature
 
 from lxml import etree

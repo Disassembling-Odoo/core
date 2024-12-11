@@ -1,5 +1,5 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-from odoo.ormapping import Command
+from odoo.microkernel.ormapping import Command
 from odoo.tests import tagged
 
 from odoo.addons.l10n_in.tests.common import L10nInTestInvoicingCommon

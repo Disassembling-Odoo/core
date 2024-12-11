@@ -7,9 +7,9 @@ from os.path import join as opj
 import operator
 import re
 
-from odoo import models, tools, _
+from odoo import tools, _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.exceptions import ValidationError
 from odoo.technology.framework.http import request
 from odoo.microkernel.osv import expression

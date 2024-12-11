@@ -2,7 +2,7 @@
 
 import json
 
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 
 
 def monkey_patch(cls):

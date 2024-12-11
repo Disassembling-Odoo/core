@@ -3,9 +3,9 @@
 
 from collections import defaultdict
 
-from odoo import models, _, Command
+from odoo import _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, models, fields
 from odoo.tools.i18n import get_lang
 from odoo.microkernel.utils import DEFAULT_SERVER_DATETIME_FORMAT
 

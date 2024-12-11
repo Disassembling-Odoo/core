@@ -4,7 +4,7 @@ import pytz
 from datetime import datetime
 from unittest.mock import patch
 
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.tests import new_test_user
 from odoo.tests.common import tagged, TransactionCase
 

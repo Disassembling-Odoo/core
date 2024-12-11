@@ -14,7 +14,7 @@ from datetime import datetime, date
 from lxml import etree
 
 import odoo
-from odoo.ormapping import BaseModel, Command
+from odoo.microkernel.ormapping import BaseModel, Command
 from odoo.tools.safe_eval import safe_eval
 
 _logger = logging.getLogger(__name__)
@@ -981,9 +981,9 @@ def convert_read_to_form(values, fields):
         elif field_info['type'] == 'many2many':
             value = M2MValue({'id': id_} for id_ in (value or ()))
         elif field_info['type'] == 'datetime' and isinstance(value, datetime):
-            value = odoo.ormapping.fields.Datetime.to_string(value)
+            value = odoo.microkernel.ormapping.fields.Datetime.to_string(value)
         elif field_info['type'] == 'date' and isinstance(value, date):
-            value = odoo.ormapping.fields.Date.to_string(value)
+            value = odoo.microkernel.ormapping.fields.Date.to_string(value)
         result[fname] = value
     return result
 
@@ -1002,9 +1002,9 @@ def _cleanup_from_default(type_, value):
         assert False, "not implemented yet"
         return [cmd for cmd in value if cmd[0] != Command.SET]
     elif type_ == 'datetime' and isinstance(value, datetime):
-        return odoo.ormapping.fields.Datetime.to_string(value)
+        return odoo.microkernel.ormapping.fields.Datetime.to_string(value)
     elif type_ == 'date' and isinstance(value, date):
-        return odoo.ormapping.fields.Date.to_string(value)
+        return odoo.microkernel.ormapping.fields.Date.to_string(value)
     return value
 
 

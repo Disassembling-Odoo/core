@@ -1,5 +1,5 @@
 import io
-from odoo import models
+from odoo.microkernel.ormapping import models
 from odoo.tools import pdf
 from odoo.tools.pdf import OdooPdfFileReader, OdooPdfFileWriter
 

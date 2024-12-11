@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, fields
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon
 from odoo.exceptions import ValidationError
 from odoo.tests import Form, tagged
-from odoo import Command
 from odoo.tools.safe_eval import datetime
 
 

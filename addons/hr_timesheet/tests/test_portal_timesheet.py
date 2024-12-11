@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.tests import tagged
 
 from odoo.addons.project.tests.test_project_sharing import TestProjectSharingCommon

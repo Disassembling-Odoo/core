@@ -1,6 +1,6 @@
-from odoo import models, Command, _
+from odoo import _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, models, fields
 from odoo.exceptions import UserError, ValidationError
 from odoo.microkernel.utils import format_date
 

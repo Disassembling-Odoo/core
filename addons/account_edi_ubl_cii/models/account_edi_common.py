@@ -1,6 +1,7 @@
 from markupsafe import Markup
 
-from odoo import _, models, Command
+from odoo import _
+from odoo.microkernel.ormapping import models, Command
 from odoo.addons.base.models.res_bank import sanitize_account_number
 from odoo.exceptions import UserError, ValidationError
 from odoo.tools import float_repr, format_list

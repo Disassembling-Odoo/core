@@ -2,7 +2,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo import _
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.exceptions import AccessError
 from odoo.technology.framework.http import request
 from odoo.microkernel.osv import expression

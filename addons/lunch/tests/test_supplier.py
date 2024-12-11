@@ -5,7 +5,7 @@ import pytz
 from datetime import datetime, time, timedelta
 from unittest.mock import patch
 
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.tests import common
 
 from odoo.addons.lunch.tests.common import TestsCommon

@@ -5,7 +5,7 @@ from datetime import date
 from dateutil.relativedelta import relativedelta
 from freezegun import freeze_time
 
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.technology.adjustable import mute_logger
 
 from odoo.addons.hr_holidays.tests.common import TestHrHolidaysCommon

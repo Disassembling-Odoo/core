@@ -3,7 +3,8 @@
 
 import logging
 
-from odoo import models, exceptions, _
+from odoo import exceptions, _
+from odoo.microkernel.ormapping import models
 from odoo.addons.iap.tools import iap_tools
 from requests.exceptions import HTTPError
 

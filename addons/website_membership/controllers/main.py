@@ -3,7 +3,7 @@
 
 import werkzeug.urls
 
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 
 from odoo.technology.framework import http
 from odoo.technology.framework.http import request

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from odoo.technology.framework import http
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.technology.framework.http import request
 from odoo.tools import float_is_zero
 from odoo.addons.pos_self_order.controllers.orders import PosSelfOrderController

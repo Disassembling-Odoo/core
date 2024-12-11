@@ -7,7 +7,7 @@ from odoo.exceptions import AccessError
 from odoo.addons.base.tests.common import TransactionCaseWithUserDemo
 from odoo.tests.common import TransactionCase
 from odoo.technology.adjustable import mute_logger
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 
 
 class TestACL(TransactionCaseWithUserDemo):

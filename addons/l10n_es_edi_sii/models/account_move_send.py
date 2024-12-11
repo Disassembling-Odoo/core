@@ -1,5 +1,4 @@
-from odoo import models
-
+from odoo.microkernel.ormapping import models
 
 class AccountMoveSend(models.AbstractModel):
     _inherit = 'account.move.send'

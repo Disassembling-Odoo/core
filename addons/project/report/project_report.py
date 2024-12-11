@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import models, tools
+from odoo import tools
 
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.addons.rating.models.rating_data import RATING_LIMIT_MIN, RATING_TEXT
 from odoo.technology import db
 

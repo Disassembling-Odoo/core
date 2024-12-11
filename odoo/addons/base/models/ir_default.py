@@ -4,9 +4,9 @@
 import json
 from datetime import date
 
-from odoo import models, tools, _, SUPERUSER_ID
+from odoo import tools, _, SUPERUSER_ID
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.exceptions import ValidationError
 from odoo.technology.db import SQL
 from odoo.technology.cache import ormcache

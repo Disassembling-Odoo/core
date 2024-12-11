@@ -4,7 +4,7 @@ from datetime import datetime
 from dateutil.relativedelta import relativedelta
 from freezegun import freeze_time
 
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon
 from odoo.addons.account.tests.test_account_move_send import TestAccountMoveSendCommon
 from odoo.exceptions import UserError

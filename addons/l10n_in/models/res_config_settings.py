@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import _, models
-from odoo.ormapping import fields
+from odoo import _
+from odoo.microkernel.ormapping import models, fields
 from odoo.exceptions import ValidationError
 from odoo.addons.l10n_in.models.iap_account import IAP_SERVICE_NAME
 

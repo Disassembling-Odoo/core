@@ -4,7 +4,7 @@ from datetime import date, datetime
 from pytz import utc, timezone
 
 from odoo.addons.resource.models.utils import Intervals, sum_intervals
-from odoo.ormapping import Date
+from odoo.microkernel.ormapping import Date
 
 from .common import TestContractCommon
 

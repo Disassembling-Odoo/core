@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import Command, models
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, models, fields
 
 
 class FleetVehicle(models.Model):

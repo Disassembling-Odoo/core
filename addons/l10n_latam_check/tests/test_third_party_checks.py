@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, fields
 from odoo.addons.l10n_latam_check.tests.common import L10nLatamCheckTest
 from odoo.exceptions import ValidationError, UserError
 from odoo.tests.common import tagged
-from odoo import Command
 
 
 @tagged('post_install_l10n', 'post_install', '-at_install')

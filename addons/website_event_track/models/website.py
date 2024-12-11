@@ -1,12 +1,9 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-
-
 import base64
 
-from odoo import models
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.exceptions import ValidationError
 from odoo.tools.image import ImageProcess
 from odoo.tools.translate import _

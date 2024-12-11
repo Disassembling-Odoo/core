@@ -3,9 +3,9 @@
 import uuid
 from ast import literal_eval
 from werkzeug.urls import url_encode
-from odoo import exceptions, models, _
+from odoo import exceptions, _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 
 
 class PortalMixin(models.AbstractModel):

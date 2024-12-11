@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 import io
-from odoo import models
+from odoo.microkernel.ormapping import models
 from odoo.microkernel.api import api
 from odoo.tools.pdf import OdooPdfFileReader, OdooPdfFileWriter
 from pathlib import Path

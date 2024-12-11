@@ -1,5 +1,5 @@
 from odoo.tests import tagged
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.addons.base.tests.common import BaseCommon
 from markupsafe import Markup
 

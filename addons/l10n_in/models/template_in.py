@@ -1,9 +1,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-from odoo import models, _
-from odoo.ormapping import fields
+from odoo import _
+from odoo.microkernel.ormapping import Command, models, fields
 from odoo.addons.account.models.chart_template import template
-from odoo import Command
-
 
 class AccountChartTemplate(models.AbstractModel):
     _inherit = 'account.chart.template'

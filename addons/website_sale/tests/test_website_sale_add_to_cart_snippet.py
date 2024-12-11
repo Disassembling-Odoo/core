@@ -2,7 +2,7 @@
 
 import logging
 
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.tests import HttpCase, tagged
 
 _logger = logging.getLogger(__name__)

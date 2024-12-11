@@ -2,8 +2,7 @@
 from datetime import datetime
 
 from odoo.tests.common import TransactionCase
-from odoo import Command
-from odoo.ormapping import Datetime
+from odoo.microkernel.ormapping import Command, Datetime
 
 class TestHolidayContract(TransactionCase):
 

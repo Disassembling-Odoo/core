@@ -7,7 +7,8 @@ from os import pardir
 from os.path import isfile, join as opj
 
 import odoo
-from odoo import models, tools
+from odoo import tools
+from odoo.microkernel.ormapping import models
 from odoo.technology.cache import ormcache
 
 

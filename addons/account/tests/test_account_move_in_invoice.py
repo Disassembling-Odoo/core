@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 # pylint: disable=bad-whitespace
 from freezegun import freeze_time
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, fields
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon
 from odoo.tests import Form, tagged
-from odoo import Command
 from odoo.microkernel.osv import expression
 from odoo.exceptions import ValidationError, UserError
 from datetime import date

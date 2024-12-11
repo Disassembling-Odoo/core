@@ -2,8 +2,7 @@
 from hashlib import sha256
 from base64 import b64encode
 from lxml import etree
-from odoo import models
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.technology.utils import file_path
 import re
 

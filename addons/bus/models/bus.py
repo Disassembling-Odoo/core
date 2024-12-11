@@ -11,9 +11,8 @@ import time
 from psycopg2 import InterfaceError
 
 import odoo
-from odoo import models
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.technology.framework import CommonServer
 from odoo.technology.utils import OrderedSet, json_default
 from odoo.technology.db import SQL

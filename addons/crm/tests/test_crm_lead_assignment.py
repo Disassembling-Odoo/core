@@ -7,7 +7,7 @@ from datetime import datetime
 from dateutil.relativedelta import relativedelta
 from unittest.mock import patch
 
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.addons.crm.tests.common import TestLeadConvertCommon
 from odoo.tests.common import tagged
 from odoo.technology.adjustable import mute_logger

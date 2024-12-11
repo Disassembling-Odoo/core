@@ -1,7 +1,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo import tests
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.addons.website_slides.tests import test_ui_wslides
 
 

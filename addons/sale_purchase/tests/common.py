@@ -2,7 +2,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo.addons.sale.tests.common import TestSaleCommon
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 
 class TestCommonSalePurchaseNoChart(TestSaleCommon):
 

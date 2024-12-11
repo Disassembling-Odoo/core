@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
-
-from odoo import _, models
+from odoo import _
+from odoo.microkernel.ormapping import models
 from odoo.exceptions import UserError
-
 
 class AccountFiscalPosition(models.Model):
     _inherit = "account.fiscal.position"

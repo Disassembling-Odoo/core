@@ -2,9 +2,8 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from ast import literal_eval
-from odoo import models
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 
 class ProjectStageDelete(models.TransientModel):
     _name = 'project.project.stage.delete.wizard'

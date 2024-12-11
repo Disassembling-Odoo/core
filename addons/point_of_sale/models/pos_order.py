@@ -10,9 +10,9 @@ from uuid import uuid4
 import psycopg2
 import pytz
 
-from odoo import models, tools, _
+from odoo import tools, _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.tools import float_is_zero, float_round, float_repr, float_compare, 
 from odoo.tools.i18n import formatLang
 from odoo.exceptions import ValidationError, UserError

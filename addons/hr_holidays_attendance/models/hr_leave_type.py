@@ -2,9 +2,9 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.microkernel.utils import format_duration
-from odoo import _, models
+from odoo import _
 
 
 class HRLeaveType(models.Model):

@@ -7,8 +7,7 @@ from psycopg2.errors import NotNullViolation
 from odoo.exceptions import ValidationError
 from odoo.tests import Form, TransactionCase, HttpCase, tagged
 from odoo.technology.adjustable import mute_logger
-from odoo import Command
-
+from odoo.microkernel.ormapping import Command
 
 class TestXMLID(TransactionCase):
     def get_data(self, xml_id):

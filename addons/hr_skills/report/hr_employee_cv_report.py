@@ -2,7 +2,8 @@
 
 from collections import defaultdict
 
-from odoo import _, models
+from odoo import _
+from odoo.microkernel.ormapping import models
 
 class EmployeeResumeReport(models.AbstractModel):
     _name = 'report.hr_skills.report_employee_cv'

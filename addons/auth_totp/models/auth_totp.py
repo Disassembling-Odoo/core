@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from odoo import models
+from odoo.microkernel.ormapping import models
 
 import logging
 _logger = logging.getLogger(__name__)

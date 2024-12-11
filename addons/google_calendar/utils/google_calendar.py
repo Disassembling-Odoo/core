@@ -6,7 +6,7 @@ import requests
 import json
 import logging
 
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.addons.google_calendar.utils.google_event import GoogleEvent
 from odoo.addons.google_account.models.google_service import TIMEOUT
 

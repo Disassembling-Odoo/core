@@ -1,5 +1,5 @@
 from odoo.addons.crm.tests.common import TestCrmCommon
-from odoo.ormapping import Command
+from odoo.microkernel.ormapping import Command
 
 
 class TestSaleCrm(TestCrmCommon):

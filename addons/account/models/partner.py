@@ -8,9 +8,9 @@ import logging
 
 from psycopg2 import errors as pgerrors
 
-from odoo import models, _
+from odoo import _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.microkernel.osv import expression
 from odoo.exceptions import ValidationError, UserError
 from odoo.technology.adjustable import mute_logger

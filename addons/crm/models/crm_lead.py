@@ -10,7 +10,7 @@ from markupsafe import Markup
 
 from odoo import tools
 from odoo.microkernel.api import api
-from odoo.ormapping import models, fields, NewId
+from odoo.microkernel.ormapping import models, fields, NewId
 from odoo.addons.iap.tools import iap_tools
 from odoo.addons.mail.tools import mail_validation
 from odoo.addons.phone_validation.tools import phone_validation

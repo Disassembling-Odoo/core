@@ -1,5 +1,4 @@
-from odoo import models
-
+from odoo.microkernel.ormapping import models
 
 class AccountEdiXmlUBL21Zatca(models.AbstractModel):
     _inherit = "account.edi.xml.ubl_21.zatca"

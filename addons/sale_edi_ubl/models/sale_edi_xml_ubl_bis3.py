@@ -1,5 +1,4 @@
-from odoo import models, Command
-
+from odoo.microkernel.ormapping import models, Command
 
 class SaleEdiXmlUBLBIS3(models.AbstractModel):
     _name = 'sale.edi.xml.ubl_bis3'

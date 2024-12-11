@@ -42,7 +42,7 @@ class ParseError(Exception):
 
 def _get_idref(self, env, model_str, idref):
     idref2 = dict(idref,
-                  Command=odoo.ormapping.fields.Command,
+                  Command=odoo.microkernel.ormapping.fields.Command,
                   time=time,
                   DateTime=datetime,
                   datetime=datetime,

@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
-
-from odoo import models
-
+from odoo.microkernel.ormapping import models
 
 class AccountEdiXmlUBLANZ(models.AbstractModel):
     _inherit = "account.edi.xml.ubl_bis3"

@@ -4,7 +4,7 @@
 from datetime import datetime, timedelta
 
 from odoo import tests
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.tests import Form
 
 

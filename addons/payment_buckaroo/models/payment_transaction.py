@@ -4,7 +4,8 @@ import logging
 
 from werkzeug import urls
 
-from odoo import _, models
+from odoo import _
+from odoo.microkernel.ormapping import models
 from odoo.exceptions import ValidationError
 
 from odoo.addons.payment_buckaroo import const

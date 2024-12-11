@@ -1,4 +1,4 @@
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.tests import Form, TransactionCase
 
 

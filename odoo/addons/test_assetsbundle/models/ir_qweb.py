@@ -1,4 +1,4 @@
-from odoo import models
+from odoo.microkernel.ormapping import models
 from odoo.technology.conf import config
 init = config['init']
 

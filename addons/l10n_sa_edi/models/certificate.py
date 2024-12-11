@@ -5,7 +5,7 @@ from cryptography.x509 import ObjectIdentifier
 from cryptography.x509.oid import NameOID
 from cryptography.hazmat.primitives import hashes, serialization
 
-from odoo import models
+from odoo.microkernel.ormapping import models
 from odoo.microkernel.api import api
 from odoo.technology.framework import dispatch_rpc
 

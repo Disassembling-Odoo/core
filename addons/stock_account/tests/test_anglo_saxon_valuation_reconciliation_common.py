@@ -5,7 +5,7 @@ from freezegun import freeze_time
 
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon
 from odoo.tests import tagged
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 
 
 class ValuationReconciliationTestCommon(AccountTestInvoicingCommon):

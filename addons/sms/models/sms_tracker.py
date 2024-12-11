@@ -1,8 +1,5 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-
-from odoo import models
-from odoo.ormapping import fields
-
+from odoo.microkernel.ormapping import models, fields
 
 class SmsTracker(models.Model):
     """Relationship between a sent SMS and tracking records such as notifications and traces.

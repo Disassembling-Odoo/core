@@ -9,7 +9,7 @@ from collections import Counter
 from werkzeug.exceptions import NotFound
 
 from odoo import _
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.addons.website.controllers.main import QueryURL
 from odoo.technology.framework.http import request
 from odoo.microkernel.osv import expression

@@ -1,5 +1,4 @@
-from odoo import models
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 
 # Good ratio to have a large image still small enough to stay under 5MB (common limit)
 # Close to the 2:1 ratio recommended by twitter and these dimensions are recommended by meta

@@ -9,9 +9,9 @@ from collections import defaultdict
 from dateutil.relativedelta import relativedelta
 from markupsafe import Markup
 
-from odoo import models, tools, _
+from odoo import tools, _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.exceptions import AccessError, UserError, ValidationError
 from odoo.microkernel.osv import expression
 from odoo.tools import is_html_empty

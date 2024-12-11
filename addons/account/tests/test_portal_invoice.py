@@ -1,4 +1,4 @@
-from odoo.ormapping import Command
+from odoo.microkernel.ormapping import Command
 from odoo.tests.common import tagged
 from odoo.addons.account.tests.common import AccountTestInvoicingHttpCommon
 from odoo.addons.base.tests.common import BaseUsersCommon

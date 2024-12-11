@@ -5,7 +5,7 @@ from dateutil.relativedelta import relativedelta
 from operator import itemgetter
 
 from odoo import _
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.technology.framework.http import request
 from odoo.technology.framework import http
 from odoo.technology.utils import date_utils, groupby as groupbyelem

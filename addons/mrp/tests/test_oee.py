@@ -4,7 +4,7 @@
 from datetime import datetime, timedelta, time
 from pytz import timezone, utc
 
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.addons.mrp.tests.common import TestMrpCommon
 
 

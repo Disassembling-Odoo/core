@@ -30,8 +30,9 @@ except ImportError:
     slugify_lib = None
 
 import odoo
-from odoo import models, tools, SUPERUSER_ID
+from odoo import tools, SUPERUSER_ID
 from odoo.exceptions import AccessDenied
+from odoo.microkernel.ormapping import models
 from odoo.technology.framework.http import request, Response, ROUTING_KEYS
 from odoo.microkernel.modules.registry import Registry
 from odoo.technology.framework import check_session

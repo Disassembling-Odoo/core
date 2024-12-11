@@ -1,5 +1,4 @@
-from odoo import models
-
+from odoo.microkernel.ormapping import models
 
 class IrUiMenu(models.Model):
     _inherit = 'ir.ui.menu'

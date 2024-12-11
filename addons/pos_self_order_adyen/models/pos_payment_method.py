@@ -1,6 +1,6 @@
 from datetime import datetime, timezone
 import random
-from odoo import models
+from odoo.microkernel.ormapping import models
 from odoo.addons.pos_adyen.models.pos_payment_method import UNPREDICTABLE_ADYEN_DATA
 from odoo.microkernel.api import api
 

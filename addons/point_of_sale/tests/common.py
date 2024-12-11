@@ -3,7 +3,7 @@ from random import randint
 from datetime import datetime
 
 from odoo import tools
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.addons.stock_account.tests.test_anglo_saxon_valuation_reconciliation_common import ValuationReconciliationTestCommon
 from odoo.tests import Form
 

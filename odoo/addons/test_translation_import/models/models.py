@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-from odoo import models
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.tools.translate import _, xml_translate, LazyTranslate
 
 _lt = LazyTranslate(__name__)

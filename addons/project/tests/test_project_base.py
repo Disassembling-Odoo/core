@@ -1,7 +1,6 @@
 from lxml import etree
 
-from odoo import Command
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, fields
 from odoo.tests import Form, users
 from odoo.tests.common import TransactionCase
 from odoo.exceptions import UserError

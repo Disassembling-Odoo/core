@@ -3,9 +3,9 @@ from datetime import datetime, time
 from dateutil.relativedelta import relativedelta
 from pytz import UTC
 
-from odoo import models, _
-from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo import _
+from odoo.microkernel.api import models, api
+from odoo.microkernel.ormapping import fields
 from odoo.tools.i18n import get_lang
 from odoo.microkernel.utils import DEFAULT_SERVER_DATETIME_FORMAT
 from odoo.tools.float_utils import float_compare, float_round

@@ -10,7 +10,7 @@ try:
 except ImportError:
     service_account = Request = None
 
-from odoo import models
+from odoo.microkernel.ormapping import models
 from odoo.exceptions import ValidationError
 
 from ..utils.cloud_storage_google_utils import generate_signed_url_v4

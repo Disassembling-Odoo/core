@@ -5,8 +5,7 @@ from datetime import datetime, timedelta
 from freezegun import freeze_time
 from unittest.mock import patch
 
-from odoo import Command
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, fields
 from odoo.addons.mail.models.discuss.discuss_channel import channel_avatar, group_avatar
 from odoo.addons.mail.tests.common import mail_new_test_user
 from odoo.addons.mail.tests.common import MailCommon

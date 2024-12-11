@@ -1,6 +1,7 @@
 from markupsafe import Markup
 
-from odoo import _, models
+from odoo import _
+from odoo.microkernel.ormapping import models
 
 
 class SaleEdiCommon(models.AbstractModel):

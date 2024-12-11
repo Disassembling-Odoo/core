@@ -6,9 +6,9 @@ from uuid import uuid4
 import pytz
 import secrets
 
-from odoo import models, _, Command, tools, SUPERUSER_ID
+from odoo import _, tools, SUPERUSER_ID
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, models, fields
 from odoo.technology import conf
 from odoo.technology.framework.http import request
 from odoo.exceptions import AccessError, ValidationError, UserError

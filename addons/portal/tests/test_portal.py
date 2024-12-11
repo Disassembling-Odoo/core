@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.technology.framework.http import Request
 from odoo.tests.common import HttpCase, tagged
 

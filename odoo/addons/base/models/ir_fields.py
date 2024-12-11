@@ -9,9 +9,8 @@ from typing import NamedTuple
 import psycopg2
 import pytz
 
-from odoo import Command, models
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, models, fields
 from odoo.technology.utils import OrderedSet
 from odoo.tools.translate import _, code_translations, LazyTranslate
 

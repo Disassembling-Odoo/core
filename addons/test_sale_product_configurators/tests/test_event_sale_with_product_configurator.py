@@ -2,7 +2,7 @@
 
 from datetime import datetime, timedelta
 
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.tests import HttpCase, tagged
 
 from odoo.addons.mail.tests.common import mail_new_test_user

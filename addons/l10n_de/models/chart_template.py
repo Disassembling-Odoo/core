@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from odoo.addons.account.models.chart_template import template
-from odoo import models
+from odoo.microkernel.ormapping import models
 
 class AccountChartTemplate(models.AbstractModel):
     _inherit = 'account.chart.template'

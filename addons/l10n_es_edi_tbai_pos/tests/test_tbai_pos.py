@@ -1,6 +1,6 @@
 from unittest.mock import patch
 
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.addons.l10n_es_edi_tbai.tests.common import TestEsEdiTbaiCommonGipuzkoa
 from odoo.addons.point_of_sale.tests.common import TestPointOfSaleCommon
 from odoo.exceptions import UserError

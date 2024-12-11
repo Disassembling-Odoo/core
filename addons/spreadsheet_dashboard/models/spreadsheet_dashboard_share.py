@@ -2,9 +2,9 @@ import base64
 import uuid
 from werkzeug.exceptions import Forbidden
 
-from odoo import models, _
+from odoo import _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.technology.utils import consteq
 
 class SpreadsheetDashboardShare(models.Model):

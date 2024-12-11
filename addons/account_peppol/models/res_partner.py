@@ -7,9 +7,8 @@ from markupsafe import Markup
 from hashlib import md5
 from urllib import parse
 
-from odoo import models
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.addons.account_peppol.tools.demo_utils import handle_demo
 from odoo.addons.account.models.company import PEPPOL_LIST
 

@@ -3,7 +3,7 @@
 
 from lxml import etree
 
-from odoo.ormapping import Command
+from odoo.microkernel.ormapping import Command
 from odoo.tests import Form, TransactionCase
 from odoo.exceptions import AccessError, RedirectWarning, UserError, ValidationError
 

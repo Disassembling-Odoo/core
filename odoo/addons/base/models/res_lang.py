@@ -8,10 +8,10 @@ import logging
 import re
 from typing import Any, Literal
 
-from odoo import models, tools, _
+from odoo import tools, _
 from odoo.microkernel.api import api
 from odoo.tools import i18n
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.exceptions import UserError, ValidationError
 from odoo.technology.utils import OrderedSet, frozendict
 from odoo.technology.cache import ormcache

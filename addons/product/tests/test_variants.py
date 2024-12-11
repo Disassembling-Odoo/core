@@ -11,7 +11,7 @@ import unittest.mock
 
 from PIL import Image
 
-from odoo.ormapping import Command
+from odoo.microkernel.ormapping import Command
 from odoo.exceptions import UserError
 from odoo.tests import tagged, TransactionCase, Form
 from odoo.technology.adjustable import mute_logger

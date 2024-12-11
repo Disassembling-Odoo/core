@@ -5,9 +5,9 @@ from contextlib import ExitStack
 from markupsafe import Markup
 from urllib.parse import urlparse
 
-from odoo import models, tools, SUPERUSER_ID, _
+from odoo import tools, SUPERUSER_ID, _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.exceptions import UserError, AccessError, RedirectWarning
 from odoo.technology import conf
 from odoo.technology.framework import compute_session_token

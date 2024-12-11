@@ -3,9 +3,8 @@
 
 import logging
 
-from odoo import Command, models
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, models, fields
 from odoo.addons.sms.tools.sms_tools import sms_content_to_rendered_html
 from odoo.tools import html2plaintext
 

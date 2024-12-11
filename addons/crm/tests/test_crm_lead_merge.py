@@ -5,7 +5,7 @@ import base64
 from datetime import timedelta
 
 from odoo.addons.crm.tests.common import TestLeadConvertMassCommon
-from odoo.ormapping import Datetime
+from odoo.microkernel.ormapping import Datetime
 from odoo.tests.common import tagged, users
 from odoo.technology.adjustable import mute_logger
 

@@ -3,9 +3,8 @@
 
 import pytz
 
-from odoo import models
+from odoo.microkernel.ormapping import models
 from odoo.microkernel.osv.expression import OR
-
 
 class HrContract(models.Model):
     _inherit = 'hr.contract'

@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-
-from odoo import models
+from odoo.microkernel.ormapping import models
 from odoo.addons.base.models.ir_model import MODULE_UNINSTALL_FLAG
 from odoo.microkernel.api import api
-
 
 class IrConfigParameter(models.Model):
     _inherit = 'ir.config_parameter'

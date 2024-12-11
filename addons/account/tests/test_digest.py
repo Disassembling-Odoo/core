@@ -1,6 +1,6 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.addons.digest.tests.common import TestDigestCommon
 from odoo.technology.adjustable import mute_logger
 from odoo.tests import tagged

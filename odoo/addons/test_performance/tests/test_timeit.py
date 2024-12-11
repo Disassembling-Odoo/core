@@ -2,8 +2,7 @@ import logging
 import timeit
 from typing import Literal
 
-from odoo import Command
-from odoo.ormapping import BaseModel
+from odoo.microkernel.ormapping import Command, BaseModel
 from odoo.tests.common import TransactionCase
 
 _logger = logging.getLogger(__name__)

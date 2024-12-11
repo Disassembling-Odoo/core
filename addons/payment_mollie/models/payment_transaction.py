@@ -5,8 +5,9 @@ import pprint
 
 from werkzeug import urls
 
-from odoo import _, models
+from odoo import _
 from odoo.exceptions import ValidationError
+from odoo.microkernel.ormapping import models
 
 from odoo.addons.payment.const import CURRENCY_MINOR_UNITS
 from odoo.addons.payment_mollie import const

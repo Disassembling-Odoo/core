@@ -10,8 +10,8 @@ from werkzeug.urls import url_encode, url_join
 
 from odoo.microkernel.api import api
 from odoo.technology import utils as tech_utils
-from odoo import _, models, tools
-from odoo.ormapping import fields
+from odoo import _, tools
+from odoo.microkernel.ormapping import models, fields
 from odoo.exceptions import AccessError, UserError
 
 _logger = logging.getLogger(__name__)

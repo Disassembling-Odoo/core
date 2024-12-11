@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo.ormapping import Command, Datetime
+from odoo.microkernel.ormapping import Command, Datetime
 from odoo.exceptions import ValidationError
 from odoo.tests import tagged
 

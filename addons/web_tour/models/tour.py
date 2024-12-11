@@ -1,9 +1,8 @@
-from odoo import models, Command
 import json
 import base64
 
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields, Command
 
 
 class Tour(models.Model):

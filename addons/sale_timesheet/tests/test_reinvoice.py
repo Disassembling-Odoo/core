@@ -4,7 +4,7 @@ from datetime import timedelta
 
 from odoo.addons.sale_timesheet.tests.common import TestCommonSaleTimesheet
 
-from odoo.ormapping import Date
+from odoo.microkernel.ormapping import Date
 from odoo.tests import Form, tagged
 
 

@@ -5,10 +5,10 @@ import ast
 import re
 from collections import defaultdict
 
-from odoo import models, _, Command
+from odoo import _
 from odoo.microkernel import osv
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, models, fields
 from odoo.exceptions import ValidationError, UserError
 
 FIGURE_TYPE_SELECTION_VALUES = [

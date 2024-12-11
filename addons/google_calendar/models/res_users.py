@@ -3,10 +3,8 @@
 
 import logging
 
-
-from odoo import models, Command
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, models, fields
 from odoo.addons.google_calendar.utils.google_calendar import GoogleCalendarService, InvalidSyncToken
 from odoo.addons.google_calendar.models.google_sync import google_calendar_token
 from odoo.addons.google_account.models import google_service

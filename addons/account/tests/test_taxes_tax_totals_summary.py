@@ -1,6 +1,6 @@
 from contextlib import contextmanager
 
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.addons.account.tests.common import TestTaxCommon
 from odoo.tests import tagged
 

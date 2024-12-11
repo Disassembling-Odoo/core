@@ -1,12 +1,10 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-
 from collections import defaultdict
 
-from odoo import models
+from odoo.microkernel.ormapping import models
 from odoo.microkernel.utils import DEFAULT_SERVER_DATE_FORMAT
 
 from odoo.addons.hr_homeworking.models.hr_homeworking import DAYS
-
 
 class HrEmployeeBase(models.AbstractModel):
     _inherit = "hr.employee.base"

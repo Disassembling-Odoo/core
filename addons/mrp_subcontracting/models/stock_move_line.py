@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-
-
-from odoo import _, models
+from odoo import _
+from odoo.microkernel.ormapping import models
 from odoo.microkernel.api import api
-
 
 class StockMoveLine(models.Model):
     _inherit = 'stock.move.line'

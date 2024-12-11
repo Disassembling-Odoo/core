@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-
-from odoo import models
+from odoo.microkernel.ormapping import models
 from odoo.microkernel.osv.expression import AND
-
 
 class HrAttendance(models.Model):
     _inherit = "hr.attendance"

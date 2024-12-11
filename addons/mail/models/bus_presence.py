@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 
 
 class BusPresence(models.Model):

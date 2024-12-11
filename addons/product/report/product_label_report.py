@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-
 from collections import defaultdict
 
-from odoo import _, models
+from odoo import _
+from odoo.microkernel.ormapping import models
 from odoo.exceptions import UserError
-
 
 def _prepare_data(env, docids, data):
     # change product ids by actual product object to get access to fields in xml template

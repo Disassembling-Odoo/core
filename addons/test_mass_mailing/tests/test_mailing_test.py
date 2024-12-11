@@ -3,7 +3,7 @@
 import lxml.html
 
 from odoo.addons.test_mass_mailing.tests.common import TestMassMailCommon
-from odoo.ormapping import Command
+from odoo.microkernel.ormapping import Command
 from odoo.tests.common import users, tagged
 from odoo.technology.adjustable import mute_logger
 

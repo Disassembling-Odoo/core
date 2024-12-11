@@ -1,5 +1,6 @@
 from base64 import b64encode
-from odoo import models, _
+from odoo import _
+from odoo.microkernel.ormapping import models
 from odoo.addons.account.models.company import PEPPOL_LIST
 from odoo.addons.account_edi_proxy_client.models.account_edi_proxy_user import AccountEdiProxyError
 

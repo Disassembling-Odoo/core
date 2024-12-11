@@ -3,9 +3,7 @@
 import hashlib
 import logging
 
-from odoo import models
-
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.addons.payment_aps import const
 
 

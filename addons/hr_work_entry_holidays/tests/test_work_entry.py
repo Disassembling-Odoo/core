@@ -7,7 +7,7 @@ import pytz
 
 from odoo.exceptions import ValidationError
 from odoo.tests.common import tagged
-from odoo.ormapping import Date
+from odoo.microkernel.ormapping import Date
 from odoo.addons.hr_work_entry_holidays.tests.common import TestWorkEntryHolidaysBase
 
 

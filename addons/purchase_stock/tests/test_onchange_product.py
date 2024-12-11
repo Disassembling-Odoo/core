@@ -3,7 +3,7 @@
 
 from datetime import datetime
 
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.tests import Form, TransactionCase
 from odoo.microkernel.utils import DEFAULT_SERVER_DATETIME_FORMAT
 

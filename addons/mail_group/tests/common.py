@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import Command, tools
+from odoo import tools
+from odoo.microkernel.ormapping import Command
 from odoo.addons.mail.tests.common import mail_new_test_user
 from odoo.addons.mail.tests.common import MailCommon
 

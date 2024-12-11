@@ -1,8 +1,8 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import SUPERUSER_ID, models, tools
+from odoo import SUPERUSER_ID, tools
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.technology.framework.http import request
 from odoo.microkernel.osv import expression
 from odoo.tools.translate import _, LazyTranslate

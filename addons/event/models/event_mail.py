@@ -7,9 +7,9 @@ import threading
 
 from dateutil.relativedelta import relativedelta
 
-from odoo import models, tools
+from odoo import tools
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.tools import exception_to_unicode
 from odoo.tools.translate import _
 from odoo.exceptions import MissingError

@@ -25,27 +25,29 @@ from markupsafe import Markup, escape as markup_escape
 from psycopg2.extras import Json as PsycopgJson
 from difflib import get_close_matches, unified_diff
 from hashlib import sha256
-from ..exceptions import AccessError, UserError, ValidationError, MissingError
 
-from ..technology.db import sql
+from ...tools import (
+    float_repr, float_round, float_compare, float_is_zero, human_size,
+    image_process, is_list_of,
+    html_normalize, html_sanitize
+)
+from ...tools.mimetypes import guess_mimetype
+from ...tools.misc import unquote, has_list_types
+from ...tools.translate import html_translate
+
+from ...exceptions import AccessError, UserError, ValidationError, MissingError
+
+from odoo.technology.db import sql
 
 from .base import IdType, NewId
 from .constant import Command, PREFETCH_MAX
 from .utils import determine, first, check_property_field_value_name, expand_ids, is_definition_class
 
-from ..technology.db import SQL, pg_varchar
-from ..technology.utils import (
+from odoo.technology.db import SQL, pg_varchar
+from odoo.technology.utils import (
     check_pg_name, date_utils, OrderedSet, merge_sequences, unique, lazy_property
 )
-from ..technology.adjustable.netsvc import ColoredFormatter, GREEN, RED, DEFAULT, COLOR_PATTERN
-from ..tools import (
-    float_repr, float_round, float_compare, float_is_zero, human_size,
-    image_process, is_list_of,
-    html_normalize, html_sanitize
-)
-from ..tools.mimetypes import guess_mimetype
-from ..tools.misc import unquote, has_list_types
-from ..tools.translate import html_translate
+from odoo.technology.adjustable.netsvc import ColoredFormatter, GREEN, RED, DEFAULT, COLOR_PATTERN
 
 from odoo.microkernel.utils import (
     DEFAULT_SERVER_DATE_FORMAT as DATE_FORMAT,

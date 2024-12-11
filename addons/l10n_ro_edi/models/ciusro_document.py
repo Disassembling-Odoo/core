@@ -3,9 +3,9 @@ import requests
 import zipfile
 
 from lxml import etree
-from odoo import models, _
+from odoo import _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 
 NS_UPLOAD = {"ns": "mfp:anaf:dgti:spv:respUploadFisier:v1"}
 NS_STATUS = {"ns": "mfp:anaf:dgti:efactura:stareMesajFactura:v1"}

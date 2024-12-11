@@ -8,7 +8,7 @@ from odoo.technology.adjustable import mute_logger
 from odoo.addons.base.tests.common import TransactionCaseWithUserDemo
 from odoo.tests import common, tagged
 from odoo.exceptions import AccessError, ValidationError
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 
 
 def create_automation(self, **kwargs):

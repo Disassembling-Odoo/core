@@ -1,8 +1,8 @@
 from urllib3.util import parse_url
 from urllib3.exceptions import LocationParseError
 
-from odoo import models, _
-from odoo.ormapping import fields
+from odoo import _
+from odoo.microkernel.ormapping import models, fields
 from odoo.exceptions import ValidationError
 
 

@@ -1,6 +1,7 @@
-from odoo import _, models, tools
+from odoo import _, tools
 from markupsafe import Markup
 from odoo.tools import html2plaintext
+from odoo.microkernel.ormapping import models
 
 DANISH_NATIONAL_IT_AND_TELECOM_AGENCY_ID = '320'
 

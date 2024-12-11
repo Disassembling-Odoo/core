@@ -2,13 +2,13 @@
 import contextlib
 
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 try:
     import phonenumbers
 except ImportError:
     phonenumbers = None
 
-from odoo import _, models, modules
+from odoo import _, modules
 from odoo.exceptions import UserError, ValidationError
 
 from odoo.addons.account_edi_proxy_client.models.account_edi_proxy_user import AccountEdiProxyError

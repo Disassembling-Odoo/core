@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-from odoo import models
+from odoo.microkernel.ormapping import models
 from odoo.tools.float_utils import float_repr
-
 
 class AccountMoveLine(models.Model):
 

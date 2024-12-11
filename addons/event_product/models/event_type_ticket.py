@@ -2,9 +2,8 @@
 
 import logging
 
-from odoo import models
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.addons.product.models.product_template import PRICE_CONTEXT_KEYS
 
 _logger = logging.getLogger(__name__)

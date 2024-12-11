@@ -3,7 +3,7 @@
 import binascii
 
 from odoo import _
-from odoo.ormapping import fields, Command
+from odoo.microkernel.ormapping import fields, Command
 from odoo.exceptions import AccessError, MissingError, ValidationError
 from odoo.technology.framework.http import request
 

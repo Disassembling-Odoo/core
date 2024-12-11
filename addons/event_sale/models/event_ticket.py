@@ -1,5 +1,4 @@
-from odoo import models
-
+from odoo.microkernel.ormapping import models
 
 class EventTicket(models.Model):
     _inherit = 'event.event.ticket'

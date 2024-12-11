@@ -59,7 +59,7 @@ import odoo
 from odoo.microkernel.api import api
 from odoo.technology.conf import config
 from odoo.exceptions import AccessError
-from odoo.ormapping import Command
+from odoo.microkernel.ormapping import Command
 from odoo.microkernel.modules.registry import Registry
 from odoo.technology.adjustable import mute_logger
 from odoo.technology.utils import DotDict
@@ -621,7 +621,7 @@ class BaseCase(case.TestCase, metaclass=MetaCase):
 
     def assertRecordValues(
             self,
-            records: odoo.ormapping.models.BaseModel,
+            records: odoo.microkernel.ormapping.models.BaseModel,
             expected_values: list[dict],
             *,
             field_names: Optional[Iterable[str]] = None,

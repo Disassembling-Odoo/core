@@ -1,5 +1,5 @@
-from odoo import models, _
-
+from odoo import _
+from odoo.microkernel.ormapping import models
 
 CHORUS_PRO_PEPPOL_ID = "0009:11000201100044"
 

@@ -5,8 +5,8 @@ from datetime import datetime as dt, time
 from datetime import timedelta as td
 from json import loads
 
-from odoo import SUPERUSER_ID, Command
-from odoo.ormapping import Date
+from odoo import SUPERUSER_ID
+from odoo.microkernel.ormapping import Command, Date
 from odoo.tests import Form, tagged, freeze_time
 from odoo.tests.common import TransactionCase
 from odoo.microkernel.utils import format_date

@@ -4,7 +4,7 @@
 import functools
 
 from odoo.tests.common import BaseCase
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.technology.utils import frozendict, lazy
 
 

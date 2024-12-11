@@ -10,9 +10,8 @@ from werkzeug.urls import url_parse
 import pytz
 import uuid
 
-from odoo import models, Command
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, models, fields
 from odoo.microkernel.osv.expression import AND
 from odoo.addons.base.models.res_partner import _tz_get
 from odoo.addons.calendar.models.calendar_attendee import Attendee

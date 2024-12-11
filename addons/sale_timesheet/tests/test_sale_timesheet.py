@@ -1,8 +1,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 from datetime import date, timedelta
 
-from odoo import Command
-from odoo.ormapping import Date
+from odoo.microkernel.ormapping import Command, Date
 from odoo.tools import float_is_zero
 from odoo.exceptions import UserError, ValidationError
 from odoo.addons.hr_timesheet.tests.test_timesheet import TestCommonTimesheet

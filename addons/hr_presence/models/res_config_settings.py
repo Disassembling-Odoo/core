@@ -1,6 +1,4 @@
-
-from odoo import models
-
+from odoo.microkernel.ormapping import models
 
 class ResConfigSettings(models.TransientModel):
     _inherit = 'res.config.settings'

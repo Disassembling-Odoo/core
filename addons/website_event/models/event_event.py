@@ -8,9 +8,9 @@ import werkzeug.urls
 
 from pytz import utc, timezone
 
-from odoo import models, _
+from odoo import _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.exceptions import UserError, ValidationError
 from odoo.microkernel.osv import expression
 from odoo.tools.i18n import get_lang

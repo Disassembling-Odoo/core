@@ -3,7 +3,7 @@
 
 import odoo
 
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.addons.point_of_sale.tests.common import TestPoSCommon
 from freezegun import freeze_time
 from dateutil.relativedelta import relativedelta

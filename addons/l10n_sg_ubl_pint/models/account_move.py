@@ -1,7 +1,6 @@
 import uuid
 
-from odoo import models
-
+from odoo.microkernel.ormapping import models
 
 class AccountMove(models.Model):
     _inherit = 'account.move'

@@ -1,8 +1,8 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-
 import logging
 
-from odoo import _, models
+from odoo import _
+from odoo.microkernel.ormapping import models
 from odoo.exceptions import ValidationError
 
 from odoo.addons.payment_custom.controllers.main import CustomController

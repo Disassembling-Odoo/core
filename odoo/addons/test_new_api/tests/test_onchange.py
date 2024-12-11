@@ -5,7 +5,7 @@ from unittest.mock import patch
 
 from odoo.addons.base.tests.common import SavepointCaseWithUserDemo
 from odoo.tests import TransactionCase, Form
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.technology.utils import submap
 
 

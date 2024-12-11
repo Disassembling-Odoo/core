@@ -7,8 +7,8 @@ import pytz
 import babel.dates
 from collections import defaultdict
 
-from odoo import tools, models
-from odoo.ormapping import fields
+from odoo import tools
+from odoo.microkernel.ormapping import models, fields
 from odoo.addons.website.controllers.main import QueryURL
 from odoo.technology import utils as tech_utils
 from odoo.technology.framework.http import request

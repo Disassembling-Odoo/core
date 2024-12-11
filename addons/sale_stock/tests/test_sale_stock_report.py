@@ -4,7 +4,7 @@
 from datetime import datetime, timedelta
 from odoo.tools import html2plaintext
 
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.tests import Form, tagged
 from odoo.exceptions import AccessError
 from odoo.addons.stock.tests.test_report import TestReportsCommon

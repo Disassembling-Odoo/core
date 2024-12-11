@@ -4,9 +4,9 @@
 import re
 
 import odoo
-from odoo import _, models, tools
+from odoo import _, tools
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.microkernel.osv import expression
 from odoo.addons.mail.tools.discuss import Store
 

@@ -3,7 +3,7 @@
 from dateutil.relativedelta import relativedelta
 from unittest.mock import patch
 
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.addons.mail.tests.common import MailCommon
 from odoo.addons.mail.tools.discuss import Store
 from odoo.tests.common import tagged, users

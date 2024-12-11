@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
-
-from odoo import models
+from odoo.microkernel.ormapping import models
 
 import re
-
 
 class AccountEdiXmlUBLEFFF(models.AbstractModel):
     _inherit = "account.edi.xml.ubl_20"

@@ -1,8 +1,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-
-from odoo import _, models
+from odoo import _
+from odoo.microkernel.ormapping import models
 from odoo.exceptions import UserError
-
 
 class AccountMove(models.Model):
     _inherit = "account.move"

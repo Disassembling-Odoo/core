@@ -7,15 +7,14 @@ from datetime import datetime
 from werkzeug.exceptions import Forbidden, NotFound
 from werkzeug.urls import url_decode, url_encode, url_parse
 
-from odoo.ormapping import fields
+from odoo.tools import clean_context, float_round, single_email_re, str2bool
+from odoo.tools.translate import _
 from odoo.exceptions import ValidationError
-from odoo.ormapping import Command
+from odoo.microkernel.ormapping import Command, fields
+from odoo.microkernel.osv import expression
 from odoo.technology.framework import request, route
 from odoo.technology.utils import groupby, lazy
-from odoo.microkernel.osv import expression
-from odoo.tools import clean_context, float_round, single_email_re, str2bool
 from odoo.technology.utils.json import scriptsafe as json_scriptsafe
-from odoo.tools.translate import _
 from odoo.technology.db import SQL
 
 from odoo.addons.payment import utils as payment_utils

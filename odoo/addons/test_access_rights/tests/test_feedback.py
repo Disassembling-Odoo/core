@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-from odoo import SUPERUSER_ID, Command
+from odoo import SUPERUSER_ID
+from odoo.microkernel.ormapping import Command
 from odoo.exceptions import AccessError
 from odoo.tests import TransactionCase
 from odoo.technology.adjustable import mute_logger

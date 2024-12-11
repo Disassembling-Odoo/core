@@ -5,7 +5,8 @@ import logging
 
 from datetime import datetime, timedelta
 
-from odoo import _, models
+from odoo import _
+from odoo.microkernel.ormapping import models
 from odoo.exceptions import AccessDenied, UserError
 from odoo.technology.framework.http import request
 from odoo.technology.utils import hmac

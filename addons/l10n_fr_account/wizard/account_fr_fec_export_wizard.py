@@ -3,10 +3,9 @@
 import csv
 import io
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.tools import float_is_zero
 from odoo.technology.db import SQL
-from odoo import models
 from odoo.tools.i18n import get_lang
 from stdnum.fr import siren
 

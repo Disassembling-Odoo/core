@@ -2,7 +2,7 @@
 
 import re
 
-from odoo import models
+from odoo.microkernel.ormapping import models
 from odoo.exceptions import UserError, ValidationError
 from odoo.microkernel.api import api
 from odoo. tools import LazyTranslate

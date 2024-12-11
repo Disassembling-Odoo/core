@@ -1,6 +1,6 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.addons.website.tools import MockRequest
 from odoo.exceptions import ValidationError
 from odoo.technology.framework import retrying

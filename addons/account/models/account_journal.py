@@ -1,8 +1,8 @@
 from ast import literal_eval
 
-from odoo import Command, models, _
+from odoo import _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, models, fields
 from odoo.exceptions import UserError, ValidationError
 from odoo.addons.base.models.res_bank import sanitize_account_number
 from odoo.technology.utils import groupby

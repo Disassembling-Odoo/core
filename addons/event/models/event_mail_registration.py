@@ -1,8 +1,7 @@
 import logging
 
-from odoo import models
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.addons.event.models.event_mail import _INTERVALS
 from odoo.exceptions import MissingError
 

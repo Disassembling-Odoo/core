@@ -7,9 +7,9 @@ from collections import defaultdict
 from uuid import uuid4
 from dateutil.relativedelta import relativedelta
 
-from odoo import _, exceptions, models
+from odoo import _, exceptions
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.tools import safe_eval
 from odoo.microkernel.utils import DEFAULT_SERVER_DATETIME_FORMAT
 from odoo.technology.framework.http import request

@@ -3,7 +3,7 @@
 
 from odoo.tests import Form
 from odoo.addons.stock.tests.test_report import TestReportsCommon
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 
 
 class TestMrpStockReports(TestReportsCommon):

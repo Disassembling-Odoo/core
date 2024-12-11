@@ -6,9 +6,9 @@ from pytz import UTC
 from collections import defaultdict
 from datetime import timedelta, datetime, time
 
-from odoo import Command, models, tools, SUPERUSER_ID, _
+from odoo import tools, SUPERUSER_ID, _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, models, fields
 from odoo.addons.rating.models import rating_data
 from odoo.addons.web_editor.tools import handle_history_divergence
 from odoo.microkernel.exceptions import UserError, ValidationError, AccessError

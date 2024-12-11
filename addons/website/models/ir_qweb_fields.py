@@ -1,9 +1,9 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-
 from lxml import etree
 from markupsafe import Markup
 
-from odoo import models, _
+from odoo import _
+from odoo.microkernel.ormapping import models
 from odoo.addons.website.tools import add_form_signature
 from odoo.microkernel.api import api
 

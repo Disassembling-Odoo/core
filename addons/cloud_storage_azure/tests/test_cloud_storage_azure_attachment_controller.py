@@ -64,7 +64,7 @@ class TestCloudStorageAttachmentController(
                                 {
                                     "access_token": False,
                                     "checksum": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
-                                    "create_date": odoo.ormapping.fields.Datetime.to_string(
+                                    "create_date": odoo.microkernel.ormapping.fields.Datetime.to_string(
                                         attachment.create_date
                                     ),
                                     "filename": "__init__.py",

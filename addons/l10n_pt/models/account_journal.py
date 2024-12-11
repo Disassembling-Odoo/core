@@ -1,5 +1,4 @@
-from odoo import models
-
+from odoo.microkernel.ormapping import models
 
 class AccountJournal(models.Model):
     _inherit = 'account.journal'

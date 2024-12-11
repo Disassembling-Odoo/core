@@ -3,12 +3,11 @@
 
 from datetime import timedelta
 
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, fields
 from odoo.addons.mrp.tests.common import TestMrpCommon
 from odoo.addons.stock_account.tests.test_account_move import TestAccountMoveStockCommon
 from odoo.tests import Form, tagged
 from odoo.tests.common import new_test_user
-from odoo import Command
 
 
 class TestMrpAccount(TestMrpCommon):

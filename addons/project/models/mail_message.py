@@ -1,8 +1,6 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-
-from odoo import models
+from odoo.microkernel.ormapping import models
 from odoo.technology.db import create_index
-
 
 class MailMessage(models.Model):
     _inherit = 'mail.message'

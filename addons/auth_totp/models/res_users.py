@@ -7,9 +7,9 @@ import logging
 import os
 import re
 
-from odoo import _, models
+from odoo import _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.addons.base.models.res_users import check_identity
 from odoo.exceptions import AccessDenied, UserError
 from odoo.technology.framework.http import request

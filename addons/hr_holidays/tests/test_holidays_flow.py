@@ -7,7 +7,7 @@ from dateutil.relativedelta import relativedelta
 from freezegun import freeze_time
 from psycopg2 import IntegrityError
 
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.technology.utils import date_utils
 from odoo.tools import test_reports
 from odoo.technology.adjustable import mute_logger

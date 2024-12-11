@@ -5,9 +5,9 @@
 from datetime import datetime, date, time
 from dateutil.relativedelta import relativedelta
 
-from odoo import models, _
+from odoo import _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.addons.resource.models.utils import HOURS_PER_DAY
 from odoo.addons.hr_holidays.models.hr_leave import get_employee_from_context
 from odoo.exceptions import AccessError, UserError, ValidationError

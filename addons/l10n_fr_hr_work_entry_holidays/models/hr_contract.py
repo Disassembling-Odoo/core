@@ -4,7 +4,7 @@
 from collections import defaultdict
 import pytz
 
-from odoo import models
+from odoo.microkernel.ormapping import models
 from odoo.addons.resource.models.utils import datetime_to_string
 
 

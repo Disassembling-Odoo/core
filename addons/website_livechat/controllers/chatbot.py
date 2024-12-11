@@ -2,8 +2,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from datetime import timedelta
-from odoo import Command
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, fields
 from odoo.technology.framework.http import request
 from odoo.addons.mail.tools.discuss import Store
 from odoo.technology.framework import http

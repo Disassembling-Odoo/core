@@ -4,7 +4,8 @@ from odoo.microkernel.api import api
 from . import models
 from . import wizard
 
-from odoo import SUPERUSER_ID, Command
+from odoo import SUPERUSER_ID
+from odoo.microkernel.ormapping import Command
 
 def _enable_tracking_numbers(env):
     """ This hook ensures the tracking numbers are enabled when the module is installed since the

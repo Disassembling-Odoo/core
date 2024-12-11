@@ -1,7 +1,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo.exceptions import UserError
-from odoo.ormapping import Command
+from odoo.microkernel.ormapping import Command
 from odoo.tests import tagged
 
 from odoo.addons.payment import utils as payment_utils

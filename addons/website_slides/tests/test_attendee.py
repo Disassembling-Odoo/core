@@ -4,7 +4,7 @@
 from http import HTTPStatus
 from urllib.parse import parse_qs
 
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.addons.mail.tests.common import mail_new_test_user
 from odoo.addons.base.tests.common import HttpCaseWithUserPortal
 from odoo.addons.website_slides.tests import common

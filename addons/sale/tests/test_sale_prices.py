@@ -4,7 +4,7 @@
 from freezegun import freeze_time
 from datetime import timedelta
 
-from odoo.ormapping import fields, Command
+from odoo.microkernel.ormapping import fields, Command
 from odoo.tests import Form, tagged
 from odoo.tools import float_compare, float_round
 from odoo.technology.adjustable import mute_logger

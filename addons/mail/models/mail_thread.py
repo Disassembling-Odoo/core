@@ -26,9 +26,9 @@ from markupsafe import Markup, escape
 from requests import Session
 from werkzeug import urls
 
-from odoo import _, exceptions, models, Command
+from odoo import _, exceptions
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, models, fields
 from odoo.technology.db import Query, SQL
 from odoo.addons.mail.tools.discuss import Store
 from odoo.addons.mail.tools.web_push import push_to_end_point, DeviceUnreachableError

@@ -10,7 +10,7 @@ from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta
 
 from odoo import SUPERUSER_ID, _
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.exceptions import UserError
 from odoo.technology.framework.http import request, content_disposition
 from odoo.microkernel.osv import expression

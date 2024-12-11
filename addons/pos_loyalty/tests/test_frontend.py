@@ -2,7 +2,7 @@
 
 from datetime import date, timedelta
 
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.tests import tagged
 
 from odoo.addons.point_of_sale.tests.test_frontend import TestPointOfSaleHttpCommon

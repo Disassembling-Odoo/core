@@ -4,9 +4,9 @@ import re
 from markupsafe import Markup
 import werkzeug
 
-from odoo import Command, models, _
+from odoo import _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields, Command
 from odoo.exceptions import UserError, ValidationError
 from odoo.tools import email_split, float_repr, float_round, is_html_empty
 

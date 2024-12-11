@@ -2,11 +2,9 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 import json
-
-from odoo import models
 from collections import defaultdict
 
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 
 
 class Project(models.Model):

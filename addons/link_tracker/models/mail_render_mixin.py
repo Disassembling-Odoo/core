@@ -8,7 +8,8 @@ import lxml
 import markupsafe
 from werkzeug import urls
 
-from odoo import models, tools
+from odoo import tools
+from odoo.microkernel.ormapping import models
 from odoo.addons.link_tracker.tools.html import find_links_with_urls_and_labels
 from odoo.microkernel.api import api
 from odoo.tools.mail import is_html_empty, URL_SKIP_PROTOCOL_REGEX, TEXT_URL_REGEX

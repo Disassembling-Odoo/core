@@ -2,8 +2,7 @@
 
 from datetime import timedelta
 
-from odoo import Command
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, fields
 from odoo.tests import Form
 from odoo.addons.purchase_stock.tests.common import PurchaseTestCommon
 

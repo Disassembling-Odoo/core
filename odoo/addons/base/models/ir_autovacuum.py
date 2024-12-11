@@ -6,7 +6,7 @@ import logging
 import warnings
 import traceback
 
-from odoo import models
+from odoo.microkernel.ormapping import models
 from odoo.exceptions import AccessDenied
 from odoo.microkernel.api import api
 

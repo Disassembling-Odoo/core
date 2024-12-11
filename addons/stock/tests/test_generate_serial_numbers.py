@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.exceptions import ValidationError
 from odoo.tests import TransactionCase
 

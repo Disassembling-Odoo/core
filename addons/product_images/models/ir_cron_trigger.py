@@ -1,7 +1,8 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import _, models
+from odoo import _
 from odoo.exceptions import ValidationError
+from odoo.microkernel.ormapping import models
 from odoo.microkernel.api import api
 
 

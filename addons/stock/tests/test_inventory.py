@@ -2,7 +2,7 @@
 from datetime import date, datetime, timedelta
 from dateutil.relativedelta import relativedelta
 
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.exceptions import ValidationError
 from odoo.tests import Form, TransactionCase
 

@@ -1,8 +1,6 @@
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, Model, fields
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon
-from odoo.ormapping import Model
 from odoo.tests import Form, tagged
-from odoo import Command
 from odoo.exceptions import UserError
 from unittest.mock import patch
 

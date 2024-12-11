@@ -1,6 +1,7 @@
 import logging
 
-from odoo import _, models, SUPERUSER_ID
+from odoo import _, SUPERUSER_ID
+from odoo.microkernel.ormapping import models
 from odoo.exceptions import UserError
 
 _logger = logging.getLogger(__name__)

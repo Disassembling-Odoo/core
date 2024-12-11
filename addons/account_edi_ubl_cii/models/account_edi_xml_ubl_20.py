@@ -1,7 +1,8 @@
 from collections import defaultdict
 from lxml import etree
 
-from odoo import _, models, Command
+from odoo import _
+from odoo.microkernel.ormapping import models, Command
 from odoo.tools import html2plaintext, cleanup_xml_node
 
 UBL_NAMESPACES = {

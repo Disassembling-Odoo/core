@@ -1,4 +1,5 @@
-from odoo import _, models, Command
+from odoo import _
+from odoo.microkernel.ormapping import models, Command
 from odoo.tools import float_repr, is_html_empty, html2plaintext, cleanup_xml_node
 from lxml import etree
 

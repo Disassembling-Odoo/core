@@ -3,8 +3,7 @@
 
 from collections import namedtuple
 
-from odoo import Command
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields, Command
 from odoo.tests import tagged
 from odoo.addons.l10n_it_edi.tests.common import TestItEdi
 

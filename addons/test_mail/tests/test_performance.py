@@ -3,7 +3,7 @@
 from markupsafe import Markup
 from unittest.mock import patch
 
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.addons.base.tests.common import TransactionCaseWithUserDemo
 from odoo.addons.mail.tests.common import MailCommon
 from odoo.addons.mail.tools.discuss import Store

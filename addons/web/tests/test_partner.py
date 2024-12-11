@@ -4,7 +4,7 @@ import io
 import logging
 import unittest
 import zipfile
-from odoo.ormapping import Command
+from odoo.microkernel.ormapping import Command
 
 from odoo.tests.common import HttpCase, tagged
 from base64 import b64decode

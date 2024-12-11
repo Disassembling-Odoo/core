@@ -5,8 +5,7 @@ from datetime import datetime, timedelta
 from unittest.mock import patch
 from ast import literal_eval
 
-from odoo import Command
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, fields
 from odoo.addons.mail.tests.common import mail_new_test_user
 from odoo.exceptions import ValidationError
 from odoo.tests import Form, TransactionCase
@@ -601,7 +600,7 @@ class StockQuant(TransactionCase):
             'product_id': self.product_lot.id,
         })
 
-        from odoo.ormapping import Datetime
+        from odoo.microkernel.ormapping import Datetime
         in_date1 = Datetime.now()
         self.env['stock.quant']._update_available_quantity(self.product_lot, self.stock_location, 1.0, lot_id=lot1, in_date=in_date1)
 

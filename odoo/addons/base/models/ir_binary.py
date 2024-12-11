@@ -3,7 +3,7 @@ import werkzeug.http
 from datetime import datetime
 from mimetypes import guess_extension
 
-from odoo import models
+from odoo.microkernel.ormapping import models
 from odoo.exceptions import MissingError, UserError
 from odoo.technology.framework.http import Stream, request
 from odoo.tools import replace_exceptions

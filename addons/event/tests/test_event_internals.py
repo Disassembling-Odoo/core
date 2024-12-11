@@ -4,10 +4,9 @@
 from datetime import datetime, timedelta
 from freezegun import freeze_time
 
-from odoo import Command
 from odoo.addons.event.tests.common import EventCase
 from odoo import exceptions
-from odoo.ormapping import Datetime as FieldsDatetime
+from odoo.microkernel.ormapping import Datetime as FieldsDatetime, Command
 from odoo.tests import Form, users, tagged
 from odoo.technology.adjustable import mute_logger
 

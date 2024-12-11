@@ -2,7 +2,7 @@
 
 import json
 
-from odoo import models
+from odoo.microkernel.ormapping import models
 from odoo.microkernel.osv import expression
 
 

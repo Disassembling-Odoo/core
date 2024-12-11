@@ -7,9 +7,9 @@ import operator
 from tempfile import TemporaryFile
 from os.path import splitext
 
-from odoo import models, tools, _
+from odoo import tools, _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.exceptions import UserError
 from odoo.tools.translate import TranslationImporter
 from odoo.technology import utils as tech_utils

@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
-
-from odoo import models, Command
+from odoo.microkernel.ormapping import models, Command
 from odoo.microkernel.api import api
-
 
 class AccountJournal(models.Model):
     _inherit = 'account.journal'

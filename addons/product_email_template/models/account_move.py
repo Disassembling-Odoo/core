@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, SUPERUSER_ID
+from odoo import SUPERUSER_ID
+from odoo.microkernel.ormapping import models
 from odoo.microkernel.api import api
 
 

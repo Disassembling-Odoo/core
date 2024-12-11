@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-
-from odoo import models, _
+from odoo import _
+from odoo.microkernel.ormapping import models
 
 
 SECTOR_RO_CODES = ('SECTOR1', 'SECTOR2', 'SECTOR3', 'SECTOR4', 'SECTOR5', 'SECTOR6')

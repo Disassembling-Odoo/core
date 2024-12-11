@@ -2,9 +2,9 @@
 
 import base64
 
-from odoo import Command, _, models
+from odoo import  _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, models, fields
 from odoo.exceptions import ValidationError
 
 from odoo.addons.sale_pdf_quote_builder import utils

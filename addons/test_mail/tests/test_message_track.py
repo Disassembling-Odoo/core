@@ -3,7 +3,7 @@
 
 from unittest.mock import patch
 
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.addons.mail.tests.common import MailCommon
 from odoo.addons.mail.tools.discuss import Store
 from odoo.addons.test_mail.data.test_mail_data import MAIL_TEMPLATE

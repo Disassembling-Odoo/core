@@ -3,11 +3,10 @@
 from contextlib import contextmanager
 from unittest.mock import patch
 
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, fields
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon
 from odoo.tests import Form, tagged
 from odoo.exceptions import UserError
-from odoo import Command
 
 
 @tagged('post_install', '-at_install')

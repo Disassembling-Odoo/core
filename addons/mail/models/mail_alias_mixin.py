@@ -3,8 +3,7 @@
 
 import logging
 
-from odoo import models
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 
 _logger = logging.getLogger(__name__)
 

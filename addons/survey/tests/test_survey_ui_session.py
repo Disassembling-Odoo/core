@@ -4,7 +4,7 @@
 from dateutil.relativedelta import relativedelta
 from unittest.mock import patch
 
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.tests.common import tagged, HttpCase
 
 

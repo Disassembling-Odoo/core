@@ -2,7 +2,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from operator import itemgetter
-from odoo import models
+from odoo.microkernel.ormapping import models
 from odoo.microkernel.api import api
 
 class IrUiView(models.Model):

@@ -3,9 +3,8 @@
 
 import re
 
-from odoo import models
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.tools import remove_accents
 
 class ChatRoomMixin(models.AbstractModel):

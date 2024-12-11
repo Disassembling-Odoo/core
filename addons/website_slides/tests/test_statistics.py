@@ -5,7 +5,7 @@ import math
 
 from dateutil.relativedelta import relativedelta
 
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.addons.website_slides.tests import common
 from odoo.exceptions import UserError
 from odoo.tests import HttpCase, tagged

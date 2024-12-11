@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models
 from odoo.microkernel.api.api import Environment
-from odoo.ormapping import Datetime
+from odoo.microkernel.ormapping import Datetime, models
 from odoo.technology.framework.http import request
 from odoo.microkernel.modules.registry import Registry
 from odoo.addons.bus.websocket import wsrequest

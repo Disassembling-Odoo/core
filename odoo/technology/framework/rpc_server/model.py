@@ -10,7 +10,7 @@ from odoo.microkernel.modules.registry import Registry
 from ..service import security
 from ..service import retrying
 from ...utils import lazy
-from odoo.ormapping import check_method_name
+from odoo.microkernel.ormapping import check_method_name
 
 _logger = logging.getLogger(__name__)
 
@@ -45,7 +45,7 @@ def _traverse_containers(val, type_):
     through standard containers (non-string mappings or sequences) *unless*
     they're selected by the type filter
     """
-    from odoo.ormapping.models import BaseModel
+    from odoo.microkernel.ormapping.models import BaseModel
     if isinstance(val, type_):
         yield val
     elif isinstance(val, (str, bytes, BaseModel)):

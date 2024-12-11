@@ -6,7 +6,7 @@ from collections import OrderedDict
 from lxml import etree
 from re import search
 
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.technology.conf import config
 from odoo.technology.adjustable import mute_logger
 from odoo.exceptions import AccessError

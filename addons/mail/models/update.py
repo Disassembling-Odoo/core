@@ -8,7 +8,7 @@ import requests
 
 from odoo import release, SUPERUSER_ID
 from odoo.microkernel.api import api
-from odoo.ormapping import fields, AbstractModel
+from odoo.microkernel.ormapping import fields, AbstractModel
 from odoo.exceptions import UserError
 from odoo.tools.translate import _
 from odoo.technology.conf import config

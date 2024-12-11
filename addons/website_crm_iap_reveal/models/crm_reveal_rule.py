@@ -8,9 +8,9 @@ import re
 from dateutil.relativedelta import relativedelta
 
 import odoo
-from odoo import models, tools, _
+from odoo import tools, _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.addons.iap.tools import iap_tools
 from odoo.addons.crm.models import crm_stage
 from odoo.exceptions import ValidationError

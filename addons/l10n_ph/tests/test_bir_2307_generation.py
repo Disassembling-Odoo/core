@@ -3,7 +3,7 @@ import io
 import xlrd
 import base64
 
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.tests import tagged
 from odoo.addons.l10n_ph.tests.common import TestPhCommon
 

@@ -3,8 +3,8 @@
 from ast import literal_eval
 from collections import defaultdict
 
-from odoo import models, _
-from odoo.ormapping import fields
+from odoo import _
+from odoo.microkernel.ormapping import models, fields
 from odoo.tools import float_round
 
 

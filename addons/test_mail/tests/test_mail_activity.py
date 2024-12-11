@@ -12,7 +12,7 @@ import pytz
 import random
 
 from odoo import exceptions, tests
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.addons.mail.tests.common import mail_new_test_user, MailCommon
 from odoo.addons.test_mail.models.test_mail_models import MailTestActivity
 from odoo.tests import Form, HttpCase, users

@@ -1,5 +1,5 @@
-from odoo import models, _
-
+from odoo import _
+from odoo.microkernel.ormapping import models
 
 class StockRule(models.Model):
     _inherit = 'stock.rule'

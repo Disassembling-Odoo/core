@@ -1,4 +1,4 @@
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.addons.base.tests.test_expression import TransactionExpressionCase
 from odoo.exceptions import MissingError, UserError
 from odoo.technology.adjustable import mute_logger

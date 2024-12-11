@@ -1,7 +1,7 @@
 from io import BytesIO
 from zipfile import ZipFile
 
-from odoo.ormapping import Command
+from odoo.microkernel.ormapping import Command
 from odoo.tests.common import tagged
 from odoo.addons.account.tests.common import AccountTestInvoicingHttpCommon
 

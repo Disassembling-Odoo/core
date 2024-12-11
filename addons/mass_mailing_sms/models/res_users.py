@@ -3,9 +3,9 @@
 
 import json
 
-from odoo import models, modules, _
+from odoo import modules, _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 
 
 class Users(models.Model):

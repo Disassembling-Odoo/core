@@ -1,6 +1,6 @@
 import logging
 
-from odoo import models
+from odoo.microkernel.ormapping import models
 from odoo.exceptions import AccessError
 from odoo.microkernel.api import api
 

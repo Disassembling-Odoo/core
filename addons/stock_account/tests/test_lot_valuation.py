@@ -4,7 +4,7 @@ from odoo.addons.stock_account.tests.test_stockvaluation import _create_accounti
 from odoo.addons.stock_account.tests.test_stockvaluationlayer import TestStockValuationCommon
 from odoo.exceptions import UserError
 from odoo.tests import Form
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 
 
 class TestLotValuation(TestStockValuationCommon):

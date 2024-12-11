@@ -9,9 +9,9 @@ from functools import partial
 from pytz import timezone
 from random import randint
 
-from odoo import exceptions, models, _
+from odoo import exceptions, _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.exceptions import UserError, ValidationError
 from odoo.addons.resource.models.utils import make_aware, Intervals
 from odoo.technology.utils.date_utils import start_of, end_of

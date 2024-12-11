@@ -4,7 +4,7 @@
 import logging
 import time
 
-from odoo import models
+from odoo.microkernel.ormapping import models
 from odoo.technology.framework.http import request
 
 _logger = logging.getLogger(__name__)

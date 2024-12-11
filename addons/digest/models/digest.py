@@ -12,9 +12,9 @@ from werkzeug.urls import url_encode, url_join
 from odoo.microkernel.api import api
 from odoo.tools.float_utils import float_round
 from odoo.exceptions import AccessError
-from odoo import models, tools, _
+from odoo import tools, _
 from odoo.technology import utils as tech_utils
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.addons.base.models.ir_mail_server import MailDeliveryException
 from odoo.microkernel.osv import expression
 

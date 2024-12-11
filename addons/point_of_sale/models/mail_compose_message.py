@@ -1,5 +1,5 @@
-from odoo import models, _
-
+from odoo import _
+from odoo.microkernel.ormapping import models
 
 class MailComposer(models.TransientModel):
     _inherit = 'mail.compose.message'

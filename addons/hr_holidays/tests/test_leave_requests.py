@@ -6,8 +6,7 @@ from dateutil.relativedelta import relativedelta
 from freezegun import freeze_time
 from pytz import timezone
 
-from odoo import Command
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, fields
 from odoo.exceptions import UserError, ValidationError
 from odoo.technology.utils import date_utils
 from odoo.technology.adjustable import mute_logger

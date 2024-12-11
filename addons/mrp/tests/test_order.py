@@ -4,8 +4,7 @@
 from datetime import datetime, timedelta
 from freezegun import freeze_time
 
-from odoo import Command
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, fields
 from odoo.exceptions import UserError
 from odoo.tests import Form, users
 from odoo.microkernel.utils import format_date

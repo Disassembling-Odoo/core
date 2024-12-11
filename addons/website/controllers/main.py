@@ -20,8 +20,8 @@ from xml.etree import ElementTree as ET
 
 import odoo
 
-from odoo import models, _
-from odoo.ormapping import fields
+from odoo import _
+from odoo.microkernel.ormapping import models, fields
 from odoo.exceptions import AccessError, UserError
 from odoo.technology.framework.http import request, SessionExpiredException
 from odoo.microkernel.osv import expression

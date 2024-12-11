@@ -1,7 +1,5 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-
-from odoo import models
-
+from odoo.microkernel.ormapping import models
 
 class PortalWizardUser(models.TransientModel):
     _inherit = ['portal.wizard.user']

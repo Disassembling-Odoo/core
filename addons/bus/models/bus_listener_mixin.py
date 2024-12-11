@@ -1,7 +1,5 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-
-from odoo import models
-
+from odoo.microkernel.ormapping import models
 
 class BusListenerMixin(models.AbstractModel):
     """Allow sending messages related to the current model via as a bus.bus channel.

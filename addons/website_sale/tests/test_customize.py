@@ -2,7 +2,7 @@
 
 import base64
 
-from odoo.ormapping import Command
+from odoo.microkernel.ormapping import Command
 from odoo.tests import tagged
 from odoo.technology.utils import file_open
 

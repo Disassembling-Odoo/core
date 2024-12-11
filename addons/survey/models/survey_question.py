@@ -8,11 +8,11 @@ import json
 import operator
 from textwrap import shorten
 
-from odoo import models, tools, _
-from odoo.microkernel.api import api
-from odoo.technology import utils as tech_utils
-from odoo.ormapping import fields
+from odoo import tools, _
 from odoo.exceptions import UserError, ValidationError
+from odoo.technology import utils as tech_utils
+from odoo.microkernel.api import api
+from odoo.microkernel.ormapping import models, fields
 from odoo.microkernel import utils
 
 class SurveyQuestion(models.Model):

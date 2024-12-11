@@ -1,5 +1,4 @@
-from odoo import models
-
+from odoo.microkernel.ormapping import models
 
 class AccountFiscalPosition(models.Model):
     _inherit = 'account.fiscal.position'

@@ -15,7 +15,7 @@ from werkzeug.exceptions import BadRequest, NotFound
 from odoo.technology.framework import http
 from odoo.exceptions import AccessError
 from odoo.technology.framework.http import request
-from odoo.ormapping import regex_object_name
+from odoo.microkernel.ormapping import regex_object_name
 from odoo.microkernel.osv import expression
 from odoo.tools.safe_eval import safe_eval
 

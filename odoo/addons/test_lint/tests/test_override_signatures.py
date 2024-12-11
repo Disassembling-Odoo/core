@@ -28,7 +28,7 @@ Incompatible definition in {child_module}:
 
 methods_to_sanitize = {
     method_name
-    for method_name in dir(odoo.ormapping.models.BaseModel)
+    for method_name in dir(odoo.microkernel.ormapping.models.BaseModel)
     if not method_name.startswith('_')
 } - {
     # Not yet sanitized...

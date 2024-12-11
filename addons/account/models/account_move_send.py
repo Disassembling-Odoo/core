@@ -1,8 +1,9 @@
 from collections import defaultdict
 from markupsafe import Markup
 
-from odoo import _, models, modules, tools
+from odoo import _, modules, tools
 from odoo.exceptions import UserError
+from odoo.microkernel.ormapping import models
 from odoo.microkernel.api import api
 
 

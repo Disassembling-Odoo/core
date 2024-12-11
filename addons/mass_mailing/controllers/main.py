@@ -9,7 +9,7 @@ from markupsafe import Markup, escape
 from werkzeug.exceptions import BadRequest, NotFound, Unauthorized
 
 from odoo import _, tools
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.technology.framework import request, Response
 from odoo.technology.framework import http
 from odoo.technology.utils import consteq

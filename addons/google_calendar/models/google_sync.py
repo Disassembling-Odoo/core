@@ -9,9 +9,9 @@ import pytz
 from dateutil.parser import parse
 from markupsafe import Markup
 
-from odoo import models, _
+from odoo import _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.microkernel.modules.registry import Registry
 from odoo.tools import ormcache_context, email_normalize
 from odoo.microkernel.osv import expression

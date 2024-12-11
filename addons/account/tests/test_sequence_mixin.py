@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, fields
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon
 from odoo.tests import Form, tagged, TransactionCase
-from odoo import SUPERUSER_ID, Command
+from odoo import SUPERUSER_ID
 from odoo.technology.adjustable import mute_logger
 
 from dateutil.relativedelta import relativedelta

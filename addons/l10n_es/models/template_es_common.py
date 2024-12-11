@@ -1,5 +1,6 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-from odoo import models, _, Command
+from odoo import _
+from odoo.microkernel.ormapping import models, Command
 from odoo.addons.account.models.chart_template import template
 
 

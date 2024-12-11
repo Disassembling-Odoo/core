@@ -2,7 +2,7 @@
 
 from requests.exceptions import HTTPError
 
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.technology.framework import http
 from odoo.tests.common import tagged, HttpCase
 from odoo.technology.utils import file_open

@@ -1,7 +1,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 import logging
-from odoo import models
+from odoo.microkernel.ormapping import models
 from odoo.technology.framework.http import request
 
 _logger = logging.getLogger(__name__)

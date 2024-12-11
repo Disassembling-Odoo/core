@@ -1,7 +1,6 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-
-from odoo import _, models
-
+from odoo import _
+from odoo.microkernel.ormapping import models
 
 class ProductCatalogMixin(models.AbstractModel):
     """ This mixin should be inherited when the model should be able to work

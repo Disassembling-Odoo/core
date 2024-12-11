@@ -2,7 +2,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 from odoo.addons.l10n_latam_check.tests.common import L10nLatamCheckTest
 from odoo.tests import Form, tagged
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 
 
 @tagged('post_install_l10n', 'post_install', '-at_install')

@@ -10,7 +10,8 @@ import werkzeug.urls
 from werkzeug.exceptions import HTTPException, NotFound
 
 import odoo
-from odoo import models, exceptions, tools
+from odoo import exceptions, tools
+from odoo.microkernel.ormapping import models
 from odoo.addons.base.models import ir_http
 from odoo.addons.base.models.ir_http import RequestUID
 from odoo.addons.base.models.ir_qweb import keep_query, QWebException

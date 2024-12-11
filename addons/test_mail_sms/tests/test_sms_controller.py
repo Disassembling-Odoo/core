@@ -1,6 +1,5 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.addons.test_mail_sms.tests.test_sms_management import TestSMSActionsCommon
 from odoo.tests.common import HttpCase, JsonRpcException
 from odoo.technology.adjustable import mute_logger

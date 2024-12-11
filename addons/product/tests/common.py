@@ -1,6 +1,6 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo.ormapping import Command
+from odoo.microkernel.ormapping import Command
 
 from odoo.addons.base.tests.common import BaseCommon
 from odoo.addons.uom.tests.common import UomCommon

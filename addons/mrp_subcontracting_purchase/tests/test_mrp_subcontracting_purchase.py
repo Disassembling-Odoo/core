@@ -5,9 +5,8 @@ import logging
 
 from freezegun import freeze_time
 
-from odoo import Command
 from odoo.exceptions import UserError
-from odoo.ormapping import Date
+from odoo.microkernel.ormapping import Date, Command
 from odoo.tests import Form, tagged, loaded_demo_data
 
 from odoo.addons.mrp_subcontracting.tests.common import TestMrpSubcontractingCommon

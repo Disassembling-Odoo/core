@@ -59,7 +59,7 @@ scriptsafe = JSON()
 
 
 def json_default(obj):
-    from odoo.ormapping import fields  # noqa: PLC0415
+    from odoo.microkernel.ormapping import fields  # noqa: PLC0415
     if isinstance(obj, datetime):
         return fields.Datetime.to_string(obj)
     if isinstance(obj, date):

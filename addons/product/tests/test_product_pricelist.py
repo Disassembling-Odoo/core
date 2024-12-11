@@ -4,7 +4,7 @@
 from datetime import datetime
 import time
 
-from odoo.ormapping import Command, first
+from odoo.microkernel.ormapping import Command, first
 from odoo.tools import float_compare
 
 from odoo.addons.product.tests.common import ProductCommon

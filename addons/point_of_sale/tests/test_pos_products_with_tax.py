@@ -1,6 +1,6 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 
 import odoo
 from odoo.addons.point_of_sale.tests.common import TestPoSCommon

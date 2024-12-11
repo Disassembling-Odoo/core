@@ -1,7 +1,7 @@
 from collections import defaultdict
 
-from odoo import _, models
-from odoo.ormapping import fields
+from odoo import _
+from odoo.microkernel.ormapping import models, fields
 
 
 class MailTrackingDurationMixin(models.AbstractModel):

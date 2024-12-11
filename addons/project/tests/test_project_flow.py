@@ -4,7 +4,7 @@
 from markupsafe import Markup
 
 from .test_project_base import TestProjectCommon
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.technology.adjustable import mute_logger
 from odoo.addons.mail.tests.common import MailCommon
 from odoo.exceptions import AccessError

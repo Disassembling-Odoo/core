@@ -1,5 +1,5 @@
 from odoo.technology import utils as tech_utils
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.tests.common import tagged
 from odoo.addons.l10n_hu_edi.tests.common import L10nHuEdiTestCommon
 

@@ -1,6 +1,6 @@
-from odoo import models, _
+from odoo import _
+from odoo.microkernel.ormapping import models
 from odoo.addons.account.models.chart_template import template
-
 
 class AccountChartTemplate(models.AbstractModel):
     _inherit = 'account.chart.template'

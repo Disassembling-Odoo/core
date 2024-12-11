@@ -1,6 +1,5 @@
-from odoo import Command, models
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, models, fields
 
 
 class BaseDocumentLayout(models.TransientModel):

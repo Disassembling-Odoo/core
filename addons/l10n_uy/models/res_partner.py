@@ -1,7 +1,8 @@
 import logging
 import re
 
-from odoo import models, _
+from odoo import _
+from odoo.microkernel.ormapping import models
 
 from odoo.exceptions import ValidationError
 from odoo.microkernel.api import api

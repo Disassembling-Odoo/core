@@ -8,7 +8,7 @@ import unittest
 
 from unittest.mock import patch
 
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 
 from odoo.exceptions import AccessError, UserError
 from odoo.microkernel.osv import expression

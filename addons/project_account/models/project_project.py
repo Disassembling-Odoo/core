@@ -1,11 +1,9 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-
 import json
 from ast import literal_eval
 from collections import defaultdict
 
-from odoo import models
-
+from odoo.microkernel.ormapping import models
 
 class Project(models.Model):
     _inherit = 'project.project'

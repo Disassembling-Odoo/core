@@ -4,7 +4,7 @@ from odoo.addons.base.tests.test_ir_cron import CronMixinCase
 from odoo.addons.mail.tests.common import MailCommon
 from odoo.addons.test_mail.tests.common import TestRecipients
 from odoo.exceptions import AccessError, UserError, ValidationError
-from odoo.ormapping import Datetime as FieldDatetime
+from odoo.microkernel.ormapping import Datetime as FieldDatetime
 from odoo.tests import tagged, users
 
 

@@ -1,7 +1,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 import time
 import logging
-from odoo import models, Command
+from odoo.microkernel.ormapping import models, Command
 from odoo.exceptions import UserError, ValidationError
 from odoo.microkernel.api import api
 

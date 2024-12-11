@@ -6,7 +6,7 @@ from odoo.tests import common, tagged
 from odoo.technology.utils import file_open, file_path
 from odoo.technology.adjustable import mute_logger
 from odoo.tools.translate import TranslationModuleReader, TranslationRecordReader, code_translations, CodeTranslations, PYTHON_TRANSLATION_COMMENT, JAVASCRIPT_TRANSLATION_COMMENT, TranslationFileReader
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.addons.base.models.ir_fields import BOOLEAN_TRANSLATIONS
 
 

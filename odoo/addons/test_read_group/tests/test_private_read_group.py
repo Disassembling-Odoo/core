@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from odoo.ormapping import fields, Command
+from odoo.microkernel.ormapping import fields, Command
 from odoo.tests import common, new_test_user
 
 class TestPrivateReadGroup(common.TransactionCase):

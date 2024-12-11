@@ -1,4 +1,4 @@
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.tests import common
 
 

@@ -1,10 +1,10 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.exceptions import UserError, ValidationError
 
-from odoo import models, _
+from odoo import _
 from odoo.microkernel.osv import expression
 from odoo.tools import format_list
 from odoo.tools.misc import unquote

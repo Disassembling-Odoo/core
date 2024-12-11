@@ -4,7 +4,7 @@
 from odoo.addons.sale_loyalty.tests.common import TestSaleCouponCommon
 from odoo.exceptions import UserError
 from odoo.tests import tagged
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 
 
 @tagged('post_install', '-at_install')

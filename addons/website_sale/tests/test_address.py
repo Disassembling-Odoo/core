@@ -5,7 +5,7 @@ from unittest.mock import patch
 from werkzeug.exceptions import Forbidden
 
 from odoo.microkernel.api import api
-from odoo.ormapping import Command
+from odoo.microkernel.ormapping import Command
 from odoo.tests import tagged
 
 from odoo.addons.base.tests.common import BaseUsersCommon

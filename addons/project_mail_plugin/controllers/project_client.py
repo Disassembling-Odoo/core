@@ -1,5 +1,6 @@
 
-from odoo import Command, _
+from odoo import _
+from odoo.microkernel.ormapping import Command
 from odoo.technology.framework.http import request
 from odoo.technology.framework import http
 

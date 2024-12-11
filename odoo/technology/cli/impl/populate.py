@@ -44,7 +44,7 @@ from dateutil.relativedelta import relativedelta
 
 from odoo.microkernel.api.api import Environment
 from odoo.technology.db import SQL
-from odoo.ormapping import Model, Field, Many2one
+from odoo.microkernel.ormapping import Model, Field, Many2one
 
 
 _logger = logging.getLogger(__name__)

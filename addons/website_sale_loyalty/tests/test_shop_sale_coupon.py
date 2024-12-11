@@ -2,7 +2,7 @@
 from datetime import timedelta
 
 from odoo.technology.framework import http
-from odoo.ormapping import fields, Command
+from odoo.microkernel.ormapping import fields, Command
 from odoo.exceptions import ValidationError
 from odoo.tests import HttpCase, tagged
 

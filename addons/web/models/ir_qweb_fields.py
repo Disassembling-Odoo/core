@@ -6,9 +6,8 @@ from collections import OrderedDict
 from werkzeug.urls import url_quote
 from markupsafe import Markup
 
-from odoo import models
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.tools import html_escape as escape
 
 

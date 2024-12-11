@@ -6,9 +6,10 @@ from pytz import timezone, UTC
 from datetime import date, datetime, time
 from dateutil.relativedelta import relativedelta
 
-from odoo import _, models
+from odoo import _
+from odoo.microkernel.ormapping import models
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.microkernel.osv import expression
 from odoo.addons.resource.models.utils import Intervals
 from odoo.exceptions import UserError

@@ -5,7 +5,7 @@ from freezegun import freeze_time
 from os.path import join as opj
 
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.technology import utils as tech_utils
 
 from lxml import etree

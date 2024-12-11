@@ -3,9 +3,9 @@ import json
 import logging
 from werkzeug.urls import url_parse
 
-from odoo import Command, models, _
+from odoo import _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, models, fields
 from odoo.exceptions import AccessDenied
 from odoo.technology.framework.http import request
 from odoo.technology.db import column_exists, SQL

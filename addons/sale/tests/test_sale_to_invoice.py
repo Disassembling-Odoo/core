@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo.ormapping import fields, Command
+from odoo.microkernel.ormapping import fields, Command
 from odoo.tests import Form, tagged
 from odoo.tools import float_is_zero
 

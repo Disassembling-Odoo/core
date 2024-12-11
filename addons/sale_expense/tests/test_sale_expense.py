@@ -1,6 +1,5 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-from odoo import Command
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, fields
 from odoo.addons.hr_expense.tests.common import TestExpenseCommon
 from odoo.addons.sale.tests.common import TestSaleCommon
 from odoo.tests import tagged

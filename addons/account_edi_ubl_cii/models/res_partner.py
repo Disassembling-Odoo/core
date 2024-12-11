@@ -2,9 +2,9 @@
 import re
 from stdnum.fr import siret
 
-from odoo import models, _
+from odoo import _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.exceptions import ValidationError
 from odoo.addons.account_edi_ubl_cii.models.account_edi_common import EAS_MAPPING
 

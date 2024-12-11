@@ -1,5 +1,4 @@
-from odoo import models
-
+from odoo.microkernel.ormapping import models
 
 class PurchaseOrder(models.Model):
     _inherit = "purchase.order"

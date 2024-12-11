@@ -5,7 +5,7 @@ from datetime import timedelta
 import odoo.tests
 from odoo.addons.base.tests.common import HttpCaseWithUserDemo
 from odoo.addons.payment.tests.http_common import PaymentHttpCommon
-from odoo.ormapping import Datetime
+from odoo.microkernel.ormapping import Datetime
 from odoo.technology.adjustable import mute_logger
 
 from .common import TestWebsiteEventSaleCommon

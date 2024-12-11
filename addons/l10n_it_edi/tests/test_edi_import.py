@@ -5,8 +5,8 @@ import uuid
 from freezegun import freeze_time
 from unittest.mock import patch
 
-from odoo import tools, Command
-from odoo.ormapping import fields
+from odoo import tools
+from odoo.microkernel.ormapping import fields, Command
 from odoo.technology.db import sql_db
 from odoo.technology.adjustable import mute_logger
 from odoo.tests import new_test_user, tagged

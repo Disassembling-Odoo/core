@@ -6,9 +6,9 @@ from dateutil.parser import parse
 from dateutil.relativedelta import relativedelta
 from uuid import uuid4
 
-from odoo import models, tools, _
+from odoo import tools, _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.exceptions import ValidationError
 
 from odoo.addons.google_calendar.utils.google_calendar import GoogleCalendarService

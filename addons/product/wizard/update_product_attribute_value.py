@@ -1,9 +1,8 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import _, models
+from odoo import _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
-from odoo.ormapping import Command
+from odoo.microkernel.ormapping import Command, models, fields
 
 
 class UpdateProductAttributeValue(models.TransientModel):

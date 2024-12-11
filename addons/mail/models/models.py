@@ -1,17 +1,15 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-
+import logging
 from collections import defaultdict
 from datetime import datetime
 from lxml.builder import E
 from markupsafe import Markup
 
-from odoo import exceptions, models, tools, _
+from odoo import exceptions, tools, _
 from odoo.addons.mail.tools.alias_error import AliasError
+from odoo.microkernel.ormapping import models
 from odoo.microkernel import utils as microkernel_utils
-
-import logging
-
 from odoo.microkernel.api import api
 
 _logger = logging.getLogger(__name__)

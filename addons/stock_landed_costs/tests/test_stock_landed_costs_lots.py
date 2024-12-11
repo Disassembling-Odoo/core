@@ -2,8 +2,7 @@
 
 from odoo.addons.stock_account.tests.test_lot_valuation import TestLotValuation
 from odoo.tests import tagged, Form
-from odoo import Command
-
+from odoo.microkernel.ormapping import Command
 
 @tagged('post_install', '-at_install')
 class TestStockLandedCostsLots(TestLotValuation):

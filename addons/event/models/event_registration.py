@@ -3,9 +3,9 @@
 import logging
 import os
 
-from odoo import _, models, SUPERUSER_ID
+from odoo import _, SUPERUSER_ID
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.addons.event.tools.esc_label_tools import print_event_attendees, setup_printer, layout_96x82, layout_96x134
 from odoo.tools import email_normalize, email_normalize_all
 from odoo.exceptions import AccessError, ValidationError

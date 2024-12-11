@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon
 from odoo.tests import tagged
 

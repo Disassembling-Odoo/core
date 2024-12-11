@@ -3,7 +3,7 @@
 
 from datetime import datetime
 
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.tests import tagged
 
 from .common import TestEsEdiTbaiCommon

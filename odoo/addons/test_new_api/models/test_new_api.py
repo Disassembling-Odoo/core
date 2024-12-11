@@ -4,9 +4,8 @@
 import datetime
 import logging
 
-from odoo import Command, models
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, models, fields
 from odoo.exceptions import AccessError, ValidationError
 from odoo.technology.db import SQL
 from odoo.tools.float_utils import float_round

@@ -5,8 +5,8 @@ import uuid
 import psycopg2.errors
 import requests
 
-from odoo import _, models
-from odoo.ormapping import fields
+from odoo import _
+from odoo.microkernel.ormapping import models, fields
 from odoo.exceptions import UserError
 from odoo.technology.db import index_exists
 from .account_edi_proxy_auth import OdooEdiProxyAuth

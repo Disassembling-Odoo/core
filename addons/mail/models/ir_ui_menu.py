@@ -1,11 +1,9 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-
 import contextlib
 
-from odoo import models
+from odoo.microkernel.ormapping import models
 from odoo.exceptions import AccessError
 from odoo.microkernel.api import api
-
 
 class IrUiMenu(models.Model):
     _inherit = 'ir.ui.menu'

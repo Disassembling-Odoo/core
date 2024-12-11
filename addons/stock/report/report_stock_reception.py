@@ -3,7 +3,8 @@
 
 from collections import defaultdict, OrderedDict
 
-from odoo import _, models
+from odoo import _
+from odoo.microkernel.ormapping import models
 from odoo.microkernel.api import api
 from odoo.tools import float_compare, float_is_zero
 from odoo.microkernel.utils import format_date

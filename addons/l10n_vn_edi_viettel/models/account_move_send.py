@@ -3,7 +3,8 @@
 import base64
 import json
 
-from odoo import SUPERUSER_ID, _, models
+from odoo import SUPERUSER_ID, _
+from odoo.microkernel.ormapping import models
 from odoo.microkernel.api import api
 
 

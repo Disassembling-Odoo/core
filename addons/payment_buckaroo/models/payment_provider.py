@@ -4,9 +4,7 @@ from hashlib import sha1
 
 from werkzeug import urls
 
-from odoo import models
-
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.addons.payment_buckaroo import const
 
 

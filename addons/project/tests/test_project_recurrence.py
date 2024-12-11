@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
-
-from odoo import Command
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, fields
 from odoo.tests import Form, TransactionCase, users
 
 from datetime import datetime, time

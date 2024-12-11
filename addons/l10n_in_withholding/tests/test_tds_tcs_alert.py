@@ -1,4 +1,4 @@
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.addons.l10n_in.tests.common import L10nInTestInvoicingCommon
 from odoo.tests import tagged
 

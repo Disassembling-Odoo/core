@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 
-from odoo import models
+from odoo.microkernel.ormapping import models
 from odoo.technology.framework import request, SessionExpiredException
 from odoo.technology.utils import OrderedSet
 from odoo.microkernel.osv import expression
@@ -83,7 +83,7 @@ class IrWebsocket(models.AbstractModel):
             A dict containing the following keys:
             - channels (set of str): The list of channels to subscribe to.
             - last (int): The last known notification id.
-            - missed_presences (odoo.ormapping.models.Recordset): The missed presences.
+            - missed_presences (odoo.microkernel.ormapping.models.Recordset): The missed presences.
 
         :raise ValueError: If the list of channels is not a list of strings.
         """

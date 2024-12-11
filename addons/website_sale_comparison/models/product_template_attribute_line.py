@@ -1,9 +1,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-
 from collections import OrderedDict
 
-from odoo import models
-
+from odoo.microkernel.ormapping import models
 
 class ProductTemplateAttributeLine(models.Model):
     _inherit = 'product.template.attribute.line'

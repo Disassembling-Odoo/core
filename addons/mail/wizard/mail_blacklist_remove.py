@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from markupsafe import Markup
-from odoo import models, _
-from odoo.ormapping import fields
+from odoo import _
+from odoo.microkernel.ormapping import models, fields
 
 
 class MailBlacklistRemove(models.TransientModel):

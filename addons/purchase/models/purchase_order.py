@@ -8,10 +8,10 @@ from pytz import timezone
 from markupsafe import escape, Markup
 from werkzeug.urls import url_encode
 
-from odoo import Command, models, _
+from odoo import _
 from odoo.microkernel.api import api
 from odoo.tools.i18n import formatLang
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, models, fields
 from odoo.microkernel.osv import expression
 from odoo.tools import format_amount, format_list
 from odoo.tools.float_utils import float_is_zero

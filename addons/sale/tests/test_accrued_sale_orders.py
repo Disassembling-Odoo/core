@@ -1,4 +1,4 @@
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon
 from odoo.tests import tagged, freeze_time
 from odoo.exceptions import UserError

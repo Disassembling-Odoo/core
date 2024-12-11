@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from datetime import datetime, timedelta
-from odoo import Command, models
+from odoo.microkernel.ormapping import Command, models
 from odoo.microkernel.api import api
 
 

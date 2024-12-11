@@ -4,7 +4,7 @@
 from contextlib import contextmanager
 from unittest.mock import patch
 
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.addons.base.models.ir_mail_server import extract_rfc2822_addresses
 from odoo.addons.base.models.res_partner import Partner
 from odoo.addons.base.tests.common import TransactionCaseWithUserDemo

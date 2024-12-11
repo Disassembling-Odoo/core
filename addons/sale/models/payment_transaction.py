@@ -3,9 +3,9 @@
 from datetime import datetime
 from dateutil import relativedelta
 
-from odoo import _, Command, models, SUPERUSER_ID
+from odoo import _, SUPERUSER_ID
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, models, fields
 from odoo.tools import str2bool
 
 

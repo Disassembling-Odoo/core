@@ -15,9 +15,9 @@ from lxml.etree import LxmlError
 from lxml.builder import E
 from markupsafe import Markup
 
-from odoo import models, tools, _
+from odoo import tools, _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields, check_method_name
+from odoo.microkernel.ormapping import models, fields, check_method_name
 from odoo.exceptions import ValidationError, AccessError, UserError
 from odoo.technology.framework.http import request
 from odoo.microkernel.modules.module import get_resource_from_path

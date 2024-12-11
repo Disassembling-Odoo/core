@@ -3,9 +3,9 @@
 
 from collections import defaultdict
 from dateutil.relativedelta import relativedelta
-from odoo import _, Command, models
+from odoo import _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, models, fields
 from odoo.microkernel.osv import expression
 from odoo.tools import float_compare, float_round, float_is_zero
 from odoo.technology.utils import OrderedSet

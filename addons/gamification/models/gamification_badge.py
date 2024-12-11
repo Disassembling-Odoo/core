@@ -4,9 +4,9 @@
 import logging
 from datetime import date
 
-from odoo import models, _, exceptions
+from odoo import _, exceptions
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.technology.db import SQL
 
 

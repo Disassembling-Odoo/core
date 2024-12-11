@@ -13,9 +13,9 @@ import math
 import re
 from textwrap import shorten
 
-from odoo import models, _, Command, SUPERUSER_ID, modules, tools
+from odoo import  _, SUPERUSER_ID, modules, tools
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, models, fields
 from odoo.technology import conf
 from odoo.technology.db import SQL, column_exists, create_column
 from odoo.addons.account.tools import format_structured_reference_iso

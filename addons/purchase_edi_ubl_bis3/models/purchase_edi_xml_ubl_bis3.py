@@ -1,6 +1,7 @@
 from lxml import etree
 
-from odoo import models, _
+from odoo import _
+from odoo.microkernel.ormapping import models
 from odoo.tools import html2plaintext, cleanup_xml_node
 
 

@@ -6,9 +6,9 @@ import requests
 from datetime import timedelta
 from lxml import html
 
-from odoo import models, tools
+from odoo import tools
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.technology.utils import OrderedSet
 from odoo.addons.mail.tools.discuss import Store
 from odoo.addons.mail.tools.link_preview import get_link_preview_from_url

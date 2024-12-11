@@ -49,32 +49,32 @@ import psycopg2
 import psycopg2.extensions
 from psycopg2.extras import Json
 
-from ..technology.db import sql
+from odoo.technology.db import sql
 
 from .utils import expand_ids, check_property_field_value_name, is_definition_class, check_method_name, regex_object_name
 from .constant import Command, READ_GROUP_NUMBER_GRANULARITY, PREFETCH_MAX
 from .base import NewId, IdType
 
 import odoo
-from .. import SUPERUSER_ID
-from ..exceptions import AccessError, MissingError, ValidationError, UserError
-from .. import tools
-from ..tools import (
+from odoo import SUPERUSER_ID
+from odoo.exceptions import AccessError, MissingError, ValidationError, UserError
+from ... import tools
+from ...tools import (
     clean_context, discardattr,
     format_list, 
     split_every, 
 )
 
-from ..technology.utils import check_pg_name, date_utils, lazy_classproperty
-from ..technology.utils import frozendict, OrderedSet, LastOrderedSet, partition, unique
-from ..tools.lru import LRU
-from ..tools.i18n import get_lang
-from ..tools.misc import ReversedIterable, unquote
-from ..tools.translate import _, LazyTranslate
-from ..technology.cache import ormcache
-from ..technology.conf import config
-from ..technology.db import SQL, Query
-from ..microkernel.api import api
+from odoo.technology.utils import check_pg_name, date_utils, lazy_classproperty
+from odoo.technology.utils import frozendict, OrderedSet, LastOrderedSet, partition, unique
+from odoo.tools.lru import LRU
+from odoo.tools.i18n import get_lang
+from odoo.tools.misc import ReversedIterable, unquote
+from odoo.tools.translate import _, LazyTranslate
+from odoo.technology.cache import ormcache
+from odoo.technology.conf import config
+from odoo.technology.db import SQL, Query
+from odoo.microkernel.api import api
 from odoo.microkernel.utils import (
     DEFAULT_SERVER_DATE_FORMAT, DEFAULT_SERVER_DATETIME_FORMAT,
 )
@@ -1237,7 +1237,7 @@ class BaseModel(metaclass=MetaModel):
                 if field_name in (None, 'id', '.id'):
                     break
 
-                if isinstance(model_fields.get(field_name), odoo.ormapping.fields.One2many):
+                if isinstance(model_fields.get(field_name), odoo.microkernel.ormapping.fields.One2many):
                     comodel = model_fields[field_name].comodel_name
                     creatable_models.add(comodel)
                     model_fields = self.env[comodel]._fields
@@ -2419,14 +2419,14 @@ class BaseModel(metaclass=MetaModel):
         # assumption: existing data is sorted by field 'groupby_name'
         existing_from, existing_to = existing[0], existing[-1]
         if fill_from:
-            fill_from = odoo.ormapping.fields.Datetime.to_datetime(fill_from) if isinstance(fill_from, datetime.datetime) else odoo.ormapping.fields.Date.to_date(fill_from)
+            fill_from = odoo.microkernel.ormapping.fields.Datetime.to_datetime(fill_from) if isinstance(fill_from, datetime.datetime) else odoo.microkernel.ormapping.fields.Date.to_date(fill_from)
             fill_from = date_utils.start_of(fill_from, granularity) - datetime.timedelta(days=days_offset)
             if tz:
                 fill_from = tz.localize(fill_from)
         elif existing_from:
             fill_from = existing_from
         if fill_to:
-            fill_to = odoo.ormapping.fields.Datetime.to_datetime(fill_to) if isinstance(fill_to, datetime.datetime) else odoo.ormapping.fields.Date.to_date(fill_to)
+            fill_to = odoo.microkernel.ormapping.fields.Datetime.to_datetime(fill_to) if isinstance(fill_to, datetime.datetime) else odoo.microkernel.ormapping.fields.Date.to_date(fill_to)
             fill_to = date_utils.start_of(fill_to, granularity) - datetime.timedelta(days=days_offset)
             if tz:
                 fill_to = tz.localize(fill_to)
@@ -7478,5 +7478,5 @@ PGERROR_TO_OE = defaultdict(
 # keep those imports here to avoid dependency cycle errors
 # pylint: disable=wrong-import-position
 from . import fields
-from ..microkernel.osv import expression
+from ..osv import expression
 from .fields import Field, Datetime

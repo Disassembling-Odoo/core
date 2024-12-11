@@ -3,8 +3,7 @@
 
 from dateutil.relativedelta import relativedelta
 
-from odoo import Command
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, fields
 from odoo.exceptions import UserError
 from odoo.tests import Form, new_test_user
 from odoo.tests.common import TransactionCase
@@ -5344,7 +5343,7 @@ class StockMove(TransactionCase):
             ('product_id', '=', self.product_lot.id),
             ('lot_id', '=', lot1.id),
         ])
-        from odoo.ormapping import Datetime
+        from odoo.microkernel.ormapping import Datetime
         from datetime import timedelta
         initial_in_date_lot1 = Datetime.now() - timedelta(days=5)
         quant_lot1.in_date = initial_in_date_lot1
@@ -5456,7 +5455,7 @@ class StockMove(TransactionCase):
             ('lot_id', '=', lot1.id),
             ('quantity', '!=', 0),
         ])
-        from odoo.ormapping import Datetime
+        from odoo.microkernel.ormapping import Datetime
         from datetime import timedelta
         initial_in_date_lot1 = Datetime.now() - timedelta(days=5)
         quant_lot1.in_date = initial_in_date_lot1

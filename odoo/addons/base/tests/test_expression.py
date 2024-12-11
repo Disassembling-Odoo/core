@@ -12,8 +12,7 @@ from odoo.addons.base.tests.common import SavepointCaseWithUserDemo
 from odoo.tests.common import BaseCase, TransactionCase
 from odoo.technology.adjustable import mute_logger
 from odoo.microkernel.osv import expression
-from odoo import Command
-
+from odoo.microkernel.ormapping import Command
 
 class TransactionExpressionCase(TransactionCase):
 

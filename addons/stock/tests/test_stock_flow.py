@@ -4,7 +4,7 @@ from odoo.addons.stock.tests.common import TestStockCommon
 from odoo.exceptions import ValidationError
 from odoo.tests import Form, tagged
 from odoo.tools import float_round
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.technology.adjustable import mute_logger
 
 

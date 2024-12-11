@@ -3,7 +3,7 @@
 
 from datetime import datetime, timedelta
 
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.addons.website_event.tests.common import OnlineEventCase
 from odoo.tests.common import HttpCase, users
 

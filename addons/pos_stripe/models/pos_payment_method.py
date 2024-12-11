@@ -4,9 +4,9 @@ import logging
 import requests
 import werkzeug
 
-from odoo import models, _
+from odoo import _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.exceptions import ValidationError, UserError, AccessError
 
 _logger = logging.getLogger(__name__)

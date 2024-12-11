@@ -1,4 +1,4 @@
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.addons.hr_expense.tests.common import TestExpenseCommon
 from odoo.tests import tagged, HttpCase
 from odoo.technology.adjustable import mute_logger

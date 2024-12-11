@@ -4,7 +4,7 @@
 import json
 import requests
 
-from odoo import models
+from odoo.microkernel.ormapping import models
 
 TIMEOUT = 10
 

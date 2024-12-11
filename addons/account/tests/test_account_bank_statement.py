@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, fields
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon
 from odoo.tests import tagged
 from odoo.exceptions import ValidationError, UserError
-from odoo import Command
 
 import base64
 

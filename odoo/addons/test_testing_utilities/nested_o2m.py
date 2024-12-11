@@ -1,8 +1,7 @@
 from lxml.builder import E
 
-from odoo import models, Command
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, models, fields
 
 class Product(models.Model):
     _name = _description = 'ttu.product'

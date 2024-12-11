@@ -9,13 +9,12 @@ from datetime import timedelta
 from itertools import chain, product
 from unittest.mock import DEFAULT, patch
 
-from odoo import Command
 from odoo.addons.base.tests.test_ir_cron import CronMixinCase
 from odoo.addons.mail.tests.common import mail_new_test_user, MailCommon
 from odoo.addons.mail.wizard.mail_compose_message import MailComposer
 from odoo.addons.test_mail.models.test_mail_models import MailTestTicket
 from odoo.addons.test_mail.tests.common import TestRecipients
-from odoo.ormapping import Datetime as FieldDatetime
+from odoo.microkernel.ormapping import Datetime as FieldDatetime, Command
 from odoo.exceptions import AccessError, UserError
 from odoo.tests import Form, tagged, users
 from odoo.tools import email_normalize, formataddr

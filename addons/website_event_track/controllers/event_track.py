@@ -15,7 +15,7 @@ import operator
 import pytz
 
 from odoo import exceptions, tools, _
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.technology.framework import request
 from odoo.microkernel.osv import expression
 from odoo.technology.framework import http

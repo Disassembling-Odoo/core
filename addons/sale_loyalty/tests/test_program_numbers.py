@@ -3,7 +3,7 @@
 
 from odoo.addons.sale_loyalty.tests.common import TestSaleCouponNumbersCommon
 from odoo.exceptions import ValidationError
-from odoo.ormapping import Command
+from odoo.microkernel.ormapping import Command
 from odoo.tests import tagged
 from odoo.tools.float_utils import float_compare
 

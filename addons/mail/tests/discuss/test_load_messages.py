@@ -1,6 +1,6 @@
 
 import odoo.tests
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.addons.base.tests.common import HttpCaseWithUserDemo
 
 
@@ -15,7 +15,7 @@ class TestLoadMessages(HttpCaseWithUserDemo):
         self.env["mail.message"].create([{
             "body": str(n),
             "model": "discuss.channel",
-            "pinned_at": odoo.ormapping.fields.Datetime.now() if n == 1 else None,
+            "pinned_at": odoo.microkernel.ormapping.fields.Datetime.now() if n == 1 else None,
             "res_id": channel_id.id,
             "author_id": partner_admin.id,
             "message_type": "comment",

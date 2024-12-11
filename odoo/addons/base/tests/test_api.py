@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import models, Command
+from odoo.microkernel.ormapping import models, Command
 from odoo.addons.base.tests.common import SavepointCaseWithUserDemo
 from odoo.exceptions import AccessError
 from odoo.microkernel.api import api

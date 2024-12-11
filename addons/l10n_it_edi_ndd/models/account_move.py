@@ -1,6 +1,5 @@
-from odoo import models
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.technology.db import column_exists, create_column
 from odoo.addons.l10n_it_edi_ndd.models.account_payment_methode_line import L10N_IT_PAYMENT_METHOD_SELECTION
 

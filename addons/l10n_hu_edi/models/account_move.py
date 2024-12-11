@@ -8,13 +8,13 @@ import re
 from lxml import etree
 from psycopg2.errors import LockNotAvailable
 
-from odoo import models, _
+from odoo import _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.technology.utils import groupby
 from odoo.technology.framework import request
 from odoo.exceptions import UserError, ValidationError
-from odoo.tools import float_round, float_repr, cleanup_xml_node, 
+from odoo.tools import float_round, float_repr, cleanup_xml_node
 from odoo.tools.misc import split_every
 from odoo.tools.i18n import formatLang
 from odoo.addons.base_iban.models.res_partner_bank import normalize_iban

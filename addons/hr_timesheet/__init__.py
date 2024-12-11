@@ -6,7 +6,7 @@ from . import models
 from . import report
 from . import wizard
 
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 
 from odoo.addons.project import _check_exists_collaborators_for_project_sharing
 

@@ -4,7 +4,7 @@ from datetime import date
 from dateutil.relativedelta import relativedelta
 from psycopg2 import IntegrityError
 
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.exceptions import UserError
 from odoo.tests import tagged, Form
 from odoo.exceptions import ValidationError

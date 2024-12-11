@@ -1,7 +1,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from . import ir_http
-from odoo import models
+from odoo.microkernel.ormapping import models
 
 
 class BaseModel(models.AbstractModel):

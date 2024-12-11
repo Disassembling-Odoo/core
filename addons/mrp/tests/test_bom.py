@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import exceptions, Command
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, fields
 from odoo.tests import Form
 from odoo.addons.mrp.tests.common import TestMrpCommon
 from odoo.tests.common import HttpCase, tagged, freeze_time

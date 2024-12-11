@@ -14,9 +14,9 @@ import werkzeug
 
 from collections import defaultdict
 
-from odoo import models, SUPERUSER_ID, tools, _
+from odoo import SUPERUSER_ID, tools, _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.exceptions import AccessError, ValidationError, UserError
 from odoo.technology.framework import Stream, root, request
 from odoo.technology.conf import config

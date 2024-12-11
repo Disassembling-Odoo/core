@@ -3,7 +3,7 @@
 from unittest.mock import patch
 
 from odoo.exceptions import UserError, ValidationError
-from odoo.ormapping import Command
+from odoo.microkernel.ormapping import Command
 from odoo.tests import tagged
 
 from odoo.addons.base.tests.common import BaseUsersCommon

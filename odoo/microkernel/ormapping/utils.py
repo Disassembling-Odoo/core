@@ -51,7 +51,7 @@ def get_definition_class(strClz):
 
 def is_definition_class(cls):
     """ Return whether ``cls`` is a model definition class. """
-    strClz = 'odoo.ormapping.models.MetaModel'
+    strClz = 'odoo.microkernel.ormapping.models.MetaModel'
     return isinstance(cls, get_definition_class(strClz)) and getattr(cls, 'pool', None) is None
 
 def determine(needle, records, *args):
@@ -64,7 +64,7 @@ def determine(needle, records, *args):
     :raise TypeError: if ``records`` is not a recordset, or ``needle`` is not
                       a callable or valid method name
     """
-    strClz = 'odoo.ormapping.models.BaseModel'
+    strClz = 'odoo.microkernel.ormapping.models.BaseModel'
     if not isinstance(records, get_definition_class(strClz)):
         raise TypeError("Determination requires a subject recordset")
     if isinstance(needle, str):

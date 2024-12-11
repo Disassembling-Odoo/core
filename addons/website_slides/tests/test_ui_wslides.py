@@ -7,7 +7,7 @@ from dateutil.relativedelta import relativedelta
 from odoo import tests
 from odoo.addons.base.tests.common import HttpCaseWithUserPortal
 from odoo.addons.gamification.tests.common import HttpCaseGamification
-from odoo.ormapping import Command, Datetime
+from odoo.microkernel.ormapping import Command, Datetime
 from odoo.technology.framework import http
 from odoo.technology.adjustable import mute_logger
 from odoo.technology.utils import file_open

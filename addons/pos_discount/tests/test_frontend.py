@@ -1,7 +1,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 from odoo.tests import tagged
 from odoo.addons.point_of_sale.tests.test_frontend import TestPointOfSaleHttpCommon
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 
 
 @tagged('post_install', '-at_install')

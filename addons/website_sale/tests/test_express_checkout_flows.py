@@ -2,7 +2,7 @@
 
 from werkzeug import urls
 
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.technology.framework.http import root
 from odoo.tests import tagged
 

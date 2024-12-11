@@ -1,9 +1,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-
-from odoo import models
+from odoo.microkernel.ormapping import models
 
 from odoo.addons.website_sale_collect import utils
-
 
 class ProductTemplate(models.Model):
     _inherit = 'product.template'

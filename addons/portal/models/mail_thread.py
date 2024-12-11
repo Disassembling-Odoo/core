@@ -3,9 +3,9 @@
 import hashlib
 import hmac
 
-from odoo import models, _
+from odoo import _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.addons.portal.utils import validate_thread_with_hash_pid, validate_thread_with_token
 
 

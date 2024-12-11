@@ -9,9 +9,9 @@ import requests
 
 from stdnum.eu.vat import check_vies
 
-from odoo import models, _
+from odoo import _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.tools.image import base64_to_image
 
 _logger = logging.getLogger(__name__)

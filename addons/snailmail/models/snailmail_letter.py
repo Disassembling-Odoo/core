@@ -10,9 +10,9 @@ from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.pdfgen.canvas import Canvas
 
-from odoo import models, _
+from odoo import _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.addons.iap.tools import iap_tools
 from odoo.exceptions import AccessError, UserError
 from odoo.tools.pdf import PdfFileReader, PdfFileWriter

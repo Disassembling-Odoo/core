@@ -4,7 +4,7 @@ import logging
 import time
 from datetime import datetime, timedelta
 
-from odoo import models, Command
+from odoo.microkernel.ormapping import models, Command
 from odoo.exceptions import UserError, ValidationError
 from odoo.microkernel.api import api
 from odoo.technology.utils import file_open

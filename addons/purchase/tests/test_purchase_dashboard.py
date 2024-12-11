@@ -6,7 +6,7 @@ from odoo.addons.mail.tests.common import MailCase
 from odoo.tests import tagged, Form, new_test_user
 from odoo.tools import format_amount
 from odoo.technology.adjustable import mute_logger
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 
 @tagged('-at_install', 'post_install')
 class TestPurchaseDashboard(AccountTestInvoicingCommon, MailCase):

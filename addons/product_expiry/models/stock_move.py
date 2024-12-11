@@ -5,8 +5,7 @@ import datetime
 import dateutil.parser as dparser
 from re import findall as re_findall
 
-from odoo import models
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.tools.i18n import get_lang
 
 

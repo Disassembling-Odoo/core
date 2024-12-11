@@ -5,7 +5,7 @@ from decorator import decorator
 import uuid
 
 from odoo import _, modules
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.technology.utils import file_open
 
 DEMO_BILL_PATH = 'account_peppol/tools/demo_bill'

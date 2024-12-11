@@ -10,7 +10,7 @@ from copy import deepcopy
 import logging
 import re
 
-from odoo import Command, models
+from odoo.microkernel.ormapping import Command, models
 from odoo.addons.base.models.ir_model import MODULE_UNINSTALL_FLAG
 from odoo.exceptions import AccessError, UserError
 from odoo.microkernel.api import api

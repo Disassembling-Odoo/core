@@ -4,7 +4,7 @@
 import logging
 from base64 import b64decode
 
-from odoo import models
+from odoo.microkernel.ormapping import models
 
 _logger = logging.getLogger(__name__)
 

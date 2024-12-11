@@ -2,7 +2,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 import datetime
-from odoo import models
+from odoo.microkernel.ormapping import models
 from odoo.microkernel.api import api
 from odoo.tools.safe_eval import safe_eval
 #

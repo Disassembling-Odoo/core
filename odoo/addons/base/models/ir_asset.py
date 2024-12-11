@@ -6,9 +6,8 @@ from werkzeug import urls
 
 import odoo
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 import odoo.microkernel.modules.module  # get_manifest, don't from-import it
-from odoo import models
 from odoo.technology import conf
 from odoo.technology import utils as tech_utils
 from odoo.tools.constants import ASSET_EXTENSIONS, EXTERNAL_ASSET

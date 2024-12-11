@@ -3,9 +3,9 @@
 import logging
 import re
 
-from odoo import models, _
+from odoo import _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.exceptions import UserError, AccessError, ValidationError
 from odoo.addons.l10n_in.models.iap_account import IAP_SERVICE_NAME
 

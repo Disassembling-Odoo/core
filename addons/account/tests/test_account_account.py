@@ -1,4 +1,4 @@
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.addons.account.tests.common import TestAccountMergeCommon
 from odoo.tests import Form, tagged
 from odoo.exceptions import UserError, ValidationError

@@ -1,8 +1,6 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-
-from odoo import models
+from odoo.microkernel.ormapping import models
 from odoo.microkernel.api import api
-
 
 class HrEmployeeBase(models.AbstractModel):
     _inherit = "hr.employee.base"

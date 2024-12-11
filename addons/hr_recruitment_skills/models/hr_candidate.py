@@ -2,9 +2,8 @@
 
 from ast import literal_eval
 
-from odoo import models
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 
 
 class HrCandidate(models.Model):

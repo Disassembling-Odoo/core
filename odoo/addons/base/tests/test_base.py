@@ -5,7 +5,7 @@ import ast
 
 from textwrap import dedent
 
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.tests.common import TransactionCase, BaseCase
 from odoo.technology.adjustable import mute_logger
 from odoo.tools.safe_eval import safe_eval, const_eval, expr_eval

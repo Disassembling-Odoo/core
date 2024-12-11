@@ -6,7 +6,7 @@ import requests
 
 from werkzeug.urls import url_parse
 
-from odoo import models
+from odoo.microkernel.ormapping import models
 from odoo.microkernel.api import api
 
 

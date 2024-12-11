@@ -2,7 +2,7 @@ from unittest.mock import patch
 from datetime import timedelta, datetime
 from freezegun import freeze_time
 
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 
 from odoo.addons.mail.tests.common import MailCommon, mail_new_test_user
 from odoo.addons.microsoft_calendar.utils.microsoft_calendar import MicrosoftCalendarService

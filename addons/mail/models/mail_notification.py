@@ -2,9 +2,8 @@
 
 from dateutil.relativedelta import relativedelta
 
-from odoo import models
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.exceptions import AccessError
 from odoo.tools.translate import _
 from odoo.addons.mail.tools.discuss import Store

@@ -5,9 +5,9 @@ import operator as py_operator
 from operator import attrgetter
 from re import findall as regex_findall, split as regex_split
 
-from odoo import _, models
+from odoo import _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.exceptions import UserError, ValidationError
 from odoo.microkernel.osv import expression
 

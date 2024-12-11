@@ -4,9 +4,9 @@ from collections import defaultdict
 
 import werkzeug
 import werkzeug.exceptions
-from odoo import _, models
+from odoo import _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.exceptions import UserError, ValidationError
 from odoo.tools.image import image_data_uri
 

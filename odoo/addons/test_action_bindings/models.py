@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from odoo import models
+from odoo.microkernel.ormapping import models
 
 class A(models.Model):
     _name = _description = 'tab.a'

@@ -1,8 +1,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-from odoo import models
+from odoo.microkernel.ormapping import models
 from odoo.microkernel.api import api
 from odoo.microkernel.osv.expression import AND
-
 
 class SingleEmployeeSalesReport(models.AbstractModel):
     _name = 'report.pos_hr.single_employee_sales_report'

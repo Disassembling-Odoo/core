@@ -2,10 +2,8 @@
 from dateutil.relativedelta import relativedelta
 from pytz import UTC
 
-from odoo import models
-
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.addons.resource.models.utils import Intervals, sum_intervals, timezone_datetime
 
 

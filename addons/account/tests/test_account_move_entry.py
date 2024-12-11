@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, fields
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon
 from odoo.tests import Form, tagged, new_test_user
-from odoo import Command
 from odoo.exceptions import UserError, RedirectWarning
 
 from dateutil.relativedelta import relativedelta

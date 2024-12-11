@@ -5,7 +5,7 @@ from freezegun import freeze_time
 
 from odoo.tests import Form
 from odoo.addons.mrp.tests.common import TestMrpCommon
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 
 
 

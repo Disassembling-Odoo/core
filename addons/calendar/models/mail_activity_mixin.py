@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import models
 from odoo.microkernel.api import api
-from odoo.ormapping import fields, first as fields_first
+from odoo.microkernel.ormapping import models, fields, first as fields_first
 
 class MailActivityMixin(models.AbstractModel):
     _inherit = 'mail.activity.mixin'

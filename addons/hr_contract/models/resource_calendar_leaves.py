@@ -3,8 +3,7 @@
 from datetime import datetime
 from pytz import timezone, utc
 
-from odoo import models
-
+from odoo.microkernel.ormapping import models
 
 class ResourceCalendarLeaves(models.Model):
     _inherit = 'resource.calendar.leaves'

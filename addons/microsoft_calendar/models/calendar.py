@@ -8,9 +8,9 @@ from datetime import datetime, timedelta
 from dateutil.parser import parse
 from dateutil.relativedelta import relativedelta
 
-from odoo import models, _
+from odoo import _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.exceptions import UserError, ValidationError
 from odoo.tools import email_normalize
 from odoo.microkernel.osv import expression

@@ -1,5 +1,5 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-from odoo import models
+from odoo.microkernel.ormapping import models
 
 # Let us match the document types to properly suggest the DN and CN documents
 # NOTE: this can be avoided if we have an extra subclassification of UY documents

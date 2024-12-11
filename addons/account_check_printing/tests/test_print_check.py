@@ -3,7 +3,7 @@ from odoo.addons.account.tests.common import AccountTestInvoicingCommon
 from odoo.addons.account_check_printing.models.account_payment import INV_LINES_PER_STUB
 from odoo.tests import tagged
 from odoo.tools.i18n import NON_BREAKING_SPACE
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 
 import math
 

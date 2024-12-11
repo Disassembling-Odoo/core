@@ -66,10 +66,10 @@ from .microkernel.api import api
 # ----------------------------------------------------------
 # Model classes, fields, api decorators, and translations
 # ----------------------------------------------------------
-from .ormapping import *
 from odoo.tools.translate import _, _lt
 
 # ----------------------------------------------------------
 # Other imports, which may require stuff from above
 # ----------------------------------------------------------
+from . import microkernel
 from .microkernel import *

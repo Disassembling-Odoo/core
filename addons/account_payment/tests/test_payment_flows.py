@@ -3,7 +3,7 @@
 from datetime import datetime, timedelta
 from unittest.mock import patch
 
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.exceptions import AccessError
 from odoo.tests import tagged, JsonRpcException
 from odoo.technology.adjustable import mute_logger

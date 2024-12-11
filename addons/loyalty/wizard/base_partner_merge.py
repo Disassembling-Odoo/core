@@ -1,5 +1,4 @@
-from odoo import models
-
+from odoo.microkernel.ormapping import models
 
 class MergePartnerAutomatic(models.TransientModel):
     _inherit = 'base.partner.merge.automatic.wizard'

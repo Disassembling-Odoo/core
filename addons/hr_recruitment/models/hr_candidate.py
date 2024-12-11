@@ -3,10 +3,10 @@
 from collections import defaultdict
 
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.addons.hr_recruitment.models.hr_applicant import AVAILABLE_PRIORITIES
 
-from odoo import models, SUPERUSER_ID, tools, _
+from odoo import SUPERUSER_ID, tools, _
 from odoo.exceptions import UserError
 from odoo.microkernel.osv import expression
 

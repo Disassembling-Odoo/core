@@ -7,8 +7,8 @@ from freezegun import freeze_time
 from unittest.mock import patch
 
 import odoo
-from odoo import exceptions, Command
-from odoo.ormapping import fields
+from odoo import exceptions
+from odoo.microkernel.ormapping import Command, fields
 from odoo.tests import Form
 from odoo.tests.common import TransactionCase, tagged
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon
@@ -364,7 +364,7 @@ class TestStockValuationWithCOA(AccountTestInvoicingCommon):
         })
 
         old_action_post = odoo.addons.account.models.account_move.AccountMove.action_post
-        old_create = odoo.ormapping.models.BaseModel.create
+        old_create = odoo.microkernel.ormapping.models.BaseModel.create
 
         def new_action_post(self):
             """ Force the creation of tracking values. """

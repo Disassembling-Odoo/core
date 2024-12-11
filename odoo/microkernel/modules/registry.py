@@ -35,7 +35,7 @@ from odoo.technology.adjustable.stack_frame import format_frame
 from odoo.technology.utils import OrderedSet, Collector
 
 if typing.TYPE_CHECKING:
-    from odoo.ormapping import BaseModel
+    from odoo.microkernel.ormapping import BaseModel
 from odoo.technology.db import sql, SQL, TestCursor
 
 _logger = logging.getLogger(__name__)
@@ -284,7 +284,7 @@ class Registry(Mapping):
         and registers them in the registry.
 
         """
-        from ... import models
+        from ..ormapping import models
 
         # clear cache to ensure consistency, but do not signal it
         for cache in self.__caches.values():

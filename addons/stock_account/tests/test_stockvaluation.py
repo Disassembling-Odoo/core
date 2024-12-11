@@ -4,9 +4,9 @@
 from datetime import timedelta
 
 from odoo.exceptions import UserError
-from odoo.ormapping import Datetime
+from odoo.microkernel.ormapping import Datetime
 from odoo.tests import Form, TransactionCase
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 
 
 def _create_accounting_data(env):

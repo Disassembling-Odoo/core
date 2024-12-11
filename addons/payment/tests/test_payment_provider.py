@@ -2,7 +2,7 @@
 
 from unittest.mock import patch
 
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.tests import tagged
 
 from odoo.addons.payment.const import REPORT_REASONS_MAPPING

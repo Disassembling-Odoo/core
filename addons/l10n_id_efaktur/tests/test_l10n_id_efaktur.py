@@ -1,6 +1,6 @@
 import csv
 
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.exceptions import UserError, ValidationError, RedirectWarning
 from odoo.tests import tagged
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon

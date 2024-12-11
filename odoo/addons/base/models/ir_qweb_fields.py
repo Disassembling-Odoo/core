@@ -12,9 +12,9 @@ from markupsafe import Markup, escape, escape_silent
 from PIL import Image
 from lxml import etree, html
 
-from odoo import models, tools
+from odoo import tools
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.tools import float_utils
 from odoo.tools.i18n import get_lang, babel_locale_parse
 from odoo.microkernel.utils import format_duration, posix_to_ldml, format_date

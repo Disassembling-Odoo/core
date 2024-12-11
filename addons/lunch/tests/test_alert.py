@@ -1,6 +1,6 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 from datetime import datetime, timedelta
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.tests import common
 from odoo.addons.lunch.tests.common import TestsCommon
 

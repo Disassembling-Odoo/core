@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
-
-from odoo import models
-
+from odoo.microkernel.ormapping import models
 
 class IrQweb(models.AbstractModel):
     """Add ``raise_on_forbidden_code_for_model`` option for qweb.

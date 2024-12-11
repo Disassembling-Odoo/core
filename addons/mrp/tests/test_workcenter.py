@@ -3,7 +3,7 @@ from datetime import timedelta, datetime
 from freezegun import freeze_time
 
 from . import common
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.tests import Form, tagged
 
 

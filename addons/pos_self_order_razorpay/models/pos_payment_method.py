@@ -1,5 +1,5 @@
 import uuid
-from odoo import models
+from odoo.microkernel.ormapping import models
 from odoo.microkernel.api import api
 from odoo.microkernel.osv import expression
 

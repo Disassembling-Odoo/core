@@ -4,7 +4,7 @@ from collections import defaultdict
 from datetime import datetime
 from pytz import timezone
 
-from odoo import models
+from odoo.microkernel.ormapping import models
 from odoo.addons.resource.models.utils import Intervals
 
 class ResourceResource(models.Model):

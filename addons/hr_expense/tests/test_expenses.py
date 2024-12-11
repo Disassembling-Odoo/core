@@ -5,8 +5,7 @@ from datetime import date
 
 from freezegun import freeze_time
 
-from odoo import Command
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, fields
 from odoo.addons.hr_expense.tests.common import TestExpenseCommon
 from odoo.exceptions import RedirectWarning, UserError, ValidationError
 from odoo.tests import tagged, Form

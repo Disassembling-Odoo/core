@@ -6,9 +6,9 @@ import logging
 
 from ast import literal_eval
 
-from odoo import exceptions, models, _
+from odoo import exceptions, _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.tools import float_round
 
 _logger = logging.getLogger(__name__)

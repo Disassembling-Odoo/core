@@ -7,7 +7,7 @@ from freezegun import freeze_time
 
 from odoo import SUPERUSER_ID
 
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.exceptions import UserError
 from odoo.tests import common, new_test_user
 from odoo.addons.hr_timesheet.tests.test_timesheet import TestCommonTimesheet

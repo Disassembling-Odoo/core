@@ -6,9 +6,9 @@ import base64
 import json
 import random
 
-from odoo import models, _, Command, tools
+from odoo import _, tools
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, models, fields
 from odoo.exceptions import UserError
 from odoo.microkernel.osv import expression
 from odoo.release import version

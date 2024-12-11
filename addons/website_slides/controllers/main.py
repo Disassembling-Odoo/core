@@ -11,7 +11,7 @@ import math
 import werkzeug
 
 from odoo import tools, _
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.technology.db import sql
 from odoo.addons.website.controllers.main import QueryURL
 from odoo.addons.website.models.ir_http import sitemap_qs2dom

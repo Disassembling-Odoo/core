@@ -4,9 +4,9 @@
 import datetime
 from markupsafe import Markup
 
-from odoo import models, tools, _
+from odoo import tools, _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 
 BLACKLIST_MAX_BOUNCED_LIMIT = 5
 

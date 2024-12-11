@@ -23,9 +23,9 @@ from lxml import etree
 from lxml.builder import E
 from passlib.context import CryptContext as _CryptContext
 
-from odoo import models, tools, SUPERUSER_ID, _, Command
+from odoo import tools, SUPERUSER_ID, _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import Command, models, fields
 from odoo.addons.base.models.ir_model import MODULE_UNINSTALL_FLAG
 from odoo.exceptions import AccessDenied, AccessError, UserError, ValidationError
 from odoo.technology.framework.http import request, DEFAULT_LANG

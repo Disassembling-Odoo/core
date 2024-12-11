@@ -3,7 +3,7 @@
 
 import random
 
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.addons.base.tests.common import TransactionCaseWithUserDemo
 
 

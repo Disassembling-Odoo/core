@@ -2,10 +2,8 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 from datetime import datetime, timedelta
 
-from odoo import models
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
-from odoo.ormapping import Datetime as FieldDateTime
+from odoo.microkernel.ormapping import models, fields, Datetime as FieldDateTime
 from dateutil.relativedelta import relativedelta
 from odoo.tools.translate import _
 from odoo.exceptions import UserError

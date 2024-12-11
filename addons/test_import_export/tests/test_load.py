@@ -2,7 +2,7 @@ import contextlib
 import json
 import re
 
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.addons.base.tests.common import SavepointCaseWithUserDemo
 from odoo.tests import common
 from odoo.technology.utils import file_open
@@ -278,7 +278,7 @@ class test_integer_field(ImporterCase):
             values(self.read()),
         )
 
-    @mute_logger('odoo.sql_db', 'odoo.ormapping.models')
+    @mute_logger('odoo.sql_db', 'odoo.microkernel.ormapping.models')
     def test_out_of_range(self):
         result = self.import_(['value'], [[str(2**31)]])
         self.assertIs(result['ids'], False)
@@ -468,19 +468,19 @@ class test_unbound_string_field(ImporterCase):
 class test_required_string_field(ImporterCase):
     model_name = 'export.string.required'
 
-    @mute_logger('odoo.sql_db', 'odoo.ormapping.models')
+    @mute_logger('odoo.sql_db', 'odoo.microkernel.ormapping.models')
     def test_empty(self):
         result = self.import_(['value'], [[]])
         self.assertEqual(result['messages'], [message("Missing required value for the field 'Value' (value)")])
         self.assertIs(result['ids'], False)
 
-    @mute_logger('odoo.sql_db', 'odoo.ormapping.models')
+    @mute_logger('odoo.sql_db', 'odoo.microkernel.ormapping.models')
     def test_not_provided(self):
         result = self.import_(['const'], [['12']])
         self.assertEqual(result['messages'], [message("Missing required value for the field 'Value' (value)")])
         self.assertIs(result['ids'], False)
 
-    @mute_logger('odoo.sql_db', 'odoo.ormapping.models')
+    @mute_logger('odoo.sql_db', 'odoo.microkernel.ormapping.models')
     def test_ignore_excess_messages(self):
         result = self.import_(['const'], [[str(n)] for n in range(100)])
         self.assertIs(result['ids'], False)

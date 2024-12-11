@@ -1,7 +1,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 import odoo.tests
-from odoo.ormapping import Command
+from odoo.microkernel.ormapping import Command
 
 
 @odoo.tests.tagged('post_install', '-at_install')

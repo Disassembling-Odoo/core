@@ -24,9 +24,9 @@ import lxml.html
 import psycopg2
 
 import odoo
-from odoo import models, modules, tools, _
+from odoo import modules, tools, _
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 from odoo.addons.base.models.ir_model import MODULE_UNINSTALL_FLAG
 from odoo.exceptions import AccessDenied, UserError, ValidationError
 from odoo.microkernel.osv import expression

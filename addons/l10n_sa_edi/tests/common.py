@@ -1,7 +1,7 @@
 # coding: utf-8
 from datetime import datetime
 
-from odoo import Command
+from odoo.microkernel.ormapping import Command
 from odoo.tests import tagged
 from odoo.addons.account_edi.tests.common import AccountEdiTestCommon
 

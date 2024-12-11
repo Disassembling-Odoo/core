@@ -3,9 +3,9 @@
 import datetime
 import markupsafe
 
-from odoo import _, models, tools
+from odoo import _, tools
 from odoo.microkernel.api import api
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import models, fields
 
 
 class MailThread(models.AbstractModel):

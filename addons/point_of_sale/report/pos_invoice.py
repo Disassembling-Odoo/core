@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-
-from odoo import models, _
+from odoo import _
+from odoo.microkernel.ormapping import models
 from odoo.exceptions import UserError
 from odoo.microkernel.api import api
-
 
 class PosInvoiceReport(models.AbstractModel):
     _name = 'report.point_of_sale.report_invoice'

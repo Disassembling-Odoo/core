@@ -1,8 +1,7 @@
 import io
 
-from odoo import models
+from odoo.microkernel.ormapping import models
 from odoo.tools.pdf import OdooPdfFileReader, OdooPdfFileWriter
-
 
 class IrActionsReport(models.Model):
     _inherit = 'ir.actions.report'

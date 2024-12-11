@@ -1,6 +1,6 @@
 import logging
 from odoo.addons.pos_adyen.controllers.main import PosAdyenController
-from odoo.ormapping import fields
+from odoo.microkernel.ormapping import fields
 from odoo.technology.framework.http import request
 
 _logger = logging.getLogger(__name__)

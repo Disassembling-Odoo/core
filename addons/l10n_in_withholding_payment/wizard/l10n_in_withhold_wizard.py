@@ -1,5 +1,4 @@
-from odoo import models
-
+from odoo.microkernel.ormapping import models
 
 class L10nInWithholdWizard(models.TransientModel):
     _inherit = 'l10n_in.withhold.wizard'

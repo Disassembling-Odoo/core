@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-
-
 import json
 import logging
 import requests
@@ -10,7 +8,8 @@ from base64 import b64encode
 from odoo.addons.account.tools import LegacyHTTPAdapter
 from json.decoder import JSONDecodeError
 
-from odoo import models, _
+from odoo import _
+from odoo.microkernel.ormapping import models
 from odoo.microkernel.api import api
 from odoo.tools.float_utils import json_float_round
 

@@ -16,6 +16,11 @@ from collections.abc import Callable, Collection, Sequence
 #----------------------------------------------------------
 # iterables
 #----------------------------------------------------------
+def first(records):
+    """ Return the first record in ``records``, with the same prefetching. """
+    return next(iter(records)) if len(records) > 1 else records
+
+
 def flatten(list):
     """Flatten a list of elements into a unique list
     Author: Christophe Simonis (christophe@tinyerp.com)

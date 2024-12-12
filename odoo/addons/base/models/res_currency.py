@@ -8,7 +8,7 @@ from lxml import etree
 
 from odoo import tools, _
 from odoo.microkernel.api import api
-from odoo.microkernel.ormapping import models, fields
+from odoo.microkernel.ormapping import models, fields, utils as orm_utils
 from odoo.exceptions import UserError, ValidationError
 from odoo.microkernel.utils import parse_date
 from odoo.tools import i18n
@@ -335,7 +335,7 @@ class CurrencyRate(models.Model):
     _description = "Currency Rate"
     _rec_names_search = ['name', 'rate']
     _order = "name desc"
-    _check_company_domain = models.check_company_domain_parent_of
+    _check_company_domain = orm_utils.check_company_domain_parent_of
 
     name = fields.Date(string='Date', required=True, index=True,
                            default=fields.Date.context_today)

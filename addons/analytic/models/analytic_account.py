@@ -5,7 +5,7 @@ from collections import defaultdict
 import itertools
 from odoo import _
 from odoo.microkernel.api import api
-from odoo.microkernel.ormapping import models, fields
+from odoo.microkernel.ormapping import models, fields, utils as orm_utils
 from odoo.exceptions import UserError
 from odoo.technology.utils import groupby
 
@@ -16,7 +16,7 @@ class AccountAnalyticAccount(models.Model):
     _description = 'Analytic Account'
     _order = 'plan_id, name asc'
     _check_company_auto = True
-    _check_company_domain = models.check_company_domain_parent_of
+    _check_company_domain = orm_utils.check_company_domain_parent_of
     _rec_names_search = ['name', 'code']
 
     name = fields.Char(

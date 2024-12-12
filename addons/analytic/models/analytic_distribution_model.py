@@ -3,7 +3,7 @@
 
 from odoo import _
 from odoo.microkernel.api import api
-from odoo.microkernel.ormapping import models, fields
+from odoo.microkernel.ormapping import models, fields, utils as orm_utils
 from odoo.technology.db import SQL
 from odoo.exceptions import UserError
 
@@ -15,7 +15,7 @@ class AccountAnalyticDistributionModel(models.Model):
     _rec_name = 'create_date'
     _order = 'sequence, id desc'
     _check_company_auto = True
-    _check_company_domain = models.check_company_domain_parent_of
+    _check_company_domain = orm_utils.check_company_domain_parent_of
 
     sequence = fields.Integer(default=10)
     partner_id = fields.Many2one(

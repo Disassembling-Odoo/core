@@ -1,5 +1,12 @@
 # -*- coding: utf-8 -*-
 import enum
+import psycopg2
+import psycopg2.extensions
+
+# databases operators Batch size
+INSERT_BATCH_SIZE = 100
+UPDATE_BATCH_SIZE = 100
+SQL_DEFAULT = psycopg2.extensions.AsIs("DEFAULT")
 
 # maximum number of prefetched records
 PREFETCH_MAX = 1000

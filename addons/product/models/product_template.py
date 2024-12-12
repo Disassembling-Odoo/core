@@ -7,7 +7,7 @@ from collections import defaultdict
 
 from odoo import _, tools
 from odoo.microkernel.api import api
-from odoo.microkernel.ormapping import models, fields
+from odoo.microkernel.ormapping import models, fields, utils as orm_utils
 from odoo.exceptions import UserError, ValidationError
 from odoo.microkernel.osv import expression
 from odoo.tools.image import is_image_size_above
@@ -23,7 +23,7 @@ class ProductTemplate(models.Model):
     _description = "Product"
     _order = "is_favorite desc, name"
     _check_company_auto = True
-    _check_company_domain = models.check_company_domain_parent_of
+    _check_company_domain = orm_utils.check_company_domain_parent_of
 
     def default_get(self, fields_list):
         res = super().default_get(fields_list)

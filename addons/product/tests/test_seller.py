@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-
-from odoo.microkernel.ormapping import first, Command
 from odoo.tests import tagged, TransactionCase
 from odoo.tools import float_compare
-
+from odoo.technology.utils import first
+from odoo.microkernel.ormapping import Command
 
 @tagged('post_install', '-at_install')
 class TestSeller(TransactionCase):

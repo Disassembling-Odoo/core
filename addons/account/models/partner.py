@@ -10,7 +10,7 @@ from psycopg2 import errors as pgerrors
 
 from odoo import _
 from odoo.microkernel.api import api
-from odoo.microkernel.ormapping import models, fields
+from odoo.microkernel.ormapping import models, fields, utils as orm_utils
 from odoo.microkernel.osv import expression
 from odoo.exceptions import ValidationError, UserError
 from odoo.technology.adjustable import mute_logger
@@ -26,7 +26,7 @@ class AccountFiscalPosition(models.Model):
     _description = 'Fiscal Position'
     _order = 'sequence'
     _check_company_auto = True
-    _check_company_domain = models.check_company_domain_parent_of
+    _check_company_domain = orm_utils.check_company_domain_parent_of
 
     sequence = fields.Integer()
     name = fields.Char(string='Fiscal Position', required=True, translate=True)
@@ -296,7 +296,7 @@ class AccountFiscalPositionTax(models.Model):
     _description = 'Tax Mapping of Fiscal Position'
     _rec_name = 'position_id'
     _check_company_auto = True
-    _check_company_domain = models.check_company_domain_parent_of
+    _check_company_domain = orm_utils.check_company_domain_parent_of
 
     position_id = fields.Many2one('account.fiscal.position', string='Fiscal Position',
         required=True, ondelete='cascade')
@@ -317,7 +317,7 @@ class AccountFiscalPositionAccount(models.Model):
     _description = 'Accounts Mapping of Fiscal Position'
     _rec_name = 'position_id'
     _check_company_auto = True
-    _check_company_domain = models.check_company_domain_parent_of
+    _check_company_domain = orm_utils.check_company_domain_parent_of
 
     position_id = fields.Many2one('account.fiscal.position', string='Fiscal Position',
         required=True, ondelete='cascade')

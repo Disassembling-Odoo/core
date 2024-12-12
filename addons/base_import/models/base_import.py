@@ -23,7 +23,7 @@ from PIL import Image
 
 from collections import defaultdict
 from odoo.microkernel.api import api
-from odoo.microkernel.ormapping import models, fields
+from odoo.microkernel.ormapping import models, fields, utils as orm_utils
 from odoo.technology.conf import config
 from odoo.exceptions import UserError
 from odoo.tools.translate import _
@@ -1068,7 +1068,7 @@ class Import(models.TransientModel):
                 advanced_mode = options.get('advanced')
             else:
                 # Check is label contain relational field
-                has_relational_header = any(len(models.fix_import_export_id_paths(col)) > 1 for col in headers)
+                has_relational_header = any(len(orm_utils.fix_import_export_id_paths(col)) > 1 for col in headers)
                 # Check is matches fields have relational field
                 has_relational_match = any(len(match) > 1 for field, match in matches.items() if match)
                 advanced_mode = has_relational_header or has_relational_match

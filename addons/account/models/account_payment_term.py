@@ -2,7 +2,7 @@
 
 from odoo import _
 from odoo.microkernel.api import api
-from odoo.microkernel.ormapping import Command, models, fields
+from odoo.microkernel.ormapping import Command, models, fields, utils as orm_utils
 from odoo.exceptions import UserError, ValidationError
 from odoo.tools.i18n import formatLang
 from odoo.technology.utils import date_utils
@@ -17,7 +17,7 @@ class AccountPaymentTerm(models.Model):
     _name = "account.payment.term"
     _description = "Payment Terms"
     _order = "sequence, id"
-    _check_company_domain = models.check_company_domain_parent_of
+    _check_company_domain = orm_utils.check_company_domain_parent_of
 
     def _default_line_ids(self):
         return [Command.create({'value': 'percent', 'value_amount': 100.0, 'nb_days': 0})]

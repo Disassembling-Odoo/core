@@ -7,7 +7,7 @@ import json
 
 from odoo import _
 from odoo.microkernel.api import api
-from odoo.microkernel.ormapping import Command, models, fields
+from odoo.microkernel.ormapping import Command, models, fields, utils as orm_utils
 from odoo.microkernel.osv import expression
 from odoo.exceptions import UserError, ValidationError, RedirectWarning
 from odoo.technology.db import SQL, Query
@@ -24,7 +24,7 @@ class AccountAccount(models.Model):
     _description = "Account"
     _order = "code, placeholder_code"
     _check_company_auto = True
-    _check_company_domain = models.check_companies_domain_parent_of
+    _check_company_domain = orm_utils.check_companies_domain_parent_of
 
     @api.constrains('account_type', 'reconcile')
     def _check_reconcile(self):
@@ -1434,7 +1434,7 @@ class AccountGroup(models.Model):
     _description = 'Account Group'
     _order = 'code_prefix_start'
     _check_company_auto = True
-    _check_company_domain = models.check_company_domain_parent_of
+    _check_company_domain = orm_utils.check_company_domain_parent_of
 
     parent_id = fields.Many2one('account.group', index=True, ondelete='cascade', readonly=True, check_company=True)
     name = fields.Char(required=True, translate=True)

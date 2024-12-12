@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from odoo import _
 from odoo.microkernel.api import api
-from odoo.microkernel.ormapping import Command, models, fields
+from odoo.microkernel.ormapping import Command, models, fields, utils as orm_utils
 from odoo.microkernel.osv import expression
 from odoo.exceptions import UserError, ValidationError
 from odoo.tools import html2plaintext, is_html_empty, split_every
@@ -31,7 +31,7 @@ class AccountTaxGroup(models.Model):
     _description = 'Tax Group'
     _order = 'sequence asc, id'
     _check_company_auto = True
-    _check_company_domain = models.check_company_domain_parent_of
+    _check_company_domain = orm_utils.check_company_domain_parent_of
 
     name = fields.Char(required=True, translate=True)
     sequence = fields.Integer(default=10)
@@ -95,7 +95,7 @@ class AccountTax(models.Model):
     _order = 'sequence,id'
     _check_company_auto = True
     _rec_names_search = ['name', 'description', 'invoice_label']
-    _check_company_domain = models.check_company_domain_parent_of
+    _check_company_domain = orm_utils.check_company_domain_parent_of
 
     name = fields.Char(string='Tax Name', required=True, translate=True, tracking=True)
     name_searchable = fields.Char(store=False, search='_search_name',
@@ -2503,7 +2503,7 @@ class AccountTaxRepartitionLine(models.Model):
     _description = "Tax Repartition Line"
     _order = 'document_type, repartition_type, sequence, id'
     _check_company_auto = True
-    _check_company_domain = models.check_company_domain_parent_of
+    _check_company_domain = orm_utils.check_company_domain_parent_of
 
     factor_percent = fields.Float(
         string="%",

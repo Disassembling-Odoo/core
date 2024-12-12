@@ -6,7 +6,7 @@ from operator import itemgetter
 
 from odoo import tools, _
 from odoo.microkernel.api import api
-from odoo.microkernel.ormapping import models, fields
+from odoo.microkernel.ormapping import models, fields, utils as orm_utils
 from odoo.exceptions import ValidationError
 from odoo.microkernel.osv import expression
 from odoo.tools import float_compare, format_list
@@ -21,7 +21,7 @@ class ProductProduct(models.Model):
     _inherits = {'product.template': 'product_tmpl_id'}
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _order = 'is_favorite desc, default_code, name, id'
-    _check_company_domain = models.check_company_domain_parent_of
+    _check_company_domain = orm_utils.check_company_domain_parent_of
 
     # price_extra: catalog extra value only, sum of variant extra attributes
     price_extra = fields.Float(

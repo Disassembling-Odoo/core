@@ -16,7 +16,7 @@ from werkzeug import urls
 
 from odoo import tools, SUPERUSER_ID, _
 from odoo.microkernel.api import api
-from odoo.microkernel.ormapping import Command, models, fields
+from odoo.microkernel.ormapping import Command, models, fields, utils as orm_utils
 from odoo.exceptions import RedirectWarning, UserError, ValidationError
 from odoo.technology import utils as tech_utils
 
@@ -197,7 +197,7 @@ class Partner(models.Model):
     _order = "complete_name ASC, id DESC"
     _rec_names_search = ['complete_name', 'email', 'ref', 'vat', 'company_registry']  # TODO vat must be sanitized the same way for storing/searching
     _allow_sudo_commands = False
-    _check_company_domain = models.check_company_domain_parent_of
+    _check_company_domain = orm_utils.check_company_domain_parent_of
 
     # the partner types that must be added to a partner's complete name, like "Delivery"
     _complete_name_displayed_types = ('invoice', 'delivery', 'other')

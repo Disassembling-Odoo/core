@@ -4,7 +4,7 @@ from random import randint
 
 from odoo import _
 from odoo.microkernel.api import api
-from odoo.microkernel.ormapping import models, fields
+from odoo.microkernel.ormapping import models, fields, utils as orm_utils
 from odoo.exceptions import UserError
 from odoo.technology.cache import ormcache
 from odoo.technology.db import make_index_name, create_index
@@ -290,7 +290,7 @@ class AccountAnalyticApplicability(models.Model):
     _name = 'account.analytic.applicability'
     _description = "Analytic Plan's Applicabilities"
     _check_company_auto = True
-    _check_company_domain = models.check_company_domain_parent_of
+    _check_company_domain = orm_utils.check_company_domain_parent_of
 
     analytic_plan_id = fields.Many2one('account.analytic.plan')
     business_domain = fields.Selection(

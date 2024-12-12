@@ -14,7 +14,7 @@ from psycopg2.extras import Json
 
 from odoo import tools
 from odoo.microkernel.api import api
-from odoo.microkernel.ormapping import Command, models, fields
+from odoo.microkernel.ormapping import Command, models, fields, utils as orm_utils
 from odoo.exceptions import AccessError, UserError, ValidationError
 from odoo.microkernel.osv import expression
 from odoo.technology.utils import OrderedSet
@@ -277,7 +277,7 @@ class IrModel(models.Model):
         for model in self:
             if model.state == 'manual':
                 self._check_manual_name(model.model)
-            if not models.check_object_name(model.model):
+            if not orm_utils.check_object_name(model.model):
                 raise ValidationError(_("The model name can only contain lowercase characters, digits, underscores and dots."))
 
     @api.constrains('order', 'field_id')

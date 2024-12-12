@@ -2,7 +2,7 @@ from ast import literal_eval
 
 from odoo import _
 from odoo.microkernel.api import api
-from odoo.microkernel.ormapping import Command, models, fields
+from odoo.microkernel.ormapping import Command, models, fields, utils as orm_utils
 from odoo.exceptions import UserError, ValidationError
 from odoo.addons.base.models.res_bank import sanitize_account_number
 from odoo.technology.utils import groupby
@@ -17,7 +17,7 @@ class AccountJournalGroup(models.Model):
     _name = 'account.journal.group'
     _description = "Account Journal Group"
     _check_company_auto = True
-    _check_company_domain = models.check_company_domain_parent_of
+    _check_company_domain = orm_utils.check_company_domain_parent_of
 
     name = fields.Char("Ledger group", required=True, translate=True)
     company_id = fields.Many2one(
@@ -42,7 +42,7 @@ class AccountJournal(models.Model):
                 'mail.activity.mixin',
                ]
     _check_company_auto = True
-    _check_company_domain = models.check_company_domain_parent_of
+    _check_company_domain = orm_utils.check_company_domain_parent_of
     _rec_names_search = ['name', 'code']
 
     def _default_inbound_payment_methods(self):

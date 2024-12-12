@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-
-
 """
     Object Relational Mapping module:
      * Hierarchical structure
@@ -49,12 +47,6 @@ import psycopg2
 import psycopg2.extensions
 from psycopg2.extras import Json
 
-from odoo.technology.db import sql
-
-from .utils import expand_ids, check_property_field_value_name, is_definition_class, check_method_name, regex_object_name
-from .constant import Command, READ_GROUP_NUMBER_GRANULARITY, PREFETCH_MAX
-from .base import NewId, IdType
-
 import odoo
 from odoo import SUPERUSER_ID
 from odoo.exceptions import AccessError, MissingError, ValidationError, UserError
@@ -64,27 +56,38 @@ from ...tools import (
     format_list, 
     split_every, 
 )
+from ...tools.lru import LRU
+from ...tools.i18n import get_lang
+from ...tools.misc import ReversedIterable, unquote
+from ...tools.translate import _, LazyTranslate
 
-from odoo.technology.utils import check_pg_name, date_utils, lazy_classproperty
-from odoo.technology.utils import frozendict, OrderedSet, LastOrderedSet, partition, unique
-from odoo.tools.lru import LRU
-from odoo.tools.i18n import get_lang
-from odoo.tools.misc import ReversedIterable, unquote
-from odoo.tools.translate import _, LazyTranslate
-from odoo.technology.cache import ormcache
-from odoo.technology.conf import config
-from odoo.technology.db import SQL, Query
-from odoo.microkernel.api import api
-from odoo.microkernel.utils import (
+from ...technology.utils import check_pg_name, date_utils, lazy_classproperty
+from ...technology.utils import frozendict, OrderedSet, LastOrderedSet, partition, unique
+from ...technology.conf import config
+from ...technology.cache import ormcache
+from ...technology.db import sql
+from ...technology.db import SQL, Query
+from ...microkernel.utils import (
     DEFAULT_SERVER_DATE_FORMAT, DEFAULT_SERVER_DATETIME_FORMAT,
 )
+from ...microkernel.api import api
+
+from .utils import (
+    expand_ids, check_property_field_value_name, is_definition_class, 
+    check_method_name, check_object_name, fix_import_export_id_paths,
+    raise_on_invalid_object_name, to_company_ids, origin_ids
+    )
+from .constant import (
+    Command, READ_GROUP_NUMBER_GRANULARITY, PREFETCH_MAX,
+    INSERT_BATCH_SIZE, UPDATE_BATCH_SIZE, SQL_DEFAULT
+    )
+from .base import NewId, IdType
 
 import typing
 if typing.TYPE_CHECKING:
     from collections.abc import Reversible
     from odoo.microkernel.modules.registry import Registry
     from odoo.microkernel.api.api import Self, ValuesType
-
 
 _lt = LazyTranslate('base')
 _logger = logging.getLogger(__name__)
@@ -108,10 +111,6 @@ regex_read_group_spec = re.compile(r'(\w+)(\.(\w+))?(?::(\w+))?$')  # For _read_
 AUTOINIT_RECALCULATE_STORED_FIELDS = 1000
 GC_UNLINK_LIMIT = 100_000
 
-INSERT_BATCH_SIZE = 100
-UPDATE_BATCH_SIZE = 100
-SQL_DEFAULT = psycopg2.extensions.AsIs("DEFAULT")
-
 def parse_read_group_spec(spec: str) -> tuple:
     """ Return a triplet corresponding to the given groupby/path/aggregate specification. """
     res_match = regex_read_group_spec.match(spec)
@@ -124,92 +123,6 @@ def parse_read_group_spec(spec: str) -> tuple:
 
     groups = res_match.groups()
     return groups[0], groups[2], groups[3]
-
-def check_object_name(name):
-    """ Check if the given name is a valid model name.
-
-        The _name attribute in osv and osv_memory object is subject to
-        some restrictions. This function returns True or False whether
-        the given name is allowed or not.
-
-        TODO: this is an approximation. The goal in this approximation
-        is to disallow uppercase characters (in some places, we quote
-        table/column names and in other not, which leads to this kind
-        of errors:
-
-            psycopg2.ProgrammingError: relation "xxx" does not exist).
-
-        The same restriction should apply to both osv and osv_memory
-        objects for consistency.
-
-    """
-    if regex_object_name.match(name) is None:
-        return False
-    return True
-
-def raise_on_invalid_object_name(name):
-    if not check_object_name(name):
-        msg = "The _name attribute %s is not valid." % name
-        raise ValueError(msg)
-
-def fix_import_export_id_paths(fieldname):
-    """
-    Fixes the id fields in import and exports, and splits field paths
-    on '/'.
-
-    :param str fieldname: name of the field to import/export
-    :return: split field name
-    :rtype: list of str
-    """
-    fixed_db_id = re.sub(r'([^/])\.id', r'\1/.id', fieldname)
-    fixed_external_id = re.sub(r'([^/]):id', r'\1/id', fixed_db_id)
-    return fixed_external_id.split('/')
-
-
-def to_company_ids(companies):
-    if isinstance(companies, BaseModel):
-        return companies.ids
-    elif isinstance(companies, (list, tuple, str)):
-        return companies
-    return [companies]
-
-
-def check_company_domain_parent_of(self, companies):
-    """ A `_check_company_domain` function that lets a record be used if either:
-        - record.company_id = False (which implies that it is shared between all companies), or
-        - record.company_id is a parent of any of the given companies.
-    """
-    if isinstance(companies, str):
-        return ['|', ('company_id', '=', False), ('company_id', 'parent_of', companies)]
-
-    companies = [id for id in to_company_ids(companies) if id]
-    if not companies:
-        return [('company_id', '=', False)]
-
-    return [('company_id', 'in', [
-        int(parent)
-        for rec in self.env['res.company'].sudo().browse(companies)
-        for parent in rec.parent_path.split('/')[:-1]
-    ] + [False])]
-
-
-def check_companies_domain_parent_of(self, companies):
-    """ A `_check_company_domain` function that lets a record be used if
-        any company in record.company_ids is a parent of any of the given companies.
-    """
-    if isinstance(companies, str):
-        return [('company_ids', 'parent_of', companies)]
-
-    companies = [id_ for id_ in to_company_ids(companies) if id_]
-    if not companies:
-        return []
-
-    return [('company_ids', 'in', [
-        int(parent)
-        for rec in self.env['res.company'].sudo().browse(companies)
-        for parent in rec.parent_path.split('/')[:-1]
-    ])]
-
 
 class MetaModel(api.Meta):
     """ The metaclass of all model classes.
@@ -281,14 +194,6 @@ class MetaModel(api.Meta):
                 add_default('write_date', fields.Datetime(
                     string='Last Updated on', automatic=True, readonly=True))
 
-
-def origin_ids(ids):
-    """ Return an iterator over the origin ids corresponding to ``ids``.
-        Actual ids are returned as is, and ids without origin are not returned.
-    """
-    return ((id_ or id_.origin) for id_ in ids if (id_ or getattr(id_, "origin", None)))
-
-
 class OriginIds:
     """ A reversible iterable returning the origin ids of a collection of ``ids``. """
     __slots__ = ['ids']
@@ -301,7 +206,6 @@ class OriginIds:
 
     def __reversed__(self):
         return origin_ids(reversed(self.ids))
-
 
 # special columns automatically created by the ORM
 LOG_ACCESS_COLUMNS = ['create_uid', 'create_date', 'write_uid', 'write_date']

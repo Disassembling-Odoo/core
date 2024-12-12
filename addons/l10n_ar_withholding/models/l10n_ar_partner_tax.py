@@ -1,6 +1,6 @@
 from odoo import _
 from odoo.microkernel.api import api
-from odoo.microkernel.ormapping import models, fields
+from odoo.microkernel.ormapping import models, fields, utils as orm_utils
 from odoo.exceptions import ValidationError
 import logging
 # from dateutil.relativedelta import relativedelta
@@ -12,7 +12,7 @@ class L10nArPartnerTax(models.Model):
     _description = "Argentinean Partner Taxes"
     _order = "to_date desc, from_date desc, tax_id"
     _check_company_auto = True
-    _check_company_domain = models.check_company_domain_parent_of
+    _check_company_domain = orm_utils.check_company_domain_parent_of
 
     partner_id = fields.Many2one(
         'res.partner',

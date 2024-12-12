@@ -2,7 +2,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 import io
 from odoo.microkernel.ormapping import models
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.tools.pdf import OdooPdfFileReader, OdooPdfFileWriter
 from pathlib import Path
 from reportlab.graphics.shapes import Image as ReportLabImage

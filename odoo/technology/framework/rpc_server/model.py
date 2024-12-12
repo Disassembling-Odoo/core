@@ -17,11 +17,11 @@ _logger = logging.getLogger(__name__)
 def execute_cr(cr, uid, obj, method, *args, **kw):
     # clean cache etc if we retry the same transaction
     cr.reset()
-    env = odoo.api.Environment(cr, uid, {})
+    env = odoo.microkernel.api.Environment(cr, uid, {})
     recs = env.get(obj)
     if recs is None:
         raise UserError(env._("Object %s doesn't exist", obj))
-    result = retrying.retrying(partial(odoo.api.call_kw, recs, method, args, kw), env)
+    result = retrying.retrying(partial(odoo.microkernel.api.call_kw, recs, method, args, kw), env)
     # force evaluation of lazy values before the cursor is closed, as it would
     # error afterwards if the lazy isn't already evaluated (and cached)
     for l in _traverse_containers(result, lazy):

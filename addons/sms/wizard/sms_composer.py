@@ -5,7 +5,7 @@ from ast import literal_eval
 from uuid import uuid4
 
 from odoo import _
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields
 from odoo.addons.sms.tools.sms_tools import sms_content_to_rendered_html
 from odoo.exceptions import UserError

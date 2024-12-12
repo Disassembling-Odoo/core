@@ -1,7 +1,7 @@
 from cryptography.fernet import Fernet
 
 from odoo.microkernel.ormapping import models
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 
 class Key(models.Model):
     _inherit = 'certificate.key'

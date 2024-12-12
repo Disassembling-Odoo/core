@@ -5,7 +5,7 @@ import random
 import re
 
 from odoo import _
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import Command, models, fields
 from odoo.addons.mail.tools.discuss import Store
 from odoo.addons.bus.websocket import WebsocketConnectionHandler

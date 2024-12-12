@@ -389,7 +389,7 @@ from dateutil.relativedelta import relativedelta
 from psycopg2.extensions import TransactionRollbackError
 
 from odoo import tools
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.technology.conf import config
 from odoo.microkernel.modules import registry
 from odoo.microkernel.ormapping import models

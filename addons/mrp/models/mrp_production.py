@@ -11,7 +11,7 @@ from collections import defaultdict
 from dateutil.relativedelta import relativedelta
 
 from odoo import _, SUPERUSER_ID
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import Command, models, fields
 from odoo.addons.web.controllers.utils import clean_action
 from odoo.exceptions import UserError, ValidationError

@@ -6,7 +6,7 @@ import logging
 from datetime import date, datetime, timedelta
 
 from odoo import _, exceptions
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields
 from odoo.tools.safe_eval import safe_eval, time
 

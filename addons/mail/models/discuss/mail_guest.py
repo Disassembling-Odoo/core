@@ -5,7 +5,7 @@ import uuid
 from datetime import datetime, timedelta
 from functools import wraps
 
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields
 from odoo.technology.utils import consteq
 from odoo import _

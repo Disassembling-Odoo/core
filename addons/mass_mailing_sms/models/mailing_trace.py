@@ -4,7 +4,7 @@
 import random
 import string
 
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields
 
 

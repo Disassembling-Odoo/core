@@ -3,7 +3,7 @@
 from odoo import _
 from odoo.microkernel.ormapping import models
 from odoo.exceptions import ValidationError
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 
 class GroupsView(models.Model):
     _inherit = 'res.groups'

@@ -4,7 +4,7 @@ import re
 from itertools import product
 
 from odoo.microkernel.ormapping import Command, models
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from .eu_account_map import EU_ACCOUNT_MAP
 from .eu_tag_map import EU_TAG_MAP
 from .eu_tax_map import EU_TAX_MAP

@@ -10,7 +10,7 @@ from odoo import exceptions, tools, _
 from odoo.addons.mail.tools.alias_error import AliasError
 from odoo.microkernel.ormapping import models
 from odoo.microkernel import utils as microkernel_utils
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 
 _logger = logging.getLogger(__name__)
 

@@ -10,7 +10,7 @@ import unicodedata
 
 from contextlib import nullcontext
 
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.technology.framework import http
 try:
     from werkzeug.utils import send_file

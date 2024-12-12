@@ -14,7 +14,7 @@ import re
 from textwrap import shorten
 
 from odoo import  _, SUPERUSER_ID, modules, tools
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import Command, models, fields
 from odoo.technology import conf
 from odoo.technology.db import SQL, column_exists, create_column

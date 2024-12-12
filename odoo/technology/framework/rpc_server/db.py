@@ -44,7 +44,7 @@ def _initialize_db(id, db_name, demo, lang, user_password, login='admin', countr
         registry = odoo.microkernel.modules.registry.Registry.new(db_name, demo, None, update_module=True)
 
         with closing(registry.cursor()) as cr:
-            env = odoo.api.Environment(cr, SUPERUSER_ID, {})
+            env = odoo.microkernel.api.Environment(cr, SUPERUSER_ID, {})
 
             if lang:
                 modules = env['ir.module.module'].search([('state', '=', 'installed')])

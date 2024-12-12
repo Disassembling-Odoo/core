@@ -1,6 +1,6 @@
 from odoo import _
 from odoo.microkernel.ormapping import models, Command
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 
 
 class SaleOrder(models.Model):

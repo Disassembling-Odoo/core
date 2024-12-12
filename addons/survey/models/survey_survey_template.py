@@ -4,7 +4,7 @@ import ast
 
 from odoo import _
 from odoo.microkernel.ormapping import models
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 
 class SurveyTemplate(models.Model):
     """This model defines additional actions on the 'survey.survey' model that

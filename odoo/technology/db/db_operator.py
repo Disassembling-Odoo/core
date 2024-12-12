@@ -300,7 +300,7 @@ def restore_db(db, dump_file, copy=False, neutralize_database=False):
 
         registry = odoo.microkernel.modules.registry.Registry.new(db)
         with registry.cursor() as cr:
-            env = odoo.api.Environment(cr, SUPERUSER_ID, {})
+            env = odoo.microkernel.api.Environment(cr, SUPERUSER_ID, {})
             if copy:
                 # if it's a copy of a database, force generation of a new dbuuid
                 env['ir.config_parameter'].init(force=True)
@@ -354,7 +354,7 @@ def duplicate_db(db_original_name, db_name, neutralize_database=False):
     registry = odoo.microkernel.modules.registry.Registry.new(db_name)
     with registry.cursor() as cr:
         # if it's a copy of a database, force generation of a new dbuuid
-        env = odoo.api.Environment(cr, SUPERUSER_ID, {})
+        env = odoo.microkernel.api.Environment(cr, SUPERUSER_ID, {})
         env['ir.config_parameter'].init(force=True)
         if neutralize_database:
             odoo.microkernel.modules.neutralize.neutralize_database(cr)

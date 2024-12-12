@@ -2,7 +2,7 @@
 
 from odoo import _
 from odoo.microkernel.ormapping import models, fields
-from odoo.microkernel.api.api import ondelete
+from odoo.microkernel.api import ondelete
 from odoo.exceptions import UserError
 
 

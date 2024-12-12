@@ -3,7 +3,7 @@
 import base64
 import uuid
 
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields
 from odoo.addons.mail.tools.discuss import Store
 from odoo.addons.rating.models import rating_data

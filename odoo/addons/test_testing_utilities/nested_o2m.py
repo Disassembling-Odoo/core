@@ -1,6 +1,6 @@
 from lxml.builder import E
 
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import Command, models, fields
 
 class Product(models.Model):

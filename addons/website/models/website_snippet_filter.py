@@ -2,7 +2,7 @@
 from ast import literal_eval
 from collections import OrderedDict
 from odoo import _
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields
 from odoo.exceptions import ValidationError, MissingError
 from odoo.microkernel.osv import expression

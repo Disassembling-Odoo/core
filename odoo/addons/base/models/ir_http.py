@@ -15,7 +15,7 @@ import werkzeug.exceptions
 import werkzeug.routing
 import werkzeug.utils
 
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.technology.framework import http
 
 try:

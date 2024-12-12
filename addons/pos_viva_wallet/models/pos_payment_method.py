@@ -4,7 +4,7 @@ import logging
 import requests
 
 from odoo import tools, _
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields
 from odoo.exceptions import UserError, AccessError
 from odoo.technology import conf

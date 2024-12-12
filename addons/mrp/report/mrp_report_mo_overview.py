@@ -4,7 +4,7 @@ import copy
 import json
 from collections import defaultdict
 from odoo import _
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields
 from odoo.tools import float_compare, float_repr, float_round, float_is_zero
 from odoo.tools.i18n import  get_lang

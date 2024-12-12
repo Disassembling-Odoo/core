@@ -11,7 +11,7 @@ from dateutil.relativedelta import relativedelta
 
 import odoo
 from odoo import _
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields
 from odoo.exceptions import UserError
 from odoo.microkernel.modules.registry import Registry

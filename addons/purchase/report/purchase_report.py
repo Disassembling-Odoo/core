@@ -4,7 +4,7 @@
 #
 # Please note that these reports are not multi-currency !!!
 #
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields
 from odoo.technology.db import Query, SQL
 

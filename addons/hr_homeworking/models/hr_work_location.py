@@ -5,7 +5,7 @@ from odoo import _
 from odoo.exceptions import UserError
 from odoo.addons.hr_homeworking.models.hr_homeworking import DAYS
 from odoo.microkernel.ormapping import models
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 
 class WorkLocation(models.Model):
     _inherit = "hr.work.location"

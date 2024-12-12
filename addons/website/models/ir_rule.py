@@ -1,6 +1,6 @@
 from odoo.microkernel.ormapping import models
 from odoo.addons.website.models import ir_http
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 
 
 class IrRule(models.Model):

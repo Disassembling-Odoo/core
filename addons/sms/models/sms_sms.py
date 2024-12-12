@@ -8,7 +8,7 @@ from uuid import uuid4
 from werkzeug.urls import url_join
 
 from odoo import tools, _
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields
 from odoo.technology import utils as tech_utils
 from odoo.addons.sms.tools.sms_api import SmsApi

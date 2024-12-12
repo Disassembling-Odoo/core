@@ -290,7 +290,7 @@ class Cloc(object):
         registry = odoo.microkernel.modules.registry.Registry(config['db_name'])
         with registry.cursor() as cr:
             uid = odoo.SUPERUSER_ID
-            env = odoo.api.Environment(cr, uid, {})
+            env = odoo.microkernel.api.Environment(cr, uid, {})
             self.count_env(env)
 
     #------------------------------------------------------

@@ -2,7 +2,7 @@
 import logging
 
 from odoo.microkernel.ormapping import models
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 
 class AccountChartTemplate(models.AbstractModel):
     _inherit = "account.chart.template"

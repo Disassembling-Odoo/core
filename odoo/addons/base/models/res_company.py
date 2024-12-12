@@ -7,7 +7,7 @@ import threading
 import warnings
 
 from odoo import tools, _, SUPERUSER_ID
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import Command, models, fields
 from odoo.exceptions import ValidationError, UserError
 from odoo.microkernel.osv import expression

@@ -8,7 +8,7 @@ from lxml import etree
 from markupsafe import Markup
 
 from odoo import _
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import Command, models, fields
 from odoo.exceptions import UserError
 from odoo.technology.utils import date_utils

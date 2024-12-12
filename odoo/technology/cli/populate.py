@@ -10,7 +10,7 @@ from .impl.populate import populate_models
 
 import odoo
 from odoo.microkernel.modules.registry import Registry
-from odoo.microkernel.api.api import Environment
+from odoo.microkernel.api import Environment
 
 DEFAULT_FACTOR = '10000'
 DEFAULT_SEPARATOR = '_'
@@ -58,7 +58,7 @@ class Populate(Command):
         dbname = odoo.conf.config['db_name']
         registry = Registry(dbname)
         with registry.cursor() as cr:
-            env = odoo.api.Environment(cr, odoo.SUPERUSER_ID, {'active_test': False})
+            env = odoo.microkernel.api.Environment(cr, odoo.SUPERUSER_ID, {'active_test': False})
             self.populate(env, model_factors, separator_code)
 
     @classmethod

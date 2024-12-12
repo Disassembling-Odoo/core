@@ -580,7 +580,7 @@ def _get_lang(frame, default_lang='') -> str:
     cr = _get_cr(frame)
     uid = _get_uid(frame)
     if cr and uid:
-        env = odoo.api.Environment(cr, uid, {})
+        env = odoo.microkernel.api.Environment(cr, uid, {})
         if lang := env['res.users'].context_get().get('lang'):
             return lang
     # fallback
@@ -1131,7 +1131,7 @@ class TranslationReader:
     def __init__(self, cr, lang=None):
         self._cr = cr
         self._lang = lang or 'en_US'
-        self.env = odoo.api.Environment(cr, odoo.SUPERUSER_ID, {})
+        self.env = odoo.microkernel.api.Environment(cr, odoo.SUPERUSER_ID, {})
         self._to_translate = []
 
     def __iter__(self):
@@ -1450,7 +1450,7 @@ class TranslationImporter:
     def __init__(self, cr, verbose=True):
         self.cr = cr
         self.verbose = verbose
-        self.env = odoo.api.Environment(cr, odoo.SUPERUSER_ID, {})
+        self.env = odoo.microkernel.api.Environment(cr, odoo.SUPERUSER_ID, {})
 
         # {model_name: {field_name: {xmlid: {lang: value}}}}
         self.model_translations = DeepDefaultDict()
@@ -1699,13 +1699,13 @@ def load_language(cr, lang):
     :param str lang: language ISO code with optional underscore (``_``) and
         l10n flavor (ex: 'fr', 'fr_BE', but not 'fr-BE')
     """
-    env = odoo.api.Environment(cr, odoo.SUPERUSER_ID, {})
+    env = odoo.microkernel.api.Environment(cr, odoo.SUPERUSER_ID, {})
     lang_ids = env['res.lang'].with_context(active_test=False).search([('code', '=', lang)]).ids
     installer = env['base.language.install'].create({'lang_ids': [(6, 0, lang_ids)]})
     installer.lang_install()
 
 
-def get_po_paths(module_name: str, lang: str, env: odoo.api.Environment | None = None):
+def get_po_paths(module_name: str, lang: str, env: odoo.microkernel.api.Environment | None = None):
     lang_base = lang.split('_')[0]
     # Load the base as a fallback in case a translation is missing:
     po_names = [lang_base, lang]

@@ -3,7 +3,7 @@
 
 import re
 
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields
 from odoo.tools import remove_accents
 

@@ -3,7 +3,7 @@
 
 from operator import itemgetter
 from odoo.microkernel.ormapping import models
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 
 class IrUiView(models.Model):
     _inherit = 'ir.ui.view'

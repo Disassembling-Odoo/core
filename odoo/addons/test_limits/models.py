@@ -5,7 +5,7 @@ import time
 import sys
 
 from odoo.microkernel.ormapping import models
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 
 class m(models.Model):
     """ This model exposes a few methods that will consume between 'almost no

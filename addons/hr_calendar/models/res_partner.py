@@ -7,7 +7,7 @@ from functools import reduce
 
 from odoo.microkernel.ormapping import models
 
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.osv import expression
 from odoo.addons.resource.models.utils import Intervals
 

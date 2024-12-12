@@ -133,7 +133,7 @@ class TestTestCursor(common.TransactionCase):
         # now we make a test cursor for self.cr
         self.cr = self.registry.cursor()
         self.addCleanup(self.cr.close)
-        self.env = odoo.api.Environment(self.cr, odoo.SUPERUSER_ID, {})
+        self.env = odoo.microkernel.api.Environment(self.cr, odoo.SUPERUSER_ID, {})
         self.record = self.env['res.partner'].create({'name': 'Foo'})
 
     def write(self, record, value):

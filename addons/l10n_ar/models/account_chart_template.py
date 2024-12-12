@@ -3,7 +3,7 @@
 from odoo import _
 from odoo.microkernel.ormapping import models
 from odoo.addons.account.models.chart_template import template
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 
 
 class AccountChartTemplate(models.AbstractModel):

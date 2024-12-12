@@ -12,7 +12,7 @@ from markupsafe import Markup
 from werkzeug import urls
 
 from odoo import _, tools
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields
 from odoo.addons.mail.tools.alias_error import AliasError
 from odoo.exceptions import ValidationError, UserError

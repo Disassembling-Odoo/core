@@ -2,7 +2,7 @@
 
 import re
 
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields
 from odoo.addons.website.tools import text_from_html
 from odoo.microkernel.osv import expression

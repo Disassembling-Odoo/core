@@ -5,7 +5,7 @@ from dateutil.relativedelta import relativedelta
 from pytz import timezone, utc
 
 from odoo import _
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields
 from odoo.exceptions import ValidationError
 

@@ -5,7 +5,7 @@ from collections import defaultdict
 import itertools
 
 from odoo.microkernel.ormapping import models
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import fields
 from odoo.technology.framework.http import request
 from odoo.microkernel.osv import expression

@@ -5,7 +5,7 @@ import re
 import logging
 
 from odoo.microkernel.ormapping import models, Command
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.tools import email_normalize
 
 from odoo.addons.google_calendar.utils.google_calendar import GoogleCalendarService

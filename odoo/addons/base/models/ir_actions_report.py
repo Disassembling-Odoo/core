@@ -6,7 +6,7 @@ from markupsafe import Markup
 from urllib.parse import urlparse
 
 from odoo import tools, SUPERUSER_ID, _
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields
 from odoo.exceptions import UserError, AccessError, RedirectWarning
 from odoo.technology import conf

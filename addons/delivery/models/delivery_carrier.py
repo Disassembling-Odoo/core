@@ -4,7 +4,7 @@ import psycopg2
 import re
 
 from odoo import _, SUPERUSER_ID
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import Command, models, fields
 from odoo.exceptions import UserError
 from odoo.microkernel.modules.registry import Registry

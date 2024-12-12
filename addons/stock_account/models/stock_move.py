@@ -4,7 +4,7 @@
 from collections import defaultdict
 
 from odoo import _
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields
 from odoo.exceptions import UserError
 from odoo.tools import float_is_zero, float_round, float_compare

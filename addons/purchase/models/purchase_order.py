@@ -9,7 +9,7 @@ from markupsafe import escape, Markup
 from werkzeug.urls import url_encode
 
 from odoo import _
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.tools.i18n import formatLang
 from odoo.microkernel.ormapping import Command, models, fields
 from odoo.microkernel.osv import expression

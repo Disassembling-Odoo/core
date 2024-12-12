@@ -24,7 +24,7 @@ from lxml.builder import E
 from passlib.context import CryptContext as _CryptContext
 
 from odoo import tools, SUPERUSER_ID, _
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import Command, models, fields, utils as orm_utils
 from odoo.addons.base.models.ir_model import MODULE_UNINSTALL_FLAG
 from odoo.exceptions import AccessDenied, AccessError, UserError, ValidationError

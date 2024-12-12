@@ -5,7 +5,7 @@ from datetime import timedelta
 import requests
 
 from odoo import _
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields
 from odoo.exceptions import UserError
 from odoo.addons.google_account.models.google_service import GOOGLE_TOKEN_ENDPOINT

@@ -103,7 +103,7 @@ class TestXMLRPC(common.HttpCase):
         works properly over XMLRPC
         """
         self.patch(self.registry['res.users'], 'context_get',
-                   odoo.api.model(lambda *_: collections.defaultdict(int)))
+                   odoo.microkernel.api.model(lambda *_: collections.defaultdict(int)))
         self.assertEqual(self.xmlrpc('res.users', 'context_get'), {})
 
     def test_xmlrpc_remove_control_characters(self):

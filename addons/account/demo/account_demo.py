@@ -4,7 +4,7 @@ import time
 from datetime import timedelta
 from dateutil.relativedelta import relativedelta
 
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.tools.i18n import formatLang
 from odoo.microkernel.ormapping import Command, models, fields
 from odoo.technology.utils import file_open

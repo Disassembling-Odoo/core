@@ -1,5 +1,5 @@
 from odoo.microkernel.ormapping import models, Command
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 
 
 class AccountJournal(models.Model):

@@ -17,7 +17,7 @@ from odoo.addons.base.models.ir_http import RequestUID
 from odoo.addons.base.models.ir_qweb import keep_query, QWebException
 from odoo.addons.base.models.res_lang import LangData
 from odoo.exceptions import AccessError, MissingError
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.technology.framework.http import request, Response
 from odoo.microkernel.osv import expression
 from odoo.technology.cache import ormcache

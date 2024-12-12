@@ -12,7 +12,7 @@ import re
 import contextlib
 import odoo
 from odoo import tools, _
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import Command, models, fields
 from odoo.exceptions import MissingError, ValidationError, AccessError, UserError
 from odoo.technology.utils import frozendict

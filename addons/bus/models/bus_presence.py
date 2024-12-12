@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from datetime import timedelta
 
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.technology import adjustable
 from odoo.microkernel.ormapping import models, fields
 from odoo.constant import PG_CONCURRENCY_EXCEPTIONS_TO_RETRY

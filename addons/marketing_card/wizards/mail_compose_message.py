@@ -2,7 +2,7 @@ import re
 from markupsafe import Markup
 
 from odoo.microkernel.ormapping import models
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 
 CARD_IMAGE_URL = re.compile(r'src=".*?/web/image/card.campaign/[0-9]+/image_preview"')
 CARD_PREVIEW_URL = re.compile(r'href=".*?/cards/[0-9]+/preview"')

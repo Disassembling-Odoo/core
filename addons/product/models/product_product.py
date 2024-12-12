@@ -5,7 +5,7 @@ import re
 from operator import itemgetter
 
 from odoo import tools, _
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields, utils as orm_utils
 from odoo.exceptions import ValidationError
 from odoo.microkernel.osv import expression

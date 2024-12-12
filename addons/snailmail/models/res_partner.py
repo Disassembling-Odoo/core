@@ -5,7 +5,7 @@
 from odoo.microkernel.ormapping import models
 
 from odoo.addons.snailmail.country_utils import SNAILMAIL_COUNTRIES
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 
 
 class ResPartner(models.Model):

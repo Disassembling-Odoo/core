@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 from odoo import _
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.exceptions import UserError
 from datetime import datetime
 from odoo.microkernel.ormapping import models, fields, Datetime, Date

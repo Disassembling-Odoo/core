@@ -13,6 +13,7 @@ __all__ = [
     'model',
     'constrains', 'depends', 'onchange', 'returns',
     'call_kw',
+    'Self', 'ValuesType', 'ContextType', 'DomainType', 'M', 'T',
 ]
 
 import logging
@@ -39,7 +40,7 @@ import typing
 if typing.TYPE_CHECKING:
     from collections.abc import Callable
     from ...technology.db import BaseCursor
-    from ...ormapping import BaseModel
+    from ..ormapping import BaseModel
     try:
         from typing_extensions import Self  # noqa: F401
     except ImportError:

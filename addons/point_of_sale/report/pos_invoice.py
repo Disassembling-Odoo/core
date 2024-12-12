@@ -3,7 +3,7 @@
 from odoo import _
 from odoo.microkernel.ormapping import models
 from odoo.exceptions import UserError
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 
 class PosInvoiceReport(models.AbstractModel):
     _name = 'report.point_of_sale.report_invoice'

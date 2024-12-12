@@ -10,7 +10,7 @@ from json.decoder import JSONDecodeError
 
 from odoo import _
 from odoo.microkernel.ormapping import models
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.tools.float_utils import json_float_round
 
 _logger = logging.getLogger(__name__)

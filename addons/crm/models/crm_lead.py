@@ -9,7 +9,7 @@ from datetime import datetime, timedelta
 from markupsafe import Markup
 
 from odoo import tools
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields, NewId
 from odoo.addons.iap.tools import iap_tools
 from odoo.addons.mail.tools import mail_validation

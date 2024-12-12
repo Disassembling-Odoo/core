@@ -3,7 +3,7 @@
 from hashlib import sha256
 
 from odoo.microkernel.ormapping import models
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 
 
 class Base(models.AbstractModel):

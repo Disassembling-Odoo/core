@@ -4,7 +4,7 @@ from odoo.microkernel.ormapping import models
 import ast
 import json
 
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 
 class LoyaltyReward(models.Model):
     _name = 'loyalty.reward'

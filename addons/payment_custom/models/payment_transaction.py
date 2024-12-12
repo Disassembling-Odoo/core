@@ -6,7 +6,7 @@ from odoo.microkernel.ormapping import models
 from odoo.exceptions import ValidationError
 
 from odoo.addons.payment_custom.controllers.main import CustomController
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 
 _logger = logging.getLogger(__name__)
 

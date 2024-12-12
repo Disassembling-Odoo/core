@@ -4,7 +4,7 @@ import base64
 from os.path import join as opj
 from typing import Optional, List, Dict
 from werkzeug.urls import url_quote
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields
 from odoo.exceptions import UserError, ValidationError, AccessError
 

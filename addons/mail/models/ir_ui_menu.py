@@ -3,7 +3,7 @@ import contextlib
 
 from odoo.microkernel.ormapping import models
 from odoo.exceptions import AccessError
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 
 class IrUiMenu(models.Model):
     _inherit = 'ir.ui.menu'

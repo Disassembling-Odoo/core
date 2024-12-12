@@ -7,7 +7,7 @@ import uuid
 from datetime import datetime
 from werkzeug import urls
 from odoo.microkernel.ormapping import models
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 
 VALIDATION_KARMA_GAIN = 3
 

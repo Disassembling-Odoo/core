@@ -4,7 +4,7 @@
 from datetime import timedelta
 
 from odoo import SUPERUSER_ID, _
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields
 from odoo.exceptions import ValidationError
 from odoo.tools import is_html_empty

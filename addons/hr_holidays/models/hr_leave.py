@@ -8,7 +8,7 @@ from dateutil.relativedelta import relativedelta
 from math import ceil
 from pytz import timezone, UTC
 
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import Command, models, fields
 from odoo.addons.base.models.ir_model import MODULE_UNINSTALL_FLAG
 

@@ -9,7 +9,7 @@ from dateutil.relativedelta import relativedelta
 from markupsafe import Markup
 from werkzeug.urls import url_encode, url_join
 
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.tools.float_utils import float_round
 from odoo.exceptions import AccessError
 from odoo import tools, _

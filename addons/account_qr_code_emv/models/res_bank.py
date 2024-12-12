@@ -3,7 +3,7 @@
 import re
 
 from odoo import _
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields
 from odoo.tools.misc import remove_accents
 from odoo.addons.account_qr_code_emv.const import CURRENCY_MAPPING

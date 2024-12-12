@@ -5,7 +5,7 @@ import zipfile
 from io import BytesIO
 
 from odoo import _
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields
 from odoo.exceptions import ValidationError
 from odoo.tools.misc import split_every

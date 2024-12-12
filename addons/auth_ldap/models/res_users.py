@@ -4,7 +4,7 @@
 from odoo.exceptions import AccessDenied
 
 from odoo import SUPERUSER_ID
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.modules.registry import Registry
 from odoo.microkernel.ormapping import models
 

@@ -1,7 +1,7 @@
 from werkzeug import urls
 
 from odoo.microkernel.ormapping import models
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 
 class Image(models.AbstractModel):
     _inherit = 'ir.qweb.field.image'

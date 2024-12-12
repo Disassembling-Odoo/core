@@ -23,7 +23,7 @@ def environment():
     """
     registry = Registry(common.get_db_name())
     with registry.cursor() as cr:
-        yield odoo.api.Environment(cr, ADMIN_USER_ID, {})
+        yield odoo.microkernel.api.Environment(cr, ADMIN_USER_ID, {})
 
 
 def drop_sequence(code):

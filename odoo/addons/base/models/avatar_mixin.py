@@ -3,7 +3,7 @@
 
 from base64 import b64encode
 from hashlib import sha512
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields
 from odoo.tools import html_escape 
 from odoo.technology.utils import file_open

@@ -1,5 +1,5 @@
 from odoo import SUPERUSER_ID
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 
 
 def migrate(cr, version):

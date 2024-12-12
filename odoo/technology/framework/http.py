@@ -540,7 +540,7 @@ class Controller:
     Like models, controllers can be extended by other modules. The
     extension mechanism is different because controllers can work in a
     database-free environment and therefore cannot use
-    :class:~odoo.api.Registry:.
+    :class:~odoo.microkernel.api.Registry:.
 
     To *override* a controller, :ref:`inherit <python:tut-inheritance>`
     from its class, override relevant methods and re-expose them with
@@ -963,7 +963,7 @@ class Session(collections.abc.MutableMapping):
         self.pre_uid = pre_uid
 
         with registry.cursor() as cr:
-            env = odoo.api.Environment(cr, pre_uid, {})
+            env = odoo.microkernel.api.Environment(cr, pre_uid, {})
 
             # if 2FA is disabled we finalize immediately
             user = env['res.users'].browse(pre_uid)
@@ -971,7 +971,7 @@ class Session(collections.abc.MutableMapping):
                 self.finalize(env)
 
         if request and request.session is self and request.db == dbname:
-            request.env = odoo.api.Environment(request.env.cr, self.uid, self.context)
+            request.env = odoo.microkernel.api.Environment(request.env.cr, self.uid, self.context)
             request.update_context(lang=get_lang(request.env(user=pre_uid)).code)
             # request env needs to be able to access the latest changes from the auth layers
             request.env.cr.commit()
@@ -1673,7 +1673,7 @@ class Request:
         # for matching the controller endpoint
         try:
             self.registry, cr_readonly = self._open_registry()
-            self.env = odoo.api.Environment(cr_readonly, self.session.uid, self.session.context)
+            self.env = odoo.microkernel.api.Environment(cr_readonly, self.session.uid, self.session.context)
             try:
                 rule, args = self.registry['ir.http']._match(self.httprequest.path)
             except NotFound as not_found_exc:

@@ -1,5 +1,5 @@
 from odoo import _
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields, utils as orm_utils
 from odoo.exceptions import ValidationError
 import logging

@@ -4,7 +4,7 @@
 import logging
 
 from odoo.microkernel.ormapping import models
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 
 _logger = logging.getLogger(__name__)
 

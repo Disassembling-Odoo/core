@@ -13,7 +13,7 @@ from odoo.exceptions import UserError, ValidationError
 
 from odoo.addons.payment import utils as payment_utils
 from odoo.addons.payment_razorpay import const
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 
 
 _logger = logging.getLogger(__name__)

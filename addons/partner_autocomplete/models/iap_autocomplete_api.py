@@ -8,7 +8,7 @@ from odoo.microkernel.ormapping import models
 from odoo.addons.iap.tools import iap_tools
 from requests.exceptions import HTTPError
 
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 
 _logger = logging.getLogger(__name__)
 

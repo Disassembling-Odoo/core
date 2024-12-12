@@ -8,7 +8,7 @@ from collections import defaultdict
 from datetime import datetime, timedelta
 
 from odoo import exceptions, tools, _
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.technology import utils as tech_utils
 from odoo.microkernel.ormapping import models, fields
 

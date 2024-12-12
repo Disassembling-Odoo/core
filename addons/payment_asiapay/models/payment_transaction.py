@@ -11,7 +11,7 @@ from odoo.exceptions import ValidationError
 from odoo.addons.payment import utils as payment_utils
 from odoo.addons.payment_asiapay import const
 from odoo.addons.payment_asiapay.controllers.main import AsiaPayController
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 
 
 _logger = logging.getLogger(__name__)

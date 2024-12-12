@@ -27,7 +27,7 @@ from requests import Session
 from werkzeug import urls
 
 from odoo import _, exceptions
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import Command, models, fields
 from odoo.technology.db import Query, SQL
 from odoo.addons.mail.tools.discuss import Store

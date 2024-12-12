@@ -12,7 +12,7 @@ from odoo.exceptions import UserError, ValidationError
 
 from odoo.addons.payment_mercado_pago import const
 from odoo.addons.payment_mercado_pago.controllers.main import MercadoPagoController
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 
 
 _logger = logging.getLogger(__name__)

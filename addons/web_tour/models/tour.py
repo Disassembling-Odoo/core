@@ -1,7 +1,7 @@
 import json
 import base64
 
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields, Command
 
 

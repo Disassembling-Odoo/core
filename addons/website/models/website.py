@@ -16,7 +16,7 @@ from werkzeug import urls
 from werkzeug.exceptions import NotFound
 
 from odoo import tools, release
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields
 from odoo.addons.website.models.ir_http import sitemap_qs2dom
 from odoo.addons.website.tools import similarity_score, text_from_html, get_base_domain

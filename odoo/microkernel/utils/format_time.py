@@ -18,7 +18,7 @@ import odoo.addons
 K = typing.TypeVar('K')
 T = typing.TypeVar('T')
 if typing.TYPE_CHECKING:
-    from odoo.microkernel.api.api import Environment
+    from odoo.microkernel.api import Environment
 
     P = typing.TypeVar('P')
 

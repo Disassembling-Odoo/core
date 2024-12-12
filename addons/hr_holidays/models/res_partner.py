@@ -1,7 +1,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 from odoo.microkernel.ormapping import models
 from odoo.addons.mail.tools.discuss import Store
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 
 
 class ResPartner(models.Model):

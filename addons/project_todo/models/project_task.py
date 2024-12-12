@@ -2,7 +2,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo.microkernel.ormapping import models, Command
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.tools import html2plaintext
 
 

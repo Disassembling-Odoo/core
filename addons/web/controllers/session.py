@@ -45,7 +45,7 @@ class Session(http.Controller):
         request.session.db = db
         registry = odoo.microkernel.modules.registry.Registry(db)
         with registry.cursor() as cr:
-            env = odoo.api.Environment(cr, request.session.uid, request.session.context)
+            env = odoo.microkernel.api.Environment(cr, request.session.uid, request.session.context)
             if not request.db:
                 # request._save_session would not update the session_token
                 # as it lacks an environment, rotating the session myself

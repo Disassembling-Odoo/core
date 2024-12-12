@@ -4,7 +4,7 @@ from contextlib import nullcontext
 from datetime import datetime
 import logging
 
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields
 from odoo.tools.translate import _
 from odoo.technology.utils import OrderedSet, unique

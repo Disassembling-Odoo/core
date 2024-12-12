@@ -7,7 +7,7 @@ import datetime
 import json
 
 from odoo import _, tools
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import Command, models, fields
 from odoo.exceptions import UserError, ValidationError
 from odoo.microkernel.osv import expression

@@ -7,7 +7,7 @@ import logging
 import pytz
 
 from odoo.technology.utils import first as fieldsFirst
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields
 from odoo.microkernel.osv import expression
 from odoo.technology.db import SQL

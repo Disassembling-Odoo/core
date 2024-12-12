@@ -2,7 +2,7 @@
 
 from odoo.microkernel.ormapping import models
 from odoo.addons.iap import jsonrpc
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 
 DEFAULT_IAP_ENDPOINT = "https://l10n-in-edi.api.odoo.com"
 DEFAULT_IAP_TEST_ENDPOINT = "https://l10n-in-edi-demo.api.odoo.com"

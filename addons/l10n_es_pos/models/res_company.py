@@ -1,5 +1,5 @@
 from odoo.microkernel.ormapping import models
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 
 class ResCompany(models.Model):
     _inherit = "res.company"

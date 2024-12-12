@@ -3,7 +3,7 @@
 from markupsafe import Markup
 
 from odoo import SUPERUSER_ID, _
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import Command, models, fields
 from odoo.tools.float_utils import float_compare
 from odoo.exceptions import UserError

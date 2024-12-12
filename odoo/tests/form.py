@@ -141,7 +141,7 @@ class Form:
             self._init_from_defaults()
 
     @classmethod
-    def from_action(cls, env: odoo.api.Environment, action: dict) -> Form:
+    def from_action(cls, env: odoo.microkernel.api.Environment, action: dict) -> Form:
         assert action['type'] == 'ir.actions.act_window', \
             f"only window actions are valid, got {action['type']}"
         # ensure the first-requested view is a form view

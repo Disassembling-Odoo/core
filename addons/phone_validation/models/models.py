@@ -3,7 +3,7 @@
 from odoo import exceptions
 from odoo.microkernel.ormapping import models
 from odoo.addons.phone_validation.tools import phone_validation
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 
 
 class BaseModel(models.AbstractModel):

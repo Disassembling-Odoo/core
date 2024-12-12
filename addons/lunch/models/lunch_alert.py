@@ -3,7 +3,7 @@ import pytz
 import logging
 
 from odoo import _
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields
 from odoo.microkernel.osv import expression
 

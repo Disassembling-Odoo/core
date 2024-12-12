@@ -2,7 +2,7 @@
 
 from urllib.parse import quote
 
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields
 from odoo.tools.image import base64_to_image
 from odoo.exceptions import UserError

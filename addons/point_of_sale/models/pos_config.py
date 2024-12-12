@@ -7,7 +7,7 @@ import pytz
 import secrets
 
 from odoo import _, tools, SUPERUSER_ID
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import Command, models, fields
 from odoo.technology import conf
 from odoo.technology.framework.http import request

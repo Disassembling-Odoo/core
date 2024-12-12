@@ -4,7 +4,7 @@ import hashlib
 import json
 
 import odoo
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields
 from odoo.technology.conf import config
 from odoo.technology.framework.http import request, DEFAULT_MAX_CONTENT_LENGTH

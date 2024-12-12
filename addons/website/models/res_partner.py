@@ -2,7 +2,7 @@
 
 import werkzeug.urls
 
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields
 
 class Partner(models.Model):

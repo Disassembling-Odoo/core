@@ -1,6 +1,6 @@
 import logging
 
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.tests import tagged, get_db_name, HttpCase
 from odoo.addons.auth_totp.tests.test_totp import TestTOTPMixin
 

@@ -1,5 +1,5 @@
 from odoo import _
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import fields
 from odoo.exceptions import UserError, AccessDenied
 from odoo.addons.base.models.res_users import CheckIdentity

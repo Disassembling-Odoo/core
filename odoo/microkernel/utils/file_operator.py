@@ -3,7 +3,7 @@ import tempfile
 from contextlib import contextmanager
 
 import odoo.addons
-from odoo.microkernel.api.api import Environment
+from odoo.microkernel.api import Environment
 if typing.TYPE_CHECKING:
     from odoo.addons.base.models.res_lang import LangData
 

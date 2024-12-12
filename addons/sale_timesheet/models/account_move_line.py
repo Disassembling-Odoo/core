@@ -2,7 +2,7 @@
 from collections import defaultdict
 
 from odoo.microkernel.ormapping import models
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 
 class AccountMoveLine(models.Model):
     _inherit = 'account.move.line'

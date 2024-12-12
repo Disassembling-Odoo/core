@@ -12,7 +12,7 @@ from socket import gaierror, timeout
 from ssl import SSLError
 
 from odoo import tools, _
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields
 from odoo.exceptions import UserError, ValidationError
 

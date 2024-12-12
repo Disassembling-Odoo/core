@@ -4,7 +4,7 @@ from datetime import timedelta, datetime
 from dateutil.relativedelta import relativedelta
 from pytz import UTC
 
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields
 from odoo.tools import plaintext2html
 

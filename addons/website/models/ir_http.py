@@ -16,7 +16,7 @@ from odoo import tools
 from odoo import SUPERUSER_ID
 from odoo.microkernel.ormapping import models
 from odoo.exceptions import AccessError
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.technology.framework.http import request
 from odoo.technology.utils.json import scriptsafe as json_scriptsafe
 from odoo.tools.safe_eval import safe_eval

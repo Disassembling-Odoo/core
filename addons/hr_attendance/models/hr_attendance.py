@@ -10,7 +10,7 @@ from operator import itemgetter
 from pytz import timezone
 from random import randint
 
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields
 from odoo.technology.framework.http import request
 from odoo import exceptions, _

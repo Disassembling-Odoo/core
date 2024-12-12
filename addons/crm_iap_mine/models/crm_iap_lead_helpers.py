@@ -1,6 +1,6 @@
 from math import floor, log10
 from odoo.microkernel.ormapping import models
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 
 
 class CRMHelpers(models.Model):

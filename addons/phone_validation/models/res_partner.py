@@ -1,7 +1,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 from odoo.microkernel.ormapping import models
 from odoo.addons.phone_validation.tools import phone_validation
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 
 class Partner(models.Model):
     _name = 'res.partner'

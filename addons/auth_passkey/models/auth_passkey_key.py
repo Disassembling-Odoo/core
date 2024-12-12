@@ -4,7 +4,7 @@ import logging
 from werkzeug.urls import url_parse
 
 from odoo import _
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import Command, models, fields
 from odoo.exceptions import AccessDenied
 from odoo.technology.framework.http import request

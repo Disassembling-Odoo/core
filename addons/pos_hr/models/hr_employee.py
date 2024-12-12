@@ -6,7 +6,7 @@ import hashlib
 from odoo import _
 from odoo.microkernel.ormapping import models
 from odoo.exceptions import UserError
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.tools import format_list
 
 class HrEmployee(models.Model):

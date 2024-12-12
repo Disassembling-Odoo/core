@@ -87,7 +87,7 @@ import typing
 if typing.TYPE_CHECKING:
     from collections.abc import Reversible
     from odoo.microkernel.modules.registry import Registry
-    from odoo.microkernel.api.api import Self, ValuesType
+    from odoo.microkernel.api import Self, ValuesType
 
 _lt = LazyTranslate('base')
 _logger = logging.getLogger(__name__)
@@ -1611,8 +1611,8 @@ class BaseModel(metaclass=MetaModel):
 
         The `display_name` field is a textual representation of the record.
         This method can be overridden to change the representation.  If needed,
-        it can be made field-dependent using :attr:`~odoo.api.depends` and
-        context-dependent using :attr:`~odoo.api.depends_context`.
+        it can be made field-dependent using :attr:`~odoo.microkernel.api.depends` and
+        context-dependent using :attr:`~odoo.microkernel.api.depends_context`.
         """
         if self._rec_name:
             convert = self._fields[self._rec_name].convert_to_display_name
@@ -2762,7 +2762,7 @@ class BaseModel(metaclass=MetaModel):
         properties fields, where joins are added to the query.
 
         When parameter ``flush`` is true, the method adds some metadata in the
-        result to make method :meth:`~odoo.api.Environment.execute_query` flush
+        result to make method :meth:`~odoo.microkernel.api.Environment.execute_query` flush
         the field before executing the query.
         """
         property_name = None
@@ -6050,7 +6050,7 @@ class BaseModel(metaclass=MetaModel):
         """Return a new version of this recordset attached to the provided environment.
 
         :param env:
-        :type env: :class:`~odoo.api.Environment`
+        :type env: :class:`~odoo.microkernel.microkernel.api.Environment`
 
         .. note::
             The returned recordset has the same prefetch object as ``self``.

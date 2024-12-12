@@ -13,7 +13,7 @@ from requests import RequestException
 
 from odoo import _
 from odoo.microkernel.ormapping import models
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import fields
 from odoo.exceptions import UserError
 

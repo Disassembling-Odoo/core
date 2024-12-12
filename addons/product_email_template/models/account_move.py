@@ -2,7 +2,7 @@
 
 from odoo import SUPERUSER_ID
 from odoo.microkernel.ormapping import models
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 
 
 class AccountMove(models.Model):

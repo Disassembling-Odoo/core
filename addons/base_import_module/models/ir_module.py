@@ -15,7 +15,7 @@ from os.path import join as opj
 
 from odoo import _
 from odoo.constant import MANIFEST_NAMES
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields
 from odoo.exceptions import AccessDenied, AccessError, UserError
 from odoo.technology.framework.http import request

@@ -6,7 +6,7 @@ import json
 
 from odoo import _
 from odoo.microkernel.ormapping import models
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.tools import format_amount, pdf
 from odoo.tools.pdf import PdfFileWriter, PdfFileReader, NameObject, NumberObject, createStringObject
 from odoo.microkernel.utils import format_date, format_datetime

@@ -4,7 +4,7 @@ from markupsafe import Markup
 from odoo import _, modules, tools
 from odoo.exceptions import UserError
 from odoo.microkernel.ormapping import models
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 
 
 class AccountMoveSend(models.AbstractModel):

@@ -4,7 +4,7 @@
 from odoo import  _
 import json
 from collections import defaultdict
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields
 from odoo.tools import convert
 

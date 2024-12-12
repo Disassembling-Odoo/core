@@ -7,7 +7,7 @@ from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
 from odoo import SUPERUSER_ID, _
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.exceptions import UserError, ValidationError
 from odoo.microkernel.ormapping import models, fields, Command
 from odoo.technology.framework.http import request

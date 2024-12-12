@@ -6,7 +6,7 @@ from pytz import utc
 from random import randint
 
 from odoo import tools
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields
 from odoo.microkernel.osv import expression
 from odoo.tools.mail import is_html_empty

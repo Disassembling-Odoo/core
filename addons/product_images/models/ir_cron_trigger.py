@@ -3,7 +3,7 @@
 from odoo import _
 from odoo.exceptions import ValidationError
 from odoo.microkernel.ormapping import models
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 
 
 class IrCronTrigger(models.Model):

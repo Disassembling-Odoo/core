@@ -2,7 +2,7 @@
 
 from datetime import datetime, timedelta
 from odoo.microkernel.ormapping import Command, models
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 
 
 class AccountChartTemplate(models.AbstractModel):

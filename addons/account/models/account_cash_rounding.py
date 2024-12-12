@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import _
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields
 from odoo.tools import float_round
 from odoo.exceptions import ValidationError

@@ -15,7 +15,7 @@ from random import randint
 from werkzeug import urls
 
 from odoo import tools, SUPERUSER_ID, _
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import Command, models, fields, utils as orm_utils
 from odoo.exceptions import RedirectWarning, UserError, ValidationError
 from odoo.technology import utils as tech_utils

@@ -4,7 +4,7 @@
 from odoo.microkernel.ormapping import models, Command
 from odoo.addons.base.tests.common import SavepointCaseWithUserDemo
 from odoo.exceptions import AccessError
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.technology.adjustable import mute_logger
 from odoo.technology.utils import unique, lazy
 

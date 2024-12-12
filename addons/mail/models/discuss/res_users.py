@@ -2,7 +2,7 @@
 
 from odoo.microkernel.ormapping import models
 from odoo.addons.base.models.res_users import is_selection_groups
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 
 
 class ResUsers(models.Model):

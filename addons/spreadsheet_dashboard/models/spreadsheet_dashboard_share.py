@@ -3,7 +3,7 @@ import uuid
 from werkzeug.exceptions import Forbidden
 
 from odoo import _
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields
 from odoo.technology.utils import consteq
 

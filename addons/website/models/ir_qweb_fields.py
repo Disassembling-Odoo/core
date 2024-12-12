@@ -5,7 +5,7 @@ from markupsafe import Markup
 from odoo import _
 from odoo.microkernel.ormapping import models
 from odoo.addons.website.tools import add_form_signature
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 
 
 class Contact(models.AbstractModel):

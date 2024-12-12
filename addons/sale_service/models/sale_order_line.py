@@ -3,7 +3,7 @@
 
 from itertools import groupby
 
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields
 from odoo.microkernel.osv import expression
 from odoo.tools import format_amount

@@ -9,7 +9,7 @@ import requests
 from werkzeug.urls import url_encode, url_join
 
 from odoo import _
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields
 from odoo.exceptions import AccessError, UserError
 from odoo.technology.utils import hmac

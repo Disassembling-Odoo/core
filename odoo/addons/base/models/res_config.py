@@ -7,7 +7,7 @@ from ast import literal_eval
 from odoo import _
 from odoo.microkernel.ormapping import models
 from odoo.exceptions import AccessError, RedirectWarning, UserError
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 
 _logger = logging.getLogger(__name__)
 

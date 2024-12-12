@@ -6,7 +6,7 @@ from lxml import etree
 import logging
 import re
 
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 
 _logger = logging.getLogger(__name__)
 

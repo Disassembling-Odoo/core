@@ -5,7 +5,7 @@ from odoo.microkernel.ormapping import models
 from odoo.exceptions import UserError
 import logging
 
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 
 log = logging.getLogger(__name__)
 

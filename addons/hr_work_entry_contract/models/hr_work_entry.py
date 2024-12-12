@@ -7,7 +7,7 @@ from collections import defaultdict
 from itertools import chain
 
 from odoo import _
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields
 from odoo.exceptions import ValidationError
 from odoo.addons.hr_work_entry_contract.models.hr_work_intervals import WorkIntervals

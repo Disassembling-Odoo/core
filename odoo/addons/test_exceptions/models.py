@@ -3,7 +3,7 @@
 
 import odoo.exceptions
 from odoo.microkernel.ormapping import models
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.tools.safe_eval import safe_eval
 
 class m(models.Model):

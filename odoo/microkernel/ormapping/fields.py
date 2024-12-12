@@ -59,7 +59,7 @@ from odoo.microkernel.utils import (
 )
 
 from odoo.microkernel.osv import expression
-from odoo.microkernel.api.api import ContextType, DomainType, M, T
+from odoo.microkernel.api import ContextType, DomainType, M, T
 
 DATE_LENGTH = len(date.today().strftime(DATE_FORMAT))
 DATETIME_LENGTH = len(datetime.now().strftime(DATETIME_FORMAT))

@@ -13,7 +13,7 @@ import enum
 from .float_utils import float_round
 
 if TYPE_CHECKING:
-    import odoo.microkernel.api.api
+    import odoo.microkernel.api
     from collections.abc import Callable, Collection, Sequence
     from odoo.addons.base.models.res_lang import LangData
 
@@ -36,7 +36,7 @@ XPG_LOCALE_RE = re.compile(
 )
 
 def formatLang(
-    env: odoo.api.Environment,
+    env: odoo.microkernel.api.Environment,
     value: float | typing.Literal[''],
     digits: int = 2,
     grouping: bool = True,
@@ -110,7 +110,7 @@ def formatLang(
 
     return formatted_value
 
-def get_lang(env: odoo.api.Environment, lang_code: str | None = None) -> LangData:
+def get_lang(env: odoo.microkernel.api.Environment, lang_code: str | None = None) -> LangData:
     """
     Retrieve the first lang object installed, by checking the parameter lang_code,
     the context and then the company. If no lang is installed from those variables,
@@ -149,7 +149,7 @@ def babel_locale_parse(lang_code: str | None) -> babel.Locale:
 
 
 def format_list(
-    env: odoo.api.Environment,
+    env: odoo.microkernel.api.Environment,
     lst: Sequence[str],
     style: Literal["standard", "standard-short", "or", "or-short", "unit", "unit-short", "unit-narrow"] = "standard",
     lang_code: Optional[str] = None,

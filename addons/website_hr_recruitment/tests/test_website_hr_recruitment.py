@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo.microkernel.api.api import Environment
+from odoo.microkernel.api import Environment
 import odoo.tests
 from odoo.tools import html2plaintext
 

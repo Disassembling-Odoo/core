@@ -13,7 +13,7 @@ import re
 from odoo.microkernel.ormapping import Command, models
 from odoo.addons.base.models.ir_model import MODULE_UNINSTALL_FLAG
 from odoo.exceptions import AccessError, UserError
-from odoo.microkernel.api import api
+from odoo.microkernel import api
 from odoo.microkernel.modules import get_resource_from_path
 from odoo.tools import float_compare
 from odoo.technology.utils import file_open, groupby

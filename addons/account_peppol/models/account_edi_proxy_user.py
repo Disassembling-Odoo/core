@@ -2,8 +2,8 @@
 
 import logging
 
-from odoo import _, modules, tools
-from odoo.microkernel import api
+from odoo import _, tools
+from odoo.microkernel import api, modules
 from odoo.microkernel.ormapping import models, fields
 from odoo.addons.account_edi_proxy_client.models.account_edi_proxy_user import AccountEdiProxyError
 from odoo.addons.account_peppol.tools.demo_utils import handle_demo

@@ -4,6 +4,7 @@ from odoo import tools, _
 from odoo.addons.base.models.res_lang import LangDataDict, LangData
 from odoo.exceptions import UserError
 from odoo.technology.framework.http import request
+from odoo.technology import cache
 from odoo.microkernel.ormapping import models
 
 
@@ -16,7 +17,7 @@ class Lang(models.Model):
                 raise UserError(_("Cannot deactivate a language that is currently used on a website."))
         return super(Lang, self).write(vals)
 
-    @tools.ormcache_context(keys=("website_id",))
+    @cache.ormcache_context(keys=("website_id",))
     def _get_frontend(self) -> LangDataDict:
         """ Return the available languages for current request
         :return: LangDataDict({code: LangData})

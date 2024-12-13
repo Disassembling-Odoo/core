@@ -2,7 +2,8 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 import json
 
-from odoo import _, modules
+from odoo import _
+from odoo.microkernel import modules
 from odoo.microkernel.ormapping import models
 from odoo.microkernel import api
 

@@ -1,16 +1,16 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-
-from odoo import tools
+from odoo.technology.framework.http import request
+from odoo.technology import cache
 from odoo.microkernel import api
 from odoo.microkernel.ormapping import models
-from odoo.technology.framework.http import request
+
 
 
 class IrUiMenu(models.Model):
     _inherit = 'ir.ui.menu'
 
     @api.model
-    @tools.ormcache_context('self._uid', keys=('lang', 'force_action',))
+    @cache.ormcache_context('self._uid', keys=('lang', 'force_action',))
     def load_menus_root(self):
         root_menus = super().load_menus_root()
         if self.env.context.get('force_action'):

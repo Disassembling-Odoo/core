@@ -3,8 +3,8 @@
 
 import json
 
-from odoo import modules, _
-from odoo.microkernel import api
+from odoo import _
+from odoo.microkernel import api, modules
 from odoo.microkernel.ormapping import models, fields
 
 

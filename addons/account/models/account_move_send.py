@@ -1,10 +1,10 @@
 from collections import defaultdict
 from markupsafe import Markup
 
-from odoo import _, modules, tools
+from odoo import _, tools
 from odoo.exceptions import UserError
 from odoo.microkernel.ormapping import models
-from odoo.microkernel import api
+from odoo.microkernel import api, modules
 
 
 class AccountMoveSend(models.AbstractModel):

@@ -14,8 +14,8 @@ from collections import defaultdict
 
 from dateutil.parser import parse
 
-from odoo import _,modules, SUPERUSER_ID, tools
-from odoo.microkernel import api
+from odoo import _, SUPERUSER_ID, tools
+from odoo.microkernel import api, modules
 from odoo.microkernel.ormapping import models, fields
 from odoo.addons.base.models.ir_mail_server import MailDeliveryException
 from odoo.microkernel.modules.registry import Registry

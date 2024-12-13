@@ -11,7 +11,7 @@ from pathlib import Path
 from unittest.mock import patch
 from socket import getaddrinfo  # keep a reference on the non-patched function
 
-from odoo import modules
+from odoo.microkernel import modules
 from odoo.technology.conf import config
 from odoo.exceptions import UserError
 from odoo.technology.utils import file_path

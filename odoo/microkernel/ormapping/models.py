@@ -70,7 +70,7 @@ from ...technology.db import SQL, Query
 from ...microkernel.utils import (
     DEFAULT_SERVER_DATE_FORMAT, DEFAULT_SERVER_DATETIME_FORMAT,
 )
-from ...microkernel.api import api
+from ...microkernel import api
 
 from .utils import (
     expand_ids, check_property_field_value_name, is_definition_class, 

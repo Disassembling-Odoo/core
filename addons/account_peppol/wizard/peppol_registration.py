@@ -8,7 +8,8 @@ try:
 except ImportError:
     phonenumbers = None
 
-from odoo import _, modules
+from odoo import _
+from odoo.microkernel import modules
 from odoo.exceptions import UserError, ValidationError
 
 from odoo.addons.account_edi_proxy_client.models.account_edi_proxy_user import AccountEdiProxyError

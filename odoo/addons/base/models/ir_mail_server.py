@@ -18,8 +18,8 @@ from OpenSSL.crypto import Error as SSLCryptoError, FILETYPE_PEM
 from OpenSSL.SSL import Error as SSLError
 from urllib3.contrib.pyopenssl import PyOpenSSLContext
 
-from odoo import tools, _, modules
-from odoo.microkernel import api
+from odoo import tools, _
+from odoo.microkernel import api, modules
 from odoo.microkernel.ormapping import models, fields
 from odoo.exceptions import UserError
 from odoo.technology import conf

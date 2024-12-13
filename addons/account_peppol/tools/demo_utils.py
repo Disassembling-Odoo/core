@@ -4,7 +4,8 @@ from base64 import b64encode
 from decorator import decorator
 import uuid
 
-from odoo import _, modules
+from odoo import _
+from odoo.microkernel import modules
 from odoo.microkernel.ormapping import fields
 from odoo.technology.utils import file_open
 

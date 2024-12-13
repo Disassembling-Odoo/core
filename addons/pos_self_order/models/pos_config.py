@@ -8,8 +8,9 @@ from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields
 from odoo.exceptions import UserError, ValidationError, AccessError
 
-from odoo import _, service
+from odoo import _
 from odoo.tools import split_every
+from odoo.technology.framework import dispatch_rpc
 from odoo.technology.utils import file_open
 
 
@@ -160,7 +161,7 @@ class PosConfig(models.Model):
 
     def _compute_selection_pay_after(self):
         selection_each_label = _("Each Order")
-        version_info = service.common.exp_version()['server_version_info']
+        version_info = dispatch_rpc("common", "exp_version")['server_version_info']
         if version_info[-1] == '':
             selection_each_label = f"{selection_each_label} {_('(require Odoo Enterprise)')}"
         return [("meal", _("Meal")), ("each", selection_each_label)]

@@ -12,7 +12,7 @@ import threading
 import time
 
 import odoo
-from ..api import api
+from ..api import mk_api as api
 import odoo.microkernel.modules.db
 import odoo.microkernel.modules.graph
 import odoo.microkernel.modules.migration

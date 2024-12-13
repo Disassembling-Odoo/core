@@ -13,7 +13,7 @@ import pytz
 from odoo import tools, _
 from odoo.microkernel import api
 from odoo.microkernel.ormapping import models, fields
-from odoo.tools import float_is_zero, float_round, float_repr, float_compare, 
+from odoo.tools import float_is_zero, float_round, float_repr, float_compare
 from odoo.tools.i18n import formatLang
 from odoo.exceptions import ValidationError, UserError
 from odoo.microkernel.osv.expression import AND

@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import modules
 from odoo.microkernel.ormapping import models
-from odoo.microkernel import api
+from odoo.microkernel import api, modules
 
 
 class Users(models.Model):

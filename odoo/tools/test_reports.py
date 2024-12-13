@@ -13,7 +13,7 @@ import tempfile
 from lxml import etree
 from subprocess import Popen, PIPE
 
-from ..microkernel.api import api
+from ..microkernel import api
 from .safe_eval import safe_eval
 
 _logger = logging.getLogger(__name__)

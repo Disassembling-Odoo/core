@@ -10,8 +10,9 @@ from __future__ import annotations
 __all__ = [
     'Environment',
     'Meta',
-    'model',
-    'constrains', 'depends', 'onchange', 'returns',
+    'model', 'model_create_multi', 'readonly', 'autovacuum',
+    'ondelete', 'onchange', 
+    'constrains', 'depends', 'depends_context', 'returns',
     'call_kw',
     'Self', 'ValuesType', 'ContextType', 'DomainType', 'M', 'T',
 ]

@@ -75,7 +75,7 @@ class TestMessagePostCommon(MailCommon, TestRecipients):
 @tagged('mail_post')
 class TestMailNotifyAPI(TestMessagePostCommon):
 
-    @mute_logger('odoo.ormapping.models.unlink')
+    @mute_logger('odoo.microkernel.ormapping.models.unlink')
     @users('employee')
     def test_email_notifiction_layouts(self):
         self.user_employee.write({'notification_type': 'email'})
@@ -498,7 +498,7 @@ class TestMessageNotify(TestMessagePostCommon):
             )
 
     @users('employee')
-    @mute_logger('odoo.addons.mail.models.mail_mail', 'odoo.ormapping.models.unlink', 'odoo.tests')
+    @mute_logger('odoo.addons.mail.models.mail_mail', 'odoo.microkernel.ormapping.models.unlink', 'odoo.tests')
     def test_notify_parameters(self):
         """ Test usage of parameters in notify, both for unwanted side effects
         and magic parameters. """
@@ -746,7 +746,7 @@ class TestMessagePost(TestMessagePostCommon, CronMixinCase):
 
         self.assertEqual(new_notification.mail_ids.state, 'exception', 'Email will be sent but with exception state - write access denied')
 
-    @mute_logger('odoo.addons.mail.models.mail_mail', 'odoo.ormapping.models.unlink')
+    @mute_logger('odoo.addons.mail.models.mail_mail', 'odoo.microkernel.ormapping.models.unlink')
     @users('employee')
     def test_message_post(self):
         self.user_employee_2.write({'notification_type': 'inbox'})
@@ -820,7 +820,7 @@ class TestMessagePost(TestMessagePostCommon, CronMixinCase):
                 partner_ids=self.partner_portal.ids,
             )
 
-    @mute_logger('odoo.addons.mail.models.mail_mail', 'odoo.ormapping.models.unlink', 'odoo.tests')
+    @mute_logger('odoo.addons.mail.models.mail_mail', 'odoo.microkernel.ormapping.models.unlink', 'odoo.tests')
     @users('employee')
     def test_message_post_author(self):
         """ Test author recognition """
@@ -878,7 +878,7 @@ class TestMessagePost(TestMessagePostCommon, CronMixinCase):
         self.assertEqual(test_record.message_partner_ids, self.partner_employee_2,
                          'Author is the message author when user is inactive, and shoud be added in followers')
 
-    @mute_logger('odoo.addons.mail.models.mail_mail', 'odoo.ormapping.models.unlink', 'odoo.tests')
+    @mute_logger('odoo.addons.mail.models.mail_mail', 'odoo.microkernel.ormapping.models.unlink', 'odoo.tests')
     @users('employee')
     def test_message_post_defaults(self):
         """ Test default values when posting a classic message. """
@@ -933,7 +933,7 @@ class TestMessagePost(TestMessagePostCommon, CronMixinCase):
         )
 
     @users('employee')
-    @mute_logger('odoo.ormapping.models.unlink')
+    @mute_logger('odoo.microkernel.microkernel.ormapping.models.unlink')
     def test_message_post_inactive_follower(self):
         """ Test posting with inactive followers does not notify them (e.g. odoobot) """
         test_record = self.env['mail.test.simple'].browse(self.test_record.ids)
@@ -968,7 +968,7 @@ class TestMessagePost(TestMessagePostCommon, CronMixinCase):
         self.assertEqual(self.env['mail.mail'].sudo().search_count([('mail_message_id', '=', msg.id)]), 2)
 
 
-    @mute_logger('odoo.addons.mail.models.mail_mail', 'odoo.ormapping.models.unlink')
+    @mute_logger('odoo.addons.mail.models.mail_mail', 'odoo.microkernel.ormapping.models.unlink')
     @users('erp_manager')
     def test_message_post_mc(self):
         """ Test posting in multi-company environment, notably with aliases """
@@ -1067,7 +1067,7 @@ class TestMessagePost(TestMessagePostCommon, CronMixinCase):
                 )
 
     @users('employee')
-    @mute_logger('odoo.addons.mail.models.mail_mail', 'odoo.addons.mail.models.mail_message_schedule', 'odoo.ormapping.models.unlink')
+    @mute_logger('odoo.addons.mail.models.mail_mail', 'odoo.addons.mail.models.mail_message_schedule', 'odoo.microkernel.ormapping.models.unlink')
     def test_message_post_schedule(self):
         """ Test delaying notifications through scheduled_date usage """
         cron_id = self.env.ref('mail.ir_cron_send_scheduled_message').id
@@ -1143,7 +1143,7 @@ class TestMessagePost(TestMessagePostCommon, CronMixinCase):
         self.assertMailNotifications(msg, recipients_info)
 
     @users('employee')
-    @mute_logger('odoo.addons.mail.models.mail_mail', 'odoo.addons.mail.models.mail_message_schedule', 'odoo.ormapping.models.unlink')
+    @mute_logger('odoo.addons.mail.models.mail_mail', 'odoo.addons.mail.models.mail_message_schedule', 'odoo.microkernel.ormapping.models.unlink')
     def test_message_post_schedule_update(self):
         """ Test tools to update scheduled notifications """
         cron = self.env.ref('mail.ir_cron_send_scheduled_message')

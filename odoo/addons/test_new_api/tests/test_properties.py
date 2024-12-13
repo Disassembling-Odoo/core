@@ -218,7 +218,7 @@ class PropertiesCase(TestPropertiesMixin):
                 'type': 'char',
             }]
 
-    @mute_logger('odoo.ormapping.fields')
+    @mute_logger('odoo.microkernel.ormapping.fields')
     def test_properties_field_write_batch(self):
         """Test the behavior of the write called in batch.
 
@@ -246,7 +246,7 @@ class PropertiesCase(TestPropertiesMixin):
         self.assertEqual(sql_values_1, {'discussion_color_code': 'orange', 'moderator_partner_id': self.partner_2.id, 'state': 'done'})
         self.assertEqual(sql_values_3, {'discussion_color_code': 'orange', 'moderator_partner_id': self.partner_2.id, 'state': 'done'})
 
-    @mute_logger('odoo.ormapping.models.unlink', 'odoo.ormapping.fields')
+    @mute_logger('odoo.microkernel.ormapping.models.unlink', 'odoo.microkernel.ormapping.fields')
     def test_properties_field_read_batch(self):
         values = self.message_1.read(['attributes'])[0]['attributes']
         self.assertEqual(len(values), 2)
@@ -354,7 +354,7 @@ class PropertiesCase(TestPropertiesMixin):
         with self.assertQueryCount(5):
             values = messages.read(['attributes'])
 
-    @mute_logger('odoo.ormapping.fields')
+    @mute_logger('odoo.microkernel.ormapping.fields')
     def test_properties_field_delete(self):
         """Test to delete a property using the flag "definition_deleted"."""
         self.message_1.attributes = [{
@@ -384,7 +384,7 @@ class PropertiesCase(TestPropertiesMixin):
         self.assertEqual(len(self.message_1.attributes), 1)
         self.assertEqual(self.message_1.attributes, {'discussion_color_code': 'purple'})
 
-    @mute_logger('odoo.ormapping.fields')
+    @mute_logger('odoo.microkernel.ormapping.fields')
     def test_properties_field_create_batch(self):
         # first create to cache the access rights
         self.env['test_new_api.message'].create({'name': 'test'})
@@ -759,7 +759,7 @@ class PropertiesCase(TestPropertiesMixin):
                 "comodel": "test_new_api.transient_model",
             }]
 
-    @mute_logger('odoo.ormapping.models.unlink', 'odoo.ormapping.fields')
+    @mute_logger('odoo.microkernel.ormapping.models.unlink', 'odoo.microkernel.ormapping.fields')
     def test_properties_field_many2one_unlink(self):
         """Test the case where we unlink the many2one record."""
         self.message_2.attributes = [{
@@ -1143,7 +1143,7 @@ class PropertiesCase(TestPropertiesMixin):
         self.assertEqual(values.get('name'), 'new_tags')
         self.assertEqual(values.get('tags'), [], 'Tags key should be at least an empty array (never False)')
 
-    @mute_logger('odoo.ormapping.models.unlink', 'odoo.ormapping.fields')
+    @mute_logger('odoo.microkernel.ormapping.models.unlink', 'odoo.microkernel.ormapping.fields')
     def test_properties_field_many2many_basic(self):
         """Test the basic operation on a many2many properties (read, write...).
 
@@ -1267,7 +1267,7 @@ class PropertiesCase(TestPropertiesMixin):
             }]
 
     @users('test')
-    @mute_logger('odoo.addons.base.models.ir_rule', 'odoo.ormapping.fields')
+    @mute_logger('odoo.addons.base.models.ir_rule', 'odoo.microkernel.ormapping.fields')
     def test_properties_field_many2many_filtering(self):
         # a user read a properties with a many2many and he doesn't have access to all records
         tags = self.env['test_new_api.multi.tag'].create(
@@ -1406,7 +1406,7 @@ class PropertiesCase(TestPropertiesMixin):
                 {'name': 'state', 'type': 'datetime'},
             ]
 
-    @mute_logger('odoo.ormapping.fields')
+    @mute_logger('odoo.microkernel.ormapping.fields')
     def test_properties_field_onchange2(self):
         """If we change the definition record, the onchange of the properties field must be triggered."""
         message_form = Form(self.env['test_new_api.message'])
@@ -1571,7 +1571,7 @@ class PropertiesCase(TestPropertiesMixin):
             message.attributes,
             {'new_property': 'test value'})
 
-    @mute_logger('odoo.ormapping.fields')
+    @mute_logger('odoo.microkernel.ormapping.fields')
     def test_properties_field_definition_update(self):
         """Test the definition update from the child."""
         self.discussion_1.attributes_definition = []
@@ -1623,7 +1623,7 @@ class PropertiesCase(TestPropertiesMixin):
         }
         self.assertEqual(expected_properties, sql_properties)
 
-    @mute_logger('odoo.ormapping.fields')
+    @mute_logger('odoo.microkernel.ormapping.fields')
     @users('test')
     def test_properties_field_security(self):
         """Check the access right related to the Properties fields."""
@@ -1713,7 +1713,7 @@ class PropertiesSearchCase(TestPropertiesMixin):
         cls.messages = cls.message_1 | cls.message_2 | cls.message_3
         cls.env['test_new_api.message'].search([('id', 'not in', cls.messages.ids)]).unlink()
 
-    @mute_logger('odoo.ormapping.fields')
+    @mute_logger('odoo.microkernel.ormapping.fields')
     def test_properties_field_search_boolean(self):
         # search on boolean
         self.message_1.attributes = [{
@@ -1734,7 +1734,7 @@ class PropertiesSearchCase(TestPropertiesMixin):
         messages = self.env['test_new_api.message'].search([('attributes.myboolean', '!=', True)])
         self.assertEqual(messages, self.message_2 | self.message_3)
 
-    @mute_logger('odoo.ormapping.fields')
+    @mute_logger('odoo.microkernel.ormapping.fields')
     def test_properties_field_search_char(self):
         # search on text properties
         self.message_1.attributes = [{
@@ -1805,7 +1805,7 @@ class PropertiesSearchCase(TestPropertiesMixin):
         messages = self.env['test_new_api.message'].search([('attributes.mychar', '!=', False)])
         self.assertEqual(messages, self.message_1)
 
-    @mute_logger('odoo.ormapping.fields')
+    @mute_logger('odoo.microkernel.ormapping.fields')
     def test_properties_field_search_float(self):
         # search on float
         self.message_1.attributes = [{
@@ -1826,7 +1826,7 @@ class PropertiesSearchCase(TestPropertiesMixin):
         messages = self.env['test_new_api.message'].search([('attributes.myfloat', '=', 3.14)])
         self.assertEqual(messages, self.message_1)
 
-    @mute_logger('odoo.ormapping.fields')
+    @mute_logger('odoo.microkernel.ormapping.fields')
     def test_properties_field_search_integer(self):
         # search on integer
         self.messages.discussion = self.discussion_1
@@ -1851,7 +1851,7 @@ class PropertiesSearchCase(TestPropertiesMixin):
         messages = self.env['test_new_api.message'].search([('attributes.myint', 'not ilike', '1')])
         self.assertEqual(messages, self.message_1 | self.message_3)
 
-    @mute_logger('odoo.ormapping.fields')
+    @mute_logger('odoo.microkernel.ormapping.fields')
     def test_properties_field_search_many2many(self):
         self.messages.discussion = self.discussion_1
         partners = self.env['res.partner'].create([{'name': 'A'}, {'name': 'B'}, {'name': 'C'}])
@@ -1882,7 +1882,7 @@ class PropertiesSearchCase(TestPropertiesMixin):
             [('attributes.mymany2many', 'in', [partners[0].id, partners[1].id])])
         self.assertEqual(messages, self.message_2)  # should be self.message_1 | self.message_2
 
-    @mute_logger('odoo.ormapping.fields')
+    @mute_logger('odoo.microkernel.ormapping.fields')
     def test_properties_field_search_many2one(self):
         # many2one are just like integer
         self.messages.discussion = self.discussion_1
@@ -1907,7 +1907,7 @@ class PropertiesSearchCase(TestPropertiesMixin):
             [('attributes.mypartner', 'ilike', self.partner.display_name)])
         self.assertFalse(messages, "The ilike on relational properties is not supported")
 
-    @mute_logger('odoo.ormapping.fields')
+    @mute_logger('odoo.microkernel.ormapping.fields')
     def test_properties_field_search_tags(self):
         self.messages.discussion = self.discussion_1
         self.message_1.attributes = [{
@@ -1953,7 +1953,7 @@ class PropertiesSearchCase(TestPropertiesMixin):
         messages = self.env['test_new_api.message'].search([('attributes.mytags', 'not in', ['a', 'b'])])
         self.assertEqual(messages, self.message_3)
 
-    @mute_logger('odoo.ormapping.fields')
+    @mute_logger('odoo.microkernel.ormapping.fields')
     def test_properties_field_search_unaccent(self):
         if not self.registry.has_unaccent:
             # To enable unaccent feature:
@@ -1985,7 +1985,7 @@ class PropertiesSearchCase(TestPropertiesMixin):
         self.assertNotIn(self.message_1, result)
         self.assertNotIn(self.message_2, result)
 
-    @mute_logger('odoo.ormapping.fields')
+    @mute_logger('odoo.microkernel.ormapping.fields')
     def test_properties_field_search_orderby_string(self):
         """Test that we can order record by properties string values."""
         (self.message_1 | self.message_2 | self.message_3).discussion = self.discussion_1
@@ -2014,7 +2014,7 @@ class PropertiesSearchCase(TestPropertiesMixin):
         self.assertEqual(result[1], self.message_1)
         self.assertEqual(result[2], self.message_2)
 
-    @mute_logger('odoo.ormapping.fields')
+    @mute_logger('odoo.microkernel.ormapping.fields')
     def test_properties_field_search_orderby_integer(self):
         """Test that we can order record by properties integer values."""
         (self.message_1 | self.message_2 | self.message_3).discussion = self.discussion_1
@@ -2043,7 +2043,7 @@ class PropertiesSearchCase(TestPropertiesMixin):
         self.assertEqual(result[1], self.message_3)
         self.assertEqual(result[2], self.message_1)
 
-    @mute_logger('odoo.ormapping.fields')
+    @mute_logger('odoo.microkernel.ormapping.fields')
     def test_properties_field_search_orderby_injection(self):
         """Check the restriction on the property name."""
         self.message_1.attributes = [{
@@ -2068,12 +2068,12 @@ class PropertiesSearchCase(TestPropertiesMixin):
                 with self.assertRaises(UserError), self.assertQueryCount(0):
                     self.env['test_new_api.message'].search(domain=[], order=order)
 
-    @mute_logger('odoo.ormapping.fields')
+    @mute_logger('odoo.microkernel.ormapping.fields')
     def test_properties_field_search(self):
         with self.assertRaises(ValueError):
             self.env['test_new_api.message'].search([('attributes', '=', '"Test"')])
 
-    @mute_logger('odoo.ormapping.fields')
+    @mute_logger('odoo.microkernel.ormapping.fields')
     def test_properties_field_search_read_false(self):
         Model = self.env['test_new_api.message']
 
@@ -2114,7 +2114,7 @@ class PropertiesGroupByCase(TestPropertiesMixin):
         cls.wrong_discussion_id = cls.env['test_new_api.discussion'].search(
             [], order="id DESC", limit=1).id + 1000
 
-    @mute_logger('odoo.ormapping.fields')
+    @mute_logger('odoo.microkernel.ormapping.fields')
     def test_properties_field_read_group_basic(self):
         Model = self.env['test_new_api.message']
 
@@ -2250,7 +2250,7 @@ class PropertiesGroupByCase(TestPropertiesMixin):
         )
         self._check_domains_count(result)
 
-    @mute_logger('odoo.ormapping.fields')
+    @mute_logger('odoo.microkernel.ormapping.fields')
     def test_properties_field_read_progress_bar(self):
         """Test "_read_progress_bar" with a properties field."""
         Model = self.env['test_new_api.message']
@@ -2294,7 +2294,7 @@ class PropertiesGroupByCase(TestPropertiesMixin):
         self.message_4.attributes = {'mydate': f'2023-02-05{hour}'}
         self.env.flush_all()
 
-    @mute_logger('odoo.ormapping.fields')
+    @mute_logger('odoo.microkernel.ormapping.fields')
     def test_properties_field_read_group_date_day(self, date_type='date'):
         self._properties_field_read_group_date_prepare(date_type)
         Model = self.env['test_new_api.message']
@@ -2338,7 +2338,7 @@ class PropertiesGroupByCase(TestPropertiesMixin):
         self.assertEqual(result[1]['attributes.mydate:year'], '2077')
         self.assertEqual(result[2]['attributes.mydate:year'], False)
 
-    @mute_logger('odoo.ormapping.fields')
+    @mute_logger('odoo.microkernel.ormapping.fields')
     def test_properties_field_read_group_date_quarter(self, date_type='date'):
         self._properties_field_read_group_date_prepare(date_type)
         Model = self.env['test_new_api.message']
@@ -2366,7 +2366,7 @@ class PropertiesGroupByCase(TestPropertiesMixin):
             self.message_1 | self.message_2 | self.message_3 | self.message_4)
         self._check_domains_count(result)
 
-    @mute_logger('odoo.ormapping.fields')
+    @mute_logger('odoo.microkernel.ormapping.fields')
     def test_properties_field_read_group_date_month(self, date_type='date'):
         self._properties_field_read_group_date_prepare()
         Model = self.env['test_new_api.message']
@@ -2395,7 +2395,7 @@ class PropertiesGroupByCase(TestPropertiesMixin):
         self.assertEqual(Model.search(result[3]['__domain']), self.message_1 | self.message_3)
         self._check_domains_count(result)
 
-    @mute_logger('odoo.ormapping.fields')
+    @mute_logger('odoo.microkernel.ormapping.fields')
     def test_properties_field_read_group_date_week(self, date_type='date'):
         first_week_day = int(get_lang(self.env).week_start) - 1
         self.assertEqual(first_week_day, 6, "First day of the week must be Sunday")
@@ -2467,7 +2467,7 @@ class PropertiesGroupByCase(TestPropertiesMixin):
             self.assertEqual(start.weekday(), 2, "First day of the week must be Wednesday")
             self.assertEqual(end.weekday(), 2, "First day of the week must be Wednesday")
 
-    @mute_logger('odoo.ormapping.fields')
+    @mute_logger('odoo.microkernel.ormapping.fields')
     def test_properties_field_read_group_date_year(self, date_type='date'):
         self._properties_field_read_group_date_prepare()
         Model = self.env['test_new_api.message']
@@ -2510,7 +2510,7 @@ class PropertiesGroupByCase(TestPropertiesMixin):
     def test_properties_field_read_group_datetime_year(self):
         self.test_properties_field_read_group_date_year('datetime')
 
-    @mute_logger('odoo.ormapping.fields')
+    @mute_logger('odoo.microkernel.ormapping.fields')
     def test_properties_field_read_group_injection(self):
         Model = self.env['test_new_api.message']
         self.message_1.attributes = [{
@@ -2551,7 +2551,7 @@ class PropertiesGroupByCase(TestPropertiesMixin):
                 aggregates=['attributes.myinteger:sum'],  # Aggregate is not supported
             )
 
-    @mute_logger('odoo.ormapping.fields', 'odoo.ormapping.models.unlink')
+    @mute_logger('odoo.microkernel.ormapping.fields', 'odoo.microkernel.ormapping.models.unlink')
     def test_properties_field_read_group_many2many(self):
         Model = self.env['test_new_api.message']
 
@@ -2655,7 +2655,7 @@ class PropertiesGroupByCase(TestPropertiesMixin):
                     lazy=False,
                 )
 
-    @mute_logger('odoo.ormapping.fields')
+    @mute_logger('odoo.microkernel.ormapping.fields')
     def test_properties_field_read_group_many2one(self):
         Model = self.env['test_new_api.message']
 
@@ -2755,7 +2755,7 @@ class PropertiesGroupByCase(TestPropertiesMixin):
                     lazy=False,
                 )
 
-    @mute_logger('odoo.ormapping.fields')
+    @mute_logger('odoo.microkernel.ormapping.fields')
     def test_properties_field_read_group_selection(self):
         Model = self.env['test_new_api.message']
 
@@ -2840,7 +2840,7 @@ class PropertiesGroupByCase(TestPropertiesMixin):
         self.assertEqual(result[0]['attributes.myselection_count'], 4)
         self._check_domains_count(result)
 
-    @mute_logger('odoo.ormapping.fields')
+    @mute_logger('odoo.microkernel.ormapping.fields')
     def test_properties_field_read_group_tags(self):
         Model = self.env['test_new_api.message']
 

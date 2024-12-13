@@ -38,7 +38,7 @@ class Form:
     when the form has no pending changes.
 
     Regular fields can just be assigned directly to the form. In the case
-    of :class:`~odoo.ormapping.fields.Many2one` fields, one can assign a recordset::
+    of :class:`~odoo.microkernel.ormapping.fields.Many2one` fields, one can assign a recordset::
 
         # empty recordset => creation mode
         f = Form(self.env['sale.order'])
@@ -60,7 +60,7 @@ class Form:
             f2.payment_term_id = env.ref('account.account_payment_term_15days')
             # f2 is saved here
 
-    For :class:`~odoo.ormapping.fields.Many2many` fields, the field itself is a
+    For :class:`~odoo.microkernel.ormapping.fields.Many2many` fields, the field itself is a
     :class:`~odoo.tests.common.M2MProxy` and can be altered by adding or
     removing records::
 
@@ -68,9 +68,9 @@ class Form:
             u.groups_id.add(env.ref('account.group_account_manager'))
             u.groups_id.remove(id=env.ref('base.group_portal').id)
 
-    Finally :class:`~odoo.ormapping.fields.One2many` are reified as :class:`~O2MProxy`.
+    Finally :class:`~odoo.microkernel.ormapping.fields.One2many` are reified as :class:`~O2MProxy`.
 
-    Because the :class:`~odoo.ormapping.fields.One2many` only exists through its parent,
+    Because the :class:`~odoo.microkernel.ormapping.fields.One2many` only exists through its parent,
     it is manipulated more directly by creating "sub-forms" with
     the :meth:`~O2MProxy.new` and :meth:`~O2MProxy.edit` methods. These would
     normally be used as context managers since they get saved in the parent
@@ -865,7 +865,7 @@ class O2MProxy(X2MProxy):
 
     def new(self):
         """ Returns a :class:`Form` for a new
-        :class:`~odoo.ormapping.fields.One2many` record, properly initialised.
+        :class:`~odoo.microkernel.ormapping.fields.One2many` record, properly initialised.
 
         The form is created from the list view if editable, or the field's
         form view otherwise.
@@ -877,7 +877,7 @@ class O2MProxy(X2MProxy):
 
     def edit(self, index):
         """ Returns a :class:`Form` to edit the pre-existing
-        :class:`~odoo.ormapping.fields.One2many` record.
+        :class:`~odoo.microkernel.ormapping.fields.One2many` record.
 
         The form is created from the list view if editable, or the field's
         form view otherwise.

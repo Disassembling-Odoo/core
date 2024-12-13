@@ -10,7 +10,7 @@ from odoo.tests import tagged
 class TestAccountDigest(TestDigestCommon):
 
     @classmethod
-    @mute_logger('odoo.ormapping.models.unlink')
+    @mute_logger('odoo.microkernel.ormapping.models.unlink')
     def setUpClass(cls):
         super().setUpClass()
         account1 = cls.env['account.account'].search([('internal_group', '=', 'income'), ('company_ids', '=', cls.company_1.id)], limit=1)

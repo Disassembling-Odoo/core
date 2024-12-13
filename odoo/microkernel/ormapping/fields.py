@@ -1552,9 +1552,9 @@ class Float(Field[float]):
 
     The Float class provides some static methods for this purpose:
 
-    :func:`~odoo.ormapping.fields.Float.round()` to round a float with the given precision.
-    :func:`~odoo.ormapping.fields.Float.is_zero()` to check if a float equals zero at the given precision.
-    :func:`~odoo.ormapping.fields.Float.compare()` to compare two floats at the given precision.
+    :func:`~odoo.microkernel.ormapping.fields.Float.round()` to round a float with the given precision.
+    :func:`~odoo.microkernel.ormapping.fields.Float.is_zero()` to check if a float equals zero at the given precision.
+    :func:`~odoo.microkernel.ormapping.fields.Float.compare()` to compare two floats at the given precision.
 
     .. admonition:: Example
 
@@ -3440,7 +3440,7 @@ class Properties(Field):
     database.
 
     The "definition_record" define the field used to find the container of the
-    current record. The container must have a :class:`~odoo.ormapping.fields.PropertiesDefinition`
+    current record. The container must have a :class:`~odoo.microkernel.ormapping.fields.PropertiesDefinition`
     field "definition_record_field" that contains the properties definition
     (type of each property, default value)...
 
@@ -3983,7 +3983,7 @@ class Properties(Field):
 
 
 class PropertiesDefinition(Field):
-    """ Field used to define the properties definition (see :class:`~odoo.ormapping.fields.Properties`
+    """ Field used to define the properties definition (see :class:`~odoo.microkernel.ormapping.fields.Properties`
     field). This field is used on the container record to define the structure
     of expected properties on subrecords. It is used to check the properties
     definition. """

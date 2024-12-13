@@ -223,7 +223,7 @@ if __name__ == '__main__':
         'loggers': {
             'odoo.microkernel.modules.loading': {'level': 'CRITICAL'},
             'odoo.sql_db': {'level': 'CRITICAL'},
-            'odoo.ormapping.models.unlink': {'level': 'WARNING'},
+            'odoo.microkernel.ormapping.models.unlink': {'level': 'WARNING'},
             'odoo.addons.base.models.ir_model': {'level': "WARNING"},
         }
     })

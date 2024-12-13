@@ -150,7 +150,7 @@ class TestAccountComposerPerformance(AccountTestInvoicingCommon, MailCommon):
 
     @users('user_account')
     @warmup
-    @mute_logger('odoo.addons.mail.models.mail_mail', 'odoo.ormapping.models.unlink')
+    @mute_logger('odoo.addons.mail.models.mail_mail', 'odoo.microkernel.ormapping.models.unlink')
     def test_move_composer_multi(self):
         """ Test with multi mode """
         test_moves = self.test_account_moves.with_env(self.env)
@@ -219,7 +219,7 @@ class TestAccountComposerPerformance(AccountTestInvoicingCommon, MailCommon):
 
     @users('user_account')
     @warmup
-    @mute_logger('odoo.addons.mail.models.mail_mail', 'odoo.ormapping.models.unlink')
+    @mute_logger('odoo.addons.mail.models.mail_mail', 'odoo.microkernel.ormapping.models.unlink')
     def test_move_composer_single(self):
         """ Test single mode """
         test_move = self.test_account_moves[0].with_env(self.env)
@@ -306,7 +306,7 @@ class TestAccountComposerPerformance(AccountTestInvoicingCommon, MailCommon):
 
     @users('user_account')
     @warmup
-    @mute_logger('odoo.addons.mail.models.mail_mail', 'odoo.ormapping.models.unlink')
+    @mute_logger('odoo.addons.mail.models.mail_mail', 'odoo.microkernel.ormapping.models.unlink')
     def test_move_composer_single_lang(self):
         """ Test single with another language """
         test_move = self.test_account_moves[1].with_env(self.env)

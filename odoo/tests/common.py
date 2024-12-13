@@ -398,7 +398,7 @@ class BaseCase(case.TestCase, metaclass=MetaCase):
         :param xid: fully-qualified :term:`external identifier`, in the form
                     :samp:`{module}.{identifier}`
         :raise: ValueError if not found
-        :returns: :class:`~odoo.ormapping.models.BaseModel`
+        :returns: :class:`~odoo.microkernel.ormapping.models.BaseModel`
         """
         assert "." in xid, "this method requires a fully qualified parameter, in the following form: 'module.identifier'"
         return self.env.ref(xid)

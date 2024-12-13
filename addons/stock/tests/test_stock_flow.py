@@ -26,7 +26,7 @@ class TestStockFlow(TestStockCommon):
             'name': 'My Company (Chicago)-demo',
         })
 
-    @mute_logger('odoo.addons.base.models.ir_model', 'odoo.ormapping.models')
+    @mute_logger('odoo.addons.base.models.ir_model', 'odoo.microkernel.ormapping.models')
     def test_00_picking_create_and_transfer_quantity(self):
         """ Basic stock operation on incoming and outgoing shipment. """
         LotObj = self.env['stock.lot']

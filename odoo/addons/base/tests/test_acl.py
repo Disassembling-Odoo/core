@@ -93,7 +93,7 @@ class TestACL(TransactionCaseWithUserDemo):
         self.assertNotEqual(view_arch.xpath("//label[@for='decimal_places']"), [],
                              "Label for 'decimal_places' must be found in view definition again")
 
-    @mute_logger('odoo.ormapping.models')
+    @mute_logger('odoo.microkernel.ormapping.models')
     def test_field_crud_restriction(self):
         "Read/Write RPC access to restricted field should be forbidden"
         partner = self.env['res.partner'].browse(1).with_user(self.user_demo)
@@ -123,7 +123,7 @@ class TestACL(TransactionCaseWithUserDemo):
         self.assertTrue(partner.read(['bank_ids']))
         self.assertTrue(partner.write({'bank_ids': []}))
 
-    @mute_logger('odoo.ormapping.models')
+    @mute_logger('odoo.microkernel.ormapping.models')
     def test_fields_browse_restriction(self):
         """Test access to records having restricted fields"""
         # Invalidate cache to avoid restricted value to be available
@@ -136,7 +136,7 @@ class TestACL(TransactionCaseWithUserDemo):
         partner.name
         # ... except if they are restricted
         with self.assertRaises(AccessError):
-            with mute_logger('odoo.ormapping.models'):
+            with mute_logger('odoo.microkernel.ormapping.models'):
                 partner.email
 
     def test_view_create_edit_button(self):

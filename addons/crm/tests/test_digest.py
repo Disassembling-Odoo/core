@@ -9,7 +9,7 @@ from odoo.technology.adjustable import mute_logger
 
 class TestCrmDigest(TestDigestCommon):
     @classmethod
-    @mute_logger('odoo.ormapping.models.unlink')
+    @mute_logger('odoo.microkernel.ormapping.models.unlink')
     def setUpClass(cls):
         super().setUpClass()
 

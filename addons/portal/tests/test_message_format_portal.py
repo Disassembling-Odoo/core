@@ -8,7 +8,7 @@ from odoo.tests import common, tagged
 @tagged('mail_message')
 class TestMessageFormatPortal(common.TransactionCase):
 
-    @mute_logger('odoo.ormapping.models.unlink')
+    @mute_logger('odoo.microkernel.ormapping.models.unlink')
     def test_portal_message_format(self):
         """ Test the specific message formatting for the portal.
         Notably the flag that tells if the message is of subtype 'note'. """

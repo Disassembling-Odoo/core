@@ -337,7 +337,7 @@ ZeroDivisionError: division by zero""" % self.test_server_action.id
         # Test: partner updated
         self.assertTrue(self.test_partner.active, 'ir_actions_server: partner should have been reactivated')
 
-    @mute_logger('odoo.addons.base.models.ir_model', 'odoo.ormapping.models')
+    @mute_logger('odoo.addons.base.models.ir_model', 'odoo.microkernel.ormapping.models')
     def test_40_multi(self):
         # Data: 2 server actions that will be nested
         action1 = self.action.create({

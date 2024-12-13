@@ -71,7 +71,7 @@ class TestMassMailingServer(TestMassMailCommon):
         self.assertFalse(servers.filtered('active'), 'All servers must be archived')
 
     @users('user_marketing')
-    @mute_logger('odoo.addons.mail.models.mail_mail', 'odoo.ormapping.models.unlink', 'odoo.addons.mass_mailing.models.mailing')
+    @mute_logger('odoo.addons.mail.models.mail_mail', 'odoo.microkernel.ormapping.models.unlink', 'odoo.addons.mass_mailing.models.mailing')
     def test_mass_mailing_server_find(self):
         """Test that the right mail server is chosen to send the mailing.
 

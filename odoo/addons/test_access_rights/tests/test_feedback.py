@@ -440,7 +440,7 @@ class TestFieldGroupFeedback(Feedback):
             'some_id': cls.record.id,
         }).with_user(cls.user)
 
-    @mute_logger('odoo.ormapping.models')
+    @mute_logger('odoo.microkernel.ormapping.models')
     def test_read(self):
         self.user.write({
             'groups_id': [Command.set([self.env.ref('base.group_user').id])],
@@ -472,7 +472,7 @@ Fields:
 - forbidden3 (always forbidden)""" % self.user.id
         )
 
-    @mute_logger('odoo.ormapping.models')
+    @mute_logger('odoo.microkernel.ormapping.models')
     def test_write(self):
         self.user.write({
             'groups_id': [Command.set([self.env.ref('base.group_user').id])],
@@ -492,7 +492,7 @@ Fields:
     % self.user.id
         )
 
-    @mute_logger('odoo.ormapping.models')
+    @mute_logger('odoo.microkernel.ormapping.models')
     def test_check_field_access_rights_domain(self):
         with self.assertRaises(AccessError):
             self.record.search([('forbidden3', '=', 58)])
@@ -506,7 +506,7 @@ Fields:
         with self.assertRaises(AccessError):
             self.inherits_record.search([('forbidden3', '=', 58)])
 
-    @mute_logger('odoo.ormapping.models')
+    @mute_logger('odoo.microkernel.ormapping.models')
     def test_check_field_access_rights_order(self):
         self.record.search([], order='val')
 
@@ -519,7 +519,7 @@ Fields:
         with self.assertRaises(AccessError):
             self.record.search([], order='val DESC,    forbidden3       DESC')
 
-    @mute_logger('odoo.ormapping.models')
+    @mute_logger('odoo.microkernel.ormapping.models')
     def test_check_field_access_rights_read_group(self):
         self.record._read_group([], ['val'], [])
 

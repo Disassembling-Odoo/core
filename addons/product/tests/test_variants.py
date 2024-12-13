@@ -282,7 +282,7 @@ class TestVariants(ProductVariantsCommon):
             one_variant_template.with_company(company_b).standard_price
         )
 
-    @mute_logger('odoo.ormapping.models.unlink')
+    @mute_logger('odoo.microkernel.ormapping.models.unlink')
     def test_archive_variant(self):
         template = self.env['product.template'].create({
             'name': 'template'
@@ -309,7 +309,7 @@ class TestVariants(ProductVariantsCommon):
         self.assertTrue(variant_1.active)
         self.assertTrue(template.active)
 
-    @mute_logger('odoo.ormapping.models.unlink')
+    @mute_logger('odoo.microkernel.ormapping.models.unlink')
     def test_template_barcode(self):
         template = self.env['product.template'].create({
             'name': 'template',
@@ -350,7 +350,7 @@ class TestVariants(ProductVariantsCommon):
         template.invalidate_model(['barcode'])
         self.assertFalse(template.barcode)  # 2 active variants --> no barcode on template
 
-    @mute_logger('odoo.ormapping.models.unlink')
+    @mute_logger('odoo.microkernel.ormapping.models.unlink')
     def test_archive_all_variants(self):
         template = self.env['product.template'].create({
             'name': 'template'
@@ -473,7 +473,7 @@ class TestVariantsNoCreate(ProductAttributesCommon):
             {self.color_attribute_red, self.color_attribute_blue},
         )
 
-    @mute_logger('odoo.ormapping.models.unlink')
+    @mute_logger('odoo.microkernel.ormapping.models.unlink')
     def test_update_mixed_mono(self):
         """ modify a product with regular and 'nocreate' attributes """
         template = self.env['product.template'].create({
@@ -524,7 +524,7 @@ class TestVariantsNoCreate(ProductAttributesCommon):
             {self.color_attribute_red, self.color_attribute_blue},
         )
 
-    @mute_logger('odoo.ormapping.models.unlink')
+    @mute_logger('odoo.microkernel.ormapping.models.unlink')
     def test_update_mixed_multi(self):
         """ modify a product with regular and 'nocreate' attributes """
         template = self.env['product.template'].create({
@@ -848,7 +848,7 @@ class TestVariantsArchive(ProductVariantsCommon):
             cls.ptav_size_m = cls.ptal_size.product_template_value_ids[1]
         return res
 
-    @mute_logger('odoo.ormapping.models.unlink')
+    @mute_logger('odoo.microkernel.ormapping.models.unlink')
     def test_01_update_variant_unlink(self):
         """Variants are not used anywhere, so removing an attribute line would
            unlink the variants and create new ones. Nothing too fancy here.
@@ -869,7 +869,7 @@ class TestVariantsArchive(ProductVariantsCommon):
         self._assert_2color_x_2size()
         self.assertFalse(self.template.product_variant_ids & variants_2x2)
 
-    @mute_logger('odoo.ormapping.models.unlink')
+    @mute_logger('odoo.microkernel.ormapping.models.unlink')
     def test_02_update_variant_archive_1_value(self):
         """We do the same operations on the template as in the previous test,
            except we simulate that the variants can't be unlinked.
@@ -979,7 +979,7 @@ class TestVariantsArchive(ProductVariantsCommon):
         self.assertEqual(archived_variants, variants_2x2)
         self._assert_2color_x_2size(archived_variants)
 
-    @mute_logger('odoo.ormapping.models.unlink')
+    @mute_logger('odoo.microkernel.ormapping.models.unlink')
     def test_03_update_variant_archive_3_value(self):
         self._remove_ptal_size()
         self._add_ptal_size_s()
@@ -1098,7 +1098,7 @@ class TestVariantsArchive(ProductVariantsCommon):
         name_searched = self.env['product.template'].name_search(name='cima')
         self.assertIn(template.id, [ng[0] for ng in name_searched])
 
-    @mute_logger('odoo.ormapping.models.unlink')
+    @mute_logger('odoo.microkernel.ormapping.models.unlink')
     def test_uom_update_variant(self):
         """ Changing the uom on the template do not behave the same
         as changing on the product product."""
@@ -1121,7 +1121,7 @@ class TestVariantsArchive(ProductVariantsCommon):
         self.assertEqual(variant.uom_po_id, units)
         self.assertEqual(template.uom_po_id, units)
 
-    @mute_logger('odoo.ormapping.models.unlink')
+    @mute_logger('odoo.microkernel.ormapping.models.unlink')
     def test_dynamic_attributes_archiving(self):
         Product = self.env['product.product']
         ProductAttribute = self.env['product.attribute']
@@ -1454,7 +1454,7 @@ class TestVariantsExclusion(ProductAttributesCommon):
         cls.smartphone_256 = get_ptav(cls.smartphone, cls.storage_attr_value_256)
         cls.smartphone_128 = get_ptav(cls.smartphone, cls.storage_attr_value_128)
 
-    @mute_logger('odoo.ormapping.models.unlink')
+    @mute_logger('odoo.microkernel.ormapping.models.unlink')
     def test_variants_1_exclusion(self):
         # Create one exclusion for Smartphone S
         self.smartphone_s.write({
@@ -1471,7 +1471,7 @@ class TestVariantsExclusion(ProductAttributesCommon):
         })
         self.assertEqual(len(self.smartphone.product_variant_ids), 4, 'With no exclusion, the smartphone should have 4 active different variants')
 
-    @mute_logger('odoo.ormapping.models.unlink')
+    @mute_logger('odoo.microkernel.ormapping.models.unlink')
     def test_variants_2_exclusions_same_line(self):
         # Create two exclusions for Smartphone S on the same line
         self.smartphone_s.write({
@@ -1497,7 +1497,7 @@ class TestVariantsExclusion(ProductAttributesCommon):
         })
         self.assertEqual(len(self.smartphone.product_variant_ids), 4, 'With no exclusion, the smartphone should have 4 active different variants')
 
-    @mute_logger('odoo.ormapping.models.unlink')
+    @mute_logger('odoo.microkernel.ormapping.models.unlink')
     def test_variants_2_exclusions_different_lines(self):
         # add 1 exclusion
         self.smartphone_s.write({
@@ -1522,7 +1522,7 @@ class TestVariantsExclusion(ProductAttributesCommon):
         })
         self.assertEqual(len(self.smartphone.product_variant_ids), 3, 'With one exclusion, the smartphone should have 3 active different variants')
 
-    @mute_logger('odoo.ormapping.models.unlink')
+    @mute_logger('odoo.microkernel.ormapping.models.unlink')
     def test_exclusions_crud(self):
         """ Make sure that exclusions creation, update & delete are correctly handled.
 
@@ -1551,7 +1551,7 @@ class TestVariantsExclusion(ProductAttributesCommon):
         exclude.unlink()
         self.assertEqual(len(self.smartphone.product_variant_ids), 4)
 
-    @mute_logger('odoo.ormapping.models.unlink')
+    @mute_logger('odoo.microkernel.ormapping.models.unlink')
     def test_dynamic_variants_unarchive(self):
         """ Make sure that exclusions creation, update & delete are correctly handled.
 

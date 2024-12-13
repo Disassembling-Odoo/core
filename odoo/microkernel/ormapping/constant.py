@@ -28,7 +28,7 @@ READ_GROUP_NUMBER_GRANULARITY = {
 
 class Command(enum.IntEnum):
     """
-    :class:`~odoo.ormapping.fields.One2many` and :class:`~odoo.ormapping.fields.Many2many` fields
+    :class:`~odoo.microkernel.ormapping.fields.One2many` and :class:`~odoo.microkernel.ormapping.fields.Many2many` fields
     expect a special command to manipulate the relation they implement.
 
     Internally, each command is a 3-elements tuple where the first element is a
@@ -63,11 +63,11 @@ class Command(enum.IntEnum):
         Create new records in the comodel using ``values``, link the created
         records to ``self``.
 
-        In case of a :class:`~odoo.ormapping.fields.Many2many` relation, one unique
+        In case of a :class:`~odoo.microkernel.ormapping.fields.Many2many` relation, one unique
         new record is created in the comodel such that all records in `self`
         are linked to the new record.
 
-        In case of a :class:`~odoo.ormapping.fields.One2many` relation, one new record
+        In case of a :class:`~odoo.microkernel.ormapping.fields.One2many` relation, one new record
         is created in the comodel for every record in ``self`` such that every
         record in ``self`` is linked to exactly one of the new records.
 
@@ -90,7 +90,7 @@ class Command(enum.IntEnum):
         Remove the related record from the database and remove its relation
         with ``self``.
 
-        In case of a :class:`~odoo.ormapping.fields.Many2many` relation, removing the
+        In case of a :class:`~odoo.microkernel.ormapping.fields.Many2many` relation, removing the
         record from the database may be prevented if it is still linked to
         other records.
 
@@ -103,7 +103,7 @@ class Command(enum.IntEnum):
         """
         Remove the relation between ``self`` and the related record.
 
-        In case of a :class:`~odoo.ormapping.fields.One2many` relation, the given record
+        In case of a :class:`~odoo.microkernel.ormapping.fields.One2many` relation, the given record
         is deleted from the database if the inverse field is set as
         ``ondelete='cascade'``. Otherwise, the value of the inverse field is
         set to False and the record is kept.

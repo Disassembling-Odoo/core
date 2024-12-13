@@ -4455,28 +4455,28 @@ class BaseModel(metaclass=MetaModel):
         :raise ValidationError: if invalid values are specified for selection fields
         :raise UserError: if a loop would be created in a hierarchy of objects a result of the operation (such as setting an object as its own parent)
 
-        * For numeric fields (:class:`~odoo.ormapping.fields.Integer`,
-          :class:`~odoo.ormapping.fields.Float`) the value should be of the
+        * For numeric fields (:class:`~odoo.microkernel.ormapping.fields.Integer`,
+          :class:`~odoo.microkernel.ormapping.fields.Float`) the value should be of the
           corresponding type
-        * For :class:`~odoo.ormapping.fields.Boolean`, the value should be a
+        * For :class:`~odoo.microkernel.ormapping.fields.Boolean`, the value should be a
           :class:`python:bool`
-        * For :class:`~odoo.ormapping.fields.Selection`, the value should match the
+        * For :class:`~odoo.microkernel.ormapping.fields.Selection`, the value should match the
           selection values (generally :class:`python:str`, sometimes
           :class:`python:int`)
-        * For :class:`~odoo.ormapping.fields.Many2one`, the value should be the
+        * For :class:`~odoo.microkernel.ormapping.fields.Many2one`, the value should be the
           database identifier of the record to set
-        * The expected value of a :class:`~odoo.ormapping.fields.One2many` or
-          :class:`~odoo.ormapping.fields.Many2many` relational field is a list of
-          :class:`~odoo.ormapping.fields.Command` that manipulate the relation the
+        * The expected value of a :class:`~odoo.microkernel.ormapping.fields.One2many` or
+          :class:`~odoo.microkernel.ormapping.fields.Many2many` relational field is a list of
+          :class:`~odoo.microkernel.ormapping.fields.Command` that manipulate the relation the
           implement. There are a total of 7 commands:
-          :meth:`~odoo.ormapping.fields.Command.create`,
-          :meth:`~odoo.ormapping.fields.Command.update`,
-          :meth:`~odoo.ormapping.fields.Command.delete`,
-          :meth:`~odoo.ormapping.fields.Command.unlink`,
-          :meth:`~odoo.ormapping.fields.Command.link`,
-          :meth:`~odoo.ormapping.fields.Command.clear`, and
-          :meth:`~odoo.ormapping.fields.Command.set`.
-        * For :class:`~odoo.ormapping.fields.Date` and `~odoo.ormapping.fields.Datetime`,
+          :meth:`~odoo.microkernel.ormapping.fields.Command.create`,
+          :meth:`~odoo.microkernel.ormapping.fields.Command.update`,
+          :meth:`~odoo.microkernel.ormapping.fields.Command.delete`,
+          :meth:`~odoo.microkernel.ormapping.fields.Command.unlink`,
+          :meth:`~odoo.microkernel.ormapping.fields.Command.link`,
+          :meth:`~odoo.microkernel.ormapping.fields.Command.clear`, and
+          :meth:`~odoo.microkernel.ormapping.fields.Command.set`.
+        * For :class:`~odoo.microkernel.ormapping.fields.Date` and `~odoo.microkernel.ormapping.fields.Datetime`,
           the value should be either a date(time), or a string.
 
           .. warning::

@@ -236,7 +236,7 @@ class TestMailAlias(TestMailAliasCommon):
             (copy_1 + copy_2).write({'alias_name': 'test.alias.other'})
 
     @users('admin')
-    @mute_logger('odoo.ormapping.models.unlink')
+    @mute_logger('odoo.microkernel.ormapping.models.unlink')
     def test_alias_name_sanitize(self):
         """ Check sanitizer, at both create, copy and write on alias name. """
         alias_names = [
@@ -446,7 +446,7 @@ class TestAliasCompany(TestMailAliasCommon):
         self.assertEqual(self.company_archived.alias_domain_id.id, mc_alias_domain.id,
                          'Archived company was attributed wrong alias domain')
 
-    @mute_logger('odoo.ormapping.models.unlink')
+    @mute_logger('odoo.microkernel.ormapping.models.unlink')
     @users('erp_manager')
     def test_alias_domain_setup(self):
         """ Test synchronization of alias domain with companies when adding /

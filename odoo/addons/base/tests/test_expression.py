@@ -230,7 +230,7 @@ class TestExpression(SavepointCaseWithUserDemo, TransactionExpressionCase):
             cats = self._search(Category, [('id', 'parent_of', False)])
         self.assertEqual(len(cats), 0)
 
-    @mute_logger('odoo.ormapping.models.unlink')
+    @mute_logger('odoo.microkernel.ormapping.models.unlink')
     def test_10_hierarchy_access(self):
         Partner = self.env['res.partner'].with_user(self.user_demo)
         top = Partner.create({'name': 'Top'})
@@ -1455,7 +1455,7 @@ class TestQueries(TransactionCase):
         ''']):
             Model.search_count([('id', '=', 1)])
 
-    @mute_logger('odoo.ormapping.models.unlink')
+    @mute_logger('odoo.microkernel.ormapping.models.unlink')
     def test_access_rules(self):
         Model = self.env['res.users'].with_user(self.env.ref('base.user_admin'))
         self.env['ir.rule'].search([]).unlink()

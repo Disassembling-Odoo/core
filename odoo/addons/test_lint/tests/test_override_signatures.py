@@ -49,7 +49,7 @@ counter = collections.defaultdict(HitMiss)
 def get_odoo_module_name(python_module_name):
     if python_module_name.startswith('odoo.addons.'):
         return python_module_name.split('.')[2]
-    if python_module_name == 'odoo.ormapping.models':
+    if python_module_name == 'odoo.microkernel.ormapping.models':
         return 'odoo'
 
     return python_module_name

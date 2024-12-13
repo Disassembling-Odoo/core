@@ -28,7 +28,7 @@ class TestAPI(SavepointCaseWithUserDemo):
         self.assertIsRecordset(value, model)
         self.assertFalse(value)
 
-    @mute_logger('odoo.ormapping.models')
+    @mute_logger('odoo.microkernel.ormapping.models')
     def test_00_query(self):
         """ Build a recordset, and check its contents. """
         domain = [('name', 'ilike', 'j'), ('id', 'in', self.partners.ids)]
@@ -42,7 +42,7 @@ class TestAPI(SavepointCaseWithUserDemo):
         for p in partners:
             self.assertIsRecord(p, 'res.partner')
 
-    @mute_logger('odoo.ormapping.models')
+    @mute_logger('odoo.microkernel.ormapping.models')
     def test_01_query_offset(self):
         """ Build a recordset with offset, and check equivalence. """
         partners1 = self.env['res.partner'].search([('id', 'in', self.partners.ids)], offset=5)
@@ -51,7 +51,7 @@ class TestAPI(SavepointCaseWithUserDemo):
         self.assertIsRecordset(partners2, 'res.partner')
         self.assertEqual(list(partners1), list(partners2))
 
-    @mute_logger('odoo.ormapping.models')
+    @mute_logger('odoo.microkernel.ormapping.models')
     def test_02_query_limit(self):
         """ Build a recordset with offset, and check equivalence. """
         partners1 = self.env['res.partner'].search([('id', 'in', self.partners.ids)], order='id asc', limit=5)
@@ -60,7 +60,7 @@ class TestAPI(SavepointCaseWithUserDemo):
         self.assertIsRecordset(partners2, 'res.partner')
         self.assertEqual(list(partners1), list(partners2))
 
-    @mute_logger('odoo.ormapping.models')
+    @mute_logger('odoo.microkernel.ormapping.models')
     def test_03_query_offset_limit(self):
         """ Build a recordset with offset and limit, and check equivalence. """
         partners1 = self.env['res.partner'].search([('id', 'in', self.partners.ids)], order='id asc', offset=3, limit=7)
@@ -69,7 +69,7 @@ class TestAPI(SavepointCaseWithUserDemo):
         self.assertIsRecordset(partners2, 'res.partner')
         self.assertEqual(list(partners1), list(partners2))
 
-    @mute_logger('odoo.ormapping.models')
+    @mute_logger('odoo.microkernel.ormapping.models')
     def test_04_query_count(self):
         """ Test the search_count method. """
         self.cr.execute("SELECT COUNT(*) FROM res_partner WHERE active")
@@ -79,7 +79,7 @@ class TestAPI(SavepointCaseWithUserDemo):
         self.assertIsInstance(count2, int)
         self.assertEqual(count1, count2)
 
-    @mute_logger('odoo.ormapping.models')
+    @mute_logger('odoo.microkernel.ormapping.models')
     def test_05_immutable(self):
         """ Check that a recordset remains the same, even after updates. """
         domain = [('name', 'ilike', 'g'), ('id', 'in', self.partners.ids)]
@@ -95,7 +95,7 @@ class TestAPI(SavepointCaseWithUserDemo):
         partners2 = self.env['res.partner'].search(domain)
         self.assertFalse(partners2)
 
-    @mute_logger('odoo.ormapping.models')
+    @mute_logger('odoo.microkernel.ormapping.models')
     def test_06_fields(self):
         """ Check that relation fields return records, recordsets or nulls. """
         user = self.env.user
@@ -115,7 +115,7 @@ class TestAPI(SavepointCaseWithUserDemo):
                 for p in self.partners:
                     self.assertIsRecordset(p[name], field.comodel_name)
 
-    @mute_logger('odoo.ormapping.models')
+    @mute_logger('odoo.microkernel.ormapping.models')
     def test_07_null(self):
         """ Check behavior of null instances. """
         # select a partner without a parent
@@ -138,7 +138,7 @@ class TestAPI(SavepointCaseWithUserDemo):
         self.assertFalse(partner.parent_id.user_id.groups_id)
         self.assertIsRecordset(partner.parent_id.user_id.groups_id, 'res.groups')
 
-    @mute_logger('odoo.ormapping.models')
+    @mute_logger('odoo.microkernel.ormapping.models')
     def test_40_new_new(self):
         """ Call new-style methods in the new API style. """
         partners = self.env['res.partner'].search([('name', 'ilike', 'g'), ('id', 'in', self.partners.ids)])
@@ -149,7 +149,7 @@ class TestAPI(SavepointCaseWithUserDemo):
         for p in partners:
             self.assertFalse(p.active)
 
-    @mute_logger('odoo.ormapping.models')
+    @mute_logger('odoo.microkernel.ormapping.models')
     def test_45_new_new(self):
         """ Call new-style methods on records (new API style). """
         partners = self.env['res.partner'].search([('name', 'ilike', 'g'), ('id', 'in', self.partners.ids)])
@@ -161,7 +161,7 @@ class TestAPI(SavepointCaseWithUserDemo):
         for p in partners:
             self.assertFalse(p.active)
 
-    @mute_logger('odoo.ormapping.models')
+    @mute_logger('odoo.microkernel.ormapping.models')
     @mute_logger('odoo.addons.base.models.ir_model')
     def test_50_environment(self):
         """ Test environment on records. """
@@ -224,7 +224,7 @@ class TestAPI(SavepointCaseWithUserDemo):
         self.assertEqual(self.env['base'].with_user(user_demo).with_user(user_admin).env.uid_origin, user_demo.id)
         self.assertEqual(self.env['base'].with_user(user_admin).with_user(user_demo).env.uid_origin, user_admin.id)
 
-    @mute_logger('odoo.ormapping.models')
+    @mute_logger('odoo.microkernel.ormapping.models')
     def test_60_cache(self):
         """ Check the record cache behavior """
         Partners = self.env['res.partner']
@@ -285,7 +285,7 @@ class TestAPI(SavepointCaseWithUserDemo):
         self.assertEqual(data['country_id'], partner.country_id.id)
         self.assertEqual(data['child_ids'], [Command.set(partner.child_ids.ids)])
 
-    @mute_logger('odoo.ormapping.models')
+    @mute_logger('odoo.microkernel.ormapping.models')
     def test_60_prefetch(self):
         """ Check the record cache prefetching """
         partners = self.env['res.partner'].search([('id', 'in', self.partners.ids)], limit=models.PREFETCH_MAX)
@@ -320,7 +320,7 @@ class TestAPI(SavepointCaseWithUserDemo):
         state_ids_with_field = [st.id for st in partners.state_id if 'name' in st._cache]
         self.assertItemsEqual(state_ids_with_field, state_ids)
 
-    @mute_logger('odoo.ormapping.models')
+    @mute_logger('odoo.microkernel.ormapping.models')
     def test_60_prefetch_model(self):
         """ Check the prefetching model. """
         partners = self.env['res.partner'].search([('id', 'in', self.partners.ids)], limit=models.PREFETCH_MAX)
@@ -367,7 +367,7 @@ class TestAPI(SavepointCaseWithUserDemo):
             same_prefetch(partner.bank_ids, partners.bank_ids)
             same_prefetch(partner.category_id, partners.category_id)
 
-    @mute_logger('odoo.ormapping.models')
+    @mute_logger('odoo.microkernel.ormapping.models')
     def test_60_prefetch_read(self):
         """ Check that reading a field computes it on self only. """
         Partner = self.env['res.partner']
@@ -442,7 +442,7 @@ class TestAPI(SavepointCaseWithUserDemo):
         self.assertEqual(list(reversed(first.child_ids._prefetch_ids)), reversed_ids)
         self.assertEqual(list(reversed(last.child_ids._prefetch_ids)), prefetch_ids)
 
-    @mute_logger('odoo.ormapping.models')
+    @mute_logger('odoo.microkernel.ormapping.models')
     def test_70_one(self):
         """ Check method one(). """
         # check with many records
@@ -460,7 +460,7 @@ class TestAPI(SavepointCaseWithUserDemo):
         with self.assertRaises(ValueError):
             p0.ensure_one()
 
-    @mute_logger('odoo.ormapping.models')
+    @mute_logger('odoo.microkernel.ormapping.models')
     def test_80_contains(self):
         """ Test membership on recordset. """
         p1 = self.partners[0]
@@ -472,7 +472,7 @@ class TestAPI(SavepointCaseWithUserDemo):
         with self.assertRaisesRegex(TypeError, r"inconsistent models in: ir\.ui\.menu.* in res\.partner.*"):
             self.env['ir.ui.menu'] in ps
 
-    @mute_logger('odoo.ormapping.models')
+    @mute_logger('odoo.microkernel.ormapping.models')
     def test_80_lazy_contains(self):
         """ Test membership on recordset. """
         p1 = lazy(lambda: self.partners[0])
@@ -484,7 +484,7 @@ class TestAPI(SavepointCaseWithUserDemo):
         with self.assertRaisesRegex(TypeError, r"inconsistent models in: ir\.ui\.menu.* in res\.partner.*"):
             lazy(lambda: self.env['ir.ui.menu']) in ps
 
-    @mute_logger('odoo.ormapping.models')
+    @mute_logger('odoo.microkernel.ormapping.models')
     def test_80_set_operations(self):
         """ Check set operations on recordsets. """
         pa = self.env['res.partner'].search([('name', 'ilike', 'a'), ('id', 'in', self.partners.ids)])
@@ -540,7 +540,7 @@ class TestAPI(SavepointCaseWithUserDemo):
         with self.assertRaises(TypeError):
             ps >= ms
 
-    @mute_logger('odoo.ormapping.models')
+    @mute_logger('odoo.microkernel.ormapping.models')
     def test_80_lazy_set_operations(self):
         """ Check set operations on recordsets. """
         pa = lazy(lambda: self.env['res.partner'].search([('name', 'ilike', 'a'), ('id', 'in', self.partners.ids)]))
@@ -596,7 +596,7 @@ class TestAPI(SavepointCaseWithUserDemo):
         with self.assertRaises(TypeError):
             ps >= ms
 
-    @mute_logger('odoo.ormapping.models')
+    @mute_logger('odoo.microkernel.ormapping.models')
     def test_80_filter(self):
         """ Check filter on recordsets. """
         ps = self.partners
@@ -612,7 +612,7 @@ class TestAPI(SavepointCaseWithUserDemo):
             ps.filtered('parent_id.employee')
         )
 
-    @mute_logger('odoo.ormapping.models')
+    @mute_logger('odoo.microkernel.ormapping.models')
     def test_80_map(self):
         """ Check map on recordsets. """
         ps = self.partners
@@ -642,7 +642,7 @@ class TestAPI(SavepointCaseWithUserDemo):
         # map an empty sequence of fields
         self.assertEqual(ps.mapped(''), ps)
 
-    @mute_logger('odoo.ormapping.models')
+    @mute_logger('odoo.microkernel.ormapping.models')
     def test_80_sorted(self):
         """ Check sorted on recordsets. """
         ps = self.env['res.partner'].search([('id', 'in', self.partners.ids)])

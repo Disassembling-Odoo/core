@@ -29,7 +29,7 @@ class TestMailTrackingDurationMixin(MailTrackingDurationMixinCase):
 @tagged('mail_thread', 'mail_blacklist')
 class TestMailThread(MailCommon, TestRecipients):
 
-    @mute_logger('odoo.ormapping.models.unlink')
+    @mute_logger('odoo.microkernel.ormapping.models.unlink')
     def test_blacklist_mixin_email_normalized(self):
         """ Test email_normalized and is_blacklisted fields behavior, notably
         when dealing with encapsulated email fields and multi-email input. """

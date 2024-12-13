@@ -162,7 +162,7 @@ class IrBinary(models.AbstractModel):
         In case the record does not exist or is not accessible, the
         alternative ``placeholder`` path is used instead. If not set,
         a path is determined via
-        :meth:`~odoo.ormapping.models.BaseModel._get_placeholder_filename` which
+        :meth:`~odoo.microkernel.ormapping.models.BaseModel._get_placeholder_filename` which
         ultimately fallbacks on ``web/static/img/placeholder.png``.
 
         In case the arguments ``width``, ``height``, ``crop`` or

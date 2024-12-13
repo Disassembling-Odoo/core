@@ -11,7 +11,7 @@ from . import discuss_gif_favorite
 from . import discuss_voice_metadata
 from . import mail_guest
 
-# odoo.ormapping.models
+# odoo.microkernel.ormapping.models
 from . import bus_listener_mixin
 from . import ir_attachment
 from . import ir_binary

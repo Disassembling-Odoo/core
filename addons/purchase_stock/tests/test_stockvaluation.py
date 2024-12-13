@@ -379,7 +379,7 @@ class TestStockValuationWithCOA(AccountTestInvoicingCommon):
             return old_create(self, vals_list)
 
         post_patch = patch('odoo.addons.account.models.account_move.AccountMove.action_post', new_action_post)
-        create_patch = patch('odoo.ormapping.models.BaseModel.create', new_create)
+        create_patch = patch('odoo.microkernel.ormapping.models.BaseModel.create', new_create)
         cls.startClassPatcher(post_patch)
         cls.startClassPatcher(create_patch)
 
@@ -1213,7 +1213,7 @@ class TestStockValuationWithCOA(AccountTestInvoicingCommon):
         def _today(*args, **kwargs):
             return date_po
         patchers = [
-            patch('odoo.ormapping.fields.Date.context_today', _today),
+            patch('odoo.microkernel.ormapping.fields.Date.context_today', _today),
         ]
 
         for patcher in patchers:
@@ -1384,8 +1384,8 @@ class TestStockValuationWithCOA(AccountTestInvoicingCommon):
             return datetime.strptime(today + ' 01:00:00', "%Y-%m-%d %H:%M:%S")
 
         patchers = [
-            patch('odoo.ormapping.fields.Date.context_today', _today),
-            patch('odoo.ormapping.fields.Datetime.now', _now),
+            patch('odoo.microkernel.ormapping.fields.Date.context_today', _today),
+            patch('odoo.microkernel.ormapping.fields.Datetime.now', _now),
         ]
 
         for patcher in patchers:

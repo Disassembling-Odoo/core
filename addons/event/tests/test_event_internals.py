@@ -179,7 +179,7 @@ class TestEventData(TestEventInternalsCommon):
         self.assertFalse(event.is_ongoing)
 
     @users('user_eventmanager')
-    @mute_logger('odoo.ormapping.models.unlink')
+    @mute_logger('odoo.microkernel.ormapping.models.unlink')
     def test_event_configuration_from_type(self):
         """ Test data computation of event coming from its event.type template. """
         self.assertEqual(self.env.user.tz, 'Europe/Brussels')

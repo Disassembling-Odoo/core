@@ -533,7 +533,8 @@ class configmanager(object):
 
         ismultidb = ',' in (self.options.get('db_name') or '')
         die(ismultidb and (opt.init or opt.update), "Cannot use -i/--init or -u/--update with multiple databases in the -d/--database/db_name")
-        self.options['root_path'] = self._normalize(os.path.join(os.path.dirname(__file__), '..'))
+        # TODO: 不应该这么取这个路径
+        self.options['root_path'] = self._normalize(os.path.join(os.path.join(os.path.dirname(__file__), '..'),'..'))
         if not self.options['addons_path'] or self.options['addons_path']=='None':
             default_addons = []
             base_addons = os.path.join(self.options['root_path'], 'addons')
@@ -577,8 +578,10 @@ class configmanager(object):
         for key in ['data_dir', 'logfile', 'pidfile', 'test_file', 'screencasts', 'screenshots', 'pg_path', 'translate_out', 'translate_in', 'geoip_city_db', 'geoip_country_db']:
             self.options[key] = self._normalize(self.options[key])
 
+        global addons_paths
         addons_paths = self.options['addons_path'].split(',')
 
+        global server_wide_modules
         server_wide_modules = [
             m.strip() for m in self.options['server_wide_modules'].split(',') if m.strip()
         ]

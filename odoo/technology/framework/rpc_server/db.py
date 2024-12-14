@@ -148,7 +148,7 @@ def exp_list(document=False):
     return odoo.technology.db.list_dbs()
 
 def exp_list_lang():
-    return odoo.tools.i18n.scan_languages()
+    return scan_languages()
 
 def scan_languages() -> list[tuple[str, str]]:
     """ Returns all languages supported by OpenERP for translation
@@ -196,12 +196,12 @@ def exp_server_version():
 def dispatch(method, params):
     g = globals()
     exp_method_name = 'exp_' + method
-    if method in ['db_exist', 'list', 'list_lang', 'server_version']:
+    if method in ['db_exist', 'list', 'list_lang', 'server_version', 'list_countries']:
         return g[exp_method_name](*params)
     elif exp_method_name in g:
         passwd = params[0]
         params = params[1:]
-        DBUtils.check_super(passwd)
+        DBUtils.check_super(passwd, odoo.conf.config)
         return g[exp_method_name](*params)
     else:
         raise KeyError("Method not found: %s" % method)

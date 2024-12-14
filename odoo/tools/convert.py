@@ -307,10 +307,10 @@ form: module.record_id""" % (xml_id,)
         for group in rec.get('groups', '').split(','):
             if group.startswith('-'):
                 group_id = self.id_get(group[1:])
-                groups.append(odoo.Command.unlink(group_id))
+                groups.append(odoo.microkernel.ormapping.Command.unlink(group_id))
             elif group:
                 group_id = self.id_get(group)
-                groups.append(odoo.Command.link(group_id))
+                groups.append(odoo.microkernel.ormapping.Command.link(group_id))
         if groups:
             values['groups_id'] = groups
 
@@ -390,7 +390,7 @@ form: module.record_id""" % (xml_id,)
                 _fields = env[rec_model]._fields
                 # if the current field is many2many
                 if (f_name in _fields) and _fields[f_name].type == 'many2many':
-                    f_val = [odoo.Command.set([x[f_use] for x in s])]
+                    f_val = [odoo.microkernel.ormapping.Command.set([x[f_use] for x in s])]
                 elif len(s):
                     # otherwise (we are probably in a many2one field),
                     # take the first element of the search
@@ -659,7 +659,8 @@ def convert_csv_import(env, module, fname, csvcontent, idref=None, mode='init',
 
 def convert_xml_import(env, module, xmlfile, idref=None, mode='init', noupdate=False, report=None):
     doc = etree.parse(xmlfile)
-    schema = os.path.join(config['root_path'], 'import_xml.rng')
+    # TODO: 不应该这么取文件
+    schema = os.path.join(config['root_path'], 'technology', 'import_xml.rng')
     relaxng = etree.RelaxNG(etree.parse(schema))
     try:
         relaxng.assert_(doc)

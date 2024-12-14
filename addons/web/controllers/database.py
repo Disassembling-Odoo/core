@@ -35,8 +35,8 @@ class Database(http.Controller):
         d.setdefault('manage', True)
         d['insecure'] = odoo.conf.config.verify_admin_password('admin')
         d['list_db'] = odoo.conf.config['list_db']
-        d['langs'] = odoo.technology.framework.exp_list_lang()
-        d['countries'] = odoo.technology.framework.exp_list_countries()
+        d['langs'] = odoo.technology.framework.dispatch_rpc('db', 'list_lang', [])
+        d['countries'] = odoo.technology.framework.dispatch_rpc('db', 'list_countries', [])
         d['pattern'] = DBNAME_PATTERN
         # databases list
         try:
